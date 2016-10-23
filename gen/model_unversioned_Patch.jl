@@ -1,7 +1,7 @@
 # This file was added by the generator script for Kubernetes OpenApi generator.
 # This is here to address https://github.com/swagger-api/swagger-codegen/issues/2856
 
-type UnversionedPatch
+type UnversionedPatch <: SwaggerModel
     function UnversionedPatch(;dummy=nothing)
         o = new()
         o
@@ -15,7 +15,5 @@ function check_required(o::UnversionedPatch)
     true
 end
 
-function set_field!(o::UnversionedPatch, name::Symbol, val)
+function validate_field(o::UnversionedPatch, name::Symbol, val)
 end
-
-convert(::Type{ UnversionedPatch }, json::Dict{String,Any}) = Swagger.from_json(UnversionedPatch, json)

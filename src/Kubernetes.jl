@@ -6,7 +6,7 @@ module Kubernetes
 using Base.Random.UUID
 using Requests
 using Swagger
-import Swagger: set_field!, get_field, isset_field
+import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
 
 include("model_intstr_IntOrString.jl")
