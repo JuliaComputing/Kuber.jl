@@ -17,3 +17,5 @@ end
 
 function validate_field(o::UnversionedPatch, name::Symbol, val)
 end
+
+export UnversionedPatch
