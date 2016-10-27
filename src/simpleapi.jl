@@ -1,5 +1,6 @@
 # simple Julia APIs over Kubernetes Swagger interface
 
+# TODO: Deployment
 get(ctx::KuberContext, ::Type{ComponentStatus}) = listCoreV1ComponentStatus(ctx.api)
 get(ctx::KuberContext, ::Type{ComponentStatus}, compname::String) = readCoreV1ComponentStatus(ctx.api, compname)
 get(ctx::KuberContext, ::Type{Endpoints}) = listCoreV1EndpointsForAllNamespaces(ctx.api)
