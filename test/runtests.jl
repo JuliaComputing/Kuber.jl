@@ -4,7 +4,8 @@ using Swagger
 
 #On GCE:
 #- Bring up a Kubernetes cluster: https://cloud.google.com/container-engine/docs/clusters/operations
-#    - `gcloud container clusters create cluster1 --num-nodes=2 --zone=us-central1-a --machine-type=n1-standard-1`
+#    - `gcloud container clusters create cluster1 --num-nodes=2 --zone=us-central1-a --machine-type=n1-standard-1 --image-type=container_vm`
+#    - Note: set image-type to container_vm as the v1.4.0 Google container vm does not have glusterfs client. See: https://groups.google.com/forum/#!topic/kubernetes-users/USCSQ9TZThY
 #- Enable access to the cluster:
 #    - Get kubernetes credentials: `gcloud container clusters get-credentials cluster1 --zone us-central1-a`
 #    - See credentials: `gcloud container clusters describe cluster-1 --zone us-central1-a`
