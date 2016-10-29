@@ -11,6 +11,8 @@ get(ctx::KuberContext, ::Type{ReplicationController}) = listCoreV1NamespacedRepl
 get(ctx::KuberContext, ::Type{Service}) = listCoreV1NamespacedService(ctx.api, ctx.namespace)
 get(ctx::KuberContext, ::Type{PersistentVolume}) = listCoreV1PersistentVolume(ctx.api)
 get(ctx::KuberContext, ::Type{PersistentVolumeClaim}) = listCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace)
+get(ctx::KuberContext, ::Type{Job}) = listBatchV1NamespacedJob(ctx.api, ctx.namespace)
+get(ctx::KuberContext, ::Type{Secret}) = listCoreV1NamespacedSecret(ctx.api, ctx.namespace)
 
 put!(ctx::KuberContext, ns::Namespace) = createCoreV1Namespace(ctx.api, ns)
 put!(ctx::KuberContext, epts::Endpoints) = createCoreV1NamespacedEndpoints(ctx.api, ctx.namespace, epts)
@@ -20,6 +22,8 @@ put!(ctx::KuberContext, rc::ReplicationController) = createCoreV1NamespacedRepli
 put!(ctx::KuberContext, svc::Service) = createCoreV1NamespacedService(ctx.api, ctx.namespace, svc)
 put!(ctx::KuberContext, pv::PersistentVolume) = createCoreV1PersistentVolume(ctx.api, pv)
 put!(ctx::KuberContext, pvc::PersistentVolumeClaim) = createCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace, pvc)
+put!(ctx::KuberContext, job::Job) = createBatchV1NamespacedJob(ctx.api, ctx.namespace, job)
+put!(ctx::KuberContext, secret::Secret) = createCoreV1NamespacedSecret(ctx.api, ctx.namespace, secret)
 
 put!(ctx::KuberContext, ::Type{Namespace}, ns::Dict{String,Any}) = createCoreV1Namespace(ctx.api, ns)
 put!(ctx::KuberContext, ::Type{Endpoints}, epts::Dict{String,Any}) = createCoreV1NamespacedEndpoints(ctx.api, ctx.namespace, epts)
@@ -29,6 +33,8 @@ put!(ctx::KuberContext, ::Type{ReplicationController}, rc::Dict{String,Any}) = c
 put!(ctx::KuberContext, ::Type{Service}, svc::Dict{String,Any}) = createCoreV1NamespacedService(ctx.api, ctx.namespace, svc)
 put!(ctx::KuberContext, ::Type{PersistentVolume}, pv::Dict{String,Any}) = createCoreV1PersistentVolume(ctx.api, pv)
 put!(ctx::KuberContext, ::Type{PersistentVolumeClaim}, pvc::Dict{String,Any}) = createCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace, pvc)
+put!(ctx::KuberContext, ::Type{Job}, job::Dict{String,Any}) = createBatchV1NamespacedJob(ctx.api, ctx.namespace, job)
+put!(ctx::KuberContext, ::Type{Secret}, secret::Dict{String,Any}) = createCoreV1NamespacedSecret(ctx.api, ctx.namespace, secret)
 
 _delopts(; kwargs...) = DeleteOptions(; preconditions=Preconditions(; kwargs...), kwargs...)
 delete!(ctx::KuberContext, ::Type{Namespace}, ns::String; kwargs...) = deleteCoreV1Namespace(ctx.api, nctx.amespace, _delopts(; kwargs...))
@@ -39,3 +45,5 @@ delete!(ctx::KuberContext, ::Type{ReplicationController}, rc::String; kwargs...)
 delete!(ctx::KuberContext, ::Type{Service}, service::String) = deleteCoreV1NamespacedService(ctx.api, service, ctx.namespace)
 delete!(ctx::KuberContext, ::Type{PersistentVolume}, pv::String; kwargs...) = deleteCoreV1PersistentVolume(ctx.api, pv, _delopts(; kwargs...))
 delete!(ctx::KuberContext, ::Type{PersistentVolumeClaim}, pvc::String; kwargs...) = deleteCoreV1NamespacedPersistentVolumeClaim(ctx.api, pvc, ctx.namespace, _delopts(; kwargs...))
+delete!(ctx::KuberContext, ::Type{Job}, job::String; kwargs...) = deleteBatchV1NamespacedJob(ctx.api, job, ctx.namespace, _delopts(; kwargs...))
+delete!(ctx::KuberContext, ::Type{Secret}, secret::String; kwargs...) = deleteCoreV1NamespacedSecret(ctx.api, secret, ctx.namespace, _delopts(; kwargs...))
