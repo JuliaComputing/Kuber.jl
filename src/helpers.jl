@@ -10,8 +10,8 @@ function kuber_type(T, resp::Response)
 end
 
 function kuber_type(T, data::String)
+    j = JSON.parse(data)
     try
-        j = JSON.parse(data)
         if "kind" in keys(j)
             T = eval(Symbol(j["kind"]))
         end

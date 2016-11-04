@@ -16,6 +16,6 @@ include("simpleapi.jl")
 
 export set_server, set_ns, @K_str
 export ComponentStatus, Endpoints, Namespace, Pod, PodTemplate, ReplicationController, Service, PersistentVolume, PersistentVolumeClaim, Job, Secret
-export get, put!, update!, delete!
+export get, put!, update!, delete!, sel
 
 end # module

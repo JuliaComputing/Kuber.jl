@@ -1,18 +1,26 @@
 # simple Julia APIs over Kubernetes Swagger interface
 
+function sel(label::String, op::Symbol)
+    @assert op === :exists
+    label
+end
+sel(label::String, op::Symbol, items::String...) = label * " " * string(op) * " (" * join(items, ",") * ")"
+sel(cnd::String...) = join(cnd, ", ")
+
 # TODO: Deployment
-get(ctx::KuberContext, ::Type{ComponentStatus}) = listCoreV1ComponentStatus(ctx.api)
+# fieldSelector not supported yet (see: https://github.com/kubernetes/kubernetes/issues/15128)
 get(ctx::KuberContext, ::Type{ComponentStatus}, compname::String) = readCoreV1ComponentStatus(ctx.api, compname)
-get(ctx::KuberContext, ::Type{Namespace}) = listCoreV1Namespace(ctx.api)
-get(ctx::KuberContext, ::Type{Endpoints}) = listCoreV1EndpointsForAllNamespaces(ctx.api)
-get(ctx::KuberContext, ::Type{Pod}) = listCoreV1NamespacedPod(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{PodTemplate}) = listCoreV1NamespacedPodTemplate(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{ReplicationController}) = listCoreV1NamespacedReplicationController(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{Service}) = listCoreV1NamespacedService(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{PersistentVolume}) = listCoreV1PersistentVolume(ctx.api)
-get(ctx::KuberContext, ::Type{PersistentVolumeClaim}) = listCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{Job}) = listBatchV1NamespacedJob(ctx.api, ctx.namespace)
-get(ctx::KuberContext, ::Type{Secret}) = listCoreV1NamespacedSecret(ctx.api, ctx.namespace)
+get(ctx::KuberContext, ::Type{ComponentStatus}; label_selector=nothing) = listCoreV1ComponentStatus(ctx.api; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Namespace}; label_selector=nothing) = listCoreV1Namespace(ctx.api; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Endpoints}; label_selector=nothing) = listCoreV1EndpointsForAllNamespaces(ctx.api; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Pod}; label_selector=nothing) = listCoreV1NamespacedPod(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{PodTemplate}; label_selector=nothing) = listCoreV1NamespacedPodTemplate(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{ReplicationController}; label_selector=nothing) = listCoreV1NamespacedReplicationController(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Service}; label_selector=nothing) = listCoreV1NamespacedService(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{PersistentVolume}; label_selector=nothing) = listCoreV1PersistentVolume(ctx.api; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{PersistentVolumeClaim}; label_selector=nothing) = listCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Job}; label_selector=nothing) = listBatchV1NamespacedJob(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{Secret}; label_selector=nothing) = listCoreV1NamespacedSecret(ctx.api, ctx.namespace; labelSelector=label_selector)
 
 put!(ctx::KuberContext, ns::Namespace) = createCoreV1Namespace(ctx.api, ns)
 put!(ctx::KuberContext, epts::Endpoints) = createCoreV1NamespacedEndpoints(ctx.api, ctx.namespace, epts)
