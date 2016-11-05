@@ -3,28 +3,32 @@ convert{T<:SwaggerModel}(::Type{T}, json::String) = convert(T, JSON.parse(json))
 
 is_json_mime(mime::String) = ("*/*" == mime) || ismatch(r"(?i)application/json(;.*)?", mime)
 
+kuber_type(d) = kuber_type(Any, d)
+kuber_type(T, data::String) = kuber_type(T, JSON.parse(data))
+
 function kuber_type(T, resp::Response)
     ctype = get(resp.headers, "Content-Type", "application/json")
     !is_json_mime(ctype) && return T
     kuber_type(T, String(resp.data))
 end
 
-function kuber_type(T, data::String)
-    j = JSON.parse(data)
-    try
-        if "kind" in keys(j)
+function kuber_type(T, j::Dict{String,Any})
+    if "kind" in keys(j)
+        try
             T = eval(Symbol(j["kind"]))
+        catch
+            println(STDERR, "Type not found: $(j["kind"])")
         end
-    catch
-        println(STDERR, "Type not found: $(j["kind"]) in JSON $data")
     end
     T
 end
 
+kuber_obj(data::String) = kuber_obj(JSON.parse(data))
+kuber_obj(j::Dict{String,Any}) = convert(eval(Symbol(j["kind"])), j)
+
 macro K_str(s)
     quote
-        j = JSON.parse($s)
-        convert(eval(Symbol(j["kind"])), j)
+        kuber_obj($s)
     end
 end
 

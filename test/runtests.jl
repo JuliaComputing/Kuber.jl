@@ -103,7 +103,9 @@ const nginx_rc_service = K"""{
     },
     "spec": {
         "type": "LoadBalancer",
-        "ports": [{"port": 80}],
+        "ports": [
+            {"port": 80, "name": "http"}
+        ],
         "selector": {"name": "nginx-pod"}
     }
 }"""
