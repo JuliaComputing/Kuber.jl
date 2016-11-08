@@ -57,12 +57,12 @@ delete!(ctx::KuberContext, ::Type{Job}, job::String; kwargs...) = deleteBatchV1N
 delete!(ctx::KuberContext, ::Type{Secret}, secret::String; kwargs...) = deleteCoreV1NamespacedSecret(ctx.api, secret, ctx.namespace, _delopts(; kwargs...))
 
 # TODO: take keyword parameters for allowed attributes instead of patch, create patch in the function
-update!(ctx::KuberContext, ::Type{Namespace}, ns::String, patch) = patchCoreV1Namespace(ctx.api, ns, patch)
-update!(ctx::KuberContext, ::Type{PersistentVolume}, pv::String, patch) = patchCoreV1PersistentVolume(ctx.api, pv, patch)
+update!(ctx::KuberContext, ::Type{Namespace}, ns::String, patch, patch_type) = patchCoreV1Namespace(ctx.api, ns, patch; _mediaType=patch_type)
+update!(ctx::KuberContext, ::Type{PersistentVolume}, pv::String, patch, patch_type) = patchCoreV1PersistentVolume(ctx.api, pv, patch; _mediaType=patch_type)
 for (T,fn) in (Endpoints=>:patchCoreV1NamespacedEndpoints, Pod=>:patchCoreV1NamespacedPod, PodTemplate=>:patchCoreV1NamespacedPodTemplate,
                 ReplicationController=>:patchCoreV1NamespacedReplicationController, Service=>:patchCoreV1NamespacedService,
                 PersistentVolumeClaim=>:patchCoreV1NamespacedPersistentVolumeClaim, Job=>:patchBatchV1NamespacedJob, Secret=>:patchCoreV1NamespacedSecret)
     @eval begin
-        update!(ctx::KuberContext, ::Type{$T}, name::String, patch) = $fn(ctx.api, name, ctx.namespace, patch)
+        update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, ctx.namespace, patch; _mediaType=patch_type)
     end
 end

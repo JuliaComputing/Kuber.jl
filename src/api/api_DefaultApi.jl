@@ -13,13 +13,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1DeleteNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1DeleteNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -32,14 +32,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1DeleteNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1DeleteNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -51,13 +51,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1DeleteNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1DeleteNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -70,14 +70,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1DeleteNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1DeleteNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -88,12 +88,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1DeleteNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1DeleteNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -105,13 +105,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1DeleteNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1DeleteNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -127,7 +127,7 @@ Param: stdout::Bool
 Param: tty::Bool
 Return: String
 """
-function connectCoreV1GetNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
+function connectCoreV1GetNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/attach", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -137,7 +137,7 @@ function connectCoreV1GetNamespacedPodAttach(_api::DefaultApi, name::String, nam
     Swagger.set_param(_ctx.query, "stdout", stdout)  # type Bool
     Swagger.set_param(_ctx.query, "tty", tty)  # type Bool
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -154,7 +154,7 @@ Param: stdout::Bool
 Param: tty::Bool
 Return: String
 """
-function connectCoreV1GetNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
+function connectCoreV1GetNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/exec", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -165,7 +165,7 @@ function connectCoreV1GetNamespacedPodExec(_api::DefaultApi, name::String, names
     Swagger.set_param(_ctx.query, "stdout", stdout)  # type Bool
     Swagger.set_param(_ctx.query, "tty", tty)  # type Bool
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -176,12 +176,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function connectCoreV1GetNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String;)
+function connectCoreV1GetNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -193,13 +193,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1GetNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1GetNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -212,14 +212,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1GetNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1GetNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -231,13 +231,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1GetNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1GetNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -250,14 +250,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1GetNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1GetNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -268,12 +268,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1GetNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1GetNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -285,13 +285,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1GetNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1GetNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -303,13 +303,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1HeadNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1HeadNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -322,14 +322,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1HeadNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1HeadNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -341,13 +341,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1HeadNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1HeadNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -360,14 +360,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1HeadNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1HeadNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -378,12 +378,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1HeadNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1HeadNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -395,13 +395,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1HeadNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1HeadNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -413,13 +413,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1OptionsNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1OptionsNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -432,14 +432,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1OptionsNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1OptionsNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -451,13 +451,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1OptionsNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1OptionsNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -470,14 +470,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1OptionsNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1OptionsNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -488,12 +488,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1OptionsNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1OptionsNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -505,13 +505,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1OptionsNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1OptionsNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -527,7 +527,7 @@ Param: stdout::Bool
 Param: tty::Bool
 Return: String
 """
-function connectCoreV1PostNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
+function connectCoreV1PostNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/attach", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -537,7 +537,7 @@ function connectCoreV1PostNamespacedPodAttach(_api::DefaultApi, name::String, na
     Swagger.set_param(_ctx.query, "stdout", stdout)  # type Bool
     Swagger.set_param(_ctx.query, "tty", tty)  # type Bool
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -554,7 +554,7 @@ Param: stdout::Bool
 Param: tty::Bool
 Return: String
 """
-function connectCoreV1PostNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
+function connectCoreV1PostNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/exec", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -565,7 +565,7 @@ function connectCoreV1PostNamespacedPodExec(_api::DefaultApi, name::String, name
     Swagger.set_param(_ctx.query, "stdout", stdout)  # type Bool
     Swagger.set_param(_ctx.query, "tty", tty)  # type Bool
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -576,12 +576,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function connectCoreV1PostNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String;)
+function connectCoreV1PostNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -593,13 +593,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PostNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1PostNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -612,14 +612,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PostNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1PostNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -631,13 +631,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PostNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1PostNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -650,14 +650,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PostNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1PostNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -668,12 +668,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PostNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1PostNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -685,13 +685,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PostNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1PostNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -703,13 +703,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PutNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1PutNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -722,14 +722,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PutNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1PutNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -741,13 +741,13 @@ Param: namespace::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PutNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
+function connectCoreV1PutNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -760,14 +760,14 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PutNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
+function connectCoreV1PutNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -778,12 +778,12 @@ Param: name::String (required)
 Param: path::String
 Return: String
 """
-function connectCoreV1PutNodeProxy(_api::DefaultApi, name::String; path=nothing,)
+function connectCoreV1PutNodeProxy(_api::DefaultApi, name::String; path=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/nodes/{name}/proxy", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -795,13 +795,13 @@ Param: path::String (required)
 Param: path2::String
 Return: String
 """
-function connectCoreV1PutNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
+function connectCoreV1PutNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/nodes/{name}/proxy/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "path", path2)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -813,12 +813,12 @@ Param: body::V1alpha1PetSet (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function createAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -829,11 +829,11 @@ Param: body::V1beta1TokenReview (required)
 Param: pretty::String
 Return: V1beta1TokenReview
 """
-function createAuthenticationV1beta1TokenReview(_api::DefaultApi, body; pretty=nothing,)
+function createAuthenticationV1beta1TokenReview(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1TokenReview, "/apis/authentication.k8s.io/v1beta1/tokenreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -845,12 +845,12 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1LocalSubjectAccessReview
 """
-function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::DefaultApi, body, namespace::String; pretty=nothing,)
+function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::DefaultApi, body, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1LocalSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/namespaces/{namespace}/localsubjectaccessreviews", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -861,11 +861,11 @@ Param: body::V1beta1SelfSubjectAccessReview (required)
 Param: pretty::String
 Return: V1beta1SelfSubjectAccessReview
 """
-function createAuthorizationV1beta1SelfSubjectAccessReview(_api::DefaultApi, body; pretty=nothing,)
+function createAuthorizationV1beta1SelfSubjectAccessReview(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectaccessreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -876,11 +876,11 @@ Param: body::V1beta1SubjectAccessReview (required)
 Param: pretty::String
 Return: V1beta1SubjectAccessReview
 """
-function createAuthorizationV1beta1SubjectAccessReview(_api::DefaultApi, body; pretty=nothing,)
+function createAuthorizationV1beta1SubjectAccessReview(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1SubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/subjectaccessreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -892,12 +892,12 @@ Param: body::V1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function createAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -909,12 +909,12 @@ Param: body::V1Job (required)
 Param: pretty::String
 Return: V1Job
 """
-function createBatchV1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createBatchV1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -925,11 +925,11 @@ Param: body::V1alpha1CertificateSigningRequest (required)
 Param: pretty::String
 Return: V1alpha1CertificateSigningRequest
 """
-function createCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, body; pretty=nothing,)
+function createCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -940,11 +940,11 @@ Param: body::V1Namespace (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function createCoreV1Namespace(_api::DefaultApi, body; pretty=nothing,)
+function createCoreV1Namespace(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Namespace, "/api/v1/namespaces", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -956,12 +956,12 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Binding
 """
-function createCoreV1NamespacedBinding(_api::DefaultApi, body, namespace::String; pretty=nothing,)
+function createCoreV1NamespacedBinding(_api::DefaultApi, body, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Binding, "/api/v1/namespaces/{namespace}/bindings", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -974,13 +974,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Binding
 """
-function createCoreV1NamespacedBindingBinding(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
+function createCoreV1NamespacedBindingBinding(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -992,12 +992,12 @@ Param: body::V1ConfigMap (required)
 Param: pretty::String
 Return: V1ConfigMap
 """
-function createCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1009,12 +1009,12 @@ Param: body::V1Endpoints (required)
 Param: pretty::String
 Return: V1Endpoints
 """
-function createCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1026,12 +1026,12 @@ Param: body::V1Event (required)
 Param: pretty::String
 Return: V1Event
 """
-function createCoreV1NamespacedEvent(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedEvent(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Event, "/api/v1/namespaces/{namespace}/events", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1044,13 +1044,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1alpha1Eviction
 """
-function createCoreV1NamespacedEvictionEviction(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
+function createCoreV1NamespacedEvictionEviction(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1062,12 +1062,12 @@ Param: body::V1LimitRange (required)
 Param: pretty::String
 Return: V1LimitRange
 """
-function createCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1079,12 +1079,12 @@ Param: body::V1PersistentVolumeClaim (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function createCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1096,12 +1096,12 @@ Param: body::V1Pod (required)
 Param: pretty::String
 Return: V1Pod
 """
-function createCoreV1NamespacedPod(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedPod(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Pod, "/api/v1/namespaces/{namespace}/pods", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1113,12 +1113,12 @@ Param: body::V1PodTemplate (required)
 Param: pretty::String
 Return: V1PodTemplate
 """
-function createCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1130,12 +1130,12 @@ Param: body::V1ReplicationController (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function createCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1147,12 +1147,12 @@ Param: body::V1ResourceQuota (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function createCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1164,12 +1164,12 @@ Param: body::V1Secret (required)
 Param: pretty::String
 Return: V1Secret
 """
-function createCoreV1NamespacedSecret(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedSecret(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Secret, "/api/v1/namespaces/{namespace}/secrets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1181,12 +1181,12 @@ Param: body::V1Service (required)
 Param: pretty::String
 Return: V1Service
 """
-function createCoreV1NamespacedService(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedService(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Service, "/api/v1/namespaces/{namespace}/services", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1198,12 +1198,12 @@ Param: body::V1ServiceAccount (required)
 Param: pretty::String
 Return: V1ServiceAccount
 """
-function createCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1214,11 +1214,11 @@ Param: body::V1Node (required)
 Param: pretty::String
 Return: V1Node
 """
-function createCoreV1Node(_api::DefaultApi, body; pretty=nothing,)
+function createCoreV1Node(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Node, "/api/v1/nodes", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1229,11 +1229,11 @@ Param: body::V1PersistentVolume (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function createCoreV1PersistentVolume(_api::DefaultApi, body; pretty=nothing,)
+function createCoreV1PersistentVolume(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PersistentVolume, "/api/v1/persistentvolumes", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1245,12 +1245,12 @@ Param: body::V1beta1DaemonSet (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function createExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1262,12 +1262,12 @@ Param: body::V1beta1Deployment (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function createExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1280,13 +1280,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1DeploymentRollback
 """
-function createExtensionsV1beta1NamespacedDeploymentRollbackRollback(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDeploymentRollbackRollback(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1DeploymentRollback, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/rollback", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1298,12 +1298,12 @@ Param: body::V1beta1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function createExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1315,12 +1315,12 @@ Param: body::V1beta1Ingress (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function createExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1332,12 +1332,12 @@ Param: body::V1beta1Job (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function createExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1349,12 +1349,12 @@ Param: body::V1beta1NetworkPolicy (required)
 Param: pretty::String
 Return: V1beta1NetworkPolicy
 """
-function createExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1366,12 +1366,12 @@ Param: body::V1beta1ReplicaSet (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function createExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1382,11 +1382,11 @@ Param: body::V1beta1ThirdPartyResource (required)
 Param: pretty::String
 Return: V1beta1ThirdPartyResource
 """
-function createExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, body; pretty=nothing,)
+function createExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1398,12 +1398,12 @@ Param: body::V1alpha1PodDisruptionBudget (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function createPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1414,11 +1414,11 @@ Param: body::V1alpha1ClusterRole (required)
 Param: pretty::String
 Return: V1alpha1ClusterRole
 """
-function createRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, body; pretty=nothing,)
+function createRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1429,11 +1429,11 @@ Param: body::V1alpha1ClusterRoleBinding (required)
 Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
-function createRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, body; pretty=nothing,)
+function createRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1445,12 +1445,12 @@ Param: body::V1alpha1Role (required)
 Param: pretty::String
 Return: V1alpha1Role
 """
-function createRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1462,12 +1462,12 @@ Param: body::V1alpha1RoleBinding (required)
 Param: pretty::String
 Return: V1alpha1RoleBinding
 """
-function createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String, body; pretty=nothing,)
+function createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1478,11 +1478,11 @@ Param: body::V1beta1StorageClass (required)
 Param: pretty::String
 Return: V1beta1StorageClass
 """
-function createStorageV1beta1StorageClass(_api::DefaultApi, body; pretty=nothing,)
+function createStorageV1beta1StorageClass(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1498,7 +1498,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteAppsV1alpha1CollectionNamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteAppsV1alpha1CollectionNamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1508,7 +1508,7 @@ function deleteAppsV1alpha1CollectionNamespacedPetSet(_api::DefaultApi, namespac
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1521,13 +1521,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1543,7 +1543,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1553,7 +1553,7 @@ function deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler(_api::De
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1566,13 +1566,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1588,7 +1588,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteBatchV1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteBatchV1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/batch/v1/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1598,7 +1598,7 @@ function deleteBatchV1CollectionNamespacedJob(_api::DefaultApi, namespace::Strin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1611,13 +1611,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1629,12 +1629,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1649,7 +1649,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCertificatesV1alpha1CollectionCertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCertificatesV1alpha1CollectionCertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -1658,7 +1658,7 @@ function deleteCertificatesV1alpha1CollectionCertificateSigningRequest(_api::Def
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1673,7 +1673,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -1682,7 +1682,7 @@ function deleteCoreV1CollectionNamespace(_api::DefaultApi; pretty=nothing, field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1698,7 +1698,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/configmaps", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1708,7 +1708,7 @@ function deleteCoreV1CollectionNamespacedConfigMap(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1724,7 +1724,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/endpoints", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1734,7 +1734,7 @@ function deleteCoreV1CollectionNamespacedEndpoints(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1750,7 +1750,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/events", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1760,7 +1760,7 @@ function deleteCoreV1CollectionNamespacedEvent(_api::DefaultApi, namespace::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1776,7 +1776,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/limitranges", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1786,7 +1786,7 @@ function deleteCoreV1CollectionNamespacedLimitRange(_api::DefaultApi, namespace:
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1802,7 +1802,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1812,7 +1812,7 @@ function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::DefaultApi,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1828,7 +1828,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/pods", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1838,7 +1838,7 @@ function deleteCoreV1CollectionNamespacedPod(_api::DefaultApi, namespace::String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1854,7 +1854,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/podtemplates", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1864,7 +1864,7 @@ function deleteCoreV1CollectionNamespacedPodTemplate(_api::DefaultApi, namespace
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1880,7 +1880,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/replicationcontrollers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1890,7 +1890,7 @@ function deleteCoreV1CollectionNamespacedReplicationController(_api::DefaultApi,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1906,7 +1906,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/resourcequotas", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1916,7 +1916,7 @@ function deleteCoreV1CollectionNamespacedResourceQuota(_api::DefaultApi, namespa
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1932,7 +1932,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/secrets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1942,7 +1942,7 @@ function deleteCoreV1CollectionNamespacedSecret(_api::DefaultApi, namespace::Str
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1958,7 +1958,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/serviceaccounts", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1968,7 +1968,7 @@ function deleteCoreV1CollectionNamespacedServiceAccount(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -1983,7 +1983,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionNode(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionNode(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/nodes", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -1992,7 +1992,7 @@ function deleteCoreV1CollectionNode(_api::DefaultApi; pretty=nothing, fieldSelec
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2007,7 +2007,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteCoreV1CollectionPersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteCoreV1CollectionPersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/persistentvolumes", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2016,7 +2016,7 @@ function deleteCoreV1CollectionPersistentVolume(_api::DefaultApi; pretty=nothing
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2028,12 +2028,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2046,13 +2046,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2065,13 +2065,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2084,13 +2084,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2103,13 +2103,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2122,13 +2122,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2141,13 +2141,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2160,13 +2160,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2179,13 +2179,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2198,13 +2198,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2217,13 +2217,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2235,13 +2235,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function deleteCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2254,13 +2254,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2272,12 +2272,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2289,12 +2289,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2310,7 +2310,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2320,7 +2320,7 @@ function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::DefaultApi, 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2336,7 +2336,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2346,7 +2346,7 @@ function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::DefaultApi,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2362,7 +2362,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2372,7 +2372,7 @@ function deleteExtensionsV1beta1CollectionNamespacedHorizontalPodAutoscaler(_api
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2388,7 +2388,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2398,7 +2398,7 @@ function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::DefaultApi, na
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2414,7 +2414,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2424,7 +2424,7 @@ function deleteExtensionsV1beta1CollectionNamespacedJob(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2440,7 +2440,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2450,7 +2450,7 @@ function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::DefaultA
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2466,7 +2466,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2476,7 +2476,7 @@ function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::DefaultApi,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2491,7 +2491,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1CollectionThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteExtensionsV1beta1CollectionThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/thirdpartyresources", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2500,7 +2500,7 @@ function deleteExtensionsV1beta1CollectionThirdPartyResource(_api::DefaultApi; p
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2513,13 +2513,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2532,13 +2532,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2551,13 +2551,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2570,13 +2570,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2589,13 +2589,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2608,13 +2608,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2627,13 +2627,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2645,12 +2645,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2666,7 +2666,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deletePolicyV1alpha1CollectionNamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deletePolicyV1alpha1CollectionNamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2676,7 +2676,7 @@ function deletePolicyV1alpha1CollectionNamespacedPodDisruptionBudget(_api::Defau
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2689,13 +2689,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deletePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deletePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2707,12 +2707,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2724,12 +2724,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2744,7 +2744,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2753,7 +2753,7 @@ function deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2768,7 +2768,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2777,7 +2777,7 @@ function deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api::Defau
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2793,7 +2793,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2803,7 +2803,7 @@ function deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api::DefaultAp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2819,7 +2819,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2829,7 +2829,7 @@ function deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api::De
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2842,13 +2842,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2861,13 +2861,13 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2882,7 +2882,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: UnversionedStatus
 """
-function deleteStorageV1beta1CollectionStorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function deleteStorageV1beta1CollectionStorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/storage.k8s.io/v1beta1/storageclasses", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2891,7 +2891,7 @@ function deleteStorageV1beta1CollectionStorageClass(_api::DefaultApi; pretty=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2903,12 +2903,12 @@ Param: body::V1DeleteOptions (required)
 Param: pretty::String
 Return: UnversionedStatus
 """
-function deleteStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
+function deleteStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2917,10 +2917,10 @@ end
 get available API versions
 Return: UnversionedAPIGroupList
 """
-function getAPIVersions(_api::DefaultApi;)
+function getAPIVersions(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroupList, "/apis/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2929,10 +2929,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getAppsAPIGroup(_api::DefaultApi;)
+function getAppsAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/apps/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2941,10 +2941,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getAppsV1alpha1APIResources(_api::DefaultApi;)
+function getAppsV1alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/apps/v1alpha1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2953,10 +2953,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getAuthenticationAPIGroup(_api::DefaultApi;)
+function getAuthenticationAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/authentication.k8s.io/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2965,10 +2965,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getAuthenticationV1beta1APIResources(_api::DefaultApi;)
+function getAuthenticationV1beta1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/authentication.k8s.io/v1beta1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2977,10 +2977,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getAuthorizationAPIGroup(_api::DefaultApi;)
+function getAuthorizationAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/authorization.k8s.io/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -2989,10 +2989,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getAuthorizationV1beta1APIResources(_api::DefaultApi;)
+function getAuthorizationV1beta1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/authorization.k8s.io/v1beta1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3001,10 +3001,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getAutoscalingAPIGroup(_api::DefaultApi;)
+function getAutoscalingAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/autoscaling/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3013,10 +3013,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getAutoscalingV1APIResources(_api::DefaultApi;)
+function getAutoscalingV1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/autoscaling/v1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3025,10 +3025,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getBatchAPIGroup(_api::DefaultApi;)
+function getBatchAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/batch/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3037,10 +3037,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getBatchV1APIResources(_api::DefaultApi;)
+function getBatchV1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/batch/v1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3049,10 +3049,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getBatchV2alpha1APIResources(_api::DefaultApi;)
+function getBatchV2alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/batch/v2alpha1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3061,10 +3061,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getCertificatesAPIGroup(_api::DefaultApi;)
+function getCertificatesAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/certificates.k8s.io/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3073,10 +3073,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getCertificatesV1alpha1APIResources(_api::DefaultApi;)
+function getCertificatesV1alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/certificates.k8s.io/v1alpha1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3085,10 +3085,10 @@ end
 get the code version
 Return: VersionInfo
 """
-function getCodeVersion(_api::DefaultApi;)
+function getCodeVersion(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionInfo, "/version/", [])
     Swagger.set_header_accept(_ctx, ["application/json"])
-    Swagger.set_header_content_type(_ctx, ["application/json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3097,10 +3097,10 @@ end
 get available API versions
 Return: UnversionedAPIVersions
 """
-function getCoreAPIVersions(_api::DefaultApi;)
+function getCoreAPIVersions(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIVersions, "/api/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3109,10 +3109,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getCoreV1APIResources(_api::DefaultApi;)
+function getCoreV1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/api/v1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3121,10 +3121,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getExtensionsAPIGroup(_api::DefaultApi;)
+function getExtensionsAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/extensions/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3133,10 +3133,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getExtensionsV1beta1APIResources(_api::DefaultApi;)
+function getExtensionsV1beta1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/extensions/v1beta1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3145,10 +3145,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getPolicyAPIGroup(_api::DefaultApi;)
+function getPolicyAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/policy/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3157,10 +3157,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getPolicyV1alpha1APIResources(_api::DefaultApi;)
+function getPolicyV1alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/policy/v1alpha1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3169,10 +3169,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getRbacAuthorizationAPIGroup(_api::DefaultApi;)
+function getRbacAuthorizationAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/rbac.authorization.k8s.io/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3181,10 +3181,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getRbacAuthorizationV1alpha1APIResources(_api::DefaultApi;)
+function getRbacAuthorizationV1alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/rbac.authorization.k8s.io/v1alpha1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3193,10 +3193,10 @@ end
 get information of a group
 Return: UnversionedAPIGroup
 """
-function getStorageAPIGroup(_api::DefaultApi;)
+function getStorageAPIGroup(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/storage.k8s.io/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3205,10 +3205,10 @@ end
 get available resources
 Return: UnversionedAPIResourceList
 """
-function getStorageV1beta1APIResources(_api::DefaultApi;)
+function getStorageV1beta1APIResources(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/storage.k8s.io/v1beta1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3224,7 +3224,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1PetSetList
 """
-function listAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSetList, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3234,7 +3234,7 @@ function listAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String; p
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3249,7 +3249,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1PetSetList
 """
-function listAppsV1alpha1PetSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listAppsV1alpha1PetSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSetList, "/apis/apps/v1alpha1/petsets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3258,7 +3258,7 @@ function listAppsV1alpha1PetSetForAllNamespaces(_api::DefaultApi; fieldSelector=
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3273,7 +3273,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1HorizontalPodAutoscalerList
 """
-function listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscalerList, "/apis/autoscaling/v1/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3282,7 +3282,7 @@ function listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultA
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3298,7 +3298,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1HorizontalPodAutoscalerList
 """
-function listAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscalerList, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3308,7 +3308,7 @@ function listAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, na
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3323,7 +3323,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1JobList
 """
-function listBatchV1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listBatchV1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1JobList, "/apis/batch/v1/jobs", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3332,7 +3332,7 @@ function listBatchV1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3348,7 +3348,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1JobList
 """
-function listBatchV1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listBatchV1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1JobList, "/apis/batch/v1/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3358,7 +3358,7 @@ function listBatchV1NamespacedJob(_api::DefaultApi, namespace::String; pretty=no
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3373,7 +3373,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1CertificateSigningRequestList
 """
-function listCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1CertificateSigningRequestList, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -3382,7 +3382,7 @@ function listCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi; pre
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3397,7 +3397,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ComponentStatusList
 """
-function listCoreV1ComponentStatus(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ComponentStatus(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ComponentStatusList, "/api/v1/componentstatuses", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3406,7 +3406,7 @@ function listCoreV1ComponentStatus(_api::DefaultApi; fieldSelector=nothing, labe
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3421,7 +3421,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ConfigMapList
 """
-function listCoreV1ConfigMapForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ConfigMapForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMapList, "/api/v1/configmaps", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3430,7 +3430,7 @@ function listCoreV1ConfigMapForAllNamespaces(_api::DefaultApi; fieldSelector=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3445,7 +3445,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1EndpointsList
 """
-function listCoreV1EndpointsForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1EndpointsForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EndpointsList, "/api/v1/endpoints", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3454,7 +3454,7 @@ function listCoreV1EndpointsForAllNamespaces(_api::DefaultApi; fieldSelector=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3469,7 +3469,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1EventList
 """
-function listCoreV1EventForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1EventForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EventList, "/api/v1/events", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3478,7 +3478,7 @@ function listCoreV1EventForAllNamespaces(_api::DefaultApi; fieldSelector=nothing
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3493,7 +3493,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1LimitRangeList
 """
-function listCoreV1LimitRangeForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1LimitRangeForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRangeList, "/api/v1/limitranges", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3502,7 +3502,7 @@ function listCoreV1LimitRangeForAllNamespaces(_api::DefaultApi; fieldSelector=no
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3517,7 +3517,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1NamespaceList
 """
-function listCoreV1Namespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1Namespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1NamespaceList, "/api/v1/namespaces", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -3526,7 +3526,7 @@ function listCoreV1Namespace(_api::DefaultApi; pretty=nothing, fieldSelector=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3542,7 +3542,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ConfigMapList
 """
-function listCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMapList, "/api/v1/namespaces/{namespace}/configmaps", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3552,7 +3552,7 @@ function listCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String; pret
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3568,7 +3568,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1EndpointsList
 """
-function listCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EndpointsList, "/api/v1/namespaces/{namespace}/endpoints", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3578,7 +3578,7 @@ function listCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String; pret
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3594,7 +3594,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1EventList
 """
-function listCoreV1NamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EventList, "/api/v1/namespaces/{namespace}/events", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3604,7 +3604,7 @@ function listCoreV1NamespacedEvent(_api::DefaultApi, namespace::String; pretty=n
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3620,7 +3620,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1LimitRangeList
 """
-function listCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRangeList, "/api/v1/namespaces/{namespace}/limitranges", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3630,7 +3630,7 @@ function listCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String; pre
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3646,7 +3646,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PersistentVolumeClaimList
 """
-function listCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaimList, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3656,7 +3656,7 @@ function listCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3672,7 +3672,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PodList
 """
-function listCoreV1NamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodList, "/api/v1/namespaces/{namespace}/pods", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3682,7 +3682,7 @@ function listCoreV1NamespacedPod(_api::DefaultApi, namespace::String; pretty=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3698,7 +3698,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PodTemplateList
 """
-function listCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplateList, "/api/v1/namespaces/{namespace}/podtemplates", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3708,7 +3708,7 @@ function listCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String; pr
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3724,7 +3724,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ReplicationControllerList
 """
-function listCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationControllerList, "/api/v1/namespaces/{namespace}/replicationcontrollers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3734,7 +3734,7 @@ function listCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3750,7 +3750,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ResourceQuotaList
 """
-function listCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuotaList, "/api/v1/namespaces/{namespace}/resourcequotas", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3760,7 +3760,7 @@ function listCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3776,7 +3776,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1SecretList
 """
-function listCoreV1NamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1SecretList, "/api/v1/namespaces/{namespace}/secrets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3786,7 +3786,7 @@ function listCoreV1NamespacedSecret(_api::DefaultApi, namespace::String; pretty=
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3802,7 +3802,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ServiceList
 """
-function listCoreV1NamespacedService(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedService(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceList, "/api/v1/namespaces/{namespace}/services", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3812,7 +3812,7 @@ function listCoreV1NamespacedService(_api::DefaultApi, namespace::String; pretty
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3828,7 +3828,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ServiceAccountList
 """
-function listCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccountList, "/api/v1/namespaces/{namespace}/serviceaccounts", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3838,7 +3838,7 @@ function listCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String;
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3853,7 +3853,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1NodeList
 """
-function listCoreV1Node(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1Node(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1NodeList, "/api/v1/nodes", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -3862,7 +3862,7 @@ function listCoreV1Node(_api::DefaultApi; pretty=nothing, fieldSelector=nothing,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3877,7 +3877,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PersistentVolumeList
 """
-function listCoreV1PersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1PersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeList, "/api/v1/persistentvolumes", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -3886,7 +3886,7 @@ function listCoreV1PersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelec
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3901,7 +3901,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PersistentVolumeClaimList
 """
-function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaimList, "/api/v1/persistentvolumeclaims", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3910,7 +3910,7 @@ function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::DefaultApi; field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3925,7 +3925,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PodList
 """
-function listCoreV1PodForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1PodForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodList, "/api/v1/pods", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3934,7 +3934,7 @@ function listCoreV1PodForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3949,7 +3949,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1PodTemplateList
 """
-function listCoreV1PodTemplateForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1PodTemplateForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplateList, "/api/v1/podtemplates", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3958,7 +3958,7 @@ function listCoreV1PodTemplateForAllNamespaces(_api::DefaultApi; fieldSelector=n
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3973,7 +3973,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ReplicationControllerList
 """
-function listCoreV1ReplicationControllerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ReplicationControllerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationControllerList, "/api/v1/replicationcontrollers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -3982,7 +3982,7 @@ function listCoreV1ReplicationControllerForAllNamespaces(_api::DefaultApi; field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -3997,7 +3997,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ResourceQuotaList
 """
-function listCoreV1ResourceQuotaForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ResourceQuotaForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuotaList, "/api/v1/resourcequotas", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4006,7 +4006,7 @@ function listCoreV1ResourceQuotaForAllNamespaces(_api::DefaultApi; fieldSelector
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4021,7 +4021,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1SecretList
 """
-function listCoreV1SecretForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1SecretForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1SecretList, "/api/v1/secrets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4030,7 +4030,7 @@ function listCoreV1SecretForAllNamespaces(_api::DefaultApi; fieldSelector=nothin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4045,7 +4045,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ServiceAccountList
 """
-function listCoreV1ServiceAccountForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ServiceAccountForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccountList, "/api/v1/serviceaccounts", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4054,7 +4054,7 @@ function listCoreV1ServiceAccountForAllNamespaces(_api::DefaultApi; fieldSelecto
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4069,7 +4069,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1ServiceList
 """
-function listCoreV1ServiceForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listCoreV1ServiceForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceList, "/api/v1/services", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4078,7 +4078,7 @@ function listCoreV1ServiceForAllNamespaces(_api::DefaultApi; fieldSelector=nothi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4093,7 +4093,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1DaemonSetList
 """
-function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSetList, "/apis/extensions/v1beta1/daemonsets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4102,7 +4102,7 @@ function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::DefaultApi; fieldS
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4117,7 +4117,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1DeploymentList
 """
-function listExtensionsV1beta1DeploymentForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1DeploymentForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DeploymentList, "/apis/extensions/v1beta1/deployments", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4126,7 +4126,7 @@ function listExtensionsV1beta1DeploymentForAllNamespaces(_api::DefaultApi; field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4141,7 +4141,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1HorizontalPodAutoscalerList
 """
-function listExtensionsV1beta1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscalerList, "/apis/extensions/v1beta1/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4150,7 +4150,7 @@ function listExtensionsV1beta1HorizontalPodAutoscalerForAllNamespaces(_api::Defa
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4165,7 +4165,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1IngressList
 """
-function listExtensionsV1beta1IngressForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1IngressForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1IngressList, "/apis/extensions/v1beta1/ingresses", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4174,7 +4174,7 @@ function listExtensionsV1beta1IngressForAllNamespaces(_api::DefaultApi; fieldSel
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4189,7 +4189,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1JobList
 """
-function listExtensionsV1beta1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1JobList, "/apis/extensions/v1beta1/jobs", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4198,7 +4198,7 @@ function listExtensionsV1beta1JobForAllNamespaces(_api::DefaultApi; fieldSelecto
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4214,7 +4214,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1DaemonSetList
 """
-function listExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4224,7 +4224,7 @@ function listExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::S
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4240,7 +4240,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1DeploymentList
 """
-function listExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DeploymentList, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4250,7 +4250,7 @@ function listExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4266,7 +4266,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1HorizontalPodAutoscalerList
 """
-function listExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscalerList, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4276,7 +4276,7 @@ function listExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4292,7 +4292,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1IngressList
 """
-function listExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1IngressList, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4302,7 +4302,7 @@ function listExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::Str
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4318,7 +4318,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1JobList
 """
-function listExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1JobList, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4328,7 +4328,7 @@ function listExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String;
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4344,7 +4344,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1NetworkPolicyList
 """
-function listExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicyList, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4354,7 +4354,7 @@ function listExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespac
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4370,7 +4370,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1ReplicaSetList
 """
-function listExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4380,7 +4380,7 @@ function listExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4395,7 +4395,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1NetworkPolicyList
 """
-function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicyList, "/apis/extensions/v1beta1/networkpolicies", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4404,7 +4404,7 @@ function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::DefaultApi; fi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4419,7 +4419,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1ReplicaSetList
 """
-function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSetList, "/apis/extensions/v1beta1/replicasets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4428,7 +4428,7 @@ function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::DefaultApi; field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4443,7 +4443,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1ThirdPartyResourceList
 """
-function listExtensionsV1beta1ThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listExtensionsV1beta1ThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ThirdPartyResourceList, "/apis/extensions/v1beta1/thirdpartyresources", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4452,7 +4452,7 @@ function listExtensionsV1beta1ThirdPartyResource(_api::DefaultApi; pretty=nothin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4468,7 +4468,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1PodDisruptionBudgetList
 """
-function listPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudgetList, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4478,7 +4478,7 @@ function listPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, names
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4493,7 +4493,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1PodDisruptionBudgetList
 """
-function listPolicyV1alpha1PodDisruptionBudgetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listPolicyV1alpha1PodDisruptionBudgetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudgetList, "/apis/policy/v1alpha1/poddisruptionbudgets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4502,7 +4502,7 @@ function listPolicyV1alpha1PodDisruptionBudgetForAllNamespaces(_api::DefaultApi;
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4517,7 +4517,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1ClusterRoleList
 """
-function listRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4526,7 +4526,7 @@ function listRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi; pretty=nothi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4541,7 +4541,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1ClusterRoleBindingList
 """
-function listRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4550,7 +4550,7 @@ function listRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi; prett
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4566,7 +4566,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1RoleList
 """
-function listRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4576,7 +4576,7 @@ function listRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4592,7 +4592,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1RoleBindingList
 """
-function listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4602,7 +4602,7 @@ function listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, na
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4617,7 +4617,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1RoleBindingList
 """
-function listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/rolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4626,7 +4626,7 @@ function listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api::DefaultA
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4641,7 +4641,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1alpha1RoleList
 """
-function listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/roles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4650,7 +4650,7 @@ function listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api::DefaultApi; fie
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4665,7 +4665,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: V1beta1StorageClassList
 """
-function listStorageV1beta1StorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function listStorageV1beta1StorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1StorageClassList, "/apis/storage.k8s.io/v1beta1/storageclasses", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4674,7 +4674,7 @@ function listStorageV1beta1StorageClass(_api::DefaultApi; pretty=nothing, fieldS
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4684,11 +4684,11 @@ end
 Param: logpath::String (required)
 Return: Void
 """
-function logFileHandler(_api::DefaultApi, logpath::String;)
+function logFileHandler(_api::DefaultApi, logpath::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Void, "/logs/{logpath}", [])
     Swagger.set_param(_ctx.path, "logpath", logpath)  # type String
     Swagger.set_header_accept(_ctx, [])
-    Swagger.set_header_content_type(_ctx, [])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4697,10 +4697,10 @@ end
 
 Return: Void
 """
-function logFileListHandler(_api::DefaultApi;)
+function logFileListHandler(_api::DefaultApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Void, "/logs/", [])
     Swagger.set_header_accept(_ctx, [])
-    Swagger.set_header_content_type(_ctx, [])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4713,13 +4713,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function patchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4732,13 +4732,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function patchAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4751,13 +4751,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function patchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4770,13 +4770,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4789,13 +4789,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Job
 """
-function patchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4808,13 +4808,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Job
 """
-function patchBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4826,12 +4826,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1CertificateSigningRequest
 """
-function patchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4843,12 +4843,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function patchCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Namespace, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4860,12 +4860,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function patchCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Namespace, "/api/v1/namespaces/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4878,13 +4878,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ConfigMap
 """
-function patchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4897,13 +4897,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Endpoints
 """
-function patchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4916,13 +4916,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Event
 """
-function patchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4935,13 +4935,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1LimitRange
 """
-function patchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4954,13 +4954,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4973,13 +4973,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4992,13 +4992,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Pod
 """
-function patchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5011,13 +5011,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Pod
 """
-function patchCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5030,13 +5030,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1PodTemplate
 """
-function patchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5049,13 +5049,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function patchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5068,13 +5068,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function patchCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5087,13 +5087,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5106,13 +5106,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5125,13 +5125,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Scale
 """
-function patchCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5144,13 +5144,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Secret
 """
-function patchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5163,13 +5163,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Service
 """
-function patchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5182,13 +5182,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1ServiceAccount
 """
-function patchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5201,13 +5201,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Service
 """
-function patchCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5219,12 +5219,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Node
 """
-function patchCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Node, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5236,12 +5236,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1Node
 """
-function patchCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Node, "/api/v1/nodes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5253,12 +5253,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function patchCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5270,12 +5270,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function patchCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5288,13 +5288,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5307,13 +5307,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5326,13 +5326,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5345,13 +5345,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5364,13 +5364,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5383,13 +5383,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function patchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5402,13 +5402,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function patchExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5421,13 +5421,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5440,13 +5440,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5459,13 +5459,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function patchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5478,13 +5478,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function patchExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5497,13 +5497,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1NetworkPolicy
 """
-function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5516,13 +5516,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5535,13 +5535,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5554,13 +5554,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5573,13 +5573,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5591,12 +5591,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1ThirdPartyResource
 """
-function patchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5609,13 +5609,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function patchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5628,13 +5628,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function patchPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5646,12 +5646,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1ClusterRole
 """
-function patchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5663,12 +5663,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
-function patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5681,13 +5681,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1Role
 """
-function patchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5700,13 +5700,13 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1alpha1RoleBinding
 """
-function patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5718,12 +5718,12 @@ Param: body::UnversionedPatch (required)
 Param: pretty::String
 Return: V1beta1StorageClass
 """
-function patchStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
+function patchStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5734,12 +5734,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1DELETENamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1DELETENamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5751,13 +5751,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1DELETENamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1DELETENamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5768,12 +5768,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1DELETENamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1DELETENamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5785,13 +5785,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1DELETENamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1DELETENamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5801,11 +5801,11 @@ proxy DELETE requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1DELETENode(_api::DefaultApi, name::String;)
+function proxyCoreV1DELETENode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5816,12 +5816,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1DELETENodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1DELETENodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5832,12 +5832,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1GETNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1GETNamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5849,13 +5849,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1GETNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1GETNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5866,12 +5866,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1GETNamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1GETNamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5883,13 +5883,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1GETNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1GETNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5899,11 +5899,11 @@ proxy GET requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1GETNode(_api::DefaultApi, name::String;)
+function proxyCoreV1GETNode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5914,12 +5914,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1GETNodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1GETNodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5930,12 +5930,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1HEADNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1HEADNamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5947,13 +5947,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1HEADNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1HEADNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5964,12 +5964,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1HEADNamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1HEADNamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5981,13 +5981,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1HEADNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1HEADNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -5997,11 +5997,11 @@ proxy HEAD requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1HEADNode(_api::DefaultApi, name::String;)
+function proxyCoreV1HEADNode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6012,12 +6012,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1HEADNodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1HEADNodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6028,12 +6028,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1OPTIONSNamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6045,13 +6045,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1OPTIONSNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6062,12 +6062,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1OPTIONSNamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6079,13 +6079,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1OPTIONSNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6095,11 +6095,11 @@ proxy OPTIONS requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNode(_api::DefaultApi, name::String;)
+function proxyCoreV1OPTIONSNode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6110,12 +6110,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1OPTIONSNodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1OPTIONSNodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6126,12 +6126,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1POSTNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1POSTNamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6143,13 +6143,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1POSTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1POSTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6160,12 +6160,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1POSTNamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1POSTNamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6177,13 +6177,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1POSTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1POSTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6193,11 +6193,11 @@ proxy POST requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1POSTNode(_api::DefaultApi, name::String;)
+function proxyCoreV1POSTNode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6208,12 +6208,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1POSTNodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1POSTNodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6224,12 +6224,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1PUTNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1PUTNamespacedPod(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6241,13 +6241,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1PUTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1PUTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6258,12 +6258,12 @@ Param: name::String (required)
 Param: namespace::String (required)
 Return: String
 """
-function proxyCoreV1PUTNamespacedService(_api::DefaultApi, name::String, namespace::String;)
+function proxyCoreV1PUTNamespacedService(_api::DefaultApi, name::String, namespace::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6275,13 +6275,13 @@ Param: namespace::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1PUTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
+function proxyCoreV1PUTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6291,11 +6291,11 @@ proxy PUT requests to Node
 Param: name::String (required)
 Return: String
 """
-function proxyCoreV1PUTNode(_api::DefaultApi, name::String;)
+function proxyCoreV1PUTNode(_api::DefaultApi, name::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6306,12 +6306,12 @@ Param: name::String (required)
 Param: path::String (required)
 Return: String
 """
-function proxyCoreV1PUTNodeWithPath(_api::DefaultApi, name::String, path::String;)
+function proxyCoreV1PUTNodeWithPath(_api::DefaultApi, name::String, path::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}/{path}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6325,7 +6325,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1alpha1PetSet
 """
-function readAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6333,7 +6333,7 @@ function readAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namesp
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6345,13 +6345,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function readAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6365,7 +6365,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1HorizontalPodAutoscaler
 """
-function readAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6373,7 +6373,7 @@ function readAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, na
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6385,13 +6385,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6405,7 +6405,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Job
 """
-function readBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6413,7 +6413,7 @@ function readBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::Str
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6425,13 +6425,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Job
 """
-function readBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6444,14 +6444,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1alpha1CertificateSigningRequest
 """
-function readCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6462,12 +6462,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1ComponentStatus
 """
-function readCoreV1ComponentStatus(_api::DefaultApi, name::String; pretty=nothing,)
+function readCoreV1ComponentStatus(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ComponentStatus, "/api/v1/componentstatuses/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6480,14 +6480,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Namespace
 """
-function readCoreV1Namespace(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1Namespace(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Namespace, "/api/v1/namespaces/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6498,12 +6498,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function readCoreV1NamespaceStatus(_api::DefaultApi, name::String; pretty=nothing,)
+function readCoreV1NamespaceStatus(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Namespace, "/api/v1/namespaces/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6517,7 +6517,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1ConfigMap
 """
-function readCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6525,7 +6525,7 @@ function readCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6539,7 +6539,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Endpoints
 """
-function readCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6547,7 +6547,7 @@ function readCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6561,7 +6561,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Event
 """
-function readCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6569,7 +6569,7 @@ function readCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::St
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6583,7 +6583,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1LimitRange
 """
-function readCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6591,7 +6591,7 @@ function readCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespac
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6605,7 +6605,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1PersistentVolumeClaim
 """
-function readCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6613,7 +6613,7 @@ function readCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6625,13 +6625,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function readCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6645,7 +6645,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Pod
 """
-function readCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6653,7 +6653,7 @@ function readCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::Stri
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6673,7 +6673,7 @@ Param: tailLines::Int32
 Param: timestamps::Bool
 Return: V1Pod
 """
-function readCoreV1NamespacedPodLog(_api::DefaultApi, name::String, namespace::String; container=nothing, follow=nothing, limitBytes=nothing, pretty=nothing, previous=nothing, sinceSeconds=nothing, sinceTime=nothing, tailLines=nothing, timestamps=nothing,)
+function readCoreV1NamespacedPodLog(_api::DefaultApi, name::String, namespace::String; container=nothing, follow=nothing, limitBytes=nothing, pretty=nothing, previous=nothing, sinceSeconds=nothing, sinceTime=nothing, tailLines=nothing, timestamps=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/log", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6687,7 +6687,7 @@ function readCoreV1NamespacedPodLog(_api::DefaultApi, name::String, namespace::S
     Swagger.set_param(_ctx.query, "tailLines", tailLines)  # type Int32
     Swagger.set_param(_ctx.query, "timestamps", timestamps)  # type Bool
     Swagger.set_header_accept(_ctx, ["text/plain", "application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6699,13 +6699,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Pod
 """
-function readCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6719,7 +6719,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1PodTemplate
 """
-function readCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6727,7 +6727,7 @@ function readCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespa
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6741,7 +6741,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1ReplicationController
 """
-function readCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6749,7 +6749,7 @@ function readCoreV1NamespacedReplicationController(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6761,13 +6761,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function readCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6781,7 +6781,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1ResourceQuota
 """
-function readCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6789,7 +6789,7 @@ function readCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, names
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6801,13 +6801,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function readCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6819,13 +6819,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Scale
 """
-function readCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6839,7 +6839,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Secret
 """
-function readCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6847,7 +6847,7 @@ function readCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::S
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6861,7 +6861,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Service
 """
-function readCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6869,7 +6869,7 @@ function readCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6883,7 +6883,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1ServiceAccount
 """
-function readCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6891,7 +6891,7 @@ function readCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, name
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6903,13 +6903,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1Service
 """
-function readCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6922,14 +6922,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1Node
 """
-function readCoreV1Node(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1Node(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Node, "/api/v1/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6940,12 +6940,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1Node
 """
-function readCoreV1NodeStatus(_api::DefaultApi, name::String; pretty=nothing,)
+function readCoreV1NodeStatus(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Node, "/api/v1/nodes/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6958,14 +6958,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1PersistentVolume
 """
-function readCoreV1PersistentVolume(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readCoreV1PersistentVolume(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6976,12 +6976,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function readCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String; pretty=nothing,)
+function readCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -6995,7 +6995,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1DaemonSet
 """
-function readExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7003,7 +7003,7 @@ function readExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7015,13 +7015,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function readExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7035,7 +7035,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1Deployment
 """
-function readExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7043,7 +7043,7 @@ function readExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7055,13 +7055,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function readExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7073,13 +7073,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function readExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7093,7 +7093,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1HorizontalPodAutoscaler
 """
-function readExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7101,7 +7101,7 @@ function readExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7113,13 +7113,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function readExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7133,7 +7133,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1Ingress
 """
-function readExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7141,7 +7141,7 @@ function readExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, 
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7153,13 +7153,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function readExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7173,7 +7173,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1Job
 """
-function readExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7181,7 +7181,7 @@ function readExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, name
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7193,13 +7193,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function readExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7213,7 +7213,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1NetworkPolicy
 """
-function readExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7221,7 +7221,7 @@ function readExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::St
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7235,7 +7235,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1ReplicaSet
 """
-function readExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7243,7 +7243,7 @@ function readExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7255,13 +7255,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function readExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7273,13 +7273,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function readExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7291,13 +7291,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function readExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7310,14 +7310,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1ThirdPartyResource
 """
-function readExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7331,7 +7331,7 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1alpha1PodDisruptionBudget
 """
-function readPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -7339,7 +7339,7 @@ function readPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name:
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7351,13 +7351,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function readPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7368,12 +7368,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1alpha1ClusterRole
 """
-function readRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; pretty=nothing,)
+function readRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7384,12 +7384,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
-function readRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; pretty=nothing,)
+function readRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7401,13 +7401,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1alpha1Role
 """
-function readRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7419,13 +7419,13 @@ Param: namespace::String (required)
 Param: pretty::String
 Return: V1alpha1RoleBinding
 """
-function readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
+function readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7438,14 +7438,14 @@ Param: exact::Bool
 Param: _export::Bool
 Return: V1beta1StorageClass
 """
-function readStorageV1beta1StorageClass(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
+function readStorageV1beta1StorageClass(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
     Swagger.set_param(_ctx.query, "export", _export)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7458,13 +7458,13 @@ Param: body::V1alpha1PetSet (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function replaceAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7477,13 +7477,13 @@ Param: body::V1alpha1PetSet (required)
 Param: pretty::String
 Return: V1alpha1PetSet
 """
-function replaceAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7496,13 +7496,13 @@ Param: body::V1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7515,13 +7515,13 @@ Param: body::V1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7534,13 +7534,13 @@ Param: body::V1Job (required)
 Param: pretty::String
 Return: V1Job
 """
-function replaceBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7553,13 +7553,13 @@ Param: body::V1Job (required)
 Param: pretty::String
 Return: V1Job
 """
-function replaceBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7571,12 +7571,12 @@ Param: body::V1alpha1CertificateSigningRequest (required)
 Param: pretty::String
 Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7588,12 +7588,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequestApproval(_api::DefaultApi, body, name::String; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequestApproval(_api::DefaultApi, body, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}/approval", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7605,12 +7605,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequestStatus(_api::DefaultApi, body, name::String; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequestStatus(_api::DefaultApi, body, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7622,12 +7622,12 @@ Param: body::V1Namespace (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function replaceCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7639,12 +7639,12 @@ Param: name::String (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function replaceCoreV1NamespaceFinalize(_api::DefaultApi, body, name::String; pretty=nothing,)
+function replaceCoreV1NamespaceFinalize(_api::DefaultApi, body, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}/finalize", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7656,12 +7656,12 @@ Param: body::V1Namespace (required)
 Param: pretty::String
 Return: V1Namespace
 """
-function replaceCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7674,13 +7674,13 @@ Param: body::V1ConfigMap (required)
 Param: pretty::String
 Return: V1ConfigMap
 """
-function replaceCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7693,13 +7693,13 @@ Param: body::V1Endpoints (required)
 Param: pretty::String
 Return: V1Endpoints
 """
-function replaceCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7712,13 +7712,13 @@ Param: body::V1Event (required)
 Param: pretty::String
 Return: V1Event
 """
-function replaceCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7731,13 +7731,13 @@ Param: body::V1LimitRange (required)
 Param: pretty::String
 Return: V1LimitRange
 """
-function replaceCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7750,13 +7750,13 @@ Param: body::V1PersistentVolumeClaim (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7769,13 +7769,13 @@ Param: body::V1PersistentVolumeClaim (required)
 Param: pretty::String
 Return: V1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7788,13 +7788,13 @@ Param: body::V1Pod (required)
 Param: pretty::String
 Return: V1Pod
 """
-function replaceCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7807,13 +7807,13 @@ Param: body::V1Pod (required)
 Param: pretty::String
 Return: V1Pod
 """
-function replaceCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7826,13 +7826,13 @@ Param: body::V1PodTemplate (required)
 Param: pretty::String
 Return: V1PodTemplate
 """
-function replaceCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7845,13 +7845,13 @@ Param: body::V1ReplicationController (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7864,13 +7864,13 @@ Param: body::V1ReplicationController (required)
 Param: pretty::String
 Return: V1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7883,13 +7883,13 @@ Param: body::V1ResourceQuota (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7902,13 +7902,13 @@ Param: body::V1ResourceQuota (required)
 Param: pretty::String
 Return: V1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7921,13 +7921,13 @@ Param: body::V1Scale (required)
 Param: pretty::String
 Return: V1Scale
 """
-function replaceCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7940,13 +7940,13 @@ Param: body::V1Secret (required)
 Param: pretty::String
 Return: V1Secret
 """
-function replaceCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7959,13 +7959,13 @@ Param: body::V1Service (required)
 Param: pretty::String
 Return: V1Service
 """
-function replaceCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7978,13 +7978,13 @@ Param: body::V1ServiceAccount (required)
 Param: pretty::String
 Return: V1ServiceAccount
 """
-function replaceCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -7997,13 +7997,13 @@ Param: body::V1Service (required)
 Param: pretty::String
 Return: V1Service
 """
-function replaceCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8015,12 +8015,12 @@ Param: body::V1Node (required)
 Param: pretty::String
 Return: V1Node
 """
-function replaceCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Node, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8032,12 +8032,12 @@ Param: body::V1Node (required)
 Param: pretty::String
 Return: V1Node
 """
-function replaceCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Node, "/api/v1/nodes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8049,12 +8049,12 @@ Param: body::V1PersistentVolume (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function replaceCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8066,12 +8066,12 @@ Param: body::V1PersistentVolume (required)
 Param: pretty::String
 Return: V1PersistentVolume
 """
-function replaceCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8084,13 +8084,13 @@ Param: body::V1beta1DaemonSet (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8103,13 +8103,13 @@ Param: body::V1beta1DaemonSet (required)
 Param: pretty::String
 Return: V1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8122,13 +8122,13 @@ Param: body::V1beta1Deployment (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8141,13 +8141,13 @@ Param: body::V1beta1Deployment (required)
 Param: pretty::String
 Return: V1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8160,13 +8160,13 @@ Param: body::V1beta1Scale (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8179,13 +8179,13 @@ Param: body::V1beta1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8198,13 +8198,13 @@ Param: body::V1beta1HorizontalPodAutoscaler (required)
 Param: pretty::String
 Return: V1beta1HorizontalPodAutoscaler
 """
-function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8217,13 +8217,13 @@ Param: body::V1beta1Ingress (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8236,13 +8236,13 @@ Param: body::V1beta1Ingress (required)
 Param: pretty::String
 Return: V1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8255,13 +8255,13 @@ Param: body::V1beta1Job (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function replaceExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8274,13 +8274,13 @@ Param: body::V1beta1Job (required)
 Param: pretty::String
 Return: V1beta1Job
 """
-function replaceExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8293,13 +8293,13 @@ Param: body::V1beta1NetworkPolicy (required)
 Param: pretty::String
 Return: V1beta1NetworkPolicy
 """
-function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8312,13 +8312,13 @@ Param: body::V1beta1ReplicaSet (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8331,13 +8331,13 @@ Param: body::V1beta1ReplicaSet (required)
 Param: pretty::String
 Return: V1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8350,13 +8350,13 @@ Param: body::V1beta1Scale (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8369,13 +8369,13 @@ Param: body::V1beta1Scale (required)
 Param: pretty::String
 Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8387,12 +8387,12 @@ Param: body::V1beta1ThirdPartyResource (required)
 Param: pretty::String
 Return: V1beta1ThirdPartyResource
 """
-function replaceExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8405,13 +8405,13 @@ Param: body::V1alpha1PodDisruptionBudget (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function replacePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replacePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8424,13 +8424,13 @@ Param: body::V1alpha1PodDisruptionBudget (required)
 Param: pretty::String
 Return: V1alpha1PodDisruptionBudget
 """
-function replacePolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replacePolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8442,12 +8442,12 @@ Param: body::V1alpha1ClusterRole (required)
 Param: pretty::String
 Return: V1alpha1ClusterRole
 """
-function replaceRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8459,12 +8459,12 @@ Param: body::V1alpha1ClusterRoleBinding (required)
 Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
-function replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8477,13 +8477,13 @@ Param: body::V1alpha1Role (required)
 Param: pretty::String
 Return: V1alpha1Role
 """
-function replaceRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8496,13 +8496,13 @@ Param: body::V1alpha1RoleBinding (required)
 Param: pretty::String
 Return: V1alpha1RoleBinding
 """
-function replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8514,12 +8514,12 @@ Param: body::V1beta1StorageClass (required)
 Param: pretty::String
 Return: V1beta1StorageClass
 """
-function replaceStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
+function replaceStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8536,7 +8536,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/namespaces/{namespace}/petsets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -8547,7 +8547,7 @@ function watchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, names
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8563,7 +8563,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAppsV1alpha1NamespacedPetSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAppsV1alpha1NamespacedPetSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/namespaces/{namespace}/petsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -8573,7 +8573,7 @@ function watchAppsV1alpha1NamespacedPetSetList(_api::DefaultApi, namespace::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8588,7 +8588,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAppsV1alpha1PetSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAppsV1alpha1PetSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/petsets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8597,7 +8597,7 @@ function watchAppsV1alpha1PetSetListForAllNamespaces(_api::DefaultApi; fieldSele
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8612,7 +8612,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8621,7 +8621,7 @@ function watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(_api::Def
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8638,7 +8638,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -8649,7 +8649,7 @@ function watchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, n
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8665,7 +8665,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchAutoscalingV1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchAutoscalingV1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -8675,7 +8675,7 @@ function watchAutoscalingV1NamespacedHorizontalPodAutoscalerList(_api::DefaultAp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8690,7 +8690,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchBatchV1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchBatchV1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/jobs", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8699,7 +8699,7 @@ function watchBatchV1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8716,7 +8716,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -8727,7 +8727,7 @@ function watchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::St
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8743,7 +8743,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchBatchV1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchBatchV1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -8753,7 +8753,7 @@ function watchBatchV1NamespacedJobList(_api::DefaultApi, namespace::String; fiel
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8769,7 +8769,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/certificates.k8s.io/v1alpha1/watch/certificatesigningrequests/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -8779,7 +8779,7 @@ function watchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, na
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8794,7 +8794,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCertificatesV1alpha1CertificateSigningRequestList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCertificatesV1alpha1CertificateSigningRequestList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/certificates.k8s.io/v1alpha1/watch/certificatesigningrequests", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8803,7 +8803,7 @@ function watchCertificatesV1alpha1CertificateSigningRequestList(_api::DefaultApi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8818,7 +8818,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1ConfigMapListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1ConfigMapListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/configmaps", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8827,7 +8827,7 @@ function watchCoreV1ConfigMapListForAllNamespaces(_api::DefaultApi; fieldSelecto
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8842,7 +8842,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1EndpointsListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1EndpointsListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/endpoints", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8851,7 +8851,7 @@ function watchCoreV1EndpointsListForAllNamespaces(_api::DefaultApi; fieldSelecto
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8866,7 +8866,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1EventListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1EventListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/events", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8875,7 +8875,7 @@ function watchCoreV1EventListForAllNamespaces(_api::DefaultApi; fieldSelector=no
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8890,7 +8890,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1LimitRangeListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1LimitRangeListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/limitranges", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8899,7 +8899,7 @@ function watchCoreV1LimitRangeListForAllNamespaces(_api::DefaultApi; fieldSelect
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8915,7 +8915,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1Namespace(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1Namespace(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -8925,7 +8925,7 @@ function watchCoreV1Namespace(_api::DefaultApi, name::String; fieldSelector=noth
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8940,7 +8940,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespaceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespaceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -8949,7 +8949,7 @@ function watchCoreV1NamespaceList(_api::DefaultApi; fieldSelector=nothing, label
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8966,7 +8966,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/configmaps/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -8977,7 +8977,7 @@ function watchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespac
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -8993,7 +8993,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedConfigMapList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedConfigMapList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/configmaps", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9003,7 +9003,7 @@ function watchCoreV1NamespacedConfigMapList(_api::DefaultApi, namespace::String;
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9020,7 +9020,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/endpoints/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9031,7 +9031,7 @@ function watchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespac
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9047,7 +9047,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedEndpointsList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedEndpointsList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/endpoints", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9057,7 +9057,7 @@ function watchCoreV1NamespacedEndpointsList(_api::DefaultApi, namespace::String;
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9074,7 +9074,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/events/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9085,7 +9085,7 @@ function watchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::S
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9101,7 +9101,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedEventList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedEventList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/events", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9111,7 +9111,7 @@ function watchCoreV1NamespacedEventList(_api::DefaultApi, namespace::String; fie
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9128,7 +9128,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/limitranges/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9139,7 +9139,7 @@ function watchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespa
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9155,7 +9155,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedLimitRangeList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedLimitRangeList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/limitranges", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9165,7 +9165,7 @@ function watchCoreV1NamespacedLimitRangeList(_api::DefaultApi, namespace::String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9182,7 +9182,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9193,7 +9193,7 @@ function watchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9209,7 +9209,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPersistentVolumeClaimList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPersistentVolumeClaimList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9219,7 +9219,7 @@ function watchCoreV1NamespacedPersistentVolumeClaimList(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9236,7 +9236,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/pods/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9247,7 +9247,7 @@ function watchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::Str
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9263,7 +9263,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPodList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPodList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/pods", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9273,7 +9273,7 @@ function watchCoreV1NamespacedPodList(_api::DefaultApi, namespace::String; field
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9290,7 +9290,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9301,7 +9301,7 @@ function watchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9317,7 +9317,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedPodTemplateList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedPodTemplateList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9327,7 +9327,7 @@ function watchCoreV1NamespacedPodTemplateList(_api::DefaultApi, namespace::Strin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9344,7 +9344,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9355,7 +9355,7 @@ function watchCoreV1NamespacedReplicationController(_api::DefaultApi, name::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9371,7 +9371,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedReplicationControllerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedReplicationControllerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9381,7 +9381,7 @@ function watchCoreV1NamespacedReplicationControllerList(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9398,7 +9398,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9409,7 +9409,7 @@ function watchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, name
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9425,7 +9425,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedResourceQuotaList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedResourceQuotaList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9435,7 +9435,7 @@ function watchCoreV1NamespacedResourceQuotaList(_api::DefaultApi, namespace::Str
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9452,7 +9452,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/secrets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9463,7 +9463,7 @@ function watchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9479,7 +9479,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedSecretList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedSecretList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/secrets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9489,7 +9489,7 @@ function watchCoreV1NamespacedSecretList(_api::DefaultApi, namespace::String; fi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9506,7 +9506,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/services/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9517,7 +9517,7 @@ function watchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace:
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9534,7 +9534,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -9545,7 +9545,7 @@ function watchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, nam
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9561,7 +9561,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedServiceAccountList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedServiceAccountList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9571,7 +9571,7 @@ function watchCoreV1NamespacedServiceAccountList(_api::DefaultApi, namespace::St
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9587,7 +9587,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NamespacedServiceList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NamespacedServiceList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/services", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9597,7 +9597,7 @@ function watchCoreV1NamespacedServiceList(_api::DefaultApi, namespace::String; f
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9613,7 +9613,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1Node(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1Node(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/nodes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9623,7 +9623,7 @@ function watchCoreV1Node(_api::DefaultApi, name::String; fieldSelector=nothing, 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9638,7 +9638,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1NodeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1NodeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/nodes", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9647,7 +9647,7 @@ function watchCoreV1NodeList(_api::DefaultApi; fieldSelector=nothing, labelSelec
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9663,7 +9663,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1PersistentVolume(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1PersistentVolume(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumes/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -9673,7 +9673,7 @@ function watchCoreV1PersistentVolume(_api::DefaultApi, name::String; fieldSelect
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9688,7 +9688,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumeclaims", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9697,7 +9697,7 @@ function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9712,7 +9712,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1PersistentVolumeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1PersistentVolumeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumes", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9721,7 +9721,7 @@ function watchCoreV1PersistentVolumeList(_api::DefaultApi; fieldSelector=nothing
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9736,7 +9736,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1PodListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1PodListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/pods", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9745,7 +9745,7 @@ function watchCoreV1PodListForAllNamespaces(_api::DefaultApi; fieldSelector=noth
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9760,7 +9760,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1PodTemplateListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1PodTemplateListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/podtemplates", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9769,7 +9769,7 @@ function watchCoreV1PodTemplateListForAllNamespaces(_api::DefaultApi; fieldSelec
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9784,7 +9784,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1ReplicationControllerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1ReplicationControllerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/replicationcontrollers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9793,7 +9793,7 @@ function watchCoreV1ReplicationControllerListForAllNamespaces(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9808,7 +9808,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1ResourceQuotaListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1ResourceQuotaListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/resourcequotas", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9817,7 +9817,7 @@ function watchCoreV1ResourceQuotaListForAllNamespaces(_api::DefaultApi; fieldSel
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9832,7 +9832,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1SecretListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1SecretListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/secrets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9841,7 +9841,7 @@ function watchCoreV1SecretListForAllNamespaces(_api::DefaultApi; fieldSelector=n
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9856,7 +9856,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1ServiceAccountListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1ServiceAccountListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/serviceaccounts", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9865,7 +9865,7 @@ function watchCoreV1ServiceAccountListForAllNamespaces(_api::DefaultApi; fieldSe
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9880,7 +9880,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchCoreV1ServiceListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchCoreV1ServiceListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/services", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9889,7 +9889,7 @@ function watchCoreV1ServiceListForAllNamespaces(_api::DefaultApi; fieldSelector=
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9904,7 +9904,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/daemonsets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9913,7 +9913,7 @@ function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::DefaultApi; f
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9928,7 +9928,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/deployments", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9937,7 +9937,7 @@ function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9952,7 +9952,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9961,7 +9961,7 @@ function watchExtensionsV1beta1HorizontalPodAutoscalerListForAllNamespaces(_api:
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -9976,7 +9976,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1IngressListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1IngressListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/ingresses", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -9985,7 +9985,7 @@ function watchExtensionsV1beta1IngressListForAllNamespaces(_api::DefaultApi; fie
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10000,7 +10000,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/jobs", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10009,7 +10009,7 @@ function watchExtensionsV1beta1JobListForAllNamespaces(_api::DefaultApi; fieldSe
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10026,7 +10026,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10037,7 +10037,7 @@ function watchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10053,7 +10053,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedDaemonSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedDaemonSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10063,7 +10063,7 @@ function watchExtensionsV1beta1NamespacedDaemonSetList(_api::DefaultApi, namespa
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10080,7 +10080,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10091,7 +10091,7 @@ function watchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10107,7 +10107,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedDeploymentList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedDeploymentList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10117,7 +10117,7 @@ function watchExtensionsV1beta1NamespacedDeploymentList(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10134,7 +10134,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10145,7 +10145,7 @@ function watchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultAp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10161,7 +10161,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/horizontalpodautoscalers", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10171,7 +10171,7 @@ function watchExtensionsV1beta1NamespacedHorizontalPodAutoscalerList(_api::Defau
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10188,7 +10188,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10199,7 +10199,7 @@ function watchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String,
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10215,7 +10215,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedIngressList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedIngressList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10225,7 +10225,7 @@ function watchExtensionsV1beta1NamespacedIngressList(_api::DefaultApi, namespace
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10242,7 +10242,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/jobs/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10253,7 +10253,7 @@ function watchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, nam
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10269,7 +10269,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/jobs", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10279,7 +10279,7 @@ function watchExtensionsV1beta1NamespacedJobList(_api::DefaultApi, namespace::St
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10296,7 +10296,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10307,7 +10307,7 @@ function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::S
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10323,7 +10323,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10333,7 +10333,7 @@ function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::DefaultApi, nam
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10350,7 +10350,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10361,7 +10361,7 @@ function watchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::Stri
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10377,7 +10377,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NamespacedReplicaSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NamespacedReplicaSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10387,7 +10387,7 @@ function watchExtensionsV1beta1NamespacedReplicaSetList(_api::DefaultApi, namesp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10402,7 +10402,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/networkpolicies", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10411,7 +10411,7 @@ function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::DefaultAp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10426,7 +10426,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/replicasets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10435,7 +10435,7 @@ function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10451,7 +10451,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/thirdpartyresources/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10461,7 +10461,7 @@ function watchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10476,7 +10476,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchExtensionsV1beta1ThirdPartyResourceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchExtensionsV1beta1ThirdPartyResourceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/thirdpartyresources", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10485,7 +10485,7 @@ function watchExtensionsV1beta1ThirdPartyResourceList(_api::DefaultApi; fieldSel
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10502,7 +10502,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10513,7 +10513,7 @@ function watchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10529,7 +10529,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchPolicyV1alpha1NamespacedPodDisruptionBudgetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchPolicyV1alpha1NamespacedPodDisruptionBudgetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/namespaces/{namespace}/poddisruptionbudgets", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10539,7 +10539,7 @@ function watchPolicyV1alpha1NamespacedPodDisruptionBudgetList(_api::DefaultApi, 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10554,7 +10554,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchPolicyV1alpha1PodDisruptionBudgetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchPolicyV1alpha1PodDisruptionBudgetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/poddisruptionbudgets", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10563,7 +10563,7 @@ function watchPolicyV1alpha1PodDisruptionBudgetListForAllNamespaces(_api::Defaul
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10579,7 +10579,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10589,7 +10589,7 @@ function watchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::Strin
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10605,7 +10605,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10615,7 +10615,7 @@ function watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10630,7 +10630,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10639,7 +10639,7 @@ function watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api::DefaultApi; 
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10654,7 +10654,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1ClusterRoleList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1ClusterRoleList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10663,7 +10663,7 @@ function watchRbacAuthorizationV1alpha1ClusterRoleList(_api::DefaultApi; fieldSe
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10680,7 +10680,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10691,7 +10691,7 @@ function watchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::St
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10708,7 +10708,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -10719,7 +10719,7 @@ function watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, n
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10735,7 +10735,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10745,7 +10745,7 @@ function watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api::DefaultAp
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10761,7 +10761,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1NamespacedRoleList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1NamespacedRoleList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10771,7 +10771,7 @@ function watchRbacAuthorizationV1alpha1NamespacedRoleList(_api::DefaultApi, name
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10786,7 +10786,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/rolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10795,7 +10795,7 @@ function watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api::Def
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10810,7 +10810,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/roles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10819,7 +10819,7 @@ function watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api::DefaultApi
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10835,7 +10835,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchStorageV1beta1StorageClass(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchStorageV1beta1StorageClass(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10845,7 +10845,7 @@ function watchStorageV1beta1StorageClass(_api::DefaultApi, name::String; fieldSe
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -10860,7 +10860,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: VersionedEvent
 """
-function watchStorageV1beta1StorageClassList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
+function watchStorageV1beta1StorageClassList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10869,7 +10869,7 @@ function watchStorageV1beta1StorageClassList(_api::DefaultApi; fieldSelector=not
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/json;stream=watch", "application/vnd.kubernetes.protobuf", "application/vnd.kubernetes.protobuf;stream=watch"])
-    Swagger.set_header_content_type(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
