@@ -8,7 +8,10 @@ end
 """
 
 connect DELETE requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1DeleteNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -23,7 +26,11 @@ end
 """
 
 connect DELETE requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1DeleteNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -39,7 +46,10 @@ end
 """
 
 connect DELETE requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1DeleteNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -54,7 +64,11 @@ end
 """
 
 connect DELETE requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1DeleteNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -70,7 +84,9 @@ end
 """
 
 connect DELETE requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1DeleteNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/nodes/{name}/proxy", [])
@@ -84,7 +100,10 @@ end
 """
 
 connect DELETE requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1DeleteNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -99,7 +118,14 @@ end
 """
 
 connect GET requests to attach of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: container::String
+Param: stderr::Bool
+Param: stdin::Bool
+Param: stdout::Bool
+Param: tty::Bool
+Return: String
 """
 function connectCoreV1GetNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/attach", [])
@@ -118,7 +144,15 @@ end
 """
 
 connect GET requests to exec of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: command::String
+Param: container::String
+Param: stderr::Bool
+Param: stdin::Bool
+Param: stdout::Bool
+Param: tty::Bool
+Return: String
 """
 function connectCoreV1GetNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/exec", [])
@@ -138,7 +172,9 @@ end
 """
 
 connect GET requests to portforward of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function connectCoreV1GetNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", [])
@@ -152,7 +188,10 @@ end
 """
 
 connect GET requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1GetNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -167,7 +206,11 @@ end
 """
 
 connect GET requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1GetNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -183,7 +226,10 @@ end
 """
 
 connect GET requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1GetNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -198,7 +244,11 @@ end
 """
 
 connect GET requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1GetNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -214,7 +264,9 @@ end
 """
 
 connect GET requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1GetNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/nodes/{name}/proxy", [])
@@ -228,7 +280,10 @@ end
 """
 
 connect GET requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1GetNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -243,7 +298,10 @@ end
 """
 
 connect HEAD requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1HeadNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -258,7 +316,11 @@ end
 """
 
 connect HEAD requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1HeadNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -274,7 +336,10 @@ end
 """
 
 connect HEAD requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1HeadNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -289,7 +354,11 @@ end
 """
 
 connect HEAD requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1HeadNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -305,7 +374,9 @@ end
 """
 
 connect HEAD requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1HeadNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/nodes/{name}/proxy", [])
@@ -319,7 +390,10 @@ end
 """
 
 connect HEAD requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1HeadNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -334,7 +408,10 @@ end
 """
 
 connect OPTIONS requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1OptionsNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -349,7 +426,11 @@ end
 """
 
 connect OPTIONS requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1OptionsNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -365,7 +446,10 @@ end
 """
 
 connect OPTIONS requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1OptionsNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -380,7 +464,11 @@ end
 """
 
 connect OPTIONS requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1OptionsNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -396,7 +484,9 @@ end
 """
 
 connect OPTIONS requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1OptionsNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/nodes/{name}/proxy", [])
@@ -410,7 +500,10 @@ end
 """
 
 connect OPTIONS requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1OptionsNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -425,7 +518,14 @@ end
 """
 
 connect POST requests to attach of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: container::String
+Param: stderr::Bool
+Param: stdin::Bool
+Param: stdout::Bool
+Param: tty::Bool
+Return: String
 """
 function connectCoreV1PostNamespacedPodAttach(_api::DefaultApi, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/attach", [])
@@ -444,7 +544,15 @@ end
 """
 
 connect POST requests to exec of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: command::String
+Param: container::String
+Param: stderr::Bool
+Param: stdin::Bool
+Param: stdout::Bool
+Param: tty::Bool
+Return: String
 """
 function connectCoreV1PostNamespacedPodExec(_api::DefaultApi, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/exec", [])
@@ -464,7 +572,9 @@ end
 """
 
 connect POST requests to portforward of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function connectCoreV1PostNamespacedPodPortforward(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", [])
@@ -478,7 +588,10 @@ end
 """
 
 connect POST requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PostNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -493,7 +606,11 @@ end
 """
 
 connect POST requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PostNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -509,7 +626,10 @@ end
 """
 
 connect POST requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PostNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -524,7 +644,11 @@ end
 """
 
 connect POST requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PostNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -540,7 +664,9 @@ end
 """
 
 connect POST requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PostNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/nodes/{name}/proxy", [])
@@ -554,7 +680,10 @@ end
 """
 
 connect POST requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PostNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -569,7 +698,10 @@ end
 """
 
 connect PUT requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PutNamespacedPodProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", [])
@@ -584,7 +716,11 @@ end
 """
 
 connect PUT requests to proxy of Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PutNamespacedPodProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", [])
@@ -600,7 +736,10 @@ end
 """
 
 connect PUT requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PutNamespacedServiceProxy(_api::DefaultApi, name::String, namespace::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", [])
@@ -615,7 +754,11 @@ end
 """
 
 connect PUT requests to proxy of Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PutNamespacedServiceProxyWithPath(_api::DefaultApi, name::String, namespace::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", [])
@@ -631,7 +774,9 @@ end
 """
 
 connect PUT requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String
+Return: String
 """
 function connectCoreV1PutNodeProxy(_api::DefaultApi, name::String; path=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/nodes/{name}/proxy", [])
@@ -645,7 +790,10 @@ end
 """
 
 connect PUT requests to proxy of Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
 """
 function connectCoreV1PutNodeProxyWithPath(_api::DefaultApi, name::String, path::String; path2=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/nodes/{name}/proxy/{path}", [])
@@ -660,9 +808,12 @@ end
 """
 
 create a PetSet
-Returns: V1alpha1PetSet
+Param: namespace::String (required)
+Param: body::V1alpha1PetSet (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
-function createAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PetSet } ; pretty=nothing,)
+function createAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -674,9 +825,11 @@ end
 """
 
 create a TokenReview
-Returns: V1beta1TokenReview
+Param: body::V1beta1TokenReview (required)
+Param: pretty::String
+Return: V1beta1TokenReview
 """
-function createAuthenticationV1beta1TokenReview(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1TokenReview } ; pretty=nothing,)
+function createAuthenticationV1beta1TokenReview(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1TokenReview, "/apis/authentication.k8s.io/v1beta1/tokenreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -687,9 +840,12 @@ end
 """
 
 create a LocalSubjectAccessReview
-Returns: V1beta1LocalSubjectAccessReview
+Param: body::V1beta1LocalSubjectAccessReview (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1LocalSubjectAccessReview
 """
-function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1LocalSubjectAccessReview } , namespace::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::DefaultApi, body, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1LocalSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/namespaces/{namespace}/localsubjectaccessreviews", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -701,9 +857,11 @@ end
 """
 
 create a SelfSubjectAccessReview
-Returns: V1beta1SelfSubjectAccessReview
+Param: body::V1beta1SelfSubjectAccessReview (required)
+Param: pretty::String
+Return: V1beta1SelfSubjectAccessReview
 """
-function createAuthorizationV1beta1SelfSubjectAccessReview(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1SelfSubjectAccessReview } ; pretty=nothing,)
+function createAuthorizationV1beta1SelfSubjectAccessReview(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectaccessreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -714,9 +872,11 @@ end
 """
 
 create a SubjectAccessReview
-Returns: V1beta1SubjectAccessReview
+Param: body::V1beta1SubjectAccessReview (required)
+Param: pretty::String
+Return: V1beta1SubjectAccessReview
 """
-function createAuthorizationV1beta1SubjectAccessReview(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1SubjectAccessReview } ; pretty=nothing,)
+function createAuthorizationV1beta1SubjectAccessReview(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1SubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/subjectaccessreviews", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -727,9 +887,12 @@ end
 """
 
 create a HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: namespace::String (required)
+Param: body::V1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
-function createAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1HorizontalPodAutoscaler } ; pretty=nothing,)
+function createAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -741,9 +904,12 @@ end
 """
 
 create a Job
-Returns: V1Job
+Param: namespace::String (required)
+Param: body::V1Job (required)
+Param: pretty::String
+Return: V1Job
 """
-function createBatchV1NamespacedJob(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Job } ; pretty=nothing,)
+function createBatchV1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -755,9 +921,11 @@ end
 """
 
 create a CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: body::V1alpha1CertificateSigningRequest (required)
+Param: pretty::String
+Return: V1alpha1CertificateSigningRequest
 """
-function createCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1CertificateSigningRequest } ; pretty=nothing,)
+function createCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -768,9 +936,11 @@ end
 """
 
 create a Namespace
-Returns: V1Namespace
+Param: body::V1Namespace (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function createCoreV1Namespace(_api::DefaultApi, body::Union{ Dict{String,Any},V1Namespace } ; pretty=nothing,)
+function createCoreV1Namespace(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Namespace, "/api/v1/namespaces", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -781,9 +951,12 @@ end
 """
 
 create a Binding
-Returns: V1Binding
+Param: body::V1Binding (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Binding
 """
-function createCoreV1NamespacedBinding(_api::DefaultApi, body::Union{ Dict{String,Any},V1Binding } , namespace::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function createCoreV1NamespacedBinding(_api::DefaultApi, body, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Binding, "/api/v1/namespaces/{namespace}/bindings", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -795,9 +968,13 @@ end
 """
 
 create binding of a Binding
-Returns: V1Binding
+Param: body::V1Binding (required)
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Binding
 """
-function createCoreV1NamespacedBindingBinding(_api::DefaultApi, body::Union{ Dict{String,Any},V1Binding } , name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function createCoreV1NamespacedBindingBinding(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -810,9 +987,12 @@ end
 """
 
 create a ConfigMap
-Returns: V1ConfigMap
+Param: namespace::String (required)
+Param: body::V1ConfigMap (required)
+Param: pretty::String
+Return: V1ConfigMap
 """
-function createCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ConfigMap } ; pretty=nothing,)
+function createCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -824,9 +1004,12 @@ end
 """
 
 create a Endpoints
-Returns: V1Endpoints
+Param: namespace::String (required)
+Param: body::V1Endpoints (required)
+Param: pretty::String
+Return: V1Endpoints
 """
-function createCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Endpoints } ; pretty=nothing,)
+function createCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -838,9 +1021,12 @@ end
 """
 
 create a Event
-Returns: V1Event
+Param: namespace::String (required)
+Param: body::V1Event (required)
+Param: pretty::String
+Return: V1Event
 """
-function createCoreV1NamespacedEvent(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Event } ; pretty=nothing,)
+function createCoreV1NamespacedEvent(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Event, "/api/v1/namespaces/{namespace}/events", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -852,9 +1038,13 @@ end
 """
 
 create eviction of a Eviction
-Returns: V1alpha1Eviction
+Param: body::V1alpha1Eviction (required)
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1alpha1Eviction
 """
-function createCoreV1NamespacedEvictionEviction(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1Eviction } , name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function createCoreV1NamespacedEvictionEviction(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -867,9 +1057,12 @@ end
 """
 
 create a LimitRange
-Returns: V1LimitRange
+Param: namespace::String (required)
+Param: body::V1LimitRange (required)
+Param: pretty::String
+Return: V1LimitRange
 """
-function createCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1LimitRange } ; pretty=nothing,)
+function createCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -881,9 +1074,12 @@ end
 """
 
 create a PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: namespace::String (required)
+Param: body::V1PersistentVolumeClaim (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
-function createCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PersistentVolumeClaim } ; pretty=nothing,)
+function createCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -895,9 +1091,12 @@ end
 """
 
 create a Pod
-Returns: V1Pod
+Param: namespace::String (required)
+Param: body::V1Pod (required)
+Param: pretty::String
+Return: V1Pod
 """
-function createCoreV1NamespacedPod(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Pod } ; pretty=nothing,)
+function createCoreV1NamespacedPod(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Pod, "/api/v1/namespaces/{namespace}/pods", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -909,9 +1108,12 @@ end
 """
 
 create a PodTemplate
-Returns: V1PodTemplate
+Param: namespace::String (required)
+Param: body::V1PodTemplate (required)
+Param: pretty::String
+Return: V1PodTemplate
 """
-function createCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PodTemplate } ; pretty=nothing,)
+function createCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -923,9 +1125,12 @@ end
 """
 
 create a ReplicationController
-Returns: V1ReplicationController
+Param: namespace::String (required)
+Param: body::V1ReplicationController (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
-function createCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ReplicationController } ; pretty=nothing,)
+function createCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -937,9 +1142,12 @@ end
 """
 
 create a ResourceQuota
-Returns: V1ResourceQuota
+Param: namespace::String (required)
+Param: body::V1ResourceQuota (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
-function createCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ResourceQuota } ; pretty=nothing,)
+function createCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -951,9 +1159,12 @@ end
 """
 
 create a Secret
-Returns: V1Secret
+Param: namespace::String (required)
+Param: body::V1Secret (required)
+Param: pretty::String
+Return: V1Secret
 """
-function createCoreV1NamespacedSecret(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Secret } ; pretty=nothing,)
+function createCoreV1NamespacedSecret(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Secret, "/api/v1/namespaces/{namespace}/secrets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -965,9 +1176,12 @@ end
 """
 
 create a Service
-Returns: V1Service
+Param: namespace::String (required)
+Param: body::V1Service (required)
+Param: pretty::String
+Return: V1Service
 """
-function createCoreV1NamespacedService(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Service } ; pretty=nothing,)
+function createCoreV1NamespacedService(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Service, "/api/v1/namespaces/{namespace}/services", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -979,9 +1193,12 @@ end
 """
 
 create a ServiceAccount
-Returns: V1ServiceAccount
+Param: namespace::String (required)
+Param: body::V1ServiceAccount (required)
+Param: pretty::String
+Return: V1ServiceAccount
 """
-function createCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ServiceAccount } ; pretty=nothing,)
+function createCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -993,9 +1210,11 @@ end
 """
 
 create a Node
-Returns: V1Node
+Param: body::V1Node (required)
+Param: pretty::String
+Return: V1Node
 """
-function createCoreV1Node(_api::DefaultApi, body::Union{ Dict{String,Any},V1Node } ; pretty=nothing,)
+function createCoreV1Node(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1Node, "/api/v1/nodes", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1006,9 +1225,11 @@ end
 """
 
 create a PersistentVolume
-Returns: V1PersistentVolume
+Param: body::V1PersistentVolume (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
-function createCoreV1PersistentVolume(_api::DefaultApi, body::Union{ Dict{String,Any},V1PersistentVolume } ; pretty=nothing,)
+function createCoreV1PersistentVolume(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1PersistentVolume, "/api/v1/persistentvolumes", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1019,9 +1240,12 @@ end
 """
 
 create a DaemonSet
-Returns: V1beta1DaemonSet
+Param: namespace::String (required)
+Param: body::V1beta1DaemonSet (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
-function createExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1DaemonSet } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1033,9 +1257,12 @@ end
 """
 
 create a Deployment
-Returns: V1beta1Deployment
+Param: namespace::String (required)
+Param: body::V1beta1Deployment (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
-function createExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Deployment } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1047,9 +1274,13 @@ end
 """
 
 create rollback of a DeploymentRollback
-Returns: V1beta1DeploymentRollback
+Param: body::V1beta1DeploymentRollback (required)
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1DeploymentRollback
 """
-function createExtensionsV1beta1NamespacedDeploymentRollbackRollback(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1DeploymentRollback } , name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedDeploymentRollbackRollback(_api::DefaultApi, body, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1DeploymentRollback, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/rollback", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1062,9 +1293,12 @@ end
 """
 
 create a HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: namespace::String (required)
+Param: body::V1beta1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
-function createExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1HorizontalPodAutoscaler } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1076,9 +1310,12 @@ end
 """
 
 create a Ingress
-Returns: V1beta1Ingress
+Param: namespace::String (required)
+Param: body::V1beta1Ingress (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
-function createExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Ingress } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1090,9 +1327,12 @@ end
 """
 
 create a Job
-Returns: V1beta1Job
+Param: namespace::String (required)
+Param: body::V1beta1Job (required)
+Param: pretty::String
+Return: V1beta1Job
 """
-function createExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Job } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1104,9 +1344,12 @@ end
 """
 
 create a NetworkPolicy
-Returns: V1beta1NetworkPolicy
+Param: namespace::String (required)
+Param: body::V1beta1NetworkPolicy (required)
+Param: pretty::String
+Return: V1beta1NetworkPolicy
 """
-function createExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1NetworkPolicy } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1118,9 +1361,12 @@ end
 """
 
 create a ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: namespace::String (required)
+Param: body::V1beta1ReplicaSet (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
-function createExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1ReplicaSet } ; pretty=nothing,)
+function createExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1132,9 +1378,11 @@ end
 """
 
 create a ThirdPartyResource
-Returns: V1beta1ThirdPartyResource
+Param: body::V1beta1ThirdPartyResource (required)
+Param: pretty::String
+Return: V1beta1ThirdPartyResource
 """
-function createExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1ThirdPartyResource } ; pretty=nothing,)
+function createExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1145,9 +1393,12 @@ end
 """
 
 create a PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: namespace::String (required)
+Param: body::V1alpha1PodDisruptionBudget (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
-function createPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PodDisruptionBudget } ; pretty=nothing,)
+function createPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1159,9 +1410,11 @@ end
 """
 
 create a ClusterRole
-Returns: V1alpha1ClusterRole
+Param: body::V1alpha1ClusterRole (required)
+Param: pretty::String
+Return: V1alpha1ClusterRole
 """
-function createRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1ClusterRole } ; pretty=nothing,)
+function createRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1172,9 +1425,11 @@ end
 """
 
 create a ClusterRoleBinding
-Returns: V1alpha1ClusterRoleBinding
+Param: body::V1alpha1ClusterRoleBinding (required)
+Param: pretty::String
+Return: V1alpha1ClusterRoleBinding
 """
-function createRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1ClusterRoleBinding } ; pretty=nothing,)
+function createRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1185,9 +1440,12 @@ end
 """
 
 create a Role
-Returns: V1alpha1Role
+Param: namespace::String (required)
+Param: body::V1alpha1Role (required)
+Param: pretty::String
+Return: V1alpha1Role
 """
-function createRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1Role } ; pretty=nothing,)
+function createRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1199,9 +1457,12 @@ end
 """
 
 create a RoleBinding
-Returns: V1alpha1RoleBinding
+Param: namespace::String (required)
+Param: body::V1alpha1RoleBinding (required)
+Param: pretty::String
+Return: V1alpha1RoleBinding
 """
-function createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1RoleBinding } ; pretty=nothing,)
+function createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1213,9 +1474,11 @@ end
 """
 
 create a StorageClass
-Returns: V1beta1StorageClass
+Param: body::V1beta1StorageClass (required)
+Param: pretty::String
+Return: V1beta1StorageClass
 """
-function createStorageV1beta1StorageClass(_api::DefaultApi, body::Union{ Dict{String,Any},V1beta1StorageClass } ; pretty=nothing,)
+function createStorageV1beta1StorageClass(_api::DefaultApi, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "POST", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1226,7 +1489,14 @@ end
 """
 
 delete collection of PetSet
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteAppsV1alpha1CollectionNamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [])
@@ -1245,9 +1515,13 @@ end
 """
 
 delete a PetSet
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1260,7 +1534,14 @@ end
 """
 
 delete collection of HorizontalPodAutoscaler
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -1279,9 +1560,13 @@ end
 """
 
 delete a HorizontalPodAutoscaler
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1294,7 +1579,14 @@ end
 """
 
 delete collection of Job
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteBatchV1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/batch/v1/namespaces/{namespace}/jobs", [])
@@ -1313,9 +1605,13 @@ end
 """
 
 delete a Job
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteBatchV1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1328,9 +1624,12 @@ end
 """
 
 delete a CertificateSigningRequest
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1342,7 +1641,13 @@ end
 """
 
 delete collection of CertificateSigningRequest
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCertificatesV1alpha1CollectionCertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [])
@@ -1360,7 +1665,13 @@ end
 """
 
 delete collection of Namespace
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces", [])
@@ -1378,7 +1689,14 @@ end
 """
 
 delete collection of ConfigMap
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/configmaps", [])
@@ -1397,7 +1715,14 @@ end
 """
 
 delete collection of Endpoints
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/endpoints", [])
@@ -1416,7 +1741,14 @@ end
 """
 
 delete collection of Event
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/events", [])
@@ -1435,7 +1767,14 @@ end
 """
 
 delete collection of LimitRange
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/limitranges", [])
@@ -1454,7 +1793,14 @@ end
 """
 
 delete collection of PersistentVolumeClaim
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [])
@@ -1473,7 +1819,14 @@ end
 """
 
 delete collection of Pod
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/pods", [])
@@ -1492,7 +1845,14 @@ end
 """
 
 delete collection of PodTemplate
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/podtemplates", [])
@@ -1511,7 +1871,14 @@ end
 """
 
 delete collection of ReplicationController
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/replicationcontrollers", [])
@@ -1530,7 +1897,14 @@ end
 """
 
 delete collection of ResourceQuota
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/resourcequotas", [])
@@ -1549,7 +1923,14 @@ end
 """
 
 delete collection of Secret
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/secrets", [])
@@ -1568,7 +1949,14 @@ end
 """
 
 delete collection of ServiceAccount
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/serviceaccounts", [])
@@ -1587,7 +1975,13 @@ end
 """
 
 delete collection of Node
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionNode(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/nodes", [])
@@ -1605,7 +1999,13 @@ end
 """
 
 delete collection of PersistentVolume
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteCoreV1CollectionPersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/persistentvolumes", [])
@@ -1623,9 +2023,12 @@ end
 """
 
 delete a Namespace
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1Namespace(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1637,9 +2040,13 @@ end
 """
 
 delete a ConfigMap
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedConfigMap(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1652,9 +2059,13 @@ end
 """
 
 delete a Endpoints
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedEndpoints(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1667,9 +2078,13 @@ end
 """
 
 delete a Event
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedEvent(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1682,9 +2097,13 @@ end
 """
 
 delete a LimitRange
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedLimitRange(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1697,9 +2116,13 @@ end
 """
 
 delete a PersistentVolumeClaim
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1712,9 +2135,13 @@ end
 """
 
 delete a Pod
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPod(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1727,9 +2154,13 @@ end
 """
 
 delete a PodTemplate
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedPodTemplate(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1742,9 +2173,13 @@ end
 """
 
 delete a ReplicationController
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedReplicationController(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1757,9 +2192,13 @@ end
 """
 
 delete a ResourceQuota
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedResourceQuota(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1772,9 +2211,13 @@ end
 """
 
 delete a Secret
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedSecret(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1787,7 +2230,10 @@ end
 """
 
 delete a Service
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
 function deleteCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/services/{name}", [])
@@ -1802,9 +2248,13 @@ end
 """
 
 delete a ServiceAccount
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1NamespacedServiceAccount(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1817,9 +2267,12 @@ end
 """
 
 delete a Node
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1Node(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1831,9 +2284,12 @@ end
 """
 
 delete a PersistentVolume
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteCoreV1PersistentVolume(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1845,7 +2301,14 @@ end
 """
 
 delete collection of DaemonSet
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [])
@@ -1864,7 +2327,14 @@ end
 """
 
 delete collection of Deployment
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [])
@@ -1883,7 +2353,14 @@ end
 """
 
 delete collection of HorizontalPodAutoscaler
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -1902,7 +2379,14 @@ end
 """
 
 delete collection of Ingress
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [])
@@ -1921,7 +2405,14 @@ end
 """
 
 delete collection of Job
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [])
@@ -1940,7 +2431,14 @@ end
 """
 
 delete collection of NetworkPolicy
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [])
@@ -1959,7 +2457,14 @@ end
 """
 
 delete collection of ReplicaSet
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [])
@@ -1978,7 +2483,13 @@ end
 """
 
 delete collection of ThirdPartyResource
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteExtensionsV1beta1CollectionThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/thirdpartyresources", [])
@@ -1996,9 +2507,13 @@ end
 """
 
 delete a DaemonSet
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2011,9 +2526,13 @@ end
 """
 
 delete a Deployment
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2026,9 +2545,13 @@ end
 """
 
 delete a HorizontalPodAutoscaler
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2041,9 +2564,13 @@ end
 """
 
 delete a Ingress
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2056,9 +2583,13 @@ end
 """
 
 delete a Job
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2071,9 +2602,13 @@ end
 """
 
 delete a NetworkPolicy
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2086,9 +2621,13 @@ end
 """
 
 delete a ReplicaSet
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2101,9 +2640,12 @@ end
 """
 
 delete a ThirdPartyResource
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2115,7 +2657,14 @@ end
 """
 
 delete collection of PodDisruptionBudget
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deletePolicyV1alpha1CollectionNamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [])
@@ -2134,9 +2683,13 @@ end
 """
 
 delete a PodDisruptionBudget
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deletePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deletePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2149,9 +2702,12 @@ end
 """
 
 delete a ClusterRole
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2163,9 +2719,12 @@ end
 """
 
 delete a ClusterRoleBinding
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2177,7 +2736,13 @@ end
 """
 
 delete collection of ClusterRole
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
@@ -2195,7 +2760,13 @@ end
 """
 
 delete collection of ClusterRoleBinding
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
@@ -2213,7 +2784,14 @@ end
 """
 
 delete collection of Role
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
@@ -2232,7 +2810,14 @@ end
 """
 
 delete collection of RoleBinding
-Returns: UnversionedStatus
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
@@ -2251,9 +2836,13 @@ end
 """
 
 delete a Role
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2266,9 +2855,13 @@ end
 """
 
 delete a RoleBinding
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -2281,7 +2874,13 @@ end
 """
 
 delete collection of StorageClass
-Returns: UnversionedStatus
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: UnversionedStatus
 """
 function deleteStorageV1beta1CollectionStorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/storage.k8s.io/v1beta1/storageclasses", [])
@@ -2299,9 +2898,12 @@ end
 """
 
 delete a StorageClass
-Returns: UnversionedStatus
+Param: name::String (required)
+Param: body::V1DeleteOptions (required)
+Param: pretty::String
+Return: UnversionedStatus
 """
-function deleteStorageV1beta1StorageClass(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1DeleteOptions } ; pretty=nothing,)
+function deleteStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2313,7 +2915,7 @@ end
 """
 
 get available API versions
-Returns: UnversionedAPIGroupList
+Return: UnversionedAPIGroupList
 """
 function getAPIVersions(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroupList, "/apis/", [])
@@ -2325,7 +2927,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getAppsAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/apps/", [])
@@ -2337,7 +2939,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getAppsV1alpha1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/apps/v1alpha1/", [])
@@ -2349,7 +2951,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getAuthenticationAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/authentication.k8s.io/", [])
@@ -2361,7 +2963,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getAuthenticationV1beta1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/authentication.k8s.io/v1beta1/", [])
@@ -2373,7 +2975,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getAuthorizationAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/authorization.k8s.io/", [])
@@ -2385,7 +2987,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getAuthorizationV1beta1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/authorization.k8s.io/v1beta1/", [])
@@ -2397,7 +2999,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getAutoscalingAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/autoscaling/", [])
@@ -2409,7 +3011,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getAutoscalingV1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/autoscaling/v1/", [])
@@ -2421,7 +3023,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getBatchAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/batch/", [])
@@ -2433,7 +3035,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getBatchV1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/batch/v1/", [])
@@ -2445,7 +3047,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getBatchV2alpha1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/batch/v2alpha1/", [])
@@ -2457,7 +3059,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getCertificatesAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/certificates.k8s.io/", [])
@@ -2469,7 +3071,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getCertificatesV1alpha1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/certificates.k8s.io/v1alpha1/", [])
@@ -2481,7 +3083,7 @@ end
 """
 
 get the code version
-Returns: VersionInfo
+Return: VersionInfo
 """
 function getCodeVersion(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionInfo, "/version/", [])
@@ -2493,7 +3095,7 @@ end
 """
 
 get available API versions
-Returns: UnversionedAPIVersions
+Return: UnversionedAPIVersions
 """
 function getCoreAPIVersions(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIVersions, "/api/", [])
@@ -2505,7 +3107,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getCoreV1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/api/v1/", [])
@@ -2517,7 +3119,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getExtensionsAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/extensions/", [])
@@ -2529,7 +3131,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getExtensionsV1beta1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/extensions/v1beta1/", [])
@@ -2541,7 +3143,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getPolicyAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/policy/", [])
@@ -2553,7 +3155,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getPolicyV1alpha1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/policy/v1alpha1/", [])
@@ -2565,7 +3167,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getRbacAuthorizationAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/rbac.authorization.k8s.io/", [])
@@ -2577,7 +3179,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getRbacAuthorizationV1alpha1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/rbac.authorization.k8s.io/v1alpha1/", [])
@@ -2589,7 +3191,7 @@ end
 """
 
 get information of a group
-Returns: UnversionedAPIGroup
+Return: UnversionedAPIGroup
 """
 function getStorageAPIGroup(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIGroup, "/apis/storage.k8s.io/", [])
@@ -2601,7 +3203,7 @@ end
 """
 
 get available resources
-Returns: UnversionedAPIResourceList
+Return: UnversionedAPIResourceList
 """
 function getStorageV1beta1APIResources(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/storage.k8s.io/v1beta1/", [])
@@ -2613,7 +3215,14 @@ end
 """
 
 list or watch objects of kind PetSet
-Returns: V1alpha1PetSetList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1PetSetList
 """
 function listAppsV1alpha1NamespacedPetSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSetList, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets", [])
@@ -2632,7 +3241,13 @@ end
 """
 
 list or watch objects of kind PetSet
-Returns: V1alpha1PetSetList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1PetSetList
 """
 function listAppsV1alpha1PetSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSetList, "/apis/apps/v1alpha1/petsets", [])
@@ -2650,7 +3265,13 @@ end
 """
 
 list or watch objects of kind HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscalerList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1HorizontalPodAutoscalerList
 """
 function listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscalerList, "/apis/autoscaling/v1/horizontalpodautoscalers", [])
@@ -2668,7 +3289,14 @@ end
 """
 
 list or watch objects of kind HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscalerList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1HorizontalPodAutoscalerList
 """
 function listAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscalerList, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -2687,7 +3315,13 @@ end
 """
 
 list or watch objects of kind Job
-Returns: V1JobList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1JobList
 """
 function listBatchV1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1JobList, "/apis/batch/v1/jobs", [])
@@ -2705,7 +3339,14 @@ end
 """
 
 list or watch objects of kind Job
-Returns: V1JobList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1JobList
 """
 function listBatchV1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1JobList, "/apis/batch/v1/namespaces/{namespace}/jobs", [])
@@ -2724,7 +3365,13 @@ end
 """
 
 list or watch objects of kind CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequestList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1CertificateSigningRequestList
 """
 function listCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1CertificateSigningRequestList, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests", [])
@@ -2742,7 +3389,13 @@ end
 """
 
 list objects of kind ComponentStatus
-Returns: V1ComponentStatusList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ComponentStatusList
 """
 function listCoreV1ComponentStatus(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ComponentStatusList, "/api/v1/componentstatuses", [])
@@ -2760,7 +3413,13 @@ end
 """
 
 list or watch objects of kind ConfigMap
-Returns: V1ConfigMapList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ConfigMapList
 """
 function listCoreV1ConfigMapForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMapList, "/api/v1/configmaps", [])
@@ -2778,7 +3437,13 @@ end
 """
 
 list or watch objects of kind Endpoints
-Returns: V1EndpointsList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1EndpointsList
 """
 function listCoreV1EndpointsForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EndpointsList, "/api/v1/endpoints", [])
@@ -2796,7 +3461,13 @@ end
 """
 
 list or watch objects of kind Event
-Returns: V1EventList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1EventList
 """
 function listCoreV1EventForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EventList, "/api/v1/events", [])
@@ -2814,7 +3485,13 @@ end
 """
 
 list or watch objects of kind LimitRange
-Returns: V1LimitRangeList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1LimitRangeList
 """
 function listCoreV1LimitRangeForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRangeList, "/api/v1/limitranges", [])
@@ -2832,7 +3509,13 @@ end
 """
 
 list or watch objects of kind Namespace
-Returns: V1NamespaceList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1NamespaceList
 """
 function listCoreV1Namespace(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1NamespaceList, "/api/v1/namespaces", [])
@@ -2850,7 +3533,14 @@ end
 """
 
 list or watch objects of kind ConfigMap
-Returns: V1ConfigMapList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ConfigMapList
 """
 function listCoreV1NamespacedConfigMap(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMapList, "/api/v1/namespaces/{namespace}/configmaps", [])
@@ -2869,7 +3559,14 @@ end
 """
 
 list or watch objects of kind Endpoints
-Returns: V1EndpointsList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1EndpointsList
 """
 function listCoreV1NamespacedEndpoints(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EndpointsList, "/api/v1/namespaces/{namespace}/endpoints", [])
@@ -2888,7 +3585,14 @@ end
 """
 
 list or watch objects of kind Event
-Returns: V1EventList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1EventList
 """
 function listCoreV1NamespacedEvent(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1EventList, "/api/v1/namespaces/{namespace}/events", [])
@@ -2907,7 +3611,14 @@ end
 """
 
 list or watch objects of kind LimitRange
-Returns: V1LimitRangeList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1LimitRangeList
 """
 function listCoreV1NamespacedLimitRange(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRangeList, "/api/v1/namespaces/{namespace}/limitranges", [])
@@ -2926,7 +3637,14 @@ end
 """
 
 list or watch objects of kind PersistentVolumeClaim
-Returns: V1PersistentVolumeClaimList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PersistentVolumeClaimList
 """
 function listCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaimList, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", [])
@@ -2945,7 +3663,14 @@ end
 """
 
 list or watch objects of kind Pod
-Returns: V1PodList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PodList
 """
 function listCoreV1NamespacedPod(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodList, "/api/v1/namespaces/{namespace}/pods", [])
@@ -2964,7 +3689,14 @@ end
 """
 
 list or watch objects of kind PodTemplate
-Returns: V1PodTemplateList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PodTemplateList
 """
 function listCoreV1NamespacedPodTemplate(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplateList, "/api/v1/namespaces/{namespace}/podtemplates", [])
@@ -2983,7 +3715,14 @@ end
 """
 
 list or watch objects of kind ReplicationController
-Returns: V1ReplicationControllerList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ReplicationControllerList
 """
 function listCoreV1NamespacedReplicationController(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationControllerList, "/api/v1/namespaces/{namespace}/replicationcontrollers", [])
@@ -3002,7 +3741,14 @@ end
 """
 
 list or watch objects of kind ResourceQuota
-Returns: V1ResourceQuotaList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ResourceQuotaList
 """
 function listCoreV1NamespacedResourceQuota(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuotaList, "/api/v1/namespaces/{namespace}/resourcequotas", [])
@@ -3021,7 +3767,14 @@ end
 """
 
 list or watch objects of kind Secret
-Returns: V1SecretList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1SecretList
 """
 function listCoreV1NamespacedSecret(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1SecretList, "/api/v1/namespaces/{namespace}/secrets", [])
@@ -3040,7 +3793,14 @@ end
 """
 
 list or watch objects of kind Service
-Returns: V1ServiceList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ServiceList
 """
 function listCoreV1NamespacedService(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceList, "/api/v1/namespaces/{namespace}/services", [])
@@ -3059,7 +3819,14 @@ end
 """
 
 list or watch objects of kind ServiceAccount
-Returns: V1ServiceAccountList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ServiceAccountList
 """
 function listCoreV1NamespacedServiceAccount(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccountList, "/api/v1/namespaces/{namespace}/serviceaccounts", [])
@@ -3078,7 +3845,13 @@ end
 """
 
 list or watch objects of kind Node
-Returns: V1NodeList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1NodeList
 """
 function listCoreV1Node(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1NodeList, "/api/v1/nodes", [])
@@ -3096,7 +3869,13 @@ end
 """
 
 list or watch objects of kind PersistentVolume
-Returns: V1PersistentVolumeList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PersistentVolumeList
 """
 function listCoreV1PersistentVolume(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeList, "/api/v1/persistentvolumes", [])
@@ -3114,7 +3893,13 @@ end
 """
 
 list or watch objects of kind PersistentVolumeClaim
-Returns: V1PersistentVolumeClaimList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PersistentVolumeClaimList
 """
 function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaimList, "/api/v1/persistentvolumeclaims", [])
@@ -3132,7 +3917,13 @@ end
 """
 
 list or watch objects of kind Pod
-Returns: V1PodList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PodList
 """
 function listCoreV1PodForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodList, "/api/v1/pods", [])
@@ -3150,7 +3941,13 @@ end
 """
 
 list or watch objects of kind PodTemplate
-Returns: V1PodTemplateList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1PodTemplateList
 """
 function listCoreV1PodTemplateForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplateList, "/api/v1/podtemplates", [])
@@ -3168,7 +3965,13 @@ end
 """
 
 list or watch objects of kind ReplicationController
-Returns: V1ReplicationControllerList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ReplicationControllerList
 """
 function listCoreV1ReplicationControllerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationControllerList, "/api/v1/replicationcontrollers", [])
@@ -3186,7 +3989,13 @@ end
 """
 
 list or watch objects of kind ResourceQuota
-Returns: V1ResourceQuotaList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ResourceQuotaList
 """
 function listCoreV1ResourceQuotaForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuotaList, "/api/v1/resourcequotas", [])
@@ -3204,7 +4013,13 @@ end
 """
 
 list or watch objects of kind Secret
-Returns: V1SecretList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1SecretList
 """
 function listCoreV1SecretForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1SecretList, "/api/v1/secrets", [])
@@ -3222,7 +4037,13 @@ end
 """
 
 list or watch objects of kind ServiceAccount
-Returns: V1ServiceAccountList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ServiceAccountList
 """
 function listCoreV1ServiceAccountForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccountList, "/api/v1/serviceaccounts", [])
@@ -3240,7 +4061,13 @@ end
 """
 
 list or watch objects of kind Service
-Returns: V1ServiceList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1ServiceList
 """
 function listCoreV1ServiceForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceList, "/api/v1/services", [])
@@ -3258,7 +4085,13 @@ end
 """
 
 list or watch objects of kind DaemonSet
-Returns: V1beta1DaemonSetList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1DaemonSetList
 """
 function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSetList, "/apis/extensions/v1beta1/daemonsets", [])
@@ -3276,7 +4109,13 @@ end
 """
 
 list or watch objects of kind Deployment
-Returns: V1beta1DeploymentList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1DeploymentList
 """
 function listExtensionsV1beta1DeploymentForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DeploymentList, "/apis/extensions/v1beta1/deployments", [])
@@ -3294,7 +4133,13 @@ end
 """
 
 list or watch objects of kind HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscalerList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1HorizontalPodAutoscalerList
 """
 function listExtensionsV1beta1HorizontalPodAutoscalerForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscalerList, "/apis/extensions/v1beta1/horizontalpodautoscalers", [])
@@ -3312,7 +4157,13 @@ end
 """
 
 list or watch objects of kind Ingress
-Returns: V1beta1IngressList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1IngressList
 """
 function listExtensionsV1beta1IngressForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1IngressList, "/apis/extensions/v1beta1/ingresses", [])
@@ -3330,7 +4181,13 @@ end
 """
 
 list or watch objects of kind Job
-Returns: V1beta1JobList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1JobList
 """
 function listExtensionsV1beta1JobForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1JobList, "/apis/extensions/v1beta1/jobs", [])
@@ -3348,7 +4205,14 @@ end
 """
 
 list or watch objects of kind DaemonSet
-Returns: V1beta1DaemonSetList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1DaemonSetList
 """
 function listExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", [])
@@ -3367,7 +4231,14 @@ end
 """
 
 list or watch objects of kind Deployment
-Returns: V1beta1DeploymentList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1DeploymentList
 """
 function listExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DeploymentList, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", [])
@@ -3386,7 +4257,14 @@ end
 """
 
 list or watch objects of kind HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscalerList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1HorizontalPodAutoscalerList
 """
 function listExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscalerList, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -3405,7 +4283,14 @@ end
 """
 
 list or watch objects of kind Ingress
-Returns: V1beta1IngressList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1IngressList
 """
 function listExtensionsV1beta1NamespacedIngress(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1IngressList, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", [])
@@ -3424,7 +4309,14 @@ end
 """
 
 list or watch objects of kind Job
-Returns: V1beta1JobList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1JobList
 """
 function listExtensionsV1beta1NamespacedJob(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1JobList, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs", [])
@@ -3443,7 +4335,14 @@ end
 """
 
 list or watch objects of kind NetworkPolicy
-Returns: V1beta1NetworkPolicyList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1NetworkPolicyList
 """
 function listExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicyList, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", [])
@@ -3462,7 +4361,14 @@ end
 """
 
 list or watch objects of kind ReplicaSet
-Returns: V1beta1ReplicaSetList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1ReplicaSetList
 """
 function listExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", [])
@@ -3481,7 +4387,13 @@ end
 """
 
 list or watch objects of kind NetworkPolicy
-Returns: V1beta1NetworkPolicyList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1NetworkPolicyList
 """
 function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicyList, "/apis/extensions/v1beta1/networkpolicies", [])
@@ -3499,7 +4411,13 @@ end
 """
 
 list or watch objects of kind ReplicaSet
-Returns: V1beta1ReplicaSetList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1ReplicaSetList
 """
 function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSetList, "/apis/extensions/v1beta1/replicasets", [])
@@ -3517,7 +4435,13 @@ end
 """
 
 list or watch objects of kind ThirdPartyResource
-Returns: V1beta1ThirdPartyResourceList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1ThirdPartyResourceList
 """
 function listExtensionsV1beta1ThirdPartyResource(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ThirdPartyResourceList, "/apis/extensions/v1beta1/thirdpartyresources", [])
@@ -3535,7 +4459,14 @@ end
 """
 
 list or watch objects of kind PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudgetList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1PodDisruptionBudgetList
 """
 function listPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudgetList, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets", [])
@@ -3554,7 +4485,13 @@ end
 """
 
 list or watch objects of kind PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudgetList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1PodDisruptionBudgetList
 """
 function listPolicyV1alpha1PodDisruptionBudgetForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudgetList, "/apis/policy/v1alpha1/poddisruptionbudgets", [])
@@ -3572,7 +4509,13 @@ end
 """
 
 list or watch objects of kind ClusterRole
-Returns: V1alpha1ClusterRoleList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1ClusterRoleList
 """
 function listRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
@@ -3590,7 +4533,13 @@ end
 """
 
 list or watch objects of kind ClusterRoleBinding
-Returns: V1alpha1ClusterRoleBindingList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1ClusterRoleBindingList
 """
 function listRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
@@ -3608,7 +4557,14 @@ end
 """
 
 list or watch objects of kind Role
-Returns: V1alpha1RoleList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1RoleList
 """
 function listRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
@@ -3627,7 +4583,14 @@ end
 """
 
 list or watch objects of kind RoleBinding
-Returns: V1alpha1RoleBindingList
+Param: namespace::String (required)
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1RoleBindingList
 """
 function listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
@@ -3646,7 +4609,13 @@ end
 """
 
 list or watch objects of kind RoleBinding
-Returns: V1alpha1RoleBindingList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1RoleBindingList
 """
 function listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/rolebindings", [])
@@ -3664,7 +4633,13 @@ end
 """
 
 list or watch objects of kind Role
-Returns: V1alpha1RoleList
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1alpha1RoleList
 """
 function listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/roles", [])
@@ -3682,7 +4657,13 @@ end
 """
 
 list or watch objects of kind StorageClass
-Returns: V1beta1StorageClassList
+Param: pretty::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: V1beta1StorageClassList
 """
 function listStorageV1beta1StorageClass(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1StorageClassList, "/apis/storage.k8s.io/v1beta1/storageclasses", [])
@@ -3700,7 +4681,8 @@ end
 """
 
 
-Returns: Void
+Param: logpath::String (required)
+Return: Void
 """
 function logFileHandler(_api::DefaultApi, logpath::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", Void, "/logs/{logpath}", [])
@@ -3713,7 +4695,7 @@ end
 """
 
 
-Returns: Void
+Return: Void
 """
 function logFileListHandler(_api::DefaultApi;)
     _ctx = Swagger.Ctx(_api.client, "GET", Void, "/logs/", [])
@@ -3725,9 +4707,13 @@ end
 """
 
 partially update the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
-function patchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3740,9 +4726,13 @@ end
 """
 
 partially update status of the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
-function patchAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3755,9 +4745,13 @@ end
 """
 
 partially update the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
-function patchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3770,9 +4764,13 @@ end
 """
 
 partially update status of the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
-function patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3785,9 +4783,13 @@ end
 """
 
 partially update the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Job
 """
-function patchBatchV1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3800,9 +4802,13 @@ end
 """
 
 partially update status of the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Job
 """
-function patchBatchV1NamespacedJobStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3815,9 +4821,12 @@ end
 """
 
 partially update the specified CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1CertificateSigningRequest
 """
-function patchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3829,9 +4838,12 @@ end
 """
 
 partially update the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function patchCoreV1Namespace(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Namespace, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3843,9 +4855,12 @@ end
 """
 
 partially update status of the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function patchCoreV1NamespaceStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Namespace, "/api/v1/namespaces/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3857,9 +4872,13 @@ end
 """
 
 partially update the specified ConfigMap
-Returns: V1ConfigMap
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ConfigMap
 """
-function patchCoreV1NamespacedConfigMap(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3872,9 +4891,13 @@ end
 """
 
 partially update the specified Endpoints
-Returns: V1Endpoints
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Endpoints
 """
-function patchCoreV1NamespacedEndpoints(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3887,9 +4910,13 @@ end
 """
 
 partially update the specified Event
-Returns: V1Event
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Event
 """
-function patchCoreV1NamespacedEvent(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3902,9 +4929,13 @@ end
 """
 
 partially update the specified LimitRange
-Returns: V1LimitRange
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1LimitRange
 """
-function patchCoreV1NamespacedLimitRange(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3917,9 +4948,13 @@ end
 """
 
 partially update the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3932,9 +4967,13 @@ end
 """
 
 partially update status of the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3947,9 +4986,13 @@ end
 """
 
 partially update the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Pod
 """
-function patchCoreV1NamespacedPod(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3962,9 +5005,13 @@ end
 """
 
 partially update status of the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Pod
 """
-function patchCoreV1NamespacedPodStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3977,9 +5024,13 @@ end
 """
 
 partially update the specified PodTemplate
-Returns: V1PodTemplate
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1PodTemplate
 """
-function patchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -3992,9 +5043,13 @@ end
 """
 
 partially update the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
-function patchCoreV1NamespacedReplicationController(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4007,9 +5062,13 @@ end
 """
 
 partially update status of the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
-function patchCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4022,9 +5081,13 @@ end
 """
 
 partially update the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4037,9 +5100,13 @@ end
 """
 
 partially update status of the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4052,9 +5119,13 @@ end
 """
 
 partially update scale of the specified Scale
-Returns: V1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Scale
 """
-function patchCoreV1NamespacedScaleScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4067,9 +5138,13 @@ end
 """
 
 partially update the specified Secret
-Returns: V1Secret
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Secret
 """
-function patchCoreV1NamespacedSecret(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4082,9 +5157,13 @@ end
 """
 
 partially update the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Service
 """
-function patchCoreV1NamespacedService(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4097,9 +5176,13 @@ end
 """
 
 partially update the specified ServiceAccount
-Returns: V1ServiceAccount
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1ServiceAccount
 """
-function patchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4112,9 +5195,13 @@ end
 """
 
 partially update status of the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Service
 """
-function patchCoreV1NamespacedServiceStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4127,9 +5214,12 @@ end
 """
 
 partially update the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Node
 """
-function patchCoreV1Node(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Node, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4141,9 +5231,12 @@ end
 """
 
 partially update status of the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1Node
 """
-function patchCoreV1NodeStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1Node, "/api/v1/nodes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4155,9 +5248,12 @@ end
 """
 
 partially update the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
-function patchCoreV1PersistentVolume(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4169,9 +5265,12 @@ end
 """
 
 partially update status of the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
-function patchCoreV1PersistentVolumeStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4183,9 +5282,13 @@ end
 """
 
 partially update the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4198,9 +5301,13 @@ end
 """
 
 partially update status of the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4213,9 +5320,13 @@ end
 """
 
 partially update the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4228,9 +5339,13 @@ end
 """
 
 partially update status of the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4243,9 +5358,13 @@ end
 """
 
 partially update scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4258,9 +5377,13 @@ end
 """
 
 partially update the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
-function patchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4273,9 +5396,13 @@ end
 """
 
 partially update status of the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
-function patchExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4288,9 +5415,13 @@ end
 """
 
 partially update the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4303,9 +5434,13 @@ end
 """
 
 partially update status of the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4318,9 +5453,13 @@ end
 """
 
 partially update the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Job
 """
-function patchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4333,9 +5472,13 @@ end
 """
 
 partially update status of the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Job
 """
-function patchExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4348,9 +5491,13 @@ end
 """
 
 partially update the specified NetworkPolicy
-Returns: V1beta1NetworkPolicy
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1NetworkPolicy
 """
-function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4363,9 +5510,13 @@ end
 """
 
 partially update the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4378,9 +5529,13 @@ end
 """
 
 partially update status of the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4393,9 +5548,13 @@ end
 """
 
 partially update scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4408,9 +5567,13 @@ end
 """
 
 partially update scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4423,9 +5586,12 @@ end
 """
 
 partially update the specified ThirdPartyResource
-Returns: V1beta1ThirdPartyResource
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1ThirdPartyResource
 """
-function patchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4437,9 +5603,13 @@ end
 """
 
 partially update the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
-function patchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4452,9 +5622,13 @@ end
 """
 
 partially update status of the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
-function patchPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4467,9 +5641,12 @@ end
 """
 
 partially update the specified ClusterRole
-Returns: V1alpha1ClusterRole
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1ClusterRole
 """
-function patchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4481,9 +5658,12 @@ end
 """
 
 partially update the specified ClusterRoleBinding
-Returns: V1alpha1ClusterRoleBinding
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1ClusterRoleBinding
 """
-function patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4495,9 +5675,13 @@ end
 """
 
 partially update the specified Role
-Returns: V1alpha1Role
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1Role
 """
-function patchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4510,9 +5694,13 @@ end
 """
 
 partially update the specified RoleBinding
-Returns: V1alpha1RoleBinding
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1alpha1RoleBinding
 """
-function patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -4525,9 +5713,12 @@ end
 """
 
 partially update the specified StorageClass
-Returns: V1beta1StorageClass
+Param: name::String (required)
+Param: body::UnversionedPatch (required)
+Param: pretty::String
+Return: V1beta1StorageClass
 """
-function patchStorageV1beta1StorageClass(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},UnversionedPatch } ; pretty=nothing,)
+function patchStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PATCH", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4539,7 +5730,9 @@ end
 """
 
 proxy DELETE requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1DELETENamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4553,7 +5746,10 @@ end
 """
 
 proxy DELETE requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1DELETENamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4568,7 +5764,9 @@ end
 """
 
 proxy DELETE requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1DELETENamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -4582,7 +5780,10 @@ end
 """
 
 proxy DELETE requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1DELETENamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -4597,7 +5798,8 @@ end
 """
 
 proxy DELETE requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1DELETENode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}", [])
@@ -4610,7 +5812,9 @@ end
 """
 
 proxy DELETE requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1DELETENodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -4624,7 +5828,9 @@ end
 """
 
 proxy GET requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1GETNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4638,7 +5844,10 @@ end
 """
 
 proxy GET requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1GETNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4653,7 +5862,9 @@ end
 """
 
 proxy GET requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1GETNamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -4667,7 +5878,10 @@ end
 """
 
 proxy GET requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1GETNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -4682,7 +5896,8 @@ end
 """
 
 proxy GET requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1GETNode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}", [])
@@ -4695,7 +5910,9 @@ end
 """
 
 proxy GET requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1GETNodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -4709,7 +5926,9 @@ end
 """
 
 proxy HEAD requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1HEADNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4723,7 +5942,10 @@ end
 """
 
 proxy HEAD requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1HEADNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4738,7 +5960,9 @@ end
 """
 
 proxy HEAD requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1HEADNamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -4752,7 +5976,10 @@ end
 """
 
 proxy HEAD requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1HEADNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -4767,7 +5994,8 @@ end
 """
 
 proxy HEAD requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1HEADNode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}", [])
@@ -4780,7 +6008,9 @@ end
 """
 
 proxy HEAD requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1HEADNodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -4794,7 +6024,9 @@ end
 """
 
 proxy OPTIONS requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4808,7 +6040,10 @@ end
 """
 
 proxy OPTIONS requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4823,7 +6058,9 @@ end
 """
 
 proxy OPTIONS requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -4837,7 +6074,10 @@ end
 """
 
 proxy OPTIONS requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -4852,7 +6092,8 @@ end
 """
 
 proxy OPTIONS requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}", [])
@@ -4865,7 +6106,9 @@ end
 """
 
 proxy OPTIONS requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1OPTIONSNodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -4879,7 +6122,9 @@ end
 """
 
 proxy POST requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1POSTNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4893,7 +6138,10 @@ end
 """
 
 proxy POST requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1POSTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4908,7 +6156,9 @@ end
 """
 
 proxy POST requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1POSTNamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -4922,7 +6172,10 @@ end
 """
 
 proxy POST requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1POSTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -4937,7 +6190,8 @@ end
 """
 
 proxy POST requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1POSTNode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}", [])
@@ -4950,7 +6204,9 @@ end
 """
 
 proxy POST requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1POSTNodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -4964,7 +6220,9 @@ end
 """
 
 proxy PUT requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1PUTNamespacedPod(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", [])
@@ -4978,7 +6236,10 @@ end
 """
 
 proxy PUT requests to Pod
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1PUTNamespacedPodWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", [])
@@ -4993,7 +6254,9 @@ end
 """
 
 proxy PUT requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Return: String
 """
 function proxyCoreV1PUTNamespacedService(_api::DefaultApi, name::String, namespace::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", [])
@@ -5007,7 +6270,10 @@ end
 """
 
 proxy PUT requests to Service
-Returns: String
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1PUTNamespacedServiceWithPath(_api::DefaultApi, name::String, namespace::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", [])
@@ -5022,7 +6288,8 @@ end
 """
 
 proxy PUT requests to Node
-Returns: String
+Param: name::String (required)
+Return: String
 """
 function proxyCoreV1PUTNode(_api::DefaultApi, name::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}", [])
@@ -5035,7 +6302,9 @@ end
 """
 
 proxy PUT requests to Node
-Returns: String
+Param: name::String (required)
+Param: path::String (required)
+Return: String
 """
 function proxyCoreV1PUTNodeWithPath(_api::DefaultApi, name::String, path::String;)
     _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}/{path}", [])
@@ -5049,7 +6318,12 @@ end
 """
 
 read the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1alpha1PetSet
 """
 function readAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [])
@@ -5066,7 +6340,10 @@ end
 """
 
 read status of the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
 function readAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [])
@@ -5081,7 +6358,12 @@ end
 """
 
 read the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1HorizontalPodAutoscaler
 """
 function readAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
@@ -5098,7 +6380,10 @@ end
 """
 
 read status of the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
 function readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [])
@@ -5113,7 +6398,12 @@ end
 """
 
 read the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Job
 """
 function readBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [])
@@ -5130,7 +6420,10 @@ end
 """
 
 read status of the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Job
 """
 function readBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [])
@@ -5145,7 +6438,11 @@ end
 """
 
 read the specified CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1alpha1CertificateSigningRequest
 """
 function readCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [])
@@ -5161,7 +6458,9 @@ end
 """
 
 read the specified ComponentStatus
-Returns: V1ComponentStatus
+Param: name::String (required)
+Param: pretty::String
+Return: V1ComponentStatus
 """
 function readCoreV1ComponentStatus(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ComponentStatus, "/api/v1/componentstatuses/{name}", [])
@@ -5175,7 +6474,11 @@ end
 """
 
 read the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Namespace
 """
 function readCoreV1Namespace(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Namespace, "/api/v1/namespaces/{name}", [])
@@ -5191,7 +6494,9 @@ end
 """
 
 read status of the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: pretty::String
+Return: V1Namespace
 """
 function readCoreV1NamespaceStatus(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Namespace, "/api/v1/namespaces/{name}/status", [])
@@ -5205,7 +6510,12 @@ end
 """
 
 read the specified ConfigMap
-Returns: V1ConfigMap
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1ConfigMap
 """
 function readCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [])
@@ -5222,7 +6532,12 @@ end
 """
 
 read the specified Endpoints
-Returns: V1Endpoints
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Endpoints
 """
 function readCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [])
@@ -5239,7 +6554,12 @@ end
 """
 
 read the specified Event
-Returns: V1Event
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Event
 """
 function readCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [])
@@ -5256,7 +6576,12 @@ end
 """
 
 read the specified LimitRange
-Returns: V1LimitRange
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1LimitRange
 """
 function readCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [])
@@ -5273,7 +6598,12 @@ end
 """
 
 read the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1PersistentVolumeClaim
 """
 function readCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [])
@@ -5290,7 +6620,10 @@ end
 """
 
 read status of the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
 function readCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [])
@@ -5305,7 +6638,12 @@ end
 """
 
 read the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Pod
 """
 function readCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [])
@@ -5322,7 +6660,18 @@ end
 """
 
 read log of the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: container::String
+Param: follow::Bool
+Param: limitBytes::Int32
+Param: pretty::String
+Param: previous::Bool
+Param: sinceSeconds::Int32
+Param: sinceTime::String
+Param: tailLines::Int32
+Param: timestamps::Bool
+Return: V1Pod
 """
 function readCoreV1NamespacedPodLog(_api::DefaultApi, name::String, namespace::String; container=nothing, follow=nothing, limitBytes=nothing, pretty=nothing, previous=nothing, sinceSeconds=nothing, sinceTime=nothing, tailLines=nothing, timestamps=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/log", [])
@@ -5345,7 +6694,10 @@ end
 """
 
 read status of the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Pod
 """
 function readCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [])
@@ -5360,7 +6712,12 @@ end
 """
 
 read the specified PodTemplate
-Returns: V1PodTemplate
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1PodTemplate
 """
 function readCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [])
@@ -5377,7 +6734,12 @@ end
 """
 
 read the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1ReplicationController
 """
 function readCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [])
@@ -5394,7 +6756,10 @@ end
 """
 
 read status of the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
 function readCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [])
@@ -5409,7 +6774,12 @@ end
 """
 
 read the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1ResourceQuota
 """
 function readCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [])
@@ -5426,7 +6796,10 @@ end
 """
 
 read status of the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
 function readCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [])
@@ -5441,7 +6814,10 @@ end
 """
 
 read scale of the specified Scale
-Returns: V1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Scale
 """
 function readCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [])
@@ -5456,7 +6832,12 @@ end
 """
 
 read the specified Secret
-Returns: V1Secret
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Secret
 """
 function readCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [])
@@ -5473,7 +6854,12 @@ end
 """
 
 read the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Service
 """
 function readCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [])
@@ -5490,7 +6876,12 @@ end
 """
 
 read the specified ServiceAccount
-Returns: V1ServiceAccount
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1ServiceAccount
 """
 function readCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [])
@@ -5507,7 +6898,10 @@ end
 """
 
 read status of the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1Service
 """
 function readCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [])
@@ -5522,7 +6916,11 @@ end
 """
 
 read the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1Node
 """
 function readCoreV1Node(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Node, "/api/v1/nodes/{name}", [])
@@ -5538,7 +6936,9 @@ end
 """
 
 read status of the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: pretty::String
+Return: V1Node
 """
 function readCoreV1NodeStatus(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1Node, "/api/v1/nodes/{name}/status", [])
@@ -5552,7 +6952,11 @@ end
 """
 
 read the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1PersistentVolume
 """
 function readCoreV1PersistentVolume(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [])
@@ -5568,7 +6972,9 @@ end
 """
 
 read status of the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
 function readCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [])
@@ -5582,7 +6988,12 @@ end
 """
 
 read the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1DaemonSet
 """
 function readExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [])
@@ -5599,7 +7010,10 @@ end
 """
 
 read status of the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
 function readExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [])
@@ -5614,7 +7028,12 @@ end
 """
 
 read the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1Deployment
 """
 function readExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [])
@@ -5631,7 +7050,10 @@ end
 """
 
 read status of the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
 function readExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [])
@@ -5646,7 +7068,10 @@ end
 """
 
 read scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
 function readExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [])
@@ -5661,7 +7086,12 @@ end
 """
 
 read the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1HorizontalPodAutoscaler
 """
 function readExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
@@ -5678,7 +7108,10 @@ end
 """
 
 read status of the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
 function readExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [])
@@ -5693,7 +7126,12 @@ end
 """
 
 read the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1Ingress
 """
 function readExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [])
@@ -5710,7 +7148,10 @@ end
 """
 
 read status of the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
 function readExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [])
@@ -5725,7 +7166,12 @@ end
 """
 
 read the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1Job
 """
 function readExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [])
@@ -5742,7 +7188,10 @@ end
 """
 
 read status of the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Job
 """
 function readExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [])
@@ -5757,7 +7206,12 @@ end
 """
 
 read the specified NetworkPolicy
-Returns: V1beta1NetworkPolicy
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1NetworkPolicy
 """
 function readExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [])
@@ -5774,7 +7228,12 @@ end
 """
 
 read the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1ReplicaSet
 """
 function readExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [])
@@ -5791,7 +7250,10 @@ end
 """
 
 read status of the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
 function readExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [])
@@ -5806,7 +7268,10 @@ end
 """
 
 read scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
 function readExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [])
@@ -5821,7 +7286,10 @@ end
 """
 
 read scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
 function readExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [])
@@ -5836,7 +7304,11 @@ end
 """
 
 read the specified ThirdPartyResource
-Returns: V1beta1ThirdPartyResource
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1ThirdPartyResource
 """
 function readExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [])
@@ -5852,7 +7324,12 @@ end
 """
 
 read the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1alpha1PodDisruptionBudget
 """
 function readPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [])
@@ -5869,7 +7346,10 @@ end
 """
 
 read status of the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
 function readPolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [])
@@ -5884,7 +7364,9 @@ end
 """
 
 read the specified ClusterRole
-Returns: V1alpha1ClusterRole
+Param: name::String (required)
+Param: pretty::String
+Return: V1alpha1ClusterRole
 """
 function readRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [])
@@ -5898,7 +7380,9 @@ end
 """
 
 read the specified ClusterRoleBinding
-Returns: V1alpha1ClusterRoleBinding
+Param: name::String (required)
+Param: pretty::String
+Return: V1alpha1ClusterRoleBinding
 """
 function readRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [])
@@ -5912,7 +7396,10 @@ end
 """
 
 read the specified Role
-Returns: V1alpha1Role
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1alpha1Role
 """
 function readRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [])
@@ -5927,7 +7414,10 @@ end
 """
 
 read the specified RoleBinding
-Returns: V1alpha1RoleBinding
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: V1alpha1RoleBinding
 """
 function readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [])
@@ -5942,7 +7432,11 @@ end
 """
 
 read the specified StorageClass
-Returns: V1beta1StorageClass
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: V1beta1StorageClass
 """
 function readStorageV1beta1StorageClass(_api::DefaultApi, name::String; pretty=nothing, exact=nothing, _export=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [])
@@ -5958,9 +7452,13 @@ end
 """
 
 replace the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1PetSet (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
-function replaceAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PetSet } ; pretty=nothing,)
+function replaceAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -5973,9 +7471,13 @@ end
 """
 
 replace status of the specified PetSet
-Returns: V1alpha1PetSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1PetSet (required)
+Param: pretty::String
+Return: V1alpha1PetSet
 """
-function replaceAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PetSet } ; pretty=nothing,)
+function replaceAppsV1alpha1NamespacedPetSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PetSet, "/apis/apps/v1alpha1/namespaces/{namespace}/petsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -5988,9 +7490,13 @@ end
 """
 
 replace the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1HorizontalPodAutoscaler } ; pretty=nothing,)
+function replaceAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6003,9 +7509,13 @@ end
 """
 
 replace status of the specified HorizontalPodAutoscaler
-Returns: V1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1HorizontalPodAutoscaler } ; pretty=nothing,)
+function replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1HorizontalPodAutoscaler, "/apis/autoscaling/v1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6018,9 +7528,13 @@ end
 """
 
 replace the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Job (required)
+Param: pretty::String
+Return: V1Job
 """
-function replaceBatchV1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Job } ; pretty=nothing,)
+function replaceBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6033,9 +7547,13 @@ end
 """
 
 replace status of the specified Job
-Returns: V1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Job (required)
+Param: pretty::String
+Return: V1Job
 """
-function replaceBatchV1NamespacedJobStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Job } ; pretty=nothing,)
+function replaceBatchV1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Job, "/apis/batch/v1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6048,9 +7566,12 @@ end
 """
 
 replace the specified CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: name::String (required)
+Param: body::V1alpha1CertificateSigningRequest (required)
+Param: pretty::String
+Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1CertificateSigningRequest } ; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6062,9 +7583,12 @@ end
 """
 
 replace approval of the specified CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: body::V1alpha1CertificateSigningRequest (required)
+Param: name::String (required)
+Param: pretty::String
+Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequestApproval(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1CertificateSigningRequest } , name::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequestApproval(_api::DefaultApi, body, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}/approval", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6076,9 +7600,12 @@ end
 """
 
 replace status of the specified CertificateSigningRequest
-Returns: V1alpha1CertificateSigningRequest
+Param: body::V1alpha1CertificateSigningRequest (required)
+Param: name::String (required)
+Param: pretty::String
+Return: V1alpha1CertificateSigningRequest
 """
-function replaceCertificatesV1alpha1CertificateSigningRequestStatus(_api::DefaultApi, body::Union{ Dict{String,Any},V1alpha1CertificateSigningRequest } , name::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function replaceCertificatesV1alpha1CertificateSigningRequestStatus(_api::DefaultApi, body, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1CertificateSigningRequest, "/apis/certificates.k8s.io/v1alpha1/certificatesigningrequests/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6090,9 +7617,12 @@ end
 """
 
 replace the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: body::V1Namespace (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function replaceCoreV1Namespace(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Namespace } ; pretty=nothing,)
+function replaceCoreV1Namespace(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6104,9 +7634,12 @@ end
 """
 
 replace finalize of the specified Namespace
-Returns: V1Namespace
+Param: body::V1Namespace (required)
+Param: name::String (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function replaceCoreV1NamespaceFinalize(_api::DefaultApi, body::Union{ Dict{String,Any},V1Namespace } , name::Union{ Dict{String,Any},String } ; pretty=nothing,)
+function replaceCoreV1NamespaceFinalize(_api::DefaultApi, body, name::String; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}/finalize", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6118,9 +7651,12 @@ end
 """
 
 replace status of the specified Namespace
-Returns: V1Namespace
+Param: name::String (required)
+Param: body::V1Namespace (required)
+Param: pretty::String
+Return: V1Namespace
 """
-function replaceCoreV1NamespaceStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Namespace } ; pretty=nothing,)
+function replaceCoreV1NamespaceStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Namespace, "/api/v1/namespaces/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6132,9 +7668,13 @@ end
 """
 
 replace the specified ConfigMap
-Returns: V1ConfigMap
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ConfigMap (required)
+Param: pretty::String
+Return: V1ConfigMap
 """
-function replaceCoreV1NamespacedConfigMap(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ConfigMap } ; pretty=nothing,)
+function replaceCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6147,9 +7687,13 @@ end
 """
 
 replace the specified Endpoints
-Returns: V1Endpoints
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Endpoints (required)
+Param: pretty::String
+Return: V1Endpoints
 """
-function replaceCoreV1NamespacedEndpoints(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Endpoints } ; pretty=nothing,)
+function replaceCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6162,9 +7706,13 @@ end
 """
 
 replace the specified Event
-Returns: V1Event
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Event (required)
+Param: pretty::String
+Return: V1Event
 """
-function replaceCoreV1NamespacedEvent(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Event } ; pretty=nothing,)
+function replaceCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Event, "/api/v1/namespaces/{namespace}/events/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6177,9 +7725,13 @@ end
 """
 
 replace the specified LimitRange
-Returns: V1LimitRange
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1LimitRange (required)
+Param: pretty::String
+Return: V1LimitRange
 """
-function replaceCoreV1NamespacedLimitRange(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1LimitRange } ; pretty=nothing,)
+function replaceCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6192,9 +7744,13 @@ end
 """
 
 replace the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1PersistentVolumeClaim (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PersistentVolumeClaim } ; pretty=nothing,)
+function replaceCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6207,9 +7763,13 @@ end
 """
 
 replace status of the specified PersistentVolumeClaim
-Returns: V1PersistentVolumeClaim
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1PersistentVolumeClaim (required)
+Param: pretty::String
+Return: V1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PersistentVolumeClaim } ; pretty=nothing,)
+function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6222,9 +7782,13 @@ end
 """
 
 replace the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Pod (required)
+Param: pretty::String
+Return: V1Pod
 """
-function replaceCoreV1NamespacedPod(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Pod } ; pretty=nothing,)
+function replaceCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6237,9 +7801,13 @@ end
 """
 
 replace status of the specified Pod
-Returns: V1Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Pod (required)
+Param: pretty::String
+Return: V1Pod
 """
-function replaceCoreV1NamespacedPodStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Pod } ; pretty=nothing,)
+function replaceCoreV1NamespacedPodStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6252,9 +7820,13 @@ end
 """
 
 replace the specified PodTemplate
-Returns: V1PodTemplate
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1PodTemplate (required)
+Param: pretty::String
+Return: V1PodTemplate
 """
-function replaceCoreV1NamespacedPodTemplate(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PodTemplate } ; pretty=nothing,)
+function replaceCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6267,9 +7839,13 @@ end
 """
 
 replace the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ReplicationController (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationController(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ReplicationController } ; pretty=nothing,)
+function replaceCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6282,9 +7858,13 @@ end
 """
 
 replace status of the specified ReplicationController
-Returns: V1ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ReplicationController (required)
+Param: pretty::String
+Return: V1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ReplicationController } ; pretty=nothing,)
+function replaceCoreV1NamespacedReplicationControllerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6297,9 +7877,13 @@ end
 """
 
 replace the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ResourceQuota (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuota(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ResourceQuota } ; pretty=nothing,)
+function replaceCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6312,9 +7896,13 @@ end
 """
 
 replace status of the specified ResourceQuota
-Returns: V1ResourceQuota
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ResourceQuota (required)
+Param: pretty::String
+Return: V1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ResourceQuota } ; pretty=nothing,)
+function replaceCoreV1NamespacedResourceQuotaStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6327,9 +7915,13 @@ end
 """
 
 replace scale of the specified Scale
-Returns: V1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Scale (required)
+Param: pretty::String
+Return: V1Scale
 """
-function replaceCoreV1NamespacedScaleScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Scale } ; pretty=nothing,)
+function replaceCoreV1NamespacedScaleScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6342,9 +7934,13 @@ end
 """
 
 replace the specified Secret
-Returns: V1Secret
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Secret (required)
+Param: pretty::String
+Return: V1Secret
 """
-function replaceCoreV1NamespacedSecret(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Secret } ; pretty=nothing,)
+function replaceCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6357,9 +7953,13 @@ end
 """
 
 replace the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Service (required)
+Param: pretty::String
+Return: V1Service
 """
-function replaceCoreV1NamespacedService(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Service } ; pretty=nothing,)
+function replaceCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Service, "/api/v1/namespaces/{namespace}/services/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6372,9 +7972,13 @@ end
 """
 
 replace the specified ServiceAccount
-Returns: V1ServiceAccount
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1ServiceAccount (required)
+Param: pretty::String
+Return: V1ServiceAccount
 """
-function replaceCoreV1NamespacedServiceAccount(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1ServiceAccount } ; pretty=nothing,)
+function replaceCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6387,9 +7991,13 @@ end
 """
 
 replace status of the specified Service
-Returns: V1Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1Service (required)
+Param: pretty::String
+Return: V1Service
 """
-function replaceCoreV1NamespacedServiceStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Service } ; pretty=nothing,)
+function replaceCoreV1NamespacedServiceStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6402,9 +8010,12 @@ end
 """
 
 replace the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: body::V1Node (required)
+Param: pretty::String
+Return: V1Node
 """
-function replaceCoreV1Node(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Node } ; pretty=nothing,)
+function replaceCoreV1Node(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Node, "/api/v1/nodes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6416,9 +8027,12 @@ end
 """
 
 replace status of the specified Node
-Returns: V1Node
+Param: name::String (required)
+Param: body::V1Node (required)
+Param: pretty::String
+Return: V1Node
 """
-function replaceCoreV1NodeStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1Node } ; pretty=nothing,)
+function replaceCoreV1NodeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1Node, "/api/v1/nodes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6430,9 +8044,12 @@ end
 """
 
 replace the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: body::V1PersistentVolume (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
-function replaceCoreV1PersistentVolume(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PersistentVolume } ; pretty=nothing,)
+function replaceCoreV1PersistentVolume(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolume, "/api/v1/persistentvolumes/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6444,9 +8061,12 @@ end
 """
 
 replace status of the specified PersistentVolume
-Returns: V1PersistentVolume
+Param: name::String (required)
+Param: body::V1PersistentVolume (required)
+Param: pretty::String
+Return: V1PersistentVolume
 """
-function replaceCoreV1PersistentVolumeStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1PersistentVolume } ; pretty=nothing,)
+function replaceCoreV1PersistentVolumeStatus(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6458,9 +8078,13 @@ end
 """
 
 replace the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1DaemonSet (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1DaemonSet } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6473,9 +8097,13 @@ end
 """
 
 replace status of the specified DaemonSet
-Returns: V1beta1DaemonSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1DaemonSet (required)
+Param: pretty::String
+Return: V1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1DaemonSet } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6488,9 +8116,13 @@ end
 """
 
 replace the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Deployment (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Deployment } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6503,9 +8135,13 @@ end
 """
 
 replace status of the specified Deployment
-Returns: V1beta1Deployment
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Deployment (required)
+Param: pretty::String
+Return: V1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Deployment } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6518,9 +8154,13 @@ end
 """
 
 replace scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Scale (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Scale } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedDeploymentsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6533,9 +8173,13 @@ end
 """
 
 replace the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
-function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1HorizontalPodAutoscaler } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6548,9 +8192,13 @@ end
 """
 
 replace status of the specified HorizontalPodAutoscaler
-Returns: V1beta1HorizontalPodAutoscaler
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1HorizontalPodAutoscaler (required)
+Param: pretty::String
+Return: V1beta1HorizontalPodAutoscaler
 """
-function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1HorizontalPodAutoscaler } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedHorizontalPodAutoscalerStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1HorizontalPodAutoscaler, "/apis/extensions/v1beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6563,9 +8211,13 @@ end
 """
 
 replace the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Ingress (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Ingress } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6578,9 +8230,13 @@ end
 """
 
 replace status of the specified Ingress
-Returns: V1beta1Ingress
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Ingress (required)
+Param: pretty::String
+Return: V1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Ingress } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedIngressStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6593,9 +8249,13 @@ end
 """
 
 replace the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Job (required)
+Param: pretty::String
+Return: V1beta1Job
 """
-function replaceExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Job } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6608,9 +8268,13 @@ end
 """
 
 replace status of the specified Job
-Returns: V1beta1Job
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Job (required)
+Param: pretty::String
+Return: V1beta1Job
 """
-function replaceExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Job } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedJobStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Job, "/apis/extensions/v1beta1/namespaces/{namespace}/jobs/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6623,9 +8287,13 @@ end
 """
 
 replace the specified NetworkPolicy
-Returns: V1beta1NetworkPolicy
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1NetworkPolicy (required)
+Param: pretty::String
+Return: V1beta1NetworkPolicy
 """
-function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1NetworkPolicy } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6638,9 +8306,13 @@ end
 """
 
 replace the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1ReplicaSet (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1ReplicaSet } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6653,9 +8325,13 @@ end
 """
 
 replace status of the specified ReplicaSet
-Returns: V1beta1ReplicaSet
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1ReplicaSet (required)
+Param: pretty::String
+Return: V1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1ReplicaSet } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6668,9 +8344,13 @@ end
 """
 
 replace scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Scale (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Scale } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicasetsScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6683,9 +8363,13 @@ end
 """
 
 replace scale of the specified Scale
-Returns: V1beta1Scale
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1beta1Scale (required)
+Param: pretty::String
+Return: V1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1Scale } ; pretty=nothing,)
+function replaceExtensionsV1beta1NamespacedReplicationcontrollersScale(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6698,9 +8382,12 @@ end
 """
 
 replace the specified ThirdPartyResource
-Returns: V1beta1ThirdPartyResource
+Param: name::String (required)
+Param: body::V1beta1ThirdPartyResource (required)
+Param: pretty::String
+Return: V1beta1ThirdPartyResource
 """
-function replaceExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1ThirdPartyResource } ; pretty=nothing,)
+function replaceExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1ThirdPartyResource, "/apis/extensions/v1beta1/thirdpartyresources/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6712,9 +8399,13 @@ end
 """
 
 replace the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1PodDisruptionBudget (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
-function replacePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PodDisruptionBudget } ; pretty=nothing,)
+function replacePolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6727,9 +8418,13 @@ end
 """
 
 replace status of the specified PodDisruptionBudget
-Returns: V1alpha1PodDisruptionBudget
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1PodDisruptionBudget (required)
+Param: pretty::String
+Return: V1alpha1PodDisruptionBudget
 """
-function replacePolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1PodDisruptionBudget } ; pretty=nothing,)
+function replacePolicyV1alpha1NamespacedPodDisruptionBudgetStatus(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1PodDisruptionBudget, "/apis/policy/v1alpha1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6742,9 +8437,12 @@ end
 """
 
 replace the specified ClusterRole
-Returns: V1alpha1ClusterRole
+Param: name::String (required)
+Param: body::V1alpha1ClusterRole (required)
+Param: pretty::String
+Return: V1alpha1ClusterRole
 """
-function replaceRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1ClusterRole } ; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6756,9 +8454,12 @@ end
 """
 
 replace the specified ClusterRoleBinding
-Returns: V1alpha1ClusterRoleBinding
+Param: name::String (required)
+Param: body::V1alpha1ClusterRoleBinding (required)
+Param: pretty::String
+Return: V1alpha1ClusterRoleBinding
 """
-function replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1ClusterRoleBinding } ; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6770,9 +8471,13 @@ end
 """
 
 replace the specified Role
-Returns: V1alpha1Role
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1Role (required)
+Param: pretty::String
+Return: V1alpha1Role
 """
-function replaceRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1Role } ; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6785,9 +8490,13 @@ end
 """
 
 replace the specified RoleBinding
-Returns: V1alpha1RoleBinding
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::V1alpha1RoleBinding (required)
+Param: pretty::String
+Return: V1alpha1RoleBinding
 """
-function replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::Union{ Dict{String,Any},String } , namespace::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1alpha1RoleBinding } ; pretty=nothing,)
+function replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -6800,9 +8509,12 @@ end
 """
 
 replace the specified StorageClass
-Returns: V1beta1StorageClass
+Param: name::String (required)
+Param: body::V1beta1StorageClass (required)
+Param: pretty::String
+Return: V1beta1StorageClass
 """
-function replaceStorageV1beta1StorageClass(_api::DefaultApi, name::Union{ Dict{String,Any},String } , body::Union{ Dict{String,Any},V1beta1StorageClass } ; pretty=nothing,)
+function replaceStorageV1beta1StorageClass(_api::DefaultApi, name::String, body; pretty=nothing,)
     _ctx = Swagger.Ctx(_api.client, "PUT", V1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6814,7 +8526,15 @@ end
 """
 
 watch changes to an object of kind PetSet
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAppsV1alpha1NamespacedPetSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/namespaces/{namespace}/petsets/{name}", [])
@@ -6834,7 +8554,14 @@ end
 """
 
 watch individual changes to a list of PetSet
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAppsV1alpha1NamespacedPetSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/namespaces/{namespace}/petsets", [])
@@ -6853,7 +8580,13 @@ end
 """
 
 watch individual changes to a list of PetSet
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAppsV1alpha1PetSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/apps/v1alpha1/watch/petsets", [])
@@ -6871,7 +8604,13 @@ end
 """
 
 watch individual changes to a list of HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/horizontalpodautoscalers", [])
@@ -6889,7 +8628,15 @@ end
 """
 
 watch changes to an object of kind HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAutoscalingV1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
@@ -6909,7 +8656,14 @@ end
 """
 
 watch individual changes to a list of HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchAutoscalingV1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/autoscaling/v1/watch/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -6928,7 +8682,13 @@ end
 """
 
 watch individual changes to a list of Job
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchBatchV1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/jobs", [])
@@ -6946,7 +8706,15 @@ end
 """
 
 watch changes to an object of kind Job
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchBatchV1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/namespaces/{namespace}/jobs/{name}", [])
@@ -6966,7 +8734,14 @@ end
 """
 
 watch individual changes to a list of Job
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchBatchV1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/batch/v1/watch/namespaces/{namespace}/jobs", [])
@@ -6985,7 +8760,14 @@ end
 """
 
 watch changes to an object of kind CertificateSigningRequest
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCertificatesV1alpha1CertificateSigningRequest(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/certificates.k8s.io/v1alpha1/watch/certificatesigningrequests/{name}", [])
@@ -7004,7 +8786,13 @@ end
 """
 
 watch individual changes to a list of CertificateSigningRequest
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCertificatesV1alpha1CertificateSigningRequestList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/certificates.k8s.io/v1alpha1/watch/certificatesigningrequests", [])
@@ -7022,7 +8810,13 @@ end
 """
 
 watch individual changes to a list of ConfigMap
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1ConfigMapListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/configmaps", [])
@@ -7040,7 +8834,13 @@ end
 """
 
 watch individual changes to a list of Endpoints
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1EndpointsListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/endpoints", [])
@@ -7058,7 +8858,13 @@ end
 """
 
 watch individual changes to a list of Event
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1EventListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/events", [])
@@ -7076,7 +8882,13 @@ end
 """
 
 watch individual changes to a list of LimitRange
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1LimitRangeListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/limitranges", [])
@@ -7094,7 +8906,14 @@ end
 """
 
 watch changes to an object of kind Namespace
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1Namespace(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{name}", [])
@@ -7113,7 +8932,13 @@ end
 """
 
 watch individual changes to a list of Namespace
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespaceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces", [])
@@ -7131,7 +8956,15 @@ end
 """
 
 watch changes to an object of kind ConfigMap
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedConfigMap(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/configmaps/{name}", [])
@@ -7151,7 +8984,14 @@ end
 """
 
 watch individual changes to a list of ConfigMap
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedConfigMapList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/configmaps", [])
@@ -7170,7 +9010,15 @@ end
 """
 
 watch changes to an object of kind Endpoints
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedEndpoints(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/endpoints/{name}", [])
@@ -7190,7 +9038,14 @@ end
 """
 
 watch individual changes to a list of Endpoints
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedEndpointsList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/endpoints", [])
@@ -7209,7 +9064,15 @@ end
 """
 
 watch changes to an object of kind Event
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedEvent(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/events/{name}", [])
@@ -7229,7 +9092,14 @@ end
 """
 
 watch individual changes to a list of Event
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedEventList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/events", [])
@@ -7248,7 +9118,15 @@ end
 """
 
 watch changes to an object of kind LimitRange
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedLimitRange(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/limitranges/{name}", [])
@@ -7268,7 +9146,14 @@ end
 """
 
 watch individual changes to a list of LimitRange
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedLimitRangeList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/limitranges", [])
@@ -7287,7 +9172,15 @@ end
 """
 
 watch changes to an object of kind PersistentVolumeClaim
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPersistentVolumeClaim(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}", [])
@@ -7307,7 +9200,14 @@ end
 """
 
 watch individual changes to a list of PersistentVolumeClaim
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPersistentVolumeClaimList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims", [])
@@ -7326,7 +9226,15 @@ end
 """
 
 watch changes to an object of kind Pod
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPod(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/pods/{name}", [])
@@ -7346,7 +9254,14 @@ end
 """
 
 watch individual changes to a list of Pod
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPodList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/pods", [])
@@ -7365,7 +9280,15 @@ end
 """
 
 watch changes to an object of kind PodTemplate
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPodTemplate(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}", [])
@@ -7385,7 +9308,14 @@ end
 """
 
 watch individual changes to a list of PodTemplate
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedPodTemplateList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates", [])
@@ -7404,7 +9334,15 @@ end
 """
 
 watch changes to an object of kind ReplicationController
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedReplicationController(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}", [])
@@ -7424,7 +9362,14 @@ end
 """
 
 watch individual changes to a list of ReplicationController
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedReplicationControllerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers", [])
@@ -7443,7 +9388,15 @@ end
 """
 
 watch changes to an object of kind ResourceQuota
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedResourceQuota(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}", [])
@@ -7463,7 +9416,14 @@ end
 """
 
 watch individual changes to a list of ResourceQuota
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedResourceQuotaList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas", [])
@@ -7482,7 +9442,15 @@ end
 """
 
 watch changes to an object of kind Secret
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedSecret(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/secrets/{name}", [])
@@ -7502,7 +9470,14 @@ end
 """
 
 watch individual changes to a list of Secret
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedSecretList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/secrets", [])
@@ -7521,7 +9496,15 @@ end
 """
 
 watch changes to an object of kind Service
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedService(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/services/{name}", [])
@@ -7541,7 +9524,15 @@ end
 """
 
 watch changes to an object of kind ServiceAccount
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedServiceAccount(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}", [])
@@ -7561,7 +9552,14 @@ end
 """
 
 watch individual changes to a list of ServiceAccount
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedServiceAccountList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts", [])
@@ -7580,7 +9578,14 @@ end
 """
 
 watch individual changes to a list of Service
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NamespacedServiceList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/namespaces/{namespace}/services", [])
@@ -7599,7 +9604,14 @@ end
 """
 
 watch changes to an object of kind Node
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1Node(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/nodes/{name}", [])
@@ -7618,7 +9630,13 @@ end
 """
 
 watch individual changes to a list of Node
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1NodeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/nodes", [])
@@ -7636,7 +9654,14 @@ end
 """
 
 watch changes to an object of kind PersistentVolume
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1PersistentVolume(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumes/{name}", [])
@@ -7655,7 +9680,13 @@ end
 """
 
 watch individual changes to a list of PersistentVolumeClaim
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumeclaims", [])
@@ -7673,7 +9704,13 @@ end
 """
 
 watch individual changes to a list of PersistentVolume
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1PersistentVolumeList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/persistentvolumes", [])
@@ -7691,7 +9728,13 @@ end
 """
 
 watch individual changes to a list of Pod
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1PodListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/pods", [])
@@ -7709,7 +9752,13 @@ end
 """
 
 watch individual changes to a list of PodTemplate
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1PodTemplateListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/podtemplates", [])
@@ -7727,7 +9776,13 @@ end
 """
 
 watch individual changes to a list of ReplicationController
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1ReplicationControllerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/replicationcontrollers", [])
@@ -7745,7 +9800,13 @@ end
 """
 
 watch individual changes to a list of ResourceQuota
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1ResourceQuotaListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/resourcequotas", [])
@@ -7763,7 +9824,13 @@ end
 """
 
 watch individual changes to a list of Secret
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1SecretListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/secrets", [])
@@ -7781,7 +9848,13 @@ end
 """
 
 watch individual changes to a list of ServiceAccount
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1ServiceAccountListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/serviceaccounts", [])
@@ -7799,7 +9872,13 @@ end
 """
 
 watch individual changes to a list of Service
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchCoreV1ServiceListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/api/v1/watch/services", [])
@@ -7817,7 +9896,13 @@ end
 """
 
 watch individual changes to a list of DaemonSet
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/daemonsets", [])
@@ -7835,7 +9920,13 @@ end
 """
 
 watch individual changes to a list of Deployment
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/deployments", [])
@@ -7853,7 +9944,13 @@ end
 """
 
 watch individual changes to a list of HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1HorizontalPodAutoscalerListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/horizontalpodautoscalers", [])
@@ -7871,7 +9968,13 @@ end
 """
 
 watch individual changes to a list of Ingress
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1IngressListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/ingresses", [])
@@ -7889,7 +9992,13 @@ end
 """
 
 watch individual changes to a list of Job
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1JobListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/jobs", [])
@@ -7907,7 +10016,15 @@ end
 """
 
 watch changes to an object of kind DaemonSet
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedDaemonSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets/{name}", [])
@@ -7927,7 +10044,14 @@ end
 """
 
 watch individual changes to a list of DaemonSet
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedDaemonSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets", [])
@@ -7946,7 +10070,15 @@ end
 """
 
 watch changes to an object of kind Deployment
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedDeployment(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments/{name}", [])
@@ -7966,7 +10098,14 @@ end
 """
 
 watch individual changes to a list of Deployment
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedDeploymentList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments", [])
@@ -7985,7 +10124,15 @@ end
 """
 
 watch changes to an object of kind HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedHorizontalPodAutoscaler(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", [])
@@ -8005,7 +10152,14 @@ end
 """
 
 watch individual changes to a list of HorizontalPodAutoscaler
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedHorizontalPodAutoscalerList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/horizontalpodautoscalers", [])
@@ -8024,7 +10178,15 @@ end
 """
 
 watch changes to an object of kind Ingress
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedIngress(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses/{name}", [])
@@ -8044,7 +10206,14 @@ end
 """
 
 watch individual changes to a list of Ingress
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedIngressList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses", [])
@@ -8063,7 +10232,15 @@ end
 """
 
 watch changes to an object of kind Job
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedJob(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/jobs/{name}", [])
@@ -8083,7 +10260,14 @@ end
 """
 
 watch individual changes to a list of Job
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedJobList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/jobs", [])
@@ -8102,7 +10286,15 @@ end
 """
 
 watch changes to an object of kind NetworkPolicy
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies/{name}", [])
@@ -8122,7 +10314,14 @@ end
 """
 
 watch individual changes to a list of NetworkPolicy
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies", [])
@@ -8141,7 +10340,15 @@ end
 """
 
 watch changes to an object of kind ReplicaSet
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedReplicaSet(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets/{name}", [])
@@ -8161,7 +10368,14 @@ end
 """
 
 watch individual changes to a list of ReplicaSet
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NamespacedReplicaSetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets", [])
@@ -8180,7 +10394,13 @@ end
 """
 
 watch individual changes to a list of NetworkPolicy
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/networkpolicies", [])
@@ -8198,7 +10418,13 @@ end
 """
 
 watch individual changes to a list of ReplicaSet
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/replicasets", [])
@@ -8216,7 +10442,14 @@ end
 """
 
 watch changes to an object of kind ThirdPartyResource
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1ThirdPartyResource(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/thirdpartyresources/{name}", [])
@@ -8235,7 +10468,13 @@ end
 """
 
 watch individual changes to a list of ThirdPartyResource
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchExtensionsV1beta1ThirdPartyResourceList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/extensions/v1beta1/watch/thirdpartyresources", [])
@@ -8253,7 +10492,15 @@ end
 """
 
 watch changes to an object of kind PodDisruptionBudget
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchPolicyV1alpha1NamespacedPodDisruptionBudget(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}", [])
@@ -8273,7 +10520,14 @@ end
 """
 
 watch individual changes to a list of PodDisruptionBudget
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchPolicyV1alpha1NamespacedPodDisruptionBudgetList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/namespaces/{namespace}/poddisruptionbudgets", [])
@@ -8292,7 +10546,13 @@ end
 """
 
 watch individual changes to a list of PodDisruptionBudget
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchPolicyV1alpha1PodDisruptionBudgetListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/policy/v1alpha1/watch/poddisruptionbudgets", [])
@@ -8310,7 +10570,14 @@ end
 """
 
 watch changes to an object of kind ClusterRole
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles/{name}", [])
@@ -8329,7 +10596,14 @@ end
 """
 
 watch changes to an object of kind ClusterRoleBinding
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings/{name}", [])
@@ -8348,7 +10622,13 @@ end
 """
 
 watch individual changes to a list of ClusterRoleBinding
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings", [])
@@ -8366,7 +10646,13 @@ end
 """
 
 watch individual changes to a list of ClusterRole
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles", [])
@@ -8384,7 +10670,15 @@ end
 """
 
 watch changes to an object of kind Role
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles/{name}", [])
@@ -8404,7 +10698,15 @@ end
 """
 
 watch changes to an object of kind RoleBinding
-Returns: VersionedEvent
+Param: name::String (required)
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings/{name}", [])
@@ -8424,7 +10726,14 @@ end
 """
 
 watch individual changes to a list of RoleBinding
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings", [])
@@ -8443,7 +10752,14 @@ end
 """
 
 watch individual changes to a list of Role
-Returns: VersionedEvent
+Param: namespace::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles", [])
@@ -8462,7 +10778,13 @@ end
 """
 
 watch individual changes to a list of RoleBinding
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/rolebindings", [])
@@ -8480,7 +10802,13 @@ end
 """
 
 watch individual changes to a list of Role
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/roles", [])
@@ -8498,7 +10826,14 @@ end
 """
 
 watch changes to an object of kind StorageClass
-Returns: VersionedEvent
+Param: name::String (required)
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchStorageV1beta1StorageClass(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses/{name}", [])
@@ -8517,7 +10852,13 @@ end
 """
 
 watch individual changes to a list of StorageClass
-Returns: VersionedEvent
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: VersionedEvent
 """
 function watchStorageV1beta1StorageClassList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing,)
     _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses", [])
