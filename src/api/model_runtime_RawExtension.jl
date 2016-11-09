@@ -12,7 +12,9 @@ type RuntimeRawExtension <: SwaggerModel
 end # type RuntimeRawExtension
 
 const _name_map_RuntimeRawExtension = Dict{String,Symbol}(["Raw"=>:Raw])
+const _field_map_RuntimeRawExtension = Dict{Symbol,String}([:Raw=>"Raw"])
 Swagger.name_map(::Type{ RuntimeRawExtension }) = _name_map_RuntimeRawExtension
+Swagger.field_map(::Type{ RuntimeRawExtension }) = _field_map_RuntimeRawExtension
 
 function check_required(o::RuntimeRawExtension)
     isnull(o.Raw) && (return false)

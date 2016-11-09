@@ -14,7 +14,9 @@ type V1beta1IngressBackend <: SwaggerModel
 end # type V1beta1IngressBackend
 
 const _name_map_V1beta1IngressBackend = Dict{String,Symbol}(["serviceName"=>:serviceName, "servicePort"=>:servicePort])
+const _field_map_V1beta1IngressBackend = Dict{Symbol,String}([:serviceName=>"serviceName", :servicePort=>"servicePort"])
 Swagger.name_map(::Type{ V1beta1IngressBackend }) = _name_map_V1beta1IngressBackend
+Swagger.field_map(::Type{ V1beta1IngressBackend }) = _field_map_V1beta1IngressBackend
 
 function check_required(o::V1beta1IngressBackend)
     isnull(o.serviceName) && (return false)

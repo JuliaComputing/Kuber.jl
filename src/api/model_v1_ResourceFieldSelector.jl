@@ -16,7 +16,9 @@ type V1ResourceFieldSelector <: SwaggerModel
 end # type V1ResourceFieldSelector
 
 const _name_map_V1ResourceFieldSelector = Dict{String,Symbol}(["containerName"=>:containerName, "divisor"=>:divisor, "resource"=>:resource])
+const _field_map_V1ResourceFieldSelector = Dict{Symbol,String}([:containerName=>"containerName", :divisor=>"divisor", :resource=>"resource"])
 Swagger.name_map(::Type{ V1ResourceFieldSelector }) = _name_map_V1ResourceFieldSelector
+Swagger.field_map(::Type{ V1ResourceFieldSelector }) = _field_map_V1ResourceFieldSelector
 
 function check_required(o::V1ResourceFieldSelector)
     isnull(o.resource) && (return false)

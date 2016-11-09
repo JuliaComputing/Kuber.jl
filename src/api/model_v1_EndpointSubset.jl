@@ -16,7 +16,9 @@ type V1EndpointSubset <: SwaggerModel
 end # type V1EndpointSubset
 
 const _name_map_V1EndpointSubset = Dict{String,Symbol}(["addresses"=>:addresses, "notReadyAddresses"=>:notReadyAddresses, "ports"=>:ports])
+const _field_map_V1EndpointSubset = Dict{Symbol,String}([:addresses=>"addresses", :notReadyAddresses=>"notReadyAddresses", :ports=>"ports"])
 Swagger.name_map(::Type{ V1EndpointSubset }) = _name_map_V1EndpointSubset
+Swagger.field_map(::Type{ V1EndpointSubset }) = _field_map_V1EndpointSubset
 
 function check_required(o::V1EndpointSubset)
     true

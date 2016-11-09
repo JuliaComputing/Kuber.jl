@@ -22,7 +22,9 @@ type V1LimitRangeItem <: SwaggerModel
 end # type V1LimitRangeItem
 
 const _name_map_V1LimitRangeItem = Dict{String,Symbol}(["default"=>:default, "defaultRequest"=>:defaultRequest, "max"=>:max, "maxLimitRequestRatio"=>:maxLimitRequestRatio, "min"=>:min, "type"=>:_type])
+const _field_map_V1LimitRangeItem = Dict{Symbol,String}([:default=>"default", :defaultRequest=>"defaultRequest", :max=>"max", :maxLimitRequestRatio=>"maxLimitRequestRatio", :min=>"min", :_type=>"type"])
 Swagger.name_map(::Type{ V1LimitRangeItem }) = _name_map_V1LimitRangeItem
+Swagger.field_map(::Type{ V1LimitRangeItem }) = _field_map_V1LimitRangeItem
 
 function check_required(o::V1LimitRangeItem)
     true

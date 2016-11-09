@@ -14,7 +14,9 @@ type V1ReplicationControllerList <: SwaggerModel
 end # type V1ReplicationControllerList
 
 const _name_map_V1ReplicationControllerList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1ReplicationControllerList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1ReplicationControllerList }) = _name_map_V1ReplicationControllerList
+Swagger.field_map(::Type{ V1ReplicationControllerList }) = _field_map_V1ReplicationControllerList
 
 function check_required(o::V1ReplicationControllerList)
     isnull(o.items) && (return false)

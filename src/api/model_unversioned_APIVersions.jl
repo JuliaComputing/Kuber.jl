@@ -14,7 +14,9 @@ type UnversionedAPIVersions <: SwaggerModel
 end # type UnversionedAPIVersions
 
 const _name_map_UnversionedAPIVersions = Dict{String,Symbol}(["serverAddressByClientCIDRs"=>:serverAddressByClientCIDRs, "versions"=>:versions])
+const _field_map_UnversionedAPIVersions = Dict{Symbol,String}([:serverAddressByClientCIDRs=>"serverAddressByClientCIDRs", :versions=>"versions"])
 Swagger.name_map(::Type{ UnversionedAPIVersions }) = _name_map_UnversionedAPIVersions
+Swagger.field_map(::Type{ UnversionedAPIVersions }) = _field_map_UnversionedAPIVersions
 
 function check_required(o::UnversionedAPIVersions)
     isnull(o.serverAddressByClientCIDRs) && (return false)

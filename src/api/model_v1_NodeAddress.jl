@@ -14,7 +14,9 @@ type V1NodeAddress <: SwaggerModel
 end # type V1NodeAddress
 
 const _name_map_V1NodeAddress = Dict{String,Symbol}(["address"=>:address, "type"=>:_type])
+const _field_map_V1NodeAddress = Dict{Symbol,String}([:address=>"address", :_type=>"type"])
 Swagger.name_map(::Type{ V1NodeAddress }) = _name_map_V1NodeAddress
+Swagger.field_map(::Type{ V1NodeAddress }) = _field_map_V1NodeAddress
 
 function check_required(o::V1NodeAddress)
     isnull(o.address) && (return false)

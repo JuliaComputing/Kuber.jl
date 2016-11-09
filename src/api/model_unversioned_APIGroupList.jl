@@ -12,7 +12,9 @@ type UnversionedAPIGroupList <: SwaggerModel
 end # type UnversionedAPIGroupList
 
 const _name_map_UnversionedAPIGroupList = Dict{String,Symbol}(["groups"=>:groups])
+const _field_map_UnversionedAPIGroupList = Dict{Symbol,String}([:groups=>"groups"])
 Swagger.name_map(::Type{ UnversionedAPIGroupList }) = _name_map_UnversionedAPIGroupList
+Swagger.field_map(::Type{ UnversionedAPIGroupList }) = _field_map_UnversionedAPIGroupList
 
 function check_required(o::UnversionedAPIGroupList)
     isnull(o.groups) && (return false)

@@ -14,7 +14,9 @@ type V1beta1NonResourceAttributes <: SwaggerModel
 end # type V1beta1NonResourceAttributes
 
 const _name_map_V1beta1NonResourceAttributes = Dict{String,Symbol}(["path"=>:path, "verb"=>:verb])
+const _field_map_V1beta1NonResourceAttributes = Dict{Symbol,String}([:path=>"path", :verb=>"verb"])
 Swagger.name_map(::Type{ V1beta1NonResourceAttributes }) = _name_map_V1beta1NonResourceAttributes
+Swagger.field_map(::Type{ V1beta1NonResourceAttributes }) = _field_map_V1beta1NonResourceAttributes
 
 function check_required(o::V1beta1NonResourceAttributes)
     true

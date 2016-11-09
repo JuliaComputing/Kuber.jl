@@ -14,7 +14,9 @@ type V1alpha1PodDisruptionBudgetSpec <: SwaggerModel
 end # type V1alpha1PodDisruptionBudgetSpec
 
 const _name_map_V1alpha1PodDisruptionBudgetSpec = Dict{String,Symbol}(["minAvailable"=>:minAvailable, "selector"=>:selector])
+const _field_map_V1alpha1PodDisruptionBudgetSpec = Dict{Symbol,String}([:minAvailable=>"minAvailable", :selector=>"selector"])
 Swagger.name_map(::Type{ V1alpha1PodDisruptionBudgetSpec }) = _name_map_V1alpha1PodDisruptionBudgetSpec
+Swagger.field_map(::Type{ V1alpha1PodDisruptionBudgetSpec }) = _field_map_V1alpha1PodDisruptionBudgetSpec
 
 function check_required(o::V1alpha1PodDisruptionBudgetSpec)
     true

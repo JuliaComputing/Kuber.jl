@@ -12,7 +12,9 @@ type V1TCPSocketAction <: SwaggerModel
 end # type V1TCPSocketAction
 
 const _name_map_V1TCPSocketAction = Dict{String,Symbol}(["port"=>:port])
+const _field_map_V1TCPSocketAction = Dict{Symbol,String}([:port=>"port"])
 Swagger.name_map(::Type{ V1TCPSocketAction }) = _name_map_V1TCPSocketAction
+Swagger.field_map(::Type{ V1TCPSocketAction }) = _field_map_V1TCPSocketAction
 
 function check_required(o::V1TCPSocketAction)
     isnull(o.port) && (return false)

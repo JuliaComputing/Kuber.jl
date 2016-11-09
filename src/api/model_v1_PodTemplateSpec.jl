@@ -14,7 +14,9 @@ type V1PodTemplateSpec <: SwaggerModel
 end # type V1PodTemplateSpec
 
 const _name_map_V1PodTemplateSpec = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec])
+const _field_map_V1PodTemplateSpec = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec"])
 Swagger.name_map(::Type{ V1PodTemplateSpec }) = _name_map_V1PodTemplateSpec
+Swagger.field_map(::Type{ V1PodTemplateSpec }) = _field_map_V1PodTemplateSpec
 
 function check_required(o::V1PodTemplateSpec)
     true

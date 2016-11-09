@@ -24,7 +24,9 @@ type V1ContainerStateTerminated <: SwaggerModel
 end # type V1ContainerStateTerminated
 
 const _name_map_V1ContainerStateTerminated = Dict{String,Symbol}(["containerID"=>:containerID, "exitCode"=>:exitCode, "finishedAt"=>:finishedAt, "message"=>:message, "reason"=>:reason, "signal"=>:signal, "startedAt"=>:startedAt])
+const _field_map_V1ContainerStateTerminated = Dict{Symbol,String}([:containerID=>"containerID", :exitCode=>"exitCode", :finishedAt=>"finishedAt", :message=>"message", :reason=>"reason", :signal=>"signal", :startedAt=>"startedAt"])
 Swagger.name_map(::Type{ V1ContainerStateTerminated }) = _name_map_V1ContainerStateTerminated
+Swagger.field_map(::Type{ V1ContainerStateTerminated }) = _field_map_V1ContainerStateTerminated
 
 function check_required(o::V1ContainerStateTerminated)
     isnull(o.exitCode) && (return false)

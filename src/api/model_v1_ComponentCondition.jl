@@ -18,7 +18,9 @@ type V1ComponentCondition <: SwaggerModel
 end # type V1ComponentCondition
 
 const _name_map_V1ComponentCondition = Dict{String,Symbol}(["error"=>:error, "message"=>:message, "status"=>:status, "type"=>:_type])
+const _field_map_V1ComponentCondition = Dict{Symbol,String}([:error=>"error", :message=>"message", :status=>"status", :_type=>"type"])
 Swagger.name_map(::Type{ V1ComponentCondition }) = _name_map_V1ComponentCondition
+Swagger.field_map(::Type{ V1ComponentCondition }) = _field_map_V1ComponentCondition
 
 function check_required(o::V1ComponentCondition)
     isnull(o.status) && (return false)

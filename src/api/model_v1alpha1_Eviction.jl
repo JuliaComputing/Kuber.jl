@@ -14,7 +14,9 @@ type V1alpha1Eviction <: SwaggerModel
 end # type V1alpha1Eviction
 
 const _name_map_V1alpha1Eviction = Dict{String,Symbol}(["deleteOptions"=>:deleteOptions, "metadata"=>:metadata])
+const _field_map_V1alpha1Eviction = Dict{Symbol,String}([:deleteOptions=>"deleteOptions", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1alpha1Eviction }) = _name_map_V1alpha1Eviction
+Swagger.field_map(::Type{ V1alpha1Eviction }) = _field_map_V1alpha1Eviction
 
 function check_required(o::V1alpha1Eviction)
     true

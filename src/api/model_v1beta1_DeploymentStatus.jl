@@ -20,7 +20,9 @@ type V1beta1DeploymentStatus <: SwaggerModel
 end # type V1beta1DeploymentStatus
 
 const _name_map_V1beta1DeploymentStatus = Dict{String,Symbol}(["availableReplicas"=>:availableReplicas, "observedGeneration"=>:observedGeneration, "replicas"=>:replicas, "unavailableReplicas"=>:unavailableReplicas, "updatedReplicas"=>:updatedReplicas])
+const _field_map_V1beta1DeploymentStatus = Dict{Symbol,String}([:availableReplicas=>"availableReplicas", :observedGeneration=>"observedGeneration", :replicas=>"replicas", :unavailableReplicas=>"unavailableReplicas", :updatedReplicas=>"updatedReplicas"])
 Swagger.name_map(::Type{ V1beta1DeploymentStatus }) = _name_map_V1beta1DeploymentStatus
+Swagger.field_map(::Type{ V1beta1DeploymentStatus }) = _field_map_V1beta1DeploymentStatus
 
 function check_required(o::V1beta1DeploymentStatus)
     true

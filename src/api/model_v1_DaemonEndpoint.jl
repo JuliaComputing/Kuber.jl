@@ -12,7 +12,9 @@ type V1DaemonEndpoint <: SwaggerModel
 end # type V1DaemonEndpoint
 
 const _name_map_V1DaemonEndpoint = Dict{String,Symbol}(["Port"=>:Port])
+const _field_map_V1DaemonEndpoint = Dict{Symbol,String}([:Port=>"Port"])
 Swagger.name_map(::Type{ V1DaemonEndpoint }) = _name_map_V1DaemonEndpoint
+Swagger.field_map(::Type{ V1DaemonEndpoint }) = _field_map_V1DaemonEndpoint
 
 function check_required(o::V1DaemonEndpoint)
     isnull(o.Port) && (return false)

@@ -20,7 +20,9 @@ type V1PodSecurityContext <: SwaggerModel
 end # type V1PodSecurityContext
 
 const _name_map_V1PodSecurityContext = Dict{String,Symbol}(["fsGroup"=>:fsGroup, "runAsNonRoot"=>:runAsNonRoot, "runAsUser"=>:runAsUser, "seLinuxOptions"=>:seLinuxOptions, "supplementalGroups"=>:supplementalGroups])
+const _field_map_V1PodSecurityContext = Dict{Symbol,String}([:fsGroup=>"fsGroup", :runAsNonRoot=>"runAsNonRoot", :runAsUser=>"runAsUser", :seLinuxOptions=>"seLinuxOptions", :supplementalGroups=>"supplementalGroups"])
 Swagger.name_map(::Type{ V1PodSecurityContext }) = _name_map_V1PodSecurityContext
+Swagger.field_map(::Type{ V1PodSecurityContext }) = _field_map_V1PodSecurityContext
 
 function check_required(o::V1PodSecurityContext)
     true

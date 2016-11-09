@@ -16,7 +16,9 @@ type V1ReplicationController <: SwaggerModel
 end # type V1ReplicationController
 
 const _name_map_V1ReplicationController = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1ReplicationController = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1ReplicationController }) = _name_map_V1ReplicationController
+Swagger.field_map(::Type{ V1ReplicationController }) = _field_map_V1ReplicationController
 
 function check_required(o::V1ReplicationController)
     true

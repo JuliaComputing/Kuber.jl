@@ -12,7 +12,9 @@ type V1beta1APIVersion <: SwaggerModel
 end # type V1beta1APIVersion
 
 const _name_map_V1beta1APIVersion = Dict{String,Symbol}(["name"=>:name])
+const _field_map_V1beta1APIVersion = Dict{Symbol,String}([:name=>"name"])
 Swagger.name_map(::Type{ V1beta1APIVersion }) = _name_map_V1beta1APIVersion
+Swagger.field_map(::Type{ V1beta1APIVersion }) = _field_map_V1beta1APIVersion
 
 function check_required(o::V1beta1APIVersion)
     true

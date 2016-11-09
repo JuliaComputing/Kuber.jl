@@ -14,7 +14,9 @@ type V1LabelSelector <: SwaggerModel
 end # type V1LabelSelector
 
 const _name_map_V1LabelSelector = Dict{String,Symbol}(["matchExpressions"=>:matchExpressions, "matchLabels"=>:matchLabels])
+const _field_map_V1LabelSelector = Dict{Symbol,String}([:matchExpressions=>"matchExpressions", :matchLabels=>"matchLabels"])
 Swagger.name_map(::Type{ V1LabelSelector }) = _name_map_V1LabelSelector
+Swagger.field_map(::Type{ V1LabelSelector }) = _field_map_V1LabelSelector
 
 function check_required(o::V1LabelSelector)
     true

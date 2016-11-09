@@ -14,7 +14,9 @@ type V1beta1NetworkPolicyPort <: SwaggerModel
 end # type V1beta1NetworkPolicyPort
 
 const _name_map_V1beta1NetworkPolicyPort = Dict{String,Symbol}(["port"=>:port, "protocol"=>:protocol])
+const _field_map_V1beta1NetworkPolicyPort = Dict{Symbol,String}([:port=>"port", :protocol=>"protocol"])
 Swagger.name_map(::Type{ V1beta1NetworkPolicyPort }) = _name_map_V1beta1NetworkPolicyPort
+Swagger.field_map(::Type{ V1beta1NetworkPolicyPort }) = _field_map_V1beta1NetworkPolicyPort
 
 function check_required(o::V1beta1NetworkPolicyPort)
     true

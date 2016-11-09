@@ -16,7 +16,9 @@ type V1beta1TokenReview <: SwaggerModel
 end # type V1beta1TokenReview
 
 const _name_map_V1beta1TokenReview = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1beta1TokenReview = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1beta1TokenReview }) = _name_map_V1beta1TokenReview
+Swagger.field_map(::Type{ V1beta1TokenReview }) = _field_map_V1beta1TokenReview
 
 function check_required(o::V1beta1TokenReview)
     isnull(o.spec) && (return false)

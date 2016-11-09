@@ -22,7 +22,9 @@ type V1ReplicationControllerStatus <: SwaggerModel
 end # type V1ReplicationControllerStatus
 
 const _name_map_V1ReplicationControllerStatus = Dict{String,Symbol}(["availableReplicas"=>:availableReplicas, "conditions"=>:conditions, "fullyLabeledReplicas"=>:fullyLabeledReplicas, "observedGeneration"=>:observedGeneration, "readyReplicas"=>:readyReplicas, "replicas"=>:replicas])
+const _field_map_V1ReplicationControllerStatus = Dict{Symbol,String}([:availableReplicas=>"availableReplicas", :conditions=>"conditions", :fullyLabeledReplicas=>"fullyLabeledReplicas", :observedGeneration=>"observedGeneration", :readyReplicas=>"readyReplicas", :replicas=>"replicas"])
 Swagger.name_map(::Type{ V1ReplicationControllerStatus }) = _name_map_V1ReplicationControllerStatus
+Swagger.field_map(::Type{ V1ReplicationControllerStatus }) = _field_map_V1ReplicationControllerStatus
 
 function check_required(o::V1ReplicationControllerStatus)
     isnull(o.replicas) && (return false)

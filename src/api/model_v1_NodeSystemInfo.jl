@@ -30,7 +30,9 @@ type V1NodeSystemInfo <: SwaggerModel
 end # type V1NodeSystemInfo
 
 const _name_map_V1NodeSystemInfo = Dict{String,Symbol}(["architecture"=>:architecture, "bootID"=>:bootID, "containerRuntimeVersion"=>:containerRuntimeVersion, "kernelVersion"=>:kernelVersion, "kubeProxyVersion"=>:kubeProxyVersion, "kubeletVersion"=>:kubeletVersion, "machineID"=>:machineID, "operatingSystem"=>:operatingSystem, "osImage"=>:osImage, "systemUUID"=>:systemUUID])
+const _field_map_V1NodeSystemInfo = Dict{Symbol,String}([:architecture=>"architecture", :bootID=>"bootID", :containerRuntimeVersion=>"containerRuntimeVersion", :kernelVersion=>"kernelVersion", :kubeProxyVersion=>"kubeProxyVersion", :kubeletVersion=>"kubeletVersion", :machineID=>"machineID", :operatingSystem=>"operatingSystem", :osImage=>"osImage", :systemUUID=>"systemUUID"])
 Swagger.name_map(::Type{ V1NodeSystemInfo }) = _name_map_V1NodeSystemInfo
+Swagger.field_map(::Type{ V1NodeSystemInfo }) = _field_map_V1NodeSystemInfo
 
 function check_required(o::V1NodeSystemInfo)
     isnull(o.architecture) && (return false)

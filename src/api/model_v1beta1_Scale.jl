@@ -16,7 +16,9 @@ type V1beta1Scale <: SwaggerModel
 end # type V1beta1Scale
 
 const _name_map_V1beta1Scale = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1beta1Scale = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1beta1Scale }) = _name_map_V1beta1Scale
+Swagger.field_map(::Type{ V1beta1Scale }) = _field_map_V1beta1Scale
 
 function check_required(o::V1beta1Scale)
     true

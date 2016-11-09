@@ -24,7 +24,9 @@ type V1beta1ResourceAttributes <: SwaggerModel
 end # type V1beta1ResourceAttributes
 
 const _name_map_V1beta1ResourceAttributes = Dict{String,Symbol}(["group"=>:group, "name"=>:name, "namespace"=>:namespace, "resource"=>:resource, "subresource"=>:subresource, "verb"=>:verb, "version"=>:version])
+const _field_map_V1beta1ResourceAttributes = Dict{Symbol,String}([:group=>"group", :name=>"name", :namespace=>"namespace", :resource=>"resource", :subresource=>"subresource", :verb=>"verb", :version=>"version"])
 Swagger.name_map(::Type{ V1beta1ResourceAttributes }) = _name_map_V1beta1ResourceAttributes
+Swagger.field_map(::Type{ V1beta1ResourceAttributes }) = _field_map_V1beta1ResourceAttributes
 
 function check_required(o::V1beta1ResourceAttributes)
     true

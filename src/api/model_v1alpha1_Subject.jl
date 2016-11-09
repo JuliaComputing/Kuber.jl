@@ -18,7 +18,9 @@ type V1alpha1Subject <: SwaggerModel
 end # type V1alpha1Subject
 
 const _name_map_V1alpha1Subject = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "name"=>:name, "namespace"=>:namespace])
+const _field_map_V1alpha1Subject = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :name=>"name", :namespace=>"namespace"])
 Swagger.name_map(::Type{ V1alpha1Subject }) = _name_map_V1alpha1Subject
+Swagger.field_map(::Type{ V1alpha1Subject }) = _field_map_V1alpha1Subject
 
 function check_required(o::V1alpha1Subject)
     isnull(o.kind) && (return false)

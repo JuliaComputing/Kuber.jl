@@ -14,7 +14,9 @@ type V1NamespaceList <: SwaggerModel
 end # type V1NamespaceList
 
 const _name_map_V1NamespaceList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1NamespaceList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1NamespaceList }) = _name_map_V1NamespaceList
+Swagger.field_map(::Type{ V1NamespaceList }) = _field_map_V1NamespaceList
 
 function check_required(o::V1NamespaceList)
     isnull(o.items) && (return false)

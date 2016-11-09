@@ -18,7 +18,9 @@ type V1HorizontalPodAutoscalerSpec <: SwaggerModel
 end # type V1HorizontalPodAutoscalerSpec
 
 const _name_map_V1HorizontalPodAutoscalerSpec = Dict{String,Symbol}(["maxReplicas"=>:maxReplicas, "minReplicas"=>:minReplicas, "scaleTargetRef"=>:scaleTargetRef, "targetCPUUtilizationPercentage"=>:targetCPUUtilizationPercentage])
+const _field_map_V1HorizontalPodAutoscalerSpec = Dict{Symbol,String}([:maxReplicas=>"maxReplicas", :minReplicas=>"minReplicas", :scaleTargetRef=>"scaleTargetRef", :targetCPUUtilizationPercentage=>"targetCPUUtilizationPercentage"])
 Swagger.name_map(::Type{ V1HorizontalPodAutoscalerSpec }) = _name_map_V1HorizontalPodAutoscalerSpec
+Swagger.field_map(::Type{ V1HorizontalPodAutoscalerSpec }) = _field_map_V1HorizontalPodAutoscalerSpec
 
 function check_required(o::V1HorizontalPodAutoscalerSpec)
     isnull(o.maxReplicas) && (return false)

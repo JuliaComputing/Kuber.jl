@@ -28,7 +28,9 @@ type VersionInfo <: SwaggerModel
 end # type VersionInfo
 
 const _name_map_VersionInfo = Dict{String,Symbol}(["buildDate"=>:buildDate, "compiler"=>:compiler, "gitCommit"=>:gitCommit, "gitTreeState"=>:gitTreeState, "gitVersion"=>:gitVersion, "goVersion"=>:goVersion, "major"=>:major, "minor"=>:minor, "platform"=>:platform])
+const _field_map_VersionInfo = Dict{Symbol,String}([:buildDate=>"buildDate", :compiler=>"compiler", :gitCommit=>"gitCommit", :gitTreeState=>"gitTreeState", :gitVersion=>"gitVersion", :goVersion=>"goVersion", :major=>"major", :minor=>"minor", :platform=>"platform"])
 Swagger.name_map(::Type{ VersionInfo }) = _name_map_VersionInfo
+Swagger.field_map(::Type{ VersionInfo }) = _field_map_VersionInfo
 
 function check_required(o::VersionInfo)
     isnull(o.buildDate) && (return false)

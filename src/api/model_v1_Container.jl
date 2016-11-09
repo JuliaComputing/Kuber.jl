@@ -46,7 +46,9 @@ type V1Container <: SwaggerModel
 end # type V1Container
 
 const _name_map_V1Container = Dict{String,Symbol}(["args"=>:args, "command"=>:command, "env"=>:env, "image"=>:image, "imagePullPolicy"=>:imagePullPolicy, "lifecycle"=>:lifecycle, "livenessProbe"=>:livenessProbe, "name"=>:name, "ports"=>:ports, "readinessProbe"=>:readinessProbe, "resources"=>:resources, "securityContext"=>:securityContext, "stdin"=>:stdin, "stdinOnce"=>:stdinOnce, "terminationMessagePath"=>:terminationMessagePath, "tty"=>:tty, "volumeMounts"=>:volumeMounts, "workingDir"=>:workingDir])
+const _field_map_V1Container = Dict{Symbol,String}([:args=>"args", :command=>"command", :env=>"env", :image=>"image", :imagePullPolicy=>"imagePullPolicy", :lifecycle=>"lifecycle", :livenessProbe=>"livenessProbe", :name=>"name", :ports=>"ports", :readinessProbe=>"readinessProbe", :resources=>"resources", :securityContext=>"securityContext", :stdin=>"stdin", :stdinOnce=>"stdinOnce", :terminationMessagePath=>"terminationMessagePath", :tty=>"tty", :volumeMounts=>"volumeMounts", :workingDir=>"workingDir"])
 Swagger.name_map(::Type{ V1Container }) = _name_map_V1Container
+Swagger.field_map(::Type{ V1Container }) = _field_map_V1Container
 
 function check_required(o::V1Container)
     isnull(o.name) && (return false)

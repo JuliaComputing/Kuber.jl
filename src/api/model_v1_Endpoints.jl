@@ -14,7 +14,9 @@ type V1Endpoints <: SwaggerModel
 end # type V1Endpoints
 
 const _name_map_V1Endpoints = Dict{String,Symbol}(["metadata"=>:metadata, "subsets"=>:subsets])
+const _field_map_V1Endpoints = Dict{Symbol,String}([:metadata=>"metadata", :subsets=>"subsets"])
 Swagger.name_map(::Type{ V1Endpoints }) = _name_map_V1Endpoints
+Swagger.field_map(::Type{ V1Endpoints }) = _field_map_V1Endpoints
 
 function check_required(o::V1Endpoints)
     isnull(o.subsets) && (return false)

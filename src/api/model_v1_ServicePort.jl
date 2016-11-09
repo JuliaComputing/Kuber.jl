@@ -20,7 +20,9 @@ type V1ServicePort <: SwaggerModel
 end # type V1ServicePort
 
 const _name_map_V1ServicePort = Dict{String,Symbol}(["name"=>:name, "nodePort"=>:nodePort, "port"=>:port, "protocol"=>:protocol, "targetPort"=>:targetPort])
+const _field_map_V1ServicePort = Dict{Symbol,String}([:name=>"name", :nodePort=>"nodePort", :port=>"port", :protocol=>"protocol", :targetPort=>"targetPort"])
 Swagger.name_map(::Type{ V1ServicePort }) = _name_map_V1ServicePort
+Swagger.field_map(::Type{ V1ServicePort }) = _field_map_V1ServicePort
 
 function check_required(o::V1ServicePort)
     isnull(o.port) && (return false)

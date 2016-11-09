@@ -12,7 +12,9 @@ type V1LocalObjectReference <: SwaggerModel
 end # type V1LocalObjectReference
 
 const _name_map_V1LocalObjectReference = Dict{String,Symbol}(["name"=>:name])
+const _field_map_V1LocalObjectReference = Dict{Symbol,String}([:name=>"name"])
 Swagger.name_map(::Type{ V1LocalObjectReference }) = _name_map_V1LocalObjectReference
+Swagger.field_map(::Type{ V1LocalObjectReference }) = _field_map_V1LocalObjectReference
 
 function check_required(o::V1LocalObjectReference)
     true

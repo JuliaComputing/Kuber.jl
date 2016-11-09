@@ -14,7 +14,9 @@ type V1ServiceList <: SwaggerModel
 end # type V1ServiceList
 
 const _name_map_V1ServiceList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1ServiceList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1ServiceList }) = _name_map_V1ServiceList
+Swagger.field_map(::Type{ V1ServiceList }) = _field_map_V1ServiceList
 
 function check_required(o::V1ServiceList)
     isnull(o.items) && (return false)

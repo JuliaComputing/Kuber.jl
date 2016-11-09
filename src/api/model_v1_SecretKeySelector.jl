@@ -12,7 +12,9 @@ type V1SecretKeySelector <: SwaggerModel
 end # type V1SecretKeySelector
 
 const _name_map_V1SecretKeySelector = Dict{String,Symbol}(["key"=>:key])
+const _field_map_V1SecretKeySelector = Dict{Symbol,String}([:key=>"key"])
 Swagger.name_map(::Type{ V1SecretKeySelector }) = _name_map_V1SecretKeySelector
+Swagger.field_map(::Type{ V1SecretKeySelector }) = _field_map_V1SecretKeySelector
 
 function check_required(o::V1SecretKeySelector)
     isnull(o.key) && (return false)

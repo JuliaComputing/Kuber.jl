@@ -18,7 +18,9 @@ type V1EnvVarSource <: SwaggerModel
 end # type V1EnvVarSource
 
 const _name_map_V1EnvVarSource = Dict{String,Symbol}(["configMapKeyRef"=>:configMapKeyRef, "fieldRef"=>:fieldRef, "resourceFieldRef"=>:resourceFieldRef, "secretKeyRef"=>:secretKeyRef])
+const _field_map_V1EnvVarSource = Dict{Symbol,String}([:configMapKeyRef=>"configMapKeyRef", :fieldRef=>"fieldRef", :resourceFieldRef=>"resourceFieldRef", :secretKeyRef=>"secretKeyRef"])
 Swagger.name_map(::Type{ V1EnvVarSource }) = _name_map_V1EnvVarSource
+Swagger.field_map(::Type{ V1EnvVarSource }) = _field_map_V1EnvVarSource
 
 function check_required(o::V1EnvVarSource)
     true

@@ -14,7 +14,9 @@ type V1beta1IngressTLS <: SwaggerModel
 end # type V1beta1IngressTLS
 
 const _name_map_V1beta1IngressTLS = Dict{String,Symbol}(["hosts"=>:hosts, "secretName"=>:secretName])
+const _field_map_V1beta1IngressTLS = Dict{Symbol,String}([:hosts=>"hosts", :secretName=>"secretName"])
 Swagger.name_map(::Type{ V1beta1IngressTLS }) = _name_map_V1beta1IngressTLS
+Swagger.field_map(::Type{ V1beta1IngressTLS }) = _field_map_V1beta1IngressTLS
 
 function check_required(o::V1beta1IngressTLS)
     true

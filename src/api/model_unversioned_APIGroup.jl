@@ -18,7 +18,9 @@ type UnversionedAPIGroup <: SwaggerModel
 end # type UnversionedAPIGroup
 
 const _name_map_UnversionedAPIGroup = Dict{String,Symbol}(["name"=>:name, "preferredVersion"=>:preferredVersion, "serverAddressByClientCIDRs"=>:serverAddressByClientCIDRs, "versions"=>:versions])
+const _field_map_UnversionedAPIGroup = Dict{Symbol,String}([:name=>"name", :preferredVersion=>"preferredVersion", :serverAddressByClientCIDRs=>"serverAddressByClientCIDRs", :versions=>"versions"])
 Swagger.name_map(::Type{ UnversionedAPIGroup }) = _name_map_UnversionedAPIGroup
+Swagger.field_map(::Type{ UnversionedAPIGroup }) = _field_map_UnversionedAPIGroup
 
 function check_required(o::UnversionedAPIGroup)
     isnull(o.name) && (return false)

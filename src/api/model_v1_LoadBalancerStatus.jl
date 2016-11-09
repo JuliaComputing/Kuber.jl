@@ -12,7 +12,9 @@ type V1LoadBalancerStatus <: SwaggerModel
 end # type V1LoadBalancerStatus
 
 const _name_map_V1LoadBalancerStatus = Dict{String,Symbol}(["ingress"=>:ingress])
+const _field_map_V1LoadBalancerStatus = Dict{Symbol,String}([:ingress=>"ingress"])
 Swagger.name_map(::Type{ V1LoadBalancerStatus }) = _name_map_V1LoadBalancerStatus
+Swagger.field_map(::Type{ V1LoadBalancerStatus }) = _field_map_V1LoadBalancerStatus
 
 function check_required(o::V1LoadBalancerStatus)
     true

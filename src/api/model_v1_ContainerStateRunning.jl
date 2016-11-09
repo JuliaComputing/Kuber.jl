@@ -12,7 +12,9 @@ type V1ContainerStateRunning <: SwaggerModel
 end # type V1ContainerStateRunning
 
 const _name_map_V1ContainerStateRunning = Dict{String,Symbol}(["startedAt"=>:startedAt])
+const _field_map_V1ContainerStateRunning = Dict{Symbol,String}([:startedAt=>"startedAt"])
 Swagger.name_map(::Type{ V1ContainerStateRunning }) = _name_map_V1ContainerStateRunning
+Swagger.field_map(::Type{ V1ContainerStateRunning }) = _field_map_V1ContainerStateRunning
 
 function check_required(o::V1ContainerStateRunning)
     true

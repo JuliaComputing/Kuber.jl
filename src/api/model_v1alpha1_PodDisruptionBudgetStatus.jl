@@ -18,7 +18,9 @@ type V1alpha1PodDisruptionBudgetStatus <: SwaggerModel
 end # type V1alpha1PodDisruptionBudgetStatus
 
 const _name_map_V1alpha1PodDisruptionBudgetStatus = Dict{String,Symbol}(["currentHealthy"=>:currentHealthy, "desiredHealthy"=>:desiredHealthy, "disruptionAllowed"=>:disruptionAllowed, "expectedPods"=>:expectedPods])
+const _field_map_V1alpha1PodDisruptionBudgetStatus = Dict{Symbol,String}([:currentHealthy=>"currentHealthy", :desiredHealthy=>"desiredHealthy", :disruptionAllowed=>"disruptionAllowed", :expectedPods=>"expectedPods"])
 Swagger.name_map(::Type{ V1alpha1PodDisruptionBudgetStatus }) = _name_map_V1alpha1PodDisruptionBudgetStatus
+Swagger.field_map(::Type{ V1alpha1PodDisruptionBudgetStatus }) = _field_map_V1alpha1PodDisruptionBudgetStatus
 
 function check_required(o::V1alpha1PodDisruptionBudgetStatus)
     isnull(o.currentHealthy) && (return false)

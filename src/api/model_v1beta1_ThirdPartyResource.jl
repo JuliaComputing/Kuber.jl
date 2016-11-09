@@ -16,7 +16,9 @@ type V1beta1ThirdPartyResource <: SwaggerModel
 end # type V1beta1ThirdPartyResource
 
 const _name_map_V1beta1ThirdPartyResource = Dict{String,Symbol}(["description"=>:description, "metadata"=>:metadata, "versions"=>:versions])
+const _field_map_V1beta1ThirdPartyResource = Dict{Symbol,String}([:description=>"description", :metadata=>"metadata", :versions=>"versions"])
 Swagger.name_map(::Type{ V1beta1ThirdPartyResource }) = _name_map_V1beta1ThirdPartyResource
+Swagger.field_map(::Type{ V1beta1ThirdPartyResource }) = _field_map_V1beta1ThirdPartyResource
 
 function check_required(o::V1beta1ThirdPartyResource)
     true

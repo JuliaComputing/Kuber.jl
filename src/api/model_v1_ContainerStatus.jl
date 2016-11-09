@@ -26,7 +26,9 @@ type V1ContainerStatus <: SwaggerModel
 end # type V1ContainerStatus
 
 const _name_map_V1ContainerStatus = Dict{String,Symbol}(["containerID"=>:containerID, "image"=>:image, "imageID"=>:imageID, "lastState"=>:lastState, "name"=>:name, "ready"=>:ready, "restartCount"=>:restartCount, "state"=>:state])
+const _field_map_V1ContainerStatus = Dict{Symbol,String}([:containerID=>"containerID", :image=>"image", :imageID=>"imageID", :lastState=>"lastState", :name=>"name", :ready=>"ready", :restartCount=>"restartCount", :state=>"state"])
 Swagger.name_map(::Type{ V1ContainerStatus }) = _name_map_V1ContainerStatus
+Swagger.field_map(::Type{ V1ContainerStatus }) = _field_map_V1ContainerStatus
 
 function check_required(o::V1ContainerStatus)
     isnull(o.image) && (return false)

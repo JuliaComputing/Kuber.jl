@@ -30,7 +30,9 @@ type V1NodeStatus <: SwaggerModel
 end # type V1NodeStatus
 
 const _name_map_V1NodeStatus = Dict{String,Symbol}(["addresses"=>:addresses, "allocatable"=>:allocatable, "capacity"=>:capacity, "conditions"=>:conditions, "daemonEndpoints"=>:daemonEndpoints, "images"=>:images, "nodeInfo"=>:nodeInfo, "phase"=>:phase, "volumesAttached"=>:volumesAttached, "volumesInUse"=>:volumesInUse])
+const _field_map_V1NodeStatus = Dict{Symbol,String}([:addresses=>"addresses", :allocatable=>"allocatable", :capacity=>"capacity", :conditions=>"conditions", :daemonEndpoints=>"daemonEndpoints", :images=>"images", :nodeInfo=>"nodeInfo", :phase=>"phase", :volumesAttached=>"volumesAttached", :volumesInUse=>"volumesInUse"])
 Swagger.name_map(::Type{ V1NodeStatus }) = _name_map_V1NodeStatus
+Swagger.field_map(::Type{ V1NodeStatus }) = _field_map_V1NodeStatus
 
 function check_required(o::V1NodeStatus)
     true

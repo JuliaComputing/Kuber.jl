@@ -16,7 +16,9 @@ type V1beta1SelfSubjectAccessReview <: SwaggerModel
 end # type V1beta1SelfSubjectAccessReview
 
 const _name_map_V1beta1SelfSubjectAccessReview = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1beta1SelfSubjectAccessReview = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1beta1SelfSubjectAccessReview }) = _name_map_V1beta1SelfSubjectAccessReview
+Swagger.field_map(::Type{ V1beta1SelfSubjectAccessReview }) = _field_map_V1beta1SelfSubjectAccessReview
 
 function check_required(o::V1beta1SelfSubjectAccessReview)
     isnull(o.spec) && (return false)

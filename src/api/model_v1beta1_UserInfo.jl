@@ -18,7 +18,9 @@ type V1beta1UserInfo <: SwaggerModel
 end # type V1beta1UserInfo
 
 const _name_map_V1beta1UserInfo = Dict{String,Symbol}(["extra"=>:extra, "groups"=>:groups, "uid"=>:uid, "username"=>:username])
+const _field_map_V1beta1UserInfo = Dict{Symbol,String}([:extra=>"extra", :groups=>"groups", :uid=>"uid", :username=>"username"])
 Swagger.name_map(::Type{ V1beta1UserInfo }) = _name_map_V1beta1UserInfo
+Swagger.field_map(::Type{ V1beta1UserInfo }) = _field_map_V1beta1UserInfo
 
 function check_required(o::V1beta1UserInfo)
     true

@@ -22,7 +22,9 @@ type V1PodCondition <: SwaggerModel
 end # type V1PodCondition
 
 const _name_map_V1PodCondition = Dict{String,Symbol}(["lastProbeTime"=>:lastProbeTime, "lastTransitionTime"=>:lastTransitionTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
+const _field_map_V1PodCondition = Dict{Symbol,String}([:lastProbeTime=>"lastProbeTime", :lastTransitionTime=>"lastTransitionTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
 Swagger.name_map(::Type{ V1PodCondition }) = _name_map_V1PodCondition
+Swagger.field_map(::Type{ V1PodCondition }) = _field_map_V1PodCondition
 
 function check_required(o::V1PodCondition)
     isnull(o.status) && (return false)

@@ -14,7 +14,9 @@ type V1AttachedVolume <: SwaggerModel
 end # type V1AttachedVolume
 
 const _name_map_V1AttachedVolume = Dict{String,Symbol}(["devicePath"=>:devicePath, "name"=>:name])
+const _field_map_V1AttachedVolume = Dict{Symbol,String}([:devicePath=>"devicePath", :name=>"name"])
 Swagger.name_map(::Type{ V1AttachedVolume }) = _name_map_V1AttachedVolume
+Swagger.field_map(::Type{ V1AttachedVolume }) = _field_map_V1AttachedVolume
 
 function check_required(o::V1AttachedVolume)
     isnull(o.devicePath) && (return false)

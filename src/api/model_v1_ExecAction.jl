@@ -12,7 +12,9 @@ type V1ExecAction <: SwaggerModel
 end # type V1ExecAction
 
 const _name_map_V1ExecAction = Dict{String,Symbol}(["command"=>:command])
+const _field_map_V1ExecAction = Dict{Symbol,String}([:command=>"command"])
 Swagger.name_map(::Type{ V1ExecAction }) = _name_map_V1ExecAction
+Swagger.field_map(::Type{ V1ExecAction }) = _field_map_V1ExecAction
 
 function check_required(o::V1ExecAction)
     true

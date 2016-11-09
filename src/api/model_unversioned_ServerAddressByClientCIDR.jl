@@ -14,7 +14,9 @@ type UnversionedServerAddressByClientCIDR <: SwaggerModel
 end # type UnversionedServerAddressByClientCIDR
 
 const _name_map_UnversionedServerAddressByClientCIDR = Dict{String,Symbol}(["clientCIDR"=>:clientCIDR, "serverAddress"=>:serverAddress])
+const _field_map_UnversionedServerAddressByClientCIDR = Dict{Symbol,String}([:clientCIDR=>"clientCIDR", :serverAddress=>"serverAddress"])
 Swagger.name_map(::Type{ UnversionedServerAddressByClientCIDR }) = _name_map_UnversionedServerAddressByClientCIDR
+Swagger.field_map(::Type{ UnversionedServerAddressByClientCIDR }) = _field_map_UnversionedServerAddressByClientCIDR
 
 function check_required(o::UnversionedServerAddressByClientCIDR)
     isnull(o.clientCIDR) && (return false)

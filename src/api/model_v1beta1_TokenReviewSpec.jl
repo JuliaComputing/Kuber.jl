@@ -12,7 +12,9 @@ type V1beta1TokenReviewSpec <: SwaggerModel
 end # type V1beta1TokenReviewSpec
 
 const _name_map_V1beta1TokenReviewSpec = Dict{String,Symbol}(["token"=>:token])
+const _field_map_V1beta1TokenReviewSpec = Dict{Symbol,String}([:token=>"token"])
 Swagger.name_map(::Type{ V1beta1TokenReviewSpec }) = _name_map_V1beta1TokenReviewSpec
+Swagger.field_map(::Type{ V1beta1TokenReviewSpec }) = _field_map_V1beta1TokenReviewSpec
 
 function check_required(o::V1beta1TokenReviewSpec)
     true

@@ -14,7 +14,9 @@ type V1EventSource <: SwaggerModel
 end # type V1EventSource
 
 const _name_map_V1EventSource = Dict{String,Symbol}(["component"=>:component, "host"=>:host])
+const _field_map_V1EventSource = Dict{Symbol,String}([:component=>"component", :host=>"host"])
 Swagger.name_map(::Type{ V1EventSource }) = _name_map_V1EventSource
+Swagger.field_map(::Type{ V1EventSource }) = _field_map_V1EventSource
 
 function check_required(o::V1EventSource)
     true

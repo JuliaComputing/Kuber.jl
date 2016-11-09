@@ -14,7 +14,9 @@ type V1ConfigMapList <: SwaggerModel
 end # type V1ConfigMapList
 
 const _name_map_V1ConfigMapList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1ConfigMapList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1ConfigMapList }) = _name_map_V1ConfigMapList
+Swagger.field_map(::Type{ V1ConfigMapList }) = _field_map_V1ConfigMapList
 
 function check_required(o::V1ConfigMapList)
     isnull(o.items) && (return false)

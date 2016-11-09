@@ -12,7 +12,9 @@ type V1beta1IngressRule <: SwaggerModel
 end # type V1beta1IngressRule
 
 const _name_map_V1beta1IngressRule = Dict{String,Symbol}(["host"=>:host])
+const _field_map_V1beta1IngressRule = Dict{Symbol,String}([:host=>"host"])
 Swagger.name_map(::Type{ V1beta1IngressRule }) = _name_map_V1beta1IngressRule
+Swagger.field_map(::Type{ V1beta1IngressRule }) = _field_map_V1beta1IngressRule
 
 function check_required(o::V1beta1IngressRule)
     true

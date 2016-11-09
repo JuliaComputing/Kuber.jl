@@ -16,7 +16,9 @@ type UnversionedStatusCause <: SwaggerModel
 end # type UnversionedStatusCause
 
 const _name_map_UnversionedStatusCause = Dict{String,Symbol}(["field"=>:field, "message"=>:message, "reason"=>:reason])
+const _field_map_UnversionedStatusCause = Dict{Symbol,String}([:field=>"field", :message=>"message", :reason=>"reason"])
 Swagger.name_map(::Type{ UnversionedStatusCause }) = _name_map_UnversionedStatusCause
+Swagger.field_map(::Type{ UnversionedStatusCause }) = _field_map_UnversionedStatusCause
 
 function check_required(o::UnversionedStatusCause)
     true

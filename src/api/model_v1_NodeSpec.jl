@@ -18,7 +18,9 @@ type V1NodeSpec <: SwaggerModel
 end # type V1NodeSpec
 
 const _name_map_V1NodeSpec = Dict{String,Symbol}(["externalID"=>:externalID, "podCIDR"=>:podCIDR, "providerID"=>:providerID, "unschedulable"=>:unschedulable])
+const _field_map_V1NodeSpec = Dict{Symbol,String}([:externalID=>"externalID", :podCIDR=>"podCIDR", :providerID=>"providerID", :unschedulable=>"unschedulable"])
 Swagger.name_map(::Type{ V1NodeSpec }) = _name_map_V1NodeSpec
+Swagger.field_map(::Type{ V1NodeSpec }) = _field_map_V1NodeSpec
 
 function check_required(o::V1NodeSpec)
     true

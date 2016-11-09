@@ -18,7 +18,9 @@ type V1beta1SubresourceReference <: SwaggerModel
 end # type V1beta1SubresourceReference
 
 const _name_map_V1beta1SubresourceReference = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "name"=>:name, "subresource"=>:subresource])
+const _field_map_V1beta1SubresourceReference = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :name=>"name", :subresource=>"subresource"])
 Swagger.name_map(::Type{ V1beta1SubresourceReference }) = _name_map_V1beta1SubresourceReference
+Swagger.field_map(::Type{ V1beta1SubresourceReference }) = _field_map_V1beta1SubresourceReference
 
 function check_required(o::V1beta1SubresourceReference)
     true

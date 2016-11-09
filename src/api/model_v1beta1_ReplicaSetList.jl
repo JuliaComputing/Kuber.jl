@@ -14,7 +14,9 @@ type V1beta1ReplicaSetList <: SwaggerModel
 end # type V1beta1ReplicaSetList
 
 const _name_map_V1beta1ReplicaSetList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1beta1ReplicaSetList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1beta1ReplicaSetList }) = _name_map_V1beta1ReplicaSetList
+Swagger.field_map(::Type{ V1beta1ReplicaSetList }) = _field_map_V1beta1ReplicaSetList
 
 function check_required(o::V1beta1ReplicaSetList)
     isnull(o.items) && (return false)

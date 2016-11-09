@@ -16,7 +16,9 @@ type V1alpha1RoleRef <: SwaggerModel
 end # type V1alpha1RoleRef
 
 const _name_map_V1alpha1RoleRef = Dict{String,Symbol}(["apiGroup"=>:apiGroup, "kind"=>:kind, "name"=>:name])
+const _field_map_V1alpha1RoleRef = Dict{Symbol,String}([:apiGroup=>"apiGroup", :kind=>"kind", :name=>"name"])
 Swagger.name_map(::Type{ V1alpha1RoleRef }) = _name_map_V1alpha1RoleRef
+Swagger.field_map(::Type{ V1alpha1RoleRef }) = _field_map_V1alpha1RoleRef
 
 function check_required(o::V1alpha1RoleRef)
     isnull(o.apiGroup) && (return false)

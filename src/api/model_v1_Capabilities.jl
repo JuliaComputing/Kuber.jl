@@ -14,7 +14,9 @@ type V1Capabilities <: SwaggerModel
 end # type V1Capabilities
 
 const _name_map_V1Capabilities = Dict{String,Symbol}(["add"=>:add, "drop"=>:drop])
+const _field_map_V1Capabilities = Dict{Symbol,String}([:add=>"add", :drop=>"drop"])
 Swagger.name_map(::Type{ V1Capabilities }) = _name_map_V1Capabilities
+Swagger.field_map(::Type{ V1Capabilities }) = _field_map_V1Capabilities
 
 function check_required(o::V1Capabilities)
     true

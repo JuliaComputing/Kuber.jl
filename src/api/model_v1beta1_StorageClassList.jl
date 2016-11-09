@@ -14,7 +14,9 @@ type V1beta1StorageClassList <: SwaggerModel
 end # type V1beta1StorageClassList
 
 const _name_map_V1beta1StorageClassList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1beta1StorageClassList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1beta1StorageClassList }) = _name_map_V1beta1StorageClassList
+Swagger.field_map(::Type{ V1beta1StorageClassList }) = _field_map_V1beta1StorageClassList
 
 function check_required(o::V1beta1StorageClassList)
     isnull(o.items) && (return false)

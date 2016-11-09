@@ -16,7 +16,9 @@ type V1Pod <: SwaggerModel
 end # type V1Pod
 
 const _name_map_V1Pod = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1Pod = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1Pod }) = _name_map_V1Pod
+Swagger.field_map(::Type{ V1Pod }) = _field_map_V1Pod
 
 function check_required(o::V1Pod)
     true

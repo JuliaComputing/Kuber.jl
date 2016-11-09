@@ -14,7 +14,9 @@ type V1beta1HorizontalPodAutoscalerList <: SwaggerModel
 end # type V1beta1HorizontalPodAutoscalerList
 
 const _name_map_V1beta1HorizontalPodAutoscalerList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1beta1HorizontalPodAutoscalerList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1beta1HorizontalPodAutoscalerList }) = _name_map_V1beta1HorizontalPodAutoscalerList
+Swagger.field_map(::Type{ V1beta1HorizontalPodAutoscalerList }) = _field_map_V1beta1HorizontalPodAutoscalerList
 
 function check_required(o::V1beta1HorizontalPodAutoscalerList)
     isnull(o.items) && (return false)

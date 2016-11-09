@@ -14,7 +14,9 @@ type UnversionedLabelSelector <: SwaggerModel
 end # type UnversionedLabelSelector
 
 const _name_map_UnversionedLabelSelector = Dict{String,Symbol}(["matchExpressions"=>:matchExpressions, "matchLabels"=>:matchLabels])
+const _field_map_UnversionedLabelSelector = Dict{Symbol,String}([:matchExpressions=>"matchExpressions", :matchLabels=>"matchLabels"])
 Swagger.name_map(::Type{ UnversionedLabelSelector }) = _name_map_UnversionedLabelSelector
+Swagger.field_map(::Type{ UnversionedLabelSelector }) = _field_map_UnversionedLabelSelector
 
 function check_required(o::UnversionedLabelSelector)
     true

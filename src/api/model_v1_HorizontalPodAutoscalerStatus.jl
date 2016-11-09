@@ -20,7 +20,9 @@ type V1HorizontalPodAutoscalerStatus <: SwaggerModel
 end # type V1HorizontalPodAutoscalerStatus
 
 const _name_map_V1HorizontalPodAutoscalerStatus = Dict{String,Symbol}(["currentCPUUtilizationPercentage"=>:currentCPUUtilizationPercentage, "currentReplicas"=>:currentReplicas, "desiredReplicas"=>:desiredReplicas, "lastScaleTime"=>:lastScaleTime, "observedGeneration"=>:observedGeneration])
+const _field_map_V1HorizontalPodAutoscalerStatus = Dict{Symbol,String}([:currentCPUUtilizationPercentage=>"currentCPUUtilizationPercentage", :currentReplicas=>"currentReplicas", :desiredReplicas=>"desiredReplicas", :lastScaleTime=>"lastScaleTime", :observedGeneration=>"observedGeneration"])
 Swagger.name_map(::Type{ V1HorizontalPodAutoscalerStatus }) = _name_map_V1HorizontalPodAutoscalerStatus
+Swagger.field_map(::Type{ V1HorizontalPodAutoscalerStatus }) = _field_map_V1HorizontalPodAutoscalerStatus
 
 function check_required(o::V1HorizontalPodAutoscalerStatus)
     isnull(o.currentReplicas) && (return false)

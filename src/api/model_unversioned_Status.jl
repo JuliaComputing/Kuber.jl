@@ -22,7 +22,9 @@ type UnversionedStatus <: SwaggerModel
 end # type UnversionedStatus
 
 const _name_map_UnversionedStatus = Dict{String,Symbol}(["code"=>:code, "details"=>:details, "message"=>:message, "metadata"=>:metadata, "reason"=>:reason, "status"=>:status])
+const _field_map_UnversionedStatus = Dict{Symbol,String}([:code=>"code", :details=>"details", :message=>"message", :metadata=>"metadata", :reason=>"reason", :status=>"status"])
 Swagger.name_map(::Type{ UnversionedStatus }) = _name_map_UnversionedStatus
+Swagger.field_map(::Type{ UnversionedStatus }) = _field_map_UnversionedStatus
 
 function check_required(o::UnversionedStatus)
     true

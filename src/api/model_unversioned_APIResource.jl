@@ -16,7 +16,9 @@ type UnversionedAPIResource <: SwaggerModel
 end # type UnversionedAPIResource
 
 const _name_map_UnversionedAPIResource = Dict{String,Symbol}(["kind"=>:kind, "name"=>:name, "namespaced"=>:namespaced])
+const _field_map_UnversionedAPIResource = Dict{Symbol,String}([:kind=>"kind", :name=>"name", :namespaced=>"namespaced"])
 Swagger.name_map(::Type{ UnversionedAPIResource }) = _name_map_UnversionedAPIResource
+Swagger.field_map(::Type{ UnversionedAPIResource }) = _field_map_UnversionedAPIResource
 
 function check_required(o::UnversionedAPIResource)
     isnull(o.kind) && (return false)

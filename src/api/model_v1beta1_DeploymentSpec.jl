@@ -26,7 +26,9 @@ type V1beta1DeploymentSpec <: SwaggerModel
 end # type V1beta1DeploymentSpec
 
 const _name_map_V1beta1DeploymentSpec = Dict{String,Symbol}(["minReadySeconds"=>:minReadySeconds, "paused"=>:paused, "replicas"=>:replicas, "revisionHistoryLimit"=>:revisionHistoryLimit, "rollbackTo"=>:rollbackTo, "selector"=>:selector, "strategy"=>:strategy, "template"=>:template])
+const _field_map_V1beta1DeploymentSpec = Dict{Symbol,String}([:minReadySeconds=>"minReadySeconds", :paused=>"paused", :replicas=>"replicas", :revisionHistoryLimit=>"revisionHistoryLimit", :rollbackTo=>"rollbackTo", :selector=>"selector", :strategy=>"strategy", :template=>"template"])
 Swagger.name_map(::Type{ V1beta1DeploymentSpec }) = _name_map_V1beta1DeploymentSpec
+Swagger.field_map(::Type{ V1beta1DeploymentSpec }) = _field_map_V1beta1DeploymentSpec
 
 function check_required(o::V1beta1DeploymentSpec)
     isnull(o.template) && (return false)

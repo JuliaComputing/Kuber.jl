@@ -14,7 +14,9 @@ type V1Lifecycle <: SwaggerModel
 end # type V1Lifecycle
 
 const _name_map_V1Lifecycle = Dict{String,Symbol}(["postStart"=>:postStart, "preStop"=>:preStop])
+const _field_map_V1Lifecycle = Dict{Symbol,String}([:postStart=>"postStart", :preStop=>"preStop"])
 Swagger.name_map(::Type{ V1Lifecycle }) = _name_map_V1Lifecycle
+Swagger.field_map(::Type{ V1Lifecycle }) = _field_map_V1Lifecycle
 
 function check_required(o::V1Lifecycle)
     true

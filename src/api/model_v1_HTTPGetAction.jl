@@ -20,7 +20,9 @@ type V1HTTPGetAction <: SwaggerModel
 end # type V1HTTPGetAction
 
 const _name_map_V1HTTPGetAction = Dict{String,Symbol}(["host"=>:host, "httpHeaders"=>:httpHeaders, "path"=>:path, "port"=>:port, "scheme"=>:scheme])
+const _field_map_V1HTTPGetAction = Dict{Symbol,String}([:host=>"host", :httpHeaders=>"httpHeaders", :path=>"path", :port=>"port", :scheme=>"scheme"])
 Swagger.name_map(::Type{ V1HTTPGetAction }) = _name_map_V1HTTPGetAction
+Swagger.field_map(::Type{ V1HTTPGetAction }) = _field_map_V1HTTPGetAction
 
 function check_required(o::V1HTTPGetAction)
     isnull(o.port) && (return false)

@@ -18,7 +18,9 @@ type V1beta1DaemonSetStatus <: SwaggerModel
 end # type V1beta1DaemonSetStatus
 
 const _name_map_V1beta1DaemonSetStatus = Dict{String,Symbol}(["currentNumberScheduled"=>:currentNumberScheduled, "desiredNumberScheduled"=>:desiredNumberScheduled, "numberMisscheduled"=>:numberMisscheduled, "numberReady"=>:numberReady])
+const _field_map_V1beta1DaemonSetStatus = Dict{Symbol,String}([:currentNumberScheduled=>"currentNumberScheduled", :desiredNumberScheduled=>"desiredNumberScheduled", :numberMisscheduled=>"numberMisscheduled", :numberReady=>"numberReady"])
 Swagger.name_map(::Type{ V1beta1DaemonSetStatus }) = _name_map_V1beta1DaemonSetStatus
+Swagger.field_map(::Type{ V1beta1DaemonSetStatus }) = _field_map_V1beta1DaemonSetStatus
 
 function check_required(o::V1beta1DaemonSetStatus)
     isnull(o.currentNumberScheduled) && (return false)

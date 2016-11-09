@@ -12,7 +12,9 @@ type V1LimitRangeSpec <: SwaggerModel
 end # type V1LimitRangeSpec
 
 const _name_map_V1LimitRangeSpec = Dict{String,Symbol}(["limits"=>:limits])
+const _field_map_V1LimitRangeSpec = Dict{Symbol,String}([:limits=>"limits"])
 Swagger.name_map(::Type{ V1LimitRangeSpec }) = _name_map_V1LimitRangeSpec
+Swagger.field_map(::Type{ V1LimitRangeSpec }) = _field_map_V1LimitRangeSpec
 
 function check_required(o::V1LimitRangeSpec)
     isnull(o.limits) && (return false)

@@ -12,7 +12,9 @@ type V1ScaleSpec <: SwaggerModel
 end # type V1ScaleSpec
 
 const _name_map_V1ScaleSpec = Dict{String,Symbol}(["replicas"=>:replicas])
+const _field_map_V1ScaleSpec = Dict{Symbol,String}([:replicas=>"replicas"])
 Swagger.name_map(::Type{ V1ScaleSpec }) = _name_map_V1ScaleSpec
+Swagger.field_map(::Type{ V1ScaleSpec }) = _field_map_V1ScaleSpec
 
 function check_required(o::V1ScaleSpec)
     true

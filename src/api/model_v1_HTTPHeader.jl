@@ -14,7 +14,9 @@ type V1HTTPHeader <: SwaggerModel
 end # type V1HTTPHeader
 
 const _name_map_V1HTTPHeader = Dict{String,Symbol}(["name"=>:name, "value"=>:value])
+const _field_map_V1HTTPHeader = Dict{Symbol,String}([:name=>"name", :value=>"value"])
 Swagger.name_map(::Type{ V1HTTPHeader }) = _name_map_V1HTTPHeader
+Swagger.field_map(::Type{ V1HTTPHeader }) = _field_map_V1HTTPHeader
 
 function check_required(o::V1HTTPHeader)
     isnull(o.name) && (return false)

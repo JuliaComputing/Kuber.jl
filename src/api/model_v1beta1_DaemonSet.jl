@@ -16,7 +16,9 @@ type V1beta1DaemonSet <: SwaggerModel
 end # type V1beta1DaemonSet
 
 const _name_map_V1beta1DaemonSet = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1beta1DaemonSet = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1beta1DaemonSet }) = _name_map_V1beta1DaemonSet
+Swagger.field_map(::Type{ V1beta1DaemonSet }) = _field_map_V1beta1DaemonSet
 
 function check_required(o::V1beta1DaemonSet)
     true

@@ -14,7 +14,9 @@ type V1ComponentStatusList <: SwaggerModel
 end # type V1ComponentStatusList
 
 const _name_map_V1ComponentStatusList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1ComponentStatusList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1ComponentStatusList }) = _name_map_V1ComponentStatusList
+Swagger.field_map(::Type{ V1ComponentStatusList }) = _field_map_V1ComponentStatusList
 
 function check_required(o::V1ComponentStatusList)
     isnull(o.items) && (return false)

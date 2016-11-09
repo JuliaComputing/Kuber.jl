@@ -14,7 +14,9 @@ type V1beta1NetworkPolicyPeer <: SwaggerModel
 end # type V1beta1NetworkPolicyPeer
 
 const _name_map_V1beta1NetworkPolicyPeer = Dict{String,Symbol}(["namespaceSelector"=>:namespaceSelector, "podSelector"=>:podSelector])
+const _field_map_V1beta1NetworkPolicyPeer = Dict{Symbol,String}([:namespaceSelector=>"namespaceSelector", :podSelector=>"podSelector"])
 Swagger.name_map(::Type{ V1beta1NetworkPolicyPeer }) = _name_map_V1beta1NetworkPolicyPeer
+Swagger.field_map(::Type{ V1beta1NetworkPolicyPeer }) = _field_map_V1beta1NetworkPolicyPeer
 
 function check_required(o::V1beta1NetworkPolicyPeer)
     true

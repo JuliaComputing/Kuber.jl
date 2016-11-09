@@ -14,7 +14,9 @@ type V1ResourceRequirements <: SwaggerModel
 end # type V1ResourceRequirements
 
 const _name_map_V1ResourceRequirements = Dict{String,Symbol}(["limits"=>:limits, "requests"=>:requests])
+const _field_map_V1ResourceRequirements = Dict{Symbol,String}([:limits=>"limits", :requests=>"requests"])
 Swagger.name_map(::Type{ V1ResourceRequirements }) = _name_map_V1ResourceRequirements
+Swagger.field_map(::Type{ V1ResourceRequirements }) = _field_map_V1ResourceRequirements
 
 function check_required(o::V1ResourceRequirements)
     true

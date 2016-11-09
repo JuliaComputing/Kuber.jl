@@ -12,7 +12,9 @@ type V1NamespaceSpec <: SwaggerModel
 end # type V1NamespaceSpec
 
 const _name_map_V1NamespaceSpec = Dict{String,Symbol}(["finalizers"=>:finalizers])
+const _field_map_V1NamespaceSpec = Dict{Symbol,String}([:finalizers=>"finalizers"])
 Swagger.name_map(::Type{ V1NamespaceSpec }) = _name_map_V1NamespaceSpec
+Swagger.field_map(::Type{ V1NamespaceSpec }) = _field_map_V1NamespaceSpec
 
 function check_required(o::V1NamespaceSpec)
     true

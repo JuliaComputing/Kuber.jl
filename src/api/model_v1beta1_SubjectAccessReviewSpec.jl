@@ -20,7 +20,9 @@ type V1beta1SubjectAccessReviewSpec <: SwaggerModel
 end # type V1beta1SubjectAccessReviewSpec
 
 const _name_map_V1beta1SubjectAccessReviewSpec = Dict{String,Symbol}(["extra"=>:extra, "group"=>:group, "nonResourceAttributes"=>:nonResourceAttributes, "resourceAttributes"=>:resourceAttributes, "user"=>:user])
+const _field_map_V1beta1SubjectAccessReviewSpec = Dict{Symbol,String}([:extra=>"extra", :group=>"group", :nonResourceAttributes=>"nonResourceAttributes", :resourceAttributes=>"resourceAttributes", :user=>"user"])
 Swagger.name_map(::Type{ V1beta1SubjectAccessReviewSpec }) = _name_map_V1beta1SubjectAccessReviewSpec
+Swagger.field_map(::Type{ V1beta1SubjectAccessReviewSpec }) = _field_map_V1beta1SubjectAccessReviewSpec
 
 function check_required(o::V1beta1SubjectAccessReviewSpec)
     true

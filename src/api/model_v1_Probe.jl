@@ -20,7 +20,9 @@ type V1Probe <: SwaggerModel
 end # type V1Probe
 
 const _name_map_V1Probe = Dict{String,Symbol}(["failureThreshold"=>:failureThreshold, "initialDelaySeconds"=>:initialDelaySeconds, "periodSeconds"=>:periodSeconds, "successThreshold"=>:successThreshold, "timeoutSeconds"=>:timeoutSeconds])
+const _field_map_V1Probe = Dict{Symbol,String}([:failureThreshold=>"failureThreshold", :initialDelaySeconds=>"initialDelaySeconds", :periodSeconds=>"periodSeconds", :successThreshold=>"successThreshold", :timeoutSeconds=>"timeoutSeconds"])
 Swagger.name_map(::Type{ V1Probe }) = _name_map_V1Probe
+Swagger.field_map(::Type{ V1Probe }) = _field_map_V1Probe
 
 function check_required(o::V1Probe)
     true

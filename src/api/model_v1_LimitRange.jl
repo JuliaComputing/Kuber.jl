@@ -14,7 +14,9 @@ type V1LimitRange <: SwaggerModel
 end # type V1LimitRange
 
 const _name_map_V1LimitRange = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec])
+const _field_map_V1LimitRange = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec"])
 Swagger.name_map(::Type{ V1LimitRange }) = _name_map_V1LimitRange
+Swagger.field_map(::Type{ V1LimitRange }) = _field_map_V1LimitRange
 
 function check_required(o::V1LimitRange)
     true

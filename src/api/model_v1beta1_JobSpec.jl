@@ -22,7 +22,9 @@ type V1beta1JobSpec <: SwaggerModel
 end # type V1beta1JobSpec
 
 const _name_map_V1beta1JobSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "autoSelector"=>:autoSelector, "completions"=>:completions, "parallelism"=>:parallelism, "selector"=>:selector, "template"=>:template])
+const _field_map_V1beta1JobSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :autoSelector=>"autoSelector", :completions=>"completions", :parallelism=>"parallelism", :selector=>"selector", :template=>"template"])
 Swagger.name_map(::Type{ V1beta1JobSpec }) = _name_map_V1beta1JobSpec
+Swagger.field_map(::Type{ V1beta1JobSpec }) = _field_map_V1beta1JobSpec
 
 function check_required(o::V1beta1JobSpec)
     isnull(o.template) && (return false)

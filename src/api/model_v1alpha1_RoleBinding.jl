@@ -16,7 +16,9 @@ type V1alpha1RoleBinding <: SwaggerModel
 end # type V1alpha1RoleBinding
 
 const _name_map_V1alpha1RoleBinding = Dict{String,Symbol}(["metadata"=>:metadata, "roleRef"=>:roleRef, "subjects"=>:subjects])
+const _field_map_V1alpha1RoleBinding = Dict{Symbol,String}([:metadata=>"metadata", :roleRef=>"roleRef", :subjects=>"subjects"])
 Swagger.name_map(::Type{ V1alpha1RoleBinding }) = _name_map_V1alpha1RoleBinding
+Swagger.field_map(::Type{ V1alpha1RoleBinding }) = _field_map_V1alpha1RoleBinding
 
 function check_required(o::V1alpha1RoleBinding)
     isnull(o.roleRef) && (return false)

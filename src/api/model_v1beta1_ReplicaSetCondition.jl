@@ -22,7 +22,9 @@ type V1beta1ReplicaSetCondition <: SwaggerModel
 end # type V1beta1ReplicaSetCondition
 
 const _name_map_V1beta1ReplicaSetCondition = Dict{String,Symbol}(["lastProbeTime"=>:lastProbeTime, "lastTransitionTime"=>:lastTransitionTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
+const _field_map_V1beta1ReplicaSetCondition = Dict{Symbol,String}([:lastProbeTime=>"lastProbeTime", :lastTransitionTime=>"lastTransitionTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
 Swagger.name_map(::Type{ V1beta1ReplicaSetCondition }) = _name_map_V1beta1ReplicaSetCondition
+Swagger.field_map(::Type{ V1beta1ReplicaSetCondition }) = _field_map_V1beta1ReplicaSetCondition
 
 function check_required(o::V1beta1ReplicaSetCondition)
     isnull(o.status) && (return false)

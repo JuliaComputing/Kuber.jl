@@ -14,7 +14,9 @@ type V1ContainerStateWaiting <: SwaggerModel
 end # type V1ContainerStateWaiting
 
 const _name_map_V1ContainerStateWaiting = Dict{String,Symbol}(["message"=>:message, "reason"=>:reason])
+const _field_map_V1ContainerStateWaiting = Dict{Symbol,String}([:message=>"message", :reason=>"reason"])
 Swagger.name_map(::Type{ V1ContainerStateWaiting }) = _name_map_V1ContainerStateWaiting
+Swagger.field_map(::Type{ V1ContainerStateWaiting }) = _field_map_V1ContainerStateWaiting
 
 function check_required(o::V1ContainerStateWaiting)
     true

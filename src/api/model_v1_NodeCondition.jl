@@ -22,7 +22,9 @@ type V1NodeCondition <: SwaggerModel
 end # type V1NodeCondition
 
 const _name_map_V1NodeCondition = Dict{String,Symbol}(["lastHeartbeatTime"=>:lastHeartbeatTime, "lastTransitionTime"=>:lastTransitionTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
+const _field_map_V1NodeCondition = Dict{Symbol,String}([:lastHeartbeatTime=>"lastHeartbeatTime", :lastTransitionTime=>"lastTransitionTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
 Swagger.name_map(::Type{ V1NodeCondition }) = _name_map_V1NodeCondition
+Swagger.field_map(::Type{ V1NodeCondition }) = _field_map_V1NodeCondition
 
 function check_required(o::V1NodeCondition)
     isnull(o.status) && (return false)

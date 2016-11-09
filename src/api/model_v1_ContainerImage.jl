@@ -14,7 +14,9 @@ type V1ContainerImage <: SwaggerModel
 end # type V1ContainerImage
 
 const _name_map_V1ContainerImage = Dict{String,Symbol}(["names"=>:names, "sizeBytes"=>:sizeBytes])
+const _field_map_V1ContainerImage = Dict{Symbol,String}([:names=>"names", :sizeBytes=>"sizeBytes"])
 Swagger.name_map(::Type{ V1ContainerImage }) = _name_map_V1ContainerImage
+Swagger.field_map(::Type{ V1ContainerImage }) = _field_map_V1ContainerImage
 
 function check_required(o::V1ContainerImage)
     isnull(o.names) && (return false)

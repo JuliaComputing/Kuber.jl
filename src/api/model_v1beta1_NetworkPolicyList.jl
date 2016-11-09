@@ -14,7 +14,9 @@ type V1beta1NetworkPolicyList <: SwaggerModel
 end # type V1beta1NetworkPolicyList
 
 const _name_map_V1beta1NetworkPolicyList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1beta1NetworkPolicyList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1beta1NetworkPolicyList }) = _name_map_V1beta1NetworkPolicyList
+Swagger.field_map(::Type{ V1beta1NetworkPolicyList }) = _field_map_V1beta1NetworkPolicyList
 
 function check_required(o::V1beta1NetworkPolicyList)
     isnull(o.items) && (return false)

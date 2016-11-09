@@ -16,7 +16,9 @@ type V1Handler <: SwaggerModel
 end # type V1Handler
 
 const _name_map_V1Handler = Dict{String,Symbol}(["exec"=>:exec, "httpGet"=>:httpGet, "tcpSocket"=>:tcpSocket])
+const _field_map_V1Handler = Dict{Symbol,String}([:exec=>"exec", :httpGet=>"httpGet", :tcpSocket=>"tcpSocket"])
 Swagger.name_map(::Type{ V1Handler }) = _name_map_V1Handler
+Swagger.field_map(::Type{ V1Handler }) = _field_map_V1Handler
 
 function check_required(o::V1Handler)
     true

@@ -14,7 +14,9 @@ type V1ResourceQuotaSpec <: SwaggerModel
 end # type V1ResourceQuotaSpec
 
 const _name_map_V1ResourceQuotaSpec = Dict{String,Symbol}(["hard"=>:hard, "scopes"=>:scopes])
+const _field_map_V1ResourceQuotaSpec = Dict{Symbol,String}([:hard=>"hard", :scopes=>"scopes"])
 Swagger.name_map(::Type{ V1ResourceQuotaSpec }) = _name_map_V1ResourceQuotaSpec
+Swagger.field_map(::Type{ V1ResourceQuotaSpec }) = _field_map_V1ResourceQuotaSpec
 
 function check_required(o::V1ResourceQuotaSpec)
     true

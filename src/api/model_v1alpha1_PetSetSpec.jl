@@ -20,7 +20,9 @@ type V1alpha1PetSetSpec <: SwaggerModel
 end # type V1alpha1PetSetSpec
 
 const _name_map_V1alpha1PetSetSpec = Dict{String,Symbol}(["replicas"=>:replicas, "selector"=>:selector, "serviceName"=>:serviceName, "template"=>:template, "volumeClaimTemplates"=>:volumeClaimTemplates])
+const _field_map_V1alpha1PetSetSpec = Dict{Symbol,String}([:replicas=>"replicas", :selector=>"selector", :serviceName=>"serviceName", :template=>"template", :volumeClaimTemplates=>"volumeClaimTemplates"])
 Swagger.name_map(::Type{ V1alpha1PetSetSpec }) = _name_map_V1alpha1PetSetSpec
+Swagger.field_map(::Type{ V1alpha1PetSetSpec }) = _field_map_V1alpha1PetSetSpec
 
 function check_required(o::V1alpha1PetSetSpec)
     isnull(o.serviceName) && (return false)

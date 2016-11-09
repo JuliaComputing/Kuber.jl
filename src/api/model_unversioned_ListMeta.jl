@@ -14,7 +14,9 @@ type UnversionedListMeta <: SwaggerModel
 end # type UnversionedListMeta
 
 const _name_map_UnversionedListMeta = Dict{String,Symbol}(["resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink])
+const _field_map_UnversionedListMeta = Dict{Symbol,String}([:resourceVersion=>"resourceVersion", :selfLink=>"selfLink"])
 Swagger.name_map(::Type{ UnversionedListMeta }) = _name_map_UnversionedListMeta
+Swagger.field_map(::Type{ UnversionedListMeta }) = _field_map_UnversionedListMeta
 
 function check_required(o::UnversionedListMeta)
     true

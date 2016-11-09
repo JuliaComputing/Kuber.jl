@@ -14,7 +14,9 @@ type V1Binding <: SwaggerModel
 end # type V1Binding
 
 const _name_map_V1Binding = Dict{String,Symbol}(["metadata"=>:metadata, "target"=>:target])
+const _field_map_V1Binding = Dict{Symbol,String}([:metadata=>"metadata", :target=>"target"])
 Swagger.name_map(::Type{ V1Binding }) = _name_map_V1Binding
+Swagger.field_map(::Type{ V1Binding }) = _field_map_V1Binding
 
 function check_required(o::V1Binding)
     isnull(o.target) && (return false)

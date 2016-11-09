@@ -16,7 +16,9 @@ type V1EndpointPort <: SwaggerModel
 end # type V1EndpointPort
 
 const _name_map_V1EndpointPort = Dict{String,Symbol}(["name"=>:name, "port"=>:port, "protocol"=>:protocol])
+const _field_map_V1EndpointPort = Dict{Symbol,String}([:name=>"name", :port=>"port", :protocol=>"protocol"])
 Swagger.name_map(::Type{ V1EndpointPort }) = _name_map_V1EndpointPort
+Swagger.field_map(::Type{ V1EndpointPort }) = _field_map_V1EndpointPort
 
 function check_required(o::V1EndpointPort)
     isnull(o.port) && (return false)

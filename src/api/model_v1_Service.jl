@@ -16,7 +16,9 @@ type V1Service <: SwaggerModel
 end # type V1Service
 
 const _name_map_V1Service = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1Service = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1Service }) = _name_map_V1Service
+Swagger.field_map(::Type{ V1Service }) = _field_map_V1Service
 
 function check_required(o::V1Service)
     true

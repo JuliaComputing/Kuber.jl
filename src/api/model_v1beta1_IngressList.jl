@@ -14,7 +14,9 @@ type V1beta1IngressList <: SwaggerModel
 end # type V1beta1IngressList
 
 const _name_map_V1beta1IngressList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1beta1IngressList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1beta1IngressList }) = _name_map_V1beta1IngressList
+Swagger.field_map(::Type{ V1beta1IngressList }) = _field_map_V1beta1IngressList
 
 function check_required(o::V1beta1IngressList)
     isnull(o.items) && (return false)

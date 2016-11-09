@@ -16,7 +16,9 @@ type V1ServiceAccount <: SwaggerModel
 end # type V1ServiceAccount
 
 const _name_map_V1ServiceAccount = Dict{String,Symbol}(["imagePullSecrets"=>:imagePullSecrets, "metadata"=>:metadata, "secrets"=>:secrets])
+const _field_map_V1ServiceAccount = Dict{Symbol,String}([:imagePullSecrets=>"imagePullSecrets", :metadata=>"metadata", :secrets=>"secrets"])
 Swagger.name_map(::Type{ V1ServiceAccount }) = _name_map_V1ServiceAccount
+Swagger.field_map(::Type{ V1ServiceAccount }) = _field_map_V1ServiceAccount
 
 function check_required(o::V1ServiceAccount)
     true

@@ -12,7 +12,9 @@ type V1NamespaceStatus <: SwaggerModel
 end # type V1NamespaceStatus
 
 const _name_map_V1NamespaceStatus = Dict{String,Symbol}(["phase"=>:phase])
+const _field_map_V1NamespaceStatus = Dict{Symbol,String}([:phase=>"phase"])
 Swagger.name_map(::Type{ V1NamespaceStatus }) = _name_map_V1NamespaceStatus
+Swagger.field_map(::Type{ V1NamespaceStatus }) = _field_map_V1NamespaceStatus
 
 function check_required(o::V1NamespaceStatus)
     true

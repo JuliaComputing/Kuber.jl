@@ -14,7 +14,9 @@ type V1beta1RollingUpdateDeployment <: SwaggerModel
 end # type V1beta1RollingUpdateDeployment
 
 const _name_map_V1beta1RollingUpdateDeployment = Dict{String,Symbol}(["maxSurge"=>:maxSurge, "maxUnavailable"=>:maxUnavailable])
+const _field_map_V1beta1RollingUpdateDeployment = Dict{Symbol,String}([:maxSurge=>"maxSurge", :maxUnavailable=>"maxUnavailable"])
 Swagger.name_map(::Type{ V1beta1RollingUpdateDeployment }) = _name_map_V1beta1RollingUpdateDeployment
+Swagger.field_map(::Type{ V1beta1RollingUpdateDeployment }) = _field_map_V1beta1RollingUpdateDeployment
 
 function check_required(o::V1beta1RollingUpdateDeployment)
     true

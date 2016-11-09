@@ -22,7 +22,9 @@ type V1ReplicationControllerCondition <: SwaggerModel
 end # type V1ReplicationControllerCondition
 
 const _name_map_V1ReplicationControllerCondition = Dict{String,Symbol}(["lastProbeTime"=>:lastProbeTime, "lastTransitionTime"=>:lastTransitionTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
+const _field_map_V1ReplicationControllerCondition = Dict{Symbol,String}([:lastProbeTime=>"lastProbeTime", :lastTransitionTime=>"lastTransitionTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
 Swagger.name_map(::Type{ V1ReplicationControllerCondition }) = _name_map_V1ReplicationControllerCondition
+Swagger.field_map(::Type{ V1ReplicationControllerCondition }) = _field_map_V1ReplicationControllerCondition
 
 function check_required(o::V1ReplicationControllerCondition)
     isnull(o.status) && (return false)

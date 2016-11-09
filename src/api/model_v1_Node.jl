@@ -16,7 +16,9 @@ type V1Node <: SwaggerModel
 end # type V1Node
 
 const _name_map_V1Node = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1Node = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1Node }) = _name_map_V1Node
+Swagger.field_map(::Type{ V1Node }) = _field_map_V1Node
 
 function check_required(o::V1Node)
     true

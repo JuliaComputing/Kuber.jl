@@ -16,7 +16,9 @@ type V1beta1TokenReviewStatus <: SwaggerModel
 end # type V1beta1TokenReviewStatus
 
 const _name_map_V1beta1TokenReviewStatus = Dict{String,Symbol}(["authenticated"=>:authenticated, "error"=>:error, "user"=>:user])
+const _field_map_V1beta1TokenReviewStatus = Dict{Symbol,String}([:authenticated=>"authenticated", :error=>"error", :user=>"user"])
 Swagger.name_map(::Type{ V1beta1TokenReviewStatus }) = _name_map_V1beta1TokenReviewStatus
+Swagger.field_map(::Type{ V1beta1TokenReviewStatus }) = _field_map_V1beta1TokenReviewStatus
 
 function check_required(o::V1beta1TokenReviewStatus)
     true

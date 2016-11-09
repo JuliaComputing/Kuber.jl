@@ -18,7 +18,9 @@ type V1VolumeMount <: SwaggerModel
 end # type V1VolumeMount
 
 const _name_map_V1VolumeMount = Dict{String,Symbol}(["mountPath"=>:mountPath, "name"=>:name, "readOnly"=>:readOnly, "subPath"=>:subPath])
+const _field_map_V1VolumeMount = Dict{Symbol,String}([:mountPath=>"mountPath", :name=>"name", :readOnly=>"readOnly", :subPath=>"subPath"])
 Swagger.name_map(::Type{ V1VolumeMount }) = _name_map_V1VolumeMount
+Swagger.field_map(::Type{ V1VolumeMount }) = _field_map_V1VolumeMount
 
 function check_required(o::V1VolumeMount)
     isnull(o.mountPath) && (return false)

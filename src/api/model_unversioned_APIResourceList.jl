@@ -14,7 +14,9 @@ type UnversionedAPIResourceList <: SwaggerModel
 end # type UnversionedAPIResourceList
 
 const _name_map_UnversionedAPIResourceList = Dict{String,Symbol}(["groupVersion"=>:groupVersion, "resources"=>:resources])
+const _field_map_UnversionedAPIResourceList = Dict{Symbol,String}([:groupVersion=>"groupVersion", :resources=>"resources"])
 Swagger.name_map(::Type{ UnversionedAPIResourceList }) = _name_map_UnversionedAPIResourceList
+Swagger.field_map(::Type{ UnversionedAPIResourceList }) = _field_map_UnversionedAPIResourceList
 
 function check_required(o::UnversionedAPIResourceList)
     isnull(o.groupVersion) && (return false)

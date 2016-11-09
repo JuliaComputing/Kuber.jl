@@ -14,7 +14,9 @@ type V1beta1NetworkPolicySpec <: SwaggerModel
 end # type V1beta1NetworkPolicySpec
 
 const _name_map_V1beta1NetworkPolicySpec = Dict{String,Symbol}(["ingress"=>:ingress, "podSelector"=>:podSelector])
+const _field_map_V1beta1NetworkPolicySpec = Dict{Symbol,String}([:ingress=>"ingress", :podSelector=>"podSelector"])
 Swagger.name_map(::Type{ V1beta1NetworkPolicySpec }) = _name_map_V1beta1NetworkPolicySpec
+Swagger.field_map(::Type{ V1beta1NetworkPolicySpec }) = _field_map_V1beta1NetworkPolicySpec
 
 function check_required(o::V1beta1NetworkPolicySpec)
     isnull(o.podSelector) && (return false)

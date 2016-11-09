@@ -14,7 +14,9 @@ type V1alpha1ClusterRoleBindingList <: SwaggerModel
 end # type V1alpha1ClusterRoleBindingList
 
 const _name_map_V1alpha1ClusterRoleBindingList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1alpha1ClusterRoleBindingList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1alpha1ClusterRoleBindingList }) = _name_map_V1alpha1ClusterRoleBindingList
+Swagger.field_map(::Type{ V1alpha1ClusterRoleBindingList }) = _field_map_V1alpha1ClusterRoleBindingList
 
 function check_required(o::V1alpha1ClusterRoleBindingList)
     isnull(o.items) && (return false)

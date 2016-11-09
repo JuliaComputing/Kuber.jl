@@ -14,7 +14,9 @@ type V1alpha1CertificateSigningRequestList <: SwaggerModel
 end # type V1alpha1CertificateSigningRequestList
 
 const _name_map_V1alpha1CertificateSigningRequestList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1alpha1CertificateSigningRequestList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1alpha1CertificateSigningRequestList }) = _name_map_V1alpha1CertificateSigningRequestList
+Swagger.field_map(::Type{ V1alpha1CertificateSigningRequestList }) = _field_map_V1alpha1CertificateSigningRequestList
 
 function check_required(o::V1alpha1CertificateSigningRequestList)
     isnull(o.items) && (return false)

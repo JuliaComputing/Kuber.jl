@@ -14,7 +14,9 @@ type V1beta1NetworkPolicyIngressRule <: SwaggerModel
 end # type V1beta1NetworkPolicyIngressRule
 
 const _name_map_V1beta1NetworkPolicyIngressRule = Dict{String,Symbol}(["from"=>:from, "ports"=>:ports])
+const _field_map_V1beta1NetworkPolicyIngressRule = Dict{Symbol,String}([:from=>"from", :ports=>"ports"])
 Swagger.name_map(::Type{ V1beta1NetworkPolicyIngressRule }) = _name_map_V1beta1NetworkPolicyIngressRule
+Swagger.field_map(::Type{ V1beta1NetworkPolicyIngressRule }) = _field_map_V1beta1NetworkPolicyIngressRule
 
 function check_required(o::V1beta1NetworkPolicyIngressRule)
     true

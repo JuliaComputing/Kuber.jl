@@ -16,7 +16,9 @@ type V1CrossVersionObjectReference <: SwaggerModel
 end # type V1CrossVersionObjectReference
 
 const _name_map_V1CrossVersionObjectReference = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "name"=>:name])
+const _field_map_V1CrossVersionObjectReference = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :name=>"name"])
 Swagger.name_map(::Type{ V1CrossVersionObjectReference }) = _name_map_V1CrossVersionObjectReference
+Swagger.field_map(::Type{ V1CrossVersionObjectReference }) = _field_map_V1CrossVersionObjectReference
 
 function check_required(o::V1CrossVersionObjectReference)
     isnull(o.kind) && (return false)

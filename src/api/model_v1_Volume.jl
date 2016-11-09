@@ -12,7 +12,9 @@ type V1Volume <: SwaggerModel
 end # type V1Volume
 
 const _name_map_V1Volume = Dict{String,Symbol}(["name"=>:name])
+const _field_map_V1Volume = Dict{Symbol,String}([:name=>"name"])
 Swagger.name_map(::Type{ V1Volume }) = _name_map_V1Volume
+Swagger.field_map(::Type{ V1Volume }) = _field_map_V1Volume
 
 function check_required(o::V1Volume)
     isnull(o.name) && (return false)

@@ -18,7 +18,9 @@ type V1PersistentVolumeClaimSpec <: SwaggerModel
 end # type V1PersistentVolumeClaimSpec
 
 const _name_map_V1PersistentVolumeClaimSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "resources"=>:resources, "selector"=>:selector, "volumeName"=>:volumeName])
+const _field_map_V1PersistentVolumeClaimSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :resources=>"resources", :selector=>"selector", :volumeName=>"volumeName"])
 Swagger.name_map(::Type{ V1PersistentVolumeClaimSpec }) = _name_map_V1PersistentVolumeClaimSpec
+Swagger.field_map(::Type{ V1PersistentVolumeClaimSpec }) = _field_map_V1PersistentVolumeClaimSpec
 
 function check_required(o::V1PersistentVolumeClaimSpec)
     true

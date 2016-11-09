@@ -16,7 +16,9 @@ type V1DeleteOptions <: SwaggerModel
 end # type V1DeleteOptions
 
 const _name_map_V1DeleteOptions = Dict{String,Symbol}(["gracePeriodSeconds"=>:gracePeriodSeconds, "orphanDependents"=>:orphanDependents, "preconditions"=>:preconditions])
+const _field_map_V1DeleteOptions = Dict{Symbol,String}([:gracePeriodSeconds=>"gracePeriodSeconds", :orphanDependents=>"orphanDependents", :preconditions=>"preconditions"])
 Swagger.name_map(::Type{ V1DeleteOptions }) = _name_map_V1DeleteOptions
+Swagger.field_map(::Type{ V1DeleteOptions }) = _field_map_V1DeleteOptions
 
 function check_required(o::V1DeleteOptions)
     true

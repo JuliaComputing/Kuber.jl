@@ -16,7 +16,9 @@ type V1beta1LabelSelectorRequirement <: SwaggerModel
 end # type V1beta1LabelSelectorRequirement
 
 const _name_map_V1beta1LabelSelectorRequirement = Dict{String,Symbol}(["key"=>:key, "operator"=>:operator, "values"=>:values])
+const _field_map_V1beta1LabelSelectorRequirement = Dict{Symbol,String}([:key=>"key", :operator=>"operator", :values=>"values"])
 Swagger.name_map(::Type{ V1beta1LabelSelectorRequirement }) = _name_map_V1beta1LabelSelectorRequirement
+Swagger.field_map(::Type{ V1beta1LabelSelectorRequirement }) = _field_map_V1beta1LabelSelectorRequirement
 
 function check_required(o::V1beta1LabelSelectorRequirement)
     isnull(o.key) && (return false)

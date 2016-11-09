@@ -18,7 +18,9 @@ type V1SELinuxOptions <: SwaggerModel
 end # type V1SELinuxOptions
 
 const _name_map_V1SELinuxOptions = Dict{String,Symbol}(["level"=>:level, "role"=>:role, "type"=>:_type, "user"=>:user])
+const _field_map_V1SELinuxOptions = Dict{Symbol,String}([:level=>"level", :role=>"role", :_type=>"type", :user=>"user"])
 Swagger.name_map(::Type{ V1SELinuxOptions }) = _name_map_V1SELinuxOptions
+Swagger.field_map(::Type{ V1SELinuxOptions }) = _field_map_V1SELinuxOptions
 
 function check_required(o::V1SELinuxOptions)
     true

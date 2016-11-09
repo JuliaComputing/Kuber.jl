@@ -14,7 +14,9 @@ type VersionedEvent <: SwaggerModel
 end # type VersionedEvent
 
 const _name_map_VersionedEvent = Dict{String,Symbol}(["object"=>:object, "type"=>:_type])
+const _field_map_VersionedEvent = Dict{Symbol,String}([:object=>"object", :_type=>"type"])
 Swagger.name_map(::Type{ VersionedEvent }) = _name_map_VersionedEvent
+Swagger.field_map(::Type{ VersionedEvent }) = _field_map_VersionedEvent
 
 function check_required(o::VersionedEvent)
     isnull(o.object) && (return false)

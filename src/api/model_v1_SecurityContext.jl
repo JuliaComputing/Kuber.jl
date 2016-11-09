@@ -22,7 +22,9 @@ type V1SecurityContext <: SwaggerModel
 end # type V1SecurityContext
 
 const _name_map_V1SecurityContext = Dict{String,Symbol}(["capabilities"=>:capabilities, "privileged"=>:privileged, "readOnlyRootFilesystem"=>:readOnlyRootFilesystem, "runAsNonRoot"=>:runAsNonRoot, "runAsUser"=>:runAsUser, "seLinuxOptions"=>:seLinuxOptions])
+const _field_map_V1SecurityContext = Dict{Symbol,String}([:capabilities=>"capabilities", :privileged=>"privileged", :readOnlyRootFilesystem=>"readOnlyRootFilesystem", :runAsNonRoot=>"runAsNonRoot", :runAsUser=>"runAsUser", :seLinuxOptions=>"seLinuxOptions"])
 Swagger.name_map(::Type{ V1SecurityContext }) = _name_map_V1SecurityContext
+Swagger.field_map(::Type{ V1SecurityContext }) = _field_map_V1SecurityContext
 
 function check_required(o::V1SecurityContext)
     true

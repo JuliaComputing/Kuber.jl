@@ -20,7 +20,9 @@ type V1ContainerPort <: SwaggerModel
 end # type V1ContainerPort
 
 const _name_map_V1ContainerPort = Dict{String,Symbol}(["containerPort"=>:containerPort, "hostIP"=>:hostIP, "hostPort"=>:hostPort, "name"=>:name, "protocol"=>:protocol])
+const _field_map_V1ContainerPort = Dict{Symbol,String}([:containerPort=>"containerPort", :hostIP=>"hostIP", :hostPort=>"hostPort", :name=>"name", :protocol=>"protocol"])
 Swagger.name_map(::Type{ V1ContainerPort }) = _name_map_V1ContainerPort
+Swagger.field_map(::Type{ V1ContainerPort }) = _field_map_V1ContainerPort
 
 function check_required(o::V1ContainerPort)
     isnull(o.containerPort) && (return false)

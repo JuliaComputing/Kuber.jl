@@ -12,7 +12,9 @@ type V1NodeDaemonEndpoints <: SwaggerModel
 end # type V1NodeDaemonEndpoints
 
 const _name_map_V1NodeDaemonEndpoints = Dict{String,Symbol}(["kubeletEndpoint"=>:kubeletEndpoint])
+const _field_map_V1NodeDaemonEndpoints = Dict{Symbol,String}([:kubeletEndpoint=>"kubeletEndpoint"])
 Swagger.name_map(::Type{ V1NodeDaemonEndpoints }) = _name_map_V1NodeDaemonEndpoints
+Swagger.field_map(::Type{ V1NodeDaemonEndpoints }) = _field_map_V1NodeDaemonEndpoints
 
 function check_required(o::V1NodeDaemonEndpoints)
     true

@@ -22,7 +22,9 @@ type V1alpha1PolicyRule <: SwaggerModel
 end # type V1alpha1PolicyRule
 
 const _name_map_V1alpha1PolicyRule = Dict{String,Symbol}(["apiGroups"=>:apiGroups, "attributeRestrictions"=>:attributeRestrictions, "nonResourceURLs"=>:nonResourceURLs, "resourceNames"=>:resourceNames, "resources"=>:resources, "verbs"=>:verbs])
+const _field_map_V1alpha1PolicyRule = Dict{Symbol,String}([:apiGroups=>"apiGroups", :attributeRestrictions=>"attributeRestrictions", :nonResourceURLs=>"nonResourceURLs", :resourceNames=>"resourceNames", :resources=>"resources", :verbs=>"verbs"])
 Swagger.name_map(::Type{ V1alpha1PolicyRule }) = _name_map_V1alpha1PolicyRule
+Swagger.field_map(::Type{ V1alpha1PolicyRule }) = _field_map_V1alpha1PolicyRule
 
 function check_required(o::V1alpha1PolicyRule)
     isnull(o.verbs) && (return false)

@@ -14,7 +14,9 @@ type V1PersistentVolumeClaimList <: SwaggerModel
 end # type V1PersistentVolumeClaimList
 
 const _name_map_V1PersistentVolumeClaimList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1PersistentVolumeClaimList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1PersistentVolumeClaimList }) = _name_map_V1PersistentVolumeClaimList
+Swagger.field_map(::Type{ V1PersistentVolumeClaimList }) = _field_map_V1PersistentVolumeClaimList
 
 function check_required(o::V1PersistentVolumeClaimList)
     isnull(o.items) && (return false)

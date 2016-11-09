@@ -16,7 +16,9 @@ type V1PersistentVolumeClaimStatus <: SwaggerModel
 end # type V1PersistentVolumeClaimStatus
 
 const _name_map_V1PersistentVolumeClaimStatus = Dict{String,Symbol}(["accessModes"=>:accessModes, "capacity"=>:capacity, "phase"=>:phase])
+const _field_map_V1PersistentVolumeClaimStatus = Dict{Symbol,String}([:accessModes=>"accessModes", :capacity=>"capacity", :phase=>"phase"])
 Swagger.name_map(::Type{ V1PersistentVolumeClaimStatus }) = _name_map_V1PersistentVolumeClaimStatus
+Swagger.field_map(::Type{ V1PersistentVolumeClaimStatus }) = _field_map_V1PersistentVolumeClaimStatus
 
 function check_required(o::V1PersistentVolumeClaimStatus)
     true

@@ -12,7 +12,9 @@ type V1beta1RollbackConfig <: SwaggerModel
 end # type V1beta1RollbackConfig
 
 const _name_map_V1beta1RollbackConfig = Dict{String,Symbol}(["revision"=>:revision])
+const _field_map_V1beta1RollbackConfig = Dict{Symbol,String}([:revision=>"revision"])
 Swagger.name_map(::Type{ V1beta1RollbackConfig }) = _name_map_V1beta1RollbackConfig
+Swagger.field_map(::Type{ V1beta1RollbackConfig }) = _field_map_V1beta1RollbackConfig
 
 function check_required(o::V1beta1RollbackConfig)
     true

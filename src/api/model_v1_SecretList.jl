@@ -14,7 +14,9 @@ type V1SecretList <: SwaggerModel
 end # type V1SecretList
 
 const _name_map_V1SecretList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1SecretList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1SecretList }) = _name_map_V1SecretList
+Swagger.field_map(::Type{ V1SecretList }) = _field_map_V1SecretList
 
 function check_required(o::V1SecretList)
     isnull(o.items) && (return false)

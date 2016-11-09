@@ -12,7 +12,9 @@ type V1Preconditions <: SwaggerModel
 end # type V1Preconditions
 
 const _name_map_V1Preconditions = Dict{String,Symbol}(["uid"=>:uid])
+const _field_map_V1Preconditions = Dict{Symbol,String}([:uid=>"uid"])
 Swagger.name_map(::Type{ V1Preconditions }) = _name_map_V1Preconditions
+Swagger.field_map(::Type{ V1Preconditions }) = _field_map_V1Preconditions
 
 function check_required(o::V1Preconditions)
     true

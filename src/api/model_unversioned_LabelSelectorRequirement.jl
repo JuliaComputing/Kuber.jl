@@ -16,7 +16,9 @@ type UnversionedLabelSelectorRequirement <: SwaggerModel
 end # type UnversionedLabelSelectorRequirement
 
 const _name_map_UnversionedLabelSelectorRequirement = Dict{String,Symbol}(["key"=>:key, "operator"=>:operator, "values"=>:values])
+const _field_map_UnversionedLabelSelectorRequirement = Dict{Symbol,String}([:key=>"key", :operator=>"operator", :values=>"values"])
 Swagger.name_map(::Type{ UnversionedLabelSelectorRequirement }) = _name_map_UnversionedLabelSelectorRequirement
+Swagger.field_map(::Type{ UnversionedLabelSelectorRequirement }) = _field_map_UnversionedLabelSelectorRequirement
 
 function check_required(o::UnversionedLabelSelectorRequirement)
     isnull(o.key) && (return false)

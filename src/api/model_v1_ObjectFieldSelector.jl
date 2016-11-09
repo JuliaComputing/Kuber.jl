@@ -14,7 +14,9 @@ type V1ObjectFieldSelector <: SwaggerModel
 end # type V1ObjectFieldSelector
 
 const _name_map_V1ObjectFieldSelector = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "fieldPath"=>:fieldPath])
+const _field_map_V1ObjectFieldSelector = Dict{Symbol,String}([:apiVersion=>"apiVersion", :fieldPath=>"fieldPath"])
 Swagger.name_map(::Type{ V1ObjectFieldSelector }) = _name_map_V1ObjectFieldSelector
+Swagger.field_map(::Type{ V1ObjectFieldSelector }) = _field_map_V1ObjectFieldSelector
 
 function check_required(o::V1ObjectFieldSelector)
     isnull(o.fieldPath) && (return false)

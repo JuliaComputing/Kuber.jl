@@ -18,7 +18,9 @@ type V1ReplicationControllerSpec <: SwaggerModel
 end # type V1ReplicationControllerSpec
 
 const _name_map_V1ReplicationControllerSpec = Dict{String,Symbol}(["minReadySeconds"=>:minReadySeconds, "replicas"=>:replicas, "selector"=>:selector, "template"=>:template])
+const _field_map_V1ReplicationControllerSpec = Dict{Symbol,String}([:minReadySeconds=>"minReadySeconds", :replicas=>"replicas", :selector=>"selector", :template=>"template"])
 Swagger.name_map(::Type{ V1ReplicationControllerSpec }) = _name_map_V1ReplicationControllerSpec
+Swagger.field_map(::Type{ V1ReplicationControllerSpec }) = _field_map_V1ReplicationControllerSpec
 
 function check_required(o::V1ReplicationControllerSpec)
     true

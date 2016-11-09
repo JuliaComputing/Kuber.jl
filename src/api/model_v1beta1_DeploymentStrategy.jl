@@ -14,7 +14,9 @@ type V1beta1DeploymentStrategy <: SwaggerModel
 end # type V1beta1DeploymentStrategy
 
 const _name_map_V1beta1DeploymentStrategy = Dict{String,Symbol}(["rollingUpdate"=>:rollingUpdate, "type"=>:_type])
+const _field_map_V1beta1DeploymentStrategy = Dict{Symbol,String}([:rollingUpdate=>"rollingUpdate", :_type=>"type"])
 Swagger.name_map(::Type{ V1beta1DeploymentStrategy }) = _name_map_V1beta1DeploymentStrategy
+Swagger.field_map(::Type{ V1beta1DeploymentStrategy }) = _field_map_V1beta1DeploymentStrategy
 
 function check_required(o::V1beta1DeploymentStrategy)
     true

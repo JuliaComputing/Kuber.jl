@@ -9,7 +9,9 @@ type UnversionedPatch <: SwaggerModel
 end # type UnversionedPatch
 
 const _name_map_UnversionedPatch = Dict{String,Symbol}()
+const _field_map_UnversionedPatch = Dict{Symbol,String}()
 Swagger.name_map(::Type{ UnversionedPatch }) = _name_map_UnversionedPatch
+Swagger.field_map(::Type{ UnversionedPatch }) = _field_map_UnversionedPatch
 
 function check_required(o::UnversionedPatch)
     true

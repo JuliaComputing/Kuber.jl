@@ -16,7 +16,9 @@ type V1beta1DeploymentRollback <: SwaggerModel
 end # type V1beta1DeploymentRollback
 
 const _name_map_V1beta1DeploymentRollback = Dict{String,Symbol}(["name"=>:name, "rollbackTo"=>:rollbackTo, "updatedAnnotations"=>:updatedAnnotations])
+const _field_map_V1beta1DeploymentRollback = Dict{Symbol,String}([:name=>"name", :rollbackTo=>"rollbackTo", :updatedAnnotations=>"updatedAnnotations"])
 Swagger.name_map(::Type{ V1beta1DeploymentRollback }) = _name_map_V1beta1DeploymentRollback
+Swagger.field_map(::Type{ V1beta1DeploymentRollback }) = _field_map_V1beta1DeploymentRollback
 
 function check_required(o::V1beta1DeploymentRollback)
     isnull(o.name) && (return false)

@@ -24,7 +24,9 @@ type V1ObjectReference <: SwaggerModel
 end # type V1ObjectReference
 
 const _name_map_V1ObjectReference = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "fieldPath"=>:fieldPath, "kind"=>:kind, "name"=>:name, "namespace"=>:namespace, "resourceVersion"=>:resourceVersion, "uid"=>:uid])
+const _field_map_V1ObjectReference = Dict{Symbol,String}([:apiVersion=>"apiVersion", :fieldPath=>"fieldPath", :kind=>"kind", :name=>"name", :namespace=>"namespace", :resourceVersion=>"resourceVersion", :uid=>"uid"])
 Swagger.name_map(::Type{ V1ObjectReference }) = _name_map_V1ObjectReference
+Swagger.field_map(::Type{ V1ObjectReference }) = _field_map_V1ObjectReference
 
 function check_required(o::V1ObjectReference)
     true

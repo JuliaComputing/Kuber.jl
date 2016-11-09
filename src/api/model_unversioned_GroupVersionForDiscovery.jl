@@ -14,7 +14,9 @@ type UnversionedGroupVersionForDiscovery <: SwaggerModel
 end # type UnversionedGroupVersionForDiscovery
 
 const _name_map_UnversionedGroupVersionForDiscovery = Dict{String,Symbol}(["groupVersion"=>:groupVersion, "version"=>:version])
+const _field_map_UnversionedGroupVersionForDiscovery = Dict{Symbol,String}([:groupVersion=>"groupVersion", :version=>"version"])
 Swagger.name_map(::Type{ UnversionedGroupVersionForDiscovery }) = _name_map_UnversionedGroupVersionForDiscovery
+Swagger.field_map(::Type{ UnversionedGroupVersionForDiscovery }) = _field_map_UnversionedGroupVersionForDiscovery
 
 function check_required(o::UnversionedGroupVersionForDiscovery)
     isnull(o.groupVersion) && (return false)

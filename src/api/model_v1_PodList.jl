@@ -14,7 +14,9 @@ type V1PodList <: SwaggerModel
 end # type V1PodList
 
 const _name_map_V1PodList = Dict{String,Symbol}(["items"=>:items, "metadata"=>:metadata])
+const _field_map_V1PodList = Dict{Symbol,String}([:items=>"items", :metadata=>"metadata"])
 Swagger.name_map(::Type{ V1PodList }) = _name_map_V1PodList
+Swagger.field_map(::Type{ V1PodList }) = _field_map_V1PodList
 
 function check_required(o::V1PodList)
     isnull(o.items) && (return false)

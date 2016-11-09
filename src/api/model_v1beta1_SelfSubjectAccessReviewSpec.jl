@@ -14,7 +14,9 @@ type V1beta1SelfSubjectAccessReviewSpec <: SwaggerModel
 end # type V1beta1SelfSubjectAccessReviewSpec
 
 const _name_map_V1beta1SelfSubjectAccessReviewSpec = Dict{String,Symbol}(["nonResourceAttributes"=>:nonResourceAttributes, "resourceAttributes"=>:resourceAttributes])
+const _field_map_V1beta1SelfSubjectAccessReviewSpec = Dict{Symbol,String}([:nonResourceAttributes=>"nonResourceAttributes", :resourceAttributes=>"resourceAttributes"])
 Swagger.name_map(::Type{ V1beta1SelfSubjectAccessReviewSpec }) = _name_map_V1beta1SelfSubjectAccessReviewSpec
+Swagger.field_map(::Type{ V1beta1SelfSubjectAccessReviewSpec }) = _field_map_V1beta1SelfSubjectAccessReviewSpec
 
 function check_required(o::V1beta1SelfSubjectAccessReviewSpec)
     true

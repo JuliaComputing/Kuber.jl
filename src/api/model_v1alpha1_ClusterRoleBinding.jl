@@ -16,7 +16,9 @@ type V1alpha1ClusterRoleBinding <: SwaggerModel
 end # type V1alpha1ClusterRoleBinding
 
 const _name_map_V1alpha1ClusterRoleBinding = Dict{String,Symbol}(["metadata"=>:metadata, "roleRef"=>:roleRef, "subjects"=>:subjects])
+const _field_map_V1alpha1ClusterRoleBinding = Dict{Symbol,String}([:metadata=>"metadata", :roleRef=>"roleRef", :subjects=>"subjects"])
 Swagger.name_map(::Type{ V1alpha1ClusterRoleBinding }) = _name_map_V1alpha1ClusterRoleBinding
+Swagger.field_map(::Type{ V1alpha1ClusterRoleBinding }) = _field_map_V1alpha1ClusterRoleBinding
 
 function check_required(o::V1alpha1ClusterRoleBinding)
     isnull(o.roleRef) && (return false)

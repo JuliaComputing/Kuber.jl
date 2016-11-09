@@ -20,7 +20,9 @@ type V1OwnerReference <: SwaggerModel
 end # type V1OwnerReference
 
 const _name_map_V1OwnerReference = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "controller"=>:controller, "kind"=>:kind, "name"=>:name, "uid"=>:uid])
+const _field_map_V1OwnerReference = Dict{Symbol,String}([:apiVersion=>"apiVersion", :controller=>"controller", :kind=>"kind", :name=>"name", :uid=>"uid"])
 Swagger.name_map(::Type{ V1OwnerReference }) = _name_map_V1OwnerReference
+Swagger.field_map(::Type{ V1OwnerReference }) = _field_map_V1OwnerReference
 
 function check_required(o::V1OwnerReference)
     isnull(o.apiVersion) && (return false)

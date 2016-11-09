@@ -16,7 +16,9 @@ type V1beta1ScaleStatus <: SwaggerModel
 end # type V1beta1ScaleStatus
 
 const _name_map_V1beta1ScaleStatus = Dict{String,Symbol}(["replicas"=>:replicas, "selector"=>:selector, "targetSelector"=>:targetSelector])
+const _field_map_V1beta1ScaleStatus = Dict{Symbol,String}([:replicas=>"replicas", :selector=>"selector", :targetSelector=>"targetSelector"])
 Swagger.name_map(::Type{ V1beta1ScaleStatus }) = _name_map_V1beta1ScaleStatus
+Swagger.field_map(::Type{ V1beta1ScaleStatus }) = _field_map_V1beta1ScaleStatus
 
 function check_required(o::V1beta1ScaleStatus)
     isnull(o.replicas) && (return false)

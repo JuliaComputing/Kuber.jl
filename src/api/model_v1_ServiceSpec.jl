@@ -30,7 +30,9 @@ type V1ServiceSpec <: SwaggerModel
 end # type V1ServiceSpec
 
 const _name_map_V1ServiceSpec = Dict{String,Symbol}(["clusterIP"=>:clusterIP, "deprecatedPublicIPs"=>:deprecatedPublicIPs, "externalIPs"=>:externalIPs, "externalName"=>:externalName, "loadBalancerIP"=>:loadBalancerIP, "loadBalancerSourceRanges"=>:loadBalancerSourceRanges, "ports"=>:ports, "selector"=>:selector, "sessionAffinity"=>:sessionAffinity, "type"=>:_type])
+const _field_map_V1ServiceSpec = Dict{Symbol,String}([:clusterIP=>"clusterIP", :deprecatedPublicIPs=>"deprecatedPublicIPs", :externalIPs=>"externalIPs", :externalName=>"externalName", :loadBalancerIP=>"loadBalancerIP", :loadBalancerSourceRanges=>"loadBalancerSourceRanges", :ports=>"ports", :selector=>"selector", :sessionAffinity=>"sessionAffinity", :_type=>"type"])
 Swagger.name_map(::Type{ V1ServiceSpec }) = _name_map_V1ServiceSpec
+Swagger.field_map(::Type{ V1ServiceSpec }) = _field_map_V1ServiceSpec
 
 function check_required(o::V1ServiceSpec)
     isnull(o.ports) && (return false)

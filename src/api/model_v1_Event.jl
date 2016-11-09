@@ -28,7 +28,9 @@ type V1Event <: SwaggerModel
 end # type V1Event
 
 const _name_map_V1Event = Dict{String,Symbol}(["count"=>:count, "firstTimestamp"=>:firstTimestamp, "involvedObject"=>:involvedObject, "lastTimestamp"=>:lastTimestamp, "message"=>:message, "metadata"=>:metadata, "reason"=>:reason, "source"=>:source, "type"=>:_type])
+const _field_map_V1Event = Dict{Symbol,String}([:count=>"count", :firstTimestamp=>"firstTimestamp", :involvedObject=>"involvedObject", :lastTimestamp=>"lastTimestamp", :message=>"message", :metadata=>"metadata", :reason=>"reason", :source=>"source", :_type=>"type"])
 Swagger.name_map(::Type{ V1Event }) = _name_map_V1Event
+Swagger.field_map(::Type{ V1Event }) = _field_map_V1Event
 
 function check_required(o::V1Event)
     isnull(o.involvedObject) && (return false)

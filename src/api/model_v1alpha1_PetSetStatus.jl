@@ -14,7 +14,9 @@ type V1alpha1PetSetStatus <: SwaggerModel
 end # type V1alpha1PetSetStatus
 
 const _name_map_V1alpha1PetSetStatus = Dict{String,Symbol}(["observedGeneration"=>:observedGeneration, "replicas"=>:replicas])
+const _field_map_V1alpha1PetSetStatus = Dict{Symbol,String}([:observedGeneration=>"observedGeneration", :replicas=>"replicas"])
 Swagger.name_map(::Type{ V1alpha1PetSetStatus }) = _name_map_V1alpha1PetSetStatus
+Swagger.field_map(::Type{ V1alpha1PetSetStatus }) = _field_map_V1alpha1PetSetStatus
 
 function check_required(o::V1alpha1PetSetStatus)
     isnull(o.replicas) && (return false)

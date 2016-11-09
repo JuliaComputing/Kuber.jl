@@ -16,7 +16,9 @@ type V1alpha1PodDisruptionBudget <: SwaggerModel
 end # type V1alpha1PodDisruptionBudget
 
 const _name_map_V1alpha1PodDisruptionBudget = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
+const _field_map_V1alpha1PodDisruptionBudget = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec", :status=>"status"])
 Swagger.name_map(::Type{ V1alpha1PodDisruptionBudget }) = _name_map_V1alpha1PodDisruptionBudget
+Swagger.field_map(::Type{ V1alpha1PodDisruptionBudget }) = _field_map_V1alpha1PodDisruptionBudget
 
 function check_required(o::V1alpha1PodDisruptionBudget)
     true

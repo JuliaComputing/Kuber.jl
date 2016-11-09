@@ -12,7 +12,9 @@ type V1beta1CPUTargetUtilization <: SwaggerModel
 end # type V1beta1CPUTargetUtilization
 
 const _name_map_V1beta1CPUTargetUtilization = Dict{String,Symbol}(["targetPercentage"=>:targetPercentage])
+const _field_map_V1beta1CPUTargetUtilization = Dict{Symbol,String}([:targetPercentage=>"targetPercentage"])
 Swagger.name_map(::Type{ V1beta1CPUTargetUtilization }) = _name_map_V1beta1CPUTargetUtilization
+Swagger.field_map(::Type{ V1beta1CPUTargetUtilization }) = _field_map_V1beta1CPUTargetUtilization
 
 function check_required(o::V1beta1CPUTargetUtilization)
     isnull(o.targetPercentage) && (return false)

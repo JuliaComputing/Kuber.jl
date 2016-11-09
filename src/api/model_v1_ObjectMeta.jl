@@ -40,7 +40,9 @@ type V1ObjectMeta <: SwaggerModel
 end # type V1ObjectMeta
 
 const _name_map_V1ObjectMeta = Dict{String,Symbol}(["annotations"=>:annotations, "clusterName"=>:clusterName, "creationTimestamp"=>:creationTimestamp, "deletionGracePeriodSeconds"=>:deletionGracePeriodSeconds, "deletionTimestamp"=>:deletionTimestamp, "finalizers"=>:finalizers, "generateName"=>:generateName, "generation"=>:generation, "labels"=>:labels, "name"=>:name, "namespace"=>:namespace, "ownerReferences"=>:ownerReferences, "resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink, "uid"=>:uid])
+const _field_map_V1ObjectMeta = Dict{Symbol,String}([:annotations=>"annotations", :clusterName=>"clusterName", :creationTimestamp=>"creationTimestamp", :deletionGracePeriodSeconds=>"deletionGracePeriodSeconds", :deletionTimestamp=>"deletionTimestamp", :finalizers=>"finalizers", :generateName=>"generateName", :generation=>"generation", :labels=>"labels", :name=>"name", :namespace=>"namespace", :ownerReferences=>"ownerReferences", :resourceVersion=>"resourceVersion", :selfLink=>"selfLink", :uid=>"uid"])
 Swagger.name_map(::Type{ V1ObjectMeta }) = _name_map_V1ObjectMeta
+Swagger.field_map(::Type{ V1ObjectMeta }) = _field_map_V1ObjectMeta
 
 function check_required(o::V1ObjectMeta)
     true

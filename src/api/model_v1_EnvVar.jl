@@ -16,7 +16,9 @@ type V1EnvVar <: SwaggerModel
 end # type V1EnvVar
 
 const _name_map_V1EnvVar = Dict{String,Symbol}(["name"=>:name, "value"=>:value, "valueFrom"=>:valueFrom])
+const _field_map_V1EnvVar = Dict{Symbol,String}([:name=>"name", :value=>"value", :valueFrom=>"valueFrom"])
 Swagger.name_map(::Type{ V1EnvVar }) = _name_map_V1EnvVar
+Swagger.field_map(::Type{ V1EnvVar }) = _field_map_V1EnvVar
 
 function check_required(o::V1EnvVar)
     isnull(o.name) && (return false)

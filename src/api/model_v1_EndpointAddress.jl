@@ -18,7 +18,9 @@ type V1EndpointAddress <: SwaggerModel
 end # type V1EndpointAddress
 
 const _name_map_V1EndpointAddress = Dict{String,Symbol}(["hostname"=>:hostname, "ip"=>:ip, "nodeName"=>:nodeName, "targetRef"=>:targetRef])
+const _field_map_V1EndpointAddress = Dict{Symbol,String}([:hostname=>"hostname", :ip=>"ip", :nodeName=>"nodeName", :targetRef=>"targetRef"])
 Swagger.name_map(::Type{ V1EndpointAddress }) = _name_map_V1EndpointAddress
+Swagger.field_map(::Type{ V1EndpointAddress }) = _field_map_V1EndpointAddress
 
 function check_required(o::V1EndpointAddress)
     isnull(o.ip) && (return false)

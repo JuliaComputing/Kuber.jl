@@ -44,7 +44,9 @@ type V1PodSpec <: SwaggerModel
 end # type V1PodSpec
 
 const _name_map_V1PodSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "containers"=>:containers, "dnsPolicy"=>:dnsPolicy, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostname"=>:hostname, "imagePullSecrets"=>:imagePullSecrets, "nodeName"=>:nodeName, "nodeSelector"=>:nodeSelector, "restartPolicy"=>:restartPolicy, "securityContext"=>:securityContext, "serviceAccount"=>:serviceAccount, "serviceAccountName"=>:serviceAccountName, "subdomain"=>:subdomain, "terminationGracePeriodSeconds"=>:terminationGracePeriodSeconds, "volumes"=>:volumes])
+const _field_map_V1PodSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :containers=>"containers", :dnsPolicy=>"dnsPolicy", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostname=>"hostname", :imagePullSecrets=>"imagePullSecrets", :nodeName=>"nodeName", :nodeSelector=>"nodeSelector", :restartPolicy=>"restartPolicy", :securityContext=>"securityContext", :serviceAccount=>"serviceAccount", :serviceAccountName=>"serviceAccountName", :subdomain=>"subdomain", :terminationGracePeriodSeconds=>"terminationGracePeriodSeconds", :volumes=>"volumes"])
 Swagger.name_map(::Type{ V1PodSpec }) = _name_map_V1PodSpec
+Swagger.field_map(::Type{ V1PodSpec }) = _field_map_V1PodSpec
 
 function check_required(o::V1PodSpec)
     isnull(o.containers) && (return false)

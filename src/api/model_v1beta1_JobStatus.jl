@@ -22,7 +22,9 @@ type V1beta1JobStatus <: SwaggerModel
 end # type V1beta1JobStatus
 
 const _name_map_V1beta1JobStatus = Dict{String,Symbol}(["active"=>:active, "completionTime"=>:completionTime, "conditions"=>:conditions, "failed"=>:failed, "startTime"=>:startTime, "succeeded"=>:succeeded])
+const _field_map_V1beta1JobStatus = Dict{Symbol,String}([:active=>"active", :completionTime=>"completionTime", :conditions=>"conditions", :failed=>"failed", :startTime=>"startTime", :succeeded=>"succeeded"])
 Swagger.name_map(::Type{ V1beta1JobStatus }) = _name_map_V1beta1JobStatus
+Swagger.field_map(::Type{ V1beta1JobStatus }) = _field_map_V1beta1JobStatus
 
 function check_required(o::V1beta1JobStatus)
     true
