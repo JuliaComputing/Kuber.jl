@@ -49,9 +49,9 @@ end
 
 const _global_ctx = KuberContext()
 
-function set_server(uri::String=DEFAULT_URI)
+function set_server(uri::String=DEFAULT_URI; kwargs...)
     global _global_ctx
-    client = Swagger.Client(uri; get_return_type=kuber_type)
+    client = Swagger.Client(uri; get_return_type=kuber_type, kwargs...)
     _global_ctx.api = DefaultApi(client)
 end
 
