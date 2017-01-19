@@ -16,7 +16,7 @@ include("typealiases.jl")
 include("helpers.jl")
 include("simpleapi.jl")
 
-export set_server, set_ns, kuber_type, kuber_obj, @K_str
+export KuberContext, set_server, set_ns, kuber_type, kuber_obj, @K_str
 export ComponentStatus, Endpoints, Namespace, Pod, PodTemplate, ReplicationController, Service, PersistentVolume, PersistentVolumeClaim, Job, Secret
 export get, put!, update!, delete!, sel
 
