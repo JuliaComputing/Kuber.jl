@@ -49,16 +49,14 @@ end
 
 const _global_ctx = KuberContext()
 
-function set_server(uri::String=DEFAULT_URI; kwargs...)
-    global _global_ctx
+set_server(uri::String=DEFAULT_URI; kwargs...) = set_server(_global_ctx, uri; kwargs...)
+function set_server(ctx::KuberContext, uri::String=DEFAULT_URI; kwargs...)
     client = Swagger.Client(uri; get_return_type=kuber_type, kwargs...)
-    _global_ctx.api = DefaultApi(client)
+    ctx.api = DefaultApi(client)
 end
 
-function set_ns(namespace::String)
-    global _global_ctx
-    _global_ctx.namespace = namespace
-end
+set_ns(namespace::String) = set_ns(_global_ctx, namespace)
+set_ns(ctx::KuberContext, namespace::String) = (ctx.namespace = namespace)
 
 # generate easy wrappers
 for fn in (:get, :put!, :update!, :delete!)
