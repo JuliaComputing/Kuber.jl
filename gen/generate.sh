@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $# -ne 1 ]; then
-    echo "Usage: generage.sh <path to kubernetes specifications folder>"
+    echo "Usage: generate.sh <path to kubernetes specifications folder>"
     exit 1
 fi
 

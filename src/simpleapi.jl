@@ -45,7 +45,7 @@ put!(ctx::KuberContext, ::Type{Job}, job::Dict{String,Any}) = createBatchV1Names
 put!(ctx::KuberContext, ::Type{Secret}, secret::Dict{String,Any}) = createCoreV1NamespacedSecret(ctx.api, ctx.namespace, secret)
 
 _delopts(; kwargs...) = DeleteOptions(; preconditions=Preconditions(; kwargs...), kwargs...)
-delete!(ctx::KuberContext, ::Type{Namespace}, ns::String; kwargs...) = deleteCoreV1Namespace(ctx.api, nctx.amespace, _delopts(; kwargs...))
+delete!(ctx::KuberContext, ::Type{Namespace}, ns::String; kwargs...) = deleteCoreV1Namespace(ctx.api, ns, _delopts(; kwargs...))
 delete!(ctx::KuberContext, ::Type{Endpoints}, epts::String; kwargs...) = deleteCoreV1NamespacedEndpoints(ctx.api, epts, ctx.namespace, _delopts(; kwargs...))
 delete!(ctx::KuberContext, ::Type{Pod}, pod::String; kwargs...) = deleteCoreV1NamespacedPod(ctx.api, pod, ctx.namespace, _delopts(; kwargs...))
 delete!(ctx::KuberContext, ::Type{PodTemplate}, pt::String; kwargs...) = deleteCoreV1NamespacedPodTemplate(ctx.api, pt, ctx.namespace, _delopts(; kwargs...))
