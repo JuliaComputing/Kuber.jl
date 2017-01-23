@@ -14,6 +14,7 @@ Provides an easy to use API (few details mentioned below). The complete Kubernet
 - `ComponentStatus`
 - `Endpoints`
 - `Namespace`
+- `ResourceQuota`
 - `Pod`
 - `PodTemplate`
 - `ReplicationController`
