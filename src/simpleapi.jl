@@ -9,65 +9,62 @@ sel(cnd::String...) = join(cnd, ", ")
 
 # TODO: Deployment
 # fieldSelector not supported yet (see: https://github.com/kubernetes/kubernetes/issues/15128)
-get(ctx::KuberContext, ::Type{ComponentStatus}, compname::String)               = readCoreV1ComponentStatus(ctx.api, compname)
-get(ctx::KuberContext, ::Type{ComponentStatus}; label_selector=nothing)         = listCoreV1ComponentStatus(ctx.api; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Namespace}; label_selector=nothing)               = listCoreV1Namespace(ctx.api; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{ResourceQuota}; label_selector=nothing)           = listCoreV1NamespacedResourceQuota(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Endpoints}; label_selector=nothing)               = listCoreV1EndpointsForAllNamespaces(ctx.api; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Pod}; label_selector=nothing)                     = listCoreV1NamespacedPod(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{PodTemplate}; label_selector=nothing)             = listCoreV1NamespacedPodTemplate(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{ReplicationController}; label_selector=nothing)   = listCoreV1NamespacedReplicationController(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Service}; label_selector=nothing)                 = listCoreV1NamespacedService(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{PersistentVolume}; label_selector=nothing)        = listCoreV1PersistentVolume(ctx.api; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{PersistentVolumeClaim}; label_selector=nothing)   = listCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Job}; label_selector=nothing)                     = listBatchV1NamespacedJob(ctx.api, ctx.namespace; labelSelector=label_selector)
-get(ctx::KuberContext, ::Type{Secret}; label_selector=nothing)                  = listCoreV1NamespacedSecret(ctx.api, ctx.namespace; labelSelector=label_selector)
+get(ctx::KuberContext, ::Type{ComponentStatus}, name::String)                   = readCoreV1ComponentStatus(ctx.api, name)
+get(ctx::KuberContext, ::Type{Namespace}, name::String)                         = readCoreV1Namespace(ctx.api, name)
+get(ctx::KuberContext, ::Type{ResourceQuota}, name::String)                     = readCoreV1NamespacedResourceQuota(ctx.api, name, ctx.namespace)
 
-put!(ctx::KuberContext, ns::Namespace)              = createCoreV1Namespace(ctx.api, ns)
-put!(ctx::KuberContext, quota::ResourceQuota)       = createCoreV1NamespacedResourceQuota(ctx.api, ctx.namespace, quota)
-put!(ctx::KuberContext, epts::Endpoints)            = createCoreV1NamespacedEndpoints(ctx.api, ctx.namespace, epts)
-put!(ctx::KuberContext, pod::Pod)                   = createCoreV1NamespacedPod(ctx.api, ctx.namespace, pod)
-put!(ctx::KuberContext, pt::PodTemplate)            = createCoreV1NamespacedPodTemplate(ctx.api, ctx.namespace, pt)
-put!(ctx::KuberContext, rc::ReplicationController)  = createCoreV1NamespacedReplicationController(ctx.api, ctx.namespace, rc)
-put!(ctx::KuberContext, svc::Service)               = createCoreV1NamespacedService(ctx.api, ctx.namespace, svc)
-put!(ctx::KuberContext, pv::PersistentVolume)       = createCoreV1PersistentVolume(ctx.api, pv)
-put!(ctx::KuberContext, pvc::PersistentVolumeClaim) = createCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace, pvc)
-put!(ctx::KuberContext, job::Job)                   = createBatchV1NamespacedJob(ctx.api, ctx.namespace, job)
-put!(ctx::KuberContext, secret::Secret)             = createCoreV1NamespacedSecret(ctx.api, ctx.namespace, secret)
+for (T,fn) in (ComponentStatus=>:listCoreV1ComponentStatus, Namespace=>:listCoreV1Namespace, PersistentVolume=>:listCoreV1PersistentVolume,
+                ClusterRoleBinding=>:listRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:listRbacAuthorizationV1alpha1ClusterRole)
+    @eval get(ctx::KuberContext, ::Type{$T}; label_selector=nothing) = $fn(ctx.api; labelSelector=label_selector)
+end
 
-put!(ctx::KuberContext, ::Type{Namespace},              ns::Dict{String,Any})       = createCoreV1Namespace(ctx.api, ns)
-put!(ctx::KuberContext, ::Type{ResourceQuota},          quota::Dict{String,Any})    = createCoreV1NamespacedResourceQuota(ctx.api, quota)
-put!(ctx::KuberContext, ::Type{Endpoints},              epts::Dict{String,Any})     = createCoreV1NamespacedEndpoints(ctx.api, ctx.namespace, epts)
-put!(ctx::KuberContext, ::Type{Pod},                    pod::Dict{String,Any})      = createCoreV1NamespacedPod(ctx.api, ctx.namespace, pod)
-put!(ctx::KuberContext, ::Type{PodTemplate},            pt::Dict{String,Any})       = createCoreV1NamespacedPodTemplate(ctx.api, ctx.namespace, pt)
-put!(ctx::KuberContext, ::Type{ReplicationController},  rc::Dict{String,Any})       = createCoreV1NamespacedReplicationController(ctx.api, ctx.namespace, rc)
-put!(ctx::KuberContext, ::Type{Service},                svc::Dict{String,Any})      = createCoreV1NamespacedService(ctx.api, ctx.namespace, svc)
-put!(ctx::KuberContext, ::Type{PersistentVolume},       pv::Dict{String,Any})       = createCoreV1PersistentVolume(ctx.api, pv)
-put!(ctx::KuberContext, ::Type{PersistentVolumeClaim},  pvc::Dict{String,Any})      = createCoreV1NamespacedPersistentVolumeClaim(ctx.api, ctx.namespace, pvc)
-put!(ctx::KuberContext, ::Type{Job},                    job::Dict{String,Any})      = createBatchV1NamespacedJob(ctx.api, ctx.namespace, job)
-put!(ctx::KuberContext, ::Type{Secret},                 secret::Dict{String,Any})   = createCoreV1NamespacedSecret(ctx.api, ctx.namespace, secret)
+for (T,fn) in (Endpoints=>:listCoreV1NamespacedEndpoints, ResourceQuota=>:listCoreV1NamespacedResourceQuota,
+                Pod=>:listCoreV1NamespacedPod, PodTemplate=>:listCoreV1NamespacedPodTemplate, ReplicationController=>:listCoreV1NamespacedReplicationController,
+                Service=>:listCoreV1NamespacedService, PersistentVolumeClaim=>:listCoreV1NamespacedPersistentVolumeClaim, Job=>:listBatchV1NamespacedJob,
+                Secret=>:listCoreV1NamespacedSecret, RoleBinding=>:listRbacAuthorizationV1alpha1NamespacedRoleBinding, Role=>:listRbacAuthorizationV1alpha1NamespacedRole)
+    @eval get(ctx::KuberContext, ::Type{$T}; label_selector=nothing) = $fn(ctx.api, ctx.namespace; labelSelector=label_selector)
+end
+
+for (T,fn) in (Namespace=>:createCoreV1Namespace, PersistentVolume=>:createCoreV1PersistentVolume,
+                ClusterRoleBinding=>:createRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:createRbacAuthorizationV1alpha1ClusterRole)
+    @eval put!(ctx::KuberContext, ::Type{$T}, d::Dict{String,Any}) = $fn(ctx.api, d)
+    @eval put!(ctx::KuberContext, v::$T) = $fn(ctx.api, v)
+end
+
+for (T,fn) in (ResourceQuota=>:createCoreV1NamespacedResourceQuota, Endpoints=>:createCoreV1NamespacedEndpoints, Pod=>:createCoreV1NamespacedPod,
+                PodTemplate=>:createCoreV1NamespacedPodTemplate, ReplicationController=>:createCoreV1NamespacedReplicationController,
+                Service=>:createCoreV1NamespacedService, PersistentVolumeClaim=>:createCoreV1NamespacedPersistentVolumeClaim,
+                Job=>:createBatchV1NamespacedJob, Secret=>:createCoreV1NamespacedSecret, RoleBinding=>:createRbacAuthorizationV1alpha1NamespacedRoleBinding,
+                Role=>:createRbacAuthorizationV1alpha1NamespacedRole)
+    @eval put!(ctx::KuberContext, ::Type{$T}, d::Dict{String,Any}) = $fn(ctx.api, ctx.namespace, d)
+    @eval put!(ctx::KuberContext, v::$T) = $fn(ctx.api, ctx.namespace, v)
+end
 
 _delopts(; kwargs...) = DeleteOptions(; preconditions=Preconditions(; kwargs...), kwargs...)
-delete!(ctx::KuberContext, ::Type{Namespace}, ns::String;               kwargs...)  = deleteCoreV1Namespace(ctx.api, ns, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{ResourceQuota}, quota::String;        kwargs...)  = deleteCoreV1NamespacedResourceQuota(ctx.api, quota, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{Endpoints}, epts::String;             kwargs...)  = deleteCoreV1NamespacedEndpoints(ctx.api, epts, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{Pod}, pod::String;                    kwargs...)  = deleteCoreV1NamespacedPod(ctx.api, pod, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{PodTemplate}, pt::String;             kwargs...)  = deleteCoreV1NamespacedPodTemplate(ctx.api, pt, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{ReplicationController}, rc::String;   kwargs...)  = deleteCoreV1NamespacedReplicationController(ctx.api, rc, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{Service}, service::String)                        = deleteCoreV1NamespacedService(ctx.api, service, ctx.namespace)
-delete!(ctx::KuberContext, ::Type{PersistentVolume}, pv::String;        kwargs...)  = deleteCoreV1PersistentVolume(ctx.api, pv, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{PersistentVolumeClaim}, pvc::String;  kwargs...)  = deleteCoreV1NamespacedPersistentVolumeClaim(ctx.api, pvc, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{Job}, job::String;                    kwargs...)  = deleteBatchV1NamespacedJob(ctx.api, job, ctx.namespace, _delopts(; kwargs...))
-delete!(ctx::KuberContext, ::Type{Secret}, secret::String;              kwargs...)  = deleteCoreV1NamespacedSecret(ctx.api, secret, ctx.namespace, _delopts(; kwargs...))
+delete!(ctx::KuberContext, ::Type{Service}, service::String) = deleteCoreV1NamespacedService(ctx.api, service, ctx.namespace)
+
+for (T,fn) in (Namespace=>:deleteCoreV1Namespace, PersistentVolume=>:deleteCoreV1PersistentVolume,
+                ClusterRoleBinding=>:deleteRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:deleteRbacAuthorizationV1alpha1ClusterRole)
+    @eval delete!(ctx::KuberContext, ::Type{$T}, name::String; kwargs...) = $fn(ctx.api, name, _delopts(; kwargs...))
+end
+
+for (T,fn) in (ResourceQuota=>:deleteCoreV1NamespacedResourceQuota, Endpoints=>:deleteCoreV1NamespacedEndpoints, Pod=>:deleteCoreV1NamespacedPod,
+                PodTemplate=>:deleteCoreV1NamespacedPodTemplate, ReplicationController=>:deleteCoreV1NamespacedReplicationController,
+                PersistentVolumeClaim=>:deleteCoreV1NamespacedPersistentVolumeClaim, Job=>:deleteBatchV1NamespacedJob, Secret=>:deleteCoreV1NamespacedSecret,
+                RoleBinding=>:deleteRbacAuthorizationV1alpha1NamespacedRoleBinding, Role=>:deleteRbacAuthorizationV1alpha1NamespacedRole)
+    @eval delete!(ctx::KuberContext, ::Type{$T}, name::String; kwargs...) = $fn(ctx.api, name, ctx.namespace, _delopts(; kwargs...))
+end
 
 # TODO: take keyword parameters for allowed attributes instead of patch, create patch in the function
-update!(ctx::KuberContext, ::Type{Namespace}, ns::String, patch, patch_type) = patchCoreV1Namespace(ctx.api, ns, patch; _mediaType=patch_type)
-update!(ctx::KuberContext, ::Type{PersistentVolume}, pv::String, patch, patch_type) = patchCoreV1PersistentVolume(ctx.api, pv, patch; _mediaType=patch_type)
+for (T,fn) in (Namespace=>:patchCoreV1Namespace, PersistentVolume=>:patchCoreV1PersistentVolume,
+                ClusterRoleBinding=>:patchRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:patchRbacAuthorizationV1alpha1ClusterRole)
+    @eval update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, patch; _mediaType=patch_type)
+end
+
 for (T,fn) in (Endpoints=>:patchCoreV1NamespacedEndpoints, Pod=>:patchCoreV1NamespacedPod, PodTemplate=>:patchCoreV1NamespacedPodTemplate,
                 ReplicationController=>:patchCoreV1NamespacedReplicationController, Service=>:patchCoreV1NamespacedService,
                 PersistentVolumeClaim=>:patchCoreV1NamespacedPersistentVolumeClaim, Job=>:patchBatchV1NamespacedJob, Secret=>:patchCoreV1NamespacedSecret,
-                ResourceQuota=>:patchCoreV1NamespacedResourceQuota)
-    @eval begin
-        update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, ctx.namespace, patch; _mediaType=patch_type)
-    end
+                ResourceQuota=>:patchCoreV1NamespacedResourceQuota, RoleBinding=>:patchRbacAuthorizationV1alpha1NamespacedRoleBinding,
+                Role=>:patchRbacAuthorizationV1alpha1NamespacedRole)
+    @eval update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, ctx.namespace, patch; _mediaType=patch_type)
 end
