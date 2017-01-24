@@ -47,6 +47,8 @@ type KuberContext
     end
 end
 
+show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, " at ", ctx.api.client.root)
+
 const _global_ctx = KuberContext()
 
 set_server(uri::String=DEFAULT_URI; kwargs...) = set_server(_global_ctx, uri; kwargs...)

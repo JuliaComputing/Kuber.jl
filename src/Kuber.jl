@@ -9,7 +9,7 @@ using HttpCommon
 include("api/Kubernetes.jl")
 using .Kubernetes
 
-import Base: convert, get, put!, delete!
+import Base: convert, get, put!, delete!, show
 import Swagger: SwaggerModel
 
 include("typealiases.jl")
