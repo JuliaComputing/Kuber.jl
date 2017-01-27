@@ -51,6 +51,9 @@ show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, 
 
 const _global_ctx = KuberContext()
 
+get_server(ctx::KuberContext) = ctx.api.client.root
+get_ns(ctx::KuberContext) = ctx.namespace
+
 set_server(uri::String=DEFAULT_URI; kwargs...) = set_server(_global_ctx, uri; kwargs...)
 function set_server(ctx::KuberContext, uri::String=DEFAULT_URI; kwargs...)
     client = Swagger.Client(uri; get_return_type=kuber_type, kwargs...)
