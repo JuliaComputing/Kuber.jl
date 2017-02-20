@@ -14,7 +14,8 @@ get(ctx::KuberContext, ::Type{Namespace}, name::String)                         
 get(ctx::KuberContext, ::Type{ResourceQuota}, name::String)                     = readCoreV1NamespacedResourceQuota(ctx.api, name, ctx.namespace)
 
 for (T,fn) in (ComponentStatus=>:listCoreV1ComponentStatus, Namespace=>:listCoreV1Namespace, PersistentVolume=>:listCoreV1PersistentVolume,
-                ClusterRoleBinding=>:listRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:listRbacAuthorizationV1alpha1ClusterRole)
+                ClusterRoleBinding=>:listRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:listRbacAuthorizationV1alpha1ClusterRole,
+                Node=>:listCoreV1Node)
     @eval get(ctx::KuberContext, ::Type{$T}; label_selector=nothing) = $fn(ctx.api; labelSelector=label_selector)
 end
 
