@@ -6671,10 +6671,10 @@ Param: sinceSeconds::Int32
 Param: sinceTime::String
 Param: tailLines::Int32
 Param: timestamps::Bool
-Return: V1Pod
+Return: String
 """
 function readCoreV1NamespacedPodLog(_api::DefaultApi, name::String, namespace::String; container=nothing, follow=nothing, limitBytes=nothing, pretty=nothing, previous=nothing, sinceSeconds=nothing, sinceTime=nothing, tailLines=nothing, timestamps=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/log", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/namespaces/{namespace}/pods/{name}/log", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "container", container)  # type String
