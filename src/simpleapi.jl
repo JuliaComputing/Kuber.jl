@@ -12,6 +12,7 @@ sel(cnd::String...) = join(cnd, ", ")
 get(ctx::KuberContext, ::Type{ComponentStatus}, name::String)                   = readCoreV1ComponentStatus(ctx.api, name)
 get(ctx::KuberContext, ::Type{Namespace}, name::String)                         = readCoreV1Namespace(ctx.api, name)
 get(ctx::KuberContext, ::Type{ResourceQuota}, name::String)                     = readCoreV1NamespacedResourceQuota(ctx.api, name, ctx.namespace)
+get(ctx::KuberContext, ::Type{Secret}, name::String)                            = readCoreV1NamespacedSecret(ctx.api, name, ctx.namespace)
 
 for (T,fn) in (ComponentStatus=>:listCoreV1ComponentStatus, Namespace=>:listCoreV1Namespace, PersistentVolume=>:listCoreV1PersistentVolume,
                 ClusterRoleBinding=>:listRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:listRbacAuthorizationV1alpha1ClusterRole,

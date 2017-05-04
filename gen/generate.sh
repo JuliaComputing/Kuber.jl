@@ -27,3 +27,4 @@ cp ${DIR}/model_unversioned_Patch.jl ${GENDIR}/src/api/
 cp ${DIR}/model_resource_Quantity.jl ${GENDIR}/src/api/
 cp ${DIR}/model_unversioned_Time.jl ${GENDIR}/src/api/
 cp ${DIR}/model_intstr_IntOrString.jl ${GENDIR}/src/api/
+cp ${DIR}/model_v1_Secret.jl ${GENDIR}/src/api/
