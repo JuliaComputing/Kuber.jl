@@ -1415,7 +1415,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRole
 """
 function createRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [], body)
+    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -1430,7 +1430,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
 function createRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [], body)
+    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", [], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -1446,7 +1446,7 @@ Param: pretty::String
 Return: V1alpha1Role
 """
 function createRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [], body)
+    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1463,7 +1463,7 @@ Param: pretty::String
 Return: V1alpha1RoleBinding
 """
 function createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [], body)
+    _ctx = Swagger.Ctx(_api.client, "POST", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", [], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -2708,7 +2708,7 @@ Param: pretty::String
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -2725,7 +2725,7 @@ Param: pretty::String
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -2745,7 +2745,7 @@ Param: watch::Bool
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -2769,7 +2769,7 @@ Param: watch::Bool
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -2794,7 +2794,7 @@ Param: watch::Bool
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2820,7 +2820,7 @@ Param: watch::Bool
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -2843,7 +2843,7 @@ Param: pretty::String
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2862,7 +2862,7 @@ Param: pretty::String
 Return: UnversionedStatus
 """
 function deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", UnversionedStatus, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3182,7 +3182,7 @@ get available resources
 Return: UnversionedAPIResourceList
 """
 function getRbacAuthorizationV1alpha1APIResources(_api::DefaultApi; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/rbac.authorization.k8s.io/v1alpha1/", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", UnversionedAPIResourceList, "/apis/rbac.authorization.k8s.io/v1beta1/", [])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4518,7 +4518,7 @@ Param: watch::Bool
 Return: V1alpha1ClusterRoleList
 """
 function listRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleList, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4542,7 +4542,7 @@ Param: watch::Bool
 Return: V1alpha1ClusterRoleBindingList
 """
 function listRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBindingList, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -4567,7 +4567,7 @@ Param: watch::Bool
 Return: V1alpha1RoleList
 """
 function listRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4593,7 +4593,7 @@ Param: watch::Bool
 Return: V1alpha1RoleBindingList
 """
 function listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -4618,7 +4618,7 @@ Param: watch::Bool
 Return: V1alpha1RoleBindingList
 """
 function listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1alpha1/rolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1beta1/rolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4642,7 +4642,7 @@ Param: watch::Bool
 Return: V1alpha1RoleList
 """
 function listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1alpha1/roles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleList, "/apis/rbac.authorization.k8s.io/v1beta1/roles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5647,7 +5647,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRole
 """
 function patchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -5664,7 +5664,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
 function patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -5682,7 +5682,7 @@ Param: pretty::String
 Return: V1alpha1Role
 """
 function patchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5701,7 +5701,7 @@ Param: pretty::String
 Return: V1alpha1RoleBinding
 """
 function patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7369,7 +7369,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRole
 """
 function readRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -7385,7 +7385,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
 function readRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -7402,7 +7402,7 @@ Param: pretty::String
 Return: V1alpha1Role
 """
 function readRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7420,7 +7420,7 @@ Param: pretty::String
 Return: V1alpha1RoleBinding
 """
 function readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -8443,7 +8443,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRole
 """
 function replaceRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterroles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRole, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -8460,7 +8460,7 @@ Param: pretty::String
 Return: V1alpha1ClusterRoleBinding
 """
 function replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/clusterrolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -8478,7 +8478,7 @@ Param: pretty::String
 Return: V1alpha1Role
 """
 function replaceRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/roles/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1Role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -8497,7 +8497,7 @@ Param: pretty::String
 Return: V1alpha1RoleBinding
 """
 function replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1alpha1/namespaces/{namespace}/rolebindings/{name}", [], body)
+    _ctx = Swagger.Ctx(_api.client, "PUT", V1alpha1RoleBinding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", [], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -10580,7 +10580,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRole(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10606,7 +10606,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api::DefaultApi, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10631,7 +10631,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterrolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -10655,7 +10655,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1ClusterRoleList(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/clusterroles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -10681,7 +10681,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRole(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10709,7 +10709,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api::DefaultApi, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings/{name}", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings/{name}", [])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -10736,7 +10736,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/rolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10762,7 +10762,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1NamespacedRoleList(_api::DefaultApi, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/namespaces/{namespace}/roles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles", [])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
@@ -10787,7 +10787,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/rolebindings", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/rolebindings", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -10811,7 +10811,7 @@ Param: watch::Bool
 Return: VersionedEvent
 """
 function watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api::DefaultApi; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1alpha1/watch/roles", [])
+    _ctx = Swagger.Ctx(_api.client, "GET", VersionedEvent, "/apis/rbac.authorization.k8s.io/v1beta1/watch/roles", [])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
