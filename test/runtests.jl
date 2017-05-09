@@ -12,12 +12,13 @@ using Swagger
 # - Start kubectl in proxy mode
 #    - run `kubectl proxy`
 
-set_server("http://localhost:8001/")
-set_ns("default")
+ctx = KuberContext()
+set_server(ctx, "http://localhost:8001/")
+set_ns(ctx, "default")
+Kuber.set_api_versions!(ctx)
 
-const nginx_pod = K"""{
+const nginx_pod = kuber_obj(ctx, """{
     "kind": "Pod",
-    "apiVersion": "v1",
     "metadata":{
         "name": "nginx-pod",
         "namespace": "default",
@@ -38,11 +39,11 @@ const nginx_pod = K"""{
             }
         }]
     }
-}"""
+}""")
+@test isa(nginx_pod, Kuber.kind_to_type(ctx, "Pod"))
 
-const nginx_service = K"""{
+const nginx_service = kuber_obj(ctx, """{
     "kind": "Service",
-    "apiVersion": "v1",
     "metadata": {
         "name": "nginx-service",
         "namespace": "default",
@@ -52,11 +53,11 @@ const nginx_service = K"""{
         "ports": [{"port": 80}],
         "selector": {"name": "nginx-pod"}
     }
-}"""
+}""")
+@test isa(nginx_service, Kuber.kind_to_type(ctx, "Service"))
 
-const nginx_rc = K"""{
+const nginx_rc = kuber_obj(ctx, """{
     "kind": "ReplicationController",
-    "apiVersion": "v1",
     "metadata": {
         "name": "nginx-rc",
         "labels": {
@@ -91,11 +92,11 @@ const nginx_rc = K"""{
             }
         }
     }
-}"""
+}""")
+@test isa(nginx_rc, Kuber.kind_to_type(ctx, "ReplicationController"))
 
-const nginx_rc_service = K"""{
+const nginx_rc_service = kuber_obj(ctx, """{
     "kind": "Service",
-    "apiVersion": "v1",
     "metadata": {
         "name": "nginx-rc-service",
         "namespace": "default",
@@ -108,46 +109,60 @@ const nginx_rc_service = K"""{
         ],
         "selector": {"name": "nginx-pod"}
     }
-}"""
+}""")
+@test isa(nginx_rc_service, Kuber.kind_to_type(ctx, "Service"))
 
 
 println("List component status")
-get(ComponentStatus)
+res = get(ctx, :ComponentStatus)
+@test isa(res, Kuber.kind_to_type(ctx, :ComponentStatusList))
 
 println("Status of single component")
-get(ComponentStatus, "scheduler")
+res = get(ctx, :ComponentStatus, "scheduler")
+@test isa(res, Kuber.kind_to_type(ctx, :ComponentStatus))
 
 println("List all endpoints")
-get(Endpoints)
+res = get(ctx, :Endpoints)
+@test isa(res, Kuber.kind_to_type(ctx, :EndpointsList))
 
 println("List all namespaces")
-get(Namespace)
+res = get(ctx, :Namespace)
+@test isa(res, Kuber.kind_to_type(ctx, :NamespaceList))
 
 println("List pods in default namespace")
-get(Pod)
+res = get(ctx, :Pod)
+@test isa(res, Kuber.kind_to_type(ctx, :PodList))
 
-set_ns("kube-system")
+set_ns(ctx, "kube-system")
 println("List pods in system namespace")
-get(Pod)
+res = get(ctx, :Pod)
+@test isa(res, Kuber.kind_to_type(ctx, :PodList))
 
 println("List pods templates in system namespace")
-get(PodTemplate)
-set_ns("default")
+res = get(ctx, :PodTemplate)
+@test isa(res, Kuber.kind_to_type(ctx, :PodTemplateList))
 
+set_ns(ctx, "default")
 println("List pods templates in default namespace")
-get(PodTemplate)
+res = get(ctx, :PodTemplate)
+@test isa(res, Kuber.kind_to_type(ctx, :PodTemplateList))
 
 println("List replication controllers")
-get(ReplicationController)
+res = get(ctx, :ReplicationController)
+@test isa(res, Kuber.kind_to_type(ctx, :ReplicationControllerList))
 
 println("Create nginx pod")
-put!(nginx_pod)
+res = put!(ctx, nginx_pod)
+@test isa(res, Kuber.kind_to_type(ctx, :Pod))
 
 println("Create nginx service")
-put!(nginx_service)
+res = put!(ctx, nginx_service)
+@test isa(res, Kuber.kind_to_type(ctx, :Service))
 
 println("Delete nginx service")
-delete!(Service, "nginx-service")
+res = delete!(ctx, :Service, "nginx-service")
+@test isa(res, Kuber.kind_to_type(ctx, :Status))
 
 println("Delete nginx pod")
-delete!(Pod, "nginx")
+res = delete!(ctx, :Pod, "nginx-pod")
+@test isa(res, Kuber.kind_to_type(ctx, :Pod))
