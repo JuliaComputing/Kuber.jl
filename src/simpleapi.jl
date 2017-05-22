@@ -7,69 +7,109 @@ end
 sel(label::String, op::Symbol, items::String...) = label * " " * string(op) * " (" * join(items, ",") * ")"
 sel(cnd::String...) = join(cnd, ", ")
 
-# TODO: Deployment
-# fieldSelector not supported yet (see: https://github.com/kubernetes/kubernetes/issues/15128)
-get(ctx::KuberContext, ::Type{ComponentStatus}, name::String)                   = readCoreV1ComponentStatus(ctx.api, name)
-get(ctx::KuberContext, ::Type{NamespaceStatus}, name::String)                   = readCoreV1NamespaceStatus(ctx.api, name)
-get(ctx::KuberContext, ::Type{Namespace}, name::String)                         = readCoreV1Namespace(ctx.api, name)
-get(ctx::KuberContext, ::Type{ResourceQuota}, name::String)                     = readCoreV1NamespacedResourceQuota(ctx.api, name, ctx.namespace)
-get(ctx::KuberContext, ::Type{Secret}, name::String)                            = readCoreV1NamespacedSecret(ctx.api, name, ctx.namespace)
+_delopts(; kwargs...) = Typedefs.Apis.DeleteOptions(; preconditions=Typedefs.Apis.Preconditions(; kwargs...), kwargs...)
 
-for (T,fn) in (ComponentStatus=>:listCoreV1ComponentStatus, Namespace=>:listCoreV1Namespace, PersistentVolume=>:listCoreV1PersistentVolume,
-                ClusterRoleBinding=>:listRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:listRbacAuthorizationV1alpha1ClusterRole,
-                Node=>:listCoreV1Node)
-    @eval get(ctx::KuberContext, ::Type{$T}; label_selector=nothing) = $fn(ctx.api; labelSelector=label_selector)
+function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+
+    try
+        apicall = eval(Symbol("read$O"))
+        return apicall(apictx, name; kwargs...)
+    catch ex
+        isa(ex, UndefVarError) || rethrow()
+        apicall = eval(Symbol("readNamespaced$O"))
+        return apicall(apictx, name, ctx.namespace; kwargs...)
+    end
 end
 
-for (T,fn) in (Endpoints=>:listCoreV1NamespacedEndpoints, ResourceQuota=>:listCoreV1NamespacedResourceQuota,
-                Pod=>:listCoreV1NamespacedPod, PodTemplate=>:listCoreV1NamespacedPodTemplate, ReplicationController=>:listCoreV1NamespacedReplicationController,
-                Service=>:listCoreV1NamespacedService, PersistentVolumeClaim=>:listCoreV1NamespacedPersistentVolumeClaim, Job=>:listBatchV1NamespacedJob,
-                Secret=>:listCoreV1NamespacedSecret, RoleBinding=>:listRbacAuthorizationV1alpha1NamespacedRoleBinding, Role=>:listRbacAuthorizationV1alpha1NamespacedRole)
-    @eval get(ctx::KuberContext, ::Type{$T}; label_selector=nothing) = $fn(ctx.api, ctx.namespace; labelSelector=label_selector)
+function get(ctx::KuberContext, O::Symbol; label_selector=nothing)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+
+    try
+        apicall = eval(Symbol("list$O"))
+        return apicall(apictx; labelSelector=label_selector)
+    catch ex
+        isa(ex, UndefVarError) || rethrow()
+        apicall = eval(Symbol("listNamespaced$O"))
+        return apicall(apictx, ctx.namespace; labelSelector=label_selector)
+    end
 end
 
-for (T,fn) in (Namespace=>:createCoreV1Namespace, PersistentVolume=>:createCoreV1PersistentVolume,
-                ClusterRoleBinding=>:createRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:createRbacAuthorizationV1alpha1ClusterRole)
-    @eval put!(ctx::KuberContext, ::Type{$T}, d::Dict{String,Any}) = $fn(ctx.api, d)
-    @eval put!(ctx::KuberContext, v::$T) = $fn(ctx.api, v)
+function put!{T<:SwaggerModel}(ctx::KuberContext, v::T)
+    vjson = convert(Dict{String,Any}, v)
+    put!(ctx, Symbol(vjson["kind"]), vjson)
 end
 
-for (T,fn) in (ResourceQuota=>:createCoreV1NamespacedResourceQuota, Endpoints=>:createCoreV1NamespacedEndpoints, Pod=>:createCoreV1NamespacedPod,
-                PodTemplate=>:createCoreV1NamespacedPodTemplate, ReplicationController=>:createCoreV1NamespacedReplicationController,
-                Service=>:createCoreV1NamespacedService, PersistentVolumeClaim=>:createCoreV1NamespacedPersistentVolumeClaim,
-                Job=>:createBatchV1NamespacedJob, Secret=>:createCoreV1NamespacedSecret, RoleBinding=>:createRbacAuthorizationV1alpha1NamespacedRoleBinding,
-                Role=>:createRbacAuthorizationV1alpha1NamespacedRole)
-    @eval put!(ctx::KuberContext, ::Type{$T}, d::Dict{String,Any}) = $fn(ctx.api, ctx.namespace, d)
-    @eval put!(ctx::KuberContext, v::$T) = $fn(ctx.api, ctx.namespace, v)
+function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+
+    try
+        apicall = eval(Symbol("create$O"))
+        return apicall(apictx, d)
+    catch ex
+        isa(ex, UndefVarError) || rethrow()
+        apicall = eval(Symbol("createNamespaced$O"))
+        return apicall(apictx, ctx.namespace, d)
+    end
 end
 
-_delopts(; kwargs...) = DeleteOptions(; preconditions=Preconditions(; kwargs...), kwargs...)
-delete!(ctx::KuberContext, ::Type{Service}, service::String) = deleteCoreV1NamespacedService(ctx.api, service, ctx.namespace)
-
-for (T,fn) in (Namespace=>:deleteCoreV1Namespace, PersistentVolume=>:deleteCoreV1PersistentVolume,
-                ClusterRoleBinding=>:deleteRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:deleteRbacAuthorizationV1alpha1ClusterRole)
-    @eval delete!(ctx::KuberContext, ::Type{$T}, name::String; kwargs...) = $fn(ctx.api, name, _delopts(; kwargs...))
+function delete!{T<:SwaggerModel}(ctx::KuberContext, v::T; kwargs...)
+    vjson = convert(Dict{String,Any}, v)
+    kind = vjson["kind"]
+    name = vjson["metadata"]["name"]
+    delete!(ctx, Symbol(kind), name; kwargs...)
 end
 
-for (T,fn) in (ResourceQuota=>:deleteCoreV1NamespacedResourceQuota, Endpoints=>:deleteCoreV1NamespacedEndpoints, Pod=>:deleteCoreV1NamespacedPod,
-                PodTemplate=>:deleteCoreV1NamespacedPodTemplate, ReplicationController=>:deleteCoreV1NamespacedReplicationController,
-                PersistentVolumeClaim=>:deleteCoreV1NamespacedPersistentVolumeClaim, Job=>:deleteBatchV1NamespacedJob, Secret=>:deleteCoreV1NamespacedSecret,
-                RoleBinding=>:deleteRbacAuthorizationV1alpha1NamespacedRoleBinding, Role=>:deleteRbacAuthorizationV1alpha1NamespacedRole)
-    @eval delete!(ctx::KuberContext, ::Type{$T}, name::String; kwargs...) = $fn(ctx.api, name, ctx.namespace, _delopts(; kwargs...))
+function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+    params = [apictx, name]
+
+    try
+        apicall = eval(Symbol("delete$O"))
+        (O === :Service) || push!(params, _delopts(; kwargs...))
+        return apicall(params...)
+    catch ex
+        isa(ex, UndefVarError) || rethrow()
+        apicall = eval(Symbol("deleteNamespaced$O"))
+        push!(params, ctx.namespace)
+        (O === :Service) || push!(params, _delopts(; kwargs...))
+        return apicall(params...)
+    end
 end
 
-# TODO: take keyword parameters for allowed attributes instead of patch, create patch in the function
-for (T,fn) in (Namespace=>:patchCoreV1Namespace, PersistentVolume=>:patchCoreV1PersistentVolume,
-                ClusterRoleBinding=>:patchRbacAuthorizationV1alpha1ClusterRoleBinding, ClusterRole=>:patchRbacAuthorizationV1alpha1ClusterRole)
-    @eval update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, patch; _mediaType=patch_type)
+function update!{T<:SwaggerModel}(ctx::KuberContext, v::T, patch, patch_type)
+    vjson = convert(Dict{String,Any}, v)
+    kind = vjson["kind"]
+    name = vjson["metadata"]["name"]
+    update!(ctx, Symbol(kind), name, patch, patch_type)
 end
 
-for (T,fn) in (Endpoints=>:patchCoreV1NamespacedEndpoints, Pod=>:patchCoreV1NamespacedPod, PodTemplate=>:patchCoreV1NamespacedPodTemplate,
-                ReplicationController=>:patchCoreV1NamespacedReplicationController, Service=>:patchCoreV1NamespacedService,
-                PersistentVolumeClaim=>:patchCoreV1NamespacedPersistentVolumeClaim, Job=>:patchBatchV1NamespacedJob, Secret=>:patchCoreV1NamespacedSecret,
-                ResourceQuota=>:patchCoreV1NamespacedResourceQuota, RoleBinding=>:patchRbacAuthorizationV1alpha1NamespacedRoleBinding,
-                Role=>:patchRbacAuthorizationV1alpha1NamespacedRole)
-    @eval update!(ctx::KuberContext, ::Type{$T}, name::String, patch, patch_type) = $fn(ctx.api, name, ctx.namespace, patch; _mediaType=patch_type)
+function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+
+    try
+        apicall = eval(Symbol("patch$O"))
+        return apicall(apictx, name, patch; _mediaType=patch_type)
+    catch ex
+        isa(ex, UndefVarError) || rethrow()
+        apicall = eval(Symbol("patchNamespaced$O"))
+        return apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+    end
 end
 
 """
@@ -91,4 +131,4 @@ Keyword Args:
 
 Returns: String of all log entries, one per line
 """
-get_logs(ctx::KuberContext, pod_name::String; kwargs...) = readCoreV1NamespacedPodLog(ctx.api, pod_name, ctx.namespace; kwargs...)
+get_logs(ctx::KuberContext, pod_name::String; kwargs...) = get(ctx, :PodLog, pod_name; kwargs...)

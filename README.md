@@ -10,24 +10,29 @@ Provides an easy to use API (few details mentioned below). The complete Kubernet
 
 ### Entities:
 
-- `ComponentStatus`
-- `Endpoints`
-- `Namespace`
-- `ResourceQuota`
-- `Pod`
-- `PodTemplate`
-- `ReplicationController`
-- `Service`
-- `PersistentVolume`
-- `PersistentVolumeClaim`
-- `Job`
-- `Secret`
-- `ClusterRoleBinding`
-- `ClusterRole`
-- `RoleBinding`
-- `Role`
+- `:ComponentStatus`
+- `:Endpoints`
+- `:Namespace`
+- `:ResourceQuota`
+- `:Pod`
+- `:PodTemplate`
+- `:ReplicationController`
+- `:Service`
+- `:PersistentVolume`
+- `:PersistentVolumeClaim`
+- `:Job`
+- `:Secret`
+- `:ClusterRoleBinding`
+- `:ClusterRole`
+- `:RoleBinding`
+- `:Role`
+- `...`
+
+Any Kubernetes entity supported, as long as it follows the standard Kubernetes Model and API naming conventions.
 
 ### Methods/Verbs:
+
+Kubernetes APIs are mapped to these easy to use verbs, familiar to Julia users.
 
 - `get`
 - `put!`
@@ -35,14 +40,11 @@ Provides an easy to use API (few details mentioned below). The complete Kubernet
 - `delete!`
 - `sel`: creates a label selector to use with other verbs
 
-All verbs have the signature: `verb(ctx, T, args...; kwargs...)`.
-
-If `ctx` is omitted, a global context (see next section) is used: `verb(T, args...; kwargs...)`.
+All verbs have the signature: `verb(ctx::KuberContext, T::Symbol, args...; kwargs...)`.
 
 ### Helper methods:
 
-A global instance of `KuberContext` is kept in the package for convenience. It comes in handy when dealing with a single nameserver and API server.
-The following methods can be used to manipulate that.
+A Kubernetes context can be manipulated with:
 
 - `set_server`: Set the API server location
 - `set_ns`: Set the namespace to deal with
