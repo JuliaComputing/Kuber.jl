@@ -110,7 +110,18 @@ function fetch_misc_apis_versions(ctx::KuberContext)
         name = get(apigrp.name)
         pref_vers_type = get(apigrp.preferredVersion)
         pref_vers = get(pref_vers_type.groupVersion)
-        apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
+
+        try
+            apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
+        catch ex
+            if isa(ex, UndefVarError)
+                info("unsupported ", pref_vers)
+                continue
+            else
+                rethrow()
+            end
+        end
+
         for api_vers in get(apigrp.versions)
             try
                 gt = api_group_type(get(api_vers.groupVersion))
