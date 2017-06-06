@@ -25,19 +25,22 @@ function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     end
 end
 
-function get(ctx::KuberContext, O::Symbol; label_selector=nothing)
+function get(ctx::KuberContext, O::Symbol; label_selector=nothing, namespace::Union{String,Void}=ctx.namespace)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
     kapi = ctx.modelapi[O]
     apictx = kapi.api(ctx.client)
 
     try
-        apicall = eval(Symbol("list$O"))
+        apiname = "list$O"
+        (namespace === nothing) && (apiname *= "ForAllNamespaces")
+        apicall = eval(Symbol(apiname))
         return apicall(apictx; labelSelector=label_selector)
     catch ex
         isa(ex, UndefVarError) || rethrow()
+        (namespace === nothing) && rethrow()
         apicall = eval(Symbol("listNamespaced$O"))
-        return apicall(apictx, ctx.namespace; labelSelector=label_selector)
+        return apicall(apictx, namespace; labelSelector=label_selector)
     end
 end
 
