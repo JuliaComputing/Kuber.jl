@@ -191,5 +191,8 @@ function set_api_versions!(ctx::KuberContext)
     fetch_core_version(ctx)
     fetch_misc_apis_versions(ctx)
     build_model_api_map(ctx)
+
+    # add custom models
+    ctx.modelapi[:PodLog] = ctx.modelapi[:Pod]
     nothing
 end
