@@ -13,7 +13,7 @@ using Swagger
 #    - run `kubectl proxy`
 
 ctx = KuberContext()
-set_server(ctx, "http://localhost:8001/")
+set_server(ctx, "http://localhost:8001")
 set_ns(ctx, "default")
 Kuber.set_api_versions!(ctx)
 

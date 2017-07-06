@@ -1,5 +1,5 @@
 const DEFAULT_NAMESPACE = "default"
-const DEFAULT_URI = "http://localhost:8001/"
+const DEFAULT_URI = "http://localhost:8001"
 
 immutable KApi
     api::DataType
