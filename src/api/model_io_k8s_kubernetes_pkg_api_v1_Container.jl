@@ -55,6 +55,7 @@ Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Container }) = _name_map_IoK8sKu
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Container }) = _field_map_IoK8sKubernetesPkgApiV1Container
 
 function check_required(o::IoK8sKubernetesPkgApiV1Container)
+    isnull(o.image) && (return false)
     isnull(o.name) && (return false)
     true
 end
