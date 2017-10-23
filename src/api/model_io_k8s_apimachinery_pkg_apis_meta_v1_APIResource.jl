@@ -2,25 +2,29 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
+    categories::Nullable{ Vector{String} } # categories
     kind::Nullable{ String } # kind
     name::Nullable{ String } # name
     namespaced::Nullable{ Bool } # namespaced
     shortNames::Nullable{ Vector{String} } # shortNames
+    singularName::Nullable{ String } # singularName
     verbs::Nullable{ Vector{String} } # verbs
 
-    function IoK8sApimachineryPkgApisMetaV1APIResource(;kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, verbs=nothing)
+    function IoK8sApimachineryPkgApisMetaV1APIResource(;categories=nothing, kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, singularName=nothing, verbs=nothing)
         o = new()
+        set_field!(o, :categories, categories)
         set_field!(o, :kind, kind)
         set_field!(o, :name, name)
         set_field!(o, :namespaced, namespaced)
         set_field!(o, :shortNames, shortNames)
+        set_field!(o, :singularName, singularName)
         set_field!(o, :verbs, verbs)
         o
     end
 end # type IoK8sApimachineryPkgApisMetaV1APIResource
 
-const _name_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{String,Symbol}(["kind"=>:kind, "name"=>:name, "namespaced"=>:namespaced, "shortNames"=>:shortNames, "verbs"=>:verbs])
-const _field_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}([:kind=>"kind", :name=>"name", :namespaced=>"namespaced", :shortNames=>"shortNames", :verbs=>"verbs"])
+const _name_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{String,Symbol}(["categories"=>:categories, "kind"=>:kind, "name"=>:name, "namespaced"=>:namespaced, "shortNames"=>:shortNames, "singularName"=>:singularName, "verbs"=>:verbs])
+const _field_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}([:categories=>"categories", :kind=>"kind", :name=>"name", :namespaced=>"namespaced", :shortNames=>"shortNames", :singularName=>"singularName", :verbs=>"verbs"])
 Swagger.name_map(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = _name_map_IoK8sApimachineryPkgApisMetaV1APIResource
 Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = _field_map_IoK8sApimachineryPkgApisMetaV1APIResource
 
@@ -28,6 +32,7 @@ function check_required(o::IoK8sApimachineryPkgApisMetaV1APIResource)
     isnull(o.kind) && (return false)
     isnull(o.name) && (return false)
     isnull(o.namespaced) && (return false)
+    isnull(o.singularName) && (return false)
     isnull(o.verbs) && (return false)
     true
 end

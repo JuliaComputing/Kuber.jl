@@ -3,9 +3,10 @@
 
 type IoK8sKubernetesPkgApiV1ServiceSpec <: SwaggerModel
     clusterIP::Nullable{ String } # clusterIP
-    deprecatedPublicIPs::Nullable{ Vector{String} } # deprecatedPublicIPs
     externalIPs::Nullable{ Vector{String} } # externalIPs
     externalName::Nullable{ String } # externalName
+    externalTrafficPolicy::Nullable{ String } # externalTrafficPolicy
+    healthCheckNodePort::Nullable{ Int32 } # healthCheckNodePort
     loadBalancerIP::Nullable{ String } # loadBalancerIP
     loadBalancerSourceRanges::Nullable{ Vector{String} } # loadBalancerSourceRanges
     ports::Nullable{ Vector{IoK8sKubernetesPkgApiV1ServicePort} } # ports
@@ -13,12 +14,13 @@ type IoK8sKubernetesPkgApiV1ServiceSpec <: SwaggerModel
     sessionAffinity::Nullable{ String } # sessionAffinity
     _type::Nullable{ String } # type
 
-    function IoK8sKubernetesPkgApiV1ServiceSpec(;clusterIP=nothing, deprecatedPublicIPs=nothing, externalIPs=nothing, externalName=nothing, loadBalancerIP=nothing, loadBalancerSourceRanges=nothing, ports=nothing, selector=nothing, sessionAffinity=nothing, _type=nothing)
+    function IoK8sKubernetesPkgApiV1ServiceSpec(;clusterIP=nothing, externalIPs=nothing, externalName=nothing, externalTrafficPolicy=nothing, healthCheckNodePort=nothing, loadBalancerIP=nothing, loadBalancerSourceRanges=nothing, ports=nothing, selector=nothing, sessionAffinity=nothing, _type=nothing)
         o = new()
         set_field!(o, :clusterIP, clusterIP)
-        set_field!(o, :deprecatedPublicIPs, deprecatedPublicIPs)
         set_field!(o, :externalIPs, externalIPs)
         set_field!(o, :externalName, externalName)
+        set_field!(o, :externalTrafficPolicy, externalTrafficPolicy)
+        set_field!(o, :healthCheckNodePort, healthCheckNodePort)
         set_field!(o, :loadBalancerIP, loadBalancerIP)
         set_field!(o, :loadBalancerSourceRanges, loadBalancerSourceRanges)
         set_field!(o, :ports, ports)
@@ -29,8 +31,8 @@ type IoK8sKubernetesPkgApiV1ServiceSpec <: SwaggerModel
     end
 end # type IoK8sKubernetesPkgApiV1ServiceSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1ServiceSpec = Dict{String,Symbol}(["clusterIP"=>:clusterIP, "deprecatedPublicIPs"=>:deprecatedPublicIPs, "externalIPs"=>:externalIPs, "externalName"=>:externalName, "loadBalancerIP"=>:loadBalancerIP, "loadBalancerSourceRanges"=>:loadBalancerSourceRanges, "ports"=>:ports, "selector"=>:selector, "sessionAffinity"=>:sessionAffinity, "type"=>:_type])
-const _field_map_IoK8sKubernetesPkgApiV1ServiceSpec = Dict{Symbol,String}([:clusterIP=>"clusterIP", :deprecatedPublicIPs=>"deprecatedPublicIPs", :externalIPs=>"externalIPs", :externalName=>"externalName", :loadBalancerIP=>"loadBalancerIP", :loadBalancerSourceRanges=>"loadBalancerSourceRanges", :ports=>"ports", :selector=>"selector", :sessionAffinity=>"sessionAffinity", :_type=>"type"])
+const _name_map_IoK8sKubernetesPkgApiV1ServiceSpec = Dict{String,Symbol}(["clusterIP"=>:clusterIP, "externalIPs"=>:externalIPs, "externalName"=>:externalName, "externalTrafficPolicy"=>:externalTrafficPolicy, "healthCheckNodePort"=>:healthCheckNodePort, "loadBalancerIP"=>:loadBalancerIP, "loadBalancerSourceRanges"=>:loadBalancerSourceRanges, "ports"=>:ports, "selector"=>:selector, "sessionAffinity"=>:sessionAffinity, "type"=>:_type])
+const _field_map_IoK8sKubernetesPkgApiV1ServiceSpec = Dict{Symbol,String}([:clusterIP=>"clusterIP", :externalIPs=>"externalIPs", :externalName=>"externalName", :externalTrafficPolicy=>"externalTrafficPolicy", :healthCheckNodePort=>"healthCheckNodePort", :loadBalancerIP=>"loadBalancerIP", :loadBalancerSourceRanges=>"loadBalancerSourceRanges", :ports=>"ports", :selector=>"selector", :sessionAffinity=>"sessionAffinity", :_type=>"type"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ServiceSpec }) = _name_map_IoK8sKubernetesPkgApiV1ServiceSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ServiceSpec }) = _field_map_IoK8sKubernetesPkgApiV1ServiceSpec
 

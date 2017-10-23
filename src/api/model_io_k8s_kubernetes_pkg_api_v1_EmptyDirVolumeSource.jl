@@ -3,16 +3,18 @@
 
 type IoK8sKubernetesPkgApiV1EmptyDirVolumeSource <: SwaggerModel
     medium::Nullable{ String } # medium
+    sizeLimit::Nullable{ IoK8sApimachineryPkgApiResourceQuantity } # sizeLimit
 
-    function IoK8sKubernetesPkgApiV1EmptyDirVolumeSource(;medium=nothing)
+    function IoK8sKubernetesPkgApiV1EmptyDirVolumeSource(;medium=nothing, sizeLimit=nothing)
         o = new()
         set_field!(o, :medium, medium)
+        set_field!(o, :sizeLimit, sizeLimit)
         o
     end
 end # type IoK8sKubernetesPkgApiV1EmptyDirVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource = Dict{String,Symbol}(["medium"=>:medium])
-const _field_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource = Dict{Symbol,String}([:medium=>"medium"])
+const _name_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource = Dict{String,Symbol}(["medium"=>:medium, "sizeLimit"=>:sizeLimit])
+const _field_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource = Dict{Symbol,String}([:medium=>"medium", :sizeLimit=>"sizeLimit"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1EmptyDirVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1EmptyDirVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1EmptyDirVolumeSource
 

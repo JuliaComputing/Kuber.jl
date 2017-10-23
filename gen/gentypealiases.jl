@@ -32,6 +32,7 @@ function model_prefixes()
     end
     push!(prefixes, ("IoK8sKubernetesPkgApisRbacV1alpha1", "RbacAuthorizationV1alpha1"))
     push!(prefixes, ("IoK8sKubernetesPkgApisRbacV1beta1", "RbacAuthorizationV1beta1"))
+    push!(prefixes, ("IoK8sKubeAggregatorPkgApisApiregistrationV1beta1", "ApiregistrationV1beta1"))
     push!(prefixes, ("IoK8sApimachineryPkgApi", "Apis"))
     push!(prefixes, ("IoK8sApimachineryPkgApisMetaV1", "Apis"))
     push!(prefixes, ("IoK8sApimachineryPkgUtil", "Apis"))

@@ -3,14 +3,16 @@
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec <: SwaggerModel
     minReadySeconds::Nullable{ Int32 } # minReadySeconds
+    revisionHistoryLimit::Nullable{ Int32 } # revisionHistoryLimit
     selector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
     template::Nullable{ IoK8sKubernetesPkgApiV1PodTemplateSpec } # template
     templateGeneration::Nullable{ Int64 } # templateGeneration
     updateStrategy::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy } # updateStrategy
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec(;minReadySeconds=nothing, selector=nothing, template=nothing, templateGeneration=nothing, updateStrategy=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec(;minReadySeconds=nothing, revisionHistoryLimit=nothing, selector=nothing, template=nothing, templateGeneration=nothing, updateStrategy=nothing)
         o = new()
         set_field!(o, :minReadySeconds, minReadySeconds)
+        set_field!(o, :revisionHistoryLimit, revisionHistoryLimit)
         set_field!(o, :selector, selector)
         set_field!(o, :template, template)
         set_field!(o, :templateGeneration, templateGeneration)
@@ -19,8 +21,8 @@ type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec <: SwaggerModel
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec = Dict{String,Symbol}(["minReadySeconds"=>:minReadySeconds, "selector"=>:selector, "template"=>:template, "templateGeneration"=>:templateGeneration, "updateStrategy"=>:updateStrategy])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec = Dict{Symbol,String}([:minReadySeconds=>"minReadySeconds", :selector=>"selector", :template=>"template", :templateGeneration=>"templateGeneration", :updateStrategy=>"updateStrategy"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec = Dict{String,Symbol}(["minReadySeconds"=>:minReadySeconds, "revisionHistoryLimit"=>:revisionHistoryLimit, "selector"=>:selector, "template"=>:template, "templateGeneration"=>:templateGeneration, "updateStrategy"=>:updateStrategy])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec = Dict{Symbol,String}([:minReadySeconds=>"minReadySeconds", :revisionHistoryLimit=>"revisionHistoryLimit", :selector=>"selector", :template=>"template", :templateGeneration=>"templateGeneration", :updateStrategy=>"updateStrategy"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetSpec
 

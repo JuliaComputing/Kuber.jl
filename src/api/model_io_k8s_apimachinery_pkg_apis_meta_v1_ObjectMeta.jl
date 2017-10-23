@@ -10,6 +10,7 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     finalizers::Nullable{ Vector{String} } # finalizers
     generateName::Nullable{ String } # generateName
     generation::Nullable{ Int64 } # generation
+    initializers::Nullable{ IoK8sApimachineryPkgApisMetaV1Initializers } # initializers
     labels::Nullable{ Dict{String, String} } # labels
     name::Nullable{ String } # name
     namespace::Nullable{ String } # namespace
@@ -18,7 +19,7 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     selfLink::Nullable{ String } # selfLink
     uid::Nullable{ String } # uid
 
-    function IoK8sApimachineryPkgApisMetaV1ObjectMeta(;annotations=nothing, clusterName=nothing, creationTimestamp=nothing, deletionGracePeriodSeconds=nothing, deletionTimestamp=nothing, finalizers=nothing, generateName=nothing, generation=nothing, labels=nothing, name=nothing, namespace=nothing, ownerReferences=nothing, resourceVersion=nothing, selfLink=nothing, uid=nothing)
+    function IoK8sApimachineryPkgApisMetaV1ObjectMeta(;annotations=nothing, clusterName=nothing, creationTimestamp=nothing, deletionGracePeriodSeconds=nothing, deletionTimestamp=nothing, finalizers=nothing, generateName=nothing, generation=nothing, initializers=nothing, labels=nothing, name=nothing, namespace=nothing, ownerReferences=nothing, resourceVersion=nothing, selfLink=nothing, uid=nothing)
         o = new()
         set_field!(o, :annotations, annotations)
         set_field!(o, :clusterName, clusterName)
@@ -28,6 +29,7 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
         set_field!(o, :finalizers, finalizers)
         set_field!(o, :generateName, generateName)
         set_field!(o, :generation, generation)
+        set_field!(o, :initializers, initializers)
         set_field!(o, :labels, labels)
         set_field!(o, :name, name)
         set_field!(o, :namespace, namespace)
@@ -39,8 +41,8 @@ type IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     end
 end # type IoK8sApimachineryPkgApisMetaV1ObjectMeta
 
-const _name_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{String,Symbol}(["annotations"=>:annotations, "clusterName"=>:clusterName, "creationTimestamp"=>:creationTimestamp, "deletionGracePeriodSeconds"=>:deletionGracePeriodSeconds, "deletionTimestamp"=>:deletionTimestamp, "finalizers"=>:finalizers, "generateName"=>:generateName, "generation"=>:generation, "labels"=>:labels, "name"=>:name, "namespace"=>:namespace, "ownerReferences"=>:ownerReferences, "resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink, "uid"=>:uid])
-const _field_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,String}([:annotations=>"annotations", :clusterName=>"clusterName", :creationTimestamp=>"creationTimestamp", :deletionGracePeriodSeconds=>"deletionGracePeriodSeconds", :deletionTimestamp=>"deletionTimestamp", :finalizers=>"finalizers", :generateName=>"generateName", :generation=>"generation", :labels=>"labels", :name=>"name", :namespace=>"namespace", :ownerReferences=>"ownerReferences", :resourceVersion=>"resourceVersion", :selfLink=>"selfLink", :uid=>"uid"])
+const _name_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{String,Symbol}(["annotations"=>:annotations, "clusterName"=>:clusterName, "creationTimestamp"=>:creationTimestamp, "deletionGracePeriodSeconds"=>:deletionGracePeriodSeconds, "deletionTimestamp"=>:deletionTimestamp, "finalizers"=>:finalizers, "generateName"=>:generateName, "generation"=>:generation, "initializers"=>:initializers, "labels"=>:labels, "name"=>:name, "namespace"=>:namespace, "ownerReferences"=>:ownerReferences, "resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink, "uid"=>:uid])
+const _field_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,String}([:annotations=>"annotations", :clusterName=>"clusterName", :creationTimestamp=>"creationTimestamp", :deletionGracePeriodSeconds=>"deletionGracePeriodSeconds", :deletionTimestamp=>"deletionTimestamp", :finalizers=>"finalizers", :generateName=>"generateName", :generation=>"generation", :initializers=>"initializers", :labels=>"labels", :name=>"name", :namespace=>"namespace", :ownerReferences=>"ownerReferences", :resourceVersion=>"resourceVersion", :selfLink=>"selfLink", :uid=>"uid"])
 Swagger.name_map(::Type{ IoK8sApimachineryPkgApisMetaV1ObjectMeta }) = _name_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta
 Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1ObjectMeta }) = _field_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta
 

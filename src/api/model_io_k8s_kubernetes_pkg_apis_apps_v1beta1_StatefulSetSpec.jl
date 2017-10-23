@@ -2,25 +2,31 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec <: SwaggerModel
+    podManagementPolicy::Nullable{ String } # podManagementPolicy
     replicas::Nullable{ Int32 } # replicas
+    revisionHistoryLimit::Nullable{ Int32 } # revisionHistoryLimit
     selector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
     serviceName::Nullable{ String } # serviceName
     template::Nullable{ IoK8sKubernetesPkgApiV1PodTemplateSpec } # template
+    updateStrategy::Nullable{ IoK8sKubernetesPkgApisAppsV1beta1StatefulSetUpdateStrategy } # updateStrategy
     volumeClaimTemplates::Nullable{ Vector{IoK8sKubernetesPkgApiV1PersistentVolumeClaim} } # volumeClaimTemplates
 
-    function IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec(;replicas=nothing, selector=nothing, serviceName=nothing, template=nothing, volumeClaimTemplates=nothing)
+    function IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec(;podManagementPolicy=nothing, replicas=nothing, revisionHistoryLimit=nothing, selector=nothing, serviceName=nothing, template=nothing, updateStrategy=nothing, volumeClaimTemplates=nothing)
         o = new()
+        set_field!(o, :podManagementPolicy, podManagementPolicy)
         set_field!(o, :replicas, replicas)
+        set_field!(o, :revisionHistoryLimit, revisionHistoryLimit)
         set_field!(o, :selector, selector)
         set_field!(o, :serviceName, serviceName)
         set_field!(o, :template, template)
+        set_field!(o, :updateStrategy, updateStrategy)
         set_field!(o, :volumeClaimTemplates, volumeClaimTemplates)
         o
     end
 end # type IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec
 
-const _name_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec = Dict{String,Symbol}(["replicas"=>:replicas, "selector"=>:selector, "serviceName"=>:serviceName, "template"=>:template, "volumeClaimTemplates"=>:volumeClaimTemplates])
-const _field_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec = Dict{Symbol,String}([:replicas=>"replicas", :selector=>"selector", :serviceName=>"serviceName", :template=>"template", :volumeClaimTemplates=>"volumeClaimTemplates"])
+const _name_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec = Dict{String,Symbol}(["podManagementPolicy"=>:podManagementPolicy, "replicas"=>:replicas, "revisionHistoryLimit"=>:revisionHistoryLimit, "selector"=>:selector, "serviceName"=>:serviceName, "template"=>:template, "updateStrategy"=>:updateStrategy, "volumeClaimTemplates"=>:volumeClaimTemplates])
+const _field_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec = Dict{Symbol,String}([:podManagementPolicy=>"podManagementPolicy", :replicas=>"replicas", :revisionHistoryLimit=>"revisionHistoryLimit", :selector=>"selector", :serviceName=>"serviceName", :template=>"template", :updateStrategy=>"updateStrategy", :volumeClaimTemplates=>"volumeClaimTemplates"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec }) = _name_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec }) = _field_map_IoK8sKubernetesPkgApisAppsV1beta1StatefulSetSpec
 

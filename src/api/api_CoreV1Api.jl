@@ -519,6 +519,116 @@ end
 
 """
 
+connect PATCH requests to proxy of Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
+"""
+function connectCoreV1PatchNamespacedPodProxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "path", path)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+connect PATCH requests to proxy of Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
+"""
+function connectCoreV1PatchNamespacedPodProxyWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.path, "path", path)  # type String
+    Swagger.set_param(_ctx.query, "path", path2)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+connect PATCH requests to proxy of Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String
+Return: String
+"""
+function connectCoreV1PatchNamespacedServiceProxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "path", path)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+connect PATCH requests to proxy of Service
+Param: name::String (required)
+Param: namespace::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
+"""
+function connectCoreV1PatchNamespacedServiceProxyWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.path, "path", path)  # type String
+    Swagger.set_param(_ctx.query, "path", path2)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+connect PATCH requests to proxy of Node
+Param: name::String (required)
+Param: path::String
+Return: String
+"""
+function connectCoreV1PatchNodeProxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/nodes/{name}/proxy", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "path", path)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+connect PATCH requests to proxy of Node
+Param: name::String (required)
+Param: path::String (required)
+Param: path2::String
+Return: String
+"""
+function connectCoreV1PatchNodeProxyWithPath(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "path", path)  # type String
+    Swagger.set_param(_ctx.query, "path", path2)  # type String
+    Swagger.set_header_accept(_ctx, ["*/*"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 connect POST requests to attach of Pod
 Param: name::String (required)
 Param: namespace::String (required)
@@ -843,25 +953,6 @@ end
 
 """
 
-create binding of a Binding
-Param: name::String (required)
-Param: namespace::String (required)
-Param: body::IoK8sKubernetesPkgApiV1Binding (required)
-Param: pretty::String
-Return: IoK8sKubernetesPkgApiV1Binding
-"""
-function createCoreV1NamespacedBindingBinding(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApiV1Binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
 create a ConfigMap
 Param: namespace::String (required)
 Param: body::IoK8sKubernetesPkgApiV1ConfigMap (required)
@@ -913,25 +1004,6 @@ end
 
 """
 
-create eviction of an Eviction
-Param: name::String (required)
-Param: namespace::String (required)
-Param: body::IoK8sKubernetesPkgApisPolicyV1beta1Eviction (required)
-Param: pretty::String
-Return: IoK8sKubernetesPkgApisPolicyV1beta1Eviction
-"""
-function createCoreV1NamespacedEvictionEviction(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApisPolicyV1beta1Eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
 create a LimitRange
 Param: namespace::String (required)
 Param: body::IoK8sKubernetesPkgApiV1LimitRange (required)
@@ -974,6 +1046,44 @@ Return: IoK8sKubernetesPkgApiV1Pod
 """
 function createCoreV1NamespacedPod(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApiV1Pod, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+create binding of a Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::IoK8sKubernetesPkgApiV1Binding (required)
+Param: pretty::String
+Return: IoK8sKubernetesPkgApiV1Binding
+"""
+function createCoreV1NamespacedPodBinding(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApiV1Binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+create eviction of a Pod
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::IoK8sKubernetesPkgApisPolicyV1beta1Eviction (required)
+Param: pretty::String
+Return: IoK8sKubernetesPkgApisPolicyV1beta1Eviction
+"""
+function createCoreV1NamespacedPodEviction(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApisPolicyV1beta1Eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -1115,45 +1225,23 @@ end
 
 """
 
-delete collection of Namespace
-Param: pretty::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApimachineryPkgApisMetaV1Status
-"""
-function deleteCoreV1CollectionNamespace(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
-    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
-    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
 delete collection of ConfigMap
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1169,17 +1257,19 @@ delete collection of Endpoints
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1195,17 +1285,19 @@ delete collection of Event
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/events", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1221,17 +1313,19 @@ delete collection of LimitRange
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1247,17 +1341,19 @@ delete collection of PersistentVolumeClaim
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1273,17 +1369,19 @@ delete collection of Pod
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1299,17 +1397,19 @@ delete collection of PodTemplate
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1325,17 +1425,19 @@ delete collection of ReplicationController
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1351,17 +1453,19 @@ delete collection of ResourceQuota
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1377,17 +1481,19 @@ delete collection of Secret
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1403,17 +1509,19 @@ delete collection of ServiceAccount
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1428,16 +1536,18 @@ end
 delete collection of Node
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNode(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNode(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/nodes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1452,16 +1562,18 @@ end
 delete collection of PersistentVolume
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionPersistentVolume(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionPersistentVolume(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/persistentvolumes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1849,6 +1961,7 @@ end
 
 list objects of kind ComponentStatus
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -1856,9 +1969,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ComponentStatusList
 """
-function listCoreV1ComponentStatus(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ComponentStatus(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ComponentStatusList, "/api/v1/componentstatuses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1873,6 +1987,7 @@ end
 
 list or watch objects of kind ConfigMap
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -1880,9 +1995,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ConfigMapList
 """
-function listCoreV1ConfigMapForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ConfigMapForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ConfigMapList, "/api/v1/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1897,6 +2013,7 @@ end
 
 list or watch objects of kind Endpoints
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -1904,9 +2021,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1EndpointsList
 """
-function listCoreV1EndpointsForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1EndpointsForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1EndpointsList, "/api/v1/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1921,6 +2039,7 @@ end
 
 list or watch objects of kind Event
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -1928,9 +2047,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1EventList
 """
-function listCoreV1EventForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1EventForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1EventList, "/api/v1/events", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1945,6 +2065,7 @@ end
 
 list or watch objects of kind LimitRange
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -1952,9 +2073,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1LimitRangeList
 """
-function listCoreV1LimitRangeForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1LimitRangeForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1LimitRangeList, "/api/v1/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1970,16 +2092,18 @@ end
 list or watch objects of kind Namespace
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1NamespaceList
 """
-function listCoreV1Namespace(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1Namespace(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1NamespaceList, "/api/v1/namespaces", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -1995,17 +2119,19 @@ list or watch objects of kind ConfigMap
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ConfigMapList
 """
-function listCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ConfigMapList, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2021,17 +2147,19 @@ list or watch objects of kind Endpoints
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1EndpointsList
 """
-function listCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1EndpointsList, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2047,17 +2175,19 @@ list or watch objects of kind Event
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1EventList
 """
-function listCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1EventList, "/api/v1/namespaces/{namespace}/events", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2073,17 +2203,19 @@ list or watch objects of kind LimitRange
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1LimitRangeList
 """
-function listCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1LimitRangeList, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2099,17 +2231,19 @@ list or watch objects of kind PersistentVolumeClaim
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PersistentVolumeClaimList
 """
-function listCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PersistentVolumeClaimList, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2125,17 +2259,19 @@ list or watch objects of kind Pod
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PodList
 """
-function listCoreV1NamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PodList, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2151,17 +2287,19 @@ list or watch objects of kind PodTemplate
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PodTemplateList
 """
-function listCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PodTemplateList, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2177,17 +2315,19 @@ list or watch objects of kind ReplicationController
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ReplicationControllerList
 """
-function listCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ReplicationControllerList, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2203,17 +2343,19 @@ list or watch objects of kind ResourceQuota
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ResourceQuotaList
 """
-function listCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ResourceQuotaList, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2229,17 +2371,19 @@ list or watch objects of kind Secret
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1SecretList
 """
-function listCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1SecretList, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2255,17 +2399,19 @@ list or watch objects of kind Service
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ServiceList
 """
-function listCoreV1NamespacedService(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedService(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ServiceList, "/api/v1/namespaces/{namespace}/services", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2281,17 +2427,19 @@ list or watch objects of kind ServiceAccount
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ServiceAccountList
 """
-function listCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ServiceAccountList, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2306,16 +2454,18 @@ end
 list or watch objects of kind Node
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1NodeList
 """
-function listCoreV1Node(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1Node(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1NodeList, "/api/v1/nodes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2330,16 +2480,18 @@ end
 list or watch objects of kind PersistentVolume
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PersistentVolumeList
 """
-function listCoreV1PersistentVolume(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1PersistentVolume(_api::CoreV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PersistentVolumeList, "/api/v1/persistentvolumes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -2353,6 +2505,7 @@ end
 
 list or watch objects of kind PersistentVolumeClaim
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2360,9 +2513,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PersistentVolumeClaimList
 """
-function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1PersistentVolumeClaimForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PersistentVolumeClaimList, "/api/v1/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2377,6 +2531,7 @@ end
 
 list or watch objects of kind Pod
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2384,9 +2539,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PodList
 """
-function listCoreV1PodForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1PodForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PodList, "/api/v1/pods", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2401,6 +2557,7 @@ end
 
 list or watch objects of kind PodTemplate
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2408,9 +2565,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1PodTemplateList
 """
-function listCoreV1PodTemplateForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1PodTemplateForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1PodTemplateList, "/api/v1/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2425,6 +2583,7 @@ end
 
 list or watch objects of kind ReplicationController
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2432,9 +2591,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ReplicationControllerList
 """
-function listCoreV1ReplicationControllerForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ReplicationControllerForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ReplicationControllerList, "/api/v1/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2449,6 +2609,7 @@ end
 
 list or watch objects of kind ResourceQuota
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2456,9 +2617,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ResourceQuotaList
 """
-function listCoreV1ResourceQuotaForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ResourceQuotaForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ResourceQuotaList, "/api/v1/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2473,6 +2635,7 @@ end
 
 list or watch objects of kind Secret
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2480,9 +2643,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1SecretList
 """
-function listCoreV1SecretForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1SecretForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1SecretList, "/api/v1/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2497,6 +2661,7 @@ end
 
 list or watch objects of kind ServiceAccount
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2504,9 +2669,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ServiceAccountList
 """
-function listCoreV1ServiceAccountForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ServiceAccountForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ServiceAccountList, "/api/v1/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2521,6 +2687,7 @@ end
 
 list or watch objects of kind Service
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -2528,9 +2695,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApiV1ServiceList
 """
-function listCoreV1ServiceForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1ServiceForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ServiceList, "/api/v1/services", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2767,6 +2935,25 @@ end
 
 """
 
+partially update scale of the specified ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
+Param: pretty::String
+Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
+"""
+function patchCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 partially update status of the specified ReplicationController
 Param: name::String (required)
 Param: namespace::String (required)
@@ -2814,25 +3001,6 @@ Return: IoK8sKubernetesPkgApiV1ResourceQuota
 """
 function patchCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sKubernetesPkgApiV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-partially update scale of the specified Scale
-Param: name::String (required)
-Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
-Param: pretty::String
-Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
-"""
-function patchCoreV1NamespacedScaleScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3969,6 +4137,24 @@ end
 
 """
 
+read scale of the specified ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
+"""
+function readCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 read status of the specified ReplicationController
 Param: name::String (required)
 Param: namespace::String (required)
@@ -4017,24 +4203,6 @@ Return: IoK8sKubernetesPkgApiV1ResourceQuota
 """
 function readCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApiV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-read scale of the specified Scale
-Param: name::String (required)
-Param: namespace::String (required)
-Param: pretty::String
-Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
-"""
-function readCoreV1NamespacedScaleScale(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4442,6 +4610,25 @@ end
 
 """
 
+replace scale of the specified ReplicationController
+Param: name::String (required)
+Param: namespace::String (required)
+Param: body::IoK8sKubernetesPkgApisAutoscalingV1Scale (required)
+Param: pretty::String
+Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
+"""
+function replaceCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 replace status of the specified ReplicationController
 Param: name::String (required)
 Param: namespace::String (required)
@@ -4489,25 +4676,6 @@ Return: IoK8sKubernetesPkgApiV1ResourceQuota
 """
 function replaceCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sKubernetesPkgApiV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-replace scale of the specified Scale
-Param: name::String (required)
-Param: namespace::String (required)
-Param: body::IoK8sKubernetesPkgApisAutoscalingV1Scale (required)
-Param: pretty::String
-Return: IoK8sKubernetesPkgApisAutoscalingV1Scale
-"""
-function replaceCoreV1NamespacedScaleScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sKubernetesPkgApisAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -4664,6 +4832,7 @@ end
 
 watch individual changes to a list of ConfigMap
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4671,9 +4840,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1ConfigMapListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1ConfigMapListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4688,6 +4858,7 @@ end
 
 watch individual changes to a list of Endpoints
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4695,9 +4866,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1EndpointsListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1EndpointsListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4712,6 +4884,7 @@ end
 
 watch individual changes to a list of Event
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4719,9 +4892,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1EventListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1EventListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/events", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4736,6 +4910,7 @@ end
 
 watch individual changes to a list of LimitRange
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4743,9 +4918,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1LimitRangeListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1LimitRangeListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4761,6 +4937,7 @@ end
 watch changes to an object of kind Namespace
 Param: name::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4768,10 +4945,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1Namespace(_api::CoreV1Api, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1Namespace(_api::CoreV1Api, name::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4786,6 +4964,7 @@ end
 
 watch individual changes to a list of Namespace
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4793,9 +4972,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespaceList(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespaceList(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4812,6 +4992,7 @@ watch changes to an object of kind ConfigMap
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4819,11 +5000,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/configmaps/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4839,6 +5021,7 @@ end
 watch individual changes to a list of ConfigMap
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4846,10 +5029,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedConfigMapList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedConfigMapList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4866,6 +5050,7 @@ watch changes to an object of kind Endpoints
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4873,11 +5058,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/endpoints/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4893,6 +5079,7 @@ end
 watch individual changes to a list of Endpoints
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4900,10 +5087,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedEndpointsList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedEndpointsList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4920,6 +5108,7 @@ watch changes to an object of kind Event
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4927,11 +5116,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/events/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4947,6 +5137,7 @@ end
 watch individual changes to a list of Event
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4954,10 +5145,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedEventList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedEventList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/events", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -4974,6 +5166,7 @@ watch changes to an object of kind LimitRange
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -4981,11 +5174,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/limitranges/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5001,6 +5195,7 @@ end
 watch individual changes to a list of LimitRange
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5008,10 +5203,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedLimitRangeList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedLimitRangeList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5028,6 +5224,7 @@ watch changes to an object of kind PersistentVolumeClaim
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5035,11 +5232,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5055,6 +5253,7 @@ end
 watch individual changes to a list of PersistentVolumeClaim
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5062,10 +5261,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPersistentVolumeClaimList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPersistentVolumeClaimList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5082,6 +5282,7 @@ watch changes to an object of kind Pod
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5089,11 +5290,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/pods/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5109,6 +5311,7 @@ end
 watch individual changes to a list of Pod
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5116,10 +5319,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPodList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPodList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/pods", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5136,6 +5340,7 @@ watch changes to an object of kind PodTemplate
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5143,11 +5348,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5163,6 +5369,7 @@ end
 watch individual changes to a list of PodTemplate
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5170,10 +5377,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedPodTemplateList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedPodTemplateList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5190,6 +5398,7 @@ watch changes to an object of kind ReplicationController
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5197,11 +5406,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5217,6 +5427,7 @@ end
 watch individual changes to a list of ReplicationController
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5224,10 +5435,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedReplicationControllerList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedReplicationControllerList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5244,6 +5456,7 @@ watch changes to an object of kind ResourceQuota
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5251,11 +5464,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5271,6 +5485,7 @@ end
 watch individual changes to a list of ResourceQuota
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5278,10 +5493,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedResourceQuotaList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedResourceQuotaList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5298,6 +5514,7 @@ watch changes to an object of kind Secret
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5305,11 +5522,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/secrets/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5325,6 +5543,7 @@ end
 watch individual changes to a list of Secret
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5332,10 +5551,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedSecretList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedSecretList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5352,6 +5572,7 @@ watch changes to an object of kind Service
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5359,11 +5580,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/services/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5380,6 +5602,7 @@ watch changes to an object of kind ServiceAccount
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5387,11 +5610,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5407,6 +5631,7 @@ end
 watch individual changes to a list of ServiceAccount
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5414,10 +5639,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedServiceAccountList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedServiceAccountList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5433,6 +5659,7 @@ end
 watch individual changes to a list of Service
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5440,10 +5667,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NamespacedServiceList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NamespacedServiceList(_api::CoreV1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/namespaces/{namespace}/services", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5459,6 +5687,7 @@ end
 watch changes to an object of kind Node
 Param: name::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5466,10 +5695,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1Node(_api::CoreV1Api, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1Node(_api::CoreV1Api, name::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/nodes/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5484,6 +5714,7 @@ end
 
 watch individual changes to a list of Node
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5491,9 +5722,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1NodeList(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1NodeList(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/nodes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5509,6 +5741,7 @@ end
 watch changes to an object of kind PersistentVolume
 Param: name::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5516,10 +5749,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1PersistentVolume(_api::CoreV1Api, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1PersistentVolume(_api::CoreV1Api, name::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/persistentvolumes/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5534,6 +5768,7 @@ end
 
 watch individual changes to a list of PersistentVolumeClaim
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5541,9 +5776,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1PersistentVolumeClaimListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5558,6 +5794,7 @@ end
 
 watch individual changes to a list of PersistentVolume
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5565,9 +5802,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1PersistentVolumeList(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1PersistentVolumeList(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/persistentvolumes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5582,6 +5820,7 @@ end
 
 watch individual changes to a list of Pod
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5589,9 +5828,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1PodListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1PodListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/pods", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5606,6 +5846,7 @@ end
 
 watch individual changes to a list of PodTemplate
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5613,9 +5854,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1PodTemplateListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1PodTemplateListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5630,6 +5872,7 @@ end
 
 watch individual changes to a list of ReplicationController
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5637,9 +5880,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1ReplicationControllerListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1ReplicationControllerListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5654,6 +5898,7 @@ end
 
 watch individual changes to a list of ResourceQuota
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5661,9 +5906,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1ResourceQuotaListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1ResourceQuotaListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5678,6 +5924,7 @@ end
 
 watch individual changes to a list of Secret
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5685,9 +5932,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1SecretListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1SecretListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5702,6 +5950,7 @@ end
 
 watch individual changes to a list of ServiceAccount
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5709,9 +5958,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1ServiceAccountListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1ServiceAccountListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5726,6 +5976,7 @@ end
 
 watch individual changes to a list of Service
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -5733,9 +5984,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCoreV1ServiceListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCoreV1ServiceListForAllNamespaces(_api::CoreV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/api/v1/watch/services", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -5746,4 +5998,4 @@ function watchCoreV1ServiceListForAllNamespaces(_api::CoreV1Api; fieldSelector=n
     Swagger.exec(_ctx)
 end
 
-export connectCoreV1DeleteNamespacedPodProxy, connectCoreV1DeleteNamespacedPodProxyWithPath, connectCoreV1DeleteNamespacedServiceProxy, connectCoreV1DeleteNamespacedServiceProxyWithPath, connectCoreV1DeleteNodeProxy, connectCoreV1DeleteNodeProxyWithPath, connectCoreV1GetNamespacedPodAttach, connectCoreV1GetNamespacedPodExec, connectCoreV1GetNamespacedPodPortforward, connectCoreV1GetNamespacedPodProxy, connectCoreV1GetNamespacedPodProxyWithPath, connectCoreV1GetNamespacedServiceProxy, connectCoreV1GetNamespacedServiceProxyWithPath, connectCoreV1GetNodeProxy, connectCoreV1GetNodeProxyWithPath, connectCoreV1HeadNamespacedPodProxy, connectCoreV1HeadNamespacedPodProxyWithPath, connectCoreV1HeadNamespacedServiceProxy, connectCoreV1HeadNamespacedServiceProxyWithPath, connectCoreV1HeadNodeProxy, connectCoreV1HeadNodeProxyWithPath, connectCoreV1OptionsNamespacedPodProxy, connectCoreV1OptionsNamespacedPodProxyWithPath, connectCoreV1OptionsNamespacedServiceProxy, connectCoreV1OptionsNamespacedServiceProxyWithPath, connectCoreV1OptionsNodeProxy, connectCoreV1OptionsNodeProxyWithPath, connectCoreV1PostNamespacedPodAttach, connectCoreV1PostNamespacedPodExec, connectCoreV1PostNamespacedPodPortforward, connectCoreV1PostNamespacedPodProxy, connectCoreV1PostNamespacedPodProxyWithPath, connectCoreV1PostNamespacedServiceProxy, connectCoreV1PostNamespacedServiceProxyWithPath, connectCoreV1PostNodeProxy, connectCoreV1PostNodeProxyWithPath, connectCoreV1PutNamespacedPodProxy, connectCoreV1PutNamespacedPodProxyWithPath, connectCoreV1PutNamespacedServiceProxy, connectCoreV1PutNamespacedServiceProxyWithPath, connectCoreV1PutNodeProxy, connectCoreV1PutNodeProxyWithPath, createCoreV1Namespace, createCoreV1NamespacedBinding, createCoreV1NamespacedBindingBinding, createCoreV1NamespacedConfigMap, createCoreV1NamespacedEndpoints, createCoreV1NamespacedEvent, createCoreV1NamespacedEvictionEviction, createCoreV1NamespacedLimitRange, createCoreV1NamespacedPersistentVolumeClaim, createCoreV1NamespacedPod, createCoreV1NamespacedPodTemplate, createCoreV1NamespacedReplicationController, createCoreV1NamespacedResourceQuota, createCoreV1NamespacedSecret, createCoreV1NamespacedService, createCoreV1NamespacedServiceAccount, createCoreV1Node, createCoreV1PersistentVolume, deleteCoreV1CollectionNamespace, deleteCoreV1CollectionNamespacedConfigMap, deleteCoreV1CollectionNamespacedEndpoints, deleteCoreV1CollectionNamespacedEvent, deleteCoreV1CollectionNamespacedLimitRange, deleteCoreV1CollectionNamespacedPersistentVolumeClaim, deleteCoreV1CollectionNamespacedPod, deleteCoreV1CollectionNamespacedPodTemplate, deleteCoreV1CollectionNamespacedReplicationController, deleteCoreV1CollectionNamespacedResourceQuota, deleteCoreV1CollectionNamespacedSecret, deleteCoreV1CollectionNamespacedServiceAccount, deleteCoreV1CollectionNode, deleteCoreV1CollectionPersistentVolume, deleteCoreV1Namespace, deleteCoreV1NamespacedConfigMap, deleteCoreV1NamespacedEndpoints, deleteCoreV1NamespacedEvent, deleteCoreV1NamespacedLimitRange, deleteCoreV1NamespacedPersistentVolumeClaim, deleteCoreV1NamespacedPod, deleteCoreV1NamespacedPodTemplate, deleteCoreV1NamespacedReplicationController, deleteCoreV1NamespacedResourceQuota, deleteCoreV1NamespacedSecret, deleteCoreV1NamespacedService, deleteCoreV1NamespacedServiceAccount, deleteCoreV1Node, deleteCoreV1PersistentVolume, getCoreV1APIResources, listCoreV1ComponentStatus, listCoreV1ConfigMapForAllNamespaces, listCoreV1EndpointsForAllNamespaces, listCoreV1EventForAllNamespaces, listCoreV1LimitRangeForAllNamespaces, listCoreV1Namespace, listCoreV1NamespacedConfigMap, listCoreV1NamespacedEndpoints, listCoreV1NamespacedEvent, listCoreV1NamespacedLimitRange, listCoreV1NamespacedPersistentVolumeClaim, listCoreV1NamespacedPod, listCoreV1NamespacedPodTemplate, listCoreV1NamespacedReplicationController, listCoreV1NamespacedResourceQuota, listCoreV1NamespacedSecret, listCoreV1NamespacedService, listCoreV1NamespacedServiceAccount, listCoreV1Node, listCoreV1PersistentVolume, listCoreV1PersistentVolumeClaimForAllNamespaces, listCoreV1PodForAllNamespaces, listCoreV1PodTemplateForAllNamespaces, listCoreV1ReplicationControllerForAllNamespaces, listCoreV1ResourceQuotaForAllNamespaces, listCoreV1SecretForAllNamespaces, listCoreV1ServiceAccountForAllNamespaces, listCoreV1ServiceForAllNamespaces, patchCoreV1Namespace, patchCoreV1NamespaceStatus, patchCoreV1NamespacedConfigMap, patchCoreV1NamespacedEndpoints, patchCoreV1NamespacedEvent, patchCoreV1NamespacedLimitRange, patchCoreV1NamespacedPersistentVolumeClaim, patchCoreV1NamespacedPersistentVolumeClaimStatus, patchCoreV1NamespacedPod, patchCoreV1NamespacedPodStatus, patchCoreV1NamespacedPodTemplate, patchCoreV1NamespacedReplicationController, patchCoreV1NamespacedReplicationControllerStatus, patchCoreV1NamespacedResourceQuota, patchCoreV1NamespacedResourceQuotaStatus, patchCoreV1NamespacedScaleScale, patchCoreV1NamespacedSecret, patchCoreV1NamespacedService, patchCoreV1NamespacedServiceAccount, patchCoreV1NamespacedServiceStatus, patchCoreV1Node, patchCoreV1NodeStatus, patchCoreV1PersistentVolume, patchCoreV1PersistentVolumeStatus, proxyCoreV1DELETENamespacedPod, proxyCoreV1DELETENamespacedPodWithPath, proxyCoreV1DELETENamespacedService, proxyCoreV1DELETENamespacedServiceWithPath, proxyCoreV1DELETENode, proxyCoreV1DELETENodeWithPath, proxyCoreV1GETNamespacedPod, proxyCoreV1GETNamespacedPodWithPath, proxyCoreV1GETNamespacedService, proxyCoreV1GETNamespacedServiceWithPath, proxyCoreV1GETNode, proxyCoreV1GETNodeWithPath, proxyCoreV1HEADNamespacedPod, proxyCoreV1HEADNamespacedPodWithPath, proxyCoreV1HEADNamespacedService, proxyCoreV1HEADNamespacedServiceWithPath, proxyCoreV1HEADNode, proxyCoreV1HEADNodeWithPath, proxyCoreV1OPTIONSNamespacedPod, proxyCoreV1OPTIONSNamespacedPodWithPath, proxyCoreV1OPTIONSNamespacedService, proxyCoreV1OPTIONSNamespacedServiceWithPath, proxyCoreV1OPTIONSNode, proxyCoreV1OPTIONSNodeWithPath, proxyCoreV1PATCHNamespacedPod, proxyCoreV1PATCHNamespacedPodWithPath, proxyCoreV1PATCHNamespacedService, proxyCoreV1PATCHNamespacedServiceWithPath, proxyCoreV1PATCHNode, proxyCoreV1PATCHNodeWithPath, proxyCoreV1POSTNamespacedPod, proxyCoreV1POSTNamespacedPodWithPath, proxyCoreV1POSTNamespacedService, proxyCoreV1POSTNamespacedServiceWithPath, proxyCoreV1POSTNode, proxyCoreV1POSTNodeWithPath, proxyCoreV1PUTNamespacedPod, proxyCoreV1PUTNamespacedPodWithPath, proxyCoreV1PUTNamespacedService, proxyCoreV1PUTNamespacedServiceWithPath, proxyCoreV1PUTNode, proxyCoreV1PUTNodeWithPath, readCoreV1ComponentStatus, readCoreV1Namespace, readCoreV1NamespaceStatus, readCoreV1NamespacedConfigMap, readCoreV1NamespacedEndpoints, readCoreV1NamespacedEvent, readCoreV1NamespacedLimitRange, readCoreV1NamespacedPersistentVolumeClaim, readCoreV1NamespacedPersistentVolumeClaimStatus, readCoreV1NamespacedPod, readCoreV1NamespacedPodLog, readCoreV1NamespacedPodStatus, readCoreV1NamespacedPodTemplate, readCoreV1NamespacedReplicationController, readCoreV1NamespacedReplicationControllerStatus, readCoreV1NamespacedResourceQuota, readCoreV1NamespacedResourceQuotaStatus, readCoreV1NamespacedScaleScale, readCoreV1NamespacedSecret, readCoreV1NamespacedService, readCoreV1NamespacedServiceAccount, readCoreV1NamespacedServiceStatus, readCoreV1Node, readCoreV1NodeStatus, readCoreV1PersistentVolume, readCoreV1PersistentVolumeStatus, replaceCoreV1Namespace, replaceCoreV1NamespaceFinalize, replaceCoreV1NamespaceStatus, replaceCoreV1NamespacedConfigMap, replaceCoreV1NamespacedEndpoints, replaceCoreV1NamespacedEvent, replaceCoreV1NamespacedLimitRange, replaceCoreV1NamespacedPersistentVolumeClaim, replaceCoreV1NamespacedPersistentVolumeClaimStatus, replaceCoreV1NamespacedPod, replaceCoreV1NamespacedPodStatus, replaceCoreV1NamespacedPodTemplate, replaceCoreV1NamespacedReplicationController, replaceCoreV1NamespacedReplicationControllerStatus, replaceCoreV1NamespacedResourceQuota, replaceCoreV1NamespacedResourceQuotaStatus, replaceCoreV1NamespacedScaleScale, replaceCoreV1NamespacedSecret, replaceCoreV1NamespacedService, replaceCoreV1NamespacedServiceAccount, replaceCoreV1NamespacedServiceStatus, replaceCoreV1Node, replaceCoreV1NodeStatus, replaceCoreV1PersistentVolume, replaceCoreV1PersistentVolumeStatus, watchCoreV1ConfigMapListForAllNamespaces, watchCoreV1EndpointsListForAllNamespaces, watchCoreV1EventListForAllNamespaces, watchCoreV1LimitRangeListForAllNamespaces, watchCoreV1Namespace, watchCoreV1NamespaceList, watchCoreV1NamespacedConfigMap, watchCoreV1NamespacedConfigMapList, watchCoreV1NamespacedEndpoints, watchCoreV1NamespacedEndpointsList, watchCoreV1NamespacedEvent, watchCoreV1NamespacedEventList, watchCoreV1NamespacedLimitRange, watchCoreV1NamespacedLimitRangeList, watchCoreV1NamespacedPersistentVolumeClaim, watchCoreV1NamespacedPersistentVolumeClaimList, watchCoreV1NamespacedPod, watchCoreV1NamespacedPodList, watchCoreV1NamespacedPodTemplate, watchCoreV1NamespacedPodTemplateList, watchCoreV1NamespacedReplicationController, watchCoreV1NamespacedReplicationControllerList, watchCoreV1NamespacedResourceQuota, watchCoreV1NamespacedResourceQuotaList, watchCoreV1NamespacedSecret, watchCoreV1NamespacedSecretList, watchCoreV1NamespacedService, watchCoreV1NamespacedServiceAccount, watchCoreV1NamespacedServiceAccountList, watchCoreV1NamespacedServiceList, watchCoreV1Node, watchCoreV1NodeList, watchCoreV1PersistentVolume, watchCoreV1PersistentVolumeClaimListForAllNamespaces, watchCoreV1PersistentVolumeList, watchCoreV1PodListForAllNamespaces, watchCoreV1PodTemplateListForAllNamespaces, watchCoreV1ReplicationControllerListForAllNamespaces, watchCoreV1ResourceQuotaListForAllNamespaces, watchCoreV1SecretListForAllNamespaces, watchCoreV1ServiceAccountListForAllNamespaces, watchCoreV1ServiceListForAllNamespaces
+export connectCoreV1DeleteNamespacedPodProxy, connectCoreV1DeleteNamespacedPodProxyWithPath, connectCoreV1DeleteNamespacedServiceProxy, connectCoreV1DeleteNamespacedServiceProxyWithPath, connectCoreV1DeleteNodeProxy, connectCoreV1DeleteNodeProxyWithPath, connectCoreV1GetNamespacedPodAttach, connectCoreV1GetNamespacedPodExec, connectCoreV1GetNamespacedPodPortforward, connectCoreV1GetNamespacedPodProxy, connectCoreV1GetNamespacedPodProxyWithPath, connectCoreV1GetNamespacedServiceProxy, connectCoreV1GetNamespacedServiceProxyWithPath, connectCoreV1GetNodeProxy, connectCoreV1GetNodeProxyWithPath, connectCoreV1HeadNamespacedPodProxy, connectCoreV1HeadNamespacedPodProxyWithPath, connectCoreV1HeadNamespacedServiceProxy, connectCoreV1HeadNamespacedServiceProxyWithPath, connectCoreV1HeadNodeProxy, connectCoreV1HeadNodeProxyWithPath, connectCoreV1OptionsNamespacedPodProxy, connectCoreV1OptionsNamespacedPodProxyWithPath, connectCoreV1OptionsNamespacedServiceProxy, connectCoreV1OptionsNamespacedServiceProxyWithPath, connectCoreV1OptionsNodeProxy, connectCoreV1OptionsNodeProxyWithPath, connectCoreV1PatchNamespacedPodProxy, connectCoreV1PatchNamespacedPodProxyWithPath, connectCoreV1PatchNamespacedServiceProxy, connectCoreV1PatchNamespacedServiceProxyWithPath, connectCoreV1PatchNodeProxy, connectCoreV1PatchNodeProxyWithPath, connectCoreV1PostNamespacedPodAttach, connectCoreV1PostNamespacedPodExec, connectCoreV1PostNamespacedPodPortforward, connectCoreV1PostNamespacedPodProxy, connectCoreV1PostNamespacedPodProxyWithPath, connectCoreV1PostNamespacedServiceProxy, connectCoreV1PostNamespacedServiceProxyWithPath, connectCoreV1PostNodeProxy, connectCoreV1PostNodeProxyWithPath, connectCoreV1PutNamespacedPodProxy, connectCoreV1PutNamespacedPodProxyWithPath, connectCoreV1PutNamespacedServiceProxy, connectCoreV1PutNamespacedServiceProxyWithPath, connectCoreV1PutNodeProxy, connectCoreV1PutNodeProxyWithPath, createCoreV1Namespace, createCoreV1NamespacedBinding, createCoreV1NamespacedConfigMap, createCoreV1NamespacedEndpoints, createCoreV1NamespacedEvent, createCoreV1NamespacedLimitRange, createCoreV1NamespacedPersistentVolumeClaim, createCoreV1NamespacedPod, createCoreV1NamespacedPodBinding, createCoreV1NamespacedPodEviction, createCoreV1NamespacedPodTemplate, createCoreV1NamespacedReplicationController, createCoreV1NamespacedResourceQuota, createCoreV1NamespacedSecret, createCoreV1NamespacedService, createCoreV1NamespacedServiceAccount, createCoreV1Node, createCoreV1PersistentVolume, deleteCoreV1CollectionNamespacedConfigMap, deleteCoreV1CollectionNamespacedEndpoints, deleteCoreV1CollectionNamespacedEvent, deleteCoreV1CollectionNamespacedLimitRange, deleteCoreV1CollectionNamespacedPersistentVolumeClaim, deleteCoreV1CollectionNamespacedPod, deleteCoreV1CollectionNamespacedPodTemplate, deleteCoreV1CollectionNamespacedReplicationController, deleteCoreV1CollectionNamespacedResourceQuota, deleteCoreV1CollectionNamespacedSecret, deleteCoreV1CollectionNamespacedServiceAccount, deleteCoreV1CollectionNode, deleteCoreV1CollectionPersistentVolume, deleteCoreV1Namespace, deleteCoreV1NamespacedConfigMap, deleteCoreV1NamespacedEndpoints, deleteCoreV1NamespacedEvent, deleteCoreV1NamespacedLimitRange, deleteCoreV1NamespacedPersistentVolumeClaim, deleteCoreV1NamespacedPod, deleteCoreV1NamespacedPodTemplate, deleteCoreV1NamespacedReplicationController, deleteCoreV1NamespacedResourceQuota, deleteCoreV1NamespacedSecret, deleteCoreV1NamespacedService, deleteCoreV1NamespacedServiceAccount, deleteCoreV1Node, deleteCoreV1PersistentVolume, getCoreV1APIResources, listCoreV1ComponentStatus, listCoreV1ConfigMapForAllNamespaces, listCoreV1EndpointsForAllNamespaces, listCoreV1EventForAllNamespaces, listCoreV1LimitRangeForAllNamespaces, listCoreV1Namespace, listCoreV1NamespacedConfigMap, listCoreV1NamespacedEndpoints, listCoreV1NamespacedEvent, listCoreV1NamespacedLimitRange, listCoreV1NamespacedPersistentVolumeClaim, listCoreV1NamespacedPod, listCoreV1NamespacedPodTemplate, listCoreV1NamespacedReplicationController, listCoreV1NamespacedResourceQuota, listCoreV1NamespacedSecret, listCoreV1NamespacedService, listCoreV1NamespacedServiceAccount, listCoreV1Node, listCoreV1PersistentVolume, listCoreV1PersistentVolumeClaimForAllNamespaces, listCoreV1PodForAllNamespaces, listCoreV1PodTemplateForAllNamespaces, listCoreV1ReplicationControllerForAllNamespaces, listCoreV1ResourceQuotaForAllNamespaces, listCoreV1SecretForAllNamespaces, listCoreV1ServiceAccountForAllNamespaces, listCoreV1ServiceForAllNamespaces, patchCoreV1Namespace, patchCoreV1NamespaceStatus, patchCoreV1NamespacedConfigMap, patchCoreV1NamespacedEndpoints, patchCoreV1NamespacedEvent, patchCoreV1NamespacedLimitRange, patchCoreV1NamespacedPersistentVolumeClaim, patchCoreV1NamespacedPersistentVolumeClaimStatus, patchCoreV1NamespacedPod, patchCoreV1NamespacedPodStatus, patchCoreV1NamespacedPodTemplate, patchCoreV1NamespacedReplicationController, patchCoreV1NamespacedReplicationControllerScale, patchCoreV1NamespacedReplicationControllerStatus, patchCoreV1NamespacedResourceQuota, patchCoreV1NamespacedResourceQuotaStatus, patchCoreV1NamespacedSecret, patchCoreV1NamespacedService, patchCoreV1NamespacedServiceAccount, patchCoreV1NamespacedServiceStatus, patchCoreV1Node, patchCoreV1NodeStatus, patchCoreV1PersistentVolume, patchCoreV1PersistentVolumeStatus, proxyCoreV1DELETENamespacedPod, proxyCoreV1DELETENamespacedPodWithPath, proxyCoreV1DELETENamespacedService, proxyCoreV1DELETENamespacedServiceWithPath, proxyCoreV1DELETENode, proxyCoreV1DELETENodeWithPath, proxyCoreV1GETNamespacedPod, proxyCoreV1GETNamespacedPodWithPath, proxyCoreV1GETNamespacedService, proxyCoreV1GETNamespacedServiceWithPath, proxyCoreV1GETNode, proxyCoreV1GETNodeWithPath, proxyCoreV1HEADNamespacedPod, proxyCoreV1HEADNamespacedPodWithPath, proxyCoreV1HEADNamespacedService, proxyCoreV1HEADNamespacedServiceWithPath, proxyCoreV1HEADNode, proxyCoreV1HEADNodeWithPath, proxyCoreV1OPTIONSNamespacedPod, proxyCoreV1OPTIONSNamespacedPodWithPath, proxyCoreV1OPTIONSNamespacedService, proxyCoreV1OPTIONSNamespacedServiceWithPath, proxyCoreV1OPTIONSNode, proxyCoreV1OPTIONSNodeWithPath, proxyCoreV1PATCHNamespacedPod, proxyCoreV1PATCHNamespacedPodWithPath, proxyCoreV1PATCHNamespacedService, proxyCoreV1PATCHNamespacedServiceWithPath, proxyCoreV1PATCHNode, proxyCoreV1PATCHNodeWithPath, proxyCoreV1POSTNamespacedPod, proxyCoreV1POSTNamespacedPodWithPath, proxyCoreV1POSTNamespacedService, proxyCoreV1POSTNamespacedServiceWithPath, proxyCoreV1POSTNode, proxyCoreV1POSTNodeWithPath, proxyCoreV1PUTNamespacedPod, proxyCoreV1PUTNamespacedPodWithPath, proxyCoreV1PUTNamespacedService, proxyCoreV1PUTNamespacedServiceWithPath, proxyCoreV1PUTNode, proxyCoreV1PUTNodeWithPath, readCoreV1ComponentStatus, readCoreV1Namespace, readCoreV1NamespaceStatus, readCoreV1NamespacedConfigMap, readCoreV1NamespacedEndpoints, readCoreV1NamespacedEvent, readCoreV1NamespacedLimitRange, readCoreV1NamespacedPersistentVolumeClaim, readCoreV1NamespacedPersistentVolumeClaimStatus, readCoreV1NamespacedPod, readCoreV1NamespacedPodLog, readCoreV1NamespacedPodStatus, readCoreV1NamespacedPodTemplate, readCoreV1NamespacedReplicationController, readCoreV1NamespacedReplicationControllerScale, readCoreV1NamespacedReplicationControllerStatus, readCoreV1NamespacedResourceQuota, readCoreV1NamespacedResourceQuotaStatus, readCoreV1NamespacedSecret, readCoreV1NamespacedService, readCoreV1NamespacedServiceAccount, readCoreV1NamespacedServiceStatus, readCoreV1Node, readCoreV1NodeStatus, readCoreV1PersistentVolume, readCoreV1PersistentVolumeStatus, replaceCoreV1Namespace, replaceCoreV1NamespaceFinalize, replaceCoreV1NamespaceStatus, replaceCoreV1NamespacedConfigMap, replaceCoreV1NamespacedEndpoints, replaceCoreV1NamespacedEvent, replaceCoreV1NamespacedLimitRange, replaceCoreV1NamespacedPersistentVolumeClaim, replaceCoreV1NamespacedPersistentVolumeClaimStatus, replaceCoreV1NamespacedPod, replaceCoreV1NamespacedPodStatus, replaceCoreV1NamespacedPodTemplate, replaceCoreV1NamespacedReplicationController, replaceCoreV1NamespacedReplicationControllerScale, replaceCoreV1NamespacedReplicationControllerStatus, replaceCoreV1NamespacedResourceQuota, replaceCoreV1NamespacedResourceQuotaStatus, replaceCoreV1NamespacedSecret, replaceCoreV1NamespacedService, replaceCoreV1NamespacedServiceAccount, replaceCoreV1NamespacedServiceStatus, replaceCoreV1Node, replaceCoreV1NodeStatus, replaceCoreV1PersistentVolume, replaceCoreV1PersistentVolumeStatus, watchCoreV1ConfigMapListForAllNamespaces, watchCoreV1EndpointsListForAllNamespaces, watchCoreV1EventListForAllNamespaces, watchCoreV1LimitRangeListForAllNamespaces, watchCoreV1Namespace, watchCoreV1NamespaceList, watchCoreV1NamespacedConfigMap, watchCoreV1NamespacedConfigMapList, watchCoreV1NamespacedEndpoints, watchCoreV1NamespacedEndpointsList, watchCoreV1NamespacedEvent, watchCoreV1NamespacedEventList, watchCoreV1NamespacedLimitRange, watchCoreV1NamespacedLimitRangeList, watchCoreV1NamespacedPersistentVolumeClaim, watchCoreV1NamespacedPersistentVolumeClaimList, watchCoreV1NamespacedPod, watchCoreV1NamespacedPodList, watchCoreV1NamespacedPodTemplate, watchCoreV1NamespacedPodTemplateList, watchCoreV1NamespacedReplicationController, watchCoreV1NamespacedReplicationControllerList, watchCoreV1NamespacedResourceQuota, watchCoreV1NamespacedResourceQuotaList, watchCoreV1NamespacedSecret, watchCoreV1NamespacedSecretList, watchCoreV1NamespacedService, watchCoreV1NamespacedServiceAccount, watchCoreV1NamespacedServiceAccountList, watchCoreV1NamespacedServiceList, watchCoreV1Node, watchCoreV1NodeList, watchCoreV1PersistentVolume, watchCoreV1PersistentVolumeClaimListForAllNamespaces, watchCoreV1PersistentVolumeList, watchCoreV1PodListForAllNamespaces, watchCoreV1PodTemplateListForAllNamespaces, watchCoreV1ReplicationControllerListForAllNamespaces, watchCoreV1ResourceQuotaListForAllNamespaces, watchCoreV1SecretListForAllNamespaces, watchCoreV1ServiceAccountListForAllNamespaces, watchCoreV1ServiceListForAllNamespaces

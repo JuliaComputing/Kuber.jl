@@ -28,17 +28,19 @@ delete collection of PodPreset
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteSettingsV1alpha1CollectionNamespacedPodPreset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteSettingsV1alpha1CollectionNamespacedPodPreset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -91,17 +93,19 @@ list or watch objects of kind PodPreset
 Param: namespace::String (required)
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApisSettingsV1alpha1PodPresetList
 """
-function listSettingsV1alpha1NamespacedPodPreset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listSettingsV1alpha1NamespacedPodPreset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApisSettingsV1alpha1PodPresetList, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -115,6 +119,7 @@ end
 
 list or watch objects of kind PodPreset
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -122,9 +127,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApisSettingsV1alpha1PodPresetList
 """
-function listSettingsV1alpha1PodPresetForAllNamespaces(_api::SettingsV1alpha1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listSettingsV1alpha1PodPresetForAllNamespaces(_api::SettingsV1alpha1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApisSettingsV1alpha1PodPresetList, "/apis/settings.k8s.io/v1alpha1/podpresets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -201,6 +207,7 @@ watch changes to an object of kind PodPreset
 Param: name::String (required)
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -208,11 +215,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchSettingsV1alpha1NamespacedPodPreset(_api::SettingsV1alpha1Api, name::String, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchSettingsV1alpha1NamespacedPodPreset(_api::SettingsV1alpha1Api, name::String, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -228,6 +236,7 @@ end
 watch individual changes to a list of PodPreset
 Param: namespace::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -235,10 +244,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchSettingsV1alpha1NamespacedPodPresetList(_api::SettingsV1alpha1Api, namespace::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchSettingsV1alpha1NamespacedPodPresetList(_api::SettingsV1alpha1Api, namespace::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -253,6 +263,7 @@ end
 
 watch individual changes to a list of PodPreset
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -260,9 +271,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchSettingsV1alpha1PodPresetListForAllNamespaces(_api::SettingsV1alpha1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchSettingsV1alpha1PodPresetListForAllNamespaces(_api::SettingsV1alpha1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/settings.k8s.io/v1alpha1/watch/podpresets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String

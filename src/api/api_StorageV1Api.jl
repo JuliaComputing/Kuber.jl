@@ -25,16 +25,18 @@ end
 delete collection of StorageClass
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteStorageV1CollectionStorageClass(_api::StorageV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteStorageV1CollectionStorageClass(_api::StorageV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1/storageclasses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -84,16 +86,18 @@ end
 list or watch objects of kind StorageClass
 Param: pretty::String
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubernetesPkgApisStorageV1StorageClassList
 """
-function listStorageV1StorageClass(_api::StorageV1Api; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listStorageV1StorageClass(_api::StorageV1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubernetesPkgApisStorageV1StorageClassList, "/apis/storage.k8s.io/v1/storageclasses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -162,6 +166,7 @@ end
 watch changes to an object of kind StorageClass
 Param: name::String (required)
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -169,10 +174,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1StorageClass(_api::StorageV1Api, name::String; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1StorageClass(_api::StorageV1Api, name::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1/watch/storageclasses/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -187,6 +193,7 @@ end
 
 watch individual changes to a list of StorageClass
 Param: fieldSelector::String
+Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: pretty::String
 Param: resourceVersion::String
@@ -194,9 +201,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1StorageClassList(_api::StorageV1Api; fieldSelector=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1StorageClassList(_api::StorageV1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1/watch/storageclasses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String

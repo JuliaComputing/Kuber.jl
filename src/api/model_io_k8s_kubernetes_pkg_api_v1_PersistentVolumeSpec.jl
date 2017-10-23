@@ -17,6 +17,7 @@ type IoK8sKubernetesPkgApiV1PersistentVolumeSpec <: SwaggerModel
     glusterfs::Nullable{ IoK8sKubernetesPkgApiV1GlusterfsVolumeSource } # glusterfs
     hostPath::Nullable{ IoK8sKubernetesPkgApiV1HostPathVolumeSource } # hostPath
     iscsi::Nullable{ IoK8sKubernetesPkgApiV1ISCSIVolumeSource } # iscsi
+    _local::Nullable{ IoK8sKubernetesPkgApiV1LocalVolumeSource } # local
     nfs::Nullable{ IoK8sKubernetesPkgApiV1NFSVolumeSource } # nfs
     persistentVolumeReclaimPolicy::Nullable{ String } # persistentVolumeReclaimPolicy
     photonPersistentDisk::Nullable{ IoK8sKubernetesPkgApiV1PhotonPersistentDiskVolumeSource } # photonPersistentDisk
@@ -25,9 +26,10 @@ type IoK8sKubernetesPkgApiV1PersistentVolumeSpec <: SwaggerModel
     rbd::Nullable{ IoK8sKubernetesPkgApiV1RBDVolumeSource } # rbd
     scaleIO::Nullable{ IoK8sKubernetesPkgApiV1ScaleIOVolumeSource } # scaleIO
     storageClassName::Nullable{ String } # storageClassName
+    storageos::Nullable{ IoK8sKubernetesPkgApiV1StorageOSPersistentVolumeSource } # storageos
     vsphereVolume::Nullable{ IoK8sKubernetesPkgApiV1VsphereVirtualDiskVolumeSource } # vsphereVolume
 
-    function IoK8sKubernetesPkgApiV1PersistentVolumeSpec(;accessModes=nothing, awsElasticBlockStore=nothing, azureDisk=nothing, azureFile=nothing, capacity=nothing, cephfs=nothing, cinder=nothing, claimRef=nothing, fc=nothing, flexVolume=nothing, flocker=nothing, gcePersistentDisk=nothing, glusterfs=nothing, hostPath=nothing, iscsi=nothing, nfs=nothing, persistentVolumeReclaimPolicy=nothing, photonPersistentDisk=nothing, portworxVolume=nothing, quobyte=nothing, rbd=nothing, scaleIO=nothing, storageClassName=nothing, vsphereVolume=nothing)
+    function IoK8sKubernetesPkgApiV1PersistentVolumeSpec(;accessModes=nothing, awsElasticBlockStore=nothing, azureDisk=nothing, azureFile=nothing, capacity=nothing, cephfs=nothing, cinder=nothing, claimRef=nothing, fc=nothing, flexVolume=nothing, flocker=nothing, gcePersistentDisk=nothing, glusterfs=nothing, hostPath=nothing, iscsi=nothing, _local=nothing, nfs=nothing, persistentVolumeReclaimPolicy=nothing, photonPersistentDisk=nothing, portworxVolume=nothing, quobyte=nothing, rbd=nothing, scaleIO=nothing, storageClassName=nothing, storageos=nothing, vsphereVolume=nothing)
         o = new()
         set_field!(o, :accessModes, accessModes)
         set_field!(o, :awsElasticBlockStore, awsElasticBlockStore)
@@ -44,6 +46,7 @@ type IoK8sKubernetesPkgApiV1PersistentVolumeSpec <: SwaggerModel
         set_field!(o, :glusterfs, glusterfs)
         set_field!(o, :hostPath, hostPath)
         set_field!(o, :iscsi, iscsi)
+        set_field!(o, :_local, _local)
         set_field!(o, :nfs, nfs)
         set_field!(o, :persistentVolumeReclaimPolicy, persistentVolumeReclaimPolicy)
         set_field!(o, :photonPersistentDisk, photonPersistentDisk)
@@ -52,13 +55,14 @@ type IoK8sKubernetesPkgApiV1PersistentVolumeSpec <: SwaggerModel
         set_field!(o, :rbd, rbd)
         set_field!(o, :scaleIO, scaleIO)
         set_field!(o, :storageClassName, storageClassName)
+        set_field!(o, :storageos, storageos)
         set_field!(o, :vsphereVolume, vsphereVolume)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PersistentVolumeSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "awsElasticBlockStore"=>:awsElasticBlockStore, "azureDisk"=>:azureDisk, "azureFile"=>:azureFile, "capacity"=>:capacity, "cephfs"=>:cephfs, "cinder"=>:cinder, "claimRef"=>:claimRef, "fc"=>:fc, "flexVolume"=>:flexVolume, "flocker"=>:flocker, "gcePersistentDisk"=>:gcePersistentDisk, "glusterfs"=>:glusterfs, "hostPath"=>:hostPath, "iscsi"=>:iscsi, "nfs"=>:nfs, "persistentVolumeReclaimPolicy"=>:persistentVolumeReclaimPolicy, "photonPersistentDisk"=>:photonPersistentDisk, "portworxVolume"=>:portworxVolume, "quobyte"=>:quobyte, "rbd"=>:rbd, "scaleIO"=>:scaleIO, "storageClassName"=>:storageClassName, "vsphereVolume"=>:vsphereVolume])
-const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :awsElasticBlockStore=>"awsElasticBlockStore", :azureDisk=>"azureDisk", :azureFile=>"azureFile", :capacity=>"capacity", :cephfs=>"cephfs", :cinder=>"cinder", :claimRef=>"claimRef", :fc=>"fc", :flexVolume=>"flexVolume", :flocker=>"flocker", :gcePersistentDisk=>"gcePersistentDisk", :glusterfs=>"glusterfs", :hostPath=>"hostPath", :iscsi=>"iscsi", :nfs=>"nfs", :persistentVolumeReclaimPolicy=>"persistentVolumeReclaimPolicy", :photonPersistentDisk=>"photonPersistentDisk", :portworxVolume=>"portworxVolume", :quobyte=>"quobyte", :rbd=>"rbd", :scaleIO=>"scaleIO", :storageClassName=>"storageClassName", :vsphereVolume=>"vsphereVolume"])
+const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "awsElasticBlockStore"=>:awsElasticBlockStore, "azureDisk"=>:azureDisk, "azureFile"=>:azureFile, "capacity"=>:capacity, "cephfs"=>:cephfs, "cinder"=>:cinder, "claimRef"=>:claimRef, "fc"=>:fc, "flexVolume"=>:flexVolume, "flocker"=>:flocker, "gcePersistentDisk"=>:gcePersistentDisk, "glusterfs"=>:glusterfs, "hostPath"=>:hostPath, "iscsi"=>:iscsi, "local"=>:_local, "nfs"=>:nfs, "persistentVolumeReclaimPolicy"=>:persistentVolumeReclaimPolicy, "photonPersistentDisk"=>:photonPersistentDisk, "portworxVolume"=>:portworxVolume, "quobyte"=>:quobyte, "rbd"=>:rbd, "scaleIO"=>:scaleIO, "storageClassName"=>:storageClassName, "storageos"=>:storageos, "vsphereVolume"=>:vsphereVolume])
+const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :awsElasticBlockStore=>"awsElasticBlockStore", :azureDisk=>"azureDisk", :azureFile=>"azureFile", :capacity=>"capacity", :cephfs=>"cephfs", :cinder=>"cinder", :claimRef=>"claimRef", :fc=>"fc", :flexVolume=>"flexVolume", :flocker=>"flocker", :gcePersistentDisk=>"gcePersistentDisk", :glusterfs=>"glusterfs", :hostPath=>"hostPath", :iscsi=>"iscsi", :_local=>"local", :nfs=>"nfs", :persistentVolumeReclaimPolicy=>"persistentVolumeReclaimPolicy", :photonPersistentDisk=>"photonPersistentDisk", :portworxVolume=>"portworxVolume", :quobyte=>"quobyte", :rbd=>"rbd", :scaleIO=>"scaleIO", :storageClassName=>"storageClassName", :storageos=>"storageos", :vsphereVolume=>"vsphereVolume"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeSpec }) = _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeSpec }) = _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeSpec
 

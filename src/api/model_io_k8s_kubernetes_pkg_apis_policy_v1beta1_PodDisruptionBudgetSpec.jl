@@ -2,19 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec <: SwaggerModel
+    maxUnavailable::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # maxUnavailable
     minAvailable::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # minAvailable
     selector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
 
-    function IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec(;minAvailable=nothing, selector=nothing)
+    function IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec(;maxUnavailable=nothing, minAvailable=nothing, selector=nothing)
         o = new()
+        set_field!(o, :maxUnavailable, maxUnavailable)
         set_field!(o, :minAvailable, minAvailable)
         set_field!(o, :selector, selector)
         o
     end
 end # type IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec
 
-const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec = Dict{String,Symbol}(["minAvailable"=>:minAvailable, "selector"=>:selector])
-const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec = Dict{Symbol,String}([:minAvailable=>"minAvailable", :selector=>"selector"])
+const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec = Dict{String,Symbol}(["maxUnavailable"=>:maxUnavailable, "minAvailable"=>:minAvailable, "selector"=>:selector])
+const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec = Dict{Symbol,String}([:maxUnavailable=>"maxUnavailable", :minAvailable=>"minAvailable", :selector=>"selector"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec }) = _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec }) = _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetSpec
 

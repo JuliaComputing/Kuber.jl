@@ -2,29 +2,35 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ISCSIVolumeSource <: SwaggerModel
+    chapAuthDiscovery::Nullable{ Bool } # chapAuthDiscovery
+    chapAuthSession::Nullable{ Bool } # chapAuthSession
     fsType::Nullable{ String } # fsType
     iqn::Nullable{ String } # iqn
     iscsiInterface::Nullable{ String } # iscsiInterface
     lun::Nullable{ Int32 } # lun
     portals::Nullable{ Vector{String} } # portals
     readOnly::Nullable{ Bool } # readOnly
+    secretRef::Nullable{ IoK8sKubernetesPkgApiV1LocalObjectReference } # secretRef
     targetPortal::Nullable{ String } # targetPortal
 
-    function IoK8sKubernetesPkgApiV1ISCSIVolumeSource(;fsType=nothing, iqn=nothing, iscsiInterface=nothing, lun=nothing, portals=nothing, readOnly=nothing, targetPortal=nothing)
+    function IoK8sKubernetesPkgApiV1ISCSIVolumeSource(;chapAuthDiscovery=nothing, chapAuthSession=nothing, fsType=nothing, iqn=nothing, iscsiInterface=nothing, lun=nothing, portals=nothing, readOnly=nothing, secretRef=nothing, targetPortal=nothing)
         o = new()
+        set_field!(o, :chapAuthDiscovery, chapAuthDiscovery)
+        set_field!(o, :chapAuthSession, chapAuthSession)
         set_field!(o, :fsType, fsType)
         set_field!(o, :iqn, iqn)
         set_field!(o, :iscsiInterface, iscsiInterface)
         set_field!(o, :lun, lun)
         set_field!(o, :portals, portals)
         set_field!(o, :readOnly, readOnly)
+        set_field!(o, :secretRef, secretRef)
         set_field!(o, :targetPortal, targetPortal)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ISCSIVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource = Dict{String,Symbol}(["fsType"=>:fsType, "iqn"=>:iqn, "iscsiInterface"=>:iscsiInterface, "lun"=>:lun, "portals"=>:portals, "readOnly"=>:readOnly, "targetPortal"=>:targetPortal])
-const _field_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource = Dict{Symbol,String}([:fsType=>"fsType", :iqn=>"iqn", :iscsiInterface=>"iscsiInterface", :lun=>"lun", :portals=>"portals", :readOnly=>"readOnly", :targetPortal=>"targetPortal"])
+const _name_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource = Dict{String,Symbol}(["chapAuthDiscovery"=>:chapAuthDiscovery, "chapAuthSession"=>:chapAuthSession, "fsType"=>:fsType, "iqn"=>:iqn, "iscsiInterface"=>:iscsiInterface, "lun"=>:lun, "portals"=>:portals, "readOnly"=>:readOnly, "secretRef"=>:secretRef, "targetPortal"=>:targetPortal])
+const _field_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource = Dict{Symbol,String}([:chapAuthDiscovery=>"chapAuthDiscovery", :chapAuthSession=>"chapAuthSession", :fsType=>"fsType", :iqn=>"iqn", :iscsiInterface=>"iscsiInterface", :lun=>"lun", :portals=>"portals", :readOnly=>"readOnly", :secretRef=>"secretRef", :targetPortal=>"targetPortal"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ISCSIVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ISCSIVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1ISCSIVolumeSource
 

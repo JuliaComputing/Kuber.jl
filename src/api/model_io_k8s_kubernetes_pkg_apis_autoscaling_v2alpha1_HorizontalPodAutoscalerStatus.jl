@@ -2,14 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus <: SwaggerModel
+    conditions::Nullable{ Vector{IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerCondition} } # conditions
     currentMetrics::Nullable{ Vector{IoK8sKubernetesPkgApisAutoscalingV2alpha1MetricStatus} } # currentMetrics
     currentReplicas::Nullable{ Int32 } # currentReplicas
     desiredReplicas::Nullable{ Int32 } # desiredReplicas
     lastScaleTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # lastScaleTime
     observedGeneration::Nullable{ Int64 } # observedGeneration
 
-    function IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus(;currentMetrics=nothing, currentReplicas=nothing, desiredReplicas=nothing, lastScaleTime=nothing, observedGeneration=nothing)
+    function IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus(;conditions=nothing, currentMetrics=nothing, currentReplicas=nothing, desiredReplicas=nothing, lastScaleTime=nothing, observedGeneration=nothing)
         o = new()
+        set_field!(o, :conditions, conditions)
         set_field!(o, :currentMetrics, currentMetrics)
         set_field!(o, :currentReplicas, currentReplicas)
         set_field!(o, :desiredReplicas, desiredReplicas)
@@ -19,12 +21,13 @@ type IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus <: S
     end
 end # type IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus
 
-const _name_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus = Dict{String,Symbol}(["currentMetrics"=>:currentMetrics, "currentReplicas"=>:currentReplicas, "desiredReplicas"=>:desiredReplicas, "lastScaleTime"=>:lastScaleTime, "observedGeneration"=>:observedGeneration])
-const _field_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus = Dict{Symbol,String}([:currentMetrics=>"currentMetrics", :currentReplicas=>"currentReplicas", :desiredReplicas=>"desiredReplicas", :lastScaleTime=>"lastScaleTime", :observedGeneration=>"observedGeneration"])
+const _name_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus = Dict{String,Symbol}(["conditions"=>:conditions, "currentMetrics"=>:currentMetrics, "currentReplicas"=>:currentReplicas, "desiredReplicas"=>:desiredReplicas, "lastScaleTime"=>:lastScaleTime, "observedGeneration"=>:observedGeneration])
+const _field_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus = Dict{Symbol,String}([:conditions=>"conditions", :currentMetrics=>"currentMetrics", :currentReplicas=>"currentReplicas", :desiredReplicas=>"desiredReplicas", :lastScaleTime=>"lastScaleTime", :observedGeneration=>"observedGeneration"])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus }) = _name_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus }) = _field_map_IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus
 
 function check_required(o::IoK8sKubernetesPkgApisAutoscalingV2alpha1HorizontalPodAutoscalerStatus)
+    isnull(o.conditions) && (return false)
     isnull(o.currentMetrics) && (return false)
     isnull(o.currentReplicas) && (return false)
     isnull(o.desiredReplicas) && (return false)
