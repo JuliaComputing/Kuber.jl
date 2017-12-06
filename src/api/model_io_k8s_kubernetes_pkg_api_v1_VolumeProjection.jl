@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1VolumeProjection <: SwaggerModel
-    configMap::Nullable{ IoK8sKubernetesPkgApiV1ConfigMapProjection } # configMap
-    downwardAPI::Nullable{ IoK8sKubernetesPkgApiV1DownwardAPIProjection } # downwardAPI
-    secret::Nullable{ IoK8sKubernetesPkgApiV1SecretProjection } # secret
 
-    function IoK8sKubernetesPkgApiV1VolumeProjection(;configMap=nothing, downwardAPI=nothing, secret=nothing)
+    function IoK8sKubernetesPkgApiV1VolumeProjection(;)
         o = new()
-        set_field!(o, :configMap, configMap)
-        set_field!(o, :downwardAPI, downwardAPI)
-        set_field!(o, :secret, secret)
         o
     end
 end # type IoK8sKubernetesPkgApiV1VolumeProjection
 
-const _name_map_IoK8sKubernetesPkgApiV1VolumeProjection = Dict{String,Symbol}(["configMap"=>:configMap, "downwardAPI"=>:downwardAPI, "secret"=>:secret])
-const _field_map_IoK8sKubernetesPkgApiV1VolumeProjection = Dict{Symbol,String}([:configMap=>"configMap", :downwardAPI=>"downwardAPI", :secret=>"secret"])
+const _name_map_IoK8sKubernetesPkgApiV1VolumeProjection = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1VolumeProjection = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1VolumeProjection }) = _name_map_IoK8sKubernetesPkgApiV1VolumeProjection
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1VolumeProjection }) = _field_map_IoK8sKubernetesPkgApiV1VolumeProjection
 

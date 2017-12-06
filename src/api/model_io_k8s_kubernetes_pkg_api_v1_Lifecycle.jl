@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Lifecycle <: SwaggerModel
-    postStart::Nullable{ IoK8sKubernetesPkgApiV1Handler } # postStart
-    preStop::Nullable{ IoK8sKubernetesPkgApiV1Handler } # preStop
 
-    function IoK8sKubernetesPkgApiV1Lifecycle(;postStart=nothing, preStop=nothing)
+    function IoK8sKubernetesPkgApiV1Lifecycle(;)
         o = new()
-        set_field!(o, :postStart, postStart)
-        set_field!(o, :preStop, preStop)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Lifecycle
 
-const _name_map_IoK8sKubernetesPkgApiV1Lifecycle = Dict{String,Symbol}(["postStart"=>:postStart, "preStop"=>:preStop])
-const _field_map_IoK8sKubernetesPkgApiV1Lifecycle = Dict{Symbol,String}([:postStart=>"postStart", :preStop=>"preStop"])
+const _name_map_IoK8sKubernetesPkgApiV1Lifecycle = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Lifecycle = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Lifecycle }) = _name_map_IoK8sKubernetesPkgApiV1Lifecycle
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Lifecycle }) = _field_map_IoK8sKubernetesPkgApiV1Lifecycle
 

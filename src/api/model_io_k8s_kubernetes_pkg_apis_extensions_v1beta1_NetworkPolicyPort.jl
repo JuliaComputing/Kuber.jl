@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort <: SwaggerModel
-    port::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # port
-    protocol::Nullable{ String } # protocol
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort(;port=nothing, protocol=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort(;)
         o = new()
-        set_field!(o, :port, port)
-        set_field!(o, :protocol, protocol)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort = Dict{String,Symbol}(["port"=>:port, "protocol"=>:protocol])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort = Dict{Symbol,String}([:port=>"port", :protocol=>"protocol"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1NetworkPolicyPort
 

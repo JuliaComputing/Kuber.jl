@@ -2,76 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Volume <: SwaggerModel
-    awsElasticBlockStore::Nullable{ IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource } # awsElasticBlockStore
-    azureDisk::Nullable{ IoK8sKubernetesPkgApiV1AzureDiskVolumeSource } # azureDisk
-    azureFile::Nullable{ IoK8sKubernetesPkgApiV1AzureFileVolumeSource } # azureFile
-    cephfs::Nullable{ IoK8sKubernetesPkgApiV1CephFSVolumeSource } # cephfs
-    cinder::Nullable{ IoK8sKubernetesPkgApiV1CinderVolumeSource } # cinder
-    configMap::Nullable{ IoK8sKubernetesPkgApiV1ConfigMapVolumeSource } # configMap
-    downwardAPI::Nullable{ IoK8sKubernetesPkgApiV1DownwardAPIVolumeSource } # downwardAPI
-    emptyDir::Nullable{ IoK8sKubernetesPkgApiV1EmptyDirVolumeSource } # emptyDir
-    fc::Nullable{ IoK8sKubernetesPkgApiV1FCVolumeSource } # fc
-    flexVolume::Nullable{ IoK8sKubernetesPkgApiV1FlexVolumeSource } # flexVolume
-    flocker::Nullable{ IoK8sKubernetesPkgApiV1FlockerVolumeSource } # flocker
-    gcePersistentDisk::Nullable{ IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource } # gcePersistentDisk
-    gitRepo::Nullable{ IoK8sKubernetesPkgApiV1GitRepoVolumeSource } # gitRepo
-    glusterfs::Nullable{ IoK8sKubernetesPkgApiV1GlusterfsVolumeSource } # glusterfs
-    hostPath::Nullable{ IoK8sKubernetesPkgApiV1HostPathVolumeSource } # hostPath
-    iscsi::Nullable{ IoK8sKubernetesPkgApiV1ISCSIVolumeSource } # iscsi
-    name::Nullable{ String } # name
-    nfs::Nullable{ IoK8sKubernetesPkgApiV1NFSVolumeSource } # nfs
-    persistentVolumeClaim::Nullable{ IoK8sKubernetesPkgApiV1PersistentVolumeClaimVolumeSource } # persistentVolumeClaim
-    photonPersistentDisk::Nullable{ IoK8sKubernetesPkgApiV1PhotonPersistentDiskVolumeSource } # photonPersistentDisk
-    portworxVolume::Nullable{ IoK8sKubernetesPkgApiV1PortworxVolumeSource } # portworxVolume
-    projected::Nullable{ IoK8sKubernetesPkgApiV1ProjectedVolumeSource } # projected
-    quobyte::Nullable{ IoK8sKubernetesPkgApiV1QuobyteVolumeSource } # quobyte
-    rbd::Nullable{ IoK8sKubernetesPkgApiV1RBDVolumeSource } # rbd
-    scaleIO::Nullable{ IoK8sKubernetesPkgApiV1ScaleIOVolumeSource } # scaleIO
-    secret::Nullable{ IoK8sKubernetesPkgApiV1SecretVolumeSource } # secret
-    storageos::Nullable{ IoK8sKubernetesPkgApiV1StorageOSVolumeSource } # storageos
-    vsphereVolume::Nullable{ IoK8sKubernetesPkgApiV1VsphereVirtualDiskVolumeSource } # vsphereVolume
 
-    function IoK8sKubernetesPkgApiV1Volume(;awsElasticBlockStore=nothing, azureDisk=nothing, azureFile=nothing, cephfs=nothing, cinder=nothing, configMap=nothing, downwardAPI=nothing, emptyDir=nothing, fc=nothing, flexVolume=nothing, flocker=nothing, gcePersistentDisk=nothing, gitRepo=nothing, glusterfs=nothing, hostPath=nothing, iscsi=nothing, name=nothing, nfs=nothing, persistentVolumeClaim=nothing, photonPersistentDisk=nothing, portworxVolume=nothing, projected=nothing, quobyte=nothing, rbd=nothing, scaleIO=nothing, secret=nothing, storageos=nothing, vsphereVolume=nothing)
+    function IoK8sKubernetesPkgApiV1Volume(;)
         o = new()
-        set_field!(o, :awsElasticBlockStore, awsElasticBlockStore)
-        set_field!(o, :azureDisk, azureDisk)
-        set_field!(o, :azureFile, azureFile)
-        set_field!(o, :cephfs, cephfs)
-        set_field!(o, :cinder, cinder)
-        set_field!(o, :configMap, configMap)
-        set_field!(o, :downwardAPI, downwardAPI)
-        set_field!(o, :emptyDir, emptyDir)
-        set_field!(o, :fc, fc)
-        set_field!(o, :flexVolume, flexVolume)
-        set_field!(o, :flocker, flocker)
-        set_field!(o, :gcePersistentDisk, gcePersistentDisk)
-        set_field!(o, :gitRepo, gitRepo)
-        set_field!(o, :glusterfs, glusterfs)
-        set_field!(o, :hostPath, hostPath)
-        set_field!(o, :iscsi, iscsi)
-        set_field!(o, :name, name)
-        set_field!(o, :nfs, nfs)
-        set_field!(o, :persistentVolumeClaim, persistentVolumeClaim)
-        set_field!(o, :photonPersistentDisk, photonPersistentDisk)
-        set_field!(o, :portworxVolume, portworxVolume)
-        set_field!(o, :projected, projected)
-        set_field!(o, :quobyte, quobyte)
-        set_field!(o, :rbd, rbd)
-        set_field!(o, :scaleIO, scaleIO)
-        set_field!(o, :secret, secret)
-        set_field!(o, :storageos, storageos)
-        set_field!(o, :vsphereVolume, vsphereVolume)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Volume
 
-const _name_map_IoK8sKubernetesPkgApiV1Volume = Dict{String,Symbol}(["awsElasticBlockStore"=>:awsElasticBlockStore, "azureDisk"=>:azureDisk, "azureFile"=>:azureFile, "cephfs"=>:cephfs, "cinder"=>:cinder, "configMap"=>:configMap, "downwardAPI"=>:downwardAPI, "emptyDir"=>:emptyDir, "fc"=>:fc, "flexVolume"=>:flexVolume, "flocker"=>:flocker, "gcePersistentDisk"=>:gcePersistentDisk, "gitRepo"=>:gitRepo, "glusterfs"=>:glusterfs, "hostPath"=>:hostPath, "iscsi"=>:iscsi, "name"=>:name, "nfs"=>:nfs, "persistentVolumeClaim"=>:persistentVolumeClaim, "photonPersistentDisk"=>:photonPersistentDisk, "portworxVolume"=>:portworxVolume, "projected"=>:projected, "quobyte"=>:quobyte, "rbd"=>:rbd, "scaleIO"=>:scaleIO, "secret"=>:secret, "storageos"=>:storageos, "vsphereVolume"=>:vsphereVolume])
-const _field_map_IoK8sKubernetesPkgApiV1Volume = Dict{Symbol,String}([:awsElasticBlockStore=>"awsElasticBlockStore", :azureDisk=>"azureDisk", :azureFile=>"azureFile", :cephfs=>"cephfs", :cinder=>"cinder", :configMap=>"configMap", :downwardAPI=>"downwardAPI", :emptyDir=>"emptyDir", :fc=>"fc", :flexVolume=>"flexVolume", :flocker=>"flocker", :gcePersistentDisk=>"gcePersistentDisk", :gitRepo=>"gitRepo", :glusterfs=>"glusterfs", :hostPath=>"hostPath", :iscsi=>"iscsi", :name=>"name", :nfs=>"nfs", :persistentVolumeClaim=>"persistentVolumeClaim", :photonPersistentDisk=>"photonPersistentDisk", :portworxVolume=>"portworxVolume", :projected=>"projected", :quobyte=>"quobyte", :rbd=>"rbd", :scaleIO=>"scaleIO", :secret=>"secret", :storageos=>"storageos", :vsphereVolume=>"vsphereVolume"])
+const _name_map_IoK8sKubernetesPkgApiV1Volume = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Volume = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Volume }) = _name_map_IoK8sKubernetesPkgApiV1Volume
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Volume }) = _field_map_IoK8sKubernetesPkgApiV1Volume
 
 function check_required(o::IoK8sKubernetesPkgApiV1Volume)
-    isnull(o.name) && (return false)
     true
 end
 

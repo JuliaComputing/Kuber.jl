@@ -2,30 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1HTTPGetAction <: SwaggerModel
-    host::Nullable{ String } # host
-    httpHeaders::Nullable{ Vector{IoK8sKubernetesPkgApiV1HTTPHeader} } # httpHeaders
-    path::Nullable{ String } # path
-    port::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # port
-    scheme::Nullable{ String } # scheme
 
-    function IoK8sKubernetesPkgApiV1HTTPGetAction(;host=nothing, httpHeaders=nothing, path=nothing, port=nothing, scheme=nothing)
+    function IoK8sKubernetesPkgApiV1HTTPGetAction(;)
         o = new()
-        set_field!(o, :host, host)
-        set_field!(o, :httpHeaders, httpHeaders)
-        set_field!(o, :path, path)
-        set_field!(o, :port, port)
-        set_field!(o, :scheme, scheme)
         o
     end
 end # type IoK8sKubernetesPkgApiV1HTTPGetAction
 
-const _name_map_IoK8sKubernetesPkgApiV1HTTPGetAction = Dict{String,Symbol}(["host"=>:host, "httpHeaders"=>:httpHeaders, "path"=>:path, "port"=>:port, "scheme"=>:scheme])
-const _field_map_IoK8sKubernetesPkgApiV1HTTPGetAction = Dict{Symbol,String}([:host=>"host", :httpHeaders=>"httpHeaders", :path=>"path", :port=>"port", :scheme=>"scheme"])
+const _name_map_IoK8sKubernetesPkgApiV1HTTPGetAction = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1HTTPGetAction = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1HTTPGetAction }) = _name_map_IoK8sKubernetesPkgApiV1HTTPGetAction
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1HTTPGetAction }) = _field_map_IoK8sKubernetesPkgApiV1HTTPGetAction
 
 function check_required(o::IoK8sKubernetesPkgApiV1HTTPGetAction)
-    isnull(o.port) && (return false)
     true
 end
 

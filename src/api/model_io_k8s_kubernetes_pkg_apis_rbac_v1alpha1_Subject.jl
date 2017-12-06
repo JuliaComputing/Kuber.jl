@@ -2,29 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisRbacV1alpha1Subject <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    name::Nullable{ String } # name
-    namespace::Nullable{ String } # namespace
 
-    function IoK8sKubernetesPkgApisRbacV1alpha1Subject(;apiVersion=nothing, kind=nothing, name=nothing, namespace=nothing)
+    function IoK8sKubernetesPkgApisRbacV1alpha1Subject(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :name, name)
-        set_field!(o, :namespace, namespace)
         o
     end
 end # type IoK8sKubernetesPkgApisRbacV1alpha1Subject
 
-const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "name"=>:name, "namespace"=>:namespace])
-const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :name=>"name", :namespace=>"namespace"])
+const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1Subject }) = _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1Subject }) = _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Subject
 
 function check_required(o::IoK8sKubernetesPkgApisRbacV1alpha1Subject)
-    isnull(o.kind) && (return false)
-    isnull(o.name) && (return false)
     true
 end
 

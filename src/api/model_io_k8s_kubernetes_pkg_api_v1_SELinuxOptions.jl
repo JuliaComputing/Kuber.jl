@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1SELinuxOptions <: SwaggerModel
-    level::Nullable{ String } # level
-    role::Nullable{ String } # role
-    _type::Nullable{ String } # type
-    user::Nullable{ String } # user
 
-    function IoK8sKubernetesPkgApiV1SELinuxOptions(;level=nothing, role=nothing, _type=nothing, user=nothing)
+    function IoK8sKubernetesPkgApiV1SELinuxOptions(;)
         o = new()
-        set_field!(o, :level, level)
-        set_field!(o, :role, role)
-        set_field!(o, :_type, _type)
-        set_field!(o, :user, user)
         o
     end
 end # type IoK8sKubernetesPkgApiV1SELinuxOptions
 
-const _name_map_IoK8sKubernetesPkgApiV1SELinuxOptions = Dict{String,Symbol}(["level"=>:level, "role"=>:role, "type"=>:_type, "user"=>:user])
-const _field_map_IoK8sKubernetesPkgApiV1SELinuxOptions = Dict{Symbol,String}([:level=>"level", :role=>"role", :_type=>"type", :user=>"user"])
+const _name_map_IoK8sKubernetesPkgApiV1SELinuxOptions = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1SELinuxOptions = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1SELinuxOptions }) = _name_map_IoK8sKubernetesPkgApiV1SELinuxOptions
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1SELinuxOptions }) = _field_map_IoK8sKubernetesPkgApiV1SELinuxOptions
 

@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PodAntiAffinity <: SwaggerModel
-    preferredDuringSchedulingIgnoredDuringExecution::Nullable{ Vector{IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm} } # preferredDuringSchedulingIgnoredDuringExecution
-    requiredDuringSchedulingIgnoredDuringExecution::Nullable{ Vector{IoK8sKubernetesPkgApiV1PodAffinityTerm} } # requiredDuringSchedulingIgnoredDuringExecution
 
-    function IoK8sKubernetesPkgApiV1PodAntiAffinity(;preferredDuringSchedulingIgnoredDuringExecution=nothing, requiredDuringSchedulingIgnoredDuringExecution=nothing)
+    function IoK8sKubernetesPkgApiV1PodAntiAffinity(;)
         o = new()
-        set_field!(o, :preferredDuringSchedulingIgnoredDuringExecution, preferredDuringSchedulingIgnoredDuringExecution)
-        set_field!(o, :requiredDuringSchedulingIgnoredDuringExecution, requiredDuringSchedulingIgnoredDuringExecution)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PodAntiAffinity
 
-const _name_map_IoK8sKubernetesPkgApiV1PodAntiAffinity = Dict{String,Symbol}(["preferredDuringSchedulingIgnoredDuringExecution"=>:preferredDuringSchedulingIgnoredDuringExecution, "requiredDuringSchedulingIgnoredDuringExecution"=>:requiredDuringSchedulingIgnoredDuringExecution])
-const _field_map_IoK8sKubernetesPkgApiV1PodAntiAffinity = Dict{Symbol,String}([:preferredDuringSchedulingIgnoredDuringExecution=>"preferredDuringSchedulingIgnoredDuringExecution", :requiredDuringSchedulingIgnoredDuringExecution=>"requiredDuringSchedulingIgnoredDuringExecution"])
+const _name_map_IoK8sKubernetesPkgApiV1PodAntiAffinity = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PodAntiAffinity = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PodAntiAffinity }) = _name_map_IoK8sKubernetesPkgApiV1PodAntiAffinity
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PodAntiAffinity }) = _field_map_IoK8sKubernetesPkgApiV1PodAntiAffinity
 

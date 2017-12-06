@@ -2,31 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus <: SwaggerModel
-    availableReplicas::Nullable{ Int32 } # availableReplicas
-    collisionCount::Nullable{ Int64 } # collisionCount
-    conditions::Nullable{ Vector{IoK8sKubernetesPkgApisAppsV1beta1DeploymentCondition} } # conditions
-    observedGeneration::Nullable{ Int64 } # observedGeneration
-    readyReplicas::Nullable{ Int32 } # readyReplicas
-    replicas::Nullable{ Int32 } # replicas
-    unavailableReplicas::Nullable{ Int32 } # unavailableReplicas
-    updatedReplicas::Nullable{ Int32 } # updatedReplicas
 
-    function IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus(;availableReplicas=nothing, collisionCount=nothing, conditions=nothing, observedGeneration=nothing, readyReplicas=nothing, replicas=nothing, unavailableReplicas=nothing, updatedReplicas=nothing)
+    function IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus(;)
         o = new()
-        set_field!(o, :availableReplicas, availableReplicas)
-        set_field!(o, :collisionCount, collisionCount)
-        set_field!(o, :conditions, conditions)
-        set_field!(o, :observedGeneration, observedGeneration)
-        set_field!(o, :readyReplicas, readyReplicas)
-        set_field!(o, :replicas, replicas)
-        set_field!(o, :unavailableReplicas, unavailableReplicas)
-        set_field!(o, :updatedReplicas, updatedReplicas)
         o
     end
 end # type IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus
 
-const _name_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus = Dict{String,Symbol}(["availableReplicas"=>:availableReplicas, "collisionCount"=>:collisionCount, "conditions"=>:conditions, "observedGeneration"=>:observedGeneration, "readyReplicas"=>:readyReplicas, "replicas"=>:replicas, "unavailableReplicas"=>:unavailableReplicas, "updatedReplicas"=>:updatedReplicas])
-const _field_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus = Dict{Symbol,String}([:availableReplicas=>"availableReplicas", :collisionCount=>"collisionCount", :conditions=>"conditions", :observedGeneration=>"observedGeneration", :readyReplicas=>"readyReplicas", :replicas=>"replicas", :unavailableReplicas=>"unavailableReplicas", :updatedReplicas=>"updatedReplicas"])
+const _name_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus }) = _name_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus }) = _field_map_IoK8sKubernetesPkgApisAppsV1beta1DeploymentStatus
 

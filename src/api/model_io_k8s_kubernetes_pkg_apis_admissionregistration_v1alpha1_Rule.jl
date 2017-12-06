@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule <: SwaggerModel
-    apiGroups::Nullable{ Vector{String} } # apiGroups
-    apiVersions::Nullable{ Vector{String} } # apiVersions
-    resources::Nullable{ Vector{String} } # resources
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule(;apiGroups=nothing, apiVersions=nothing, resources=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule(;)
         o = new()
-        set_field!(o, :apiGroups, apiGroups)
-        set_field!(o, :apiVersions, apiVersions)
-        set_field!(o, :resources, resources)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule = Dict{String,Symbol}(["apiGroups"=>:apiGroups, "apiVersions"=>:apiVersions, "resources"=>:resources])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule = Dict{Symbol,String}([:apiGroups=>"apiGroups", :apiVersions=>"apiVersions", :resources=>"resources"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule
 

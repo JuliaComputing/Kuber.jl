@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ContainerImage <: SwaggerModel
-    names::Nullable{ Vector{String} } # names
-    sizeBytes::Nullable{ Int64 } # sizeBytes
 
-    function IoK8sKubernetesPkgApiV1ContainerImage(;names=nothing, sizeBytes=nothing)
+    function IoK8sKubernetesPkgApiV1ContainerImage(;)
         o = new()
-        set_field!(o, :names, names)
-        set_field!(o, :sizeBytes, sizeBytes)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ContainerImage
 
-const _name_map_IoK8sKubernetesPkgApiV1ContainerImage = Dict{String,Symbol}(["names"=>:names, "sizeBytes"=>:sizeBytes])
-const _field_map_IoK8sKubernetesPkgApiV1ContainerImage = Dict{Symbol,String}([:names=>"names", :sizeBytes=>"sizeBytes"])
+const _name_map_IoK8sKubernetesPkgApiV1ContainerImage = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ContainerImage = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ContainerImage }) = _name_map_IoK8sKubernetesPkgApiV1ContainerImage
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ContainerImage }) = _field_map_IoK8sKubernetesPkgApiV1ContainerImage
 
 function check_required(o::IoK8sKubernetesPkgApiV1ContainerImage)
-    isnull(o.names) && (return false)
     true
 end
 

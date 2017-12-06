@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1EnvVarSource <: SwaggerModel
-    configMapKeyRef::Nullable{ IoK8sKubernetesPkgApiV1ConfigMapKeySelector } # configMapKeyRef
-    fieldRef::Nullable{ IoK8sKubernetesPkgApiV1ObjectFieldSelector } # fieldRef
-    resourceFieldRef::Nullable{ IoK8sKubernetesPkgApiV1ResourceFieldSelector } # resourceFieldRef
-    secretKeyRef::Nullable{ IoK8sKubernetesPkgApiV1SecretKeySelector } # secretKeyRef
 
-    function IoK8sKubernetesPkgApiV1EnvVarSource(;configMapKeyRef=nothing, fieldRef=nothing, resourceFieldRef=nothing, secretKeyRef=nothing)
+    function IoK8sKubernetesPkgApiV1EnvVarSource(;)
         o = new()
-        set_field!(o, :configMapKeyRef, configMapKeyRef)
-        set_field!(o, :fieldRef, fieldRef)
-        set_field!(o, :resourceFieldRef, resourceFieldRef)
-        set_field!(o, :secretKeyRef, secretKeyRef)
         o
     end
 end # type IoK8sKubernetesPkgApiV1EnvVarSource
 
-const _name_map_IoK8sKubernetesPkgApiV1EnvVarSource = Dict{String,Symbol}(["configMapKeyRef"=>:configMapKeyRef, "fieldRef"=>:fieldRef, "resourceFieldRef"=>:resourceFieldRef, "secretKeyRef"=>:secretKeyRef])
-const _field_map_IoK8sKubernetesPkgApiV1EnvVarSource = Dict{Symbol,String}([:configMapKeyRef=>"configMapKeyRef", :fieldRef=>"fieldRef", :resourceFieldRef=>"resourceFieldRef", :secretKeyRef=>"secretKeyRef"])
+const _name_map_IoK8sKubernetesPkgApiV1EnvVarSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1EnvVarSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1EnvVarSource }) = _name_map_IoK8sKubernetesPkgApiV1EnvVarSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1EnvVarSource }) = _field_map_IoK8sKubernetesPkgApiV1EnvVarSource
 

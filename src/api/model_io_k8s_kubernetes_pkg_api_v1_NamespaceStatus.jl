@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NamespaceStatus <: SwaggerModel
-    phase::Nullable{ String } # phase
 
-    function IoK8sKubernetesPkgApiV1NamespaceStatus(;phase=nothing)
+    function IoK8sKubernetesPkgApiV1NamespaceStatus(;)
         o = new()
-        set_field!(o, :phase, phase)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NamespaceStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1NamespaceStatus = Dict{String,Symbol}(["phase"=>:phase])
-const _field_map_IoK8sKubernetesPkgApiV1NamespaceStatus = Dict{Symbol,String}([:phase=>"phase"])
+const _name_map_IoK8sKubernetesPkgApiV1NamespaceStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NamespaceStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NamespaceStatus }) = _name_map_IoK8sKubernetesPkgApiV1NamespaceStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NamespaceStatus }) = _field_map_IoK8sKubernetesPkgApiV1NamespaceStatus
 

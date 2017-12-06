@@ -2,27 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ServiceAccount <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    automountServiceAccountToken::Nullable{ Bool } # automountServiceAccountToken
-    imagePullSecrets::Nullable{ Vector{IoK8sKubernetesPkgApiV1LocalObjectReference} } # imagePullSecrets
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    secrets::Nullable{ Vector{IoK8sKubernetesPkgApiV1ObjectReference} } # secrets
 
-    function IoK8sKubernetesPkgApiV1ServiceAccount(;apiVersion=nothing, automountServiceAccountToken=nothing, imagePullSecrets=nothing, kind=nothing, metadata=nothing, secrets=nothing)
+    function IoK8sKubernetesPkgApiV1ServiceAccount(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :automountServiceAccountToken, automountServiceAccountToken)
-        set_field!(o, :imagePullSecrets, imagePullSecrets)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :secrets, secrets)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ServiceAccount
 
-const _name_map_IoK8sKubernetesPkgApiV1ServiceAccount = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "automountServiceAccountToken"=>:automountServiceAccountToken, "imagePullSecrets"=>:imagePullSecrets, "kind"=>:kind, "metadata"=>:metadata, "secrets"=>:secrets])
-const _field_map_IoK8sKubernetesPkgApiV1ServiceAccount = Dict{Symbol,String}([:apiVersion=>"apiVersion", :automountServiceAccountToken=>"automountServiceAccountToken", :imagePullSecrets=>"imagePullSecrets", :kind=>"kind", :metadata=>"metadata", :secrets=>"secrets"])
+const _name_map_IoK8sKubernetesPkgApiV1ServiceAccount = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ServiceAccount = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ServiceAccount }) = _name_map_IoK8sKubernetesPkgApiV1ServiceAccount
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ServiceAccount }) = _field_map_IoK8sKubernetesPkgApiV1ServiceAccount
 

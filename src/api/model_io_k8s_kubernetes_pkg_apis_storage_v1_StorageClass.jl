@@ -2,30 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisStorageV1StorageClass <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    parameters::Nullable{ Dict{String, String} } # parameters
-    provisioner::Nullable{ String } # provisioner
 
-    function IoK8sKubernetesPkgApisStorageV1StorageClass(;apiVersion=nothing, kind=nothing, metadata=nothing, parameters=nothing, provisioner=nothing)
+    function IoK8sKubernetesPkgApisStorageV1StorageClass(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :parameters, parameters)
-        set_field!(o, :provisioner, provisioner)
         o
     end
 end # type IoK8sKubernetesPkgApisStorageV1StorageClass
 
-const _name_map_IoK8sKubernetesPkgApisStorageV1StorageClass = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "parameters"=>:parameters, "provisioner"=>:provisioner])
-const _field_map_IoK8sKubernetesPkgApisStorageV1StorageClass = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :parameters=>"parameters", :provisioner=>"provisioner"])
+const _name_map_IoK8sKubernetesPkgApisStorageV1StorageClass = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisStorageV1StorageClass = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisStorageV1StorageClass }) = _name_map_IoK8sKubernetesPkgApisStorageV1StorageClass
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisStorageV1StorageClass }) = _field_map_IoK8sKubernetesPkgApisStorageV1StorageClass
 
 function check_required(o::IoK8sKubernetesPkgApisStorageV1StorageClass)
-    isnull(o.provisioner) && (return false)
     true
 end
 

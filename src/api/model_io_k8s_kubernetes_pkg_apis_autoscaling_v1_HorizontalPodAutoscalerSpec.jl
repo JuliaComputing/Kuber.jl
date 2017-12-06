@@ -2,29 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec <: SwaggerModel
-    maxReplicas::Nullable{ Int32 } # maxReplicas
-    minReplicas::Nullable{ Int32 } # minReplicas
-    scaleTargetRef::Nullable{ IoK8sKubernetesPkgApisAutoscalingV1CrossVersionObjectReference } # scaleTargetRef
-    targetCPUUtilizationPercentage::Nullable{ Int32 } # targetCPUUtilizationPercentage
 
-    function IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec(;maxReplicas=nothing, minReplicas=nothing, scaleTargetRef=nothing, targetCPUUtilizationPercentage=nothing)
+    function IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec(;)
         o = new()
-        set_field!(o, :maxReplicas, maxReplicas)
-        set_field!(o, :minReplicas, minReplicas)
-        set_field!(o, :scaleTargetRef, scaleTargetRef)
-        set_field!(o, :targetCPUUtilizationPercentage, targetCPUUtilizationPercentage)
         o
     end
 end # type IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec
 
-const _name_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec = Dict{String,Symbol}(["maxReplicas"=>:maxReplicas, "minReplicas"=>:minReplicas, "scaleTargetRef"=>:scaleTargetRef, "targetCPUUtilizationPercentage"=>:targetCPUUtilizationPercentage])
-const _field_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec = Dict{Symbol,String}([:maxReplicas=>"maxReplicas", :minReplicas=>"minReplicas", :scaleTargetRef=>"scaleTargetRef", :targetCPUUtilizationPercentage=>"targetCPUUtilizationPercentage"])
+const _name_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec }) = _name_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec }) = _field_map_IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec
 
 function check_required(o::IoK8sKubernetesPkgApisAutoscalingV1HorizontalPodAutoscalerSpec)
-    isnull(o.maxReplicas) && (return false)
-    isnull(o.scaleTargetRef) && (return false)
     true
 end
 

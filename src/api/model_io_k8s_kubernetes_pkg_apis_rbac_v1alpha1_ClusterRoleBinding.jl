@@ -2,31 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    roleRef::Nullable{ IoK8sKubernetesPkgApisRbacV1alpha1RoleRef } # roleRef
-    subjects::Nullable{ Vector{IoK8sKubernetesPkgApisRbacV1alpha1Subject} } # subjects
 
-    function IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding(;apiVersion=nothing, kind=nothing, metadata=nothing, roleRef=nothing, subjects=nothing)
+    function IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :roleRef, roleRef)
-        set_field!(o, :subjects, subjects)
         o
     end
 end # type IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding
 
-const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "roleRef"=>:roleRef, "subjects"=>:subjects])
-const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :roleRef=>"roleRef", :subjects=>"subjects"])
+const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding }) = _name_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding }) = _field_map_IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding
 
 function check_required(o::IoK8sKubernetesPkgApisRbacV1alpha1ClusterRoleBinding)
-    isnull(o.roleRef) && (return false)
-    isnull(o.subjects) && (return false)
     true
 end
 

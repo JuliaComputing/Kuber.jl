@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig <: SwaggerModel
-    revision::Nullable{ Int64 } # revision
 
-    function IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig(;revision=nothing)
+    function IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig(;)
         o = new()
-        set_field!(o, :revision, revision)
         o
     end
 end # type IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig
 
-const _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig = Dict{String,Symbol}(["revision"=>:revision])
-const _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig = Dict{Symbol,String}([:revision=>"revision"])
+const _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig }) = _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig }) = _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollbackConfig
 

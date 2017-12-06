@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference <: SwaggerModel
-    name::Nullable{ String } # name
-    namespace::Nullable{ String } # namespace
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference(;name=nothing, namespace=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference(;)
         o = new()
-        set_field!(o, :name, name)
-        set_field!(o, :namespace, namespace)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference = Dict{String,Symbol}(["name"=>:name, "namespace"=>:namespace])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference = Dict{Symbol,String}([:name=>"name", :namespace=>"namespace"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference
 
 function check_required(o::IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference)
-    isnull(o.name) && (return false)
-    isnull(o.namespace) && (return false)
     true
 end
 

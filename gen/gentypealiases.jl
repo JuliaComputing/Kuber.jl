@@ -19,20 +19,35 @@ function model_prefixes()
     end
 
     prefixes = []
+    newapinames = [
+        "Core", "Apps", "Batch", "Autoscaling", "Admissionregistration", "Authentication",
+        "Authorization", "Certificates", "Extensions", "Networking", "Policy", "Scheduling",
+        "Settings", "Storage", "Apis", "Apiregistration", "Apiextensions"
+    ]
     for apiname in apinames
-        if startswith(apiname, "Core")
-            pfx = "IoK8sKubernetesPkgApi"
-            typ = apiname[5:end]
+        suffix = apiname
+        if startswith(apiname, "RbacAuthorization")
+            pfx = "IoK8sApi"
+            suffix = replace(apiname, "Authorization", "")
+        elseif startswith(apiname, "Apiextensions")
+            pfx = "IoK8sApiextensionsApiserverPkgApis"
+        elseif startswith(apiname, "Apiregistration")
+            pfx = "IoK8sKubeAggregatorPkgApis"
+        elseif startswith(apiname, "Version")
+            pfx = "IoK8sApimachineryPkg"
+        elseif startswith(apiname, "Logs")
+            pfx = "IoK8sApimachineryPkg"
         else
             pfx = "IoK8sKubernetesPkgApis"
-            typ = apiname
+            for n in newapinames
+                if startswith(apiname, n)
+                    pfx = "IoK8sApi"
+                    break
+                end
+            end
         end
-
-        push!(prefixes, (pfx * typ, apiname))
+        push!(prefixes, (pfx * suffix, apiname))
     end
-    push!(prefixes, ("IoK8sKubernetesPkgApisRbacV1alpha1", "RbacAuthorizationV1alpha1"))
-    push!(prefixes, ("IoK8sKubernetesPkgApisRbacV1beta1", "RbacAuthorizationV1beta1"))
-    push!(prefixes, ("IoK8sKubeAggregatorPkgApisApiregistrationV1beta1", "ApiregistrationV1beta1"))
     push!(prefixes, ("IoK8sApimachineryPkgApi", "Apis"))
     push!(prefixes, ("IoK8sApimachineryPkgApisMetaV1", "Apis"))
     push!(prefixes, ("IoK8sApimachineryPkgUtil", "Apis"))

@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig <: SwaggerModel
-    caBundle::Nullable{ Vector{UInt8} } # caBundle
-    service::Nullable{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ServiceReference } # service
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig(;caBundle=nothing, service=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig(;)
         o = new()
-        set_field!(o, :caBundle, caBundle)
-        set_field!(o, :service, service)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig = Dict{String,Symbol}(["caBundle"=>:caBundle, "service"=>:service])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig = Dict{Symbol,String}([:caBundle=>"caBundle", :service=>"service"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig
 
 function check_required(o::IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1AdmissionHookClientConfig)
-    isnull(o.caBundle) && (return false)
-    isnull(o.service) && (return false)
     true
 end
 

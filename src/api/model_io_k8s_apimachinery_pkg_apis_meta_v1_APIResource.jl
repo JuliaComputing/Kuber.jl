@@ -3,28 +3,32 @@
 
 type IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
     categories::Nullable{ Vector{String} } # categories
+    group::Nullable{ String } # group
     kind::Nullable{ String } # kind
     name::Nullable{ String } # name
     namespaced::Nullable{ Bool } # namespaced
     shortNames::Nullable{ Vector{String} } # shortNames
     singularName::Nullable{ String } # singularName
     verbs::Nullable{ Vector{String} } # verbs
+    version::Nullable{ String } # version
 
-    function IoK8sApimachineryPkgApisMetaV1APIResource(;categories=nothing, kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, singularName=nothing, verbs=nothing)
+    function IoK8sApimachineryPkgApisMetaV1APIResource(;categories=nothing, group=nothing, kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, singularName=nothing, verbs=nothing, version=nothing)
         o = new()
         set_field!(o, :categories, categories)
+        set_field!(o, :group, group)
         set_field!(o, :kind, kind)
         set_field!(o, :name, name)
         set_field!(o, :namespaced, namespaced)
         set_field!(o, :shortNames, shortNames)
         set_field!(o, :singularName, singularName)
         set_field!(o, :verbs, verbs)
+        set_field!(o, :version, version)
         o
     end
 end # type IoK8sApimachineryPkgApisMetaV1APIResource
 
-const _name_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{String,Symbol}(["categories"=>:categories, "kind"=>:kind, "name"=>:name, "namespaced"=>:namespaced, "shortNames"=>:shortNames, "singularName"=>:singularName, "verbs"=>:verbs])
-const _field_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}([:categories=>"categories", :kind=>"kind", :name=>"name", :namespaced=>"namespaced", :shortNames=>"shortNames", :singularName=>"singularName", :verbs=>"verbs"])
+const _name_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{String,Symbol}(["categories"=>:categories, "group"=>:group, "kind"=>:kind, "name"=>:name, "namespaced"=>:namespaced, "shortNames"=>:shortNames, "singularName"=>:singularName, "verbs"=>:verbs, "version"=>:version])
+const _field_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}([:categories=>"categories", :group=>"group", :kind=>"kind", :name=>"name", :namespaced=>"namespaced", :shortNames=>"shortNames", :singularName=>"singularName", :verbs=>"verbs", :version=>"version"])
 Swagger.name_map(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = _name_map_IoK8sApimachineryPkgApisMetaV1APIResource
 Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = _field_map_IoK8sApimachineryPkgApisMetaV1APIResource
 

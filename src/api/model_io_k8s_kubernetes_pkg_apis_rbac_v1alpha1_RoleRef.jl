@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisRbacV1alpha1RoleRef <: SwaggerModel
-    apiGroup::Nullable{ String } # apiGroup
-    kind::Nullable{ String } # kind
-    name::Nullable{ String } # name
 
-    function IoK8sKubernetesPkgApisRbacV1alpha1RoleRef(;apiGroup=nothing, kind=nothing, name=nothing)
+    function IoK8sKubernetesPkgApisRbacV1alpha1RoleRef(;)
         o = new()
-        set_field!(o, :apiGroup, apiGroup)
-        set_field!(o, :kind, kind)
-        set_field!(o, :name, name)
         o
     end
 end # type IoK8sKubernetesPkgApisRbacV1alpha1RoleRef
 
-const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef = Dict{String,Symbol}(["apiGroup"=>:apiGroup, "kind"=>:kind, "name"=>:name])
-const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef = Dict{Symbol,String}([:apiGroup=>"apiGroup", :kind=>"kind", :name=>"name"])
+const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1RoleRef }) = _name_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1RoleRef }) = _field_map_IoK8sKubernetesPkgApisRbacV1alpha1RoleRef
 
 function check_required(o::IoK8sKubernetesPkgApisRbacV1alpha1RoleRef)
-    isnull(o.apiGroup) && (return false)
-    isnull(o.kind) && (return false)
-    isnull(o.name) && (return false)
     true
 end
 

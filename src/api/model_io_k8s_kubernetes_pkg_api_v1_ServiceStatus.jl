@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ServiceStatus <: SwaggerModel
-    loadBalancer::Nullable{ IoK8sKubernetesPkgApiV1LoadBalancerStatus } # loadBalancer
 
-    function IoK8sKubernetesPkgApiV1ServiceStatus(;loadBalancer=nothing)
+    function IoK8sKubernetesPkgApiV1ServiceStatus(;)
         o = new()
-        set_field!(o, :loadBalancer, loadBalancer)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ServiceStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1ServiceStatus = Dict{String,Symbol}(["loadBalancer"=>:loadBalancer])
-const _field_map_IoK8sKubernetesPkgApiV1ServiceStatus = Dict{Symbol,String}([:loadBalancer=>"loadBalancer"])
+const _name_map_IoK8sKubernetesPkgApiV1ServiceStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ServiceStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ServiceStatus }) = _name_map_IoK8sKubernetesPkgApiV1ServiceStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ServiceStatus }) = _field_map_IoK8sKubernetesPkgApiV1ServiceStatus
 

@@ -2,33 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition <: SwaggerModel
-    lastTransitionTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # lastTransitionTime
-    lastUpdateTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # lastUpdateTime
-    message::Nullable{ String } # message
-    reason::Nullable{ String } # reason
-    status::Nullable{ String } # status
-    _type::Nullable{ String } # type
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition(;lastTransitionTime=nothing, lastUpdateTime=nothing, message=nothing, reason=nothing, status=nothing, _type=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition(;)
         o = new()
-        set_field!(o, :lastTransitionTime, lastTransitionTime)
-        set_field!(o, :lastUpdateTime, lastUpdateTime)
-        set_field!(o, :message, message)
-        set_field!(o, :reason, reason)
-        set_field!(o, :status, status)
-        set_field!(o, :_type, _type)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition = Dict{String,Symbol}(["lastTransitionTime"=>:lastTransitionTime, "lastUpdateTime"=>:lastUpdateTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition = Dict{Symbol,String}([:lastTransitionTime=>"lastTransitionTime", :lastUpdateTime=>"lastUpdateTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1DeploymentCondition)
-    isnull(o.status) && (return false)
-    isnull(o._type) && (return false)
     true
 end
 

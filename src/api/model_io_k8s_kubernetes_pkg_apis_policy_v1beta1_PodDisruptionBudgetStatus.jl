@@ -2,36 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus <: SwaggerModel
-    currentHealthy::Nullable{ Int32 } # currentHealthy
-    desiredHealthy::Nullable{ Int32 } # desiredHealthy
-    disruptedPods::Nullable{ Dict{String, IoK8sApimachineryPkgApisMetaV1Time} } # disruptedPods
-    disruptionsAllowed::Nullable{ Int32 } # disruptionsAllowed
-    expectedPods::Nullable{ Int32 } # expectedPods
-    observedGeneration::Nullable{ Int64 } # observedGeneration
 
-    function IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus(;currentHealthy=nothing, desiredHealthy=nothing, disruptedPods=nothing, disruptionsAllowed=nothing, expectedPods=nothing, observedGeneration=nothing)
+    function IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus(;)
         o = new()
-        set_field!(o, :currentHealthy, currentHealthy)
-        set_field!(o, :desiredHealthy, desiredHealthy)
-        set_field!(o, :disruptedPods, disruptedPods)
-        set_field!(o, :disruptionsAllowed, disruptionsAllowed)
-        set_field!(o, :expectedPods, expectedPods)
-        set_field!(o, :observedGeneration, observedGeneration)
         o
     end
 end # type IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus
 
-const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus = Dict{String,Symbol}(["currentHealthy"=>:currentHealthy, "desiredHealthy"=>:desiredHealthy, "disruptedPods"=>:disruptedPods, "disruptionsAllowed"=>:disruptionsAllowed, "expectedPods"=>:expectedPods, "observedGeneration"=>:observedGeneration])
-const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus = Dict{Symbol,String}([:currentHealthy=>"currentHealthy", :desiredHealthy=>"desiredHealthy", :disruptedPods=>"disruptedPods", :disruptionsAllowed=>"disruptionsAllowed", :expectedPods=>"expectedPods", :observedGeneration=>"observedGeneration"])
+const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus }) = _name_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus }) = _field_map_IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus
 
 function check_required(o::IoK8sKubernetesPkgApisPolicyV1beta1PodDisruptionBudgetStatus)
-    isnull(o.currentHealthy) && (return false)
-    isnull(o.desiredHealthy) && (return false)
-    isnull(o.disruptedPods) && (return false)
-    isnull(o.disruptionsAllowed) && (return false)
-    isnull(o.expectedPods) && (return false)
     true
 end
 

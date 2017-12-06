@@ -2,26 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ResourceFieldSelector <: SwaggerModel
-    containerName::Nullable{ String } # containerName
-    divisor::Nullable{ IoK8sApimachineryPkgApiResourceQuantity } # divisor
-    resource::Nullable{ String } # resource
 
-    function IoK8sKubernetesPkgApiV1ResourceFieldSelector(;containerName=nothing, divisor=nothing, resource=nothing)
+    function IoK8sKubernetesPkgApiV1ResourceFieldSelector(;)
         o = new()
-        set_field!(o, :containerName, containerName)
-        set_field!(o, :divisor, divisor)
-        set_field!(o, :resource, resource)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ResourceFieldSelector
 
-const _name_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector = Dict{String,Symbol}(["containerName"=>:containerName, "divisor"=>:divisor, "resource"=>:resource])
-const _field_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector = Dict{Symbol,String}([:containerName=>"containerName", :divisor=>"divisor", :resource=>"resource"])
+const _name_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ResourceFieldSelector }) = _name_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ResourceFieldSelector }) = _field_map_IoK8sKubernetesPkgApiV1ResourceFieldSelector
 
 function check_required(o::IoK8sKubernetesPkgApiV1ResourceFieldSelector)
-    isnull(o.resource) && (return false)
     true
 end
 

@@ -2,66 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PodSpec <: SwaggerModel
-    activeDeadlineSeconds::Nullable{ Int64 } # activeDeadlineSeconds
-    affinity::Nullable{ IoK8sKubernetesPkgApiV1Affinity } # affinity
-    automountServiceAccountToken::Nullable{ Bool } # automountServiceAccountToken
-    containers::Nullable{ Vector{IoK8sKubernetesPkgApiV1Container} } # containers
-    dnsPolicy::Nullable{ String } # dnsPolicy
-    hostAliases::Nullable{ Vector{IoK8sKubernetesPkgApiV1HostAlias} } # hostAliases
-    hostIPC::Nullable{ Bool } # hostIPC
-    hostNetwork::Nullable{ Bool } # hostNetwork
-    hostPID::Nullable{ Bool } # hostPID
-    hostname::Nullable{ String } # hostname
-    imagePullSecrets::Nullable{ Vector{IoK8sKubernetesPkgApiV1LocalObjectReference} } # imagePullSecrets
-    initContainers::Nullable{ Vector{IoK8sKubernetesPkgApiV1Container} } # initContainers
-    nodeName::Nullable{ String } # nodeName
-    nodeSelector::Nullable{ Dict{String, String} } # nodeSelector
-    restartPolicy::Nullable{ String } # restartPolicy
-    schedulerName::Nullable{ String } # schedulerName
-    securityContext::Nullable{ IoK8sKubernetesPkgApiV1PodSecurityContext } # securityContext
-    serviceAccount::Nullable{ String } # serviceAccount
-    serviceAccountName::Nullable{ String } # serviceAccountName
-    subdomain::Nullable{ String } # subdomain
-    terminationGracePeriodSeconds::Nullable{ Int64 } # terminationGracePeriodSeconds
-    tolerations::Nullable{ Vector{IoK8sKubernetesPkgApiV1Toleration} } # tolerations
-    volumes::Nullable{ Vector{IoK8sKubernetesPkgApiV1Volume} } # volumes
 
-    function IoK8sKubernetesPkgApiV1PodSpec(;activeDeadlineSeconds=nothing, affinity=nothing, automountServiceAccountToken=nothing, containers=nothing, dnsPolicy=nothing, hostAliases=nothing, hostIPC=nothing, hostNetwork=nothing, hostPID=nothing, hostname=nothing, imagePullSecrets=nothing, initContainers=nothing, nodeName=nothing, nodeSelector=nothing, restartPolicy=nothing, schedulerName=nothing, securityContext=nothing, serviceAccount=nothing, serviceAccountName=nothing, subdomain=nothing, terminationGracePeriodSeconds=nothing, tolerations=nothing, volumes=nothing)
+    function IoK8sKubernetesPkgApiV1PodSpec(;)
         o = new()
-        set_field!(o, :activeDeadlineSeconds, activeDeadlineSeconds)
-        set_field!(o, :affinity, affinity)
-        set_field!(o, :automountServiceAccountToken, automountServiceAccountToken)
-        set_field!(o, :containers, containers)
-        set_field!(o, :dnsPolicy, dnsPolicy)
-        set_field!(o, :hostAliases, hostAliases)
-        set_field!(o, :hostIPC, hostIPC)
-        set_field!(o, :hostNetwork, hostNetwork)
-        set_field!(o, :hostPID, hostPID)
-        set_field!(o, :hostname, hostname)
-        set_field!(o, :imagePullSecrets, imagePullSecrets)
-        set_field!(o, :initContainers, initContainers)
-        set_field!(o, :nodeName, nodeName)
-        set_field!(o, :nodeSelector, nodeSelector)
-        set_field!(o, :restartPolicy, restartPolicy)
-        set_field!(o, :schedulerName, schedulerName)
-        set_field!(o, :securityContext, securityContext)
-        set_field!(o, :serviceAccount, serviceAccount)
-        set_field!(o, :serviceAccountName, serviceAccountName)
-        set_field!(o, :subdomain, subdomain)
-        set_field!(o, :terminationGracePeriodSeconds, terminationGracePeriodSeconds)
-        set_field!(o, :tolerations, tolerations)
-        set_field!(o, :volumes, volumes)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PodSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1PodSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "affinity"=>:affinity, "automountServiceAccountToken"=>:automountServiceAccountToken, "containers"=>:containers, "dnsPolicy"=>:dnsPolicy, "hostAliases"=>:hostAliases, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostname"=>:hostname, "imagePullSecrets"=>:imagePullSecrets, "initContainers"=>:initContainers, "nodeName"=>:nodeName, "nodeSelector"=>:nodeSelector, "restartPolicy"=>:restartPolicy, "schedulerName"=>:schedulerName, "securityContext"=>:securityContext, "serviceAccount"=>:serviceAccount, "serviceAccountName"=>:serviceAccountName, "subdomain"=>:subdomain, "terminationGracePeriodSeconds"=>:terminationGracePeriodSeconds, "tolerations"=>:tolerations, "volumes"=>:volumes])
-const _field_map_IoK8sKubernetesPkgApiV1PodSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :affinity=>"affinity", :automountServiceAccountToken=>"automountServiceAccountToken", :containers=>"containers", :dnsPolicy=>"dnsPolicy", :hostAliases=>"hostAliases", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostname=>"hostname", :imagePullSecrets=>"imagePullSecrets", :initContainers=>"initContainers", :nodeName=>"nodeName", :nodeSelector=>"nodeSelector", :restartPolicy=>"restartPolicy", :schedulerName=>"schedulerName", :securityContext=>"securityContext", :serviceAccount=>"serviceAccount", :serviceAccountName=>"serviceAccountName", :subdomain=>"subdomain", :terminationGracePeriodSeconds=>"terminationGracePeriodSeconds", :tolerations=>"tolerations", :volumes=>"volumes"])
+const _name_map_IoK8sKubernetesPkgApiV1PodSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PodSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PodSpec }) = _name_map_IoK8sKubernetesPkgApiV1PodSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PodSpec }) = _field_map_IoK8sKubernetesPkgApiV1PodSpec
 
 function check_required(o::IoK8sKubernetesPkgApiV1PodSpec)
-    isnull(o.containers) && (return false)
     true
 end
 

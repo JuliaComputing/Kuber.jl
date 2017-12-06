@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec <: SwaggerModel
-    ingress::Nullable{ Vector{IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule} } # ingress
-    podSelector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # podSelector
 
-    function IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec(;ingress=nothing, podSelector=nothing)
+    function IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec(;)
         o = new()
-        set_field!(o, :ingress, ingress)
-        set_field!(o, :podSelector, podSelector)
         o
     end
 end # type IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec
 
-const _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec = Dict{String,Symbol}(["ingress"=>:ingress, "podSelector"=>:podSelector])
-const _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec = Dict{Symbol,String}([:ingress=>"ingress", :podSelector=>"podSelector"])
+const _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec }) = _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec }) = _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec
 
 function check_required(o::IoK8sKubernetesPkgApisNetworkingV1NetworkPolicySpec)
-    isnull(o.podSelector) && (return false)
     true
 end
 

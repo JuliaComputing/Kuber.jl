@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1DownwardAPIProjection <: SwaggerModel
-    items::Nullable{ Vector{IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile} } # items
 
-    function IoK8sKubernetesPkgApiV1DownwardAPIProjection(;items=nothing)
+    function IoK8sKubernetesPkgApiV1DownwardAPIProjection(;)
         o = new()
-        set_field!(o, :items, items)
         o
     end
 end # type IoK8sKubernetesPkgApiV1DownwardAPIProjection
 
-const _name_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection = Dict{String,Symbol}(["items"=>:items])
-const _field_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection = Dict{Symbol,String}([:items=>"items"])
+const _name_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1DownwardAPIProjection }) = _name_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1DownwardAPIProjection }) = _field_map_IoK8sKubernetesPkgApiV1DownwardAPIProjection
 

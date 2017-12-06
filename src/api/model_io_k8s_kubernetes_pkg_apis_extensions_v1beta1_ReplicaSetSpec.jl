@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec <: SwaggerModel
-    minReadySeconds::Nullable{ Int32 } # minReadySeconds
-    replicas::Nullable{ Int32 } # replicas
-    selector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
-    template::Nullable{ IoK8sKubernetesPkgApiV1PodTemplateSpec } # template
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec(;minReadySeconds=nothing, replicas=nothing, selector=nothing, template=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec(;)
         o = new()
-        set_field!(o, :minReadySeconds, minReadySeconds)
-        set_field!(o, :replicas, replicas)
-        set_field!(o, :selector, selector)
-        set_field!(o, :template, template)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec = Dict{String,Symbol}(["minReadySeconds"=>:minReadySeconds, "replicas"=>:replicas, "selector"=>:selector, "template"=>:template])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec = Dict{Symbol,String}([:minReadySeconds=>"minReadySeconds", :replicas=>"replicas", :selector=>"selector", :template=>"template"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec
 

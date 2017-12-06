@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ObjectFieldSelector <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    fieldPath::Nullable{ String } # fieldPath
 
-    function IoK8sKubernetesPkgApiV1ObjectFieldSelector(;apiVersion=nothing, fieldPath=nothing)
+    function IoK8sKubernetesPkgApiV1ObjectFieldSelector(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :fieldPath, fieldPath)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ObjectFieldSelector
 
-const _name_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "fieldPath"=>:fieldPath])
-const _field_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector = Dict{Symbol,String}([:apiVersion=>"apiVersion", :fieldPath=>"fieldPath"])
+const _name_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ObjectFieldSelector }) = _name_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ObjectFieldSelector }) = _field_map_IoK8sKubernetesPkgApiV1ObjectFieldSelector
 
 function check_required(o::IoK8sKubernetesPkgApiV1ObjectFieldSelector)
-    isnull(o.fieldPath) && (return false)
     true
 end
 

@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1AttachedVolume <: SwaggerModel
-    devicePath::Nullable{ String } # devicePath
-    name::Nullable{ String } # name
 
-    function IoK8sKubernetesPkgApiV1AttachedVolume(;devicePath=nothing, name=nothing)
+    function IoK8sKubernetesPkgApiV1AttachedVolume(;)
         o = new()
-        set_field!(o, :devicePath, devicePath)
-        set_field!(o, :name, name)
         o
     end
 end # type IoK8sKubernetesPkgApiV1AttachedVolume
 
-const _name_map_IoK8sKubernetesPkgApiV1AttachedVolume = Dict{String,Symbol}(["devicePath"=>:devicePath, "name"=>:name])
-const _field_map_IoK8sKubernetesPkgApiV1AttachedVolume = Dict{Symbol,String}([:devicePath=>"devicePath", :name=>"name"])
+const _name_map_IoK8sKubernetesPkgApiV1AttachedVolume = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1AttachedVolume = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1AttachedVolume }) = _name_map_IoK8sKubernetesPkgApiV1AttachedVolume
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1AttachedVolume }) = _field_map_IoK8sKubernetesPkgApiV1AttachedVolume
 
 function check_required(o::IoK8sKubernetesPkgApiV1AttachedVolume)
-    isnull(o.devicePath) && (return false)
-    isnull(o.name) && (return false)
     true
 end
 

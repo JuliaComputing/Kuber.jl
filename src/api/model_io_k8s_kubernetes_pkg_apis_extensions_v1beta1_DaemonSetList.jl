@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    items::Nullable{ Vector{IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSet} } # items
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ListMeta } # metadata
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList(;apiVersion=nothing, items=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :items, items)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "items"=>:items, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList = Dict{Symbol,String}([:apiVersion=>"apiVersion", :items=>"items", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetList)
-    isnull(o.items) && (return false)
     true
 end
 

@@ -2,33 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1AzureDiskVolumeSource <: SwaggerModel
-    cachingMode::Nullable{ String } # cachingMode
-    diskName::Nullable{ String } # diskName
-    diskURI::Nullable{ String } # diskURI
-    fsType::Nullable{ String } # fsType
-    kind::Nullable{ String } # kind
-    readOnly::Nullable{ Bool } # readOnly
 
-    function IoK8sKubernetesPkgApiV1AzureDiskVolumeSource(;cachingMode=nothing, diskName=nothing, diskURI=nothing, fsType=nothing, kind=nothing, readOnly=nothing)
+    function IoK8sKubernetesPkgApiV1AzureDiskVolumeSource(;)
         o = new()
-        set_field!(o, :cachingMode, cachingMode)
-        set_field!(o, :diskName, diskName)
-        set_field!(o, :diskURI, diskURI)
-        set_field!(o, :fsType, fsType)
-        set_field!(o, :kind, kind)
-        set_field!(o, :readOnly, readOnly)
         o
     end
 end # type IoK8sKubernetesPkgApiV1AzureDiskVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource = Dict{String,Symbol}(["cachingMode"=>:cachingMode, "diskName"=>:diskName, "diskURI"=>:diskURI, "fsType"=>:fsType, "kind"=>:kind, "readOnly"=>:readOnly])
-const _field_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource = Dict{Symbol,String}([:cachingMode=>"cachingMode", :diskName=>"diskName", :diskURI=>"diskURI", :fsType=>"fsType", :kind=>"kind", :readOnly=>"readOnly"])
+const _name_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1AzureDiskVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1AzureDiskVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1AzureDiskVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1AzureDiskVolumeSource)
-    isnull(o.diskName) && (return false)
-    isnull(o.diskURI) && (return false)
     true
 end
 

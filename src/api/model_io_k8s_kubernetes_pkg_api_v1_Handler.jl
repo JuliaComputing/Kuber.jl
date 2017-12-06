@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Handler <: SwaggerModel
-    exec::Nullable{ IoK8sKubernetesPkgApiV1ExecAction } # exec
-    httpGet::Nullable{ IoK8sKubernetesPkgApiV1HTTPGetAction } # httpGet
-    tcpSocket::Nullable{ IoK8sKubernetesPkgApiV1TCPSocketAction } # tcpSocket
 
-    function IoK8sKubernetesPkgApiV1Handler(;exec=nothing, httpGet=nothing, tcpSocket=nothing)
+    function IoK8sKubernetesPkgApiV1Handler(;)
         o = new()
-        set_field!(o, :exec, exec)
-        set_field!(o, :httpGet, httpGet)
-        set_field!(o, :tcpSocket, tcpSocket)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Handler
 
-const _name_map_IoK8sKubernetesPkgApiV1Handler = Dict{String,Symbol}(["exec"=>:exec, "httpGet"=>:httpGet, "tcpSocket"=>:tcpSocket])
-const _field_map_IoK8sKubernetesPkgApiV1Handler = Dict{Symbol,String}([:exec=>"exec", :httpGet=>"httpGet", :tcpSocket=>"tcpSocket"])
+const _name_map_IoK8sKubernetesPkgApiV1Handler = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Handler = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Handler }) = _name_map_IoK8sKubernetesPkgApiV1Handler
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Handler }) = _field_map_IoK8sKubernetesPkgApiV1Handler
 

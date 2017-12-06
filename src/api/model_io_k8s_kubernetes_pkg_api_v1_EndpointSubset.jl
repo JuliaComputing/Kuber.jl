@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1EndpointSubset <: SwaggerModel
-    addresses::Nullable{ Vector{IoK8sKubernetesPkgApiV1EndpointAddress} } # addresses
-    notReadyAddresses::Nullable{ Vector{IoK8sKubernetesPkgApiV1EndpointAddress} } # notReadyAddresses
-    ports::Nullable{ Vector{IoK8sKubernetesPkgApiV1EndpointPort} } # ports
 
-    function IoK8sKubernetesPkgApiV1EndpointSubset(;addresses=nothing, notReadyAddresses=nothing, ports=nothing)
+    function IoK8sKubernetesPkgApiV1EndpointSubset(;)
         o = new()
-        set_field!(o, :addresses, addresses)
-        set_field!(o, :notReadyAddresses, notReadyAddresses)
-        set_field!(o, :ports, ports)
         o
     end
 end # type IoK8sKubernetesPkgApiV1EndpointSubset
 
-const _name_map_IoK8sKubernetesPkgApiV1EndpointSubset = Dict{String,Symbol}(["addresses"=>:addresses, "notReadyAddresses"=>:notReadyAddresses, "ports"=>:ports])
-const _field_map_IoK8sKubernetesPkgApiV1EndpointSubset = Dict{Symbol,String}([:addresses=>"addresses", :notReadyAddresses=>"notReadyAddresses", :ports=>"ports"])
+const _name_map_IoK8sKubernetesPkgApiV1EndpointSubset = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1EndpointSubset = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1EndpointSubset }) = _name_map_IoK8sKubernetesPkgApiV1EndpointSubset
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1EndpointSubset }) = _field_map_IoK8sKubernetesPkgApiV1EndpointSubset
 

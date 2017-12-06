@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1LoadBalancerIngress <: SwaggerModel
-    hostname::Nullable{ String } # hostname
-    ip::Nullable{ String } # ip
 
-    function IoK8sKubernetesPkgApiV1LoadBalancerIngress(;hostname=nothing, ip=nothing)
+    function IoK8sKubernetesPkgApiV1LoadBalancerIngress(;)
         o = new()
-        set_field!(o, :hostname, hostname)
-        set_field!(o, :ip, ip)
         o
     end
 end # type IoK8sKubernetesPkgApiV1LoadBalancerIngress
 
-const _name_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress = Dict{String,Symbol}(["hostname"=>:hostname, "ip"=>:ip])
-const _field_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress = Dict{Symbol,String}([:hostname=>"hostname", :ip=>"ip"])
+const _name_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1LoadBalancerIngress }) = _name_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1LoadBalancerIngress }) = _field_map_IoK8sKubernetesPkgApiV1LoadBalancerIngress
 

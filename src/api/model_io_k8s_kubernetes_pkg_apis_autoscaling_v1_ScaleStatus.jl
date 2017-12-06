@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus <: SwaggerModel
-    replicas::Nullable{ Int32 } # replicas
-    selector::Nullable{ String } # selector
 
-    function IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus(;replicas=nothing, selector=nothing)
+    function IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus(;)
         o = new()
-        set_field!(o, :replicas, replicas)
-        set_field!(o, :selector, selector)
         o
     end
 end # type IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus
 
-const _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus = Dict{String,Symbol}(["replicas"=>:replicas, "selector"=>:selector])
-const _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus = Dict{Symbol,String}([:replicas=>"replicas", :selector=>"selector"])
+const _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus }) = _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus }) = _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus
 
 function check_required(o::IoK8sKubernetesPkgApisAutoscalingV1ScaleStatus)
-    isnull(o.replicas) && (return false)
     true
 end
 

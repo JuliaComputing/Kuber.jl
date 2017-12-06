@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    initializers::Nullable{ Vector{IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer} } # initializers
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration(;apiVersion=nothing, initializers=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :initializers, initializers)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "initializers"=>:initializers, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration = Dict{Symbol,String}([:apiVersion=>"apiVersion", :initializers=>"initializers", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration
 

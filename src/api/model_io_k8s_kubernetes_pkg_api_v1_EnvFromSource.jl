@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1EnvFromSource <: SwaggerModel
-    configMapRef::Nullable{ IoK8sKubernetesPkgApiV1ConfigMapEnvSource } # configMapRef
-    prefix::Nullable{ String } # prefix
-    secretRef::Nullable{ IoK8sKubernetesPkgApiV1SecretEnvSource } # secretRef
 
-    function IoK8sKubernetesPkgApiV1EnvFromSource(;configMapRef=nothing, prefix=nothing, secretRef=nothing)
+    function IoK8sKubernetesPkgApiV1EnvFromSource(;)
         o = new()
-        set_field!(o, :configMapRef, configMapRef)
-        set_field!(o, :prefix, prefix)
-        set_field!(o, :secretRef, secretRef)
         o
     end
 end # type IoK8sKubernetesPkgApiV1EnvFromSource
 
-const _name_map_IoK8sKubernetesPkgApiV1EnvFromSource = Dict{String,Symbol}(["configMapRef"=>:configMapRef, "prefix"=>:prefix, "secretRef"=>:secretRef])
-const _field_map_IoK8sKubernetesPkgApiV1EnvFromSource = Dict{Symbol,String}([:configMapRef=>"configMapRef", :prefix=>"prefix", :secretRef=>"secretRef"])
+const _name_map_IoK8sKubernetesPkgApiV1EnvFromSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1EnvFromSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1EnvFromSource }) = _name_map_IoK8sKubernetesPkgApiV1EnvFromSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1EnvFromSource }) = _field_map_IoK8sKubernetesPkgApiV1EnvFromSource
 

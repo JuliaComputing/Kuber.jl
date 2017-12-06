@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    externalAdmissionHooks::Nullable{ Vector{IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHook} } # externalAdmissionHooks
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration(;apiVersion=nothing, externalAdmissionHooks=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :externalAdmissionHooks, externalAdmissionHooks)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "externalAdmissionHooks"=>:externalAdmissionHooks, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration = Dict{Symbol,String}([:apiVersion=>"apiVersion", :externalAdmissionHooks=>"externalAdmissionHooks", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration
 

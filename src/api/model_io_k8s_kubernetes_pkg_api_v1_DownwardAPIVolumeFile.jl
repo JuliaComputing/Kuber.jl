@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile <: SwaggerModel
-    fieldRef::Nullable{ IoK8sKubernetesPkgApiV1ObjectFieldSelector } # fieldRef
-    mode::Nullable{ Int32 } # mode
-    path::Nullable{ String } # path
-    resourceFieldRef::Nullable{ IoK8sKubernetesPkgApiV1ResourceFieldSelector } # resourceFieldRef
 
-    function IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile(;fieldRef=nothing, mode=nothing, path=nothing, resourceFieldRef=nothing)
+    function IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile(;)
         o = new()
-        set_field!(o, :fieldRef, fieldRef)
-        set_field!(o, :mode, mode)
-        set_field!(o, :path, path)
-        set_field!(o, :resourceFieldRef, resourceFieldRef)
         o
     end
 end # type IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile
 
-const _name_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile = Dict{String,Symbol}(["fieldRef"=>:fieldRef, "mode"=>:mode, "path"=>:path, "resourceFieldRef"=>:resourceFieldRef])
-const _field_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile = Dict{Symbol,String}([:fieldRef=>"fieldRef", :mode=>"mode", :path=>"path", :resourceFieldRef=>"resourceFieldRef"])
+const _name_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile }) = _name_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile }) = _field_map_IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile
 
 function check_required(o::IoK8sKubernetesPkgApiV1DownwardAPIVolumeFile)
-    isnull(o.path) && (return false)
     true
 end
 

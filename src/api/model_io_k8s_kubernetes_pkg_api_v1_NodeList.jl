@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NodeList <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    items::Nullable{ Vector{IoK8sKubernetesPkgApiV1Node} } # items
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ListMeta } # metadata
 
-    function IoK8sKubernetesPkgApiV1NodeList(;apiVersion=nothing, items=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApiV1NodeList(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :items, items)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NodeList
 
-const _name_map_IoK8sKubernetesPkgApiV1NodeList = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "items"=>:items, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApiV1NodeList = Dict{Symbol,String}([:apiVersion=>"apiVersion", :items=>"items", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApiV1NodeList = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NodeList = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NodeList }) = _name_map_IoK8sKubernetesPkgApiV1NodeList
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NodeList }) = _field_map_IoK8sKubernetesPkgApiV1NodeList
 
 function check_required(o::IoK8sKubernetesPkgApiV1NodeList)
-    isnull(o.items) && (return false)
     true
 end
 

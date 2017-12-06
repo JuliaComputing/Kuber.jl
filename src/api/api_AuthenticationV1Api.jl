@@ -8,12 +8,12 @@ end
 """
 
 create a TokenReview
-Param: body::IoK8sKubernetesPkgApisAuthenticationV1TokenReview (required)
+Param: body::IoK8sApiAuthenticationV1TokenReview (required)
 Param: pretty::String
-Return: IoK8sKubernetesPkgApisAuthenticationV1TokenReview
+Return: IoK8sApiAuthenticationV1TokenReview
 """
 function createAuthenticationV1TokenReview(_api::AuthenticationV1Api, body; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sKubernetesPkgApisAuthenticationV1TokenReview, "/apis/authentication.k8s.io/v1/tokenreviews", ["BearerToken"], body)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthenticationV1TokenReview, "/apis/authentication.k8s.io/v1/tokenreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])

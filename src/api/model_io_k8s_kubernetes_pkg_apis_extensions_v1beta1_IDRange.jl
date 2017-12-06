@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IDRange <: SwaggerModel
-    max::Nullable{ Int64 } # max
-    min::Nullable{ Int64 } # min
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IDRange(;max=nothing, min=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IDRange(;)
         o = new()
-        set_field!(o, :max, max)
-        set_field!(o, :min, min)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IDRange
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange = Dict{String,Symbol}(["max"=>:max, "min"=>:min])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange = Dict{Symbol,String}([:max=>"max", :min=>"min"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IDRange }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IDRange }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IDRange
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1IDRange)
-    isnull(o.max) && (return false)
-    isnull(o.min) && (return false)
     true
 end
 

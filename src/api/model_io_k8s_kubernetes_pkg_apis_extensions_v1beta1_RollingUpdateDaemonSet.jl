@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet <: SwaggerModel
-    maxUnavailable::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # maxUnavailable
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet(;maxUnavailable=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet(;)
         o = new()
-        set_field!(o, :maxUnavailable, maxUnavailable)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet = Dict{String,Symbol}(["maxUnavailable"=>:maxUnavailable])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet = Dict{Symbol,String}([:maxUnavailable=>"maxUnavailable"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet
 

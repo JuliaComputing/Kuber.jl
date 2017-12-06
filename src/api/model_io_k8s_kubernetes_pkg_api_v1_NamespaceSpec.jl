@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NamespaceSpec <: SwaggerModel
-    finalizers::Nullable{ Vector{String} } # finalizers
 
-    function IoK8sKubernetesPkgApiV1NamespaceSpec(;finalizers=nothing)
+    function IoK8sKubernetesPkgApiV1NamespaceSpec(;)
         o = new()
-        set_field!(o, :finalizers, finalizers)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NamespaceSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1NamespaceSpec = Dict{String,Symbol}(["finalizers"=>:finalizers])
-const _field_map_IoK8sKubernetesPkgApiV1NamespaceSpec = Dict{Symbol,String}([:finalizers=>"finalizers"])
+const _name_map_IoK8sKubernetesPkgApiV1NamespaceSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NamespaceSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NamespaceSpec }) = _name_map_IoK8sKubernetesPkgApiV1NamespaceSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NamespaceSpec }) = _field_map_IoK8sKubernetesPkgApiV1NamespaceSpec
 

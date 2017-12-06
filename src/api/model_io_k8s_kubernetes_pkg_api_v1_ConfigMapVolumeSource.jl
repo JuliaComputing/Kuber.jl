@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ConfigMapVolumeSource <: SwaggerModel
-    defaultMode::Nullable{ Int32 } # defaultMode
-    items::Nullable{ Vector{IoK8sKubernetesPkgApiV1KeyToPath} } # items
-    name::Nullable{ String } # name
-    optional::Nullable{ Bool } # optional
 
-    function IoK8sKubernetesPkgApiV1ConfigMapVolumeSource(;defaultMode=nothing, items=nothing, name=nothing, optional=nothing)
+    function IoK8sKubernetesPkgApiV1ConfigMapVolumeSource(;)
         o = new()
-        set_field!(o, :defaultMode, defaultMode)
-        set_field!(o, :items, items)
-        set_field!(o, :name, name)
-        set_field!(o, :optional, optional)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ConfigMapVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource = Dict{String,Symbol}(["defaultMode"=>:defaultMode, "items"=>:items, "name"=>:name, "optional"=>:optional])
-const _field_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource = Dict{Symbol,String}([:defaultMode=>"defaultMode", :items=>"items", :name=>"name", :optional=>"optional"])
+const _name_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMapVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMapVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1ConfigMapVolumeSource
 

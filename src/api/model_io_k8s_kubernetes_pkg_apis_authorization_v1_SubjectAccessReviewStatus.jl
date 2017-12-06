@@ -2,26 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus <: SwaggerModel
-    allowed::Nullable{ Bool } # allowed
-    evaluationError::Nullable{ String } # evaluationError
-    reason::Nullable{ String } # reason
 
-    function IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus(;allowed=nothing, evaluationError=nothing, reason=nothing)
+    function IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus(;)
         o = new()
-        set_field!(o, :allowed, allowed)
-        set_field!(o, :evaluationError, evaluationError)
-        set_field!(o, :reason, reason)
         o
     end
 end # type IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus
 
-const _name_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus = Dict{String,Symbol}(["allowed"=>:allowed, "evaluationError"=>:evaluationError, "reason"=>:reason])
-const _field_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus = Dict{Symbol,String}([:allowed=>"allowed", :evaluationError=>"evaluationError", :reason=>"reason"])
+const _name_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus }) = _name_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus }) = _field_map_IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus
 
 function check_required(o::IoK8sKubernetesPkgApisAuthorizationV1SubjectAccessReviewStatus)
-    isnull(o.allowed) && (return false)
     true
 end
 

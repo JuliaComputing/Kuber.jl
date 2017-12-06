@@ -2,22 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1LocalVolumeSource <: SwaggerModel
-    path::Nullable{ String } # path
 
-    function IoK8sKubernetesPkgApiV1LocalVolumeSource(;path=nothing)
+    function IoK8sKubernetesPkgApiV1LocalVolumeSource(;)
         o = new()
-        set_field!(o, :path, path)
         o
     end
 end # type IoK8sKubernetesPkgApiV1LocalVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1LocalVolumeSource = Dict{String,Symbol}(["path"=>:path])
-const _field_map_IoK8sKubernetesPkgApiV1LocalVolumeSource = Dict{Symbol,String}([:path=>"path"])
+const _name_map_IoK8sKubernetesPkgApiV1LocalVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1LocalVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1LocalVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1LocalVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1LocalVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1LocalVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1LocalVolumeSource)
-    isnull(o.path) && (return false)
     true
 end
 
