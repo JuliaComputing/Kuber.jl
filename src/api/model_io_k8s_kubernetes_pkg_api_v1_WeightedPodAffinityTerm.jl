@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm <: SwaggerModel
-    podAffinityTerm::Nullable{ IoK8sKubernetesPkgApiV1PodAffinityTerm } # podAffinityTerm
-    weight::Nullable{ Int32 } # weight
 
-    function IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm(;podAffinityTerm=nothing, weight=nothing)
+    function IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm(;)
         o = new()
-        set_field!(o, :podAffinityTerm, podAffinityTerm)
-        set_field!(o, :weight, weight)
         o
     end
 end # type IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm
 
-const _name_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm = Dict{String,Symbol}(["podAffinityTerm"=>:podAffinityTerm, "weight"=>:weight])
-const _field_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm = Dict{Symbol,String}([:podAffinityTerm=>"podAffinityTerm", :weight=>"weight"])
+const _name_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm }) = _name_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm }) = _field_map_IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm
 
 function check_required(o::IoK8sKubernetesPkgApiV1WeightedPodAffinityTerm)
-    isnull(o.podAffinityTerm) && (return false)
-    isnull(o.weight) && (return false)
     true
 end
 

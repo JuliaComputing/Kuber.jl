@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource <: SwaggerModel
-    fsType::Nullable{ String } # fsType
-    partition::Nullable{ Int32 } # partition
-    pdName::Nullable{ String } # pdName
-    readOnly::Nullable{ Bool } # readOnly
 
-    function IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource(;fsType=nothing, partition=nothing, pdName=nothing, readOnly=nothing)
+    function IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource(;)
         o = new()
-        set_field!(o, :fsType, fsType)
-        set_field!(o, :partition, partition)
-        set_field!(o, :pdName, pdName)
-        set_field!(o, :readOnly, readOnly)
         o
     end
 end # type IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource = Dict{String,Symbol}(["fsType"=>:fsType, "partition"=>:partition, "pdName"=>:pdName, "readOnly"=>:readOnly])
-const _field_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource = Dict{Symbol,String}([:fsType=>"fsType", :partition=>"partition", :pdName=>"pdName", :readOnly=>"readOnly"])
+const _name_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1GCEPersistentDiskVolumeSource)
-    isnull(o.pdName) && (return false)
     true
 end
 

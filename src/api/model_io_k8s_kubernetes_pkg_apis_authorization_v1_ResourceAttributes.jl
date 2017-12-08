@@ -2,29 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes <: SwaggerModel
-    group::Nullable{ String } # group
-    name::Nullable{ String } # name
-    namespace::Nullable{ String } # namespace
-    resource::Nullable{ String } # resource
-    subresource::Nullable{ String } # subresource
-    verb::Nullable{ String } # verb
-    version::Nullable{ String } # version
 
-    function IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes(;group=nothing, name=nothing, namespace=nothing, resource=nothing, subresource=nothing, verb=nothing, version=nothing)
+    function IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes(;)
         o = new()
-        set_field!(o, :group, group)
-        set_field!(o, :name, name)
-        set_field!(o, :namespace, namespace)
-        set_field!(o, :resource, resource)
-        set_field!(o, :subresource, subresource)
-        set_field!(o, :verb, verb)
-        set_field!(o, :version, version)
         o
     end
 end # type IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes
 
-const _name_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes = Dict{String,Symbol}(["group"=>:group, "name"=>:name, "namespace"=>:namespace, "resource"=>:resource, "subresource"=>:subresource, "verb"=>:verb, "version"=>:version])
-const _field_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes = Dict{Symbol,String}([:group=>"group", :name=>"name", :namespace=>"namespace", :resource=>"resource", :subresource=>"subresource", :verb=>"verb", :version=>"version"])
+const _name_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes }) = _name_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes }) = _field_map_IoK8sKubernetesPkgApisAuthorizationV1ResourceAttributes
 

@@ -2,27 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NodeSelectorRequirement <: SwaggerModel
-    key::Nullable{ String } # key
-    operator::Nullable{ String } # operator
-    values::Nullable{ Vector{String} } # values
 
-    function IoK8sKubernetesPkgApiV1NodeSelectorRequirement(;key=nothing, operator=nothing, values=nothing)
+    function IoK8sKubernetesPkgApiV1NodeSelectorRequirement(;)
         o = new()
-        set_field!(o, :key, key)
-        set_field!(o, :operator, operator)
-        set_field!(o, :values, values)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NodeSelectorRequirement
 
-const _name_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement = Dict{String,Symbol}(["key"=>:key, "operator"=>:operator, "values"=>:values])
-const _field_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement = Dict{Symbol,String}([:key=>"key", :operator=>"operator", :values=>"values"])
+const _name_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NodeSelectorRequirement }) = _name_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NodeSelectorRequirement }) = _field_map_IoK8sKubernetesPkgApiV1NodeSelectorRequirement
 
 function check_required(o::IoK8sKubernetesPkgApiV1NodeSelectorRequirement)
-    isnull(o.key) && (return false)
-    isnull(o.operator) && (return false)
     true
 end
 

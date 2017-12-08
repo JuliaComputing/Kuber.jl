@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Capabilities <: SwaggerModel
-    add::Nullable{ Vector{String} } # add
-    drop::Nullable{ Vector{String} } # drop
 
-    function IoK8sKubernetesPkgApiV1Capabilities(;add=nothing, drop=nothing)
+    function IoK8sKubernetesPkgApiV1Capabilities(;)
         o = new()
-        set_field!(o, :add, add)
-        set_field!(o, :drop, drop)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Capabilities
 
-const _name_map_IoK8sKubernetesPkgApiV1Capabilities = Dict{String,Symbol}(["add"=>:add, "drop"=>:drop])
-const _field_map_IoK8sKubernetesPkgApiV1Capabilities = Dict{Symbol,String}([:add=>"add", :drop=>"drop"])
+const _name_map_IoK8sKubernetesPkgApiV1Capabilities = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Capabilities = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Capabilities }) = _name_map_IoK8sKubernetesPkgApiV1Capabilities
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Capabilities }) = _field_map_IoK8sKubernetesPkgApiV1Capabilities
 

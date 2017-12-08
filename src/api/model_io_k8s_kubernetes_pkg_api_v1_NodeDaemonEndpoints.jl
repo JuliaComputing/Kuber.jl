@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NodeDaemonEndpoints <: SwaggerModel
-    kubeletEndpoint::Nullable{ IoK8sKubernetesPkgApiV1DaemonEndpoint } # kubeletEndpoint
 
-    function IoK8sKubernetesPkgApiV1NodeDaemonEndpoints(;kubeletEndpoint=nothing)
+    function IoK8sKubernetesPkgApiV1NodeDaemonEndpoints(;)
         o = new()
-        set_field!(o, :kubeletEndpoint, kubeletEndpoint)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NodeDaemonEndpoints
 
-const _name_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints = Dict{String,Symbol}(["kubeletEndpoint"=>:kubeletEndpoint])
-const _field_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints = Dict{Symbol,String}([:kubeletEndpoint=>"kubeletEndpoint"])
+const _name_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NodeDaemonEndpoints }) = _name_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NodeDaemonEndpoints }) = _field_map_IoK8sKubernetesPkgApiV1NodeDaemonEndpoints
 

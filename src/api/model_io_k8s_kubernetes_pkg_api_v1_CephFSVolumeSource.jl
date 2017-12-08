@@ -2,32 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1CephFSVolumeSource <: SwaggerModel
-    monitors::Nullable{ Vector{String} } # monitors
-    path::Nullable{ String } # path
-    readOnly::Nullable{ Bool } # readOnly
-    secretFile::Nullable{ String } # secretFile
-    secretRef::Nullable{ IoK8sKubernetesPkgApiV1LocalObjectReference } # secretRef
-    user::Nullable{ String } # user
 
-    function IoK8sKubernetesPkgApiV1CephFSVolumeSource(;monitors=nothing, path=nothing, readOnly=nothing, secretFile=nothing, secretRef=nothing, user=nothing)
+    function IoK8sKubernetesPkgApiV1CephFSVolumeSource(;)
         o = new()
-        set_field!(o, :monitors, monitors)
-        set_field!(o, :path, path)
-        set_field!(o, :readOnly, readOnly)
-        set_field!(o, :secretFile, secretFile)
-        set_field!(o, :secretRef, secretRef)
-        set_field!(o, :user, user)
         o
     end
 end # type IoK8sKubernetesPkgApiV1CephFSVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource = Dict{String,Symbol}(["monitors"=>:monitors, "path"=>:path, "readOnly"=>:readOnly, "secretFile"=>:secretFile, "secretRef"=>:secretRef, "user"=>:user])
-const _field_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource = Dict{Symbol,String}([:monitors=>"monitors", :path=>"path", :readOnly=>"readOnly", :secretFile=>"secretFile", :secretRef=>"secretRef", :user=>"user"])
+const _name_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1CephFSVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1CephFSVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1CephFSVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1CephFSVolumeSource)
-    isnull(o.monitors) && (return false)
     true
 end
 

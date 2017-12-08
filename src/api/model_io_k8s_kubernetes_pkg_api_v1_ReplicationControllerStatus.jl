@@ -2,32 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ReplicationControllerStatus <: SwaggerModel
-    availableReplicas::Nullable{ Int32 } # availableReplicas
-    conditions::Nullable{ Vector{IoK8sKubernetesPkgApiV1ReplicationControllerCondition} } # conditions
-    fullyLabeledReplicas::Nullable{ Int32 } # fullyLabeledReplicas
-    observedGeneration::Nullable{ Int64 } # observedGeneration
-    readyReplicas::Nullable{ Int32 } # readyReplicas
-    replicas::Nullable{ Int32 } # replicas
 
-    function IoK8sKubernetesPkgApiV1ReplicationControllerStatus(;availableReplicas=nothing, conditions=nothing, fullyLabeledReplicas=nothing, observedGeneration=nothing, readyReplicas=nothing, replicas=nothing)
+    function IoK8sKubernetesPkgApiV1ReplicationControllerStatus(;)
         o = new()
-        set_field!(o, :availableReplicas, availableReplicas)
-        set_field!(o, :conditions, conditions)
-        set_field!(o, :fullyLabeledReplicas, fullyLabeledReplicas)
-        set_field!(o, :observedGeneration, observedGeneration)
-        set_field!(o, :readyReplicas, readyReplicas)
-        set_field!(o, :replicas, replicas)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ReplicationControllerStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus = Dict{String,Symbol}(["availableReplicas"=>:availableReplicas, "conditions"=>:conditions, "fullyLabeledReplicas"=>:fullyLabeledReplicas, "observedGeneration"=>:observedGeneration, "readyReplicas"=>:readyReplicas, "replicas"=>:replicas])
-const _field_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus = Dict{Symbol,String}([:availableReplicas=>"availableReplicas", :conditions=>"conditions", :fullyLabeledReplicas=>"fullyLabeledReplicas", :observedGeneration=>"observedGeneration", :readyReplicas=>"readyReplicas", :replicas=>"replicas"])
+const _name_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ReplicationControllerStatus }) = _name_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ReplicationControllerStatus }) = _field_map_IoK8sKubernetesPkgApiV1ReplicationControllerStatus
 
 function check_required(o::IoK8sKubernetesPkgApiV1ReplicationControllerStatus)
-    isnull(o.replicas) && (return false)
     true
 end
 

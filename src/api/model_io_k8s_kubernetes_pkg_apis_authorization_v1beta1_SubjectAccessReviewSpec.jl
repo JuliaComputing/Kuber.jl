@@ -2,25 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec <: SwaggerModel
-    extra::Nullable{ Dict{String, Vector{String}} } # extra
-    group::Nullable{ Vector{String} } # group
-    nonResourceAttributes::Nullable{ IoK8sKubernetesPkgApisAuthorizationV1beta1NonResourceAttributes } # nonResourceAttributes
-    resourceAttributes::Nullable{ IoK8sKubernetesPkgApisAuthorizationV1beta1ResourceAttributes } # resourceAttributes
-    user::Nullable{ String } # user
 
-    function IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec(;extra=nothing, group=nothing, nonResourceAttributes=nothing, resourceAttributes=nothing, user=nothing)
+    function IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec(;)
         o = new()
-        set_field!(o, :extra, extra)
-        set_field!(o, :group, group)
-        set_field!(o, :nonResourceAttributes, nonResourceAttributes)
-        set_field!(o, :resourceAttributes, resourceAttributes)
-        set_field!(o, :user, user)
         o
     end
 end # type IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec
 
-const _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec = Dict{String,Symbol}(["extra"=>:extra, "group"=>:group, "nonResourceAttributes"=>:nonResourceAttributes, "resourceAttributes"=>:resourceAttributes, "user"=>:user])
-const _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec = Dict{Symbol,String}([:extra=>"extra", :group=>"group", :nonResourceAttributes=>"nonResourceAttributes", :resourceAttributes=>"resourceAttributes", :user=>"user"])
+const _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec }) = _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec }) = _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SubjectAccessReviewSpec
 

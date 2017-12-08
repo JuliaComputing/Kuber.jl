@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy <: SwaggerModel
-    partition::Nullable{ Int32 } # partition
 
-    function IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy(;partition=nothing)
+    function IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy(;)
         o = new()
-        set_field!(o, :partition, partition)
         o
     end
 end # type IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy
 
-const _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy = Dict{String,Symbol}(["partition"=>:partition])
-const _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy = Dict{Symbol,String}([:partition=>"partition"])
+const _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy }) = _name_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy }) = _field_map_IoK8sKubernetesPkgApisAppsV1beta1RollingUpdateStatefulSetStrategy
 

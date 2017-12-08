@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions <: SwaggerModel
-    rule::Nullable{ String } # rule
-    seLinuxOptions::Nullable{ IoK8sKubernetesPkgApiV1SELinuxOptions } # seLinuxOptions
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions(;rule=nothing, seLinuxOptions=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions(;)
         o = new()
-        set_field!(o, :rule, rule)
-        set_field!(o, :seLinuxOptions, seLinuxOptions)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions = Dict{String,Symbol}(["rule"=>:rule, "seLinuxOptions"=>:seLinuxOptions])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions = Dict{Symbol,String}([:rule=>"rule", :seLinuxOptions=>"seLinuxOptions"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1SELinuxStrategyOptions)
-    isnull(o.rule) && (return false)
     true
 end
 

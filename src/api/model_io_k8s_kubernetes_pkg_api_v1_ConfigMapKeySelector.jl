@@ -2,26 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ConfigMapKeySelector <: SwaggerModel
-    key::Nullable{ String } # key
-    name::Nullable{ String } # name
-    optional::Nullable{ Bool } # optional
 
-    function IoK8sKubernetesPkgApiV1ConfigMapKeySelector(;key=nothing, name=nothing, optional=nothing)
+    function IoK8sKubernetesPkgApiV1ConfigMapKeySelector(;)
         o = new()
-        set_field!(o, :key, key)
-        set_field!(o, :name, name)
-        set_field!(o, :optional, optional)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ConfigMapKeySelector
 
-const _name_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector = Dict{String,Symbol}(["key"=>:key, "name"=>:name, "optional"=>:optional])
-const _field_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector = Dict{Symbol,String}([:key=>"key", :name=>"name", :optional=>"optional"])
+const _name_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMapKeySelector }) = _name_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMapKeySelector }) = _field_map_IoK8sKubernetesPkgApiV1ConfigMapKeySelector
 
 function check_required(o::IoK8sKubernetesPkgApiV1ConfigMapKeySelector)
-    isnull(o.key) && (return false)
     true
 end
 

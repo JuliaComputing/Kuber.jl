@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PodTemplateSpec <: SwaggerModel
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    spec::Nullable{ IoK8sKubernetesPkgApiV1PodSpec } # spec
 
-    function IoK8sKubernetesPkgApiV1PodTemplateSpec(;metadata=nothing, spec=nothing)
+    function IoK8sKubernetesPkgApiV1PodTemplateSpec(;)
         o = new()
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :spec, spec)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PodTemplateSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1PodTemplateSpec = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec])
-const _field_map_IoK8sKubernetesPkgApiV1PodTemplateSpec = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec"])
+const _name_map_IoK8sKubernetesPkgApiV1PodTemplateSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PodTemplateSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PodTemplateSpec }) = _name_map_IoK8sKubernetesPkgApiV1PodTemplateSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PodTemplateSpec }) = _field_map_IoK8sKubernetesPkgApiV1PodTemplateSpec
 

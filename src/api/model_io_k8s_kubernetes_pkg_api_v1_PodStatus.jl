@@ -2,35 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PodStatus <: SwaggerModel
-    conditions::Nullable{ Vector{IoK8sKubernetesPkgApiV1PodCondition} } # conditions
-    containerStatuses::Nullable{ Vector{IoK8sKubernetesPkgApiV1ContainerStatus} } # containerStatuses
-    hostIP::Nullable{ String } # hostIP
-    initContainerStatuses::Nullable{ Vector{IoK8sKubernetesPkgApiV1ContainerStatus} } # initContainerStatuses
-    message::Nullable{ String } # message
-    phase::Nullable{ String } # phase
-    podIP::Nullable{ String } # podIP
-    qosClass::Nullable{ String } # qosClass
-    reason::Nullable{ String } # reason
-    startTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # startTime
 
-    function IoK8sKubernetesPkgApiV1PodStatus(;conditions=nothing, containerStatuses=nothing, hostIP=nothing, initContainerStatuses=nothing, message=nothing, phase=nothing, podIP=nothing, qosClass=nothing, reason=nothing, startTime=nothing)
+    function IoK8sKubernetesPkgApiV1PodStatus(;)
         o = new()
-        set_field!(o, :conditions, conditions)
-        set_field!(o, :containerStatuses, containerStatuses)
-        set_field!(o, :hostIP, hostIP)
-        set_field!(o, :initContainerStatuses, initContainerStatuses)
-        set_field!(o, :message, message)
-        set_field!(o, :phase, phase)
-        set_field!(o, :podIP, podIP)
-        set_field!(o, :qosClass, qosClass)
-        set_field!(o, :reason, reason)
-        set_field!(o, :startTime, startTime)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PodStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1PodStatus = Dict{String,Symbol}(["conditions"=>:conditions, "containerStatuses"=>:containerStatuses, "hostIP"=>:hostIP, "initContainerStatuses"=>:initContainerStatuses, "message"=>:message, "phase"=>:phase, "podIP"=>:podIP, "qosClass"=>:qosClass, "reason"=>:reason, "startTime"=>:startTime])
-const _field_map_IoK8sKubernetesPkgApiV1PodStatus = Dict{Symbol,String}([:conditions=>"conditions", :containerStatuses=>"containerStatuses", :hostIP=>"hostIP", :initContainerStatuses=>"initContainerStatuses", :message=>"message", :phase=>"phase", :podIP=>"podIP", :qosClass=>"qosClass", :reason=>"reason", :startTime=>"startTime"])
+const _name_map_IoK8sKubernetesPkgApiV1PodStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PodStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PodStatus }) = _name_map_IoK8sKubernetesPkgApiV1PodStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PodStatus }) = _field_map_IoK8sKubernetesPkgApiV1PodStatus
 

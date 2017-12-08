@@ -2,27 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1GlusterfsVolumeSource <: SwaggerModel
-    endpoints::Nullable{ String } # endpoints
-    path::Nullable{ String } # path
-    readOnly::Nullable{ Bool } # readOnly
 
-    function IoK8sKubernetesPkgApiV1GlusterfsVolumeSource(;endpoints=nothing, path=nothing, readOnly=nothing)
+    function IoK8sKubernetesPkgApiV1GlusterfsVolumeSource(;)
         o = new()
-        set_field!(o, :endpoints, endpoints)
-        set_field!(o, :path, path)
-        set_field!(o, :readOnly, readOnly)
         o
     end
 end # type IoK8sKubernetesPkgApiV1GlusterfsVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource = Dict{String,Symbol}(["endpoints"=>:endpoints, "path"=>:path, "readOnly"=>:readOnly])
-const _field_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource = Dict{Symbol,String}([:endpoints=>"endpoints", :path=>"path", :readOnly=>"readOnly"])
+const _name_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1GlusterfsVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1GlusterfsVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1GlusterfsVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1GlusterfsVolumeSource)
-    isnull(o.endpoints) && (return false)
-    isnull(o.path) && (return false)
     true
 end
 

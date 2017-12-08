@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisPolicyV1beta1Eviction <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    deleteOptions::Nullable{ IoK8sApimachineryPkgApisMetaV1DeleteOptions } # deleteOptions
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
 
-    function IoK8sKubernetesPkgApisPolicyV1beta1Eviction(;apiVersion=nothing, deleteOptions=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisPolicyV1beta1Eviction(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :deleteOptions, deleteOptions)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisPolicyV1beta1Eviction
 
-const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "deleteOptions"=>:deleteOptions, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction = Dict{Symbol,String}([:apiVersion=>"apiVersion", :deleteOptions=>"deleteOptions", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1Eviction }) = _name_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisPolicyV1beta1Eviction }) = _field_map_IoK8sKubernetesPkgApisPolicyV1beta1Eviction
 

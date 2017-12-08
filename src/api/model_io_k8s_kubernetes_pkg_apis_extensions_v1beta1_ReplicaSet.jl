@@ -2,25 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    spec::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetSpec } # spec
-    status::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetStatus } # status
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet(;apiVersion=nothing, kind=nothing, metadata=nothing, spec=nothing, status=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :spec, spec)
-        set_field!(o, :status, status)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "spec"=>:spec, "status"=>:status])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :spec=>"spec", :status=>"status"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSet
 

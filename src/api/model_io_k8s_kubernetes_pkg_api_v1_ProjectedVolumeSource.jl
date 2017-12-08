@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ProjectedVolumeSource <: SwaggerModel
-    defaultMode::Nullable{ Int32 } # defaultMode
-    sources::Nullable{ Vector{IoK8sKubernetesPkgApiV1VolumeProjection} } # sources
 
-    function IoK8sKubernetesPkgApiV1ProjectedVolumeSource(;defaultMode=nothing, sources=nothing)
+    function IoK8sKubernetesPkgApiV1ProjectedVolumeSource(;)
         o = new()
-        set_field!(o, :defaultMode, defaultMode)
-        set_field!(o, :sources, sources)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ProjectedVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource = Dict{String,Symbol}(["defaultMode"=>:defaultMode, "sources"=>:sources])
-const _field_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource = Dict{Symbol,String}([:defaultMode=>"defaultMode", :sources=>"sources"])
+const _name_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ProjectedVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ProjectedVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1ProjectedVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1ProjectedVolumeSource)
-    isnull(o.sources) && (return false)
     true
 end
 

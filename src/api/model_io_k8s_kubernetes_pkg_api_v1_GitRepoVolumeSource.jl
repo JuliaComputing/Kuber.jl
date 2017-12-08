@@ -2,26 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1GitRepoVolumeSource <: SwaggerModel
-    directory::Nullable{ String } # directory
-    repository::Nullable{ String } # repository
-    revision::Nullable{ String } # revision
 
-    function IoK8sKubernetesPkgApiV1GitRepoVolumeSource(;directory=nothing, repository=nothing, revision=nothing)
+    function IoK8sKubernetesPkgApiV1GitRepoVolumeSource(;)
         o = new()
-        set_field!(o, :directory, directory)
-        set_field!(o, :repository, repository)
-        set_field!(o, :revision, revision)
         o
     end
 end # type IoK8sKubernetesPkgApiV1GitRepoVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource = Dict{String,Symbol}(["directory"=>:directory, "repository"=>:repository, "revision"=>:revision])
-const _field_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource = Dict{Symbol,String}([:directory=>"directory", :repository=>"repository", :revision=>"revision"])
+const _name_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1GitRepoVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1GitRepoVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1GitRepoVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1GitRepoVolumeSource)
-    isnull(o.repository) && (return false)
     true
 end
 

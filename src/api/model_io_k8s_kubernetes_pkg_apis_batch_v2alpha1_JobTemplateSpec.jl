@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec <: SwaggerModel
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    spec::Nullable{ IoK8sKubernetesPkgApisBatchV1JobSpec } # spec
 
-    function IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec(;metadata=nothing, spec=nothing)
+    function IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec(;)
         o = new()
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :spec, spec)
         o
     end
 end # type IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec
 
-const _name_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec = Dict{String,Symbol}(["metadata"=>:metadata, "spec"=>:spec])
-const _field_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec = Dict{Symbol,String}([:metadata=>"metadata", :spec=>"spec"])
+const _name_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec }) = _name_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec }) = _field_map_IoK8sKubernetesPkgApisBatchV2alpha1JobTemplateSpec
 

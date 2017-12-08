@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus <: SwaggerModel
-    certificate::Nullable{ Vector{UInt8} } # certificate
-    conditions::Nullable{ Vector{IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestCondition} } # conditions
 
-    function IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus(;certificate=nothing, conditions=nothing)
+    function IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus(;)
         o = new()
-        set_field!(o, :certificate, certificate)
-        set_field!(o, :conditions, conditions)
         o
     end
 end # type IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus
 
-const _name_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus = Dict{String,Symbol}(["certificate"=>:certificate, "conditions"=>:conditions])
-const _field_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus = Dict{Symbol,String}([:certificate=>"certificate", :conditions=>"conditions"])
+const _name_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus }) = _name_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus }) = _field_map_IoK8sKubernetesPkgApisCertificatesV1beta1CertificateSigningRequestStatus
 

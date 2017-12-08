@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec <: SwaggerModel
-    replicas::Nullable{ Int32 } # replicas
 
-    function IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec(;replicas=nothing)
+    function IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec(;)
         o = new()
-        set_field!(o, :replicas, replicas)
         o
     end
 end # type IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec
 
-const _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec = Dict{String,Symbol}(["replicas"=>:replicas])
-const _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec = Dict{Symbol,String}([:replicas=>"replicas"])
+const _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec }) = _name_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec }) = _field_map_IoK8sKubernetesPkgApisAutoscalingV1ScaleSpec
 

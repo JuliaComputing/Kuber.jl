@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ContainerStateWaiting <: SwaggerModel
-    message::Nullable{ String } # message
-    reason::Nullable{ String } # reason
 
-    function IoK8sKubernetesPkgApiV1ContainerStateWaiting(;message=nothing, reason=nothing)
+    function IoK8sKubernetesPkgApiV1ContainerStateWaiting(;)
         o = new()
-        set_field!(o, :message, message)
-        set_field!(o, :reason, reason)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ContainerStateWaiting
 
-const _name_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting = Dict{String,Symbol}(["message"=>:message, "reason"=>:reason])
-const _field_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting = Dict{Symbol,String}([:message=>"message", :reason=>"reason"])
+const _name_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStateWaiting }) = _name_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStateWaiting }) = _field_map_IoK8sKubernetesPkgApiV1ContainerStateWaiting
 

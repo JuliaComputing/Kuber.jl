@@ -2,40 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ContainerStatus <: SwaggerModel
-    containerID::Nullable{ String } # containerID
-    image::Nullable{ String } # image
-    imageID::Nullable{ String } # imageID
-    lastState::Nullable{ IoK8sKubernetesPkgApiV1ContainerState } # lastState
-    name::Nullable{ String } # name
-    ready::Nullable{ Bool } # ready
-    restartCount::Nullable{ Int32 } # restartCount
-    state::Nullable{ IoK8sKubernetesPkgApiV1ContainerState } # state
 
-    function IoK8sKubernetesPkgApiV1ContainerStatus(;containerID=nothing, image=nothing, imageID=nothing, lastState=nothing, name=nothing, ready=nothing, restartCount=nothing, state=nothing)
+    function IoK8sKubernetesPkgApiV1ContainerStatus(;)
         o = new()
-        set_field!(o, :containerID, containerID)
-        set_field!(o, :image, image)
-        set_field!(o, :imageID, imageID)
-        set_field!(o, :lastState, lastState)
-        set_field!(o, :name, name)
-        set_field!(o, :ready, ready)
-        set_field!(o, :restartCount, restartCount)
-        set_field!(o, :state, state)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ContainerStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1ContainerStatus = Dict{String,Symbol}(["containerID"=>:containerID, "image"=>:image, "imageID"=>:imageID, "lastState"=>:lastState, "name"=>:name, "ready"=>:ready, "restartCount"=>:restartCount, "state"=>:state])
-const _field_map_IoK8sKubernetesPkgApiV1ContainerStatus = Dict{Symbol,String}([:containerID=>"containerID", :image=>"image", :imageID=>"imageID", :lastState=>"lastState", :name=>"name", :ready=>"ready", :restartCount=>"restartCount", :state=>"state"])
+const _name_map_IoK8sKubernetesPkgApiV1ContainerStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ContainerStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStatus }) = _name_map_IoK8sKubernetesPkgApiV1ContainerStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStatus }) = _field_map_IoK8sKubernetesPkgApiV1ContainerStatus
 
 function check_required(o::IoK8sKubernetesPkgApiV1ContainerStatus)
-    isnull(o.image) && (return false)
-    isnull(o.imageID) && (return false)
-    isnull(o.name) && (return false)
-    isnull(o.ready) && (return false)
-    isnull(o.restartCount) && (return false)
     true
 end
 

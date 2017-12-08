@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Binding <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    target::Nullable{ IoK8sKubernetesPkgApiV1ObjectReference } # target
 
-    function IoK8sKubernetesPkgApiV1Binding(;apiVersion=nothing, kind=nothing, metadata=nothing, target=nothing)
+    function IoK8sKubernetesPkgApiV1Binding(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :target, target)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Binding
 
-const _name_map_IoK8sKubernetesPkgApiV1Binding = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "target"=>:target])
-const _field_map_IoK8sKubernetesPkgApiV1Binding = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :target=>"target"])
+const _name_map_IoK8sKubernetesPkgApiV1Binding = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Binding = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Binding }) = _name_map_IoK8sKubernetesPkgApiV1Binding
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Binding }) = _field_map_IoK8sKubernetesPkgApiV1Binding
 
 function check_required(o::IoK8sKubernetesPkgApiV1Binding)
-    isnull(o.target) && (return false)
     true
 end
 

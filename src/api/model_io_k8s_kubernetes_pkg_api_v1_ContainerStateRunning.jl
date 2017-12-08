@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ContainerStateRunning <: SwaggerModel
-    startedAt::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # startedAt
 
-    function IoK8sKubernetesPkgApiV1ContainerStateRunning(;startedAt=nothing)
+    function IoK8sKubernetesPkgApiV1ContainerStateRunning(;)
         o = new()
-        set_field!(o, :startedAt, startedAt)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ContainerStateRunning
 
-const _name_map_IoK8sKubernetesPkgApiV1ContainerStateRunning = Dict{String,Symbol}(["startedAt"=>:startedAt])
-const _field_map_IoK8sKubernetesPkgApiV1ContainerStateRunning = Dict{Symbol,String}([:startedAt=>"startedAt"])
+const _name_map_IoK8sKubernetesPkgApiV1ContainerStateRunning = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ContainerStateRunning = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStateRunning }) = _name_map_IoK8sKubernetesPkgApiV1ContainerStateRunning
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ContainerStateRunning }) = _field_map_IoK8sKubernetesPkgApiV1ContainerStateRunning
 

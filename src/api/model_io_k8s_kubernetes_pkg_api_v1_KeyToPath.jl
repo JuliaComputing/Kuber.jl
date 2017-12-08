@@ -2,27 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1KeyToPath <: SwaggerModel
-    key::Nullable{ String } # key
-    mode::Nullable{ Int32 } # mode
-    path::Nullable{ String } # path
 
-    function IoK8sKubernetesPkgApiV1KeyToPath(;key=nothing, mode=nothing, path=nothing)
+    function IoK8sKubernetesPkgApiV1KeyToPath(;)
         o = new()
-        set_field!(o, :key, key)
-        set_field!(o, :mode, mode)
-        set_field!(o, :path, path)
         o
     end
 end # type IoK8sKubernetesPkgApiV1KeyToPath
 
-const _name_map_IoK8sKubernetesPkgApiV1KeyToPath = Dict{String,Symbol}(["key"=>:key, "mode"=>:mode, "path"=>:path])
-const _field_map_IoK8sKubernetesPkgApiV1KeyToPath = Dict{Symbol,String}([:key=>"key", :mode=>"mode", :path=>"path"])
+const _name_map_IoK8sKubernetesPkgApiV1KeyToPath = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1KeyToPath = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1KeyToPath }) = _name_map_IoK8sKubernetesPkgApiV1KeyToPath
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1KeyToPath }) = _field_map_IoK8sKubernetesPkgApiV1KeyToPath
 
 function check_required(o::IoK8sKubernetesPkgApiV1KeyToPath)
-    isnull(o.key) && (return false)
-    isnull(o.path) && (return false)
     true
 end
 

@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec <: SwaggerModel
-    backend::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend } # backend
-    rules::Nullable{ Vector{IoK8sKubernetesPkgApisExtensionsV1beta1IngressRule} } # rules
-    tls::Nullable{ Vector{IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS} } # tls
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec(;backend=nothing, rules=nothing, tls=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec(;)
         o = new()
-        set_field!(o, :backend, backend)
-        set_field!(o, :rules, rules)
-        set_field!(o, :tls, tls)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec = Dict{String,Symbol}(["backend"=>:backend, "rules"=>:rules, "tls"=>:tls])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec = Dict{Symbol,String}([:backend=>"backend", :rules=>"rules", :tls=>"tls"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressSpec
 

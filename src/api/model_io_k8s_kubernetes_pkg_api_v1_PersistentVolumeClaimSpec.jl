@@ -2,25 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec <: SwaggerModel
-    accessModes::Nullable{ Vector{String} } # accessModes
-    resources::Nullable{ IoK8sKubernetesPkgApiV1ResourceRequirements } # resources
-    selector::Nullable{ IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
-    storageClassName::Nullable{ String } # storageClassName
-    volumeName::Nullable{ String } # volumeName
 
-    function IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec(;accessModes=nothing, resources=nothing, selector=nothing, storageClassName=nothing, volumeName=nothing)
+    function IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec(;)
         o = new()
-        set_field!(o, :accessModes, accessModes)
-        set_field!(o, :resources, resources)
-        set_field!(o, :selector, selector)
-        set_field!(o, :storageClassName, storageClassName)
-        set_field!(o, :volumeName, volumeName)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "resources"=>:resources, "selector"=>:selector, "storageClassName"=>:storageClassName, "volumeName"=>:volumeName])
-const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :resources=>"resources", :selector=>"selector", :storageClassName=>"storageClassName", :volumeName=>"volumeName"])
+const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec }) = _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec }) = _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimSpec
 

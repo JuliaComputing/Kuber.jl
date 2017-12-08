@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy <: SwaggerModel
-    rollingUpdate::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1RollingUpdateDaemonSet } # rollingUpdate
-    _type::Nullable{ String } # type
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy(;rollingUpdate=nothing, _type=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy(;)
         o = new()
-        set_field!(o, :rollingUpdate, rollingUpdate)
-        set_field!(o, :_type, _type)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy = Dict{String,Symbol}(["rollingUpdate"=>:rollingUpdate, "type"=>:_type])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy = Dict{Symbol,String}([:rollingUpdate=>"rollingUpdate", :_type=>"type"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1DaemonSetUpdateStrategy
 

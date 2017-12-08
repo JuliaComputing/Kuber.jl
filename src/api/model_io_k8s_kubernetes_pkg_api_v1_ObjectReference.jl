@@ -2,29 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ObjectReference <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    fieldPath::Nullable{ String } # fieldPath
-    kind::Nullable{ String } # kind
-    name::Nullable{ String } # name
-    namespace::Nullable{ String } # namespace
-    resourceVersion::Nullable{ String } # resourceVersion
-    uid::Nullable{ String } # uid
 
-    function IoK8sKubernetesPkgApiV1ObjectReference(;apiVersion=nothing, fieldPath=nothing, kind=nothing, name=nothing, namespace=nothing, resourceVersion=nothing, uid=nothing)
+    function IoK8sKubernetesPkgApiV1ObjectReference(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :fieldPath, fieldPath)
-        set_field!(o, :kind, kind)
-        set_field!(o, :name, name)
-        set_field!(o, :namespace, namespace)
-        set_field!(o, :resourceVersion, resourceVersion)
-        set_field!(o, :uid, uid)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ObjectReference
 
-const _name_map_IoK8sKubernetesPkgApiV1ObjectReference = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "fieldPath"=>:fieldPath, "kind"=>:kind, "name"=>:name, "namespace"=>:namespace, "resourceVersion"=>:resourceVersion, "uid"=>:uid])
-const _field_map_IoK8sKubernetesPkgApiV1ObjectReference = Dict{Symbol,String}([:apiVersion=>"apiVersion", :fieldPath=>"fieldPath", :kind=>"kind", :name=>"name", :namespace=>"namespace", :resourceVersion=>"resourceVersion", :uid=>"uid"])
+const _name_map_IoK8sKubernetesPkgApiV1ObjectReference = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ObjectReference = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ObjectReference }) = _name_map_IoK8sKubernetesPkgApiV1ObjectReference
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ObjectReference }) = _field_map_IoK8sKubernetesPkgApiV1ObjectReference
 

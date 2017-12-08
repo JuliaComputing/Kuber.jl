@@ -2,19 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sApimachineryPkgApisMetaV1ListMeta <: SwaggerModel
+    _continue::Nullable{ String } # continue
     resourceVersion::Nullable{ String } # resourceVersion
     selfLink::Nullable{ String } # selfLink
 
-    function IoK8sApimachineryPkgApisMetaV1ListMeta(;resourceVersion=nothing, selfLink=nothing)
+    function IoK8sApimachineryPkgApisMetaV1ListMeta(;_continue=nothing, resourceVersion=nothing, selfLink=nothing)
         o = new()
+        set_field!(o, :_continue, _continue)
         set_field!(o, :resourceVersion, resourceVersion)
         set_field!(o, :selfLink, selfLink)
         o
     end
 end # type IoK8sApimachineryPkgApisMetaV1ListMeta
 
-const _name_map_IoK8sApimachineryPkgApisMetaV1ListMeta = Dict{String,Symbol}(["resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink])
-const _field_map_IoK8sApimachineryPkgApisMetaV1ListMeta = Dict{Symbol,String}([:resourceVersion=>"resourceVersion", :selfLink=>"selfLink"])
+const _name_map_IoK8sApimachineryPkgApisMetaV1ListMeta = Dict{String,Symbol}(["continue"=>:_continue, "resourceVersion"=>:resourceVersion, "selfLink"=>:selfLink])
+const _field_map_IoK8sApimachineryPkgApisMetaV1ListMeta = Dict{Symbol,String}([:_continue=>"continue", :resourceVersion=>"resourceVersion", :selfLink=>"selfLink"])
 Swagger.name_map(::Type{ IoK8sApimachineryPkgApisMetaV1ListMeta }) = _name_map_IoK8sApimachineryPkgApisMetaV1ListMeta
 Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1ListMeta }) = _field_map_IoK8sApimachineryPkgApisMetaV1ListMeta
 

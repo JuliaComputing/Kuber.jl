@@ -2,29 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Taint <: SwaggerModel
-    effect::Nullable{ String } # effect
-    key::Nullable{ String } # key
-    timeAdded::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # timeAdded
-    value::Nullable{ String } # value
 
-    function IoK8sKubernetesPkgApiV1Taint(;effect=nothing, key=nothing, timeAdded=nothing, value=nothing)
+    function IoK8sKubernetesPkgApiV1Taint(;)
         o = new()
-        set_field!(o, :effect, effect)
-        set_field!(o, :key, key)
-        set_field!(o, :timeAdded, timeAdded)
-        set_field!(o, :value, value)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Taint
 
-const _name_map_IoK8sKubernetesPkgApiV1Taint = Dict{String,Symbol}(["effect"=>:effect, "key"=>:key, "timeAdded"=>:timeAdded, "value"=>:value])
-const _field_map_IoK8sKubernetesPkgApiV1Taint = Dict{Symbol,String}([:effect=>"effect", :key=>"key", :timeAdded=>"timeAdded", :value=>"value"])
+const _name_map_IoK8sKubernetesPkgApiV1Taint = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Taint = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Taint }) = _name_map_IoK8sKubernetesPkgApiV1Taint
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Taint }) = _field_map_IoK8sKubernetesPkgApiV1Taint
 
 function check_required(o::IoK8sKubernetesPkgApiV1Taint)
-    isnull(o.effect) && (return false)
-    isnull(o.key) && (return false)
     true
 end
 

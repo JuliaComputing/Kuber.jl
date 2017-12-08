@@ -2,23 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ConfigMap <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    data::Nullable{ Dict{String, String} } # data
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
 
-    function IoK8sKubernetesPkgApiV1ConfigMap(;apiVersion=nothing, data=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApiV1ConfigMap(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :data, data)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ConfigMap
 
-const _name_map_IoK8sKubernetesPkgApiV1ConfigMap = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "data"=>:data, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApiV1ConfigMap = Dict{Symbol,String}([:apiVersion=>"apiVersion", :data=>"data", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApiV1ConfigMap = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ConfigMap = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMap }) = _name_map_IoK8sKubernetesPkgApiV1ConfigMap
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ConfigMap }) = _field_map_IoK8sKubernetesPkgApiV1ConfigMap
 

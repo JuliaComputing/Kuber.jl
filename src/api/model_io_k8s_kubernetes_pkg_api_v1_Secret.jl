@@ -2,27 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1Secret <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    data::Nullable{ Dict{String, Vector{UInt8}} } # data
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    stringData::Nullable{ Dict{String, String} } # stringData
-    _type::Nullable{ String } # type
 
-    function IoK8sKubernetesPkgApiV1Secret(;apiVersion=nothing, data=nothing, kind=nothing, metadata=nothing, stringData=nothing, _type=nothing)
+    function IoK8sKubernetesPkgApiV1Secret(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :data, data)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :stringData, stringData)
-        set_field!(o, :_type, _type)
         o
     end
 end # type IoK8sKubernetesPkgApiV1Secret
 
-const _name_map_IoK8sKubernetesPkgApiV1Secret = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "data"=>:data, "kind"=>:kind, "metadata"=>:metadata, "stringData"=>:stringData, "type"=>:_type])
-const _field_map_IoK8sKubernetesPkgApiV1Secret = Dict{Symbol,String}([:apiVersion=>"apiVersion", :data=>"data", :kind=>"kind", :metadata=>"metadata", :stringData=>"stringData", :_type=>"type"])
+const _name_map_IoK8sKubernetesPkgApiV1Secret = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1Secret = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1Secret }) = _name_map_IoK8sKubernetesPkgApiV1Secret
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1Secret }) = _field_map_IoK8sKubernetesPkgApiV1Secret
 

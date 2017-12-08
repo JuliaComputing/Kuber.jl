@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS <: SwaggerModel
-    hosts::Nullable{ Vector{String} } # hosts
-    secretName::Nullable{ String } # secretName
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS(;hosts=nothing, secretName=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS(;)
         o = new()
-        set_field!(o, :hosts, hosts)
-        set_field!(o, :secretName, secretName)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS = Dict{String,Symbol}(["hosts"=>:hosts, "secretName"=>:secretName])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS = Dict{Symbol,String}([:hosts=>"hosts", :secretName=>"secretName"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressTLS
 

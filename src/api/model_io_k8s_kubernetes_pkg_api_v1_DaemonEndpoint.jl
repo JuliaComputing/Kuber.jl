@@ -2,22 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1DaemonEndpoint <: SwaggerModel
-    Port::Nullable{ Int32 } # Port
 
-    function IoK8sKubernetesPkgApiV1DaemonEndpoint(;Port=nothing)
+    function IoK8sKubernetesPkgApiV1DaemonEndpoint(;)
         o = new()
-        set_field!(o, :Port, Port)
         o
     end
 end # type IoK8sKubernetesPkgApiV1DaemonEndpoint
 
-const _name_map_IoK8sKubernetesPkgApiV1DaemonEndpoint = Dict{String,Symbol}(["Port"=>:Port])
-const _field_map_IoK8sKubernetesPkgApiV1DaemonEndpoint = Dict{Symbol,String}([:Port=>"Port"])
+const _name_map_IoK8sKubernetesPkgApiV1DaemonEndpoint = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1DaemonEndpoint = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1DaemonEndpoint }) = _name_map_IoK8sKubernetesPkgApiV1DaemonEndpoint
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1DaemonEndpoint }) = _field_map_IoK8sKubernetesPkgApiV1DaemonEndpoint
 
 function check_required(o::IoK8sKubernetesPkgApiV1DaemonEndpoint)
-    isnull(o.Port) && (return false)
     true
 end
 

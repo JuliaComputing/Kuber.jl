@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IngressList <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    items::Nullable{ Vector{IoK8sKubernetesPkgApisExtensionsV1beta1Ingress} } # items
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ListMeta } # metadata
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressList(;apiVersion=nothing, items=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressList(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :items, items)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IngressList
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "items"=>:items, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList = Dict{Symbol,String}([:apiVersion=>"apiVersion", :items=>"items", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressList }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressList }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressList
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1IngressList)
-    isnull(o.items) && (return false)
     true
 end
 

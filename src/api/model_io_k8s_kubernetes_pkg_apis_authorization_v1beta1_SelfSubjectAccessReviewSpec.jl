@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec <: SwaggerModel
-    nonResourceAttributes::Nullable{ IoK8sKubernetesPkgApisAuthorizationV1beta1NonResourceAttributes } # nonResourceAttributes
-    resourceAttributes::Nullable{ IoK8sKubernetesPkgApisAuthorizationV1beta1ResourceAttributes } # resourceAttributes
 
-    function IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec(;nonResourceAttributes=nothing, resourceAttributes=nothing)
+    function IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec(;)
         o = new()
-        set_field!(o, :nonResourceAttributes, nonResourceAttributes)
-        set_field!(o, :resourceAttributes, resourceAttributes)
         o
     end
 end # type IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec
 
-const _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{String,Symbol}(["nonResourceAttributes"=>:nonResourceAttributes, "resourceAttributes"=>:resourceAttributes])
-const _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{Symbol,String}([:nonResourceAttributes=>"nonResourceAttributes", :resourceAttributes=>"resourceAttributes"])
+const _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec }) = _name_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec }) = _field_map_IoK8sKubernetesPkgApisAuthorizationV1beta1SelfSubjectAccessReviewSpec
 

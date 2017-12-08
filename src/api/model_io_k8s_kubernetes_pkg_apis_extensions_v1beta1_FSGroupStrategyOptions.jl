@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions <: SwaggerModel
-    ranges::Nullable{ Vector{IoK8sKubernetesPkgApisExtensionsV1beta1IDRange} } # ranges
-    rule::Nullable{ String } # rule
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions(;ranges=nothing, rule=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions(;)
         o = new()
-        set_field!(o, :ranges, ranges)
-        set_field!(o, :rule, rule)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions = Dict{String,Symbol}(["ranges"=>:ranges, "rule"=>:rule])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions = Dict{Symbol,String}([:ranges=>"ranges", :rule=>"rule"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1FSGroupStrategyOptions
 

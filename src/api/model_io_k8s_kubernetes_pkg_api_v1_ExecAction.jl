@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ExecAction <: SwaggerModel
-    command::Nullable{ Vector{String} } # command
 
-    function IoK8sKubernetesPkgApiV1ExecAction(;command=nothing)
+    function IoK8sKubernetesPkgApiV1ExecAction(;)
         o = new()
-        set_field!(o, :command, command)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ExecAction
 
-const _name_map_IoK8sKubernetesPkgApiV1ExecAction = Dict{String,Symbol}(["command"=>:command])
-const _field_map_IoK8sKubernetesPkgApiV1ExecAction = Dict{Symbol,String}([:command=>"command"])
+const _name_map_IoK8sKubernetesPkgApiV1ExecAction = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ExecAction = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ExecAction }) = _name_map_IoK8sKubernetesPkgApiV1ExecAction
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ExecAction }) = _field_map_IoK8sKubernetesPkgApiV1ExecAction
 

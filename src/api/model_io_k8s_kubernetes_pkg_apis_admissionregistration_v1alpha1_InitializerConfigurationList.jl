@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    items::Nullable{ Vector{IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfiguration} } # items
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ListMeta } # metadata
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList(;apiVersion=nothing, items=nothing, kind=nothing, metadata=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :items, items)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "items"=>:items, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList = Dict{Symbol,String}([:apiVersion=>"apiVersion", :items=>"items", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList
 
 function check_required(o::IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1InitializerConfigurationList)
-    isnull(o.items) && (return false)
     true
 end
 

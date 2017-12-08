@@ -2,26 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer <: SwaggerModel
-    failurePolicy::Nullable{ String } # failurePolicy
-    name::Nullable{ String } # name
-    rules::Nullable{ Vector{IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Rule} } # rules
 
-    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer(;failurePolicy=nothing, name=nothing, rules=nothing)
+    function IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer(;)
         o = new()
-        set_field!(o, :failurePolicy, failurePolicy)
-        set_field!(o, :name, name)
-        set_field!(o, :rules, rules)
         o
     end
 end # type IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer
 
-const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer = Dict{String,Symbol}(["failurePolicy"=>:failurePolicy, "name"=>:name, "rules"=>:rules])
-const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer = Dict{Symbol,String}([:failurePolicy=>"failurePolicy", :name=>"name", :rules=>"rules"])
+const _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer }) = _name_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer }) = _field_map_IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer
 
 function check_required(o::IoK8sKubernetesPkgApisAdmissionregistrationV1alpha1Initializer)
-    isnull(o.name) && (return false)
     true
 end
 

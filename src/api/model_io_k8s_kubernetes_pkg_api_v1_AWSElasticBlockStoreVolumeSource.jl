@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource <: SwaggerModel
-    fsType::Nullable{ String } # fsType
-    partition::Nullable{ Int32 } # partition
-    readOnly::Nullable{ Bool } # readOnly
-    volumeID::Nullable{ String } # volumeID
 
-    function IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource(;fsType=nothing, partition=nothing, readOnly=nothing, volumeID=nothing)
+    function IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource(;)
         o = new()
-        set_field!(o, :fsType, fsType)
-        set_field!(o, :partition, partition)
-        set_field!(o, :readOnly, readOnly)
-        set_field!(o, :volumeID, volumeID)
         o
     end
 end # type IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource
 
-const _name_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource = Dict{String,Symbol}(["fsType"=>:fsType, "partition"=>:partition, "readOnly"=>:readOnly, "volumeID"=>:volumeID])
-const _field_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource = Dict{Symbol,String}([:fsType=>"fsType", :partition=>"partition", :readOnly=>"readOnly", :volumeID=>"volumeID"])
+const _name_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource }) = _name_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource }) = _field_map_IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource
 
 function check_required(o::IoK8sKubernetesPkgApiV1AWSElasticBlockStoreVolumeSource)
-    isnull(o.volumeID) && (return false)
     true
 end
 

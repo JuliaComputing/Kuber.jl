@@ -2,21 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus <: SwaggerModel
-    accessModes::Nullable{ Vector{String} } # accessModes
-    capacity::Nullable{ Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # capacity
-    phase::Nullable{ String } # phase
 
-    function IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus(;accessModes=nothing, capacity=nothing, phase=nothing)
+    function IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus(;)
         o = new()
-        set_field!(o, :accessModes, accessModes)
-        set_field!(o, :capacity, capacity)
-        set_field!(o, :phase, phase)
         o
     end
 end # type IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus
 
-const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus = Dict{String,Symbol}(["accessModes"=>:accessModes, "capacity"=>:capacity, "phase"=>:phase])
-const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus = Dict{Symbol,String}([:accessModes=>"accessModes", :capacity=>"capacity", :phase=>"phase"])
+const _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus }) = _name_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus }) = _field_map_IoK8sKubernetesPkgApiV1PersistentVolumeClaimStatus
 

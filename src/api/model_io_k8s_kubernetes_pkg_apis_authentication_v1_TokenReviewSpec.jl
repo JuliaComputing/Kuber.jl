@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec <: SwaggerModel
-    token::Nullable{ String } # token
 
-    function IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec(;token=nothing)
+    function IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec(;)
         o = new()
-        set_field!(o, :token, token)
         o
     end
 end # type IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec
 
-const _name_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec = Dict{String,Symbol}(["token"=>:token])
-const _field_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec = Dict{Symbol,String}([:token=>"token"])
+const _name_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec }) = _name_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec }) = _field_map_IoK8sKubernetesPkgApisAuthenticationV1TokenReviewSpec
 

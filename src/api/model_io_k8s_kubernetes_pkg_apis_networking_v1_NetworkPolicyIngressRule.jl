@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule <: SwaggerModel
-    from::Nullable{ Vector{IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyPeer} } # from
-    ports::Nullable{ Vector{IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyPort} } # ports
 
-    function IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule(;from=nothing, ports=nothing)
+    function IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule(;)
         o = new()
-        set_field!(o, :from, from)
-        set_field!(o, :ports, ports)
         o
     end
 end # type IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule
 
-const _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule = Dict{String,Symbol}(["from"=>:from, "ports"=>:ports])
-const _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule = Dict{Symbol,String}([:from=>"from", :ports=>"ports"])
+const _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule }) = _name_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule }) = _field_map_IoK8sKubernetesPkgApisNetworkingV1NetworkPolicyIngressRule
 

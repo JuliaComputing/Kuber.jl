@@ -2,25 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend <: SwaggerModel
-    serviceName::Nullable{ String } # serviceName
-    servicePort::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # servicePort
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend(;serviceName=nothing, servicePort=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend(;)
         o = new()
-        set_field!(o, :serviceName, serviceName)
-        set_field!(o, :servicePort, servicePort)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend = Dict{String,Symbol}(["serviceName"=>:serviceName, "servicePort"=>:servicePort])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend = Dict{Symbol,String}([:serviceName=>"serviceName", :servicePort=>"servicePort"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend)
-    isnull(o.serviceName) && (return false)
-    isnull(o.servicePort) && (return false)
     true
 end
 

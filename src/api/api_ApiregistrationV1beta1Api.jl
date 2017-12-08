@@ -47,20 +47,24 @@ end
 
 delete collection of APIService
 Param: pretty::String
+Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
 Param: labelSelector::String
+Param: limit::Int32
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteApiregistrationV1beta1CollectionAPIService(_api::ApiregistrationV1beta1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteApiregistrationV1beta1CollectionAPIService(_api::ApiregistrationV1beta1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
@@ -85,20 +89,24 @@ end
 
 list or watch objects of kind APIService
 Param: pretty::String
+Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
 Param: labelSelector::String
+Param: limit::Int32
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceList
 """
-function listApiregistrationV1beta1APIService(_api::ApiregistrationV1beta1Api; pretty=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listApiregistrationV1beta1APIService(_api::ApiregistrationV1beta1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceList, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
@@ -182,21 +190,25 @@ end
 
 watch changes to an object of kind APIService
 Param: name::String (required)
+Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
 Param: labelSelector::String
+Param: limit::Int32
 Param: pretty::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchApiregistrationV1beta1APIService(_api::ApiregistrationV1beta1Api, name::String; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchApiregistrationV1beta1APIService(_api::ApiregistrationV1beta1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
@@ -209,20 +221,24 @@ end
 """
 
 watch individual changes to a list of APIService
+Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
 Param: labelSelector::String
+Param: limit::Int32
 Param: pretty::String
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchApiregistrationV1beta1APIServiceList(_api::ApiregistrationV1beta1Api; fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchApiregistrationV1beta1APIServiceList(_api::ApiregistrationV1beta1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
     Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32

@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus <: SwaggerModel
-    active::Nullable{ Vector{IoK8sKubernetesPkgApiV1ObjectReference} } # active
-    lastScheduleTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # lastScheduleTime
 
-    function IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus(;active=nothing, lastScheduleTime=nothing)
+    function IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus(;)
         o = new()
-        set_field!(o, :active, active)
-        set_field!(o, :lastScheduleTime, lastScheduleTime)
         o
     end
 end # type IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus
 
-const _name_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus = Dict{String,Symbol}(["active"=>:active, "lastScheduleTime"=>:lastScheduleTime])
-const _field_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus = Dict{Symbol,String}([:active=>"active", :lastScheduleTime=>"lastScheduleTime"])
+const _name_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus }) = _name_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus }) = _field_map_IoK8sKubernetesPkgApisBatchV2alpha1CronJobStatus
 

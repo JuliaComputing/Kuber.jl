@@ -2,31 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition <: SwaggerModel
-    lastTransitionTime::Nullable{ IoK8sApimachineryPkgApisMetaV1Time } # lastTransitionTime
-    message::Nullable{ String } # message
-    reason::Nullable{ String } # reason
-    status::Nullable{ String } # status
-    _type::Nullable{ String } # type
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition(;lastTransitionTime=nothing, message=nothing, reason=nothing, status=nothing, _type=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition(;)
         o = new()
-        set_field!(o, :lastTransitionTime, lastTransitionTime)
-        set_field!(o, :message, message)
-        set_field!(o, :reason, reason)
-        set_field!(o, :status, status)
-        set_field!(o, :_type, _type)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition = Dict{String,Symbol}(["lastTransitionTime"=>:lastTransitionTime, "message"=>:message, "reason"=>:reason, "status"=>:status, "type"=>:_type])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition = Dict{Symbol,String}([:lastTransitionTime=>"lastTransitionTime", :message=>"message", :reason=>"reason", :status=>"status", :_type=>"type"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1ReplicaSetCondition)
-    isnull(o.status) && (return false)
-    isnull(o._type) && (return false)
     true
 end
 

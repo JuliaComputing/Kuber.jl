@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ResourceRequirements <: SwaggerModel
-    limits::Nullable{ Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # limits
-    requests::Nullable{ Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # requests
 
-    function IoK8sKubernetesPkgApiV1ResourceRequirements(;limits=nothing, requests=nothing)
+    function IoK8sKubernetesPkgApiV1ResourceRequirements(;)
         o = new()
-        set_field!(o, :limits, limits)
-        set_field!(o, :requests, requests)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ResourceRequirements
 
-const _name_map_IoK8sKubernetesPkgApiV1ResourceRequirements = Dict{String,Symbol}(["limits"=>:limits, "requests"=>:requests])
-const _field_map_IoK8sKubernetesPkgApiV1ResourceRequirements = Dict{Symbol,String}([:limits=>"limits", :requests=>"requests"])
+const _name_map_IoK8sKubernetesPkgApiV1ResourceRequirements = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ResourceRequirements = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ResourceRequirements }) = _name_map_IoK8sKubernetesPkgApiV1ResourceRequirements
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ResourceRequirements }) = _field_map_IoK8sKubernetesPkgApiV1ResourceRequirements
 

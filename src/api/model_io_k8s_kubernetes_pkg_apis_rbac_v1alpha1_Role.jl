@@ -2,28 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisRbacV1alpha1Role <: SwaggerModel
-    apiVersion::Nullable{ String } # apiVersion
-    kind::Nullable{ String } # kind
-    metadata::Nullable{ IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
-    rules::Nullable{ Vector{IoK8sKubernetesPkgApisRbacV1alpha1PolicyRule} } # rules
 
-    function IoK8sKubernetesPkgApisRbacV1alpha1Role(;apiVersion=nothing, kind=nothing, metadata=nothing, rules=nothing)
+    function IoK8sKubernetesPkgApisRbacV1alpha1Role(;)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :kind, kind)
-        set_field!(o, :metadata, metadata)
-        set_field!(o, :rules, rules)
         o
     end
 end # type IoK8sKubernetesPkgApisRbacV1alpha1Role
 
-const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Role = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "rules"=>:rules])
-const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Role = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :rules=>"rules"])
+const _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Role = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Role = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1Role }) = _name_map_IoK8sKubernetesPkgApisRbacV1alpha1Role
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisRbacV1alpha1Role }) = _field_map_IoK8sKubernetesPkgApisRbacV1alpha1Role
 
 function check_required(o::IoK8sKubernetesPkgApisRbacV1alpha1Role)
-    isnull(o.rules) && (return false)
     true
 end
 

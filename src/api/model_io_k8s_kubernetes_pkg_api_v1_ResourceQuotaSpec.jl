@@ -2,19 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1ResourceQuotaSpec <: SwaggerModel
-    hard::Nullable{ Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # hard
-    scopes::Nullable{ Vector{String} } # scopes
 
-    function IoK8sKubernetesPkgApiV1ResourceQuotaSpec(;hard=nothing, scopes=nothing)
+    function IoK8sKubernetesPkgApiV1ResourceQuotaSpec(;)
         o = new()
-        set_field!(o, :hard, hard)
-        set_field!(o, :scopes, scopes)
         o
     end
 end # type IoK8sKubernetesPkgApiV1ResourceQuotaSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec = Dict{String,Symbol}(["hard"=>:hard, "scopes"=>:scopes])
-const _field_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec = Dict{Symbol,String}([:hard=>"hard", :scopes=>"scopes"])
+const _name_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1ResourceQuotaSpec }) = _name_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1ResourceQuotaSpec }) = _field_map_IoK8sKubernetesPkgApiV1ResourceQuotaSpec
 

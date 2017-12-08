@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1TCPSocketAction <: SwaggerModel
-    host::Nullable{ String } # host
-    port::Nullable{ IoK8sApimachineryPkgUtilIntstrIntOrString } # port
 
-    function IoK8sKubernetesPkgApiV1TCPSocketAction(;host=nothing, port=nothing)
+    function IoK8sKubernetesPkgApiV1TCPSocketAction(;)
         o = new()
-        set_field!(o, :host, host)
-        set_field!(o, :port, port)
         o
     end
 end # type IoK8sKubernetesPkgApiV1TCPSocketAction
 
-const _name_map_IoK8sKubernetesPkgApiV1TCPSocketAction = Dict{String,Symbol}(["host"=>:host, "port"=>:port])
-const _field_map_IoK8sKubernetesPkgApiV1TCPSocketAction = Dict{Symbol,String}([:host=>"host", :port=>"port"])
+const _name_map_IoK8sKubernetesPkgApiV1TCPSocketAction = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1TCPSocketAction = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1TCPSocketAction }) = _name_map_IoK8sKubernetesPkgApiV1TCPSocketAction
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1TCPSocketAction }) = _field_map_IoK8sKubernetesPkgApiV1TCPSocketAction
 
 function check_required(o::IoK8sKubernetesPkgApiV1TCPSocketAction)
-    isnull(o.port) && (return false)
     true
 end
 

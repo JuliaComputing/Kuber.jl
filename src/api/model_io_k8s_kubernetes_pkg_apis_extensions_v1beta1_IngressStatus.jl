@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus <: SwaggerModel
-    loadBalancer::Nullable{ IoK8sKubernetesPkgApiV1LoadBalancerStatus } # loadBalancer
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus(;loadBalancer=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus(;)
         o = new()
-        set_field!(o, :loadBalancer, loadBalancer)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus = Dict{String,Symbol}(["loadBalancer"=>:loadBalancer])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus = Dict{Symbol,String}([:loadBalancer=>"loadBalancer"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1IngressStatus
 

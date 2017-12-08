@@ -2,22 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1LimitRangeSpec <: SwaggerModel
-    limits::Nullable{ Vector{IoK8sKubernetesPkgApiV1LimitRangeItem} } # limits
 
-    function IoK8sKubernetesPkgApiV1LimitRangeSpec(;limits=nothing)
+    function IoK8sKubernetesPkgApiV1LimitRangeSpec(;)
         o = new()
-        set_field!(o, :limits, limits)
         o
     end
 end # type IoK8sKubernetesPkgApiV1LimitRangeSpec
 
-const _name_map_IoK8sKubernetesPkgApiV1LimitRangeSpec = Dict{String,Symbol}(["limits"=>:limits])
-const _field_map_IoK8sKubernetesPkgApiV1LimitRangeSpec = Dict{Symbol,String}([:limits=>"limits"])
+const _name_map_IoK8sKubernetesPkgApiV1LimitRangeSpec = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1LimitRangeSpec = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1LimitRangeSpec }) = _name_map_IoK8sKubernetesPkgApiV1LimitRangeSpec
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1LimitRangeSpec }) = _field_map_IoK8sKubernetesPkgApiV1LimitRangeSpec
 
 function check_required(o::IoK8sKubernetesPkgApiV1LimitRangeSpec)
-    isnull(o.limits) && (return false)
     true
 end
 

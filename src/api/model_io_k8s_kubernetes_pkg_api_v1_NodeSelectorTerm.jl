@@ -2,22 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApiV1NodeSelectorTerm <: SwaggerModel
-    matchExpressions::Nullable{ Vector{IoK8sKubernetesPkgApiV1NodeSelectorRequirement} } # matchExpressions
 
-    function IoK8sKubernetesPkgApiV1NodeSelectorTerm(;matchExpressions=nothing)
+    function IoK8sKubernetesPkgApiV1NodeSelectorTerm(;)
         o = new()
-        set_field!(o, :matchExpressions, matchExpressions)
         o
     end
 end # type IoK8sKubernetesPkgApiV1NodeSelectorTerm
 
-const _name_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm = Dict{String,Symbol}(["matchExpressions"=>:matchExpressions])
-const _field_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm = Dict{Symbol,String}([:matchExpressions=>"matchExpressions"])
+const _name_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApiV1NodeSelectorTerm }) = _name_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApiV1NodeSelectorTerm }) = _field_map_IoK8sKubernetesPkgApiV1NodeSelectorTerm
 
 function check_required(o::IoK8sKubernetesPkgApiV1NodeSelectorTerm)
-    isnull(o.matchExpressions) && (return false)
     true
 end
 

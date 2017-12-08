@@ -2,24 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath <: SwaggerModel
-    backend::Nullable{ IoK8sKubernetesPkgApisExtensionsV1beta1IngressBackend } # backend
-    path::Nullable{ String } # path
 
-    function IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath(;backend=nothing, path=nothing)
+    function IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath(;)
         o = new()
-        set_field!(o, :backend, backend)
-        set_field!(o, :path, path)
         o
     end
 end # type IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath
 
-const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath = Dict{String,Symbol}(["backend"=>:backend, "path"=>:path])
-const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath = Dict{Symbol,String}([:backend=>"backend", :path=>"path"])
+const _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath = Dict{String,Symbol}([])
+const _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath }) = _name_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath
 Swagger.field_map(::Type{ IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath }) = _field_map_IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath
 
 function check_required(o::IoK8sKubernetesPkgApisExtensionsV1beta1HTTPIngressPath)
-    isnull(o.backend) && (return false)
     true
 end
 
