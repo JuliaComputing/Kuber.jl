@@ -3258,6 +3258,7 @@ Param: pretty::String
 Return: IoK8sApiCoreV1Node
 """
 function patchCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+    info("body = $body")
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Node, "/api/v1/nodes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
