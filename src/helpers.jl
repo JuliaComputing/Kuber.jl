@@ -13,7 +13,9 @@ type KuberContext
     namespace::String
 
     function KuberContext()
-        new(Swagger.Client(DEFAULT_URI), Dict{Symbol,Vector}(), Dict{Symbol,KApi}(), DEFAULT_NAMESPACE)
+        ctx = Swagger.Client(DEFAULT_URI)
+        ctx.headers["Connection"] = "close"
+        new(ctx, Dict{Symbol,Vector}(), Dict{Symbol,KApi}(), DEFAULT_NAMESPACE)
     end
 end
 
@@ -60,6 +62,7 @@ get_ns(ctx::KuberContext) = ctx.namespace
 function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; kwargs...)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
+    ctx.client.headers["Connection"] = "close"
     reset_api_versions && set_api_versions!(ctx)
     ctx.client
 end
