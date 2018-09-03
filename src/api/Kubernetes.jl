@@ -3,8 +3,9 @@
 
 module Kubernetes
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert

@@ -2026,129 +2026,6 @@ export watchPodDisruptionBudgetListForAllNamespaces
 getAPIGroup(_api::RbacAuthorizationApi; _mediaType=nothing) = getRbacAuthorizationAPIGroup(_api; _mediaType=_mediaType)
 export getAPIGroup
 
-createClusterRole(_api::RbacAuthorizationV1alpha1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1ClusterRole(_api, body; pretty=pretty, _mediaType=_mediaType)
-export createClusterRole
-
-createClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1ClusterRoleBinding(_api, body; pretty=pretty, _mediaType=_mediaType)
-export createClusterRoleBinding
-
-createNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1NamespacedRole(_api, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export createNamespacedRole
-
-createNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export createNamespacedRoleBinding
-
-deleteClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-export deleteClusterRole
-
-deleteClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-export deleteClusterRoleBinding
-
-deleteCollectionClusterRole(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export deleteCollectionClusterRole
-
-deleteCollectionClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export deleteCollectionClusterRoleBinding
-
-deleteCollectionNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export deleteCollectionNamespacedRole
-
-deleteCollectionNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export deleteCollectionNamespacedRoleBinding
-
-deleteNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-export deleteNamespacedRole
-
-deleteNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-export deleteNamespacedRoleBinding
-
-getAPIResources(_api::RbacAuthorizationV1alpha1Api; _mediaType=nothing) = getRbacAuthorizationV1alpha1APIResources(_api; _mediaType=_mediaType)
-export getAPIResources
-
-listClusterRole(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1ClusterRole(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listClusterRole
-
-listClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1ClusterRoleBinding(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listClusterRoleBinding
-
-listNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1NamespacedRole(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listNamespacedRole
-
-listNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listNamespacedRoleBinding
-
-listRoleBindingForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listRoleBindingForAllNamespaces
-
-listRoleForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export listRoleForAllNamespaces
-
-patchClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, _mediaType=_mediaType)
-export patchClusterRole
-
-patchClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, _mediaType=_mediaType)
-export patchClusterRoleBinding
-
-patchNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export patchNamespacedRole
-
-patchNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export patchNamespacedRoleBinding
-
-readClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1ClusterRole(_api, name; pretty=pretty, _mediaType=_mediaType)
-export readClusterRole
-
-readClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name; pretty=pretty, _mediaType=_mediaType)
-export readClusterRoleBinding
-
-readNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
-export readNamespacedRole
-
-readNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
-export readNamespacedRoleBinding
-
-replaceClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, _mediaType=_mediaType)
-export replaceClusterRole
-
-replaceClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, _mediaType=_mediaType)
-export replaceClusterRoleBinding
-
-replaceNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export replaceNamespacedRole
-
-replaceNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
-export replaceNamespacedRoleBinding
-
-watchClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRole(_api, name; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchClusterRole
-
-watchClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchClusterRoleBinding
-
-watchClusterRoleBindingList(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchClusterRoleBindingList
-
-watchClusterRoleList(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleList(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchClusterRoleList
-
-watchNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchNamespacedRole
-
-watchNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchNamespacedRoleBinding
-
-watchNamespacedRoleBindingList(_api::RbacAuthorizationV1alpha1Api, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchNamespacedRoleBindingList
-
-watchNamespacedRoleList(_api::RbacAuthorizationV1alpha1Api, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleList(_api, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchNamespacedRoleList
-
-watchRoleBindingListForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchRoleBindingListForAllNamespaces
-
-watchRoleListForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-export watchRoleListForAllNamespaces
-
 createClusterRole(_api::RbacAuthorizationV1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1ClusterRole(_api, body; pretty=pretty, _mediaType=_mediaType)
 export createClusterRole
 
@@ -2270,6 +2147,129 @@ watchRoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api; _continue=not
 export watchRoleBindingListForAllNamespaces
 
 watchRoleListForAllNamespaces(_api::RbacAuthorizationV1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1RoleListForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchRoleListForAllNamespaces
+
+createClusterRole(_api::RbacAuthorizationV1alpha1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1ClusterRole(_api, body; pretty=pretty, _mediaType=_mediaType)
+export createClusterRole
+
+createClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1ClusterRoleBinding(_api, body; pretty=pretty, _mediaType=_mediaType)
+export createClusterRoleBinding
+
+createNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1NamespacedRole(_api, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export createNamespacedRole
+
+createNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export createNamespacedRoleBinding
+
+deleteClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+export deleteClusterRole
+
+deleteClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+export deleteClusterRoleBinding
+
+deleteCollectionClusterRole(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionClusterRole(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export deleteCollectionClusterRole
+
+deleteCollectionClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionClusterRoleBinding(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export deleteCollectionClusterRoleBinding
+
+deleteCollectionNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionNamespacedRole(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export deleteCollectionNamespacedRole
+
+deleteCollectionNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1CollectionNamespacedRoleBinding(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export deleteCollectionNamespacedRoleBinding
+
+deleteNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+export deleteNamespacedRole
+
+deleteNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deleteRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+export deleteNamespacedRoleBinding
+
+getAPIResources(_api::RbacAuthorizationV1alpha1Api; _mediaType=nothing) = getRbacAuthorizationV1alpha1APIResources(_api; _mediaType=_mediaType)
+export getAPIResources
+
+listClusterRole(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1ClusterRole(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listClusterRole
+
+listClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1ClusterRoleBinding(_api; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listClusterRoleBinding
+
+listNamespacedRole(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1NamespacedRole(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listNamespacedRole
+
+listNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, namespace; pretty=pretty, _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listNamespacedRoleBinding
+
+listRoleBindingForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1RoleBindingForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listRoleBindingForAllNamespaces
+
+listRoleForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listRbacAuthorizationV1alpha1RoleForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listRoleForAllNamespaces
+
+patchClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, _mediaType=_mediaType)
+export patchClusterRole
+
+patchClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, _mediaType=_mediaType)
+export patchClusterRoleBinding
+
+patchNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export patchNamespacedRole
+
+patchNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = patchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export patchNamespacedRoleBinding
+
+readClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1ClusterRole(_api, name; pretty=pretty, _mediaType=_mediaType)
+export readClusterRole
+
+readClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name; pretty=pretty, _mediaType=_mediaType)
+export readClusterRoleBinding
+
+readNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
+export readNamespacedRole
+
+readNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing) = readRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
+export readNamespacedRoleBinding
+
+replaceClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1ClusterRole(_api, name, body; pretty=pretty, _mediaType=_mediaType)
+export replaceClusterRole
+
+replaceClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name, body; pretty=pretty, _mediaType=_mediaType)
+export replaceClusterRoleBinding
+
+replaceNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export replaceNamespacedRole
+
+replaceNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing) = replaceRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, _mediaType=_mediaType)
+export replaceNamespacedRoleBinding
+
+watchClusterRole(_api::RbacAuthorizationV1alpha1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRole(_api, name; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchClusterRole
+
+watchClusterRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleBinding(_api, name; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchClusterRoleBinding
+
+watchClusterRoleBindingList(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleBindingList(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchClusterRoleBindingList
+
+watchClusterRoleList(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1ClusterRoleList(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchClusterRoleList
+
+watchNamespacedRole(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRole(_api, name, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchNamespacedRole
+
+watchNamespacedRoleBinding(_api::RbacAuthorizationV1alpha1Api, name::String, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleBinding(_api, name, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchNamespacedRoleBinding
+
+watchNamespacedRoleBindingList(_api::RbacAuthorizationV1alpha1Api, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleBindingList(_api, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchNamespacedRoleBindingList
+
+watchNamespacedRoleList(_api::RbacAuthorizationV1alpha1Api, namespace::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1NamespacedRoleList(_api, namespace; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchNamespacedRoleList
+
+watchRoleBindingListForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1RoleBindingListForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export watchRoleBindingListForAllNamespaces
+
+watchRoleListForAllNamespaces(_api::RbacAuthorizationV1alpha1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchRbacAuthorizationV1alpha1RoleListForAllNamespaces(_api; _continue=_continue, fieldSelector=fieldSelector, includeUninitialized=includeUninitialized, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
 export watchRoleListForAllNamespaces
 
 createClusterRole(_api::RbacAuthorizationV1beta1Api, body; pretty=nothing, _mediaType=nothing) = createRbacAuthorizationV1beta1ClusterRole(_api, body; pretty=pretty, _mediaType=_mediaType)

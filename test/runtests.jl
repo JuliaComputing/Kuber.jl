@@ -1,5 +1,5 @@
 using Kuber
-using Base.Test
+using Test
 using Swagger
 
 #On GCE:
