@@ -25,7 +25,7 @@ function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     end
 end
 
-function get(ctx::KuberContext, O::Symbol; label_selector=nothing, namespace::Union{String,Void}=ctx.namespace)
+function get(ctx::KuberContext, O::Symbol; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
     kapi = ctx.modelapi[O]
@@ -44,7 +44,7 @@ function get(ctx::KuberContext, O::Symbol; label_selector=nothing, namespace::Un
     end
 end
 
-function put!{T<:SwaggerModel}(ctx::KuberContext, v::T)
+function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     put!(ctx, Symbol(vjson["kind"]), vjson)
 end
@@ -65,7 +65,7 @@ function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     end
 end
 
-function delete!{T<:SwaggerModel}(ctx::KuberContext, v::T; kwargs...)
+function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
@@ -99,7 +99,7 @@ function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     end
 end
 
-function update!{T<:SwaggerModel}(ctx::KuberContext, v::T, patch, patch_type)
+function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]

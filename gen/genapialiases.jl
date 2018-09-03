@@ -1,10 +1,10 @@
 function kuberapi(io::IO, file::String)
     apiname = split(basename(file), ".")[1]
-    contents = readstring(file)
+    contents = read(file, String)
     wrapped = """module $apiname
         $contents
     end"""
-    kuberapi(io::IO, parse(wrapped))
+    kuberapi(io::IO, Meta.parse(wrapped))
 end
 
 function findtype(X::Expr, what::Symbol)
@@ -19,12 +19,14 @@ function foralltype(X::Expr, what::Symbol, fn)
     if X.head === what
         fn(X)
     end
-    if :args in fieldnames(X) && !isempty(X.args)
+    if :args in fieldnames(typeof(X)) && !isempty(X.args)
         for Xsub in X.args
             isa(Xsub, Expr) && foralltype(Xsub, what, fn)
         end
     end
 end
+
+_rep!(x) = append!(x, x)
 
 function emit_alias(io::IO, X::Expr, apidecoration::String)
     callnode = findtype(X, :call)
@@ -37,7 +39,9 @@ function emit_alias(io::IO, X::Expr, apidecoration::String)
     rhskwparams = []
     try
         kwparams = map(string, findtype(callnode, :parameters).args)
-        rhskwparams = map((p)->join(repmat([split(split(p,'=')[1], ':')[1]], 2), '='), kwparams)
+        rhskwparams = map((p)->join(_rep!([split(split(p,'=')[1], ':')[1]]), '='), kwparams)
+    catch
+        # ignore
     end
     kwargs = isempty(kwparams) ? "" : ("; " * join(kwparams, ", "))
     rhskwargs = isempty(rhskwparams) ? "" : ("; " * join(rhskwparams, ", "))
@@ -66,7 +70,7 @@ end
 function kuberapi(io::IO, M::Expr)
     mod = findtype(M, :module)
     modblock = findtype(mod, :block)
-    typ = findtype(modblock, :type)
+    typ = findtype(modblock, :struct)
     typedecl = findtype(typ, :<:)
     typename = typedecl.args[1]
     stypename = string(typename)
@@ -79,13 +83,13 @@ function kuberapi(io::IO, M::Expr)
 end
 
 function gen_aliases(folder::String, output::String)
-    info("reading $folder/api_*.jl")
-    info("generating $output")
+    @info("reading $folder/api_*.jl")
+    @info("generating $output")
 
     open("$output", "w") do faliases
         for file in readdir(folder)
             if startswith(file, "api_")
-                info("    - ", file)
+                @info("    - " * file)
                 kuberapi(faliases, joinpath(folder, file))
             end
         end

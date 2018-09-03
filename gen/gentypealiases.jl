@@ -28,7 +28,7 @@ function model_prefixes()
         suffix = apiname
         if startswith(apiname, "RbacAuthorization")
             pfx = "IoK8sApi"
-            suffix = replace(apiname, "Authorization", "")
+            suffix = replace(apiname, "Authorization"=>"")
         elseif startswith(apiname, "Apiextensions")
             pfx = "IoK8sApiextensionsApiserverPkgApis"
         elseif startswith(apiname, "Apiregistration")

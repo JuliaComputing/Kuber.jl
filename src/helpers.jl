@@ -1,12 +1,12 @@
 const DEFAULT_NAMESPACE = "default"
 const DEFAULT_URI = "http://localhost:8001"
 
-immutable KApi
+struct KApi
     api::DataType
     types::Module
 end
 
-type KuberContext
+mutable struct KuberContext
     client::Swagger.Client
     apis::Dict{Symbol,Vector{KApi}}
     modelapi::Dict{Symbol,KApi}
@@ -19,33 +19,33 @@ type KuberContext
     end
 end
 
-convert{T<:SwaggerModel}(::Type{T}, json::String) = convert(T, JSON.parse(json))
-convert{T<:SwaggerModel}(::Type{Dict{String,Any}}, model::T) = JSON.parse(JSON.json(model))
+convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
+convert(::Type{Dict{String,Any}}, model::T) where {T<:SwaggerModel} = JSON.parse(JSON.json(model))
 
-is_json_mime(mime::String) = ("*/*" == mime) || ismatch(r"(?i)application/json(;.*)?", mime)
+is_json_mime(mime::AbstractString) = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime)
 
 # TODO: optionally take apiVersion string, instead of taking preferred version from the context
 kind_to_type(ctx::KuberContext, kind::String) = kind_to_type(ctx, Symbol(kind))
 function kind_to_type(ctx::KuberContext, kind::Symbol)
     kapi = ctx.modelapi[kind]
-    eval(kapi.types, kind)
+    getfield(kapi.types, kind)
 end
 
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
 kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, JSON.parse(data))
 
-function kuber_type(ctx::KuberContext, T, resp::Response)
-    ctype = get(resp.headers, "Content-Type", "application/json")
+function kuber_type(ctx::KuberContext, T, resp::HTTP.Response)
+    ctype = HTTP.header(resp, "Content-Type", "application/json")
     !is_json_mime(ctype) && return T
-    kuber_type(ctx, T, String(resp.data))
+    kuber_type(ctx, T, String(copy(resp.body)))
 end
 
 function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
     if ("kind" in keys(j)) && !isempty(ctx.apis)
         try
             T = kind_to_type(ctx, j["kind"])
-        catch
-            println(STDERR, "Type not found: $(j["kind"])")
+        catch ex
+            println(stderr, "Type not found: $(j["kind"])")
         end
     end
     T
@@ -83,7 +83,7 @@ function api_group_type(group_name::String)
     group, ver = split(group_name, "/")
     group = api_group(group)
     ver = camel(ver)
-    eval(Symbol(group * ver * "Api"))
+    getfield(@__MODULE__, Symbol(group * ver * "Api"))
 end
 
 api_typedefs(group_name) = api_typedefs(String(group_name))
@@ -91,7 +91,7 @@ function api_typedefs(group_name::String)
     group, ver = split(group_name, "/")
     group = api_group(group)
     ver = camel(ver)
-    eval(eval(:Typedefs), Symbol(group * ver))
+    getfield(getfield(@__MODULE__, :Typedefs), Symbol(group * ver))
 end
 
 function api_method(group_name::String, verb::String, object::String)
@@ -100,40 +100,40 @@ function api_method(group_name::String, verb::String, object::String)
     group_parts = split(group, ".")
     group = join([camel(String(x)) for x in group_parts])
     ver = camel(ver)
-    eval(Symbol(verb * group * ver * object))
+    getfield(@__MODULE__, Symbol(verb * group * ver * object))
 end
 
-api_method(group::Symbol, verb::String, object::String) = eval(Symbol(verb * String(group)[1:end-3] * object))
+api_method(group::Symbol, verb::String, object::String) = getfield(@__MODULE__, Symbol(verb * String(group)[1:end-3] * object))
 
 function fetch_misc_apis_versions(ctx::KuberContext)
     apis = ctx.apis
     vers = getAPIVersions(ApisApi(ctx.client))
-    api_groups = get(vers.groups)
+    api_groups = vers.groups
     for apigrp in api_groups
-        name = get(apigrp.name)
-        pref_vers_type = get(apigrp.preferredVersion)
-        pref_vers = get(pref_vers_type.groupVersion)
+        name = apigrp.name
+        pref_vers_type = apigrp.preferredVersion
+        pref_vers = pref_vers_type.groupVersion
 
         try
             apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
         catch ex
             if isa(ex, UndefVarError)
-                info("unsupported ", pref_vers)
+                @info("unsupported $pref_vers")
                 continue
             else
                 rethrow()
             end
         end
 
-        for api_vers in get(apigrp.versions)
+        for api_vers in apigrp.versions
             try
-                gt = api_group_type(get(api_vers.groupVersion))
-                td = api_typedefs(get(api_vers.groupVersion))
+                gt = api_group_type(api_vers.groupVersion)
+                td = api_typedefs(api_vers.groupVersion)
                 ka = KApi(gt, td)
                 kalist = apis[Symbol(api_group(name))]
                 (ka == kalist[1]) || push!(kalist, ka)
             catch
-                info("unsupported ", get(api_vers.groupVersion))
+                @info("unsupported $(api_vers.groupVersion)")
             end
         end
     end
@@ -144,17 +144,17 @@ function fetch_core_version(ctx::KuberContext)
     apis = ctx.apis
     api_vers = getCoreAPIVersions(CoreApi(ctx.client))
     name = "Core"
-    pref_vers = get(api_vers.versions)[1]
-    apis[:Core] = [KApi(eval(Symbol("Core" * camel(pref_vers) * "Api")), eval(eval(:Typedefs), Symbol("Core" * camel(pref_vers))))]
-    for api_vers in get(api_vers.versions)
+    pref_vers = api_vers.versions[1]
+    apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
+    for api_vers in api_vers.versions
         try
-            gt = eval(Symbol("Core" * camel(api_vers) * "Api"))
-            td = eval(eval(:Typedefs), Symbol("Core" * camel(api_vers)))
+            gt = getfield(@__MODULE__, Symbol("Core" * camel(api_vers) * "Api"))
+            td = getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(api_vers)))
             ka = KApi(gt, td)
             kalist = apis[:Core]
             (ka == kalist[1]) || push!(kalist, ka)
         catch
-            info("unsupported Core ", api_vers)
+            @info("unsupported Core $api_vers")
         end
     end
     apis
@@ -167,14 +167,14 @@ function fetch_api_machinery(ctx::KuberContext)
 end
 
 function build_model_api_map(ctx::KuberContext)
-    #info("building model - api map...")
+    #@info("building model - api map...")
     modelapi = ctx.modelapi
     for (apigroup,apivers) in ctx.apis
         apiver = apivers[1]
         types = apiver.types
-        #info("building model for ", apiver)
+        #@info("building model for $apiver")
 
-        for name in names(types, true)
+        for name in names(types; all=true)
             ((name === :eval) || (name === Symbol("#eval")) || (name === Symbol(split(string(types), '.')[end]))) && continue
             modelapi[name] = apiver
         end
