@@ -19,6 +19,7 @@ mutable struct KuberContext
     end
 end
 
+convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
 convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
 convert(::Type{Dict{String,Any}}, model::T) where {T<:SwaggerModel} = JSON.parse(JSON.json(model))
 
