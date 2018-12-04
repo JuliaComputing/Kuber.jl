@@ -7,7 +7,7 @@ end
 sel(label::String, op::Symbol, items::String...) = label * " " * string(op) * " (" * join(items, ",") * ")"
 sel(cnd::String...) = join(cnd, ", ")
 
-_delopts(; kwargs...) = Typedefs.Apis.DeleteOptions(; preconditions=Typedefs.Apis.Preconditions(; kwargs...), kwargs...)
+_delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
 function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)

@@ -146,6 +146,7 @@ function fetch_core_version(ctx::KuberContext)
     api_vers = getCoreAPIVersions(CoreApi(ctx.client))
     name = "Core"
     pref_vers = api_vers.versions[1]
+    @info("Core versions", supported=join(api_vers.versions, ","), preferred=pref_vers)
     apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
     for api_vers in api_vers.versions
         try
@@ -164,6 +165,7 @@ end
 function fetch_api_machinery(ctx::KuberContext)
     apis = ctx.apis
     apis[:Apis] = [KApi(Kuber.Kubernetes.ApisApi, Kuber.Typedefs.Apis)]
+    apis[:MetaV1] = [KApi(Kuber.Kubernetes.ApisApi, Kuber.Typedefs.MetaV1)]
     apis
 end
 
@@ -176,7 +178,7 @@ function build_model_api_map(ctx::KuberContext)
         #@info("building model for $apiver")
 
         for name in names(types; all=true)
-            ((name === :eval) || (name === Symbol("#eval")) || (name === Symbol(split(string(types), '.')[end]))) && continue
+            (name in [:eval, Symbol("#eval"), :include, Symbol("#include"), Symbol(split(string(types), '.')[end])]) && continue
             modelapi[name] = apiver
         end
     end

@@ -2,6 +2,15 @@
 
 if [ $# -ne 1 ]; then
     echo "Usage: generate.sh <path to kubernetes specifications folder>"
+    echo "Ensure:"
+    echo "  - 'julia' is in PATH or set in environment variable 'JULIA'."
+    echo "  - package directory is writable."
+    echo "Note:"
+    echo "  - your current 'src/api' folder in the package will be renamed to 'src/api_bak'"
+    echo "  - existing 'src/api_bak' folder if any will be deleted"
+    echo "Ref:"
+    echo "  - API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md"
+    echo "  - API: https://kubernetes.io/docs/concepts/overview/kubernetes-api/"
     exit 1
 fi
 
