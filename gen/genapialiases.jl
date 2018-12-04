@@ -1,100 +1,124 @@
-function kuberapi(io::IO, file::String)
-    apiname = split(basename(file), ".")[1]
-    contents = read(file, String)
-    wrapped = """module $apiname
-        $contents
-    end"""
-    kuberapi(io::IO, Meta.parse(wrapped))
+using CSTParser
+
+"""
+Represents one API alias.
+
+LHS is the undecorated function name
+RHS is the API version specific function name
+"""
+struct KuberAPIAlias
+    lhs_fn_name::String
+    rhs_fn_name::String
+    args::Vector{Pair{String,String}}
+    kwargs::Vector{Pair{String,String}}
 end
 
-function findtype(X::Expr, what::Symbol)
-    (X.head === what) && (return X)
-    for x in X.args
-        isa(x, Expr) && (x.head === what) && return x
-    end
-    error("no $what in expression")
+"""
+List of all aliases parsed.
+Used to maintain state and write out the aliases file at the end.
+"""
+const KuberAPIAliasesSet = Dict{String,Vector{KuberAPIAlias}}
+
+"""
+Returns one `KuberAPIAlias` instance for the function expression.
+Returns `nothing` if it is not required to have an alias for the function.
+"""
+function emit_alias(fn_expr::CSTParser.EXPR{CSTParser.FunctionDef}, api_decoration::String)
+    fn_name = CSTParser.str_value(CSTParser.get_name(fn_expr))
+    undec_fn_name = join(split(fn_name, api_decoration))
+
+    (fn_name == undec_fn_name) && (return nothing)
+    fn_sig = CSTParser.get_sig(fn_expr)
+    fn_args = filter(x->(isa(x, CSTParser.BinarySyntaxOpCall) || isa(x, CSTParser.IDENTIFIER)), fn_sig.args[3:end])
+    fn_kwargs_container = filter(x->isa(x, CSTParser.EXPR{CSTParser.Parameters}), fn_sig.args[3:end])
+    fn_kwargs = isempty(fn_kwargs_container) ? [] : filter(x->isa(x, CSTParser.EXPR{CSTParser.Kw}), fn_kwargs_container[1].args)
+
+    arg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x))=>(isa(x, CSTParser.IDENTIFIER) ? "" : CSTParser.str_value(x.arg2)), fn_args)
+    kwarg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x.args[1]))=>CSTParser.str_value(x.args[3]), fn_kwargs)
+
+    KuberAPIAlias(undec_fn_name, fn_name, arg_pairs, kwarg_pairs)
 end
 
-function foralltype(X::Expr, what::Symbol, fn)
-    if X.head === what
-        fn(X)
+"""
+Returns all API aliases detected in the specified file.
+"""
+function kuberapi(file::String)
+    api_decoration = ""
+    aliases = Vector{KuberAPIAlias}()
+
+    x, ps = CSTParser.parse(ParseState(String(readchomp(file))))
+
+    while !ps.done
+        if CSTParser.defines_struct(x)
+            structsig = CSTParser.get_sig(x)
+            if CSTParser.is_issubt(structsig.op) && (CSTParser.str_value(CSTParser.get_name(structsig.arg2)) == "SwaggerApi")
+                typename = CSTParser.str_value(CSTParser.get_name(structsig))
+                if endswith(typename, "Api")
+                    api_decoration = typename[1:(end-3)]
+                end
+            end
+        elseif !isempty(api_decoration)
+            # Note: We are guaranteed to receive the struct definition before methods
+            #       because of the sequence in which Swagger code is generated and also
+            #       because of the Julia restriction of type being defined before use
+            fn_expr = ((x isa CSTParser.EXPR{CSTParser.MacroCall}) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
+            if fn_expr !== nothing
+                alias = emit_alias(fn_expr, api_decoration)
+                (alias === nothing) || push!(aliases, alias)
+            end
+        end
+        x, ps = CSTParser.parse(ps)
     end
-    if :args in fieldnames(typeof(X)) && !isempty(X.args)
-        for Xsub in X.args
-            isa(Xsub, Expr) && foralltype(Xsub, what, fn)
+
+    aliases
+end
+
+function detect_aliases(folder::String)
+    aliases_set = KuberAPIAliasesSet()
+
+    for file in filter(x->startswith(x, "api_"), readdir(folder))
+        @info("    - " * file)
+        for alias in kuberapi(joinpath(folder, file))
+            @info("        - " * alias.lhs_fn_name * " => " * alias.rhs_fn_name)
+            push!(get!(()->Vector{KuberAPIAlias}(), aliases_set, alias.lhs_fn_name), alias)
         end
     end
-end
-
-_rep!(x) = append!(x, x)
-
-function emit_alias(io::IO, X::Expr, apidecoration::String)
-    callnode = findtype(X, :call)
-    fn_name = string(callnode.args[1])
-    undec_fn_name = join(split(fn_name, apidecoration))
-
-    (fn_name == undec_fn_name) && return
-
-    kwparams = []
-    rhskwparams = []
-    try
-        kwparams = map(string, findtype(callnode, :parameters).args)
-        rhskwparams = map((p)->join(_rep!([split(split(p,'=')[1], ':')[1]]), '='), kwparams)
-    catch
-        # ignore
-    end
-    kwargs = isempty(kwparams) ? "" : ("; " * join(kwparams, ", "))
-    rhskwargs = isempty(rhskwparams) ? "" : ("; " * join(rhskwparams, ", "))
-
-    params = []
-    rhsparams = []
-    if length(callnode.args) > 1
-        for arg in callnode.args[2:end]
-            isa(arg, Expr) && (arg.head == :parameters) && continue
-            push!(params, arg)
-        end
-        params = map(string, params)
-        rhsparams = map((p)->split(split(p,'=')[1], ':')[1], params)
-    end
-    args = isempty(params) ? "" : join(params, ", ")
-    rhsargs = isempty(rhsparams) ? "" : join(rhsparams, ", ")
-
-    sig = "($(args)$(kwargs))"
-    rhssig = "($(rhsargs)$(rhskwargs))"
-    println(io, undec_fn_name, sig, " = ", fn_name, rhssig)
-    println(io, "export ", undec_fn_name)
-    println(io, "")
-    nothing
-end
-
-function kuberapi(io::IO, M::Expr)
-    mod = findtype(M, :module)
-    modblock = findtype(mod, :block)
-    typ = findtype(modblock, :struct)
-    typedecl = findtype(typ, :<:)
-    typename = typedecl.args[1]
-    stypename = string(typename)
-
-    endswith(stypename, "Api") || return
-    apidecoration = stypename[1:(end-3)]
-
-    foralltype(modblock, :function, x->emit_alias(io, x, apidecoration))
-    nothing
+    @info("got $(length(aliases_set)) sets with $(sum(map(length, values(aliases_set)))) aliases")
+    aliases_set
 end
 
 function gen_aliases(folder::String, output::String)
     @info("reading $folder/api_*.jl")
     @info("generating $output")
 
+    aliases_set = detect_aliases(folder)
+
     open("$output", "w") do faliases
-        for file in readdir(folder)
-            if startswith(file, "api_")
-                @info("    - " * file)
-                kuberapi(faliases, joinpath(folder, file))
+        for (api_name, api_aliases) in aliases_set
+            println(faliases, "# ", api_name)
+            for api_alias in api_aliases
+                if isempty(api_alias.args)
+                    lhs_args = rhs_args = ""
+                else
+                    lhs_args = join(map(x->(isempty(x[2]) ? x[1] : join(x,"::")), api_alias.args), ", ")
+                    rhs_args = join(map(x->x[1], api_alias.args), ", ")
+                end
+                if isempty(api_alias.kwargs)
+                    lhs_kwargs = rhs_kwargs = ""
+                else
+                    lhs_kwargs = "; " * join(map(x->join(x,'='), api_alias.kwargs), ", ")
+                    rhs_kwargs = "; " * join(map(x->join((x[1],x[1]),'='), api_alias.kwargs), ", ")
+                end
+                println(faliases, api_alias.lhs_fn_name, "(", lhs_args, lhs_kwargs, ") = ", api_alias.rhs_fn_name, "(", rhs_args, rhs_kwargs, ")")
             end
+            println(faliases, "export ", api_name, "\n")
         end
     end
 end
 
-const DIR = dirname(@__FILE__)
-gen_aliases(joinpath(DIR, "../src/api"), joinpath(DIR, "../src/apialiases.jl"))
+function main()
+    DIR = dirname(@__FILE__)
+    gen_aliases(joinpath(DIR, "../src/api"), joinpath(DIR, "../src/apialiases.jl"))
+end
+
+main()
