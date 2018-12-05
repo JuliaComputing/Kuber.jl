@@ -2,13 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiRbacV1beta1ClusterRole <: SwaggerModel
+    aggregationRule::Union{ Nothing, IoK8sApiRbacV1beta1AggregationRule } # aggregationRule
     apiVersion::Union{ Nothing, String } # apiVersion
     kind::Union{ Nothing, String } # kind
     metadata::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
     rules::Union{ Nothing, Vector{IoK8sApiRbacV1beta1PolicyRule} } # rules
 
-    function IoK8sApiRbacV1beta1ClusterRole(;apiVersion=nothing, kind=nothing, metadata=nothing, rules=nothing)
+    function IoK8sApiRbacV1beta1ClusterRole(;aggregationRule=nothing, apiVersion=nothing, kind=nothing, metadata=nothing, rules=nothing)
         o = new()
+        set_field!(o, :aggregationRule, aggregationRule)
         set_field!(o, :apiVersion, apiVersion)
         set_field!(o, :kind, kind)
         set_field!(o, :metadata, metadata)
@@ -17,8 +19,8 @@ mutable struct IoK8sApiRbacV1beta1ClusterRole <: SwaggerModel
     end
 end # type IoK8sApiRbacV1beta1ClusterRole
 
-const _name_map_IoK8sApiRbacV1beta1ClusterRole = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "rules"=>:rules])
-const _field_map_IoK8sApiRbacV1beta1ClusterRole = Dict{Symbol,String}([:apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :rules=>"rules"])
+const _name_map_IoK8sApiRbacV1beta1ClusterRole = Dict{String,Symbol}(["aggregationRule"=>:aggregationRule, "apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "rules"=>:rules])
+const _field_map_IoK8sApiRbacV1beta1ClusterRole = Dict{Symbol,String}([:aggregationRule=>"aggregationRule", :apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :rules=>"rules"])
 Swagger.name_map(::Type{ IoK8sApiRbacV1beta1ClusterRole }) = _name_map_IoK8sApiRbacV1beta1ClusterRole
 Swagger.field_map(::Type{ IoK8sApiRbacV1beta1ClusterRole }) = _field_map_IoK8sApiRbacV1beta1ClusterRole
 

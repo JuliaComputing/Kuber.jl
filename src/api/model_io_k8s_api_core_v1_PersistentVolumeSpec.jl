@@ -8,29 +8,32 @@ mutable struct IoK8sApiCoreV1PersistentVolumeSpec <: SwaggerModel
     azureFile::Union{ Nothing, IoK8sApiCoreV1AzureFilePersistentVolumeSource } # azureFile
     capacity::Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # capacity
     cephfs::Union{ Nothing, IoK8sApiCoreV1CephFSPersistentVolumeSource } # cephfs
-    cinder::Union{ Nothing, IoK8sApiCoreV1CinderVolumeSource } # cinder
+    cinder::Union{ Nothing, IoK8sApiCoreV1CinderPersistentVolumeSource } # cinder
     claimRef::Union{ Nothing, IoK8sApiCoreV1ObjectReference } # claimRef
+    csi::Union{ Nothing, IoK8sApiCoreV1CSIPersistentVolumeSource } # csi
     fc::Union{ Nothing, IoK8sApiCoreV1FCVolumeSource } # fc
-    flexVolume::Union{ Nothing, IoK8sApiCoreV1FlexVolumeSource } # flexVolume
+    flexVolume::Union{ Nothing, IoK8sApiCoreV1FlexPersistentVolumeSource } # flexVolume
     flocker::Union{ Nothing, IoK8sApiCoreV1FlockerVolumeSource } # flocker
     gcePersistentDisk::Union{ Nothing, IoK8sApiCoreV1GCEPersistentDiskVolumeSource } # gcePersistentDisk
     glusterfs::Union{ Nothing, IoK8sApiCoreV1GlusterfsVolumeSource } # glusterfs
     hostPath::Union{ Nothing, IoK8sApiCoreV1HostPathVolumeSource } # hostPath
-    iscsi::Union{ Nothing, IoK8sApiCoreV1ISCSIVolumeSource } # iscsi
+    iscsi::Union{ Nothing, IoK8sApiCoreV1ISCSIPersistentVolumeSource } # iscsi
     _local::Union{ Nothing, IoK8sApiCoreV1LocalVolumeSource } # local
     mountOptions::Union{ Nothing, Vector{String} } # mountOptions
     nfs::Union{ Nothing, IoK8sApiCoreV1NFSVolumeSource } # nfs
+    nodeAffinity::Union{ Nothing, IoK8sApiCoreV1VolumeNodeAffinity } # nodeAffinity
     persistentVolumeReclaimPolicy::Union{ Nothing, String } # persistentVolumeReclaimPolicy
     photonPersistentDisk::Union{ Nothing, IoK8sApiCoreV1PhotonPersistentDiskVolumeSource } # photonPersistentDisk
     portworxVolume::Union{ Nothing, IoK8sApiCoreV1PortworxVolumeSource } # portworxVolume
     quobyte::Union{ Nothing, IoK8sApiCoreV1QuobyteVolumeSource } # quobyte
-    rbd::Union{ Nothing, IoK8sApiCoreV1RBDVolumeSource } # rbd
+    rbd::Union{ Nothing, IoK8sApiCoreV1RBDPersistentVolumeSource } # rbd
     scaleIO::Union{ Nothing, IoK8sApiCoreV1ScaleIOPersistentVolumeSource } # scaleIO
     storageClassName::Union{ Nothing, String } # storageClassName
     storageos::Union{ Nothing, IoK8sApiCoreV1StorageOSPersistentVolumeSource } # storageos
+    volumeMode::Union{ Nothing, String } # volumeMode
     vsphereVolume::Union{ Nothing, IoK8sApiCoreV1VsphereVirtualDiskVolumeSource } # vsphereVolume
 
-    function IoK8sApiCoreV1PersistentVolumeSpec(;accessModes=nothing, awsElasticBlockStore=nothing, azureDisk=nothing, azureFile=nothing, capacity=nothing, cephfs=nothing, cinder=nothing, claimRef=nothing, fc=nothing, flexVolume=nothing, flocker=nothing, gcePersistentDisk=nothing, glusterfs=nothing, hostPath=nothing, iscsi=nothing, _local=nothing, mountOptions=nothing, nfs=nothing, persistentVolumeReclaimPolicy=nothing, photonPersistentDisk=nothing, portworxVolume=nothing, quobyte=nothing, rbd=nothing, scaleIO=nothing, storageClassName=nothing, storageos=nothing, vsphereVolume=nothing)
+    function IoK8sApiCoreV1PersistentVolumeSpec(;accessModes=nothing, awsElasticBlockStore=nothing, azureDisk=nothing, azureFile=nothing, capacity=nothing, cephfs=nothing, cinder=nothing, claimRef=nothing, csi=nothing, fc=nothing, flexVolume=nothing, flocker=nothing, gcePersistentDisk=nothing, glusterfs=nothing, hostPath=nothing, iscsi=nothing, _local=nothing, mountOptions=nothing, nfs=nothing, nodeAffinity=nothing, persistentVolumeReclaimPolicy=nothing, photonPersistentDisk=nothing, portworxVolume=nothing, quobyte=nothing, rbd=nothing, scaleIO=nothing, storageClassName=nothing, storageos=nothing, volumeMode=nothing, vsphereVolume=nothing)
         o = new()
         set_field!(o, :accessModes, accessModes)
         set_field!(o, :awsElasticBlockStore, awsElasticBlockStore)
@@ -40,6 +43,7 @@ mutable struct IoK8sApiCoreV1PersistentVolumeSpec <: SwaggerModel
         set_field!(o, :cephfs, cephfs)
         set_field!(o, :cinder, cinder)
         set_field!(o, :claimRef, claimRef)
+        set_field!(o, :csi, csi)
         set_field!(o, :fc, fc)
         set_field!(o, :flexVolume, flexVolume)
         set_field!(o, :flocker, flocker)
@@ -50,6 +54,7 @@ mutable struct IoK8sApiCoreV1PersistentVolumeSpec <: SwaggerModel
         set_field!(o, :_local, _local)
         set_field!(o, :mountOptions, mountOptions)
         set_field!(o, :nfs, nfs)
+        set_field!(o, :nodeAffinity, nodeAffinity)
         set_field!(o, :persistentVolumeReclaimPolicy, persistentVolumeReclaimPolicy)
         set_field!(o, :photonPersistentDisk, photonPersistentDisk)
         set_field!(o, :portworxVolume, portworxVolume)
@@ -58,13 +63,14 @@ mutable struct IoK8sApiCoreV1PersistentVolumeSpec <: SwaggerModel
         set_field!(o, :scaleIO, scaleIO)
         set_field!(o, :storageClassName, storageClassName)
         set_field!(o, :storageos, storageos)
+        set_field!(o, :volumeMode, volumeMode)
         set_field!(o, :vsphereVolume, vsphereVolume)
         o
     end
 end # type IoK8sApiCoreV1PersistentVolumeSpec
 
-const _name_map_IoK8sApiCoreV1PersistentVolumeSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "awsElasticBlockStore"=>:awsElasticBlockStore, "azureDisk"=>:azureDisk, "azureFile"=>:azureFile, "capacity"=>:capacity, "cephfs"=>:cephfs, "cinder"=>:cinder, "claimRef"=>:claimRef, "fc"=>:fc, "flexVolume"=>:flexVolume, "flocker"=>:flocker, "gcePersistentDisk"=>:gcePersistentDisk, "glusterfs"=>:glusterfs, "hostPath"=>:hostPath, "iscsi"=>:iscsi, "local"=>:_local, "mountOptions"=>:mountOptions, "nfs"=>:nfs, "persistentVolumeReclaimPolicy"=>:persistentVolumeReclaimPolicy, "photonPersistentDisk"=>:photonPersistentDisk, "portworxVolume"=>:portworxVolume, "quobyte"=>:quobyte, "rbd"=>:rbd, "scaleIO"=>:scaleIO, "storageClassName"=>:storageClassName, "storageos"=>:storageos, "vsphereVolume"=>:vsphereVolume])
-const _field_map_IoK8sApiCoreV1PersistentVolumeSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :awsElasticBlockStore=>"awsElasticBlockStore", :azureDisk=>"azureDisk", :azureFile=>"azureFile", :capacity=>"capacity", :cephfs=>"cephfs", :cinder=>"cinder", :claimRef=>"claimRef", :fc=>"fc", :flexVolume=>"flexVolume", :flocker=>"flocker", :gcePersistentDisk=>"gcePersistentDisk", :glusterfs=>"glusterfs", :hostPath=>"hostPath", :iscsi=>"iscsi", :_local=>"local", :mountOptions=>"mountOptions", :nfs=>"nfs", :persistentVolumeReclaimPolicy=>"persistentVolumeReclaimPolicy", :photonPersistentDisk=>"photonPersistentDisk", :portworxVolume=>"portworxVolume", :quobyte=>"quobyte", :rbd=>"rbd", :scaleIO=>"scaleIO", :storageClassName=>"storageClassName", :storageos=>"storageos", :vsphereVolume=>"vsphereVolume"])
+const _name_map_IoK8sApiCoreV1PersistentVolumeSpec = Dict{String,Symbol}(["accessModes"=>:accessModes, "awsElasticBlockStore"=>:awsElasticBlockStore, "azureDisk"=>:azureDisk, "azureFile"=>:azureFile, "capacity"=>:capacity, "cephfs"=>:cephfs, "cinder"=>:cinder, "claimRef"=>:claimRef, "csi"=>:csi, "fc"=>:fc, "flexVolume"=>:flexVolume, "flocker"=>:flocker, "gcePersistentDisk"=>:gcePersistentDisk, "glusterfs"=>:glusterfs, "hostPath"=>:hostPath, "iscsi"=>:iscsi, "local"=>:_local, "mountOptions"=>:mountOptions, "nfs"=>:nfs, "nodeAffinity"=>:nodeAffinity, "persistentVolumeReclaimPolicy"=>:persistentVolumeReclaimPolicy, "photonPersistentDisk"=>:photonPersistentDisk, "portworxVolume"=>:portworxVolume, "quobyte"=>:quobyte, "rbd"=>:rbd, "scaleIO"=>:scaleIO, "storageClassName"=>:storageClassName, "storageos"=>:storageos, "volumeMode"=>:volumeMode, "vsphereVolume"=>:vsphereVolume])
+const _field_map_IoK8sApiCoreV1PersistentVolumeSpec = Dict{Symbol,String}([:accessModes=>"accessModes", :awsElasticBlockStore=>"awsElasticBlockStore", :azureDisk=>"azureDisk", :azureFile=>"azureFile", :capacity=>"capacity", :cephfs=>"cephfs", :cinder=>"cinder", :claimRef=>"claimRef", :csi=>"csi", :fc=>"fc", :flexVolume=>"flexVolume", :flocker=>"flocker", :gcePersistentDisk=>"gcePersistentDisk", :glusterfs=>"glusterfs", :hostPath=>"hostPath", :iscsi=>"iscsi", :_local=>"local", :mountOptions=>"mountOptions", :nfs=>"nfs", :nodeAffinity=>"nodeAffinity", :persistentVolumeReclaimPolicy=>"persistentVolumeReclaimPolicy", :photonPersistentDisk=>"photonPersistentDisk", :portworxVolume=>"portworxVolume", :quobyte=>"quobyte", :rbd=>"rbd", :scaleIO=>"scaleIO", :storageClassName=>"storageClassName", :storageos=>"storageos", :volumeMode=>"volumeMode", :vsphereVolume=>"vsphereVolume"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1PersistentVolumeSpec }) = _name_map_IoK8sApiCoreV1PersistentVolumeSpec
 Swagger.field_map(::Type{ IoK8sApiCoreV1PersistentVolumeSpec }) = _field_map_IoK8sApiCoreV1PersistentVolumeSpec
 

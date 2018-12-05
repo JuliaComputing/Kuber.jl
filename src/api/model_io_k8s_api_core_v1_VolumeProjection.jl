@@ -5,18 +5,20 @@ mutable struct IoK8sApiCoreV1VolumeProjection <: SwaggerModel
     configMap::Union{ Nothing, IoK8sApiCoreV1ConfigMapProjection } # configMap
     downwardAPI::Union{ Nothing, IoK8sApiCoreV1DownwardAPIProjection } # downwardAPI
     secret::Union{ Nothing, IoK8sApiCoreV1SecretProjection } # secret
+    serviceAccountToken::Union{ Nothing, IoK8sApiCoreV1ServiceAccountTokenProjection } # serviceAccountToken
 
-    function IoK8sApiCoreV1VolumeProjection(;configMap=nothing, downwardAPI=nothing, secret=nothing)
+    function IoK8sApiCoreV1VolumeProjection(;configMap=nothing, downwardAPI=nothing, secret=nothing, serviceAccountToken=nothing)
         o = new()
         set_field!(o, :configMap, configMap)
         set_field!(o, :downwardAPI, downwardAPI)
         set_field!(o, :secret, secret)
+        set_field!(o, :serviceAccountToken, serviceAccountToken)
         o
     end
 end # type IoK8sApiCoreV1VolumeProjection
 
-const _name_map_IoK8sApiCoreV1VolumeProjection = Dict{String,Symbol}(["configMap"=>:configMap, "downwardAPI"=>:downwardAPI, "secret"=>:secret])
-const _field_map_IoK8sApiCoreV1VolumeProjection = Dict{Symbol,String}([:configMap=>"configMap", :downwardAPI=>"downwardAPI", :secret=>"secret"])
+const _name_map_IoK8sApiCoreV1VolumeProjection = Dict{String,Symbol}(["configMap"=>:configMap, "downwardAPI"=>:downwardAPI, "secret"=>:secret, "serviceAccountToken"=>:serviceAccountToken])
+const _field_map_IoK8sApiCoreV1VolumeProjection = Dict{Symbol,String}([:configMap=>"configMap", :downwardAPI=>"downwardAPI", :secret=>"secret", :serviceAccountToken=>"serviceAccountToken"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1VolumeProjection }) = _name_map_IoK8sApiCoreV1VolumeProjection
 Swagger.field_map(::Type{ IoK8sApiCoreV1VolumeProjection }) = _field_map_IoK8sApiCoreV1VolumeProjection
 

@@ -6,6 +6,7 @@ mutable struct IoK8sApiCoreV1PodSpec <: SwaggerModel
     affinity::Union{ Nothing, IoK8sApiCoreV1Affinity } # affinity
     automountServiceAccountToken::Union{ Nothing, Bool } # automountServiceAccountToken
     containers::Union{ Nothing, Vector{IoK8sApiCoreV1Container} } # containers
+    dnsConfig::Union{ Nothing, IoK8sApiCoreV1PodDNSConfig } # dnsConfig
     dnsPolicy::Union{ Nothing, String } # dnsPolicy
     hostAliases::Union{ Nothing, Vector{IoK8sApiCoreV1HostAlias} } # hostAliases
     hostIPC::Union{ Nothing, Bool } # hostIPC
@@ -18,22 +19,26 @@ mutable struct IoK8sApiCoreV1PodSpec <: SwaggerModel
     nodeSelector::Union{ Nothing, Dict{String, String} } # nodeSelector
     priority::Union{ Nothing, Int32 } # priority
     priorityClassName::Union{ Nothing, String } # priorityClassName
+    readinessGates::Union{ Nothing, Vector{IoK8sApiCoreV1PodReadinessGate} } # readinessGates
     restartPolicy::Union{ Nothing, String } # restartPolicy
+    runtimeClassName::Union{ Nothing, String } # runtimeClassName
     schedulerName::Union{ Nothing, String } # schedulerName
     securityContext::Union{ Nothing, IoK8sApiCoreV1PodSecurityContext } # securityContext
     serviceAccount::Union{ Nothing, String } # serviceAccount
     serviceAccountName::Union{ Nothing, String } # serviceAccountName
+    shareProcessNamespace::Union{ Nothing, Bool } # shareProcessNamespace
     subdomain::Union{ Nothing, String } # subdomain
     terminationGracePeriodSeconds::Union{ Nothing, Int64 } # terminationGracePeriodSeconds
     tolerations::Union{ Nothing, Vector{IoK8sApiCoreV1Toleration} } # tolerations
     volumes::Union{ Nothing, Vector{IoK8sApiCoreV1Volume} } # volumes
 
-    function IoK8sApiCoreV1PodSpec(;activeDeadlineSeconds=nothing, affinity=nothing, automountServiceAccountToken=nothing, containers=nothing, dnsPolicy=nothing, hostAliases=nothing, hostIPC=nothing, hostNetwork=nothing, hostPID=nothing, hostname=nothing, imagePullSecrets=nothing, initContainers=nothing, nodeName=nothing, nodeSelector=nothing, priority=nothing, priorityClassName=nothing, restartPolicy=nothing, schedulerName=nothing, securityContext=nothing, serviceAccount=nothing, serviceAccountName=nothing, subdomain=nothing, terminationGracePeriodSeconds=nothing, tolerations=nothing, volumes=nothing)
+    function IoK8sApiCoreV1PodSpec(;activeDeadlineSeconds=nothing, affinity=nothing, automountServiceAccountToken=nothing, containers=nothing, dnsConfig=nothing, dnsPolicy=nothing, hostAliases=nothing, hostIPC=nothing, hostNetwork=nothing, hostPID=nothing, hostname=nothing, imagePullSecrets=nothing, initContainers=nothing, nodeName=nothing, nodeSelector=nothing, priority=nothing, priorityClassName=nothing, readinessGates=nothing, restartPolicy=nothing, runtimeClassName=nothing, schedulerName=nothing, securityContext=nothing, serviceAccount=nothing, serviceAccountName=nothing, shareProcessNamespace=nothing, subdomain=nothing, terminationGracePeriodSeconds=nothing, tolerations=nothing, volumes=nothing)
         o = new()
         set_field!(o, :activeDeadlineSeconds, activeDeadlineSeconds)
         set_field!(o, :affinity, affinity)
         set_field!(o, :automountServiceAccountToken, automountServiceAccountToken)
         set_field!(o, :containers, containers)
+        set_field!(o, :dnsConfig, dnsConfig)
         set_field!(o, :dnsPolicy, dnsPolicy)
         set_field!(o, :hostAliases, hostAliases)
         set_field!(o, :hostIPC, hostIPC)
@@ -46,11 +51,14 @@ mutable struct IoK8sApiCoreV1PodSpec <: SwaggerModel
         set_field!(o, :nodeSelector, nodeSelector)
         set_field!(o, :priority, priority)
         set_field!(o, :priorityClassName, priorityClassName)
+        set_field!(o, :readinessGates, readinessGates)
         set_field!(o, :restartPolicy, restartPolicy)
+        set_field!(o, :runtimeClassName, runtimeClassName)
         set_field!(o, :schedulerName, schedulerName)
         set_field!(o, :securityContext, securityContext)
         set_field!(o, :serviceAccount, serviceAccount)
         set_field!(o, :serviceAccountName, serviceAccountName)
+        set_field!(o, :shareProcessNamespace, shareProcessNamespace)
         set_field!(o, :subdomain, subdomain)
         set_field!(o, :terminationGracePeriodSeconds, terminationGracePeriodSeconds)
         set_field!(o, :tolerations, tolerations)
@@ -59,8 +67,8 @@ mutable struct IoK8sApiCoreV1PodSpec <: SwaggerModel
     end
 end # type IoK8sApiCoreV1PodSpec
 
-const _name_map_IoK8sApiCoreV1PodSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "affinity"=>:affinity, "automountServiceAccountToken"=>:automountServiceAccountToken, "containers"=>:containers, "dnsPolicy"=>:dnsPolicy, "hostAliases"=>:hostAliases, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostname"=>:hostname, "imagePullSecrets"=>:imagePullSecrets, "initContainers"=>:initContainers, "nodeName"=>:nodeName, "nodeSelector"=>:nodeSelector, "priority"=>:priority, "priorityClassName"=>:priorityClassName, "restartPolicy"=>:restartPolicy, "schedulerName"=>:schedulerName, "securityContext"=>:securityContext, "serviceAccount"=>:serviceAccount, "serviceAccountName"=>:serviceAccountName, "subdomain"=>:subdomain, "terminationGracePeriodSeconds"=>:terminationGracePeriodSeconds, "tolerations"=>:tolerations, "volumes"=>:volumes])
-const _field_map_IoK8sApiCoreV1PodSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :affinity=>"affinity", :automountServiceAccountToken=>"automountServiceAccountToken", :containers=>"containers", :dnsPolicy=>"dnsPolicy", :hostAliases=>"hostAliases", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostname=>"hostname", :imagePullSecrets=>"imagePullSecrets", :initContainers=>"initContainers", :nodeName=>"nodeName", :nodeSelector=>"nodeSelector", :priority=>"priority", :priorityClassName=>"priorityClassName", :restartPolicy=>"restartPolicy", :schedulerName=>"schedulerName", :securityContext=>"securityContext", :serviceAccount=>"serviceAccount", :serviceAccountName=>"serviceAccountName", :subdomain=>"subdomain", :terminationGracePeriodSeconds=>"terminationGracePeriodSeconds", :tolerations=>"tolerations", :volumes=>"volumes"])
+const _name_map_IoK8sApiCoreV1PodSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "affinity"=>:affinity, "automountServiceAccountToken"=>:automountServiceAccountToken, "containers"=>:containers, "dnsConfig"=>:dnsConfig, "dnsPolicy"=>:dnsPolicy, "hostAliases"=>:hostAliases, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostname"=>:hostname, "imagePullSecrets"=>:imagePullSecrets, "initContainers"=>:initContainers, "nodeName"=>:nodeName, "nodeSelector"=>:nodeSelector, "priority"=>:priority, "priorityClassName"=>:priorityClassName, "readinessGates"=>:readinessGates, "restartPolicy"=>:restartPolicy, "runtimeClassName"=>:runtimeClassName, "schedulerName"=>:schedulerName, "securityContext"=>:securityContext, "serviceAccount"=>:serviceAccount, "serviceAccountName"=>:serviceAccountName, "shareProcessNamespace"=>:shareProcessNamespace, "subdomain"=>:subdomain, "terminationGracePeriodSeconds"=>:terminationGracePeriodSeconds, "tolerations"=>:tolerations, "volumes"=>:volumes])
+const _field_map_IoK8sApiCoreV1PodSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :affinity=>"affinity", :automountServiceAccountToken=>"automountServiceAccountToken", :containers=>"containers", :dnsConfig=>"dnsConfig", :dnsPolicy=>"dnsPolicy", :hostAliases=>"hostAliases", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostname=>"hostname", :imagePullSecrets=>"imagePullSecrets", :initContainers=>"initContainers", :nodeName=>"nodeName", :nodeSelector=>"nodeSelector", :priority=>"priority", :priorityClassName=>"priorityClassName", :readinessGates=>"readinessGates", :restartPolicy=>"restartPolicy", :runtimeClassName=>"runtimeClassName", :schedulerName=>"schedulerName", :securityContext=>"securityContext", :serviceAccount=>"serviceAccount", :serviceAccountName=>"serviceAccountName", :shareProcessNamespace=>"shareProcessNamespace", :subdomain=>"subdomain", :terminationGracePeriodSeconds=>"terminationGracePeriodSeconds", :tolerations=>"tolerations", :volumes=>"volumes"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1PodSpec }) = _name_map_IoK8sApiCoreV1PodSpec
 Swagger.field_map(::Type{ IoK8sApiCoreV1PodSpec }) = _field_map_IoK8sApiCoreV1PodSpec
 

@@ -37,6 +37,18 @@ module Typedefs
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
     end # module StorageV1
+    module ApiregistrationV1
+        using ..Kubernetes
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const APIServiceStatus = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const APIServiceCondition = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const APIService = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
+        const APIServiceSpec = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec
+        const ServiceReference = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference
+        const APIServiceList = Kubernetes.IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList
+    end # module ApiregistrationV1
     module AuthenticationV1beta1
         using ..Kubernetes
         const UserInfo = Kubernetes.IoK8sApiAuthenticationV1beta1UserInfo
@@ -62,12 +74,22 @@ module Typedefs
         const SubjectAccessReviewStatus = Kubernetes.IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus
         const NonResourceRule = Kubernetes.IoK8sApiAuthorizationV1beta1NonResourceRule
     end # module AuthorizationV1beta1
+    module Coordination
+        using ..Kubernetes
+        const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
+    end # module Coordination
     module StorageV1beta1
         using ..Kubernetes
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
-        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const StorageClassList = Kubernetes.IoK8sApiStorageV1beta1StorageClassList
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const VolumeAttachmentList = Kubernetes.IoK8sApiStorageV1beta1VolumeAttachmentList
+        const VolumeError = Kubernetes.IoK8sApiStorageV1beta1VolumeError
+        const VolumeAttachmentSpec = Kubernetes.IoK8sApiStorageV1beta1VolumeAttachmentSpec
+        const VolumeAttachmentStatus = Kubernetes.IoK8sApiStorageV1beta1VolumeAttachmentStatus
+        const VolumeAttachmentSource = Kubernetes.IoK8sApiStorageV1beta1VolumeAttachmentSource
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const VolumeAttachment = Kubernetes.IoK8sApiStorageV1beta1VolumeAttachment
         const StorageClass = Kubernetes.IoK8sApiStorageV1beta1StorageClass
     end # module StorageV1beta1
     module Apis
@@ -84,14 +106,25 @@ module Typedefs
     end # module Extensions
     module PolicyV1beta1
         using ..Kubernetes
-        const PodDisruptionBudget = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudget
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
-        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
-        const PodDisruptionBudgetStatus = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus
-        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const SupplementalGroupsStrategyOptions = Kubernetes.IoK8sApiPolicyV1beta1SupplementalGroupsStrategyOptions
+        const AllowedHostPath = Kubernetes.IoK8sApiPolicyV1beta1AllowedHostPath
         const PodDisruptionBudgetList = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudgetList
         const PodDisruptionBudgetSpec = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec
+        const PodSecurityPolicySpec = Kubernetes.IoK8sApiPolicyV1beta1PodSecurityPolicySpec
+        const IDRange = Kubernetes.IoK8sApiPolicyV1beta1IDRange
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const HostPortRange = Kubernetes.IoK8sApiPolicyV1beta1HostPortRange
+        const PodDisruptionBudget = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudget
+        const PodDisruptionBudgetStatus = Kubernetes.IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const PodSecurityPolicy = Kubernetes.IoK8sApiPolicyV1beta1PodSecurityPolicy
+        const AllowedFlexVolume = Kubernetes.IoK8sApiPolicyV1beta1AllowedFlexVolume
         const Eviction = Kubernetes.IoK8sApiPolicyV1beta1Eviction
+        const SELinuxStrategyOptions = Kubernetes.IoK8sApiPolicyV1beta1SELinuxStrategyOptions
+        const RunAsUserStrategyOptions = Kubernetes.IoK8sApiPolicyV1beta1RunAsUserStrategyOptions
+        const FSGroupStrategyOptions = Kubernetes.IoK8sApiPolicyV1beta1FSGroupStrategyOptions
+        const PodSecurityPolicyList = Kubernetes.IoK8sApiPolicyV1beta1PodSecurityPolicyList
     end # module PolicyV1beta1
     module Autoscaling
         using ..Kubernetes
@@ -120,7 +153,9 @@ module Typedefs
         const Deployment = Kubernetes.IoK8sApiAppsV1beta2Deployment
         const DaemonSetList = Kubernetes.IoK8sApiAppsV1beta2DaemonSetList
         const Scale = Kubernetes.IoK8sApiAppsV1beta2Scale
+        const DaemonSetCondition = Kubernetes.IoK8sApiAppsV1beta2DaemonSetCondition
         const DaemonSet = Kubernetes.IoK8sApiAppsV1beta2DaemonSet
+        const StatefulSetCondition = Kubernetes.IoK8sApiAppsV1beta2StatefulSetCondition
         const ControllerRevision = Kubernetes.IoK8sApiAppsV1beta2ControllerRevision
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const DeploymentList = Kubernetes.IoK8sApiAppsV1beta2DeploymentList
@@ -152,17 +187,11 @@ module Typedefs
         using ..Kubernetes
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
         const InitializerConfiguration = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1InitializerConfiguration
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const InitializerConfigurationList = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1InitializerConfigurationList
-        const ExternalAdmissionHookConfiguration = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1ExternalAdmissionHookConfiguration
-        const ServiceReference = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1ServiceReference
+        const Initializer = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1Initializer
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
         const Rule = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1Rule
-        const RuleWithOperations = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1RuleWithOperations
-        const ExternalAdmissionHookConfigurationList = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1ExternalAdmissionHookConfigurationList
-        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
-        const Initializer = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1Initializer
-        const AdmissionHookClientConfig = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1AdmissionHookClientConfig
-        const ExternalAdmissionHook = Kubernetes.IoK8sApiAdmissionregistrationV1alpha1ExternalAdmissionHook
     end # module AdmissionregistrationV1alpha1
     module CertificatesV1beta1
         using ..Kubernetes
@@ -182,11 +211,13 @@ module Typedefs
     module AutoscalingV2beta1
         using ..Kubernetes
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const ExternalMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta1ExternalMetricSource
         const PodsMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta1PodsMetricSource
         const ResourceMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta1ResourceMetricStatus
         const MetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta1MetricStatus
         const HorizontalPodAutoscalerCondition = Kubernetes.IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerCondition
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const ExternalMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta1ExternalMetricStatus
         const CrossVersionObjectReference = Kubernetes.IoK8sApiAutoscalingV2beta1CrossVersionObjectReference
         const ResourceMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta1ResourceMetricSource
         const ObjectMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta1ObjectMetricStatus
@@ -228,6 +259,7 @@ module Typedefs
         const DeploymentStatus = Kubernetes.IoK8sApiExtensionsV1beta1DeploymentStatus
         const NetworkPolicy = Kubernetes.IoK8sApiExtensionsV1beta1NetworkPolicy
         const DeploymentList = Kubernetes.IoK8sApiExtensionsV1beta1DeploymentList
+        const AllowedFlexVolume = Kubernetes.IoK8sApiExtensionsV1beta1AllowedFlexVolume
         const NetworkPolicyPeer = Kubernetes.IoK8sApiExtensionsV1beta1NetworkPolicyPeer
         const IngressRule = Kubernetes.IoK8sApiExtensionsV1beta1IngressRule
         const Scale = Kubernetes.IoK8sApiExtensionsV1beta1Scale
@@ -259,6 +291,7 @@ module Typedefs
         const DaemonSetList = Kubernetes.IoK8sApiExtensionsV1beta1DaemonSetList
         const DeploymentCondition = Kubernetes.IoK8sApiExtensionsV1beta1DeploymentCondition
         const HostPortRange = Kubernetes.IoK8sApiExtensionsV1beta1HostPortRange
+        const DaemonSetCondition = Kubernetes.IoK8sApiExtensionsV1beta1DaemonSetCondition
         const DeploymentStrategy = Kubernetes.IoK8sApiExtensionsV1beta1DeploymentStrategy
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const HTTPIngressPath = Kubernetes.IoK8sApiExtensionsV1beta1HTTPIngressPath
@@ -286,6 +319,20 @@ module Typedefs
         const TokenReviewSpec = Kubernetes.IoK8sApiAuthenticationV1TokenReviewSpec
         const UserInfo = Kubernetes.IoK8sApiAuthenticationV1UserInfo
     end # module AuthenticationV1
+    module AdmissionregistrationV1beta1
+        using ..Kubernetes
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const ServiceReference = Kubernetes.IoK8sApiAdmissionregistrationV1beta1ServiceReference
+        const ValidatingWebhookConfiguration = Kubernetes.IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const Webhook = Kubernetes.IoK8sApiAdmissionregistrationV1beta1Webhook
+        const MutatingWebhookConfigurationList = Kubernetes.IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfigurationList
+        const RuleWithOperations = Kubernetes.IoK8sApiAdmissionregistrationV1beta1RuleWithOperations
+        const MutatingWebhookConfiguration = Kubernetes.IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
+        const ValidatingWebhookConfigurationList = Kubernetes.IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfigurationList
+        const WebhookClientConfig = Kubernetes.IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig
+    end # module AdmissionregistrationV1beta1
     module Apiextensions
         using ..Kubernetes
         const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -294,20 +341,20 @@ module Typedefs
         using ..Kubernetes
         const CustomResourceDefinitionCondition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const CustomResourceColumnDefinition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition
         const JSONSchemaProps = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps
         const CustomResourceDefinitionNames = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames
-        const JSONSchemaPropsOrArray = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrArray
         const CustomResourceDefinition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinition
-        const JSON = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON
-        const JSONSchemaPropsOrBool = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
         const CustomResourceDefinitionList = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionList
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const CustomResourceDefinitionSpec = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionSpec
         const ExternalDocumentation = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation
+        const CustomResourceSubresourceScale = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale
         const CustomResourceDefinitionStatus = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus
         const CustomResourceValidation = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation
-        const JSONSchemaPropsOrStringArray = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrStringArray
+        const CustomResourceSubresources = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources
+        const CustomResourceDefinitionVersion = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion
     end # module ApiextensionsV1beta1
     module RbacAuthorizationV1alpha1
         using ..Kubernetes
@@ -323,6 +370,7 @@ module Typedefs
         const ClusterRoleList = Kubernetes.IoK8sApiRbacV1alpha1ClusterRoleList
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const PolicyRule = Kubernetes.IoK8sApiRbacV1alpha1PolicyRule
+        const AggregationRule = Kubernetes.IoK8sApiRbacV1alpha1AggregationRule
         const ClusterRoleBinding = Kubernetes.IoK8sApiRbacV1alpha1ClusterRoleBinding
         const RoleList = Kubernetes.IoK8sApiRbacV1alpha1RoleList
     end # module RbacAuthorizationV1alpha1
@@ -359,6 +407,7 @@ module Typedefs
         const ClusterRoleBinding = Kubernetes.IoK8sApiRbacV1beta1ClusterRoleBinding
         const PolicyRule = Kubernetes.IoK8sApiRbacV1beta1PolicyRule
         const RoleList = Kubernetes.IoK8sApiRbacV1beta1RoleList
+        const AggregationRule = Kubernetes.IoK8sApiRbacV1beta1AggregationRule
         const RoleBinding = Kubernetes.IoK8sApiRbacV1beta1RoleBinding
         const Subject = Kubernetes.IoK8sApiRbacV1beta1Subject
         const ClusterRole = Kubernetes.IoK8sApiRbacV1beta1ClusterRole
@@ -382,6 +431,49 @@ module Typedefs
         const PriorityClass = Kubernetes.IoK8sApiSchedulingV1alpha1PriorityClass
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
     end # module SchedulingV1alpha1
+    module SchedulingV1beta1
+        using ..Kubernetes
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const PriorityClassList = Kubernetes.IoK8sApiSchedulingV1beta1PriorityClassList
+        const PriorityClass = Kubernetes.IoK8sApiSchedulingV1beta1PriorityClass
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+    end # module SchedulingV1beta1
+    module AppsV1
+        using ..Kubernetes
+        const ReplicaSetSpec = Kubernetes.IoK8sApiAppsV1ReplicaSetSpec
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const DaemonSetStatus = Kubernetes.IoK8sApiAppsV1DaemonSetStatus
+        const ReplicaSet = Kubernetes.IoK8sApiAppsV1ReplicaSet
+        const StatefulSet = Kubernetes.IoK8sApiAppsV1StatefulSet
+        const ReplicaSetList = Kubernetes.IoK8sApiAppsV1ReplicaSetList
+        const RollingUpdateStatefulSetStrategy = Kubernetes.IoK8sApiAppsV1RollingUpdateStatefulSetStrategy
+        const DeploymentSpec = Kubernetes.IoK8sApiAppsV1DeploymentSpec
+        const StatefulSetStatus = Kubernetes.IoK8sApiAppsV1StatefulSetStatus
+        const RollingUpdateDeployment = Kubernetes.IoK8sApiAppsV1RollingUpdateDeployment
+        const StatefulSetCondition = Kubernetes.IoK8sApiAppsV1StatefulSetCondition
+        const DaemonSetUpdateStrategy = Kubernetes.IoK8sApiAppsV1DaemonSetUpdateStrategy
+        const ControllerRevisionList = Kubernetes.IoK8sApiAppsV1ControllerRevisionList
+        const DaemonSetCondition = Kubernetes.IoK8sApiAppsV1DaemonSetCondition
+        const ReplicaSetStatus = Kubernetes.IoK8sApiAppsV1ReplicaSetStatus
+        const DeploymentList = Kubernetes.IoK8sApiAppsV1DeploymentList
+        const DeploymentStrategy = Kubernetes.IoK8sApiAppsV1DeploymentStrategy
+        const RollingUpdateDaemonSet = Kubernetes.IoK8sApiAppsV1RollingUpdateDaemonSet
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const DeploymentCondition = Kubernetes.IoK8sApiAppsV1DeploymentCondition
+        const DaemonSet = Kubernetes.IoK8sApiAppsV1DaemonSet
+        const Scale = Kubernetes.IoK8sApiAutoscalingV1Scale
+        const ControllerRevision = Kubernetes.IoK8sApiAppsV1ControllerRevision
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const StatefulSetList = Kubernetes.IoK8sApiAppsV1StatefulSetList
+        const ReplicaSetCondition = Kubernetes.IoK8sApiAppsV1ReplicaSetCondition
+        const StatefulSetSpec = Kubernetes.IoK8sApiAppsV1StatefulSetSpec
+        const DaemonSetList = Kubernetes.IoK8sApiAppsV1DaemonSetList
+        const DaemonSetSpec = Kubernetes.IoK8sApiAppsV1DaemonSetSpec
+        const Deployment = Kubernetes.IoK8sApiAppsV1Deployment
+        const DeploymentStatus = Kubernetes.IoK8sApiAppsV1DeploymentStatus
+        const StatefulSetUpdateStrategy = Kubernetes.IoK8sApiAppsV1StatefulSetUpdateStrategy
+    end # module AppsV1
     module Settings
         using ..Kubernetes
         const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
@@ -393,9 +485,9 @@ module Typedefs
     module AppsV1beta1
         using ..Kubernetes
         const DeploymentStatus = Kubernetes.IoK8sApiAppsV1beta1DeploymentStatus
-        const DeploymentRollback = Kubernetes.IoK8sApiAppsV1beta1DeploymentRollback
         const ControllerRevisionList = Kubernetes.IoK8sApiAppsV1beta1ControllerRevisionList
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const DeploymentRollback = Kubernetes.IoK8sApiAppsV1beta1DeploymentRollback
         const DeploymentSpec = Kubernetes.IoK8sApiAppsV1beta1DeploymentSpec
         const ScaleSpec = Kubernetes.IoK8sApiAppsV1beta1ScaleSpec
         const StatefulSetList = Kubernetes.IoK8sApiAppsV1beta1StatefulSetList
@@ -412,6 +504,7 @@ module Typedefs
         const StatefulSet = Kubernetes.IoK8sApiAppsV1beta1StatefulSet
         const RollingUpdateStatefulSetStrategy = Kubernetes.IoK8sApiAppsV1beta1RollingUpdateStatefulSetStrategy
         const DeploymentStrategy = Kubernetes.IoK8sApiAppsV1beta1DeploymentStrategy
+        const StatefulSetCondition = Kubernetes.IoK8sApiAppsV1beta1StatefulSetCondition
         const RollbackConfig = Kubernetes.IoK8sApiAppsV1beta1RollbackConfig
         const StatefulSetStatus = Kubernetes.IoK8sApiAppsV1beta1StatefulSetStatus
         const Deployment = Kubernetes.IoK8sApiAppsV1beta1Deployment
@@ -420,6 +513,15 @@ module Typedefs
         using ..Kubernetes
         const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
     end # module Authentication
+    module CoordinationV1beta1
+        using ..Kubernetes
+        const LeaseSpec = Kubernetes.IoK8sApiCoordinationV1beta1LeaseSpec
+        const LeaseList = Kubernetes.IoK8sApiCoordinationV1beta1LeaseList
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const Lease = Kubernetes.IoK8sApiCoordinationV1beta1Lease
+    end # module CoordinationV1beta1
     module AuthorizationV1
         using ..Kubernetes
         const SelfSubjectRulesReview = Kubernetes.IoK8sApiAuthorizationV1SelfSubjectRulesReview
@@ -449,6 +551,7 @@ module Typedefs
         const ObjectMeta = Kubernetes.IoK8sApimachineryPkgApisMetaV1ObjectMeta
         const APIVersions = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIVersions
         const LabelSelector = Kubernetes.IoK8sApimachineryPkgApisMetaV1LabelSelector
+        const Time = Kubernetes.IoK8sApimachineryPkgApisMetaV1Time
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const StatusCause = Kubernetes.IoK8sApimachineryPkgApisMetaV1StatusCause
         const DeleteOptions = Kubernetes.IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -457,9 +560,60 @@ module Typedefs
         const APIResource = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResource
         const Initializer = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializer
         const Initializers = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializers
+        const MicroTime = Kubernetes.IoK8sApimachineryPkgApisMetaV1MicroTime
         const OwnerReference = Kubernetes.IoK8sApimachineryPkgApisMetaV1OwnerReference
         const Preconditions = Kubernetes.IoK8sApimachineryPkgApisMetaV1Preconditions
     end # module MetaV1
+    module EventsV1beta1
+        using ..Kubernetes
+        const EventSeries = Kubernetes.IoK8sApiEventsV1beta1EventSeries
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const Event = Kubernetes.IoK8sApiEventsV1beta1Event
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const EventList = Kubernetes.IoK8sApiEventsV1beta1EventList
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+    end # module EventsV1beta1
+    module StorageV1alpha1
+        using ..Kubernetes
+        const VolumeAttachmentSpec = Kubernetes.IoK8sApiStorageV1alpha1VolumeAttachmentSpec
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const VolumeAttachmentSource = Kubernetes.IoK8sApiStorageV1alpha1VolumeAttachmentSource
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const VolumeError = Kubernetes.IoK8sApiStorageV1alpha1VolumeError
+        const VolumeAttachmentStatus = Kubernetes.IoK8sApiStorageV1alpha1VolumeAttachmentStatus
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const VolumeAttachment = Kubernetes.IoK8sApiStorageV1alpha1VolumeAttachment
+        const VolumeAttachmentList = Kubernetes.IoK8sApiStorageV1alpha1VolumeAttachmentList
+    end # module StorageV1alpha1
+    module AutoscalingV2beta2
+        using ..Kubernetes
+        const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const MetricValueStatus = Kubernetes.IoK8sApiAutoscalingV2beta2MetricValueStatus
+        const PodsMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta2PodsMetricStatus
+        const ObjectMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta2ObjectMetricStatus
+        const HorizontalPodAutoscaler = Kubernetes.IoK8sApiAutoscalingV2beta2HorizontalPodAutoscaler
+        const HorizontalPodAutoscalerCondition = Kubernetes.IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerCondition
+        const ExternalMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta2ExternalMetricSource
+        const MetricSpec = Kubernetes.IoK8sApiAutoscalingV2beta2MetricSpec
+        const ResourceMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta2ResourceMetricStatus
+        const MetricTarget = Kubernetes.IoK8sApiAutoscalingV2beta2MetricTarget
+        const ResourceMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta2ResourceMetricSource
+        const ExternalMetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta2ExternalMetricStatus
+        const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
+        const HorizontalPodAutoscalerSpec = Kubernetes.IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerSpec
+        const MetricIdentifier = Kubernetes.IoK8sApiAutoscalingV2beta2MetricIdentifier
+        const HorizontalPodAutoscalerList = Kubernetes.IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerList
+        const HorizontalPodAutoscalerStatus = Kubernetes.IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerStatus
+        const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
+        const ObjectMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta2ObjectMetricSource
+        const MetricStatus = Kubernetes.IoK8sApiAutoscalingV2beta2MetricStatus
+        const CrossVersionObjectReference = Kubernetes.IoK8sApiAutoscalingV2beta2CrossVersionObjectReference
+        const PodsMetricSource = Kubernetes.IoK8sApiAutoscalingV2beta2PodsMetricSource
+    end # module AutoscalingV2beta2
+    module Events
+        using ..Kubernetes
+        const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
+    end # module Events
     module BatchV2alpha1
         using ..Kubernetes
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
@@ -488,25 +642,32 @@ module Typedefs
         const Capabilities = Kubernetes.IoK8sApiCoreV1Capabilities
         const NodeConfigSource = Kubernetes.IoK8sApiCoreV1NodeConfigSource
         const NodeSystemInfo = Kubernetes.IoK8sApiCoreV1NodeSystemInfo
+        const ScopedResourceSelectorRequirement = Kubernetes.IoK8sApiCoreV1ScopedResourceSelectorRequirement
         const PodTemplate = Kubernetes.IoK8sApiCoreV1PodTemplate
+        const TopologySelectorTerm = Kubernetes.IoK8sApiCoreV1TopologySelectorTerm
         const Volume = Kubernetes.IoK8sApiCoreV1Volume
         const ContainerStatus = Kubernetes.IoK8sApiCoreV1ContainerStatus
         const NodeCondition = Kubernetes.IoK8sApiCoreV1NodeCondition
         const NamespaceStatus = Kubernetes.IoK8sApiCoreV1NamespaceStatus
         const EnvFromSource = Kubernetes.IoK8sApiCoreV1EnvFromSource
+        const ISCSIPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1ISCSIPersistentVolumeSource
         const FlexVolumeSource = Kubernetes.IoK8sApiCoreV1FlexVolumeSource
         const EndpointPort = Kubernetes.IoK8sApiCoreV1EndpointPort
         const Namespace = Kubernetes.IoK8sApiCoreV1Namespace
+        const RBDPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1RBDPersistentVolumeSource
         const Handler = Kubernetes.IoK8sApiCoreV1Handler
         const ProjectedVolumeSource = Kubernetes.IoK8sApiCoreV1ProjectedVolumeSource
         const PodAffinity = Kubernetes.IoK8sApiCoreV1PodAffinity
         const PodTemplateSpec = Kubernetes.IoK8sApiCoreV1PodTemplateSpec
         const VsphereVirtualDiskVolumeSource = Kubernetes.IoK8sApiCoreV1VsphereVirtualDiskVolumeSource
+        const FlexPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1FlexPersistentVolumeSource
         const Probe = Kubernetes.IoK8sApiCoreV1Probe
         const HostAlias = Kubernetes.IoK8sApiCoreV1HostAlias
+        const TypedLocalObjectReference = Kubernetes.IoK8sApiCoreV1TypedLocalObjectReference
         const ComponentStatusList = Kubernetes.IoK8sApiCoreV1ComponentStatusList
         const EndpointsList = Kubernetes.IoK8sApiCoreV1EndpointsList
         const WeightedPodAffinityTerm = Kubernetes.IoK8sApiCoreV1WeightedPodAffinityTerm
+        const TopologySelectorLabelRequirement = Kubernetes.IoK8sApiCoreV1TopologySelectorLabelRequirement
         const EndpointSubset = Kubernetes.IoK8sApiCoreV1EndpointSubset
         const NodeSelector = Kubernetes.IoK8sApiCoreV1NodeSelector
         const DaemonEndpoint = Kubernetes.IoK8sApiCoreV1DaemonEndpoint
@@ -539,11 +700,13 @@ module Typedefs
         const PersistentVolumeClaimStatus = Kubernetes.IoK8sApiCoreV1PersistentVolumeClaimStatus
         const ResourceQuota = Kubernetes.IoK8sApiCoreV1ResourceQuota
         const ResourceRequirements = Kubernetes.IoK8sApiCoreV1ResourceRequirements
+        const ConfigMapNodeConfigSource = Kubernetes.IoK8sApiCoreV1ConfigMapNodeConfigSource
         const Lifecycle = Kubernetes.IoK8sApiCoreV1Lifecycle
         const ServiceAccountList = Kubernetes.IoK8sApiCoreV1ServiceAccountList
         const EnvVarSource = Kubernetes.IoK8sApiCoreV1EnvVarSource
         const SecretProjection = Kubernetes.IoK8sApiCoreV1SecretProjection
         const ConfigMapVolumeSource = Kubernetes.IoK8sApiCoreV1ConfigMapVolumeSource
+        const EventSeries = Kubernetes.IoK8sApiCoreV1EventSeries
         const PodStatus = Kubernetes.IoK8sApiCoreV1PodStatus
         const ReplicationControllerStatus = Kubernetes.IoK8sApiCoreV1ReplicationControllerStatus
         const ContainerImage = Kubernetes.IoK8sApiCoreV1ContainerImage
@@ -560,9 +723,11 @@ module Typedefs
         const VolumeMount = Kubernetes.IoK8sApiCoreV1VolumeMount
         const ConfigMapKeySelector = Kubernetes.IoK8sApiCoreV1ConfigMapKeySelector
         const Service = Kubernetes.IoK8sApiCoreV1Service
+        const CinderPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1CinderPersistentVolumeSource
         const SecretEnvSource = Kubernetes.IoK8sApiCoreV1SecretEnvSource
         const LimitRangeSpec = Kubernetes.IoK8sApiCoreV1LimitRangeSpec
         const ServiceStatus = Kubernetes.IoK8sApiCoreV1ServiceStatus
+        const PodReadinessGate = Kubernetes.IoK8sApiCoreV1PodReadinessGate
         const ReplicationController = Kubernetes.IoK8sApiCoreV1ReplicationController
         const LimitRangeItem = Kubernetes.IoK8sApiCoreV1LimitRangeItem
         const GlusterfsVolumeSource = Kubernetes.IoK8sApiCoreV1GlusterfsVolumeSource
@@ -570,6 +735,7 @@ module Typedefs
         const LoadBalancerIngress = Kubernetes.IoK8sApiCoreV1LoadBalancerIngress
         const Binding = Kubernetes.IoK8sApiCoreV1Binding
         const Node = Kubernetes.IoK8sApiCoreV1Node
+        const PodDNSConfigOption = Kubernetes.IoK8sApiCoreV1PodDNSConfigOption
         const PodAntiAffinity = Kubernetes.IoK8sApiCoreV1PodAntiAffinity
         const PersistentVolumeSpec = Kubernetes.IoK8sApiCoreV1PersistentVolumeSpec
         const DownwardAPIProjection = Kubernetes.IoK8sApiCoreV1DownwardAPIProjection
@@ -591,9 +757,12 @@ module Typedefs
         const ServicePort = Kubernetes.IoK8sApiCoreV1ServicePort
         const Endpoints = Kubernetes.IoK8sApiCoreV1Endpoints
         const PodCondition = Kubernetes.IoK8sApiCoreV1PodCondition
+        const VolumeNodeAffinity = Kubernetes.IoK8sApiCoreV1VolumeNodeAffinity
         const NodeStatus = Kubernetes.IoK8sApiCoreV1NodeStatus
         const CephFSVolumeSource = Kubernetes.IoK8sApiCoreV1CephFSVolumeSource
         const SecretReference = Kubernetes.IoK8sApiCoreV1SecretReference
+        const VolumeDevice = Kubernetes.IoK8sApiCoreV1VolumeDevice
+        const NodeConfigStatus = Kubernetes.IoK8sApiCoreV1NodeConfigStatus
         const Container = Kubernetes.IoK8sApiCoreV1Container
         const SecurityContext = Kubernetes.IoK8sApiCoreV1SecurityContext
         const ScaleIOPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1ScaleIOPersistentVolumeSource
@@ -624,10 +793,12 @@ module Typedefs
         const PersistentVolumeStatus = Kubernetes.IoK8sApiCoreV1PersistentVolumeStatus
         const NodeAffinity = Kubernetes.IoK8sApiCoreV1NodeAffinity
         const ServiceList = Kubernetes.IoK8sApiCoreV1ServiceList
+        const CSIPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1CSIPersistentVolumeSource
         const ReplicationControllerList = Kubernetes.IoK8sApiCoreV1ReplicationControllerList
         const ResourceQuotaSpec = Kubernetes.IoK8sApiCoreV1ResourceQuotaSpec
         const AttachedVolume = Kubernetes.IoK8sApiCoreV1AttachedVolume
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
+        const Sysctl = Kubernetes.IoK8sApiCoreV1Sysctl
         const ScaleIOVolumeSource = Kubernetes.IoK8sApiCoreV1ScaleIOVolumeSource
         const SELinuxOptions = Kubernetes.IoK8sApiCoreV1SELinuxOptions
         const ConfigMapList = Kubernetes.IoK8sApiCoreV1ConfigMapList
@@ -641,12 +812,15 @@ module Typedefs
         const QuobyteVolumeSource = Kubernetes.IoK8sApiCoreV1QuobyteVolumeSource
         const ISCSIVolumeSource = Kubernetes.IoK8sApiCoreV1ISCSIVolumeSource
         const ObjectReference = Kubernetes.IoK8sApiCoreV1ObjectReference
+        const PodDNSConfig = Kubernetes.IoK8sApiCoreV1PodDNSConfig
         const HTTPHeader = Kubernetes.IoK8sApiCoreV1HTTPHeader
         const PodAffinityTerm = Kubernetes.IoK8sApiCoreV1PodAffinityTerm
+        const ServiceAccountTokenProjection = Kubernetes.IoK8sApiCoreV1ServiceAccountTokenProjection
         const PersistentVolumeClaimVolumeSource = Kubernetes.IoK8sApiCoreV1PersistentVolumeClaimVolumeSource
         const AzureFilePersistentVolumeSource = Kubernetes.IoK8sApiCoreV1AzureFilePersistentVolumeSource
         const ComponentStatus = Kubernetes.IoK8sApiCoreV1ComponentStatus
         const HTTPGetAction = Kubernetes.IoK8sApiCoreV1HTTPGetAction
+        const ScopeSelector = Kubernetes.IoK8sApiCoreV1ScopeSelector
     end # module CoreV1
     module RbacAuthorizationV1
         using ..Kubernetes
@@ -663,6 +837,7 @@ module Typedefs
         const RoleRef = Kubernetes.IoK8sApiRbacV1RoleRef
         const ClusterRoleList = Kubernetes.IoK8sApiRbacV1ClusterRoleList
         const Role = Kubernetes.IoK8sApiRbacV1Role
+        const AggregationRule = Kubernetes.IoK8sApiRbacV1AggregationRule
         const ClusterRoleBindingList = Kubernetes.IoK8sApiRbacV1ClusterRoleBindingList
     end # module RbacAuthorizationV1
 end # module Typedefs

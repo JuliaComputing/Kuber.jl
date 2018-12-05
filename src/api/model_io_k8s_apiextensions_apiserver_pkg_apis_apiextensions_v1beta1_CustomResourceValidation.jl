@@ -2,7 +2,7 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation <: SwaggerModel
-    openAPIV3Schema::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps } # openAPIV3Schema
+    openAPIV3Schema::Union{ Nothing, String } # openAPIV3Schema
 
     function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation(;openAPIV3Schema=nothing)
         o = new()

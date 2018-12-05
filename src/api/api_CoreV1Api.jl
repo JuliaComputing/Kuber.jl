@@ -923,12 +923,16 @@ end
 
 create a Namespace
 Param: body::IoK8sApiCoreV1Namespace (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Namespace
 """
-function createCoreV1Namespace(_api::CoreV1Api, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1Namespace(_api::CoreV1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Namespace, "/api/v1/namespaces", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -939,12 +943,16 @@ end
 create a Binding
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Binding (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiCoreV1Binding
 """
-function createCoreV1NamespacedBinding(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedBinding(_api::CoreV1Api, namespace::String, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Binding, "/api/v1/namespaces/{namespace}/bindings", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -956,13 +964,17 @@ end
 create a ConfigMap
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ConfigMap (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ConfigMap
 """
-function createCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -973,13 +985,17 @@ end
 create Endpoints
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Endpoints (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Endpoints
 """
-function createCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Endpoints, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -990,13 +1006,17 @@ end
 create an Event
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Event (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Event
 """
-function createCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Event, "/api/v1/namespaces/{namespace}/events", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1007,13 +1027,17 @@ end
 create a LimitRange
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1LimitRange (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1LimitRange
 """
-function createCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1LimitRange, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1024,13 +1048,17 @@ end
 create a PersistentVolumeClaim
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1PersistentVolumeClaim (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolumeClaim
 """
-function createCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1041,13 +1069,17 @@ end
 create a Pod
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Pod (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Pod
 """
-function createCoreV1NamespacedPod(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedPod(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Pod, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1059,13 +1091,17 @@ create binding of a Pod
 Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Binding (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiCoreV1Binding
 """
-function createCoreV1NamespacedPodBinding(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedPodBinding(_api::CoreV1Api, name::String, namespace::String, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -1078,13 +1114,17 @@ create eviction of a Pod
 Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiPolicyV1beta1Eviction (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiPolicyV1beta1Eviction
 """
-function createCoreV1NamespacedPodEviction(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedPodEviction(_api::CoreV1Api, name::String, namespace::String, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiPolicyV1beta1Eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -1096,13 +1136,17 @@ end
 create a PodTemplate
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1PodTemplate (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PodTemplate
 """
-function createCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1113,13 +1157,17 @@ end
 create a ReplicationController
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ReplicationController (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ReplicationController
 """
-function createCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1130,13 +1178,17 @@ end
 create a ResourceQuota
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ResourceQuota (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ResourceQuota
 """
-function createCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1147,13 +1199,17 @@ end
 create a Secret
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Secret (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Secret
 """
-function createCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Secret, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1164,13 +1220,17 @@ end
 create a Service
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Service (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Service
 """
-function createCoreV1NamespacedService(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedService(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Service, "/api/v1/namespaces/{namespace}/services", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1181,13 +1241,17 @@ end
 create a ServiceAccount
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ServiceAccount (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ServiceAccount
 """
-function createCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1197,12 +1261,16 @@ end
 
 create a Node
 Param: body::IoK8sApiCoreV1Node (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Node
 """
-function createCoreV1Node(_api::CoreV1Api, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1Node(_api::CoreV1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1Node, "/api/v1/nodes", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1212,12 +1280,16 @@ end
 
 create a PersistentVolume
 Param: body::IoK8sApiCoreV1PersistentVolume (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolume
 """
-function createCoreV1PersistentVolume(_api::CoreV1Api, body; pretty=nothing, _mediaType=nothing)
+function createCoreV1PersistentVolume(_api::CoreV1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCoreV1PersistentVolume, "/api/v1/persistentvolumes", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1227,10 +1299,10 @@ end
 
 delete collection of ConfigMap
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1238,13 +1310,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedConfigMap(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1259,10 +1331,10 @@ end
 
 delete collection of Endpoints
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1270,13 +1342,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedEndpoints(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1291,10 +1363,10 @@ end
 
 delete collection of Event
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1302,13 +1374,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedEvent(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/events", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1323,10 +1395,10 @@ end
 
 delete collection of LimitRange
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1334,13 +1406,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedLimitRange(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1355,10 +1427,10 @@ end
 
 delete collection of PersistentVolumeClaim
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1366,13 +1438,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1387,10 +1459,10 @@ end
 
 delete collection of Pod
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1398,13 +1470,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPod(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1419,10 +1491,10 @@ end
 
 delete collection of PodTemplate
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1430,13 +1502,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedPodTemplate(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1451,10 +1523,10 @@ end
 
 delete collection of ReplicationController
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1462,13 +1534,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedReplicationController(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1483,10 +1555,10 @@ end
 
 delete collection of ResourceQuota
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1494,13 +1566,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedResourceQuota(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1515,10 +1587,10 @@ end
 
 delete collection of Secret
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1526,13 +1598,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedSecret(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1547,10 +1619,10 @@ end
 
 delete collection of ServiceAccount
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1558,13 +1630,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNamespacedServiceAccount(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1578,10 +1650,10 @@ end
 """
 
 delete collection of Node
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1589,12 +1661,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionNode(_api::CoreV1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionNode(_api::CoreV1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/nodes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1608,10 +1680,10 @@ end
 """
 
 delete collection of PersistentVolume
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -1619,12 +1691,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1CollectionPersistentVolume(_api::CoreV1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCoreV1CollectionPersistentVolume(_api::CoreV1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/persistentvolumes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -1641,15 +1713,17 @@ delete a Namespace
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1665,16 +1739,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1690,16 +1766,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1715,16 +1793,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1740,16 +1820,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1765,16 +1847,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1790,16 +1874,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1815,16 +1901,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1840,16 +1928,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1865,16 +1955,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1890,16 +1982,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1913,14 +2007,23 @@ end
 delete a Service
 Param: name::String (required)
 Param: namespace::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
+Param: gracePeriodSeconds::Int32
+Param: orphanDependents::Bool
+Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken"])
+function deleteCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1933,16 +2036,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1957,15 +2062,17 @@ delete a Node
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/nodes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -1980,15 +2087,17 @@ delete a PersistentVolume
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/api/v1/persistentvolumes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -2162,10 +2271,10 @@ end
 """
 
 list or watch objects of kind Namespace
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2173,12 +2282,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1NamespaceList
 """
-function listCoreV1Namespace(_api::CoreV1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1Namespace(_api::CoreV1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1NamespaceList, "/api/v1/namespaces", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2193,10 +2302,10 @@ end
 
 list or watch objects of kind ConfigMap
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2204,13 +2313,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1ConfigMapList
 """
-function listCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedConfigMap(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1ConfigMapList, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2225,10 +2334,10 @@ end
 
 list or watch objects of kind Endpoints
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2236,13 +2345,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1EndpointsList
 """
-function listCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedEndpoints(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1EndpointsList, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2257,10 +2366,10 @@ end
 
 list or watch objects of kind Event
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2268,13 +2377,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1EventList
 """
-function listCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedEvent(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1EventList, "/api/v1/namespaces/{namespace}/events", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2289,10 +2398,10 @@ end
 
 list or watch objects of kind LimitRange
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2300,13 +2409,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1LimitRangeList
 """
-function listCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedLimitRange(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1LimitRangeList, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2321,10 +2430,10 @@ end
 
 list or watch objects of kind PersistentVolumeClaim
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2332,13 +2441,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1PersistentVolumeClaimList
 """
-function listCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1PersistentVolumeClaimList, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2353,10 +2462,10 @@ end
 
 list or watch objects of kind Pod
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2364,13 +2473,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1PodList
 """
-function listCoreV1NamespacedPod(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPod(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1PodList, "/api/v1/namespaces/{namespace}/pods", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2385,10 +2494,10 @@ end
 
 list or watch objects of kind PodTemplate
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2396,13 +2505,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1PodTemplateList
 """
-function listCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedPodTemplate(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1PodTemplateList, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2417,10 +2526,10 @@ end
 
 list or watch objects of kind ReplicationController
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2428,13 +2537,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1ReplicationControllerList
 """
-function listCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedReplicationController(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1ReplicationControllerList, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2449,10 +2558,10 @@ end
 
 list or watch objects of kind ResourceQuota
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2460,13 +2569,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1ResourceQuotaList
 """
-function listCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedResourceQuota(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1ResourceQuotaList, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2481,10 +2590,10 @@ end
 
 list or watch objects of kind Secret
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2492,13 +2601,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1SecretList
 """
-function listCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedSecret(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1SecretList, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2513,10 +2622,10 @@ end
 
 list or watch objects of kind Service
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2524,13 +2633,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1ServiceList
 """
-function listCoreV1NamespacedService(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedService(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1ServiceList, "/api/v1/namespaces/{namespace}/services", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2545,10 +2654,10 @@ end
 
 list or watch objects of kind ServiceAccount
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2556,13 +2665,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1ServiceAccountList
 """
-function listCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1NamespacedServiceAccount(_api::CoreV1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1ServiceAccountList, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2576,10 +2685,10 @@ end
 """
 
 list or watch objects of kind Node
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2587,12 +2696,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1NodeList
 """
-function listCoreV1Node(_api::CoreV1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1Node(_api::CoreV1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1NodeList, "/api/v1/nodes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2606,10 +2715,10 @@ end
 """
 
 list or watch objects of kind PersistentVolume
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -2617,12 +2726,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCoreV1PersistentVolumeList
 """
-function listCoreV1PersistentVolume(_api::CoreV1Api; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCoreV1PersistentVolume(_api::CoreV1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCoreV1PersistentVolumeList, "/api/v1/persistentvolumes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -2879,12 +2988,14 @@ partially update the specified Namespace
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Namespace
 """
-function patchCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Namespace, "/api/v1/namespaces/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2896,12 +3007,14 @@ partially update status of the specified Namespace
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Namespace
 """
-function patchCoreV1NamespaceStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespaceStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Namespace, "/api/v1/namespaces/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2914,13 +3027,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ConfigMap
 """
-function patchCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2933,13 +3048,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Endpoints
 """
-function patchCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2952,13 +3069,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Event
 """
-function patchCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2971,13 +3090,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1LimitRange
 """
-function patchCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -2990,13 +3111,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3009,13 +3132,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolumeClaim
 """
-function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedPersistentVolumeClaimStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3028,13 +3153,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Pod
 """
-function patchCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3047,13 +3174,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Pod
 """
-function patchCoreV1NamespacedPodStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedPodStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3066,13 +3195,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PodTemplate
 """
-function patchCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3085,13 +3216,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ReplicationController
 """
-function patchCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3104,13 +3237,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV1Scale
 """
-function patchCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3123,13 +3258,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ReplicationController
 """
-function patchCoreV1NamespacedReplicationControllerStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedReplicationControllerStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3142,13 +3279,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3161,13 +3300,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ResourceQuota
 """
-function patchCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3180,13 +3321,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Secret
 """
-function patchCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3199,13 +3342,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Service
 """
-function patchCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3218,13 +3363,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ServiceAccount
 """
-function patchCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3237,13 +3384,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Service
 """
-function patchCoreV1NamespacedServiceStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NamespacedServiceStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3255,12 +3404,14 @@ partially update the specified Node
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Node
 """
-function patchCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Node, "/api/v1/nodes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3272,12 +3423,14 @@ partially update status of the specified Node
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Node
 """
-function patchCoreV1NodeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1NodeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1Node, "/api/v1/nodes/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3289,12 +3442,14 @@ partially update the specified PersistentVolume
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolume
 """
-function patchCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1PersistentVolume, "/api/v1/persistentvolumes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -3306,700 +3461,16 @@ partially update status of the specified PersistentVolume
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolume
 """
-function patchCoreV1PersistentVolumeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function patchCoreV1PersistentVolumeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCoreV1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy DELETE requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1DELETENodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1GETNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1GETNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1GETNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1GETNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1GETNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy GET requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1GETNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "GET", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy HEAD requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1HEADNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "HEAD", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy OPTIONS requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1OPTIONSNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "OPTIONS", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PATCH requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PATCHNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy POST requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1POSTNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNamespacedPod(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Pod
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNamespacedPodWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/pods/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNamespacedService(_api::CoreV1Api, name::String, namespace::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Service
-Param: name::String (required)
-Param: namespace::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNamespacedServiceWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/namespaces/{namespace}/services/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Node
-Param: name::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNode(_api::CoreV1Api, name::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    Swagger.exec(_ctx)
-end
-
-"""
-
-proxy PUT requests to Node
-Param: name::String (required)
-Param: path::String (required)
-Return: String
-"""
-function proxyCoreV1PUTNodeWithPath(_api::CoreV1Api, name::String, path::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", String, "/api/v1/proxy/nodes/{name}/{path}", ["BearerToken"])
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "path", path)  # type String
-    Swagger.set_header_accept(_ctx, ["*/*"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -4537,12 +4008,14 @@ replace the specified Namespace
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1Namespace (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Namespace
 """
-function replaceCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1Namespace(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Namespace, "/api/v1/namespaces/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4553,12 +4026,14 @@ end
 replace finalize of the specified Namespace
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1Namespace (required)
+Param: dryRun::String
 Param: pretty::String
 Return: IoK8sApiCoreV1Namespace
 """
-function replaceCoreV1NamespaceFinalize(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespaceFinalize(_api::CoreV1Api, name::String, body; dryRun=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Namespace, "/api/v1/namespaces/{name}/finalize", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -4571,12 +4046,14 @@ replace status of the specified Namespace
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1Namespace (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Namespace
 """
-function replaceCoreV1NamespaceStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespaceStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Namespace, "/api/v1/namespaces/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4589,13 +4066,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ConfigMap (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ConfigMap
 """
-function replaceCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedConfigMap(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ConfigMap, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4608,13 +4087,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Endpoints (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Endpoints
 """
-function replaceCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedEndpoints(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4627,13 +4108,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Event (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Event
 """
-function replaceCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedEvent(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4646,13 +4129,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1LimitRange (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1LimitRange
 """
-function replaceCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedLimitRange(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1LimitRange, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4665,13 +4150,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1PersistentVolumeClaim (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedPersistentVolumeClaim(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4684,13 +4171,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1PersistentVolumeClaim (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolumeClaim
 """
-function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedPersistentVolumeClaimStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1PersistentVolumeClaim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4703,13 +4192,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Pod (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Pod
 """
-function replaceCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedPod(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4722,13 +4213,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Pod (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Pod
 """
-function replaceCoreV1NamespacedPodStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedPodStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Pod, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4741,13 +4234,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1PodTemplate (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PodTemplate
 """
-function replaceCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedPodTemplate(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1PodTemplate, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4760,13 +4255,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ReplicationController (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedReplicationController(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4779,13 +4276,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiAutoscalingV1Scale (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV1Scale
 """
-function replaceCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedReplicationControllerScale(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiAutoscalingV1Scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4798,13 +4297,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ReplicationController (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ReplicationController
 """
-function replaceCoreV1NamespacedReplicationControllerStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedReplicationControllerStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ReplicationController, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4817,13 +4318,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ResourceQuota (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedResourceQuota(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4836,13 +4339,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ResourceQuota (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ResourceQuota
 """
-function replaceCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedResourceQuotaStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ResourceQuota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4855,13 +4360,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Secret (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Secret
 """
-function replaceCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedSecret(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4874,13 +4381,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Service (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Service
 """
-function replaceCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedService(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4893,13 +4402,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1ServiceAccount (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1ServiceAccount
 """
-function replaceCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedServiceAccount(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1ServiceAccount, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4912,13 +4423,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiCoreV1Service (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Service
 """
-function replaceCoreV1NamespacedServiceStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NamespacedServiceStatus(_api::CoreV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Service, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4930,12 +4443,14 @@ replace the specified Node
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1Node (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Node
 """
-function replaceCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1Node(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Node, "/api/v1/nodes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4947,12 +4462,14 @@ replace status of the specified Node
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1Node (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1Node
 """
-function replaceCoreV1NodeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1NodeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1Node, "/api/v1/nodes/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4964,12 +4481,14 @@ replace the specified PersistentVolume
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1PersistentVolume (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolume
 """
-function replaceCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1PersistentVolume(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1PersistentVolume, "/api/v1/persistentvolumes/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4981,12 +4500,14 @@ replace status of the specified PersistentVolume
 Param: name::String (required)
 Param: body::IoK8sApiCoreV1PersistentVolume (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiCoreV1PersistentVolume
 """
-function replaceCoreV1PersistentVolumeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, _mediaType=nothing)
+function replaceCoreV1PersistentVolumeStatus(_api::CoreV1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCoreV1PersistentVolume, "/api/v1/persistentvolumes/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -4994,7 +4515,7 @@ end
 
 """
 
-watch individual changes to a list of ConfigMap
+watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -5024,7 +4545,7 @@ end
 
 """
 
-watch individual changes to a list of Endpoints
+watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -5054,7 +4575,7 @@ end
 
 """
 
-watch individual changes to a list of Event
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -5084,7 +4605,7 @@ end
 
 """
 
-watch individual changes to a list of LimitRange
+watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -5114,7 +4635,7 @@ end
 
 """
 
-watch changes to an object of kind Namespace
+watch changes to an object of kind Namespace. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5146,7 +4667,7 @@ end
 
 """
 
-watch individual changes to a list of Namespace
+watch individual changes to a list of Namespace. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -5176,7 +4697,7 @@ end
 
 """
 
-watch changes to an object of kind ConfigMap
+watch changes to an object of kind ConfigMap. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5210,7 +4731,7 @@ end
 
 """
 
-watch individual changes to a list of ConfigMap
+watch individual changes to a list of ConfigMap. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5242,7 +4763,7 @@ end
 
 """
 
-watch changes to an object of kind Endpoints
+watch changes to an object of kind Endpoints. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5276,7 +4797,7 @@ end
 
 """
 
-watch individual changes to a list of Endpoints
+watch individual changes to a list of Endpoints. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5308,7 +4829,7 @@ end
 
 """
 
-watch changes to an object of kind Event
+watch changes to an object of kind Event. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5342,7 +4863,7 @@ end
 
 """
 
-watch individual changes to a list of Event
+watch individual changes to a list of Event. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5374,7 +4895,7 @@ end
 
 """
 
-watch changes to an object of kind LimitRange
+watch changes to an object of kind LimitRange. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5408,7 +4929,7 @@ end
 
 """
 
-watch individual changes to a list of LimitRange
+watch individual changes to a list of LimitRange. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5440,7 +4961,7 @@ end
 
 """
 
-watch changes to an object of kind PersistentVolumeClaim
+watch changes to an object of kind PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5474,7 +4995,7 @@ end
 
 """
 
-watch individual changes to a list of PersistentVolumeClaim
+watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5506,7 +5027,7 @@ end
 
 """
 
-watch changes to an object of kind Pod
+watch changes to an object of kind Pod. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5540,7 +5061,7 @@ end
 
 """
 
-watch individual changes to a list of Pod
+watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5572,7 +5093,7 @@ end
 
 """
 
-watch changes to an object of kind PodTemplate
+watch changes to an object of kind PodTemplate. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5606,7 +5127,7 @@ end
 
 """
 
-watch individual changes to a list of PodTemplate
+watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5638,7 +5159,7 @@ end
 
 """
 
-watch changes to an object of kind ReplicationController
+watch changes to an object of kind ReplicationController. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5672,7 +5193,7 @@ end
 
 """
 
-watch individual changes to a list of ReplicationController
+watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5704,7 +5225,7 @@ end
 
 """
 
-watch changes to an object of kind ResourceQuota
+watch changes to an object of kind ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5738,7 +5259,7 @@ end
 
 """
 
-watch individual changes to a list of ResourceQuota
+watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5770,7 +5291,7 @@ end
 
 """
 
-watch changes to an object of kind Secret
+watch changes to an object of kind Secret. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5804,7 +5325,7 @@ end
 
 """
 
-watch individual changes to a list of Secret
+watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5836,7 +5357,7 @@ end
 
 """
 
-watch changes to an object of kind Service
+watch changes to an object of kind Service. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5870,7 +5391,7 @@ end
 
 """
 
-watch changes to an object of kind ServiceAccount
+watch changes to an object of kind ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -5904,7 +5425,7 @@ end
 
 """
 
-watch individual changes to a list of ServiceAccount
+watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5936,7 +5457,7 @@ end
 
 """
 
-watch individual changes to a list of Service
+watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -5968,7 +5489,7 @@ end
 
 """
 
-watch changes to an object of kind Node
+watch changes to an object of kind Node. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -6000,7 +5521,7 @@ end
 
 """
 
-watch individual changes to a list of Node
+watch individual changes to a list of Node. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6030,7 +5551,7 @@ end
 
 """
 
-watch changes to an object of kind PersistentVolume
+watch changes to an object of kind PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -6062,7 +5583,7 @@ end
 
 """
 
-watch individual changes to a list of PersistentVolumeClaim
+watch individual changes to a list of PersistentVolumeClaim. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6092,7 +5613,7 @@ end
 
 """
 
-watch individual changes to a list of PersistentVolume
+watch individual changes to a list of PersistentVolume. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6122,7 +5643,7 @@ end
 
 """
 
-watch individual changes to a list of Pod
+watch individual changes to a list of Pod. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6152,7 +5673,7 @@ end
 
 """
 
-watch individual changes to a list of PodTemplate
+watch individual changes to a list of PodTemplate. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6182,7 +5703,7 @@ end
 
 """
 
-watch individual changes to a list of ReplicationController
+watch individual changes to a list of ReplicationController. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6212,7 +5733,7 @@ end
 
 """
 
-watch individual changes to a list of ResourceQuota
+watch individual changes to a list of ResourceQuota. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6242,7 +5763,7 @@ end
 
 """
 
-watch individual changes to a list of Secret
+watch individual changes to a list of Secret. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6272,7 +5793,7 @@ end
 
 """
 
-watch individual changes to a list of ServiceAccount
+watch individual changes to a list of ServiceAccount. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6302,7 +5823,7 @@ end
 
 """
 
-watch individual changes to a list of Service
+watch individual changes to a list of Service. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -6330,4 +5851,4 @@ function watchCoreV1ServiceListForAllNamespaces(_api::CoreV1Api; _continue=nothi
     Swagger.exec(_ctx)
 end
 
-export connectCoreV1DeleteNamespacedPodProxy, connectCoreV1DeleteNamespacedPodProxyWithPath, connectCoreV1DeleteNamespacedServiceProxy, connectCoreV1DeleteNamespacedServiceProxyWithPath, connectCoreV1DeleteNodeProxy, connectCoreV1DeleteNodeProxyWithPath, connectCoreV1GetNamespacedPodAttach, connectCoreV1GetNamespacedPodExec, connectCoreV1GetNamespacedPodPortforward, connectCoreV1GetNamespacedPodProxy, connectCoreV1GetNamespacedPodProxyWithPath, connectCoreV1GetNamespacedServiceProxy, connectCoreV1GetNamespacedServiceProxyWithPath, connectCoreV1GetNodeProxy, connectCoreV1GetNodeProxyWithPath, connectCoreV1HeadNamespacedPodProxy, connectCoreV1HeadNamespacedPodProxyWithPath, connectCoreV1HeadNamespacedServiceProxy, connectCoreV1HeadNamespacedServiceProxyWithPath, connectCoreV1HeadNodeProxy, connectCoreV1HeadNodeProxyWithPath, connectCoreV1OptionsNamespacedPodProxy, connectCoreV1OptionsNamespacedPodProxyWithPath, connectCoreV1OptionsNamespacedServiceProxy, connectCoreV1OptionsNamespacedServiceProxyWithPath, connectCoreV1OptionsNodeProxy, connectCoreV1OptionsNodeProxyWithPath, connectCoreV1PatchNamespacedPodProxy, connectCoreV1PatchNamespacedPodProxyWithPath, connectCoreV1PatchNamespacedServiceProxy, connectCoreV1PatchNamespacedServiceProxyWithPath, connectCoreV1PatchNodeProxy, connectCoreV1PatchNodeProxyWithPath, connectCoreV1PostNamespacedPodAttach, connectCoreV1PostNamespacedPodExec, connectCoreV1PostNamespacedPodPortforward, connectCoreV1PostNamespacedPodProxy, connectCoreV1PostNamespacedPodProxyWithPath, connectCoreV1PostNamespacedServiceProxy, connectCoreV1PostNamespacedServiceProxyWithPath, connectCoreV1PostNodeProxy, connectCoreV1PostNodeProxyWithPath, connectCoreV1PutNamespacedPodProxy, connectCoreV1PutNamespacedPodProxyWithPath, connectCoreV1PutNamespacedServiceProxy, connectCoreV1PutNamespacedServiceProxyWithPath, connectCoreV1PutNodeProxy, connectCoreV1PutNodeProxyWithPath, createCoreV1Namespace, createCoreV1NamespacedBinding, createCoreV1NamespacedConfigMap, createCoreV1NamespacedEndpoints, createCoreV1NamespacedEvent, createCoreV1NamespacedLimitRange, createCoreV1NamespacedPersistentVolumeClaim, createCoreV1NamespacedPod, createCoreV1NamespacedPodBinding, createCoreV1NamespacedPodEviction, createCoreV1NamespacedPodTemplate, createCoreV1NamespacedReplicationController, createCoreV1NamespacedResourceQuota, createCoreV1NamespacedSecret, createCoreV1NamespacedService, createCoreV1NamespacedServiceAccount, createCoreV1Node, createCoreV1PersistentVolume, deleteCoreV1CollectionNamespacedConfigMap, deleteCoreV1CollectionNamespacedEndpoints, deleteCoreV1CollectionNamespacedEvent, deleteCoreV1CollectionNamespacedLimitRange, deleteCoreV1CollectionNamespacedPersistentVolumeClaim, deleteCoreV1CollectionNamespacedPod, deleteCoreV1CollectionNamespacedPodTemplate, deleteCoreV1CollectionNamespacedReplicationController, deleteCoreV1CollectionNamespacedResourceQuota, deleteCoreV1CollectionNamespacedSecret, deleteCoreV1CollectionNamespacedServiceAccount, deleteCoreV1CollectionNode, deleteCoreV1CollectionPersistentVolume, deleteCoreV1Namespace, deleteCoreV1NamespacedConfigMap, deleteCoreV1NamespacedEndpoints, deleteCoreV1NamespacedEvent, deleteCoreV1NamespacedLimitRange, deleteCoreV1NamespacedPersistentVolumeClaim, deleteCoreV1NamespacedPod, deleteCoreV1NamespacedPodTemplate, deleteCoreV1NamespacedReplicationController, deleteCoreV1NamespacedResourceQuota, deleteCoreV1NamespacedSecret, deleteCoreV1NamespacedService, deleteCoreV1NamespacedServiceAccount, deleteCoreV1Node, deleteCoreV1PersistentVolume, getCoreV1APIResources, listCoreV1ComponentStatus, listCoreV1ConfigMapForAllNamespaces, listCoreV1EndpointsForAllNamespaces, listCoreV1EventForAllNamespaces, listCoreV1LimitRangeForAllNamespaces, listCoreV1Namespace, listCoreV1NamespacedConfigMap, listCoreV1NamespacedEndpoints, listCoreV1NamespacedEvent, listCoreV1NamespacedLimitRange, listCoreV1NamespacedPersistentVolumeClaim, listCoreV1NamespacedPod, listCoreV1NamespacedPodTemplate, listCoreV1NamespacedReplicationController, listCoreV1NamespacedResourceQuota, listCoreV1NamespacedSecret, listCoreV1NamespacedService, listCoreV1NamespacedServiceAccount, listCoreV1Node, listCoreV1PersistentVolume, listCoreV1PersistentVolumeClaimForAllNamespaces, listCoreV1PodForAllNamespaces, listCoreV1PodTemplateForAllNamespaces, listCoreV1ReplicationControllerForAllNamespaces, listCoreV1ResourceQuotaForAllNamespaces, listCoreV1SecretForAllNamespaces, listCoreV1ServiceAccountForAllNamespaces, listCoreV1ServiceForAllNamespaces, patchCoreV1Namespace, patchCoreV1NamespaceStatus, patchCoreV1NamespacedConfigMap, patchCoreV1NamespacedEndpoints, patchCoreV1NamespacedEvent, patchCoreV1NamespacedLimitRange, patchCoreV1NamespacedPersistentVolumeClaim, patchCoreV1NamespacedPersistentVolumeClaimStatus, patchCoreV1NamespacedPod, patchCoreV1NamespacedPodStatus, patchCoreV1NamespacedPodTemplate, patchCoreV1NamespacedReplicationController, patchCoreV1NamespacedReplicationControllerScale, patchCoreV1NamespacedReplicationControllerStatus, patchCoreV1NamespacedResourceQuota, patchCoreV1NamespacedResourceQuotaStatus, patchCoreV1NamespacedSecret, patchCoreV1NamespacedService, patchCoreV1NamespacedServiceAccount, patchCoreV1NamespacedServiceStatus, patchCoreV1Node, patchCoreV1NodeStatus, patchCoreV1PersistentVolume, patchCoreV1PersistentVolumeStatus, proxyCoreV1DELETENamespacedPod, proxyCoreV1DELETENamespacedPodWithPath, proxyCoreV1DELETENamespacedService, proxyCoreV1DELETENamespacedServiceWithPath, proxyCoreV1DELETENode, proxyCoreV1DELETENodeWithPath, proxyCoreV1GETNamespacedPod, proxyCoreV1GETNamespacedPodWithPath, proxyCoreV1GETNamespacedService, proxyCoreV1GETNamespacedServiceWithPath, proxyCoreV1GETNode, proxyCoreV1GETNodeWithPath, proxyCoreV1HEADNamespacedPod, proxyCoreV1HEADNamespacedPodWithPath, proxyCoreV1HEADNamespacedService, proxyCoreV1HEADNamespacedServiceWithPath, proxyCoreV1HEADNode, proxyCoreV1HEADNodeWithPath, proxyCoreV1OPTIONSNamespacedPod, proxyCoreV1OPTIONSNamespacedPodWithPath, proxyCoreV1OPTIONSNamespacedService, proxyCoreV1OPTIONSNamespacedServiceWithPath, proxyCoreV1OPTIONSNode, proxyCoreV1OPTIONSNodeWithPath, proxyCoreV1PATCHNamespacedPod, proxyCoreV1PATCHNamespacedPodWithPath, proxyCoreV1PATCHNamespacedService, proxyCoreV1PATCHNamespacedServiceWithPath, proxyCoreV1PATCHNode, proxyCoreV1PATCHNodeWithPath, proxyCoreV1POSTNamespacedPod, proxyCoreV1POSTNamespacedPodWithPath, proxyCoreV1POSTNamespacedService, proxyCoreV1POSTNamespacedServiceWithPath, proxyCoreV1POSTNode, proxyCoreV1POSTNodeWithPath, proxyCoreV1PUTNamespacedPod, proxyCoreV1PUTNamespacedPodWithPath, proxyCoreV1PUTNamespacedService, proxyCoreV1PUTNamespacedServiceWithPath, proxyCoreV1PUTNode, proxyCoreV1PUTNodeWithPath, readCoreV1ComponentStatus, readCoreV1Namespace, readCoreV1NamespaceStatus, readCoreV1NamespacedConfigMap, readCoreV1NamespacedEndpoints, readCoreV1NamespacedEvent, readCoreV1NamespacedLimitRange, readCoreV1NamespacedPersistentVolumeClaim, readCoreV1NamespacedPersistentVolumeClaimStatus, readCoreV1NamespacedPod, readCoreV1NamespacedPodLog, readCoreV1NamespacedPodStatus, readCoreV1NamespacedPodTemplate, readCoreV1NamespacedReplicationController, readCoreV1NamespacedReplicationControllerScale, readCoreV1NamespacedReplicationControllerStatus, readCoreV1NamespacedResourceQuota, readCoreV1NamespacedResourceQuotaStatus, readCoreV1NamespacedSecret, readCoreV1NamespacedService, readCoreV1NamespacedServiceAccount, readCoreV1NamespacedServiceStatus, readCoreV1Node, readCoreV1NodeStatus, readCoreV1PersistentVolume, readCoreV1PersistentVolumeStatus, replaceCoreV1Namespace, replaceCoreV1NamespaceFinalize, replaceCoreV1NamespaceStatus, replaceCoreV1NamespacedConfigMap, replaceCoreV1NamespacedEndpoints, replaceCoreV1NamespacedEvent, replaceCoreV1NamespacedLimitRange, replaceCoreV1NamespacedPersistentVolumeClaim, replaceCoreV1NamespacedPersistentVolumeClaimStatus, replaceCoreV1NamespacedPod, replaceCoreV1NamespacedPodStatus, replaceCoreV1NamespacedPodTemplate, replaceCoreV1NamespacedReplicationController, replaceCoreV1NamespacedReplicationControllerScale, replaceCoreV1NamespacedReplicationControllerStatus, replaceCoreV1NamespacedResourceQuota, replaceCoreV1NamespacedResourceQuotaStatus, replaceCoreV1NamespacedSecret, replaceCoreV1NamespacedService, replaceCoreV1NamespacedServiceAccount, replaceCoreV1NamespacedServiceStatus, replaceCoreV1Node, replaceCoreV1NodeStatus, replaceCoreV1PersistentVolume, replaceCoreV1PersistentVolumeStatus, watchCoreV1ConfigMapListForAllNamespaces, watchCoreV1EndpointsListForAllNamespaces, watchCoreV1EventListForAllNamespaces, watchCoreV1LimitRangeListForAllNamespaces, watchCoreV1Namespace, watchCoreV1NamespaceList, watchCoreV1NamespacedConfigMap, watchCoreV1NamespacedConfigMapList, watchCoreV1NamespacedEndpoints, watchCoreV1NamespacedEndpointsList, watchCoreV1NamespacedEvent, watchCoreV1NamespacedEventList, watchCoreV1NamespacedLimitRange, watchCoreV1NamespacedLimitRangeList, watchCoreV1NamespacedPersistentVolumeClaim, watchCoreV1NamespacedPersistentVolumeClaimList, watchCoreV1NamespacedPod, watchCoreV1NamespacedPodList, watchCoreV1NamespacedPodTemplate, watchCoreV1NamespacedPodTemplateList, watchCoreV1NamespacedReplicationController, watchCoreV1NamespacedReplicationControllerList, watchCoreV1NamespacedResourceQuota, watchCoreV1NamespacedResourceQuotaList, watchCoreV1NamespacedSecret, watchCoreV1NamespacedSecretList, watchCoreV1NamespacedService, watchCoreV1NamespacedServiceAccount, watchCoreV1NamespacedServiceAccountList, watchCoreV1NamespacedServiceList, watchCoreV1Node, watchCoreV1NodeList, watchCoreV1PersistentVolume, watchCoreV1PersistentVolumeClaimListForAllNamespaces, watchCoreV1PersistentVolumeList, watchCoreV1PodListForAllNamespaces, watchCoreV1PodTemplateListForAllNamespaces, watchCoreV1ReplicationControllerListForAllNamespaces, watchCoreV1ResourceQuotaListForAllNamespaces, watchCoreV1SecretListForAllNamespaces, watchCoreV1ServiceAccountListForAllNamespaces, watchCoreV1ServiceListForAllNamespaces
+export connectCoreV1DeleteNamespacedPodProxy, connectCoreV1DeleteNamespacedPodProxyWithPath, connectCoreV1DeleteNamespacedServiceProxy, connectCoreV1DeleteNamespacedServiceProxyWithPath, connectCoreV1DeleteNodeProxy, connectCoreV1DeleteNodeProxyWithPath, connectCoreV1GetNamespacedPodAttach, connectCoreV1GetNamespacedPodExec, connectCoreV1GetNamespacedPodPortforward, connectCoreV1GetNamespacedPodProxy, connectCoreV1GetNamespacedPodProxyWithPath, connectCoreV1GetNamespacedServiceProxy, connectCoreV1GetNamespacedServiceProxyWithPath, connectCoreV1GetNodeProxy, connectCoreV1GetNodeProxyWithPath, connectCoreV1HeadNamespacedPodProxy, connectCoreV1HeadNamespacedPodProxyWithPath, connectCoreV1HeadNamespacedServiceProxy, connectCoreV1HeadNamespacedServiceProxyWithPath, connectCoreV1HeadNodeProxy, connectCoreV1HeadNodeProxyWithPath, connectCoreV1OptionsNamespacedPodProxy, connectCoreV1OptionsNamespacedPodProxyWithPath, connectCoreV1OptionsNamespacedServiceProxy, connectCoreV1OptionsNamespacedServiceProxyWithPath, connectCoreV1OptionsNodeProxy, connectCoreV1OptionsNodeProxyWithPath, connectCoreV1PatchNamespacedPodProxy, connectCoreV1PatchNamespacedPodProxyWithPath, connectCoreV1PatchNamespacedServiceProxy, connectCoreV1PatchNamespacedServiceProxyWithPath, connectCoreV1PatchNodeProxy, connectCoreV1PatchNodeProxyWithPath, connectCoreV1PostNamespacedPodAttach, connectCoreV1PostNamespacedPodExec, connectCoreV1PostNamespacedPodPortforward, connectCoreV1PostNamespacedPodProxy, connectCoreV1PostNamespacedPodProxyWithPath, connectCoreV1PostNamespacedServiceProxy, connectCoreV1PostNamespacedServiceProxyWithPath, connectCoreV1PostNodeProxy, connectCoreV1PostNodeProxyWithPath, connectCoreV1PutNamespacedPodProxy, connectCoreV1PutNamespacedPodProxyWithPath, connectCoreV1PutNamespacedServiceProxy, connectCoreV1PutNamespacedServiceProxyWithPath, connectCoreV1PutNodeProxy, connectCoreV1PutNodeProxyWithPath, createCoreV1Namespace, createCoreV1NamespacedBinding, createCoreV1NamespacedConfigMap, createCoreV1NamespacedEndpoints, createCoreV1NamespacedEvent, createCoreV1NamespacedLimitRange, createCoreV1NamespacedPersistentVolumeClaim, createCoreV1NamespacedPod, createCoreV1NamespacedPodBinding, createCoreV1NamespacedPodEviction, createCoreV1NamespacedPodTemplate, createCoreV1NamespacedReplicationController, createCoreV1NamespacedResourceQuota, createCoreV1NamespacedSecret, createCoreV1NamespacedService, createCoreV1NamespacedServiceAccount, createCoreV1Node, createCoreV1PersistentVolume, deleteCoreV1CollectionNamespacedConfigMap, deleteCoreV1CollectionNamespacedEndpoints, deleteCoreV1CollectionNamespacedEvent, deleteCoreV1CollectionNamespacedLimitRange, deleteCoreV1CollectionNamespacedPersistentVolumeClaim, deleteCoreV1CollectionNamespacedPod, deleteCoreV1CollectionNamespacedPodTemplate, deleteCoreV1CollectionNamespacedReplicationController, deleteCoreV1CollectionNamespacedResourceQuota, deleteCoreV1CollectionNamespacedSecret, deleteCoreV1CollectionNamespacedServiceAccount, deleteCoreV1CollectionNode, deleteCoreV1CollectionPersistentVolume, deleteCoreV1Namespace, deleteCoreV1NamespacedConfigMap, deleteCoreV1NamespacedEndpoints, deleteCoreV1NamespacedEvent, deleteCoreV1NamespacedLimitRange, deleteCoreV1NamespacedPersistentVolumeClaim, deleteCoreV1NamespacedPod, deleteCoreV1NamespacedPodTemplate, deleteCoreV1NamespacedReplicationController, deleteCoreV1NamespacedResourceQuota, deleteCoreV1NamespacedSecret, deleteCoreV1NamespacedService, deleteCoreV1NamespacedServiceAccount, deleteCoreV1Node, deleteCoreV1PersistentVolume, getCoreV1APIResources, listCoreV1ComponentStatus, listCoreV1ConfigMapForAllNamespaces, listCoreV1EndpointsForAllNamespaces, listCoreV1EventForAllNamespaces, listCoreV1LimitRangeForAllNamespaces, listCoreV1Namespace, listCoreV1NamespacedConfigMap, listCoreV1NamespacedEndpoints, listCoreV1NamespacedEvent, listCoreV1NamespacedLimitRange, listCoreV1NamespacedPersistentVolumeClaim, listCoreV1NamespacedPod, listCoreV1NamespacedPodTemplate, listCoreV1NamespacedReplicationController, listCoreV1NamespacedResourceQuota, listCoreV1NamespacedSecret, listCoreV1NamespacedService, listCoreV1NamespacedServiceAccount, listCoreV1Node, listCoreV1PersistentVolume, listCoreV1PersistentVolumeClaimForAllNamespaces, listCoreV1PodForAllNamespaces, listCoreV1PodTemplateForAllNamespaces, listCoreV1ReplicationControllerForAllNamespaces, listCoreV1ResourceQuotaForAllNamespaces, listCoreV1SecretForAllNamespaces, listCoreV1ServiceAccountForAllNamespaces, listCoreV1ServiceForAllNamespaces, patchCoreV1Namespace, patchCoreV1NamespaceStatus, patchCoreV1NamespacedConfigMap, patchCoreV1NamespacedEndpoints, patchCoreV1NamespacedEvent, patchCoreV1NamespacedLimitRange, patchCoreV1NamespacedPersistentVolumeClaim, patchCoreV1NamespacedPersistentVolumeClaimStatus, patchCoreV1NamespacedPod, patchCoreV1NamespacedPodStatus, patchCoreV1NamespacedPodTemplate, patchCoreV1NamespacedReplicationController, patchCoreV1NamespacedReplicationControllerScale, patchCoreV1NamespacedReplicationControllerStatus, patchCoreV1NamespacedResourceQuota, patchCoreV1NamespacedResourceQuotaStatus, patchCoreV1NamespacedSecret, patchCoreV1NamespacedService, patchCoreV1NamespacedServiceAccount, patchCoreV1NamespacedServiceStatus, patchCoreV1Node, patchCoreV1NodeStatus, patchCoreV1PersistentVolume, patchCoreV1PersistentVolumeStatus, readCoreV1ComponentStatus, readCoreV1Namespace, readCoreV1NamespaceStatus, readCoreV1NamespacedConfigMap, readCoreV1NamespacedEndpoints, readCoreV1NamespacedEvent, readCoreV1NamespacedLimitRange, readCoreV1NamespacedPersistentVolumeClaim, readCoreV1NamespacedPersistentVolumeClaimStatus, readCoreV1NamespacedPod, readCoreV1NamespacedPodLog, readCoreV1NamespacedPodStatus, readCoreV1NamespacedPodTemplate, readCoreV1NamespacedReplicationController, readCoreV1NamespacedReplicationControllerScale, readCoreV1NamespacedReplicationControllerStatus, readCoreV1NamespacedResourceQuota, readCoreV1NamespacedResourceQuotaStatus, readCoreV1NamespacedSecret, readCoreV1NamespacedService, readCoreV1NamespacedServiceAccount, readCoreV1NamespacedServiceStatus, readCoreV1Node, readCoreV1NodeStatus, readCoreV1PersistentVolume, readCoreV1PersistentVolumeStatus, replaceCoreV1Namespace, replaceCoreV1NamespaceFinalize, replaceCoreV1NamespaceStatus, replaceCoreV1NamespacedConfigMap, replaceCoreV1NamespacedEndpoints, replaceCoreV1NamespacedEvent, replaceCoreV1NamespacedLimitRange, replaceCoreV1NamespacedPersistentVolumeClaim, replaceCoreV1NamespacedPersistentVolumeClaimStatus, replaceCoreV1NamespacedPod, replaceCoreV1NamespacedPodStatus, replaceCoreV1NamespacedPodTemplate, replaceCoreV1NamespacedReplicationController, replaceCoreV1NamespacedReplicationControllerScale, replaceCoreV1NamespacedReplicationControllerStatus, replaceCoreV1NamespacedResourceQuota, replaceCoreV1NamespacedResourceQuotaStatus, replaceCoreV1NamespacedSecret, replaceCoreV1NamespacedService, replaceCoreV1NamespacedServiceAccount, replaceCoreV1NamespacedServiceStatus, replaceCoreV1Node, replaceCoreV1NodeStatus, replaceCoreV1PersistentVolume, replaceCoreV1PersistentVolumeStatus, watchCoreV1ConfigMapListForAllNamespaces, watchCoreV1EndpointsListForAllNamespaces, watchCoreV1EventListForAllNamespaces, watchCoreV1LimitRangeListForAllNamespaces, watchCoreV1Namespace, watchCoreV1NamespaceList, watchCoreV1NamespacedConfigMap, watchCoreV1NamespacedConfigMapList, watchCoreV1NamespacedEndpoints, watchCoreV1NamespacedEndpointsList, watchCoreV1NamespacedEvent, watchCoreV1NamespacedEventList, watchCoreV1NamespacedLimitRange, watchCoreV1NamespacedLimitRangeList, watchCoreV1NamespacedPersistentVolumeClaim, watchCoreV1NamespacedPersistentVolumeClaimList, watchCoreV1NamespacedPod, watchCoreV1NamespacedPodList, watchCoreV1NamespacedPodTemplate, watchCoreV1NamespacedPodTemplateList, watchCoreV1NamespacedReplicationController, watchCoreV1NamespacedReplicationControllerList, watchCoreV1NamespacedResourceQuota, watchCoreV1NamespacedResourceQuotaList, watchCoreV1NamespacedSecret, watchCoreV1NamespacedSecretList, watchCoreV1NamespacedService, watchCoreV1NamespacedServiceAccount, watchCoreV1NamespacedServiceAccountList, watchCoreV1NamespacedServiceList, watchCoreV1Node, watchCoreV1NodeList, watchCoreV1PersistentVolume, watchCoreV1PersistentVolumeClaimListForAllNamespaces, watchCoreV1PersistentVolumeList, watchCoreV1PodListForAllNamespaces, watchCoreV1PodTemplateListForAllNamespaces, watchCoreV1ReplicationControllerListForAllNamespaces, watchCoreV1ResourceQuotaListForAllNamespaces, watchCoreV1SecretListForAllNamespaces, watchCoreV1ServiceAccountListForAllNamespaces, watchCoreV1ServiceListForAllNamespaces

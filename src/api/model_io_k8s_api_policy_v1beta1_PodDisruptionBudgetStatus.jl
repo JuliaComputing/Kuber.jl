@@ -29,7 +29,6 @@ Swagger.field_map(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus }) = _f
 function check_required(o::IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus)
     (o.currentHealthy === nothing) && (return false)
     (o.desiredHealthy === nothing) && (return false)
-    (o.disruptedPods === nothing) && (return false)
     (o.disruptionsAllowed === nothing) && (return false)
     (o.expectedPods === nothing) && (return false)
     true

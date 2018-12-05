@@ -3,20 +3,22 @@
 
 mutable struct IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus <: SwaggerModel
     allowed::Union{ Nothing, Bool } # allowed
+    denied::Union{ Nothing, Bool } # denied
     evaluationError::Union{ Nothing, String } # evaluationError
     reason::Union{ Nothing, String } # reason
 
-    function IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus(;allowed=nothing, evaluationError=nothing, reason=nothing)
+    function IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus(;allowed=nothing, denied=nothing, evaluationError=nothing, reason=nothing)
         o = new()
         set_field!(o, :allowed, allowed)
+        set_field!(o, :denied, denied)
         set_field!(o, :evaluationError, evaluationError)
         set_field!(o, :reason, reason)
         o
     end
 end # type IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus
 
-const _name_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus = Dict{String,Symbol}(["allowed"=>:allowed, "evaluationError"=>:evaluationError, "reason"=>:reason])
-const _field_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus = Dict{Symbol,String}([:allowed=>"allowed", :evaluationError=>"evaluationError", :reason=>"reason"])
+const _name_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus = Dict{String,Symbol}(["allowed"=>:allowed, "denied"=>:denied, "evaluationError"=>:evaluationError, "reason"=>:reason])
+const _field_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus = Dict{Symbol,String}([:allowed=>"allowed", :denied=>"denied", :evaluationError=>"evaluationError", :reason=>"reason"])
 Swagger.name_map(::Type{ IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus }) = _name_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus
 Swagger.field_map(::Type{ IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus }) = _field_map_IoK8sApiAuthorizationV1beta1SubjectAccessReviewStatus
 

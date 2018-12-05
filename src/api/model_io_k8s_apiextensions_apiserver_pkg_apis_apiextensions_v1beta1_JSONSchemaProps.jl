@@ -4,22 +4,22 @@
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps <: SwaggerModel
     ref::Union{ Nothing, String } # \$ref
     schema::Union{ Nothing, String } # \$schema
-    additionalItems::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool } # additionalItems
-    additionalProperties::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool } # additionalProperties
-    allOf::Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # allOf
-    anyOf::Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # anyOf
-    default::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON } # default
-    definitions::Union{ Nothing, Dict{String, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # definitions
-    dependencies::Union{ Nothing, Dict{String, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrStringArray} } # dependencies
+    additionalItems::Union{ Nothing, String } # additionalItems
+    additionalProperties::Union{ Nothing, String } # additionalProperties
+    allOf::Union{ Nothing, Vector{String} } # allOf
+    anyOf::Union{ Nothing, Vector{String} } # anyOf
+    default::Union{ Nothing, String } # default
+    definitions::Union{ Nothing, Dict{String, String} } # definitions
+    dependencies::Union{ Nothing, Dict{String, String} } # dependencies
     description::Union{ Nothing, String } # description
-    enum::Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON} } # enum
-    example::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON } # example
+    enum::Union{ Nothing, Vector{String} } # enum
+    example::Union{ Nothing, String } # example
     exclusiveMaximum::Union{ Nothing, Bool } # exclusiveMaximum
     exclusiveMinimum::Union{ Nothing, Bool } # exclusiveMinimum
     externalDocs::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation } # externalDocs
     format::Union{ Nothing, String } # format
     id::Union{ Nothing, String } # id
-    items::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrArray } # items
+    items::Union{ Nothing, String } # items
     maxItems::Union{ Nothing, Int64 } # maxItems
     maxLength::Union{ Nothing, Int64 } # maxLength
     maxProperties::Union{ Nothing, Int64 } # maxProperties
@@ -29,11 +29,11 @@ mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaP
     minProperties::Union{ Nothing, Int64 } # minProperties
     minimum::Union{ Nothing, Float64 } # minimum
     multipleOf::Union{ Nothing, Float64 } # multipleOf
-    not::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps } # not
-    oneOf::Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # oneOf
+    not::Union{ Nothing, String } # not
+    oneOf::Union{ Nothing, Vector{String} } # oneOf
     pattern::Union{ Nothing, String } # pattern
-    patternProperties::Union{ Nothing, Dict{String, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # patternProperties
-    properties::Union{ Nothing, Dict{String, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps} } # properties
+    patternProperties::Union{ Nothing, Dict{String, String} } # patternProperties
+    properties::Union{ Nothing, Dict{String, String} } # properties
     required::Union{ Nothing, Vector{String} } # required
     title::Union{ Nothing, String } # title
     _type::Union{ Nothing, String } # type

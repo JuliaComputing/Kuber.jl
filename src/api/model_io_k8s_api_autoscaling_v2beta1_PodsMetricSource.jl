@@ -3,18 +3,20 @@
 
 mutable struct IoK8sApiAutoscalingV2beta1PodsMetricSource <: SwaggerModel
     metricName::Union{ Nothing, String } # metricName
+    selector::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
     targetAverageValue::Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # targetAverageValue
 
-    function IoK8sApiAutoscalingV2beta1PodsMetricSource(;metricName=nothing, targetAverageValue=nothing)
+    function IoK8sApiAutoscalingV2beta1PodsMetricSource(;metricName=nothing, selector=nothing, targetAverageValue=nothing)
         o = new()
         set_field!(o, :metricName, metricName)
+        set_field!(o, :selector, selector)
         set_field!(o, :targetAverageValue, targetAverageValue)
         o
     end
 end # type IoK8sApiAutoscalingV2beta1PodsMetricSource
 
-const _name_map_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{String,Symbol}(["metricName"=>:metricName, "targetAverageValue"=>:targetAverageValue])
-const _field_map_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{Symbol,String}([:metricName=>"metricName", :targetAverageValue=>"targetAverageValue"])
+const _name_map_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{String,Symbol}(["metricName"=>:metricName, "selector"=>:selector, "targetAverageValue"=>:targetAverageValue])
+const _field_map_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{Symbol,String}([:metricName=>"metricName", :selector=>"selector", :targetAverageValue=>"targetAverageValue"])
 Swagger.name_map(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }) = _name_map_IoK8sApiAutoscalingV2beta1PodsMetricSource
 Swagger.field_map(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }) = _field_map_IoK8sApiAutoscalingV2beta1PodsMetricSource
 

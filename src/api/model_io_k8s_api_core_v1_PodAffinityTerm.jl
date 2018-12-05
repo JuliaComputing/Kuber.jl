@@ -21,6 +21,7 @@ Swagger.name_map(::Type{ IoK8sApiCoreV1PodAffinityTerm }) = _name_map_IoK8sApiCo
 Swagger.field_map(::Type{ IoK8sApiCoreV1PodAffinityTerm }) = _field_map_IoK8sApiCoreV1PodAffinityTerm
 
 function check_required(o::IoK8sApiCoreV1PodAffinityTerm)
+    (o.topologyKey === nothing) && (return false)
     true
 end
 

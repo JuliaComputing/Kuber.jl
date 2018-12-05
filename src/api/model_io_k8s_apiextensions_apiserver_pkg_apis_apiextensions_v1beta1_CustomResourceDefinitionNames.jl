@@ -2,14 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames <: SwaggerModel
+    categories::Union{ Nothing, Vector{String} } # categories
     kind::Union{ Nothing, String } # kind
     listKind::Union{ Nothing, String } # listKind
     plural::Union{ Nothing, String } # plural
     shortNames::Union{ Nothing, Vector{String} } # shortNames
     singular::Union{ Nothing, String } # singular
 
-    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames(;kind=nothing, listKind=nothing, plural=nothing, shortNames=nothing, singular=nothing)
+    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames(;categories=nothing, kind=nothing, listKind=nothing, plural=nothing, shortNames=nothing, singular=nothing)
         o = new()
+        set_field!(o, :categories, categories)
         set_field!(o, :kind, kind)
         set_field!(o, :listKind, listKind)
         set_field!(o, :plural, plural)
@@ -19,8 +21,8 @@ mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResou
     end
 end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames
 
-const _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames = Dict{String,Symbol}(["kind"=>:kind, "listKind"=>:listKind, "plural"=>:plural, "shortNames"=>:shortNames, "singular"=>:singular])
-const _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames = Dict{Symbol,String}([:kind=>"kind", :listKind=>"listKind", :plural=>"plural", :shortNames=>"shortNames", :singular=>"singular"])
+const _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames = Dict{String,Symbol}(["categories"=>:categories, "kind"=>:kind, "listKind"=>:listKind, "plural"=>:plural, "shortNames"=>:shortNames, "singular"=>:singular])
+const _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames = Dict{Symbol,String}([:categories=>"categories", :kind=>"kind", :listKind=>"listKind", :plural=>"plural", :shortNames=>"shortNames", :singular=>"singular"])
 Swagger.name_map(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames }) = _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames
 Swagger.field_map(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames }) = _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames
 

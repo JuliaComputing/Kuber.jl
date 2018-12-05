@@ -4,9 +4,13 @@
 mutable struct IoK8sApiExtensionsV1beta1PodSecurityPolicySpec <: SwaggerModel
     allowPrivilegeEscalation::Union{ Nothing, Bool } # allowPrivilegeEscalation
     allowedCapabilities::Union{ Nothing, Vector{String} } # allowedCapabilities
+    allowedFlexVolumes::Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1AllowedFlexVolume} } # allowedFlexVolumes
     allowedHostPaths::Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1AllowedHostPath} } # allowedHostPaths
+    allowedProcMountTypes::Union{ Nothing, Vector{String} } # allowedProcMountTypes
+    allowedUnsafeSysctls::Union{ Nothing, Vector{String} } # allowedUnsafeSysctls
     defaultAddCapabilities::Union{ Nothing, Vector{String} } # defaultAddCapabilities
     defaultAllowPrivilegeEscalation::Union{ Nothing, Bool } # defaultAllowPrivilegeEscalation
+    forbiddenSysctls::Union{ Nothing, Vector{String} } # forbiddenSysctls
     fsGroup::Union{ Nothing, IoK8sApiExtensionsV1beta1FSGroupStrategyOptions } # fsGroup
     hostIPC::Union{ Nothing, Bool } # hostIPC
     hostNetwork::Union{ Nothing, Bool } # hostNetwork
@@ -20,13 +24,17 @@ mutable struct IoK8sApiExtensionsV1beta1PodSecurityPolicySpec <: SwaggerModel
     supplementalGroups::Union{ Nothing, IoK8sApiExtensionsV1beta1SupplementalGroupsStrategyOptions } # supplementalGroups
     volumes::Union{ Nothing, Vector{String} } # volumes
 
-    function IoK8sApiExtensionsV1beta1PodSecurityPolicySpec(;allowPrivilegeEscalation=nothing, allowedCapabilities=nothing, allowedHostPaths=nothing, defaultAddCapabilities=nothing, defaultAllowPrivilegeEscalation=nothing, fsGroup=nothing, hostIPC=nothing, hostNetwork=nothing, hostPID=nothing, hostPorts=nothing, privileged=nothing, readOnlyRootFilesystem=nothing, requiredDropCapabilities=nothing, runAsUser=nothing, seLinux=nothing, supplementalGroups=nothing, volumes=nothing)
+    function IoK8sApiExtensionsV1beta1PodSecurityPolicySpec(;allowPrivilegeEscalation=nothing, allowedCapabilities=nothing, allowedFlexVolumes=nothing, allowedHostPaths=nothing, allowedProcMountTypes=nothing, allowedUnsafeSysctls=nothing, defaultAddCapabilities=nothing, defaultAllowPrivilegeEscalation=nothing, forbiddenSysctls=nothing, fsGroup=nothing, hostIPC=nothing, hostNetwork=nothing, hostPID=nothing, hostPorts=nothing, privileged=nothing, readOnlyRootFilesystem=nothing, requiredDropCapabilities=nothing, runAsUser=nothing, seLinux=nothing, supplementalGroups=nothing, volumes=nothing)
         o = new()
         set_field!(o, :allowPrivilegeEscalation, allowPrivilegeEscalation)
         set_field!(o, :allowedCapabilities, allowedCapabilities)
+        set_field!(o, :allowedFlexVolumes, allowedFlexVolumes)
         set_field!(o, :allowedHostPaths, allowedHostPaths)
+        set_field!(o, :allowedProcMountTypes, allowedProcMountTypes)
+        set_field!(o, :allowedUnsafeSysctls, allowedUnsafeSysctls)
         set_field!(o, :defaultAddCapabilities, defaultAddCapabilities)
         set_field!(o, :defaultAllowPrivilegeEscalation, defaultAllowPrivilegeEscalation)
+        set_field!(o, :forbiddenSysctls, forbiddenSysctls)
         set_field!(o, :fsGroup, fsGroup)
         set_field!(o, :hostIPC, hostIPC)
         set_field!(o, :hostNetwork, hostNetwork)
@@ -43,8 +51,8 @@ mutable struct IoK8sApiExtensionsV1beta1PodSecurityPolicySpec <: SwaggerModel
     end
 end # type IoK8sApiExtensionsV1beta1PodSecurityPolicySpec
 
-const _name_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec = Dict{String,Symbol}(["allowPrivilegeEscalation"=>:allowPrivilegeEscalation, "allowedCapabilities"=>:allowedCapabilities, "allowedHostPaths"=>:allowedHostPaths, "defaultAddCapabilities"=>:defaultAddCapabilities, "defaultAllowPrivilegeEscalation"=>:defaultAllowPrivilegeEscalation, "fsGroup"=>:fsGroup, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostPorts"=>:hostPorts, "privileged"=>:privileged, "readOnlyRootFilesystem"=>:readOnlyRootFilesystem, "requiredDropCapabilities"=>:requiredDropCapabilities, "runAsUser"=>:runAsUser, "seLinux"=>:seLinux, "supplementalGroups"=>:supplementalGroups, "volumes"=>:volumes])
-const _field_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec = Dict{Symbol,String}([:allowPrivilegeEscalation=>"allowPrivilegeEscalation", :allowedCapabilities=>"allowedCapabilities", :allowedHostPaths=>"allowedHostPaths", :defaultAddCapabilities=>"defaultAddCapabilities", :defaultAllowPrivilegeEscalation=>"defaultAllowPrivilegeEscalation", :fsGroup=>"fsGroup", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostPorts=>"hostPorts", :privileged=>"privileged", :readOnlyRootFilesystem=>"readOnlyRootFilesystem", :requiredDropCapabilities=>"requiredDropCapabilities", :runAsUser=>"runAsUser", :seLinux=>"seLinux", :supplementalGroups=>"supplementalGroups", :volumes=>"volumes"])
+const _name_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec = Dict{String,Symbol}(["allowPrivilegeEscalation"=>:allowPrivilegeEscalation, "allowedCapabilities"=>:allowedCapabilities, "allowedFlexVolumes"=>:allowedFlexVolumes, "allowedHostPaths"=>:allowedHostPaths, "allowedProcMountTypes"=>:allowedProcMountTypes, "allowedUnsafeSysctls"=>:allowedUnsafeSysctls, "defaultAddCapabilities"=>:defaultAddCapabilities, "defaultAllowPrivilegeEscalation"=>:defaultAllowPrivilegeEscalation, "forbiddenSysctls"=>:forbiddenSysctls, "fsGroup"=>:fsGroup, "hostIPC"=>:hostIPC, "hostNetwork"=>:hostNetwork, "hostPID"=>:hostPID, "hostPorts"=>:hostPorts, "privileged"=>:privileged, "readOnlyRootFilesystem"=>:readOnlyRootFilesystem, "requiredDropCapabilities"=>:requiredDropCapabilities, "runAsUser"=>:runAsUser, "seLinux"=>:seLinux, "supplementalGroups"=>:supplementalGroups, "volumes"=>:volumes])
+const _field_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec = Dict{Symbol,String}([:allowPrivilegeEscalation=>"allowPrivilegeEscalation", :allowedCapabilities=>"allowedCapabilities", :allowedFlexVolumes=>"allowedFlexVolumes", :allowedHostPaths=>"allowedHostPaths", :allowedProcMountTypes=>"allowedProcMountTypes", :allowedUnsafeSysctls=>"allowedUnsafeSysctls", :defaultAddCapabilities=>"defaultAddCapabilities", :defaultAllowPrivilegeEscalation=>"defaultAllowPrivilegeEscalation", :forbiddenSysctls=>"forbiddenSysctls", :fsGroup=>"fsGroup", :hostIPC=>"hostIPC", :hostNetwork=>"hostNetwork", :hostPID=>"hostPID", :hostPorts=>"hostPorts", :privileged=>"privileged", :readOnlyRootFilesystem=>"readOnlyRootFilesystem", :requiredDropCapabilities=>"requiredDropCapabilities", :runAsUser=>"runAsUser", :seLinux=>"seLinux", :supplementalGroups=>"supplementalGroups", :volumes=>"volumes"])
 Swagger.name_map(::Type{ IoK8sApiExtensionsV1beta1PodSecurityPolicySpec }) = _name_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec
 Swagger.field_map(::Type{ IoK8sApiExtensionsV1beta1PodSecurityPolicySpec }) = _field_map_IoK8sApiExtensionsV1beta1PodSecurityPolicySpec
 

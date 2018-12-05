@@ -28,7 +28,6 @@ Swagger.field_map(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatu
 
 function check_required(o::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus)
     (o.conditions === nothing) && (return false)
-    (o.currentMetrics === nothing) && (return false)
     (o.currentReplicas === nothing) && (return false)
     (o.desiredReplicas === nothing) && (return false)
     true

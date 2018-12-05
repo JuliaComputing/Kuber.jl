@@ -29,7 +29,6 @@ Swagger.name_map(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServ
 Swagger.field_map(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec }) = _field_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec
 
 function check_required(o::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec)
-    (o.caBundle === nothing) && (return false)
     (o.groupPriorityMinimum === nothing) && (return false)
     (o.service === nothing) && (return false)
     (o.versionPriority === nothing) && (return false)

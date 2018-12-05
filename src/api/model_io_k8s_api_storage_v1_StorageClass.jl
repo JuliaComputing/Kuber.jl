@@ -3,6 +3,7 @@
 
 mutable struct IoK8sApiStorageV1StorageClass <: SwaggerModel
     allowVolumeExpansion::Union{ Nothing, Bool } # allowVolumeExpansion
+    allowedTopologies::Union{ Nothing, Vector{IoK8sApiCoreV1TopologySelectorTerm} } # allowedTopologies
     apiVersion::Union{ Nothing, String } # apiVersion
     kind::Union{ Nothing, String } # kind
     metadata::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
@@ -10,10 +11,12 @@ mutable struct IoK8sApiStorageV1StorageClass <: SwaggerModel
     parameters::Union{ Nothing, Dict{String, String} } # parameters
     provisioner::Union{ Nothing, String } # provisioner
     reclaimPolicy::Union{ Nothing, String } # reclaimPolicy
+    volumeBindingMode::Union{ Nothing, String } # volumeBindingMode
 
-    function IoK8sApiStorageV1StorageClass(;allowVolumeExpansion=nothing, apiVersion=nothing, kind=nothing, metadata=nothing, mountOptions=nothing, parameters=nothing, provisioner=nothing, reclaimPolicy=nothing)
+    function IoK8sApiStorageV1StorageClass(;allowVolumeExpansion=nothing, allowedTopologies=nothing, apiVersion=nothing, kind=nothing, metadata=nothing, mountOptions=nothing, parameters=nothing, provisioner=nothing, reclaimPolicy=nothing, volumeBindingMode=nothing)
         o = new()
         set_field!(o, :allowVolumeExpansion, allowVolumeExpansion)
+        set_field!(o, :allowedTopologies, allowedTopologies)
         set_field!(o, :apiVersion, apiVersion)
         set_field!(o, :kind, kind)
         set_field!(o, :metadata, metadata)
@@ -21,12 +24,13 @@ mutable struct IoK8sApiStorageV1StorageClass <: SwaggerModel
         set_field!(o, :parameters, parameters)
         set_field!(o, :provisioner, provisioner)
         set_field!(o, :reclaimPolicy, reclaimPolicy)
+        set_field!(o, :volumeBindingMode, volumeBindingMode)
         o
     end
 end # type IoK8sApiStorageV1StorageClass
 
-const _name_map_IoK8sApiStorageV1StorageClass = Dict{String,Symbol}(["allowVolumeExpansion"=>:allowVolumeExpansion, "apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "mountOptions"=>:mountOptions, "parameters"=>:parameters, "provisioner"=>:provisioner, "reclaimPolicy"=>:reclaimPolicy])
-const _field_map_IoK8sApiStorageV1StorageClass = Dict{Symbol,String}([:allowVolumeExpansion=>"allowVolumeExpansion", :apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :mountOptions=>"mountOptions", :parameters=>"parameters", :provisioner=>"provisioner", :reclaimPolicy=>"reclaimPolicy"])
+const _name_map_IoK8sApiStorageV1StorageClass = Dict{String,Symbol}(["allowVolumeExpansion"=>:allowVolumeExpansion, "allowedTopologies"=>:allowedTopologies, "apiVersion"=>:apiVersion, "kind"=>:kind, "metadata"=>:metadata, "mountOptions"=>:mountOptions, "parameters"=>:parameters, "provisioner"=>:provisioner, "reclaimPolicy"=>:reclaimPolicy, "volumeBindingMode"=>:volumeBindingMode])
+const _field_map_IoK8sApiStorageV1StorageClass = Dict{Symbol,String}([:allowVolumeExpansion=>"allowVolumeExpansion", :allowedTopologies=>"allowedTopologies", :apiVersion=>"apiVersion", :kind=>"kind", :metadata=>"metadata", :mountOptions=>"mountOptions", :parameters=>"parameters", :provisioner=>"provisioner", :reclaimPolicy=>"reclaimPolicy", :volumeBindingMode=>"volumeBindingMode"])
 Swagger.name_map(::Type{ IoK8sApiStorageV1StorageClass }) = _name_map_IoK8sApiStorageV1StorageClass
 Swagger.field_map(::Type{ IoK8sApiStorageV1StorageClass }) = _field_map_IoK8sApiStorageV1StorageClass
 
