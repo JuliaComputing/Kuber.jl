@@ -114,6 +114,7 @@ function fetch_misc_apis_versions(ctx::KuberContext)
         name = apigrp.name
         pref_vers_type = apigrp.preferredVersion
         pref_vers = pref_vers_type.groupVersion
+        @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_type.version)
 
         try
             apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
@@ -146,7 +147,7 @@ function fetch_core_version(ctx::KuberContext)
     api_vers = getCoreAPIVersions(CoreApi(ctx.client))
     name = "Core"
     pref_vers = api_vers.versions[1]
-    @info("Core versions", supported=join(api_vers.versions, ","), preferred=pref_vers)
+    @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
     apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
     for api_vers in api_vers.versions
         try
