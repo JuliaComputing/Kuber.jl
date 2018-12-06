@@ -23,7 +23,7 @@ convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeuni
 convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
 convert(::Type{Dict{String,Any}}, model::T) where {T<:SwaggerModel} = JSON.parse(JSON.json(model))
 
-is_json_mime(mime::AbstractString) = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime)
+is_json_mime(mime::T) where {T <: AbstractString} = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime) || occursin(r"(?i)application/(.*)-patch\+json(;.*)?", mime)
 
 kind_to_type(ctx::KuberContext, kind::String, version::Union{String,Nothing}=nothing) = kind_to_type(ctx, Symbol(kind), version)
 function kind_to_type(ctx::KuberContext, kind::Symbol, version::Union{String,Nothing}=nothing)
