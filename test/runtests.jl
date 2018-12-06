@@ -1,6 +1,5 @@
 using Kuber
 using Test
-using Swagger
 
 #On GCE:
 #- Bring up a Kubernetes cluster: https://cloud.google.com/container-engine/docs/clusters/operations
@@ -12,11 +11,11 @@ using Swagger
 # - Start kubectl in proxy mode
 #    - run `kubectl proxy`
 
-function init_context()
+function init_context(override=nothing, verbose=true)
     ctx = KuberContext()
     set_server(ctx, "http://localhost:8001")
     set_ns(ctx, "default")
-    Kuber.set_api_versions!(ctx)
+    Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
     ctx
 end
 
@@ -125,19 +124,19 @@ function create_versioned_models(ctx)
     @test isa(cron_batchv2alpha1, Kuber.Kubernetes.IoK8sApiBatchV2alpha1CronJob)
 end
 
-function create_delete_job(ctx)
+function create_delete_job(ctx, testid)
     nginx_pod = kuber_obj(ctx, """{
         "kind": "Pod",
         "metadata":{
-            "name": "nginx-pod",
+            "name": "nginx-pod$testid",
             "namespace": "default",
             "labels": {
-                "name": "nginx-pod"
+                "name": "nginx-pod$testid"
             }
         },
         "spec": {
             "containers": [{
-                "name": "nginx",
+                "name": "nginx$testid",
                 "image": "nginx",
                 "ports": [{"containerPort": 80}],
                 "resources": {
@@ -153,40 +152,40 @@ function create_delete_job(ctx)
     nginx_service = kuber_obj(ctx, """{
         "kind": "Service",
         "metadata": {
-            "name": "nginx-service",
+            "name": "nginx-service$testid",
             "namespace": "default",
-            "labels": {"name": "nginx-service"}
+            "labels": {"name": "nginx-service$testid"}
         },
         "spec": {
             "ports": [{"port": 80}],
-            "selector": {"name": "nginx-pod"}
+            "selector": {"name": "nginx-pod$testid"}
         }
     }""")
 
     nginx_rc = kuber_obj(ctx, """{
         "kind": "ReplicationController",
         "metadata": {
-            "name": "nginx-rc",
+            "name": "nginx-rc$testid",
             "labels": {
-                "name": "nginx-rc"
+                "name": "nginx-rc$testid"
             }
         },
         "spec": {
             "replicas": 3,
             "selector": {
-                "name": "nginx-pod"
+                "name": "nginx-pod$testid"
             },
             "template": {
                 "metadata":{
-                    "name": "nginx-pod",
+                    "name": "nginx-pod$testid",
                     "namespace": "default",
                     "labels": {
-                        "name": "nginx-pod"
+                        "name": "nginx-pod$testid"
                     }
                 },
                 "spec": {
                     "containers": [{
-                        "name": "nginx",
+                        "name": "nginx$testid",
                         "image": "nginx",
                         "ports": [{"containerPort": 80}],
                         "resources": {
@@ -204,16 +203,16 @@ function create_delete_job(ctx)
     nginx_rc_service = kuber_obj(ctx, """{
         "kind": "Service",
         "metadata": {
-            "name": "nginx-rc-service",
+            "name": "nginx-rc-service$testid",
             "namespace": "default",
-            "labels": {"name": "nginx-rc-service"}
+            "labels": {"name": "nginx-rc-service$testid"}
         },
         "spec": {
             "type": "LoadBalancer",
             "ports": [
                 {"port": 80, "name": "http"}
             ],
-            "selector": {"name": "nginx-pod"}
+            "selector": {"name": "nginx-pod$testid"}
         }
     }""")
 
@@ -235,33 +234,49 @@ function create_delete_job(ctx)
     end
 
     @testset "Delete nginx service" begin
-        res = delete!(ctx, :Service, "nginx-service")
+        res = delete!(ctx, :Service, "nginx-service$testid")
         @test isa(res, Kuber.kind_to_type(ctx, :Status))
     end
 
     @testset "Delete nginx pod" begin
-        res = delete!(ctx, :Pod, "nginx-pod")
+        res = delete!(ctx, :Pod, "nginx-pod$testid")
         @test isa(res, Kuber.kind_to_type(ctx, :Pod))
     end
 
     nothing
 end
 
+function test_versioned(ctx, testid)
+    @testset "List Objects" begin
+        list_cluster_components(ctx)
+        list_namespace_objects(ctx)
+    end
+
+    @testset "Versioned Models" begin
+        create_versioned_models(ctx)
+    end
+
+    @testset "Create/Delete Objects" begin
+        create_delete_job(ctx, testid)
+    end
+end
+
 function test_all()
     ctx = init_context()
-
     @testset "Kuber Tests" begin
-        @testset "List Objects" begin
-            list_cluster_components(ctx)
-            list_namespace_objects(ctx)
+        @testset "Server Preferred API Versions" begin
+            test_versioned(ctx, "1")
         end
 
-        @testset "Versioned Models" begin
-            create_versioned_models(ctx)
-        end
+        @testset "Overridden API Versions" begin
+            @test ctx.apis[:Apiregistration][1].api == Kuber.Kubernetes.ApiregistrationV1Api
+            @test ctx.apis[:Apps][1].api == Kuber.Kubernetes.AppsV1Api
 
-        @testset "Create/Delete Objects" begin
-            create_delete_job(ctx)
+            ctx2 = init_context(("apiregistration.k8s.io"=>"v1beta1", "apps"=>"v1beta2"), false)
+            @test ctx2.apis[:Apiregistration][1].api == Kuber.Kubernetes.ApiregistrationV1beta1Api
+            @test ctx2.apis[:Apps][1].api == Kuber.Kubernetes.AppsV1beta2Api
+
+            test_versioned(ctx2, "2")
         end
     end
 end

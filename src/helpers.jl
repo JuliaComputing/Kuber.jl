@@ -104,15 +104,25 @@ function api_method(group_ver::String, verb::String, object::String)
     getfield(@__MODULE__, Symbol(verb * group * ver * object))
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext)
+function override_pref(name, server_pref, override)
+    if override !== nothing
+        for (n,v) in override
+            (n == name) && (return v)
+        end
+    end
+    server_pref
+end
+
+function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false)
     apis = ctx.apis
     vers = getAPIVersions(ApisApi(ctx.client))
     api_groups = vers.groups
     for apigrp in api_groups
         name = apigrp.name
         pref_vers_type = apigrp.preferredVersion
-        pref_vers = pref_vers_type.groupVersion
-        @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_type.version)
+        pref_vers_version = override_pref(name, pref_vers_type.version, override)
+        pref_vers = name * "/" * pref_vers_version
+        verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
 
         try
             apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
@@ -140,12 +150,12 @@ function fetch_misc_apis_versions(ctx::KuberContext)
     apis
 end
 
-function fetch_core_version(ctx::KuberContext)
+function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false)
     apis = ctx.apis
     api_vers = getCoreAPIVersions(CoreApi(ctx.client))
     name = "Core"
-    pref_vers = api_vers.versions[1]
-    @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
+    pref_vers = override_pref(name, api_vers.versions[1], override)
+    verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
     apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
     for api_vers in api_vers.versions
         try
@@ -184,7 +194,7 @@ function build_model_api_map(ctx::KuberContext)
     modelapi
 end
 
-function set_api_versions!(ctx::KuberContext)
+function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false)
     empty!(ctx.apis)
     empty!(ctx.modelapi)
 
@@ -193,8 +203,8 @@ function set_api_versions!(ctx::KuberContext)
     build_model_api_map(ctx)
 
     # fetch apis and map the types
-    fetch_core_version(ctx)
-    fetch_misc_apis_versions(ctx)
+    fetch_core_version(ctx; override=override, verbose=verbose)
+    fetch_misc_apis_versions(ctx; override=override, verbose=verbose)
     build_model_api_map(ctx)
 
     # add custom models
