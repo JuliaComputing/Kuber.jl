@@ -551,7 +551,6 @@ module Typedefs
         const ObjectMeta = Kubernetes.IoK8sApimachineryPkgApisMetaV1ObjectMeta
         const APIVersions = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIVersions
         const LabelSelector = Kubernetes.IoK8sApimachineryPkgApisMetaV1LabelSelector
-        const Time = Kubernetes.IoK8sApimachineryPkgApisMetaV1Time
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const StatusCause = Kubernetes.IoK8sApimachineryPkgApisMetaV1StatusCause
         const DeleteOptions = Kubernetes.IoK8sApimachineryPkgApisMetaV1DeleteOptions
@@ -643,10 +642,12 @@ module Typedefs
         const NodeConfigSource = Kubernetes.IoK8sApiCoreV1NodeConfigSource
         const NodeSystemInfo = Kubernetes.IoK8sApiCoreV1NodeSystemInfo
         const ScopedResourceSelectorRequirement = Kubernetes.IoK8sApiCoreV1ScopedResourceSelectorRequirement
+        const LabelSelector = Kubernetes.IoK8sApimachineryPkgApisMetaV1LabelSelector
         const PodTemplate = Kubernetes.IoK8sApiCoreV1PodTemplate
         const TopologySelectorTerm = Kubernetes.IoK8sApiCoreV1TopologySelectorTerm
         const Volume = Kubernetes.IoK8sApiCoreV1Volume
         const ContainerStatus = Kubernetes.IoK8sApiCoreV1ContainerStatus
+        const Preconditions = Kubernetes.IoK8sApimachineryPkgApisMetaV1Preconditions
         const NodeCondition = Kubernetes.IoK8sApiCoreV1NodeCondition
         const NamespaceStatus = Kubernetes.IoK8sApiCoreV1NamespaceStatus
         const EnvFromSource = Kubernetes.IoK8sApiCoreV1EnvFromSource
@@ -676,6 +677,7 @@ module Typedefs
         const ResourceFieldSelector = Kubernetes.IoK8sApiCoreV1ResourceFieldSelector
         const ConfigMapEnvSource = Kubernetes.IoK8sApiCoreV1ConfigMapEnvSource
         const CephFSPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1CephFSPersistentVolumeSource
+        const APIGroupList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroupList
         const DownwardAPIVolumeSource = Kubernetes.IoK8sApiCoreV1DownwardAPIVolumeSource
         const NamespaceSpec = Kubernetes.IoK8sApiCoreV1NamespaceSpec
         const EventList = Kubernetes.IoK8sApiCoreV1EventList
@@ -684,18 +686,22 @@ module Typedefs
         const Scale = Kubernetes.IoK8sApiAutoscalingV1Scale
         const PortworxVolumeSource = Kubernetes.IoK8sApiCoreV1PortworxVolumeSource
         const SecretVolumeSource = Kubernetes.IoK8sApiCoreV1SecretVolumeSource
+        const ServerAddressByClientCIDR = Kubernetes.IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR
         const PhotonPersistentDiskVolumeSource = Kubernetes.IoK8sApiCoreV1PhotonPersistentDiskVolumeSource
         const NodeAddress = Kubernetes.IoK8sApiCoreV1NodeAddress
         const EndpointAddress = Kubernetes.IoK8sApiCoreV1EndpointAddress
         const PersistentVolumeClaimList = Kubernetes.IoK8sApiCoreV1PersistentVolumeClaimList
         const ContainerStateTerminated = Kubernetes.IoK8sApiCoreV1ContainerStateTerminated
+        const GroupVersionForDiscovery = Kubernetes.IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
         const SessionAffinityConfig = Kubernetes.IoK8sApiCoreV1SessionAffinityConfig
         const Event = Kubernetes.IoK8sApiCoreV1Event
         const EnvVar = Kubernetes.IoK8sApiCoreV1EnvVar
         const FCVolumeSource = Kubernetes.IoK8sApiCoreV1FCVolumeSource
         const VolumeProjection = Kubernetes.IoK8sApiCoreV1VolumeProjection
+        const OwnerReference = Kubernetes.IoK8sApimachineryPkgApisMetaV1OwnerReference
         const FlockerVolumeSource = Kubernetes.IoK8sApiCoreV1FlockerVolumeSource
+        const StatusDetails = Kubernetes.IoK8sApimachineryPkgApisMetaV1StatusDetails
         const NodeSpec = Kubernetes.IoK8sApiCoreV1NodeSpec
         const PersistentVolumeClaimStatus = Kubernetes.IoK8sApiCoreV1PersistentVolumeClaimStatus
         const ResourceQuota = Kubernetes.IoK8sApiCoreV1ResourceQuota
@@ -711,6 +717,7 @@ module Typedefs
         const ReplicationControllerStatus = Kubernetes.IoK8sApiCoreV1ReplicationControllerStatus
         const ContainerImage = Kubernetes.IoK8sApiCoreV1ContainerImage
         const NFSVolumeSource = Kubernetes.IoK8sApiCoreV1NFSVolumeSource
+        const Initializers = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializers
         const ClientIPConfig = Kubernetes.IoK8sApiCoreV1ClientIPConfig
         const PreferredSchedulingTerm = Kubernetes.IoK8sApiCoreV1PreferredSchedulingTerm
         const AWSElasticBlockStoreVolumeSource = Kubernetes.IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource
@@ -723,6 +730,7 @@ module Typedefs
         const VolumeMount = Kubernetes.IoK8sApiCoreV1VolumeMount
         const ConfigMapKeySelector = Kubernetes.IoK8sApiCoreV1ConfigMapKeySelector
         const Service = Kubernetes.IoK8sApiCoreV1Service
+        const MicroTime = Kubernetes.IoK8sApimachineryPkgApisMetaV1MicroTime
         const CinderPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1CinderPersistentVolumeSource
         const SecretEnvSource = Kubernetes.IoK8sApiCoreV1SecretEnvSource
         const LimitRangeSpec = Kubernetes.IoK8sApiCoreV1LimitRangeSpec
@@ -733,8 +741,11 @@ module Typedefs
         const GlusterfsVolumeSource = Kubernetes.IoK8sApiCoreV1GlusterfsVolumeSource
         const AzureDiskVolumeSource = Kubernetes.IoK8sApiCoreV1AzureDiskVolumeSource
         const LoadBalancerIngress = Kubernetes.IoK8sApiCoreV1LoadBalancerIngress
+        const DeleteOptions = Kubernetes.IoK8sApimachineryPkgApisMetaV1DeleteOptions
+        const LabelSelectorRequirement = Kubernetes.IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement
         const Binding = Kubernetes.IoK8sApiCoreV1Binding
         const Node = Kubernetes.IoK8sApiCoreV1Node
+        const APIResource = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResource
         const PodDNSConfigOption = Kubernetes.IoK8sApiCoreV1PodDNSConfigOption
         const PodAntiAffinity = Kubernetes.IoK8sApiCoreV1PodAntiAffinity
         const PersistentVolumeSpec = Kubernetes.IoK8sApiCoreV1PersistentVolumeSpec
@@ -756,6 +767,7 @@ module Typedefs
         const LocalObjectReference = Kubernetes.IoK8sApiCoreV1LocalObjectReference
         const ServicePort = Kubernetes.IoK8sApiCoreV1ServicePort
         const Endpoints = Kubernetes.IoK8sApiCoreV1Endpoints
+        const ListMeta = Kubernetes.IoK8sApimachineryPkgApisMetaV1ListMeta
         const PodCondition = Kubernetes.IoK8sApiCoreV1PodCondition
         const VolumeNodeAffinity = Kubernetes.IoK8sApiCoreV1VolumeNodeAffinity
         const NodeStatus = Kubernetes.IoK8sApiCoreV1NodeStatus
@@ -763,6 +775,7 @@ module Typedefs
         const SecretReference = Kubernetes.IoK8sApiCoreV1SecretReference
         const VolumeDevice = Kubernetes.IoK8sApiCoreV1VolumeDevice
         const NodeConfigStatus = Kubernetes.IoK8sApiCoreV1NodeConfigStatus
+        const Initializer = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializer
         const Container = Kubernetes.IoK8sApiCoreV1Container
         const SecurityContext = Kubernetes.IoK8sApiCoreV1SecurityContext
         const ScaleIOPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1ScaleIOPersistentVolumeSource
@@ -781,6 +794,7 @@ module Typedefs
         const ConfigMap = Kubernetes.IoK8sApiCoreV1ConfigMap
         const ComponentCondition = Kubernetes.IoK8sApiCoreV1ComponentCondition
         const KeyToPath = Kubernetes.IoK8sApiCoreV1KeyToPath
+        const APIVersions = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIVersions
         const ResourceQuotaList = Kubernetes.IoK8sApiCoreV1ResourceQuotaList
         const RBDVolumeSource = Kubernetes.IoK8sApiCoreV1RBDVolumeSource
         const StorageOSVolumeSource = Kubernetes.IoK8sApiCoreV1StorageOSVolumeSource
@@ -801,6 +815,7 @@ module Typedefs
         const Sysctl = Kubernetes.IoK8sApiCoreV1Sysctl
         const ScaleIOVolumeSource = Kubernetes.IoK8sApiCoreV1ScaleIOVolumeSource
         const SELinuxOptions = Kubernetes.IoK8sApiCoreV1SELinuxOptions
+        const ObjectMeta = Kubernetes.IoK8sApimachineryPkgApisMetaV1ObjectMeta
         const ConfigMapList = Kubernetes.IoK8sApiCoreV1ConfigMapList
         const EventSource = Kubernetes.IoK8sApiCoreV1EventSource
         const ContainerStateWaiting = Kubernetes.IoK8sApiCoreV1ContainerStateWaiting
@@ -814,7 +829,9 @@ module Typedefs
         const ObjectReference = Kubernetes.IoK8sApiCoreV1ObjectReference
         const PodDNSConfig = Kubernetes.IoK8sApiCoreV1PodDNSConfig
         const HTTPHeader = Kubernetes.IoK8sApiCoreV1HTTPHeader
+        const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
         const PodAffinityTerm = Kubernetes.IoK8sApiCoreV1PodAffinityTerm
+        const StatusCause = Kubernetes.IoK8sApimachineryPkgApisMetaV1StatusCause
         const ServiceAccountTokenProjection = Kubernetes.IoK8sApiCoreV1ServiceAccountTokenProjection
         const PersistentVolumeClaimVolumeSource = Kubernetes.IoK8sApiCoreV1PersistentVolumeClaimVolumeSource
         const AzureFilePersistentVolumeSource = Kubernetes.IoK8sApiCoreV1AzureFilePersistentVolumeSource

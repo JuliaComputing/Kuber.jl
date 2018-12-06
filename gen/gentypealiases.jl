@@ -115,7 +115,7 @@ function detect_aliases(folder::String)
         kuberapitypes(joinpath(folder, file), aliases_set)
     end
 
-    # inject pseudo APIs
+    # inject pseudo APIs (Meta is an alias of Core)
     get!(()->Set{String}(), aliases_set, "MetaV1")
     # sort in order of search (ordered by version numbers)
     sorted_apis = reverse!(sort!(collect(keys(aliases_set))))
@@ -124,6 +124,10 @@ function detect_aliases(folder::String)
         @info("    - " * file)
         kubermodeltypes(joinpath(folder, file), sorted_apis, aliases_set, unmapped)
     end
+
+    # merge Meta with Core
+    union!(aliases_set["CoreV1"], aliases_set["MetaV1"])
+
     @info("got $(length(aliases_set)) sets with $(sum(map(length, values(aliases_set)))) aliases")
     for n in unmapped
         @info("could not place model " * n)
