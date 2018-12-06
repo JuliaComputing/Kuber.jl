@@ -25,11 +25,10 @@ convert(::Type{Dict{String,Any}}, model::T) where {T<:SwaggerModel} = JSON.parse
 
 is_json_mime(mime::AbstractString) = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime)
 
-# TODO: optionally take apiVersion string, instead of taking preferred version from the context
-kind_to_type(ctx::KuberContext, kind::String) = kind_to_type(ctx, Symbol(kind))
-function kind_to_type(ctx::KuberContext, kind::Symbol)
-    kapi = ctx.modelapi[kind]
-    getfield(kapi.types, kind)
+kind_to_type(ctx::KuberContext, kind::String, version::Union{String,Nothing}=nothing) = kind_to_type(ctx, Symbol(kind), version)
+function kind_to_type(ctx::KuberContext, kind::Symbol, version::Union{String,Nothing}=nothing)
+    types = (version === nothing) ? (ctx.modelapi[kind]).types : api_typedefs(version)
+    getfield(types, kind)
 end
 
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
@@ -43,17 +42,19 @@ end
 
 function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
     if ("kind" in keys(j)) && !isempty(ctx.apis)
+        kind = j["kind"]
+        version = ("apiVersion" in keys(j)) ? j["apiVersion"] : nothing
         try
-            T = kind_to_type(ctx, j["kind"])
+            T = kind_to_type(ctx, kind, version)
         catch ex
-            println(stderr, "Type not found: $(j["kind"])")
+            @warn("Type not found.", kind, version)
         end
     end
     T
 end
 
 kuber_obj(ctx::KuberContext, data::String) = kuber_obj(ctx, JSON.parse(data))
-kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"]), j)
+kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
 
 show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
 
@@ -79,32 +80,29 @@ function api_group(group::String)
     join([camel(String(x)) for x in group_parts])
 end
 
-api_group_type(group_name) = api_group_type(String(group_name))
-function api_group_type(group_name::String)
-    group, ver = split(group_name, "/")
+api_group_type(group_ver) = api_group_type(String(group_ver))
+function api_group_type(group_ver::String)
+    group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
     group = api_group(group)
     ver = camel(ver)
     getfield(@__MODULE__, Symbol(group * ver * "Api"))
 end
 
-api_typedefs(group_name) = api_typedefs(String(group_name))
-function api_typedefs(group_name::String)
-    group, ver = split(group_name, "/")
+api_typedefs(group_ver) = api_typedefs(String(group_ver))
+function api_typedefs(group_ver::String)
+    group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
     group = api_group(group)
     ver = camel(ver)
     getfield(getfield(@__MODULE__, :Typedefs), Symbol(group * ver))
 end
 
-function api_method(group_name::String, verb::String, object::String)
-    group, ver = split(group_name, "/")
-    endswith(group, ".k8s.io") && (group = group[1:end-7])
-    group_parts = split(group, ".")
-    group = join([camel(String(x)) for x in group_parts])
+api_method(group::Symbol, verb::String, object::String) = getfield(@__MODULE__, Symbol(verb * String(group)[1:end-3] * object))
+function api_method(group_ver::String, verb::String, object::String)
+    group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
+    group = api_group(group)
     ver = camel(ver)
     getfield(@__MODULE__, Symbol(verb * group * ver * object))
 end
-
-api_method(group::Symbol, verb::String, object::String) = getfield(@__MODULE__, Symbol(verb * String(group)[1:end-3] * object))
 
 function fetch_misc_apis_versions(ctx::KuberContext)
     apis = ctx.apis
