@@ -2,21 +2,25 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiAutoscalingV2beta1ObjectMetricStatus <: SwaggerModel
+    averageValue::Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # averageValue
     currentValue::Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # currentValue
     metricName::Union{ Nothing, String } # metricName
+    selector::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
     target::Union{ Nothing, IoK8sApiAutoscalingV2beta1CrossVersionObjectReference } # target
 
-    function IoK8sApiAutoscalingV2beta1ObjectMetricStatus(;currentValue=nothing, metricName=nothing, target=nothing)
+    function IoK8sApiAutoscalingV2beta1ObjectMetricStatus(;averageValue=nothing, currentValue=nothing, metricName=nothing, selector=nothing, target=nothing)
         o = new()
+        set_field!(o, :averageValue, averageValue)
         set_field!(o, :currentValue, currentValue)
         set_field!(o, :metricName, metricName)
+        set_field!(o, :selector, selector)
         set_field!(o, :target, target)
         o
     end
 end # type IoK8sApiAutoscalingV2beta1ObjectMetricStatus
 
-const _name_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus = Dict{String,Symbol}(["currentValue"=>:currentValue, "metricName"=>:metricName, "target"=>:target])
-const _field_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus = Dict{Symbol,String}([:currentValue=>"currentValue", :metricName=>"metricName", :target=>"target"])
+const _name_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus = Dict{String,Symbol}(["averageValue"=>:averageValue, "currentValue"=>:currentValue, "metricName"=>:metricName, "selector"=>:selector, "target"=>:target])
+const _field_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus = Dict{Symbol,String}([:averageValue=>"averageValue", :currentValue=>"currentValue", :metricName=>"metricName", :selector=>"selector", :target=>"target"])
 Swagger.name_map(::Type{ IoK8sApiAutoscalingV2beta1ObjectMetricStatus }) = _name_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus
 Swagger.field_map(::Type{ IoK8sApiAutoscalingV2beta1ObjectMetricStatus }) = _field_map_IoK8sApiAutoscalingV2beta1ObjectMetricStatus
 

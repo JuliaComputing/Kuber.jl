@@ -10,13 +10,36 @@ end
 create a PodDisruptionBudget
 Param: namespace::String (required)
 Param: body::IoK8sApiPolicyV1beta1PodDisruptionBudget (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudget
 """
-function createPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiPolicyV1beta1PodDisruptionBudget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+create a PodSecurityPolicy
+Param: body::IoK8sApiPolicyV1beta1PodSecurityPolicy (required)
+Param: includeUninitialized::Bool
+Param: pretty::String
+Param: dryRun::String
+Return: IoK8sApiPolicyV1beta1PodSecurityPolicy
+"""
+function createPolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiPolicyV1beta1PodSecurityPolicy, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -26,10 +49,10 @@ end
 
 delete collection of PodDisruptionBudget
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -37,13 +60,43 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deletePolicyV1beta1CollectionNamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deletePolicyV1beta1CollectionNamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete collection of PodSecurityPolicy
+Param: includeUninitialized::Bool
+Param: pretty::String
+Param: _continue::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deletePolicyV1beta1CollectionPodSecurityPolicy(_api::PolicyV1beta1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken"])
     Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -61,16 +114,43 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deletePolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deletePolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete a PodSecurityPolicy
+Param: name::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
+Param: pretty::String
+Param: dryRun::String
+Param: gracePeriodSeconds::Int32
+Param: orphanDependents::Bool
+Param: propagationPolicy::String
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deletePolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -95,10 +175,10 @@ end
 
 list or watch objects of kind PodDisruptionBudget
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -106,13 +186,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudgetList
 """
-function listPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiPolicyV1beta1PodDisruptionBudgetList, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -155,18 +235,50 @@ end
 
 """
 
+list or watch objects of kind PodSecurityPolicy
+Param: includeUninitialized::Bool
+Param: pretty::String
+Param: _continue::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiPolicyV1beta1PodSecurityPolicyList
+"""
+function listPolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiPolicyV1beta1PodSecurityPolicyList, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 partially update the specified PodDisruptionBudget
 Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudget
 """
-function patchPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchPolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiPolicyV1beta1PodDisruptionBudget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -179,13 +291,34 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudget
 """
-function patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiPolicyV1beta1PodDisruptionBudget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+partially update the specified PodSecurityPolicy
+Param: name::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
+Param: pretty::String
+Param: dryRun::String
+Return: IoK8sApiPolicyV1beta1PodSecurityPolicy
+"""
+function patchPolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiPolicyV1beta1PodSecurityPolicy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -233,18 +366,40 @@ end
 
 """
 
+read the specified PodSecurityPolicy
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: _export::Bool
+Return: IoK8sApiPolicyV1beta1PodSecurityPolicy
+"""
+function readPolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, name::String; pretty=nothing, exact=nothing, _export=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiPolicyV1beta1PodSecurityPolicy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
+    Swagger.set_param(_ctx.query, "export", _export)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 replace the specified PodDisruptionBudget
 Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiPolicyV1beta1PodDisruptionBudget (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudget
 """
-function replacePolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replacePolicyV1beta1NamespacedPodDisruptionBudget(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiPolicyV1beta1PodDisruptionBudget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -257,13 +412,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiPolicyV1beta1PodDisruptionBudget (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiPolicyV1beta1PodDisruptionBudget
 """
-function replacePolicyV1beta1NamespacedPodDisruptionBudgetStatus(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replacePolicyV1beta1NamespacedPodDisruptionBudgetStatus(_api::PolicyV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiPolicyV1beta1PodDisruptionBudget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -271,7 +428,26 @@ end
 
 """
 
-watch changes to an object of kind PodDisruptionBudget
+replace the specified PodSecurityPolicy
+Param: name::String (required)
+Param: body::IoK8sApiPolicyV1beta1PodSecurityPolicy (required)
+Param: pretty::String
+Param: dryRun::String
+Return: IoK8sApiPolicyV1beta1PodSecurityPolicy
+"""
+function replacePolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiPolicyV1beta1PodSecurityPolicy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch changes to an object of kind PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -305,7 +481,7 @@ end
 
 """
 
-watch individual changes to a list of PodDisruptionBudget
+watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String
@@ -337,7 +513,7 @@ end
 
 """
 
-watch individual changes to a list of PodDisruptionBudget
+watch individual changes to a list of PodDisruptionBudget. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -365,4 +541,66 @@ function watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(_api::PolicyV
     Swagger.exec(_ctx)
 end
 
-export createPolicyV1beta1NamespacedPodDisruptionBudget, deletePolicyV1beta1CollectionNamespacedPodDisruptionBudget, deletePolicyV1beta1NamespacedPodDisruptionBudget, getPolicyV1beta1APIResources, listPolicyV1beta1NamespacedPodDisruptionBudget, listPolicyV1beta1PodDisruptionBudgetForAllNamespaces, patchPolicyV1beta1NamespacedPodDisruptionBudget, patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus, readPolicyV1beta1NamespacedPodDisruptionBudget, readPolicyV1beta1NamespacedPodDisruptionBudgetStatus, replacePolicyV1beta1NamespacedPodDisruptionBudget, replacePolicyV1beta1NamespacedPodDisruptionBudgetStatus, watchPolicyV1beta1NamespacedPodDisruptionBudget, watchPolicyV1beta1NamespacedPodDisruptionBudgetList, watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
+"""
+
+watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
+Param: _continue::String
+Param: fieldSelector::String
+Param: includeUninitialized::Bool
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchPolicyV1beta1PodSecurityPolicy(_api::PolicyV1beta1Api, name::String; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/policy/v1beta1/watch/podsecuritypolicies/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter with a list operation instead.
+Param: _continue::String
+Param: fieldSelector::String
+Param: includeUninitialized::Bool
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchPolicyV1beta1PodSecurityPolicyList(_api::PolicyV1beta1Api; _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/policy/v1beta1/watch/podsecuritypolicies", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "continue", _continue)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+export createPolicyV1beta1NamespacedPodDisruptionBudget, createPolicyV1beta1PodSecurityPolicy, deletePolicyV1beta1CollectionNamespacedPodDisruptionBudget, deletePolicyV1beta1CollectionPodSecurityPolicy, deletePolicyV1beta1NamespacedPodDisruptionBudget, deletePolicyV1beta1PodSecurityPolicy, getPolicyV1beta1APIResources, listPolicyV1beta1NamespacedPodDisruptionBudget, listPolicyV1beta1PodDisruptionBudgetForAllNamespaces, listPolicyV1beta1PodSecurityPolicy, patchPolicyV1beta1NamespacedPodDisruptionBudget, patchPolicyV1beta1NamespacedPodDisruptionBudgetStatus, patchPolicyV1beta1PodSecurityPolicy, readPolicyV1beta1NamespacedPodDisruptionBudget, readPolicyV1beta1NamespacedPodDisruptionBudgetStatus, readPolicyV1beta1PodSecurityPolicy, replacePolicyV1beta1NamespacedPodDisruptionBudget, replacePolicyV1beta1NamespacedPodDisruptionBudgetStatus, replacePolicyV1beta1PodSecurityPolicy, watchPolicyV1beta1NamespacedPodDisruptionBudget, watchPolicyV1beta1NamespacedPodDisruptionBudgetList, watchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces, watchPolicyV1beta1PodSecurityPolicy, watchPolicyV1beta1PodSecurityPolicyList

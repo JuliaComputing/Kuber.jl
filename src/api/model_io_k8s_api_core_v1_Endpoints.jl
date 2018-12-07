@@ -23,7 +23,6 @@ Swagger.name_map(::Type{ IoK8sApiCoreV1Endpoints }) = _name_map_IoK8sApiCoreV1En
 Swagger.field_map(::Type{ IoK8sApiCoreV1Endpoints }) = _field_map_IoK8sApiCoreV1Endpoints
 
 function check_required(o::IoK8sApiCoreV1Endpoints)
-    (o.subsets === nothing) && (return false)
     true
 end
 

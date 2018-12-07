@@ -6,6 +6,7 @@ mutable struct IoK8sApiCoreV1NodeStatus <: SwaggerModel
     allocatable::Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # allocatable
     capacity::Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # capacity
     conditions::Union{ Nothing, Vector{IoK8sApiCoreV1NodeCondition} } # conditions
+    config::Union{ Nothing, IoK8sApiCoreV1NodeConfigStatus } # config
     daemonEndpoints::Union{ Nothing, IoK8sApiCoreV1NodeDaemonEndpoints } # daemonEndpoints
     images::Union{ Nothing, Vector{IoK8sApiCoreV1ContainerImage} } # images
     nodeInfo::Union{ Nothing, IoK8sApiCoreV1NodeSystemInfo } # nodeInfo
@@ -13,12 +14,13 @@ mutable struct IoK8sApiCoreV1NodeStatus <: SwaggerModel
     volumesAttached::Union{ Nothing, Vector{IoK8sApiCoreV1AttachedVolume} } # volumesAttached
     volumesInUse::Union{ Nothing, Vector{String} } # volumesInUse
 
-    function IoK8sApiCoreV1NodeStatus(;addresses=nothing, allocatable=nothing, capacity=nothing, conditions=nothing, daemonEndpoints=nothing, images=nothing, nodeInfo=nothing, phase=nothing, volumesAttached=nothing, volumesInUse=nothing)
+    function IoK8sApiCoreV1NodeStatus(;addresses=nothing, allocatable=nothing, capacity=nothing, conditions=nothing, config=nothing, daemonEndpoints=nothing, images=nothing, nodeInfo=nothing, phase=nothing, volumesAttached=nothing, volumesInUse=nothing)
         o = new()
         set_field!(o, :addresses, addresses)
         set_field!(o, :allocatable, allocatable)
         set_field!(o, :capacity, capacity)
         set_field!(o, :conditions, conditions)
+        set_field!(o, :config, config)
         set_field!(o, :daemonEndpoints, daemonEndpoints)
         set_field!(o, :images, images)
         set_field!(o, :nodeInfo, nodeInfo)
@@ -29,8 +31,8 @@ mutable struct IoK8sApiCoreV1NodeStatus <: SwaggerModel
     end
 end # type IoK8sApiCoreV1NodeStatus
 
-const _name_map_IoK8sApiCoreV1NodeStatus = Dict{String,Symbol}(["addresses"=>:addresses, "allocatable"=>:allocatable, "capacity"=>:capacity, "conditions"=>:conditions, "daemonEndpoints"=>:daemonEndpoints, "images"=>:images, "nodeInfo"=>:nodeInfo, "phase"=>:phase, "volumesAttached"=>:volumesAttached, "volumesInUse"=>:volumesInUse])
-const _field_map_IoK8sApiCoreV1NodeStatus = Dict{Symbol,String}([:addresses=>"addresses", :allocatable=>"allocatable", :capacity=>"capacity", :conditions=>"conditions", :daemonEndpoints=>"daemonEndpoints", :images=>"images", :nodeInfo=>"nodeInfo", :phase=>"phase", :volumesAttached=>"volumesAttached", :volumesInUse=>"volumesInUse"])
+const _name_map_IoK8sApiCoreV1NodeStatus = Dict{String,Symbol}(["addresses"=>:addresses, "allocatable"=>:allocatable, "capacity"=>:capacity, "conditions"=>:conditions, "config"=>:config, "daemonEndpoints"=>:daemonEndpoints, "images"=>:images, "nodeInfo"=>:nodeInfo, "phase"=>:phase, "volumesAttached"=>:volumesAttached, "volumesInUse"=>:volumesInUse])
+const _field_map_IoK8sApiCoreV1NodeStatus = Dict{Symbol,String}([:addresses=>"addresses", :allocatable=>"allocatable", :capacity=>"capacity", :conditions=>"conditions", :config=>"config", :daemonEndpoints=>"daemonEndpoints", :images=>"images", :nodeInfo=>"nodeInfo", :phase=>"phase", :volumesAttached=>"volumesAttached", :volumesInUse=>"volumesInUse"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1NodeStatus }) = _name_map_IoK8sApiCoreV1NodeStatus
 Swagger.field_map(::Type{ IoK8sApiCoreV1NodeStatus }) = _field_map_IoK8sApiCoreV1NodeStatus
 

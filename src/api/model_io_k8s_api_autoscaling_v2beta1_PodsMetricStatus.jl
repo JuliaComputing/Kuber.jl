@@ -4,17 +4,19 @@
 mutable struct IoK8sApiAutoscalingV2beta1PodsMetricStatus <: SwaggerModel
     currentAverageValue::Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # currentAverageValue
     metricName::Union{ Nothing, String } # metricName
+    selector::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
 
-    function IoK8sApiAutoscalingV2beta1PodsMetricStatus(;currentAverageValue=nothing, metricName=nothing)
+    function IoK8sApiAutoscalingV2beta1PodsMetricStatus(;currentAverageValue=nothing, metricName=nothing, selector=nothing)
         o = new()
         set_field!(o, :currentAverageValue, currentAverageValue)
         set_field!(o, :metricName, metricName)
+        set_field!(o, :selector, selector)
         o
     end
 end # type IoK8sApiAutoscalingV2beta1PodsMetricStatus
 
-const _name_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus = Dict{String,Symbol}(["currentAverageValue"=>:currentAverageValue, "metricName"=>:metricName])
-const _field_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus = Dict{Symbol,String}([:currentAverageValue=>"currentAverageValue", :metricName=>"metricName"])
+const _name_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus = Dict{String,Symbol}(["currentAverageValue"=>:currentAverageValue, "metricName"=>:metricName, "selector"=>:selector])
+const _field_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus = Dict{Symbol,String}([:currentAverageValue=>"currentAverageValue", :metricName=>"metricName", :selector=>"selector"])
 Swagger.name_map(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricStatus }) = _name_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus
 Swagger.field_map(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricStatus }) = _field_map_IoK8sApiAutoscalingV2beta1PodsMetricStatus
 

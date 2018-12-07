@@ -2,21 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiCoreV1NodeConfigSource <: SwaggerModel
-    apiVersion::Union{ Nothing, String } # apiVersion
-    configMapRef::Union{ Nothing, IoK8sApiCoreV1ObjectReference } # configMapRef
-    kind::Union{ Nothing, String } # kind
+    configMap::Union{ Nothing, IoK8sApiCoreV1ConfigMapNodeConfigSource } # configMap
 
-    function IoK8sApiCoreV1NodeConfigSource(;apiVersion=nothing, configMapRef=nothing, kind=nothing)
+    function IoK8sApiCoreV1NodeConfigSource(;configMap=nothing)
         o = new()
-        set_field!(o, :apiVersion, apiVersion)
-        set_field!(o, :configMapRef, configMapRef)
-        set_field!(o, :kind, kind)
+        set_field!(o, :configMap, configMap)
         o
     end
 end # type IoK8sApiCoreV1NodeConfigSource
 
-const _name_map_IoK8sApiCoreV1NodeConfigSource = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "configMapRef"=>:configMapRef, "kind"=>:kind])
-const _field_map_IoK8sApiCoreV1NodeConfigSource = Dict{Symbol,String}([:apiVersion=>"apiVersion", :configMapRef=>"configMapRef", :kind=>"kind"])
+const _name_map_IoK8sApiCoreV1NodeConfigSource = Dict{String,Symbol}(["configMap"=>:configMap])
+const _field_map_IoK8sApiCoreV1NodeConfigSource = Dict{Symbol,String}([:configMap=>"configMap"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1NodeConfigSource }) = _name_map_IoK8sApiCoreV1NodeConfigSource
 Swagger.field_map(::Type{ IoK8sApiCoreV1NodeConfigSource }) = _field_map_IoK8sApiCoreV1NodeConfigSource
 

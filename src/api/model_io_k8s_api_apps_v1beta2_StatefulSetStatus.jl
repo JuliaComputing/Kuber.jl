@@ -3,6 +3,7 @@
 
 mutable struct IoK8sApiAppsV1beta2StatefulSetStatus <: SwaggerModel
     collisionCount::Union{ Nothing, Int32 } # collisionCount
+    conditions::Union{ Nothing, Vector{IoK8sApiAppsV1beta2StatefulSetCondition} } # conditions
     currentReplicas::Union{ Nothing, Int32 } # currentReplicas
     currentRevision::Union{ Nothing, String } # currentRevision
     observedGeneration::Union{ Nothing, Int64 } # observedGeneration
@@ -11,9 +12,10 @@ mutable struct IoK8sApiAppsV1beta2StatefulSetStatus <: SwaggerModel
     updateRevision::Union{ Nothing, String } # updateRevision
     updatedReplicas::Union{ Nothing, Int32 } # updatedReplicas
 
-    function IoK8sApiAppsV1beta2StatefulSetStatus(;collisionCount=nothing, currentReplicas=nothing, currentRevision=nothing, observedGeneration=nothing, readyReplicas=nothing, replicas=nothing, updateRevision=nothing, updatedReplicas=nothing)
+    function IoK8sApiAppsV1beta2StatefulSetStatus(;collisionCount=nothing, conditions=nothing, currentReplicas=nothing, currentRevision=nothing, observedGeneration=nothing, readyReplicas=nothing, replicas=nothing, updateRevision=nothing, updatedReplicas=nothing)
         o = new()
         set_field!(o, :collisionCount, collisionCount)
+        set_field!(o, :conditions, conditions)
         set_field!(o, :currentReplicas, currentReplicas)
         set_field!(o, :currentRevision, currentRevision)
         set_field!(o, :observedGeneration, observedGeneration)
@@ -25,8 +27,8 @@ mutable struct IoK8sApiAppsV1beta2StatefulSetStatus <: SwaggerModel
     end
 end # type IoK8sApiAppsV1beta2StatefulSetStatus
 
-const _name_map_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{String,Symbol}(["collisionCount"=>:collisionCount, "currentReplicas"=>:currentReplicas, "currentRevision"=>:currentRevision, "observedGeneration"=>:observedGeneration, "readyReplicas"=>:readyReplicas, "replicas"=>:replicas, "updateRevision"=>:updateRevision, "updatedReplicas"=>:updatedReplicas])
-const _field_map_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{Symbol,String}([:collisionCount=>"collisionCount", :currentReplicas=>"currentReplicas", :currentRevision=>"currentRevision", :observedGeneration=>"observedGeneration", :readyReplicas=>"readyReplicas", :replicas=>"replicas", :updateRevision=>"updateRevision", :updatedReplicas=>"updatedReplicas"])
+const _name_map_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{String,Symbol}(["collisionCount"=>:collisionCount, "conditions"=>:conditions, "currentReplicas"=>:currentReplicas, "currentRevision"=>:currentRevision, "observedGeneration"=>:observedGeneration, "readyReplicas"=>:readyReplicas, "replicas"=>:replicas, "updateRevision"=>:updateRevision, "updatedReplicas"=>:updatedReplicas])
+const _field_map_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{Symbol,String}([:collisionCount=>"collisionCount", :conditions=>"conditions", :currentReplicas=>"currentReplicas", :currentRevision=>"currentRevision", :observedGeneration=>"observedGeneration", :readyReplicas=>"readyReplicas", :replicas=>"replicas", :updateRevision=>"updateRevision", :updatedReplicas=>"updatedReplicas"])
 Swagger.name_map(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }) = _name_map_IoK8sApiAppsV1beta2StatefulSetStatus
 Swagger.field_map(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }) = _field_map_IoK8sApiAppsV1beta2StatefulSetStatus
 

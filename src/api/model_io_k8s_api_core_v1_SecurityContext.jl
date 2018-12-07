@@ -5,17 +5,21 @@ mutable struct IoK8sApiCoreV1SecurityContext <: SwaggerModel
     allowPrivilegeEscalation::Union{ Nothing, Bool } # allowPrivilegeEscalation
     capabilities::Union{ Nothing, IoK8sApiCoreV1Capabilities } # capabilities
     privileged::Union{ Nothing, Bool } # privileged
+    procMount::Union{ Nothing, String } # procMount
     readOnlyRootFilesystem::Union{ Nothing, Bool } # readOnlyRootFilesystem
+    runAsGroup::Union{ Nothing, Int64 } # runAsGroup
     runAsNonRoot::Union{ Nothing, Bool } # runAsNonRoot
     runAsUser::Union{ Nothing, Int64 } # runAsUser
     seLinuxOptions::Union{ Nothing, IoK8sApiCoreV1SELinuxOptions } # seLinuxOptions
 
-    function IoK8sApiCoreV1SecurityContext(;allowPrivilegeEscalation=nothing, capabilities=nothing, privileged=nothing, readOnlyRootFilesystem=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing)
+    function IoK8sApiCoreV1SecurityContext(;allowPrivilegeEscalation=nothing, capabilities=nothing, privileged=nothing, procMount=nothing, readOnlyRootFilesystem=nothing, runAsGroup=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing)
         o = new()
         set_field!(o, :allowPrivilegeEscalation, allowPrivilegeEscalation)
         set_field!(o, :capabilities, capabilities)
         set_field!(o, :privileged, privileged)
+        set_field!(o, :procMount, procMount)
         set_field!(o, :readOnlyRootFilesystem, readOnlyRootFilesystem)
+        set_field!(o, :runAsGroup, runAsGroup)
         set_field!(o, :runAsNonRoot, runAsNonRoot)
         set_field!(o, :runAsUser, runAsUser)
         set_field!(o, :seLinuxOptions, seLinuxOptions)
@@ -23,8 +27,8 @@ mutable struct IoK8sApiCoreV1SecurityContext <: SwaggerModel
     end
 end # type IoK8sApiCoreV1SecurityContext
 
-const _name_map_IoK8sApiCoreV1SecurityContext = Dict{String,Symbol}(["allowPrivilegeEscalation"=>:allowPrivilegeEscalation, "capabilities"=>:capabilities, "privileged"=>:privileged, "readOnlyRootFilesystem"=>:readOnlyRootFilesystem, "runAsNonRoot"=>:runAsNonRoot, "runAsUser"=>:runAsUser, "seLinuxOptions"=>:seLinuxOptions])
-const _field_map_IoK8sApiCoreV1SecurityContext = Dict{Symbol,String}([:allowPrivilegeEscalation=>"allowPrivilegeEscalation", :capabilities=>"capabilities", :privileged=>"privileged", :readOnlyRootFilesystem=>"readOnlyRootFilesystem", :runAsNonRoot=>"runAsNonRoot", :runAsUser=>"runAsUser", :seLinuxOptions=>"seLinuxOptions"])
+const _name_map_IoK8sApiCoreV1SecurityContext = Dict{String,Symbol}(["allowPrivilegeEscalation"=>:allowPrivilegeEscalation, "capabilities"=>:capabilities, "privileged"=>:privileged, "procMount"=>:procMount, "readOnlyRootFilesystem"=>:readOnlyRootFilesystem, "runAsGroup"=>:runAsGroup, "runAsNonRoot"=>:runAsNonRoot, "runAsUser"=>:runAsUser, "seLinuxOptions"=>:seLinuxOptions])
+const _field_map_IoK8sApiCoreV1SecurityContext = Dict{Symbol,String}([:allowPrivilegeEscalation=>"allowPrivilegeEscalation", :capabilities=>"capabilities", :privileged=>"privileged", :procMount=>"procMount", :readOnlyRootFilesystem=>"readOnlyRootFilesystem", :runAsGroup=>"runAsGroup", :runAsNonRoot=>"runAsNonRoot", :runAsUser=>"runAsUser", :seLinuxOptions=>"seLinuxOptions"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1SecurityContext }) = _name_map_IoK8sApiCoreV1SecurityContext
 Swagger.field_map(::Type{ IoK8sApiCoreV1SecurityContext }) = _field_map_IoK8sApiCoreV1SecurityContext
 

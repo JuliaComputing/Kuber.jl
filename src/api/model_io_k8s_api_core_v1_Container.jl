@@ -20,10 +20,11 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
     terminationMessagePath::Union{ Nothing, String } # terminationMessagePath
     terminationMessagePolicy::Union{ Nothing, String } # terminationMessagePolicy
     tty::Union{ Nothing, Bool } # tty
+    volumeDevices::Union{ Nothing, Vector{IoK8sApiCoreV1VolumeDevice} } # volumeDevices
     volumeMounts::Union{ Nothing, Vector{IoK8sApiCoreV1VolumeMount} } # volumeMounts
     workingDir::Union{ Nothing, String } # workingDir
 
-    function IoK8sApiCoreV1Container(;args=nothing, command=nothing, env=nothing, envFrom=nothing, image=nothing, imagePullPolicy=nothing, lifecycle=nothing, livenessProbe=nothing, name=nothing, ports=nothing, readinessProbe=nothing, resources=nothing, securityContext=nothing, stdin=nothing, stdinOnce=nothing, terminationMessagePath=nothing, terminationMessagePolicy=nothing, tty=nothing, volumeMounts=nothing, workingDir=nothing)
+    function IoK8sApiCoreV1Container(;args=nothing, command=nothing, env=nothing, envFrom=nothing, image=nothing, imagePullPolicy=nothing, lifecycle=nothing, livenessProbe=nothing, name=nothing, ports=nothing, readinessProbe=nothing, resources=nothing, securityContext=nothing, stdin=nothing, stdinOnce=nothing, terminationMessagePath=nothing, terminationMessagePolicy=nothing, tty=nothing, volumeDevices=nothing, volumeMounts=nothing, workingDir=nothing)
         o = new()
         set_field!(o, :args, args)
         set_field!(o, :command, command)
@@ -43,14 +44,15 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
         set_field!(o, :terminationMessagePath, terminationMessagePath)
         set_field!(o, :terminationMessagePolicy, terminationMessagePolicy)
         set_field!(o, :tty, tty)
+        set_field!(o, :volumeDevices, volumeDevices)
         set_field!(o, :volumeMounts, volumeMounts)
         set_field!(o, :workingDir, workingDir)
         o
     end
 end # type IoK8sApiCoreV1Container
 
-const _name_map_IoK8sApiCoreV1Container = Dict{String,Symbol}(["args"=>:args, "command"=>:command, "env"=>:env, "envFrom"=>:envFrom, "image"=>:image, "imagePullPolicy"=>:imagePullPolicy, "lifecycle"=>:lifecycle, "livenessProbe"=>:livenessProbe, "name"=>:name, "ports"=>:ports, "readinessProbe"=>:readinessProbe, "resources"=>:resources, "securityContext"=>:securityContext, "stdin"=>:stdin, "stdinOnce"=>:stdinOnce, "terminationMessagePath"=>:terminationMessagePath, "terminationMessagePolicy"=>:terminationMessagePolicy, "tty"=>:tty, "volumeMounts"=>:volumeMounts, "workingDir"=>:workingDir])
-const _field_map_IoK8sApiCoreV1Container = Dict{Symbol,String}([:args=>"args", :command=>"command", :env=>"env", :envFrom=>"envFrom", :image=>"image", :imagePullPolicy=>"imagePullPolicy", :lifecycle=>"lifecycle", :livenessProbe=>"livenessProbe", :name=>"name", :ports=>"ports", :readinessProbe=>"readinessProbe", :resources=>"resources", :securityContext=>"securityContext", :stdin=>"stdin", :stdinOnce=>"stdinOnce", :terminationMessagePath=>"terminationMessagePath", :terminationMessagePolicy=>"terminationMessagePolicy", :tty=>"tty", :volumeMounts=>"volumeMounts", :workingDir=>"workingDir"])
+const _name_map_IoK8sApiCoreV1Container = Dict{String,Symbol}(["args"=>:args, "command"=>:command, "env"=>:env, "envFrom"=>:envFrom, "image"=>:image, "imagePullPolicy"=>:imagePullPolicy, "lifecycle"=>:lifecycle, "livenessProbe"=>:livenessProbe, "name"=>:name, "ports"=>:ports, "readinessProbe"=>:readinessProbe, "resources"=>:resources, "securityContext"=>:securityContext, "stdin"=>:stdin, "stdinOnce"=>:stdinOnce, "terminationMessagePath"=>:terminationMessagePath, "terminationMessagePolicy"=>:terminationMessagePolicy, "tty"=>:tty, "volumeDevices"=>:volumeDevices, "volumeMounts"=>:volumeMounts, "workingDir"=>:workingDir])
+const _field_map_IoK8sApiCoreV1Container = Dict{Symbol,String}([:args=>"args", :command=>"command", :env=>"env", :envFrom=>"envFrom", :image=>"image", :imagePullPolicy=>"imagePullPolicy", :lifecycle=>"lifecycle", :livenessProbe=>"livenessProbe", :name=>"name", :ports=>"ports", :readinessProbe=>"readinessProbe", :resources=>"resources", :securityContext=>"securityContext", :stdin=>"stdin", :stdinOnce=>"stdinOnce", :terminationMessagePath=>"terminationMessagePath", :terminationMessagePolicy=>"terminationMessagePolicy", :tty=>"tty", :volumeDevices=>"volumeDevices", :volumeMounts=>"volumeMounts", :workingDir=>"workingDir"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1Container }) = _name_map_IoK8sApiCoreV1Container
 Swagger.field_map(::Type{ IoK8sApiCoreV1Container }) = _field_map_IoK8sApiCoreV1Container
 

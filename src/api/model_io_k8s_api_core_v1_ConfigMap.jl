@@ -3,13 +3,15 @@
 
 mutable struct IoK8sApiCoreV1ConfigMap <: SwaggerModel
     apiVersion::Union{ Nothing, String } # apiVersion
+    binaryData::Union{ Nothing, Dict{String, Vector{UInt8}} } # binaryData
     data::Union{ Nothing, Dict{String, String} } # data
     kind::Union{ Nothing, String } # kind
     metadata::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # metadata
 
-    function IoK8sApiCoreV1ConfigMap(;apiVersion=nothing, data=nothing, kind=nothing, metadata=nothing)
+    function IoK8sApiCoreV1ConfigMap(;apiVersion=nothing, binaryData=nothing, data=nothing, kind=nothing, metadata=nothing)
         o = new()
         set_field!(o, :apiVersion, apiVersion)
+        set_field!(o, :binaryData, binaryData)
         set_field!(o, :data, data)
         set_field!(o, :kind, kind)
         set_field!(o, :metadata, metadata)
@@ -17,8 +19,8 @@ mutable struct IoK8sApiCoreV1ConfigMap <: SwaggerModel
     end
 end # type IoK8sApiCoreV1ConfigMap
 
-const _name_map_IoK8sApiCoreV1ConfigMap = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "data"=>:data, "kind"=>:kind, "metadata"=>:metadata])
-const _field_map_IoK8sApiCoreV1ConfigMap = Dict{Symbol,String}([:apiVersion=>"apiVersion", :data=>"data", :kind=>"kind", :metadata=>"metadata"])
+const _name_map_IoK8sApiCoreV1ConfigMap = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "binaryData"=>:binaryData, "data"=>:data, "kind"=>:kind, "metadata"=>:metadata])
+const _field_map_IoK8sApiCoreV1ConfigMap = Dict{Symbol,String}([:apiVersion=>"apiVersion", :binaryData=>"binaryData", :data=>"data", :kind=>"kind", :metadata=>"metadata"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1ConfigMap }) = _name_map_IoK8sApiCoreV1ConfigMap
 Swagger.field_map(::Type{ IoK8sApiCoreV1ConfigMap }) = _field_map_IoK8sApiCoreV1ConfigMap
 

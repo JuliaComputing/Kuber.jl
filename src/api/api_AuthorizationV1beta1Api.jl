@@ -10,12 +10,16 @@ end
 create a LocalSubjectAccessReview
 Param: namespace::String (required)
 Param: body::IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview
 """
-function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1beta1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1beta1Api, namespace::String, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/namespaces/{namespace}/localsubjectaccessreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -26,11 +30,15 @@ end
 
 create a SelfSubjectAccessReview
 Param: body::IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview
 """
-function createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, body; pretty=nothing, _mediaType=nothing)
+function createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectaccessreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -41,11 +49,15 @@ end
 
 create a SelfSubjectRulesReview
 Param: body::IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview
 """
-function createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, body; pretty=nothing, _mediaType=nothing)
+function createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectrulesreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -56,11 +68,15 @@ end
 
 create a SubjectAccessReview
 Param: body::IoK8sApiAuthorizationV1beta1SubjectAccessReview (required)
+Param: dryRun::String
+Param: includeUninitialized::Bool
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SubjectAccessReview
 """
-function createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta1Api, body; pretty=nothing, _mediaType=nothing)
+function createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/subjectaccessreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])

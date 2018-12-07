@@ -28,7 +28,6 @@ Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1APIGroup }) = _field_map
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1APIGroup)
     (o.name === nothing) && (return false)
-    (o.serverAddressByClientCIDRs === nothing) && (return false)
     (o.versions === nothing) && (return false)
     true
 end

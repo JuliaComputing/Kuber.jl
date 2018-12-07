@@ -26,7 +26,6 @@ Swagger.field_map(::Type{ IoK8sApiRbacV1RoleBinding }) = _field_map_IoK8sApiRbac
 
 function check_required(o::IoK8sApiRbacV1RoleBinding)
     (o.roleRef === nothing) && (return false)
-    (o.subjects === nothing) && (return false)
     true
 end
 

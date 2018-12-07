@@ -3,16 +3,18 @@
 
 mutable struct IoK8sApiExtensionsV1beta1AllowedHostPath <: SwaggerModel
     pathPrefix::Union{ Nothing, String } # pathPrefix
+    readOnly::Union{ Nothing, Bool } # readOnly
 
-    function IoK8sApiExtensionsV1beta1AllowedHostPath(;pathPrefix=nothing)
+    function IoK8sApiExtensionsV1beta1AllowedHostPath(;pathPrefix=nothing, readOnly=nothing)
         o = new()
         set_field!(o, :pathPrefix, pathPrefix)
+        set_field!(o, :readOnly, readOnly)
         o
     end
 end # type IoK8sApiExtensionsV1beta1AllowedHostPath
 
-const _name_map_IoK8sApiExtensionsV1beta1AllowedHostPath = Dict{String,Symbol}(["pathPrefix"=>:pathPrefix])
-const _field_map_IoK8sApiExtensionsV1beta1AllowedHostPath = Dict{Symbol,String}([:pathPrefix=>"pathPrefix"])
+const _name_map_IoK8sApiExtensionsV1beta1AllowedHostPath = Dict{String,Symbol}(["pathPrefix"=>:pathPrefix, "readOnly"=>:readOnly])
+const _field_map_IoK8sApiExtensionsV1beta1AllowedHostPath = Dict{Symbol,String}([:pathPrefix=>"pathPrefix", :readOnly=>"readOnly"])
 Swagger.name_map(::Type{ IoK8sApiExtensionsV1beta1AllowedHostPath }) = _name_map_IoK8sApiExtensionsV1beta1AllowedHostPath
 Swagger.field_map(::Type{ IoK8sApiExtensionsV1beta1AllowedHostPath }) = _field_map_IoK8sApiExtensionsV1beta1AllowedHostPath
 

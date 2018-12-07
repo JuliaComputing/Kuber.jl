@@ -9,8 +9,9 @@ mutable struct IoK8sApiBatchV1JobSpec <: SwaggerModel
     parallelism::Union{ Nothing, Int32 } # parallelism
     selector::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # selector
     template::Union{ Nothing, IoK8sApiCoreV1PodTemplateSpec } # template
+    ttlSecondsAfterFinished::Union{ Nothing, Int32 } # ttlSecondsAfterFinished
 
-    function IoK8sApiBatchV1JobSpec(;activeDeadlineSeconds=nothing, backoffLimit=nothing, completions=nothing, manualSelector=nothing, parallelism=nothing, selector=nothing, template=nothing)
+    function IoK8sApiBatchV1JobSpec(;activeDeadlineSeconds=nothing, backoffLimit=nothing, completions=nothing, manualSelector=nothing, parallelism=nothing, selector=nothing, template=nothing, ttlSecondsAfterFinished=nothing)
         o = new()
         set_field!(o, :activeDeadlineSeconds, activeDeadlineSeconds)
         set_field!(o, :backoffLimit, backoffLimit)
@@ -19,12 +20,13 @@ mutable struct IoK8sApiBatchV1JobSpec <: SwaggerModel
         set_field!(o, :parallelism, parallelism)
         set_field!(o, :selector, selector)
         set_field!(o, :template, template)
+        set_field!(o, :ttlSecondsAfterFinished, ttlSecondsAfterFinished)
         o
     end
 end # type IoK8sApiBatchV1JobSpec
 
-const _name_map_IoK8sApiBatchV1JobSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "backoffLimit"=>:backoffLimit, "completions"=>:completions, "manualSelector"=>:manualSelector, "parallelism"=>:parallelism, "selector"=>:selector, "template"=>:template])
-const _field_map_IoK8sApiBatchV1JobSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :backoffLimit=>"backoffLimit", :completions=>"completions", :manualSelector=>"manualSelector", :parallelism=>"parallelism", :selector=>"selector", :template=>"template"])
+const _name_map_IoK8sApiBatchV1JobSpec = Dict{String,Symbol}(["activeDeadlineSeconds"=>:activeDeadlineSeconds, "backoffLimit"=>:backoffLimit, "completions"=>:completions, "manualSelector"=>:manualSelector, "parallelism"=>:parallelism, "selector"=>:selector, "template"=>:template, "ttlSecondsAfterFinished"=>:ttlSecondsAfterFinished])
+const _field_map_IoK8sApiBatchV1JobSpec = Dict{Symbol,String}([:activeDeadlineSeconds=>"activeDeadlineSeconds", :backoffLimit=>"backoffLimit", :completions=>"completions", :manualSelector=>"manualSelector", :parallelism=>"parallelism", :selector=>"selector", :template=>"template", :ttlSecondsAfterFinished=>"ttlSecondsAfterFinished"])
 Swagger.name_map(::Type{ IoK8sApiBatchV1JobSpec }) = _name_map_IoK8sApiBatchV1JobSpec
 Swagger.field_map(::Type{ IoK8sApiBatchV1JobSpec }) = _field_map_IoK8sApiBatchV1JobSpec
 

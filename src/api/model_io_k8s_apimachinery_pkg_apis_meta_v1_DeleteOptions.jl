@@ -3,15 +3,17 @@
 
 mutable struct IoK8sApimachineryPkgApisMetaV1DeleteOptions <: SwaggerModel
     apiVersion::Union{ Nothing, String } # apiVersion
+    dryRun::Union{ Nothing, Vector{String} } # dryRun
     gracePeriodSeconds::Union{ Nothing, Int64 } # gracePeriodSeconds
     kind::Union{ Nothing, String } # kind
     orphanDependents::Union{ Nothing, Bool } # orphanDependents
     preconditions::Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Preconditions } # preconditions
     propagationPolicy::Union{ Nothing, String } # propagationPolicy
 
-    function IoK8sApimachineryPkgApisMetaV1DeleteOptions(;apiVersion=nothing, gracePeriodSeconds=nothing, kind=nothing, orphanDependents=nothing, preconditions=nothing, propagationPolicy=nothing)
+    function IoK8sApimachineryPkgApisMetaV1DeleteOptions(;apiVersion=nothing, dryRun=nothing, gracePeriodSeconds=nothing, kind=nothing, orphanDependents=nothing, preconditions=nothing, propagationPolicy=nothing)
         o = new()
         set_field!(o, :apiVersion, apiVersion)
+        set_field!(o, :dryRun, dryRun)
         set_field!(o, :gracePeriodSeconds, gracePeriodSeconds)
         set_field!(o, :kind, kind)
         set_field!(o, :orphanDependents, orphanDependents)
@@ -21,8 +23,8 @@ mutable struct IoK8sApimachineryPkgApisMetaV1DeleteOptions <: SwaggerModel
     end
 end # type IoK8sApimachineryPkgApisMetaV1DeleteOptions
 
-const _name_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "gracePeriodSeconds"=>:gracePeriodSeconds, "kind"=>:kind, "orphanDependents"=>:orphanDependents, "preconditions"=>:preconditions, "propagationPolicy"=>:propagationPolicy])
-const _field_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{Symbol,String}([:apiVersion=>"apiVersion", :gracePeriodSeconds=>"gracePeriodSeconds", :kind=>"kind", :orphanDependents=>"orphanDependents", :preconditions=>"preconditions", :propagationPolicy=>"propagationPolicy"])
+const _name_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{String,Symbol}(["apiVersion"=>:apiVersion, "dryRun"=>:dryRun, "gracePeriodSeconds"=>:gracePeriodSeconds, "kind"=>:kind, "orphanDependents"=>:orphanDependents, "preconditions"=>:preconditions, "propagationPolicy"=>:propagationPolicy])
+const _field_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{Symbol,String}([:apiVersion=>"apiVersion", :dryRun=>"dryRun", :gracePeriodSeconds=>"gracePeriodSeconds", :kind=>"kind", :orphanDependents=>"orphanDependents", :preconditions=>"preconditions", :propagationPolicy=>"propagationPolicy"])
 Swagger.name_map(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }) = _name_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Swagger.field_map(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }) = _field_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions
 

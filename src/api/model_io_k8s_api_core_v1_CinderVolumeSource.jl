@@ -4,19 +4,21 @@
 mutable struct IoK8sApiCoreV1CinderVolumeSource <: SwaggerModel
     fsType::Union{ Nothing, String } # fsType
     readOnly::Union{ Nothing, Bool } # readOnly
+    secretRef::Union{ Nothing, IoK8sApiCoreV1LocalObjectReference } # secretRef
     volumeID::Union{ Nothing, String } # volumeID
 
-    function IoK8sApiCoreV1CinderVolumeSource(;fsType=nothing, readOnly=nothing, volumeID=nothing)
+    function IoK8sApiCoreV1CinderVolumeSource(;fsType=nothing, readOnly=nothing, secretRef=nothing, volumeID=nothing)
         o = new()
         set_field!(o, :fsType, fsType)
         set_field!(o, :readOnly, readOnly)
+        set_field!(o, :secretRef, secretRef)
         set_field!(o, :volumeID, volumeID)
         o
     end
 end # type IoK8sApiCoreV1CinderVolumeSource
 
-const _name_map_IoK8sApiCoreV1CinderVolumeSource = Dict{String,Symbol}(["fsType"=>:fsType, "readOnly"=>:readOnly, "volumeID"=>:volumeID])
-const _field_map_IoK8sApiCoreV1CinderVolumeSource = Dict{Symbol,String}([:fsType=>"fsType", :readOnly=>"readOnly", :volumeID=>"volumeID"])
+const _name_map_IoK8sApiCoreV1CinderVolumeSource = Dict{String,Symbol}(["fsType"=>:fsType, "readOnly"=>:readOnly, "secretRef"=>:secretRef, "volumeID"=>:volumeID])
+const _field_map_IoK8sApiCoreV1CinderVolumeSource = Dict{Symbol,String}([:fsType=>"fsType", :readOnly=>"readOnly", :secretRef=>"secretRef", :volumeID=>"volumeID"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1CinderVolumeSource }) = _name_map_IoK8sApiCoreV1CinderVolumeSource
 Swagger.field_map(::Type{ IoK8sApiCoreV1CinderVolumeSource }) = _field_map_IoK8sApiCoreV1CinderVolumeSource
 

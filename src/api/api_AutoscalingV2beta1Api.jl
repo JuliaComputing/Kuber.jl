@@ -10,13 +10,17 @@ end
 create a HorizontalPodAutoscaler
 Param: namespace::String (required)
 Param: body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler
 """
-function createAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function createAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -26,10 +30,10 @@ end
 
 delete collection of HorizontalPodAutoscaler
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -37,13 +41,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAutoscalingV2beta1CollectionNamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteAutoscalingV2beta1CollectionNamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -61,16 +65,18 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
     Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
@@ -125,10 +131,10 @@ end
 
 list or watch objects of kind HorizontalPodAutoscaler
 Param: namespace::String (required)
+Param: includeUninitialized::Bool
 Param: pretty::String
 Param: _continue::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: resourceVersion::String
@@ -136,13 +142,13 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerList
 """
-function listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String; pretty=nothing, _continue=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, _continue=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerList, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", _continue)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
@@ -160,13 +166,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler
 """
-function patchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -179,13 +187,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler
 """
-function patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function patchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -238,13 +248,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -257,13 +269,15 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler (required)
 Param: pretty::String
+Param: dryRun::String
 Return: IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler
 """
-function replaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, _mediaType=nothing)
+function replaceAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(_api::AutoscalingV2beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -271,7 +285,7 @@ end
 
 """
 
-watch individual changes to a list of HorizontalPodAutoscaler
+watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.
 Param: _continue::String
 Param: fieldSelector::String
 Param: includeUninitialized::Bool
@@ -301,7 +315,7 @@ end
 
 """
 
-watch changes to an object of kind HorizontalPodAutoscaler
+watch changes to an object of kind HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: _continue::String
@@ -335,7 +349,7 @@ end
 
 """
 
-watch individual changes to a list of HorizontalPodAutoscaler
+watch individual changes to a list of HorizontalPodAutoscaler. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: _continue::String
 Param: fieldSelector::String

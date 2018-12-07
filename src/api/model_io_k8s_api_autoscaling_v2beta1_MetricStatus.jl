@@ -2,13 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 mutable struct IoK8sApiAutoscalingV2beta1MetricStatus <: SwaggerModel
+    external::Union{ Nothing, IoK8sApiAutoscalingV2beta1ExternalMetricStatus } # external
     object::Union{ Nothing, IoK8sApiAutoscalingV2beta1ObjectMetricStatus } # object
     pods::Union{ Nothing, IoK8sApiAutoscalingV2beta1PodsMetricStatus } # pods
     resource::Union{ Nothing, IoK8sApiAutoscalingV2beta1ResourceMetricStatus } # resource
     _type::Union{ Nothing, String } # type
 
-    function IoK8sApiAutoscalingV2beta1MetricStatus(;object=nothing, pods=nothing, resource=nothing, _type=nothing)
+    function IoK8sApiAutoscalingV2beta1MetricStatus(;external=nothing, object=nothing, pods=nothing, resource=nothing, _type=nothing)
         o = new()
+        set_field!(o, :external, external)
         set_field!(o, :object, object)
         set_field!(o, :pods, pods)
         set_field!(o, :resource, resource)
@@ -17,8 +19,8 @@ mutable struct IoK8sApiAutoscalingV2beta1MetricStatus <: SwaggerModel
     end
 end # type IoK8sApiAutoscalingV2beta1MetricStatus
 
-const _name_map_IoK8sApiAutoscalingV2beta1MetricStatus = Dict{String,Symbol}(["object"=>:object, "pods"=>:pods, "resource"=>:resource, "type"=>:_type])
-const _field_map_IoK8sApiAutoscalingV2beta1MetricStatus = Dict{Symbol,String}([:object=>"object", :pods=>"pods", :resource=>"resource", :_type=>"type"])
+const _name_map_IoK8sApiAutoscalingV2beta1MetricStatus = Dict{String,Symbol}(["external"=>:external, "object"=>:object, "pods"=>:pods, "resource"=>:resource, "type"=>:_type])
+const _field_map_IoK8sApiAutoscalingV2beta1MetricStatus = Dict{Symbol,String}([:external=>"external", :object=>"object", :pods=>"pods", :resource=>"resource", :_type=>"type"])
 Swagger.name_map(::Type{ IoK8sApiAutoscalingV2beta1MetricStatus }) = _name_map_IoK8sApiAutoscalingV2beta1MetricStatus
 Swagger.field_map(::Type{ IoK8sApiAutoscalingV2beta1MetricStatus }) = _field_map_IoK8sApiAutoscalingV2beta1MetricStatus
 

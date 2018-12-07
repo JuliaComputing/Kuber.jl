@@ -4,23 +4,26 @@
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus <: SwaggerModel
     acceptedNames::Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames } # acceptedNames
     conditions::Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition} } # conditions
+    storedVersions::Union{ Nothing, Vector{String} } # storedVersions
 
-    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus(;acceptedNames=nothing, conditions=nothing)
+    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus(;acceptedNames=nothing, conditions=nothing, storedVersions=nothing)
         o = new()
         set_field!(o, :acceptedNames, acceptedNames)
         set_field!(o, :conditions, conditions)
+        set_field!(o, :storedVersions, storedVersions)
         o
     end
 end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus
 
-const _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus = Dict{String,Symbol}(["acceptedNames"=>:acceptedNames, "conditions"=>:conditions])
-const _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus = Dict{Symbol,String}([:acceptedNames=>"acceptedNames", :conditions=>"conditions"])
+const _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus = Dict{String,Symbol}(["acceptedNames"=>:acceptedNames, "conditions"=>:conditions, "storedVersions"=>:storedVersions])
+const _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus = Dict{Symbol,String}([:acceptedNames=>"acceptedNames", :conditions=>"conditions", :storedVersions=>"storedVersions"])
 Swagger.name_map(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus }) = _name_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus
 Swagger.field_map(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus }) = _field_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus)
     (o.acceptedNames === nothing) && (return false)
     (o.conditions === nothing) && (return false)
+    (o.storedVersions === nothing) && (return false)
     true
 end
 

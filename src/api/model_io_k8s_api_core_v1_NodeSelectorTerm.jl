@@ -3,21 +3,22 @@
 
 mutable struct IoK8sApiCoreV1NodeSelectorTerm <: SwaggerModel
     matchExpressions::Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # matchExpressions
+    matchFields::Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # matchFields
 
-    function IoK8sApiCoreV1NodeSelectorTerm(;matchExpressions=nothing)
+    function IoK8sApiCoreV1NodeSelectorTerm(;matchExpressions=nothing, matchFields=nothing)
         o = new()
         set_field!(o, :matchExpressions, matchExpressions)
+        set_field!(o, :matchFields, matchFields)
         o
     end
 end # type IoK8sApiCoreV1NodeSelectorTerm
 
-const _name_map_IoK8sApiCoreV1NodeSelectorTerm = Dict{String,Symbol}(["matchExpressions"=>:matchExpressions])
-const _field_map_IoK8sApiCoreV1NodeSelectorTerm = Dict{Symbol,String}([:matchExpressions=>"matchExpressions"])
+const _name_map_IoK8sApiCoreV1NodeSelectorTerm = Dict{String,Symbol}(["matchExpressions"=>:matchExpressions, "matchFields"=>:matchFields])
+const _field_map_IoK8sApiCoreV1NodeSelectorTerm = Dict{Symbol,String}([:matchExpressions=>"matchExpressions", :matchFields=>"matchFields"])
 Swagger.name_map(::Type{ IoK8sApiCoreV1NodeSelectorTerm }) = _name_map_IoK8sApiCoreV1NodeSelectorTerm
 Swagger.field_map(::Type{ IoK8sApiCoreV1NodeSelectorTerm }) = _field_map_IoK8sApiCoreV1NodeSelectorTerm
 
 function check_required(o::IoK8sApiCoreV1NodeSelectorTerm)
-    (o.matchExpressions === nothing) && (return false)
     true
 end
 

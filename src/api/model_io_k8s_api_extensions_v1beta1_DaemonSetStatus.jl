@@ -3,6 +3,7 @@
 
 mutable struct IoK8sApiExtensionsV1beta1DaemonSetStatus <: SwaggerModel
     collisionCount::Union{ Nothing, Int32 } # collisionCount
+    conditions::Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1DaemonSetCondition} } # conditions
     currentNumberScheduled::Union{ Nothing, Int32 } # currentNumberScheduled
     desiredNumberScheduled::Union{ Nothing, Int32 } # desiredNumberScheduled
     numberAvailable::Union{ Nothing, Int32 } # numberAvailable
@@ -12,9 +13,10 @@ mutable struct IoK8sApiExtensionsV1beta1DaemonSetStatus <: SwaggerModel
     observedGeneration::Union{ Nothing, Int64 } # observedGeneration
     updatedNumberScheduled::Union{ Nothing, Int32 } # updatedNumberScheduled
 
-    function IoK8sApiExtensionsV1beta1DaemonSetStatus(;collisionCount=nothing, currentNumberScheduled=nothing, desiredNumberScheduled=nothing, numberAvailable=nothing, numberMisscheduled=nothing, numberReady=nothing, numberUnavailable=nothing, observedGeneration=nothing, updatedNumberScheduled=nothing)
+    function IoK8sApiExtensionsV1beta1DaemonSetStatus(;collisionCount=nothing, conditions=nothing, currentNumberScheduled=nothing, desiredNumberScheduled=nothing, numberAvailable=nothing, numberMisscheduled=nothing, numberReady=nothing, numberUnavailable=nothing, observedGeneration=nothing, updatedNumberScheduled=nothing)
         o = new()
         set_field!(o, :collisionCount, collisionCount)
+        set_field!(o, :conditions, conditions)
         set_field!(o, :currentNumberScheduled, currentNumberScheduled)
         set_field!(o, :desiredNumberScheduled, desiredNumberScheduled)
         set_field!(o, :numberAvailable, numberAvailable)
@@ -27,8 +29,8 @@ mutable struct IoK8sApiExtensionsV1beta1DaemonSetStatus <: SwaggerModel
     end
 end # type IoK8sApiExtensionsV1beta1DaemonSetStatus
 
-const _name_map_IoK8sApiExtensionsV1beta1DaemonSetStatus = Dict{String,Symbol}(["collisionCount"=>:collisionCount, "currentNumberScheduled"=>:currentNumberScheduled, "desiredNumberScheduled"=>:desiredNumberScheduled, "numberAvailable"=>:numberAvailable, "numberMisscheduled"=>:numberMisscheduled, "numberReady"=>:numberReady, "numberUnavailable"=>:numberUnavailable, "observedGeneration"=>:observedGeneration, "updatedNumberScheduled"=>:updatedNumberScheduled])
-const _field_map_IoK8sApiExtensionsV1beta1DaemonSetStatus = Dict{Symbol,String}([:collisionCount=>"collisionCount", :currentNumberScheduled=>"currentNumberScheduled", :desiredNumberScheduled=>"desiredNumberScheduled", :numberAvailable=>"numberAvailable", :numberMisscheduled=>"numberMisscheduled", :numberReady=>"numberReady", :numberUnavailable=>"numberUnavailable", :observedGeneration=>"observedGeneration", :updatedNumberScheduled=>"updatedNumberScheduled"])
+const _name_map_IoK8sApiExtensionsV1beta1DaemonSetStatus = Dict{String,Symbol}(["collisionCount"=>:collisionCount, "conditions"=>:conditions, "currentNumberScheduled"=>:currentNumberScheduled, "desiredNumberScheduled"=>:desiredNumberScheduled, "numberAvailable"=>:numberAvailable, "numberMisscheduled"=>:numberMisscheduled, "numberReady"=>:numberReady, "numberUnavailable"=>:numberUnavailable, "observedGeneration"=>:observedGeneration, "updatedNumberScheduled"=>:updatedNumberScheduled])
+const _field_map_IoK8sApiExtensionsV1beta1DaemonSetStatus = Dict{Symbol,String}([:collisionCount=>"collisionCount", :conditions=>"conditions", :currentNumberScheduled=>"currentNumberScheduled", :desiredNumberScheduled=>"desiredNumberScheduled", :numberAvailable=>"numberAvailable", :numberMisscheduled=>"numberMisscheduled", :numberReady=>"numberReady", :numberUnavailable=>"numberUnavailable", :observedGeneration=>"observedGeneration", :updatedNumberScheduled=>"updatedNumberScheduled"])
 Swagger.name_map(::Type{ IoK8sApiExtensionsV1beta1DaemonSetStatus }) = _name_map_IoK8sApiExtensionsV1beta1DaemonSetStatus
 Swagger.field_map(::Type{ IoK8sApiExtensionsV1beta1DaemonSetStatus }) = _field_map_IoK8sApiExtensionsV1beta1DaemonSetStatus
 

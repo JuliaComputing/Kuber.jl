@@ -6,38 +6,32 @@
 
 A Julia Kubernetes Client.
 
-Provides an easy to use API (few details mentioned below). The complete Kubernetes API is supported in the `Kubernetes` submodule.
+An easy to use API to access Kubernetes clusters from Julia. The `Kuber.Kubernetes` submodule has the complete set of low level APIs and entities.
+
+Most of the low level APIs fit into a common usage pattern. Kuber.jl makes it possible to use all of them with only a few intuitive verb based APIs. Verbs act on entities. Entities can be identified by names or selector patterns, or otherwise can apply to all entities of that class. Verbs can take additional parameters, e.g. when creating or updating entities.
+
+API and Entity naming convention follows the standard Kubernetes API and Model naming conventions.
 
 ### Entities:
 
-- `:ComponentStatus`
-- `:Endpoints`
+Any Kubernetes entity supported. APIs identify an entity by symbol named as per Kubernetes naming convention.
+
 - `:Namespace`
-- `:ResourceQuota`
 - `:Pod`
-- `:PodTemplate`
 - `:ReplicationController`
 - `:Service`
 - `:PersistentVolume`
-- `:PersistentVolumeClaim`
 - `:Job`
-- `:Secret`
-- `:ClusterRoleBinding`
-- `:ClusterRole`
-- `:RoleBinding`
-- `:Role`
 - `...`
-
-Any Kubernetes entity supported, as long as it follows the standard Kubernetes Model and API naming conventions.
 
 ### Methods/Verbs:
 
 Kubernetes APIs are mapped to these easy to use verbs, familiar to Julia users.
 
-- `get`
-- `put!`
-- `update!`
-- `delete!`
+- `get`: list or fetch entities
+- `put!`: create entities
+- `update!`: update existing entities
+- `delete!`: delete existing entities
 - `sel`: creates a label selector to use with other verbs
 
 All verbs have the signature: `verb(ctx::KuberContext, T::Symbol, args...; kwargs...)`.
@@ -53,3 +47,7 @@ Other convenience methods:
 
 - `kuber_type`: identify the Julia object corresponding to the Kubernetes specification
 - `kuber_obj`: instantiate a Julia object from for the supplied Kubernetes specification
+
+### References:
+- API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md"
+- API: https://kubernetes.io/docs/concepts/overview/kubernetes-api/"
