@@ -1,8 +1,6 @@
 # Kuber
 
 [![Build Status](https://travis-ci.org/JuliaComputing/Kuber.jl.svg?branch=master)](https://travis-ci.org/JuliaComputing/Kuber.jl)
-[![Coverage Status](https://coveralls.io/repos/JuliaComputing/Kuber.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaComputing/Kuber.jl?branch=master)
-[![codecov.io](http://codecov.io/github/JuliaComputing/Kuber.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaComputing/Kuber.jl?branch=master)
 
 A Julia Kubernetes Client.
 
@@ -51,5 +49,5 @@ Other convenience methods:
 - `kuber_obj`: instantiate a Julia object from for the supplied Kubernetes specification
 
 ### References:
-- API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md"
-- API: https://kubernetes.io/docs/concepts/overview/kubernetes-api/"
+- API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md
+- API: https://kubernetes.io/docs/concepts/overview/kubernetes-api/
