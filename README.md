@@ -10,6 +10,8 @@ An easy to use API to access Kubernetes clusters from Julia. The `Kuber.Kubernet
 
 Most of the low level APIs fit into a common usage pattern. Kuber.jl makes it possible to use all of them with only a few intuitive verb based APIs. Verbs act on entities. Entities can be identified by names or selector patterns, or otherwise can apply to all entities of that class. Verbs can take additional parameters, e.g. when creating or updating entities.
 
+This blog post on Kuber.jl includes a [tutorial](https://juliacomputing.com/blog/2018/12/15/kuber.html).
+
 API and Entity naming convention follows the standard Kubernetes API and Model naming conventions.
 
 ### Entities:
