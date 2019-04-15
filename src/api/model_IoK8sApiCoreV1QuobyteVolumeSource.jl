@@ -7,10 +7,11 @@ mutable struct IoK8sApiCoreV1QuobyteVolumeSource <: SwaggerModel
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
     registry::Any # spec type: Union{ Nothing, String } # spec name: registry
+    tenant::Any # spec type: Union{ Nothing, String } # spec name: tenant
     user::Any # spec type: Union{ Nothing, String } # spec name: user
     volume::Any # spec type: Union{ Nothing, String } # spec name: volume
 
-    function IoK8sApiCoreV1QuobyteVolumeSource(;group=nothing, readOnly=nothing, registry=nothing, user=nothing, volume=nothing)
+    function IoK8sApiCoreV1QuobyteVolumeSource(;group=nothing, readOnly=nothing, registry=nothing, tenant=nothing, user=nothing, volume=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1QuobyteVolumeSource, Symbol("group"), group)
         setfield!(o, Symbol("group"), group)
@@ -18,6 +19,8 @@ mutable struct IoK8sApiCoreV1QuobyteVolumeSource <: SwaggerModel
         setfield!(o, Symbol("readOnly"), readOnly)
         validate_property(IoK8sApiCoreV1QuobyteVolumeSource, Symbol("registry"), registry)
         setfield!(o, Symbol("registry"), registry)
+        validate_property(IoK8sApiCoreV1QuobyteVolumeSource, Symbol("tenant"), tenant)
+        setfield!(o, Symbol("tenant"), tenant)
         validate_property(IoK8sApiCoreV1QuobyteVolumeSource, Symbol("user"), user)
         setfield!(o, Symbol("user"), user)
         validate_property(IoK8sApiCoreV1QuobyteVolumeSource, Symbol("volume"), volume)
@@ -26,8 +29,8 @@ mutable struct IoK8sApiCoreV1QuobyteVolumeSource <: SwaggerModel
     end
 end # type IoK8sApiCoreV1QuobyteVolumeSource
 
-const _property_map_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,Symbol}(Symbol("group")=>Symbol("group"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("registry")=>Symbol("registry"), Symbol("user")=>Symbol("user"), Symbol("volume")=>Symbol("volume"))
-const _property_types_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,String}(Symbol("group")=>"String", Symbol("readOnly")=>"Bool", Symbol("registry")=>"String", Symbol("user")=>"String", Symbol("volume")=>"String")
+const _property_map_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,Symbol}(Symbol("group")=>Symbol("group"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("registry")=>Symbol("registry"), Symbol("tenant")=>Symbol("tenant"), Symbol("user")=>Symbol("user"), Symbol("volume")=>Symbol("volume"))
+const _property_types_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,String}(Symbol("group")=>"String", Symbol("readOnly")=>"Bool", Symbol("registry")=>"String", Symbol("tenant")=>"String", Symbol("user")=>"String", Symbol("volume")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1QuobyteVolumeSource))
 Swagger.property_type(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1QuobyteVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1QuobyteVolumeSource[property_name]

@@ -4,18 +4,21 @@
 
 
 mutable struct IoK8sApimachineryPkgApisMetaV1Preconditions <: SwaggerModel
+    resourceVersion::Any # spec type: Union{ Nothing, String } # spec name: resourceVersion
     uid::Any # spec type: Union{ Nothing, String } # spec name: uid
 
-    function IoK8sApimachineryPkgApisMetaV1Preconditions(;uid=nothing)
+    function IoK8sApimachineryPkgApisMetaV1Preconditions(;resourceVersion=nothing, uid=nothing)
         o = new()
+        validate_property(IoK8sApimachineryPkgApisMetaV1Preconditions, Symbol("resourceVersion"), resourceVersion)
+        setfield!(o, Symbol("resourceVersion"), resourceVersion)
         validate_property(IoK8sApimachineryPkgApisMetaV1Preconditions, Symbol("uid"), uid)
         setfield!(o, Symbol("uid"), uid)
         o
     end
 end # type IoK8sApimachineryPkgApisMetaV1Preconditions
 
-const _property_map_IoK8sApimachineryPkgApisMetaV1Preconditions = Dict{Symbol,Symbol}(Symbol("uid")=>Symbol("uid"))
-const _property_types_IoK8sApimachineryPkgApisMetaV1Preconditions = Dict{Symbol,String}(Symbol("uid")=>"String")
+const _property_map_IoK8sApimachineryPkgApisMetaV1Preconditions = Dict{Symbol,Symbol}(Symbol("resourceVersion")=>Symbol("resourceVersion"), Symbol("uid")=>Symbol("uid"))
+const _property_types_IoK8sApimachineryPkgApisMetaV1Preconditions = Dict{Symbol,String}(Symbol("resourceVersion")=>"String", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1Preconditions }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1Preconditions))
 Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1Preconditions }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1Preconditions[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1Preconditions }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1Preconditions[property_name]

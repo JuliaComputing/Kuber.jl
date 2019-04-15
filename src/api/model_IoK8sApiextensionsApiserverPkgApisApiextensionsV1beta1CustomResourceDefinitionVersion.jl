@@ -4,24 +4,33 @@
 
 
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion <: SwaggerModel
+    additionalPrinterColumns::Any # spec type: Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition} } # spec name: additionalPrinterColumns
     name::Any # spec type: Union{ Nothing, String } # spec name: name
+    schema::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation } # spec name: schema
     served::Any # spec type: Union{ Nothing, Bool } # spec name: served
     storage::Any # spec type: Union{ Nothing, Bool } # spec name: storage
+    subresources::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources } # spec name: subresources
 
-    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion(;name=nothing, served=nothing, storage=nothing)
+    function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion(;additionalPrinterColumns=nothing, name=nothing, schema=nothing, served=nothing, storage=nothing, subresources=nothing)
         o = new()
+        validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("additionalPrinterColumns"), additionalPrinterColumns)
+        setfield!(o, Symbol("additionalPrinterColumns"), additionalPrinterColumns)
         validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
+        validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("schema"), schema)
+        setfield!(o, Symbol("schema"), schema)
         validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("served"), served)
         setfield!(o, Symbol("served"), served)
         validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("storage"), storage)
         setfield!(o, Symbol("storage"), storage)
+        validate_property(IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion, Symbol("subresources"), subresources)
+        setfield!(o, Symbol("subresources"), subresources)
         o
     end
 end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion
 
-const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("served")=>Symbol("served"), Symbol("storage")=>Symbol("storage"))
-const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("served")=>"Bool", Symbol("storage")=>"Bool")
+const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,Symbol}(Symbol("additionalPrinterColumns")=>Symbol("additionalPrinterColumns"), Symbol("name")=>Symbol("name"), Symbol("schema")=>Symbol("schema"), Symbol("served")=>Symbol("served"), Symbol("storage")=>Symbol("storage"), Symbol("subresources")=>Symbol("subresources"))
+const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,String}(Symbol("additionalPrinterColumns")=>"Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition}", Symbol("name")=>"String", Symbol("schema")=>"IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation", Symbol("served")=>"Bool", Symbol("storage")=>"Bool", Symbol("subresources")=>"IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion))
 Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion[property_name]

@@ -4,18 +4,21 @@
 
 
 mutable struct IoK8sApiAuthenticationV1TokenReviewSpec <: SwaggerModel
+    audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     token::Any # spec type: Union{ Nothing, String } # spec name: token
 
-    function IoK8sApiAuthenticationV1TokenReviewSpec(;token=nothing)
+    function IoK8sApiAuthenticationV1TokenReviewSpec(;audiences=nothing, token=nothing)
         o = new()
+        validate_property(IoK8sApiAuthenticationV1TokenReviewSpec, Symbol("audiences"), audiences)
+        setfield!(o, Symbol("audiences"), audiences)
         validate_property(IoK8sApiAuthenticationV1TokenReviewSpec, Symbol("token"), token)
         setfield!(o, Symbol("token"), token)
         o
     end
 end # type IoK8sApiAuthenticationV1TokenReviewSpec
 
-const _property_map_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,Symbol}(Symbol("token")=>Symbol("token"))
-const _property_types_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,String}(Symbol("token")=>"String")
+const _property_map_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,Symbol}(Symbol("audiences")=>Symbol("audiences"), Symbol("token")=>Symbol("token"))
+const _property_types_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,String}(Symbol("audiences")=>"Vector{String}", Symbol("token")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }) = collect(keys(_property_map_IoK8sApiAuthenticationV1TokenReviewSpec))
 Swagger.property_type(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthenticationV1TokenReviewSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }, property_name::Symbol) =  _property_map_IoK8sApiAuthenticationV1TokenReviewSpec[property_name]

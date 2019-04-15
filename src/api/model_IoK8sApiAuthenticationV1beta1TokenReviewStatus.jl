@@ -4,12 +4,15 @@
 
 
 mutable struct IoK8sApiAuthenticationV1beta1TokenReviewStatus <: SwaggerModel
+    audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     authenticated::Any # spec type: Union{ Nothing, Bool } # spec name: authenticated
     error::Any # spec type: Union{ Nothing, String } # spec name: error
     user::Any # spec type: Union{ Nothing, IoK8sApiAuthenticationV1beta1UserInfo } # spec name: user
 
-    function IoK8sApiAuthenticationV1beta1TokenReviewStatus(;authenticated=nothing, error=nothing, user=nothing)
+    function IoK8sApiAuthenticationV1beta1TokenReviewStatus(;audiences=nothing, authenticated=nothing, error=nothing, user=nothing)
         o = new()
+        validate_property(IoK8sApiAuthenticationV1beta1TokenReviewStatus, Symbol("audiences"), audiences)
+        setfield!(o, Symbol("audiences"), audiences)
         validate_property(IoK8sApiAuthenticationV1beta1TokenReviewStatus, Symbol("authenticated"), authenticated)
         setfield!(o, Symbol("authenticated"), authenticated)
         validate_property(IoK8sApiAuthenticationV1beta1TokenReviewStatus, Symbol("error"), error)
@@ -20,8 +23,8 @@ mutable struct IoK8sApiAuthenticationV1beta1TokenReviewStatus <: SwaggerModel
     end
 end # type IoK8sApiAuthenticationV1beta1TokenReviewStatus
 
-const _property_map_IoK8sApiAuthenticationV1beta1TokenReviewStatus = Dict{Symbol,Symbol}(Symbol("authenticated")=>Symbol("authenticated"), Symbol("error")=>Symbol("error"), Symbol("user")=>Symbol("user"))
-const _property_types_IoK8sApiAuthenticationV1beta1TokenReviewStatus = Dict{Symbol,String}(Symbol("authenticated")=>"Bool", Symbol("error")=>"String", Symbol("user")=>"IoK8sApiAuthenticationV1beta1UserInfo")
+const _property_map_IoK8sApiAuthenticationV1beta1TokenReviewStatus = Dict{Symbol,Symbol}(Symbol("audiences")=>Symbol("audiences"), Symbol("authenticated")=>Symbol("authenticated"), Symbol("error")=>Symbol("error"), Symbol("user")=>Symbol("user"))
+const _property_types_IoK8sApiAuthenticationV1beta1TokenReviewStatus = Dict{Symbol,String}(Symbol("audiences")=>"Vector{String}", Symbol("authenticated")=>"Bool", Symbol("error")=>"String", Symbol("user")=>"IoK8sApiAuthenticationV1beta1UserInfo")
 Base.propertynames(::Type{ IoK8sApiAuthenticationV1beta1TokenReviewStatus }) = collect(keys(_property_map_IoK8sApiAuthenticationV1beta1TokenReviewStatus))
 Swagger.property_type(::Type{ IoK8sApiAuthenticationV1beta1TokenReviewStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthenticationV1beta1TokenReviewStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthenticationV1beta1TokenReviewStatus }, property_name::Symbol) =  _property_map_IoK8sApiAuthenticationV1beta1TokenReviewStatus[property_name]

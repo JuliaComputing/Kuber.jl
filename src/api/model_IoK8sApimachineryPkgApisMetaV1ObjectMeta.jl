@@ -14,6 +14,7 @@ mutable struct IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     generation::Any # spec type: Union{ Nothing, Int64 } # spec name: generation
     initializers::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Initializers } # spec name: initializers
     labels::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: labels
+    managedFields::Any # spec type: Union{ Nothing, Vector{IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry} } # spec name: managedFields
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace
     ownerReferences::Any # spec type: Union{ Nothing, Vector{IoK8sApimachineryPkgApisMetaV1OwnerReference} } # spec name: ownerReferences
@@ -21,7 +22,7 @@ mutable struct IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     selfLink::Any # spec type: Union{ Nothing, String } # spec name: selfLink
     uid::Any # spec type: Union{ Nothing, String } # spec name: uid
 
-    function IoK8sApimachineryPkgApisMetaV1ObjectMeta(;annotations=nothing, clusterName=nothing, creationTimestamp=nothing, deletionGracePeriodSeconds=nothing, deletionTimestamp=nothing, finalizers=nothing, generateName=nothing, generation=nothing, initializers=nothing, labels=nothing, name=nothing, namespace=nothing, ownerReferences=nothing, resourceVersion=nothing, selfLink=nothing, uid=nothing)
+    function IoK8sApimachineryPkgApisMetaV1ObjectMeta(;annotations=nothing, clusterName=nothing, creationTimestamp=nothing, deletionGracePeriodSeconds=nothing, deletionTimestamp=nothing, finalizers=nothing, generateName=nothing, generation=nothing, initializers=nothing, labels=nothing, managedFields=nothing, name=nothing, namespace=nothing, ownerReferences=nothing, resourceVersion=nothing, selfLink=nothing, uid=nothing)
         o = new()
         validate_property(IoK8sApimachineryPkgApisMetaV1ObjectMeta, Symbol("annotations"), annotations)
         setfield!(o, Symbol("annotations"), annotations)
@@ -43,6 +44,8 @@ mutable struct IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
         setfield!(o, Symbol("initializers"), initializers)
         validate_property(IoK8sApimachineryPkgApisMetaV1ObjectMeta, Symbol("labels"), labels)
         setfield!(o, Symbol("labels"), labels)
+        validate_property(IoK8sApimachineryPkgApisMetaV1ObjectMeta, Symbol("managedFields"), managedFields)
+        setfield!(o, Symbol("managedFields"), managedFields)
         validate_property(IoK8sApimachineryPkgApisMetaV1ObjectMeta, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
         validate_property(IoK8sApimachineryPkgApisMetaV1ObjectMeta, Symbol("namespace"), namespace)
@@ -59,8 +62,8 @@ mutable struct IoK8sApimachineryPkgApisMetaV1ObjectMeta <: SwaggerModel
     end
 end # type IoK8sApimachineryPkgApisMetaV1ObjectMeta
 
-const _property_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,Symbol}(Symbol("annotations")=>Symbol("annotations"), Symbol("clusterName")=>Symbol("clusterName"), Symbol("creationTimestamp")=>Symbol("creationTimestamp"), Symbol("deletionGracePeriodSeconds")=>Symbol("deletionGracePeriodSeconds"), Symbol("deletionTimestamp")=>Symbol("deletionTimestamp"), Symbol("finalizers")=>Symbol("finalizers"), Symbol("generateName")=>Symbol("generateName"), Symbol("generation")=>Symbol("generation"), Symbol("initializers")=>Symbol("initializers"), Symbol("labels")=>Symbol("labels"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"), Symbol("ownerReferences")=>Symbol("ownerReferences"), Symbol("resourceVersion")=>Symbol("resourceVersion"), Symbol("selfLink")=>Symbol("selfLink"), Symbol("uid")=>Symbol("uid"))
-const _property_types_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,String}(Symbol("annotations")=>"Dict{String, String}", Symbol("clusterName")=>"String", Symbol("creationTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("deletionGracePeriodSeconds")=>"Int64", Symbol("deletionTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("finalizers")=>"Vector{String}", Symbol("generateName")=>"String", Symbol("generation")=>"Int64", Symbol("initializers")=>"IoK8sApimachineryPkgApisMetaV1Initializers", Symbol("labels")=>"Dict{String, String}", Symbol("name")=>"String", Symbol("namespace")=>"String", Symbol("ownerReferences")=>"Vector{IoK8sApimachineryPkgApisMetaV1OwnerReference}", Symbol("resourceVersion")=>"String", Symbol("selfLink")=>"String", Symbol("uid")=>"String")
+const _property_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,Symbol}(Symbol("annotations")=>Symbol("annotations"), Symbol("clusterName")=>Symbol("clusterName"), Symbol("creationTimestamp")=>Symbol("creationTimestamp"), Symbol("deletionGracePeriodSeconds")=>Symbol("deletionGracePeriodSeconds"), Symbol("deletionTimestamp")=>Symbol("deletionTimestamp"), Symbol("finalizers")=>Symbol("finalizers"), Symbol("generateName")=>Symbol("generateName"), Symbol("generation")=>Symbol("generation"), Symbol("initializers")=>Symbol("initializers"), Symbol("labels")=>Symbol("labels"), Symbol("managedFields")=>Symbol("managedFields"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"), Symbol("ownerReferences")=>Symbol("ownerReferences"), Symbol("resourceVersion")=>Symbol("resourceVersion"), Symbol("selfLink")=>Symbol("selfLink"), Symbol("uid")=>Symbol("uid"))
+const _property_types_IoK8sApimachineryPkgApisMetaV1ObjectMeta = Dict{Symbol,String}(Symbol("annotations")=>"Dict{String, String}", Symbol("clusterName")=>"String", Symbol("creationTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("deletionGracePeriodSeconds")=>"Int64", Symbol("deletionTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("finalizers")=>"Vector{String}", Symbol("generateName")=>"String", Symbol("generation")=>"Int64", Symbol("initializers")=>"IoK8sApimachineryPkgApisMetaV1Initializers", Symbol("labels")=>"Dict{String, String}", Symbol("managedFields")=>"Vector{IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry}", Symbol("name")=>"String", Symbol("namespace")=>"String", Symbol("ownerReferences")=>"Vector{IoK8sApimachineryPkgApisMetaV1OwnerReference}", Symbol("resourceVersion")=>"String", Symbol("selfLink")=>"String", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1ObjectMeta }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta))
 Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1ObjectMeta }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1ObjectMeta[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1ObjectMeta }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1ObjectMeta[property_name]
