@@ -81,21 +81,12 @@ function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
 
     try
         apicall = eval(Symbol("delete$O"))
-        if (O === :Service)
-            return apicall(params...)
-        elseif O === :Namespace
-            push!(params, _delopts())
-            return apicall(params...; kwargs...)
-        else
-            push!(params, _delopts(; kwargs...))
-            return apicall(params...)
-        end
+        return apicall(params...; kwargs...)
     catch ex
         isa(ex, UndefVarError) || rethrow()
         apicall = eval(Symbol("deleteNamespaced$O"))
         push!(params, ctx.namespace)
-        push!(params, _delopts(; kwargs...))
-        return apicall(params...)
+        return apicall(params...; kwargs...)
     end
 end
 

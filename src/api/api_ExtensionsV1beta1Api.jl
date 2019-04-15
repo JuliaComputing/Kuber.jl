@@ -11,17 +11,17 @@ end
 create a DaemonSet
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1DaemonSet (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1DaemonSet
 """
-function createExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -32,17 +32,17 @@ end
 create a Deployment
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Deployment (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Deployment
 """
-function createExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -55,16 +55,16 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1DeploymentRollback (required)
 Param: dryRun::String
-Param: includeUninitialized::Bool
+Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function createExtensionsV1beta1NamespacedDeploymentRollback(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; dryRun=nothing, includeUninitialized=nothing, pretty=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedDeploymentRollback(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/rollback", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -76,17 +76,17 @@ end
 create an Ingress
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Ingress (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Ingress
 """
-function createExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -97,17 +97,17 @@ end
 create a NetworkPolicy
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1NetworkPolicy (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1NetworkPolicy
 """
-function createExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -118,17 +118,17 @@ end
 create a ReplicaSet
 Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1ReplicaSet (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1ReplicaSet
 """
-function createExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -138,16 +138,16 @@ end
 
 create a PodSecurityPolicy
 Param: body::IoK8sApiExtensionsV1beta1PodSecurityPolicy (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1PodSecurityPolicy
 """
-function createExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiExtensionsV1beta1PodSecurityPolicy, "/apis/extensions/v1beta1/podsecuritypolicies", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -157,7 +157,6 @@ end
 
 delete collection of DaemonSet
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -168,10 +167,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionNamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -189,7 +187,6 @@ end
 
 delete collection of Deployment
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -200,10 +197,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionNamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -221,7 +217,6 @@ end
 
 delete collection of Ingress
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -232,10 +227,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionNamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -253,7 +247,6 @@ end
 
 delete collection of NetworkPolicy
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -264,10 +257,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionNamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -285,7 +277,6 @@ end
 
 delete collection of ReplicaSet
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -296,10 +287,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionNamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -316,7 +306,6 @@ end
 """
 
 delete collection of PodSecurityPolicy
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -327,9 +316,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1CollectionPodSecurityPolicy(_api::ExtensionsV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1CollectionPodSecurityPolicy(_api::ExtensionsV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/podsecuritypolicies", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -348,15 +336,15 @@ end
 delete a DaemonSet
 Param: name::String (required)
 Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -375,15 +363,15 @@ end
 delete a Deployment
 Param: name::String (required)
 Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -402,15 +390,15 @@ end
 delete an Ingress
 Param: name::String (required)
 Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -429,15 +417,15 @@ end
 delete a NetworkPolicy
 Param: name::String (required)
 Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -456,15 +444,15 @@ end
 delete a ReplicaSet
 Param: name::String (required)
 Param: namespace::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -482,15 +470,15 @@ end
 
 delete a PodSecurityPolicy
 Param: name::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/extensions/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -520,7 +508,6 @@ end
 list or watch objects of kind DaemonSet
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -529,11 +516,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1DaemonSetList
 """
-function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1DaemonSetForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1DaemonSetList, "/apis/extensions/v1beta1/daemonsets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -550,7 +536,6 @@ end
 list or watch objects of kind Deployment
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -559,11 +544,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1DeploymentList
 """
-function listExtensionsV1beta1DeploymentForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1DeploymentForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1DeploymentList, "/apis/extensions/v1beta1/deployments", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -580,7 +564,6 @@ end
 list or watch objects of kind Ingress
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -589,11 +572,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1IngressList
 """
-function listExtensionsV1beta1IngressForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1IngressForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1IngressList, "/apis/extensions/v1beta1/ingresses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -609,7 +591,6 @@ end
 
 list or watch objects of kind DaemonSet
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -620,10 +601,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1DaemonSetList
 """
-function listExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1DaemonSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -641,7 +621,6 @@ end
 
 list or watch objects of kind Deployment
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -652,10 +631,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1DeploymentList
 """
-function listExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1DeploymentList, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -673,7 +651,6 @@ end
 
 list or watch objects of kind Ingress
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -684,10 +661,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1IngressList
 """
-function listExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1IngressList, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -705,7 +681,6 @@ end
 
 list or watch objects of kind NetworkPolicy
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -716,10 +691,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1NetworkPolicyList
 """
-function listExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1NetworkPolicyList, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -737,7 +711,6 @@ end
 
 list or watch objects of kind ReplicaSet
 Param: namespace::String (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -748,10 +721,9 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1ReplicaSetList
 """
-function listExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1ReplicaSetList, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -770,7 +742,6 @@ end
 list or watch objects of kind NetworkPolicy
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -779,11 +750,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1NetworkPolicyList
 """
-function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1NetworkPolicyForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1NetworkPolicyList, "/apis/extensions/v1beta1/networkpolicies", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -798,7 +768,6 @@ end
 """
 
 list or watch objects of kind PodSecurityPolicy
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -809,9 +778,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1PodSecurityPolicyList
 """
-function listExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1PodSecurityPolicyList, "/apis/extensions/v1beta1/podsecuritypolicies", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -830,7 +798,6 @@ end
 list or watch objects of kind ReplicaSet
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -839,11 +806,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiExtensionsV1beta1ReplicaSetList
 """
-function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listExtensionsV1beta1ReplicaSetForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiExtensionsV1beta1ReplicaSetList, "/apis/extensions/v1beta1/replicasets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -863,14 +829,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -884,14 +854,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1DaemonSet
 """
-function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedDaemonSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -905,14 +879,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -926,14 +904,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedDeploymentScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedDeploymentScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -947,14 +929,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Deployment
 """
-function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedDeploymentStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -968,14 +954,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -989,14 +979,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Ingress
 """
-function patchExtensionsV1beta1NamespacedIngressStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedIngressStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1010,14 +1004,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1NetworkPolicy
 """
-function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1031,14 +1029,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1052,14 +1054,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicaSetScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedReplicaSetScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1073,14 +1079,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1ReplicaSet
 """
-function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedReplicaSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1094,14 +1104,18 @@ Param: namespace::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function patchExtensionsV1beta1NamespacedReplicationControllerDummyScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1NamespacedReplicationControllerDummyScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1114,13 +1128,17 @@ Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiExtensionsV1beta1PodSecurityPolicy
 """
-function patchExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiExtensionsV1beta1PodSecurityPolicy, "/apis/extensions/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1390,14 +1408,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1DaemonSet (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1411,14 +1431,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1DaemonSet (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1DaemonSet
 """
-function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedDaemonSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1DaemonSet, "/apis/extensions/v1beta1/namespaces/{namespace}/daemonsets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1432,14 +1454,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Deployment (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1453,14 +1477,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Scale (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedDeploymentScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedDeploymentScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1474,14 +1500,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Deployment (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Deployment
 """
-function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedDeploymentStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Deployment, "/apis/extensions/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1495,14 +1523,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Ingress (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1516,14 +1546,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Ingress (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Ingress
 """
-function replaceExtensionsV1beta1NamespacedIngressStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedIngressStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Ingress, "/apis/extensions/v1beta1/namespaces/{namespace}/ingresses/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1537,14 +1569,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1NetworkPolicy (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1NetworkPolicy
 """
-function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1NetworkPolicy, "/apis/extensions/v1beta1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1558,14 +1592,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1ReplicaSet (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1579,14 +1615,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Scale (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicaSetScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedReplicaSetScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1600,14 +1638,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1ReplicaSet (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1ReplicaSet
 """
-function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1ReplicaSet, "/apis/extensions/v1beta1/namespaces/{namespace}/replicasets/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1621,14 +1661,16 @@ Param: namespace::String (required)
 Param: body::IoK8sApiExtensionsV1beta1Scale (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1Scale
 """
-function replaceExtensionsV1beta1NamespacedReplicationControllerDummyScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1NamespacedReplicationControllerDummyScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1Scale, "/apis/extensions/v1beta1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1641,13 +1683,15 @@ Param: name::String (required)
 Param: body::IoK8sApiExtensionsV1beta1PodSecurityPolicy (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiExtensionsV1beta1PodSecurityPolicy
 """
-function replaceExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiExtensionsV1beta1PodSecurityPolicy, "/apis/extensions/v1beta1/podsecuritypolicies/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -1658,7 +1702,6 @@ end
 watch individual changes to a list of DaemonSet. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1667,11 +1710,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1DaemonSetListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/daemonsets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1688,7 +1730,6 @@ end
 watch individual changes to a list of Deployment. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1697,11 +1738,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1DeploymentListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/deployments", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1718,7 +1758,6 @@ end
 watch individual changes to a list of Ingress. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1727,11 +1766,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1IngressListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1IngressListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/ingresses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1750,7 +1788,6 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1759,13 +1796,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedDaemonSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1783,7 +1819,6 @@ watch individual changes to a list of DaemonSet. deprecated: use the 'watch' par
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1792,12 +1827,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedDaemonSetList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedDaemonSetList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/daemonsets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1816,7 +1850,6 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1825,13 +1858,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedDeployment(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1849,7 +1881,6 @@ watch individual changes to a list of Deployment. deprecated: use the 'watch' pa
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1858,12 +1889,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedDeploymentList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedDeploymentList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/deployments", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1882,7 +1912,6 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1891,13 +1920,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedIngress(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1915,7 +1943,6 @@ watch individual changes to a list of Ingress. deprecated: use the 'watch' param
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1924,12 +1951,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedIngressList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedIngressList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/ingresses", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1948,7 +1974,6 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1957,13 +1982,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedNetworkPolicy(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1981,7 +2005,6 @@ watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch'
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -1990,12 +2013,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedNetworkPolicyList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/networkpolicies", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2014,7 +2036,6 @@ Param: name::String (required)
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2023,13 +2044,12 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedReplicaSet(_api::ExtensionsV1beta1Api, name::String, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2047,7 +2067,6 @@ watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' pa
 Param: namespace::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2056,12 +2075,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NamespacedReplicaSetList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NamespacedReplicaSetList(_api::ExtensionsV1beta1Api, namespace::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/namespaces/{namespace}/replicasets", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2078,7 +2096,6 @@ end
 watch individual changes to a list of NetworkPolicy. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2087,11 +2104,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1NetworkPolicyListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/networkpolicies", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2109,7 +2125,6 @@ watch changes to an object of kind PodSecurityPolicy. deprecated: use the 'watch
 Param: name::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2118,12 +2133,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1PodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/podsecuritypolicies/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2140,7 +2154,6 @@ end
 watch individual changes to a list of PodSecurityPolicy. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2149,11 +2162,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1PodSecurityPolicyList(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1PodSecurityPolicyList(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/podsecuritypolicies", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -2170,7 +2182,6 @@ end
 watch individual changes to a list of ReplicaSet. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -2179,11 +2190,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchExtensionsV1beta1ReplicaSetListForAllNamespaces(_api::ExtensionsV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/extensions/v1beta1/watch/replicasets", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String

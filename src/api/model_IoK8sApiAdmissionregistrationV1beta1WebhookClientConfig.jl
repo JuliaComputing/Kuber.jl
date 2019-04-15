@@ -27,7 +27,6 @@ Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1WebhookClientC
 Swagger.field_name(::Type{ IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig }, property_name::Symbol) =  _property_map_IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig[property_name]
 
 function check_required(o::IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig)
-    (getproperty(o, Symbol("caBundle")) === nothing) && (return false)
     true
 end
 

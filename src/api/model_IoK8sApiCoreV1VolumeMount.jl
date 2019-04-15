@@ -9,8 +9,9 @@ mutable struct IoK8sApiCoreV1VolumeMount <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
     subPath::Any # spec type: Union{ Nothing, String } # spec name: subPath
+    subPathExpr::Any # spec type: Union{ Nothing, String } # spec name: subPathExpr
 
-    function IoK8sApiCoreV1VolumeMount(;mountPath=nothing, mountPropagation=nothing, name=nothing, readOnly=nothing, subPath=nothing)
+    function IoK8sApiCoreV1VolumeMount(;mountPath=nothing, mountPropagation=nothing, name=nothing, readOnly=nothing, subPath=nothing, subPathExpr=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1VolumeMount, Symbol("mountPath"), mountPath)
         setfield!(o, Symbol("mountPath"), mountPath)
@@ -22,12 +23,14 @@ mutable struct IoK8sApiCoreV1VolumeMount <: SwaggerModel
         setfield!(o, Symbol("readOnly"), readOnly)
         validate_property(IoK8sApiCoreV1VolumeMount, Symbol("subPath"), subPath)
         setfield!(o, Symbol("subPath"), subPath)
+        validate_property(IoK8sApiCoreV1VolumeMount, Symbol("subPathExpr"), subPathExpr)
+        setfield!(o, Symbol("subPathExpr"), subPathExpr)
         o
     end
 end # type IoK8sApiCoreV1VolumeMount
 
-const _property_map_IoK8sApiCoreV1VolumeMount = Dict{Symbol,Symbol}(Symbol("mountPath")=>Symbol("mountPath"), Symbol("mountPropagation")=>Symbol("mountPropagation"), Symbol("name")=>Symbol("name"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("subPath")=>Symbol("subPath"))
-const _property_types_IoK8sApiCoreV1VolumeMount = Dict{Symbol,String}(Symbol("mountPath")=>"String", Symbol("mountPropagation")=>"String", Symbol("name")=>"String", Symbol("readOnly")=>"Bool", Symbol("subPath")=>"String")
+const _property_map_IoK8sApiCoreV1VolumeMount = Dict{Symbol,Symbol}(Symbol("mountPath")=>Symbol("mountPath"), Symbol("mountPropagation")=>Symbol("mountPropagation"), Symbol("name")=>Symbol("name"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("subPath")=>Symbol("subPath"), Symbol("subPathExpr")=>Symbol("subPathExpr"))
+const _property_types_IoK8sApiCoreV1VolumeMount = Dict{Symbol,String}(Symbol("mountPath")=>"String", Symbol("mountPropagation")=>"String", Symbol("name")=>"String", Symbol("readOnly")=>"Bool", Symbol("subPath")=>"String", Symbol("subPathExpr")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1VolumeMount }) = collect(keys(_property_map_IoK8sApiCoreV1VolumeMount))
 Swagger.property_type(::Type{ IoK8sApiCoreV1VolumeMount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1VolumeMount[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1VolumeMount }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1VolumeMount[property_name]

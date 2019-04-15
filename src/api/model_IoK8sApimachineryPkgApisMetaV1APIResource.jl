@@ -11,10 +11,11 @@ mutable struct IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
     namespaced::Any # spec type: Union{ Nothing, Bool } # spec name: namespaced
     shortNames::Any # spec type: Union{ Nothing, Vector{String} } # spec name: shortNames
     singularName::Any # spec type: Union{ Nothing, String } # spec name: singularName
+    storageVersionHash::Any # spec type: Union{ Nothing, String } # spec name: storageVersionHash
     verbs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: verbs
     version::Any # spec type: Union{ Nothing, String } # spec name: version
 
-    function IoK8sApimachineryPkgApisMetaV1APIResource(;categories=nothing, group=nothing, kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, singularName=nothing, verbs=nothing, version=nothing)
+    function IoK8sApimachineryPkgApisMetaV1APIResource(;categories=nothing, group=nothing, kind=nothing, name=nothing, namespaced=nothing, shortNames=nothing, singularName=nothing, storageVersionHash=nothing, verbs=nothing, version=nothing)
         o = new()
         validate_property(IoK8sApimachineryPkgApisMetaV1APIResource, Symbol("categories"), categories)
         setfield!(o, Symbol("categories"), categories)
@@ -30,6 +31,8 @@ mutable struct IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
         setfield!(o, Symbol("shortNames"), shortNames)
         validate_property(IoK8sApimachineryPkgApisMetaV1APIResource, Symbol("singularName"), singularName)
         setfield!(o, Symbol("singularName"), singularName)
+        validate_property(IoK8sApimachineryPkgApisMetaV1APIResource, Symbol("storageVersionHash"), storageVersionHash)
+        setfield!(o, Symbol("storageVersionHash"), storageVersionHash)
         validate_property(IoK8sApimachineryPkgApisMetaV1APIResource, Symbol("verbs"), verbs)
         setfield!(o, Symbol("verbs"), verbs)
         validate_property(IoK8sApimachineryPkgApisMetaV1APIResource, Symbol("version"), version)
@@ -38,8 +41,8 @@ mutable struct IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
     end
 end # type IoK8sApimachineryPkgApisMetaV1APIResource
 
-const _property_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,Symbol}(Symbol("categories")=>Symbol("categories"), Symbol("group")=>Symbol("group"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("namespaced")=>Symbol("namespaced"), Symbol("shortNames")=>Symbol("shortNames"), Symbol("singularName")=>Symbol("singularName"), Symbol("verbs")=>Symbol("verbs"), Symbol("version")=>Symbol("version"))
-const _property_types_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}(Symbol("categories")=>"Vector{String}", Symbol("group")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("namespaced")=>"Bool", Symbol("shortNames")=>"Vector{String}", Symbol("singularName")=>"String", Symbol("verbs")=>"Vector{String}", Symbol("version")=>"String")
+const _property_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,Symbol}(Symbol("categories")=>Symbol("categories"), Symbol("group")=>Symbol("group"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("namespaced")=>Symbol("namespaced"), Symbol("shortNames")=>Symbol("shortNames"), Symbol("singularName")=>Symbol("singularName"), Symbol("storageVersionHash")=>Symbol("storageVersionHash"), Symbol("verbs")=>Symbol("verbs"), Symbol("version")=>Symbol("version"))
+const _property_types_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}(Symbol("categories")=>"Vector{String}", Symbol("group")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("namespaced")=>"Bool", Symbol("shortNames")=>"Vector{String}", Symbol("singularName")=>"String", Symbol("storageVersionHash")=>"String", Symbol("verbs")=>"Vector{String}", Symbol("version")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1APIResource))
 Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1APIResource[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1APIResource[property_name]

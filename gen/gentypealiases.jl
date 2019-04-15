@@ -6,8 +6,8 @@ Used to maintain state and write out the aliases file at the end.
 """
 const KuberTypeAliasesSet = Dict{String,Set{String}}
 const KuberTypeAliasesUnique = Dict{String,Vector{Pair{String,String}}}
-const BaseTypes = ("String", "Int", "Int64", "Int32", "Bool", "Nothing")
-const ModelPrefixes = ("IoK8sApi", "IoK8sKubeAggregatorPkgApis", "IoK8sApiextensionsApiserverPkgApis", "IoK8sApimachineryPkgApis", "IoK8sApimachineryPkg")
+const BaseTypes = ("String", "Float64", "Float32", "Int", "Int64", "Int32", "Int16", "UInt", "UInt64", "UInt32", "UInt16", "DateTime", "Bool", "Nothing")
+const ModelPrefixes = ("IoK8sApimachineryPkgApis", "IoK8sApimachineryPkg", "IoK8sApi", "IoK8sKubeAggregatorPkgApis", "IoK8sApiextensionsApiserverPkgApis")
 
 function get_swagger_ctx_call_return_type(fn_body)
     all_calls = findall(x->isa(x, CSTParser.BinarySyntaxOpCall), fn_body.args)
@@ -93,7 +93,7 @@ function kubermodeltypes(file::String, sorted_apis::Vector{String}, aliases_set:
     while !ps.done
         if CSTParser.defines_struct(x)
             model_name = CSTParser.str_value(CSTParser.get_name(x))
-            if !startswith(model_name, "IoK8sKubernetes")
+            if !startswith(model_name, "IoK8sKubernetes") && !(model_name == "IoK8sApimachineryPkgRuntimeRawExtension")
                 api_idx = find_matching_api(sorted_apis, model_name)
                 if api_idx !== nothing
                     push!(aliases_set[sorted_apis[api_idx]], model_name)

@@ -4,15 +4,19 @@
 
 
 mutable struct IoK8sApiAdmissionregistrationV1beta1Webhook <: SwaggerModel
+    admissionReviewVersions::Any # spec type: Union{ Nothing, Vector{String} } # spec name: admissionReviewVersions
     clientConfig::Any # spec type: Union{ Nothing, IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig } # spec name: clientConfig
     failurePolicy::Any # spec type: Union{ Nothing, String } # spec name: failurePolicy
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     namespaceSelector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: namespaceSelector
     rules::Any # spec type: Union{ Nothing, Vector{IoK8sApiAdmissionregistrationV1beta1RuleWithOperations} } # spec name: rules
     sideEffects::Any # spec type: Union{ Nothing, String } # spec name: sideEffects
+    timeoutSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: timeoutSeconds
 
-    function IoK8sApiAdmissionregistrationV1beta1Webhook(;clientConfig=nothing, failurePolicy=nothing, name=nothing, namespaceSelector=nothing, rules=nothing, sideEffects=nothing)
+    function IoK8sApiAdmissionregistrationV1beta1Webhook(;admissionReviewVersions=nothing, clientConfig=nothing, failurePolicy=nothing, name=nothing, namespaceSelector=nothing, rules=nothing, sideEffects=nothing, timeoutSeconds=nothing)
         o = new()
+        validate_property(IoK8sApiAdmissionregistrationV1beta1Webhook, Symbol("admissionReviewVersions"), admissionReviewVersions)
+        setfield!(o, Symbol("admissionReviewVersions"), admissionReviewVersions)
         validate_property(IoK8sApiAdmissionregistrationV1beta1Webhook, Symbol("clientConfig"), clientConfig)
         setfield!(o, Symbol("clientConfig"), clientConfig)
         validate_property(IoK8sApiAdmissionregistrationV1beta1Webhook, Symbol("failurePolicy"), failurePolicy)
@@ -25,12 +29,14 @@ mutable struct IoK8sApiAdmissionregistrationV1beta1Webhook <: SwaggerModel
         setfield!(o, Symbol("rules"), rules)
         validate_property(IoK8sApiAdmissionregistrationV1beta1Webhook, Symbol("sideEffects"), sideEffects)
         setfield!(o, Symbol("sideEffects"), sideEffects)
+        validate_property(IoK8sApiAdmissionregistrationV1beta1Webhook, Symbol("timeoutSeconds"), timeoutSeconds)
+        setfield!(o, Symbol("timeoutSeconds"), timeoutSeconds)
         o
     end
 end # type IoK8sApiAdmissionregistrationV1beta1Webhook
 
-const _property_map_IoK8sApiAdmissionregistrationV1beta1Webhook = Dict{Symbol,Symbol}(Symbol("clientConfig")=>Symbol("clientConfig"), Symbol("failurePolicy")=>Symbol("failurePolicy"), Symbol("name")=>Symbol("name"), Symbol("namespaceSelector")=>Symbol("namespaceSelector"), Symbol("rules")=>Symbol("rules"), Symbol("sideEffects")=>Symbol("sideEffects"))
-const _property_types_IoK8sApiAdmissionregistrationV1beta1Webhook = Dict{Symbol,String}(Symbol("clientConfig")=>"IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig", Symbol("failurePolicy")=>"String", Symbol("name")=>"String", Symbol("namespaceSelector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("rules")=>"Vector{IoK8sApiAdmissionregistrationV1beta1RuleWithOperations}", Symbol("sideEffects")=>"String")
+const _property_map_IoK8sApiAdmissionregistrationV1beta1Webhook = Dict{Symbol,Symbol}(Symbol("admissionReviewVersions")=>Symbol("admissionReviewVersions"), Symbol("clientConfig")=>Symbol("clientConfig"), Symbol("failurePolicy")=>Symbol("failurePolicy"), Symbol("name")=>Symbol("name"), Symbol("namespaceSelector")=>Symbol("namespaceSelector"), Symbol("rules")=>Symbol("rules"), Symbol("sideEffects")=>Symbol("sideEffects"), Symbol("timeoutSeconds")=>Symbol("timeoutSeconds"))
+const _property_types_IoK8sApiAdmissionregistrationV1beta1Webhook = Dict{Symbol,String}(Symbol("admissionReviewVersions")=>"Vector{String}", Symbol("clientConfig")=>"IoK8sApiAdmissionregistrationV1beta1WebhookClientConfig", Symbol("failurePolicy")=>"String", Symbol("name")=>"String", Symbol("namespaceSelector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("rules")=>"Vector{IoK8sApiAdmissionregistrationV1beta1RuleWithOperations}", Symbol("sideEffects")=>"String", Symbol("timeoutSeconds")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiAdmissionregistrationV1beta1Webhook }) = collect(keys(_property_map_IoK8sApiAdmissionregistrationV1beta1Webhook))
 Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1Webhook }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAdmissionregistrationV1beta1Webhook[name]))}
 Swagger.field_name(::Type{ IoK8sApiAdmissionregistrationV1beta1Webhook }, property_name::Symbol) =  _property_map_IoK8sApiAdmissionregistrationV1beta1Webhook[property_name]

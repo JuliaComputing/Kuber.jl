@@ -8,18 +8,56 @@ end
 
 """
 
-create a StorageClass
-Param: body::IoK8sApiStorageV1beta1StorageClass (required)
-Param: includeUninitialized::Bool
+create a CSIDriver
+Param: body::IoK8sApiStorageV1beta1CSIDriver (required)
 Param: pretty::String
 Param: dryRun::String
-Return: IoK8sApiStorageV1beta1StorageClass
+Param: fieldManager::String
+Return: IoK8sApiStorageV1beta1CSIDriver
 """
-function createStorageV1beta1StorageClass(_api::StorageV1beta1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiStorageV1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
+function createStorageV1beta1CSIDriver(_api::StorageV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiStorageV1beta1CSIDriver, "/apis/storage.k8s.io/v1beta1/csidrivers", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+create a CSINode
+Param: body::IoK8sApiStorageV1beta1CSINode (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiStorageV1beta1CSINode
+"""
+function createStorageV1beta1CSINode(_api::StorageV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiStorageV1beta1CSINode, "/apis/storage.k8s.io/v1beta1/csinodes", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+create a StorageClass
+Param: body::IoK8sApiStorageV1beta1StorageClass (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiStorageV1beta1StorageClass
+"""
+function createStorageV1beta1StorageClass(_api::StorageV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiStorageV1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -29,16 +67,16 @@ end
 
 create a VolumeAttachment
 Param: body::IoK8sApiStorageV1beta1VolumeAttachment (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiStorageV1beta1VolumeAttachment
 """
-function createStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiStorageV1beta1VolumeAttachment, "/apis/storage.k8s.io/v1beta1/volumeattachments", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -46,8 +84,57 @@ end
 
 """
 
-delete collection of StorageClass
-Param: includeUninitialized::Bool
+delete a CSIDriver
+Param: name::String (required)
+Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
+Param: dryRun::String
+Param: gracePeriodSeconds::Int32
+Param: orphanDependents::Bool
+Param: propagationPolicy::String
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deleteStorageV1beta1CSIDriver(_api::StorageV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/csidrivers/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete a CSINode
+Param: name::String (required)
+Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
+Param: dryRun::String
+Param: gracePeriodSeconds::Int32
+Param: orphanDependents::Bool
+Param: propagationPolicy::String
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deleteStorageV1beta1CSINode(_api::StorageV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/csinodes/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete collection of CSIDriver
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -58,9 +145,64 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteStorageV1beta1CollectionStorageClass(_api::StorageV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteStorageV1beta1CollectionCSIDriver(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/csidrivers", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete collection of CSINode
+Param: pretty::String
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deleteStorageV1beta1CollectionCSINode(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/csinodes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+delete collection of StorageClass
+Param: pretty::String
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1Status
+"""
+function deleteStorageV1beta1CollectionStorageClass(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/storageclasses", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -77,7 +219,6 @@ end
 """
 
 delete collection of VolumeAttachment
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -88,9 +229,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteStorageV1beta1CollectionVolumeAttachment(_api::StorageV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteStorageV1beta1CollectionVolumeAttachment(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/volumeattachments", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -108,15 +248,15 @@ end
 
 delete a StorageClass
 Param: name::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -133,15 +273,15 @@ end
 
 delete a VolumeAttachment
 Param: name::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/storage.k8s.io/v1beta1/volumeattachments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -168,8 +308,63 @@ end
 
 """
 
+list or watch objects of kind CSIDriver
+Param: pretty::String
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiStorageV1beta1CSIDriverList
+"""
+function listStorageV1beta1CSIDriver(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1CSIDriverList, "/apis/storage.k8s.io/v1beta1/csidrivers", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+list or watch objects of kind CSINode
+Param: pretty::String
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiStorageV1beta1CSINodeList
+"""
+function listStorageV1beta1CSINode(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1CSINodeList, "/apis/storage.k8s.io/v1beta1/csinodes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 list or watch objects of kind StorageClass
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -180,9 +375,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiStorageV1beta1StorageClassList
 """
-function listStorageV1beta1StorageClass(_api::StorageV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listStorageV1beta1StorageClass(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1StorageClassList, "/apis/storage.k8s.io/v1beta1/storageclasses", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -199,7 +393,6 @@ end
 """
 
 list or watch objects of kind VolumeAttachment
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -210,9 +403,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiStorageV1beta1VolumeAttachmentList
 """
-function listStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1VolumeAttachmentList, "/apis/storage.k8s.io/v1beta1/volumeattachments", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -228,18 +420,68 @@ end
 
 """
 
+partially update the specified CSIDriver
+Param: name::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
+Return: IoK8sApiStorageV1beta1CSIDriver
+"""
+function patchStorageV1beta1CSIDriver(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiStorageV1beta1CSIDriver, "/apis/storage.k8s.io/v1beta1/csidrivers/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+partially update the specified CSINode
+Param: name::String (required)
+Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
+Return: IoK8sApiStorageV1beta1CSINode
+"""
+function patchStorageV1beta1CSINode(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiStorageV1beta1CSINode, "/apis/storage.k8s.io/v1beta1/csinodes/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 partially update the specified StorageClass
 Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiStorageV1beta1StorageClass
 """
-function patchStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiStorageV1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -252,15 +494,59 @@ Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiStorageV1beta1VolumeAttachment
 """
-function patchStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiStorageV1beta1VolumeAttachment, "/apis/storage.k8s.io/v1beta1/volumeattachments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+read the specified CSIDriver
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiStorageV1beta1CSIDriver
+"""
+function readStorageV1beta1CSIDriver(_api::StorageV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1CSIDriver, "/apis/storage.k8s.io/v1beta1/csidrivers/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
+    Swagger.set_param(_ctx.query, "export", __export__)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+read the specified CSINode
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiStorageV1beta1CSINode
+"""
+function readStorageV1beta1CSINode(_api::StorageV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiStorageV1beta1CSINode, "/apis/storage.k8s.io/v1beta1/csinodes/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "exact", exact)  # type Bool
+    Swagger.set_param(_ctx.query, "export", __export__)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
 
@@ -306,18 +592,62 @@ end
 
 """
 
+replace the specified CSIDriver
+Param: name::String (required)
+Param: body::IoK8sApiStorageV1beta1CSIDriver (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiStorageV1beta1CSIDriver
+"""
+function replaceStorageV1beta1CSIDriver(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiStorageV1beta1CSIDriver, "/apis/storage.k8s.io/v1beta1/csidrivers/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+replace the specified CSINode
+Param: name::String (required)
+Param: body::IoK8sApiStorageV1beta1CSINode (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiStorageV1beta1CSINode
+"""
+function replaceStorageV1beta1CSINode(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiStorageV1beta1CSINode, "/apis/storage.k8s.io/v1beta1/csinodes/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 replace the specified StorageClass
 Param: name::String (required)
 Param: body::IoK8sApiStorageV1beta1StorageClass (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiStorageV1beta1StorageClass
 """
-function replaceStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiStorageV1beta1StorageClass, "/apis/storage.k8s.io/v1beta1/storageclasses/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -330,14 +660,132 @@ Param: name::String (required)
 Param: body::IoK8sApiStorageV1beta1VolumeAttachment (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiStorageV1beta1VolumeAttachment
 """
-function replaceStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiStorageV1beta1VolumeAttachment, "/apis/storage.k8s.io/v1beta1/volumeattachments/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch changes to an object of kind CSIDriver. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchStorageV1beta1CSIDriver(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/csidrivers/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch individual changes to a list of CSIDriver. deprecated: use the 'watch' parameter with a list operation instead.
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchStorageV1beta1CSIDriverList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/csidrivers", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch changes to an object of kind CSINode. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchStorageV1beta1CSINode(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/csinodes/{name}", ["BearerToken"])
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
+watch individual changes to a list of CSINode. deprecated: use the 'watch' parameter with a list operation instead.
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
+function watchStorageV1beta1CSINodeList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/csinodes", ["BearerToken"])
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
 end
@@ -348,7 +796,6 @@ watch changes to an object of kind StorageClass. deprecated: use the 'watch' par
 Param: name::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -357,12 +804,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1beta1StorageClass(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -379,7 +825,6 @@ end
 watch individual changes to a list of StorageClass. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -388,11 +833,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1beta1StorageClassList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1beta1StorageClassList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/storageclasses", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -410,7 +854,6 @@ watch changes to an object of kind VolumeAttachment. deprecated: use the 'watch'
 Param: name::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -419,12 +862,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1beta1VolumeAttachment(_api::StorageV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/volumeattachments/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -441,7 +883,6 @@ end
 watch individual changes to a list of VolumeAttachment. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -450,11 +891,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchStorageV1beta1VolumeAttachmentList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchStorageV1beta1VolumeAttachmentList(_api::StorageV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/storage.k8s.io/v1beta1/watch/volumeattachments", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -466,4 +906,4 @@ function watchStorageV1beta1VolumeAttachmentList(_api::StorageV1beta1Api; __cont
     Swagger.exec(_ctx)
 end
 
-export createStorageV1beta1StorageClass, createStorageV1beta1VolumeAttachment, deleteStorageV1beta1CollectionStorageClass, deleteStorageV1beta1CollectionVolumeAttachment, deleteStorageV1beta1StorageClass, deleteStorageV1beta1VolumeAttachment, getStorageV1beta1APIResources, listStorageV1beta1StorageClass, listStorageV1beta1VolumeAttachment, patchStorageV1beta1StorageClass, patchStorageV1beta1VolumeAttachment, readStorageV1beta1StorageClass, readStorageV1beta1VolumeAttachment, replaceStorageV1beta1StorageClass, replaceStorageV1beta1VolumeAttachment, watchStorageV1beta1StorageClass, watchStorageV1beta1StorageClassList, watchStorageV1beta1VolumeAttachment, watchStorageV1beta1VolumeAttachmentList
+export createStorageV1beta1CSIDriver, createStorageV1beta1CSINode, createStorageV1beta1StorageClass, createStorageV1beta1VolumeAttachment, deleteStorageV1beta1CSIDriver, deleteStorageV1beta1CSINode, deleteStorageV1beta1CollectionCSIDriver, deleteStorageV1beta1CollectionCSINode, deleteStorageV1beta1CollectionStorageClass, deleteStorageV1beta1CollectionVolumeAttachment, deleteStorageV1beta1StorageClass, deleteStorageV1beta1VolumeAttachment, getStorageV1beta1APIResources, listStorageV1beta1CSIDriver, listStorageV1beta1CSINode, listStorageV1beta1StorageClass, listStorageV1beta1VolumeAttachment, patchStorageV1beta1CSIDriver, patchStorageV1beta1CSINode, patchStorageV1beta1StorageClass, patchStorageV1beta1VolumeAttachment, readStorageV1beta1CSIDriver, readStorageV1beta1CSINode, readStorageV1beta1StorageClass, readStorageV1beta1VolumeAttachment, replaceStorageV1beta1CSIDriver, replaceStorageV1beta1CSINode, replaceStorageV1beta1StorageClass, replaceStorageV1beta1VolumeAttachment, watchStorageV1beta1CSIDriver, watchStorageV1beta1CSIDriverList, watchStorageV1beta1CSINode, watchStorageV1beta1CSINodeList, watchStorageV1beta1StorageClass, watchStorageV1beta1StorageClassList, watchStorageV1beta1VolumeAttachment, watchStorageV1beta1VolumeAttachmentList

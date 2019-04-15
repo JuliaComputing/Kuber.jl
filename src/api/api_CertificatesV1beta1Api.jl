@@ -10,16 +10,16 @@ end
 
 create a CertificateSigningRequest
 Param: body::IoK8sApiCertificatesV1beta1CertificateSigningRequest (required)
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function createCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, body; includeUninitialized=nothing, pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function createCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -29,15 +29,15 @@ end
 
 delete a CertificateSigningRequest
 Param: name::String (required)
-Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions (required)
 Param: pretty::String
+Param: body::IoK8sApimachineryPkgApisMetaV1DeleteOptions
 Param: dryRun::String
 Param: gracePeriodSeconds::Int32
 Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function deleteCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -53,7 +53,6 @@ end
 """
 
 delete collection of CertificateSigningRequest
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -64,9 +63,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteCertificatesV1beta1CollectionCertificateSigningRequest(_api::CertificatesV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function deleteCertificatesV1beta1CollectionCertificateSigningRequest(_api::CertificatesV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -95,7 +93,6 @@ end
 """
 
 list or watch objects of kind CertificateSigningRequest
-Param: includeUninitialized::Bool
 Param: pretty::String
 Param: __continue__::String
 Param: fieldSelector::String
@@ -106,9 +103,8 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequestList
 """
-function listCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api; includeUninitialized=nothing, pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function listCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api; pretty=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCertificatesV1beta1CertificateSigningRequestList, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests", ["BearerToken"])
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
@@ -129,13 +125,17 @@ Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function patchCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -148,13 +148,17 @@ Param: name::String (required)
 Param: body::IoK8sApimachineryPkgApisMetaV1Patch (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
+Param: force::Bool
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function patchCertificatesV1beta1CertificateSigningRequestStatus(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function patchCertificatesV1beta1CertificateSigningRequestStatus(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -203,13 +207,15 @@ Param: name::String (required)
 Param: body::IoK8sApiCertificatesV1beta1CertificateSigningRequest (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function replaceCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -221,13 +227,15 @@ replace approval of the specified CertificateSigningRequest
 Param: name::String (required)
 Param: body::IoK8sApiCertificatesV1beta1CertificateSigningRequest (required)
 Param: dryRun::String
+Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function replaceCertificatesV1beta1CertificateSigningRequestApproval(_api::CertificatesV1beta1Api, name::String, body; dryRun=nothing, pretty=nothing, _mediaType=nothing)
+function replaceCertificatesV1beta1CertificateSigningRequestApproval(_api::CertificatesV1beta1Api, name::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}/approval", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
@@ -241,13 +249,15 @@ Param: name::String (required)
 Param: body::IoK8sApiCertificatesV1beta1CertificateSigningRequest (required)
 Param: pretty::String
 Param: dryRun::String
+Param: fieldManager::String
 Return: IoK8sApiCertificatesV1beta1CertificateSigningRequest
 """
-function replaceCertificatesV1beta1CertificateSigningRequestStatus(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, _mediaType=nothing)
+function replaceCertificatesV1beta1CertificateSigningRequestStatus(_api::CertificatesV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiCertificatesV1beta1CertificateSigningRequest, "/apis/certificates.k8s.io/v1beta1/certificatesigningrequests/{name}/status", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     Swagger.exec(_ctx)
@@ -259,7 +269,6 @@ watch changes to an object of kind CertificateSigningRequest. deprecated: use th
 Param: name::String (required)
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -268,12 +277,11 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCertificatesV1beta1CertificateSigningRequest(_api::CertificatesV1beta1Api, name::String; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/certificates.k8s.io/v1beta1/watch/certificatesigningrequests/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -290,7 +298,6 @@ end
 watch individual changes to a list of CertificateSigningRequest. deprecated: use the 'watch' parameter with a list operation instead.
 Param: __continue__::String
 Param: fieldSelector::String
-Param: includeUninitialized::Bool
 Param: labelSelector::String
 Param: limit::Int32
 Param: pretty::String
@@ -299,11 +306,10 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchCertificatesV1beta1CertificateSigningRequestList(_api::CertificatesV1beta1Api; __continue__=nothing, fieldSelector=nothing, includeUninitialized=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function watchCertificatesV1beta1CertificateSigningRequestList(_api::CertificatesV1beta1Api; __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/certificates.k8s.io/v1beta1/watch/certificatesigningrequests", ["BearerToken"])
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
     Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "includeUninitialized", includeUninitialized)  # type Bool
     Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
