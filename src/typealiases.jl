@@ -340,11 +340,15 @@ module Typedefs
     module ApiextensionsV1beta1
         using ..Kubernetes
         const CustomResourceDefinitionCondition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition
+        const JSONSchemaPropsOrStringArray = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrStringArray
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
         const CustomResourceColumnDefinition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition
         const JSONSchemaProps = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps
         const CustomResourceDefinitionNames = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames
+        const JSONSchemaPropsOrArray = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrArray
         const CustomResourceDefinition = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinition
+        const JSON = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON
+        const JSONSchemaPropsOrBool = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool
         const Status = Kubernetes.IoK8sApimachineryPkgApisMetaV1Status
         const CustomResourceDefinitionList = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionList
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
@@ -355,6 +359,7 @@ module Typedefs
         const CustomResourceValidation = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation
         const CustomResourceSubresources = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources
         const CustomResourceDefinitionVersion = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion
+        const CustomResourceSubresourceStatus = Kubernetes.IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceStatus
     end # module ApiextensionsV1beta1
     module RbacAuthorizationV1alpha1
         using ..Kubernetes
@@ -550,6 +555,7 @@ module Typedefs
         const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
         const ObjectMeta = Kubernetes.IoK8sApimachineryPkgApisMetaV1ObjectMeta
         const APIVersions = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIVersions
+        const Patch = Kubernetes.IoK8sApimachineryPkgApisMetaV1Patch
         const LabelSelector = Kubernetes.IoK8sApimachineryPkgApisMetaV1LabelSelector
         const APIResourceList = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResourceList
         const StatusCause = Kubernetes.IoK8sApimachineryPkgApisMetaV1StatusCause
@@ -559,7 +565,6 @@ module Typedefs
         const APIResource = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIResource
         const Initializer = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializer
         const Initializers = Kubernetes.IoK8sApimachineryPkgApisMetaV1Initializers
-        const MicroTime = Kubernetes.IoK8sApimachineryPkgApisMetaV1MicroTime
         const OwnerReference = Kubernetes.IoK8sApimachineryPkgApisMetaV1OwnerReference
         const Preconditions = Kubernetes.IoK8sApimachineryPkgApisMetaV1Preconditions
     end # module MetaV1
@@ -708,6 +713,7 @@ module Typedefs
         const ResourceRequirements = Kubernetes.IoK8sApiCoreV1ResourceRequirements
         const ConfigMapNodeConfigSource = Kubernetes.IoK8sApiCoreV1ConfigMapNodeConfigSource
         const Lifecycle = Kubernetes.IoK8sApiCoreV1Lifecycle
+        const Patch = Kubernetes.IoK8sApimachineryPkgApisMetaV1Patch
         const ServiceAccountList = Kubernetes.IoK8sApiCoreV1ServiceAccountList
         const EnvVarSource = Kubernetes.IoK8sApiCoreV1EnvVarSource
         const SecretProjection = Kubernetes.IoK8sApiCoreV1SecretProjection
@@ -730,7 +736,6 @@ module Typedefs
         const VolumeMount = Kubernetes.IoK8sApiCoreV1VolumeMount
         const ConfigMapKeySelector = Kubernetes.IoK8sApiCoreV1ConfigMapKeySelector
         const Service = Kubernetes.IoK8sApiCoreV1Service
-        const MicroTime = Kubernetes.IoK8sApimachineryPkgApisMetaV1MicroTime
         const CinderPersistentVolumeSource = Kubernetes.IoK8sApiCoreV1CinderPersistentVolumeSource
         const SecretEnvSource = Kubernetes.IoK8sApiCoreV1SecretEnvSource
         const LimitRangeSpec = Kubernetes.IoK8sApiCoreV1LimitRangeSpec
