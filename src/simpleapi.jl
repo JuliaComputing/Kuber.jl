@@ -52,8 +52,14 @@ end
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    if haskey(d, "apiVersion")
+        v = d["apiVersion"]
+        k = Kuber.api_group_type(v)
+        apictx = k(ctx.client)
+    else
+        kapi = ctx.modelapi[O]
+        apictx = kapi.api(ctx.client)
+    end
 
     try
         apicall = eval(Symbol("create$O"))
