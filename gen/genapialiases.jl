@@ -23,17 +23,17 @@ const KuberAPIAliasesSet = Dict{String,Vector{KuberAPIAlias}}
 Returns one `KuberAPIAlias` instance for the function expression.
 Returns `nothing` if it is not required to have an alias for the function.
 """
-function emit_alias(fn_expr::CSTParser.EXPR{CSTParser.FunctionDef}, api_decoration::String)
+function emit_alias(fn_expr::CSTParser.EXPR, api_decoration::String)
     fn_name = CSTParser.str_value(CSTParser.get_name(fn_expr))
     undec_fn_name = join(split(fn_name, api_decoration))
 
     (fn_name == undec_fn_name) && (return nothing)
     fn_sig = CSTParser.get_sig(fn_expr)
-    fn_args = filter(x->(isa(x, CSTParser.BinarySyntaxOpCall) || isa(x, CSTParser.IDENTIFIER)), fn_sig.args[3:end])
-    fn_kwargs_container = filter(x->isa(x, CSTParser.EXPR{CSTParser.Parameters}), fn_sig.args[3:end])
-    fn_kwargs = isempty(fn_kwargs_container) ? [] : filter(x->isa(x, CSTParser.EXPR{CSTParser.Kw}), fn_kwargs_container[1].args)
+    fn_args = filter(x->((x.typ === CSTParser.BinaryOpCall) || (x.typ === CSTParser.IDENTIFIER)), fn_sig.args[3:end])
+    fn_kwargs_container = filter(x->(x.typ === CSTParser.Parameters), fn_sig.args[3:end])
+    fn_kwargs = isempty(fn_kwargs_container) ? [] : filter(x->(x.typ === CSTParser.Kw), fn_kwargs_container[1].args)
 
-    arg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x))=>(isa(x, CSTParser.IDENTIFIER) ? "" : CSTParser.str_value(x.arg2)), fn_args)
+    arg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x))=>((x.typ === CSTParser.IDENTIFIER) ? "" : CSTParser.str_value(x.args[3])), fn_args)
     kwarg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x.args[1]))=>CSTParser.str_value(x.args[3]), fn_kwargs)
 
     KuberAPIAlias(undec_fn_name, fn_name, arg_pairs, kwarg_pairs)
@@ -51,17 +51,23 @@ function kuberapi(file::String)
     while !ps.done
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
-            if CSTParser.is_issubt(structsig.op) && (CSTParser.str_value(CSTParser.get_name(structsig.arg2)) == "SwaggerApi")
-                typename = CSTParser.str_value(CSTParser.get_name(structsig))
-                if endswith(typename, "Api")
-                    api_decoration = typename[1:(end-3)]
+            if structsig.typ === CSTParser.BinaryOpCall
+                op = structsig.args[2]
+                if CSTParser.is_issubt(op)
+                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[3]))
+                    if subtyp == "SwaggerApi"
+                        typename = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
+                        if endswith(typename, "Api")
+                            api_decoration = typename[1:(end-3)]
+                        end
+                    end
                 end
             end
         elseif !isempty(api_decoration)
             # Note: We are guaranteed to receive the struct definition before methods
             #       because of the sequence in which Swagger code is generated and also
             #       because of the Julia restriction of type being defined before use
-            fn_expr = ((x isa CSTParser.EXPR{CSTParser.MacroCall}) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
+            fn_expr = ((x.typ === CSTParser.MacroCall) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
             if fn_expr !== nothing
                 alias = emit_alias(fn_expr, api_decoration)
                 (alias === nothing) || push!(aliases, alias)

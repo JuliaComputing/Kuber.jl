@@ -5,6 +5,7 @@ if [ $# -ne 1 ]; then
     echo "Ensure:"
     echo "  - 'julia' is in PATH or set in environment variable 'JULIA'."
     echo "  - package directory is writable."
+    echo "  - CSTParser v2.1.0 is installed."
     echo "Note:"
     echo "  - your current 'src/api' folder in the package will be renamed to 'src/api_bak'"
     echo "  - existing 'src/api_bak' folder if any will be deleted"
@@ -18,6 +19,14 @@ if [ -z "$JULIA" ]
 then
     JULIA=julia
 fi
+
+# ensure CSTParser is of right version
+cstpver=`${JULIA} -e 'println(Pkg.installed()["CSTParser"] == v"2.1.0")'`
+if [ "$cstpver" != "true" ]
+then
+    echo "CSTParser v2.1.0 is required"
+    exit -1
+end
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 GENDIR="$( readlink -e "${DIR}/../" )"
