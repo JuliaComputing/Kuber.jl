@@ -10,12 +10,18 @@ const BaseTypes = ("String", "Float64", "Float32", "Int", "Int64", "Int32", "Int
 const ModelPrefixes = ("IoK8sApimachineryPkgApis", "IoK8sApimachineryPkg", "IoK8sApi", "IoK8sKubeAggregatorPkgApis", "IoK8sApiextensionsApiserverPkgApis")
 
 function get_swagger_ctx_call_return_type(fn_body)
-    all_calls = findall(x->isa(x, CSTParser.BinarySyntaxOpCall), fn_body.args)
+    all_calls = findall(x->(x.typ === CSTParser.BinaryOpCall), fn_body.args)
     for nidx in all_calls
         ncall = fn_body.args[nidx]
-        if isa(ncall.arg2, CSTParser.EXPR{CSTParser.Call}) && isa(ncall.arg2.args[1], CSTParser.BinarySyntaxOpCall) && (CSTParser.str_value(ncall.arg2.args[1].arg1) == "Swagger") && isa(ncall.arg2.args[1].arg2, CSTParser.EXPR{CSTParser.Quotenode}) && (CSTParser.str_value(ncall.arg2.args[1].arg2.args[1]) == "Ctx")
-            if (length(ncall.arg2.args) > 6) && isa(ncall.arg2.args[7], CSTParser.IDENTIFIER)
-                return CSTParser.str_value(ncall.arg2.args[7])
+        fc = ncall.args[3]
+        if CSTParser.is_func_call(fc)
+            binop = fc.args[1]
+            if binop.typ === CSTParser.BinaryOpCall
+                if (CSTParser.str_value(binop.args[1]) == "Swagger") && CSTParser.is_dot(binop.args[2]) && (binop.args[3].typ === CSTParser.Quotenode) && (CSTParser.str_value(binop.args[3].args[1]) == "Ctx")
+                    if (length(fc.args) > 6) && CSTParser.isidentifier(fc.args[7])
+                        return CSTParser.str_value(fc.args[7])
+                    end
+                end
             end
         end
     end
@@ -25,7 +31,7 @@ end
 """
 Adds Swagger API call return types to be aliased to undecorated names.
 """
-function emit_alias(fn_expr::CSTParser.EXPR{CSTParser.FunctionDef}, api_decoration::String, aliases::KuberTypeAliasesSet)
+function emit_alias(fn_expr::CSTParser.EXPR, api_decoration::String, aliases::KuberTypeAliasesSet)
     fn_body = CSTParser.get_body(fn_expr)
     return_type = get_swagger_ctx_call_return_type(fn_body)
     ((nothing === return_type) || (return_type in BaseTypes)) && return
@@ -43,17 +49,23 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
     while !ps.done
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
-            if CSTParser.is_issubt(structsig.op) && (CSTParser.str_value(CSTParser.get_name(structsig.arg2)) == "SwaggerApi")
-                typename = CSTParser.str_value(CSTParser.get_name(structsig))
-                if endswith(typename, "Api")
-                    api_decoration = typename[1:(end-3)]
+            if structsig.typ === CSTParser.BinaryOpCall
+                op = structsig.args[2]
+                if CSTParser.is_issubt(op)
+                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[3]))
+                    if subtyp == "SwaggerApi"
+                        typename = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
+                        if endswith(typename, "Api")
+                            api_decoration = typename[1:(end-3)]
+                        end
+                    end
                 end
             end
         elseif !isempty(api_decoration)
             # Note: We are guaranteed to receive the struct definition before methods
             #       because of the sequence in which Swagger code is generated and also
             #       because of the Julia restriction of type being defined before use
-            fn_expr = ((x isa CSTParser.EXPR{CSTParser.MacroCall}) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
+            fn_expr = ((x.typ === CSTParser.MacroCall) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
             if fn_expr !== nothing
                 emit_alias(fn_expr, api_decoration, aliases_set)
             end
@@ -64,25 +76,27 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
 end
 
 function find_matching_api(sorted_apis::Vector{String}, model_name::String)
-    for pfx in ModelPrefixes
-        api_idx = findfirst(x->startswith(model_name, pfx*x), sorted_apis)
-        (api_idx !== nothing) && (return api_idx)
+    rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
+    flowcontrol_apis = map(x->startswith(x, "FlowcontrolApiserver") ? replace(x, "Apiserver"=>"") : x, sorted_apis)
 
-        rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
-        api_idx = findfirst(x->startswith(model_name, pfx*x), rbac_apis)
-        (api_idx !== nothing) && (return api_idx)
+    for apis in (sorted_apis, rbac_apis, flowcontrol_apis)
+        for pfx in ModelPrefixes
+            api_idx = findfirst(x->startswith(model_name, pfx*x), apis)
+            (api_idx !== nothing) && (return api_idx)
+        end
     end
     nothing
 end
 
 function get_common_name(sorted_apis::Vector{String}, model_name::String)
-    for pfx in ModelPrefixes
-        api_idx = findfirst(x->startswith(model_name, pfx*x), sorted_apis)
-        (api_idx !== nothing) && (return replace(model_name, (pfx*sorted_apis[api_idx])=>""))
+    rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
+    flowcontrol_apis = map(x->startswith(x, "FlowcontrolApiserver") ? replace(x, "Apiserver"=>"") : x, sorted_apis)
 
-        rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
-        api_idx = findfirst(x->startswith(model_name, pfx*x), rbac_apis)
-        (api_idx !== nothing) && (return replace(model_name, (pfx*rbac_apis[api_idx])=>""))
+    for apis in (sorted_apis, rbac_apis, flowcontrol_apis)
+        for pfx in ModelPrefixes
+            api_idx = findfirst(x->startswith(model_name, pfx*x), apis)
+            (api_idx !== nothing) && (return replace(model_name, (pfx*apis[api_idx])=>""))
+        end
     end
     nothing
 end
@@ -92,7 +106,8 @@ function kubermodeltypes(file::String, sorted_apis::Vector{String}, aliases_set:
     
     while !ps.done
         if CSTParser.defines_struct(x)
-            model_name = CSTParser.str_value(CSTParser.get_name(x))
+            structsig = CSTParser.get_sig(x)
+            model_name = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
             if !startswith(model_name, "IoK8sKubernetes") && !(model_name == "IoK8sApimachineryPkgRuntimeRawExtension")
                 api_idx = find_matching_api(sorted_apis, model_name)
                 if api_idx !== nothing
