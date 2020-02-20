@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ClientIPConfig <: SwaggerModel
     timeoutSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: timeoutSeconds
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1ClientIPConfig
 const _property_map_IoK8sApiCoreV1ClientIPConfig = Dict{Symbol,Symbol}(Symbol("timeoutSeconds")=>Symbol("timeoutSeconds"))
 const _property_types_IoK8sApiCoreV1ClientIPConfig = Dict{Symbol,String}(Symbol("timeoutSeconds")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiCoreV1ClientIPConfig }) = collect(keys(_property_map_IoK8sApiCoreV1ClientIPConfig))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ClientIPConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ClientIPConfig[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ClientIPConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ClientIPConfig[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ClientIPConfig }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ClientIPConfig[property_name]
 
 function check_required(o::IoK8sApiCoreV1ClientIPConfig)

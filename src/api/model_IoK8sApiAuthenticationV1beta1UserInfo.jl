@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthenticationV1beta1UserInfo <: SwaggerModel
     extra::Any # spec type: Union{ Nothing, Dict{String, Vector{String}} } # spec name: extra
     groups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: groups
@@ -26,7 +25,7 @@ end # type IoK8sApiAuthenticationV1beta1UserInfo
 const _property_map_IoK8sApiAuthenticationV1beta1UserInfo = Dict{Symbol,Symbol}(Symbol("extra")=>Symbol("extra"), Symbol("groups")=>Symbol("groups"), Symbol("uid")=>Symbol("uid"), Symbol("username")=>Symbol("username"))
 const _property_types_IoK8sApiAuthenticationV1beta1UserInfo = Dict{Symbol,String}(Symbol("extra")=>"Dict{String, Vector{String}}", Symbol("groups")=>"Vector{String}", Symbol("uid")=>"String", Symbol("username")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthenticationV1beta1UserInfo }) = collect(keys(_property_map_IoK8sApiAuthenticationV1beta1UserInfo))
-Swagger.property_type(::Type{ IoK8sApiAuthenticationV1beta1UserInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthenticationV1beta1UserInfo[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthenticationV1beta1UserInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthenticationV1beta1UserInfo[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthenticationV1beta1UserInfo }, property_name::Symbol) =  _property_map_IoK8sApiAuthenticationV1beta1UserInfo[property_name]
 
 function check_required(o::IoK8sApiAuthenticationV1beta1UserInfo)

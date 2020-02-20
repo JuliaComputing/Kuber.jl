@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerCondition} } # spec name: conditions
     currentMetrics::Any # spec type: Union{ Nothing, Vector{IoK8sApiAutoscalingV2beta1MetricStatus} } # spec name: currentMetrics
@@ -32,7 +31,7 @@ end # type IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus
 const _property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus = Dict{Symbol,Symbol}(Symbol("conditions")=>Symbol("conditions"), Symbol("currentMetrics")=>Symbol("currentMetrics"), Symbol("currentReplicas")=>Symbol("currentReplicas"), Symbol("desiredReplicas")=>Symbol("desiredReplicas"), Symbol("lastScaleTime")=>Symbol("lastScaleTime"), Symbol("observedGeneration")=>Symbol("observedGeneration"))
 const _property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus = Dict{Symbol,String}(Symbol("conditions")=>"Vector{IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerCondition}", Symbol("currentMetrics")=>"Vector{IoK8sApiAutoscalingV2beta1MetricStatus}", Symbol("currentReplicas")=>"Int32", Symbol("desiredReplicas")=>"Int32", Symbol("lastScaleTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("observedGeneration")=>"Int64")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus)

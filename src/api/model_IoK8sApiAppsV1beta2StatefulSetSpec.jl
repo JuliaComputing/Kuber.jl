@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2StatefulSetSpec <: SwaggerModel
     podManagementPolicy::Any # spec type: Union{ Nothing, String } # spec name: podManagementPolicy
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
@@ -38,7 +37,7 @@ end # type IoK8sApiAppsV1beta2StatefulSetSpec
 const _property_map_IoK8sApiAppsV1beta2StatefulSetSpec = Dict{Symbol,Symbol}(Symbol("podManagementPolicy")=>Symbol("podManagementPolicy"), Symbol("replicas")=>Symbol("replicas"), Symbol("revisionHistoryLimit")=>Symbol("revisionHistoryLimit"), Symbol("selector")=>Symbol("selector"), Symbol("serviceName")=>Symbol("serviceName"), Symbol("template")=>Symbol("template"), Symbol("updateStrategy")=>Symbol("updateStrategy"), Symbol("volumeClaimTemplates")=>Symbol("volumeClaimTemplates"))
 const _property_types_IoK8sApiAppsV1beta2StatefulSetSpec = Dict{Symbol,String}(Symbol("podManagementPolicy")=>"String", Symbol("replicas")=>"Int32", Symbol("revisionHistoryLimit")=>"Int32", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("serviceName")=>"String", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec", Symbol("updateStrategy")=>"IoK8sApiAppsV1beta2StatefulSetUpdateStrategy", Symbol("volumeClaimTemplates")=>"Vector{IoK8sApiCoreV1PersistentVolumeClaim}")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2StatefulSetSpec }) = collect(keys(_property_map_IoK8sApiAppsV1beta2StatefulSetSpec))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2StatefulSetSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2StatefulSetSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2StatefulSetSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2StatefulSetSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2StatefulSetSpec }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2StatefulSetSpec[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2StatefulSetSpec)

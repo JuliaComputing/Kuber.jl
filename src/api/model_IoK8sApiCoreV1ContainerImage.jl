@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ContainerImage <: SwaggerModel
     names::Any # spec type: Union{ Nothing, Vector{String} } # spec name: names
     sizeBytes::Any # spec type: Union{ Nothing, Int64 } # spec name: sizeBytes
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1ContainerImage
 const _property_map_IoK8sApiCoreV1ContainerImage = Dict{Symbol,Symbol}(Symbol("names")=>Symbol("names"), Symbol("sizeBytes")=>Symbol("sizeBytes"))
 const _property_types_IoK8sApiCoreV1ContainerImage = Dict{Symbol,String}(Symbol("names")=>"Vector{String}", Symbol("sizeBytes")=>"Int64")
 Base.propertynames(::Type{ IoK8sApiCoreV1ContainerImage }) = collect(keys(_property_map_IoK8sApiCoreV1ContainerImage))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerImage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ContainerImage[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ContainerImage[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ContainerImage }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ContainerImage[property_name]
 
 function check_required(o::IoK8sApiCoreV1ContainerImage)

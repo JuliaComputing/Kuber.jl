@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimVolumeSource <: SwaggerModel
     claimName::Any # spec type: Union{ Nothing, String } # spec name: claimName
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1PersistentVolumeClaimVolumeSource
 const _property_map_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource = Dict{Symbol,Symbol}(Symbol("claimName")=>Symbol("claimName"), Symbol("readOnly")=>Symbol("readOnly"))
 const _property_types_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource = Dict{Symbol,String}(Symbol("claimName")=>"String", Symbol("readOnly")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1PersistentVolumeClaimVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PersistentVolumeClaimVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PersistentVolumeClaimVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1PersistentVolumeClaimVolumeSource)

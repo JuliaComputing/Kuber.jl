@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions <: SwaggerModel
     ranges::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1IDRange} } # spec name: ranges
     rule::Any # spec type: Union{ Nothing, String } # spec name: rule
@@ -20,7 +19,7 @@ end # type IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions
 const _property_map_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions = Dict{Symbol,Symbol}(Symbol("ranges")=>Symbol("ranges"), Symbol("rule")=>Symbol("rule"))
 const _property_types_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions = Dict{Symbol,String}(Symbol("ranges")=>"Vector{IoK8sApiExtensionsV1beta1IDRange}", Symbol("rule")=>"String")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions)

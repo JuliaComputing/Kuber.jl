@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Container <: SwaggerModel
     args::Any # spec type: Union{ Nothing, Vector{String} } # spec name: args
     command::Any # spec type: Union{ Nothing, Vector{String} } # spec name: command
@@ -17,6 +16,7 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
     readinessProbe::Any # spec type: Union{ Nothing, IoK8sApiCoreV1Probe } # spec name: readinessProbe
     resources::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ResourceRequirements } # spec name: resources
     securityContext::Any # spec type: Union{ Nothing, IoK8sApiCoreV1SecurityContext } # spec name: securityContext
+    startupProbe::Any # spec type: Union{ Nothing, IoK8sApiCoreV1Probe } # spec name: startupProbe
     stdin::Any # spec type: Union{ Nothing, Bool } # spec name: stdin
     stdinOnce::Any # spec type: Union{ Nothing, Bool } # spec name: stdinOnce
     terminationMessagePath::Any # spec type: Union{ Nothing, String } # spec name: terminationMessagePath
@@ -26,7 +26,7 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
     volumeMounts::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1VolumeMount} } # spec name: volumeMounts
     workingDir::Any # spec type: Union{ Nothing, String } # spec name: workingDir
 
-    function IoK8sApiCoreV1Container(;args=nothing, command=nothing, env=nothing, envFrom=nothing, image=nothing, imagePullPolicy=nothing, lifecycle=nothing, livenessProbe=nothing, name=nothing, ports=nothing, readinessProbe=nothing, resources=nothing, securityContext=nothing, stdin=nothing, stdinOnce=nothing, terminationMessagePath=nothing, terminationMessagePolicy=nothing, tty=nothing, volumeDevices=nothing, volumeMounts=nothing, workingDir=nothing)
+    function IoK8sApiCoreV1Container(;args=nothing, command=nothing, env=nothing, envFrom=nothing, image=nothing, imagePullPolicy=nothing, lifecycle=nothing, livenessProbe=nothing, name=nothing, ports=nothing, readinessProbe=nothing, resources=nothing, securityContext=nothing, startupProbe=nothing, stdin=nothing, stdinOnce=nothing, terminationMessagePath=nothing, terminationMessagePolicy=nothing, tty=nothing, volumeDevices=nothing, volumeMounts=nothing, workingDir=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1Container, Symbol("args"), args)
         setfield!(o, Symbol("args"), args)
@@ -54,6 +54,8 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
         setfield!(o, Symbol("resources"), resources)
         validate_property(IoK8sApiCoreV1Container, Symbol("securityContext"), securityContext)
         setfield!(o, Symbol("securityContext"), securityContext)
+        validate_property(IoK8sApiCoreV1Container, Symbol("startupProbe"), startupProbe)
+        setfield!(o, Symbol("startupProbe"), startupProbe)
         validate_property(IoK8sApiCoreV1Container, Symbol("stdin"), stdin)
         setfield!(o, Symbol("stdin"), stdin)
         validate_property(IoK8sApiCoreV1Container, Symbol("stdinOnce"), stdinOnce)
@@ -74,10 +76,10 @@ mutable struct IoK8sApiCoreV1Container <: SwaggerModel
     end
 end # type IoK8sApiCoreV1Container
 
-const _property_map_IoK8sApiCoreV1Container = Dict{Symbol,Symbol}(Symbol("args")=>Symbol("args"), Symbol("command")=>Symbol("command"), Symbol("env")=>Symbol("env"), Symbol("envFrom")=>Symbol("envFrom"), Symbol("image")=>Symbol("image"), Symbol("imagePullPolicy")=>Symbol("imagePullPolicy"), Symbol("lifecycle")=>Symbol("lifecycle"), Symbol("livenessProbe")=>Symbol("livenessProbe"), Symbol("name")=>Symbol("name"), Symbol("ports")=>Symbol("ports"), Symbol("readinessProbe")=>Symbol("readinessProbe"), Symbol("resources")=>Symbol("resources"), Symbol("securityContext")=>Symbol("securityContext"), Symbol("stdin")=>Symbol("stdin"), Symbol("stdinOnce")=>Symbol("stdinOnce"), Symbol("terminationMessagePath")=>Symbol("terminationMessagePath"), Symbol("terminationMessagePolicy")=>Symbol("terminationMessagePolicy"), Symbol("tty")=>Symbol("tty"), Symbol("volumeDevices")=>Symbol("volumeDevices"), Symbol("volumeMounts")=>Symbol("volumeMounts"), Symbol("workingDir")=>Symbol("workingDir"))
-const _property_types_IoK8sApiCoreV1Container = Dict{Symbol,String}(Symbol("args")=>"Vector{String}", Symbol("command")=>"Vector{String}", Symbol("env")=>"Vector{IoK8sApiCoreV1EnvVar}", Symbol("envFrom")=>"Vector{IoK8sApiCoreV1EnvFromSource}", Symbol("image")=>"String", Symbol("imagePullPolicy")=>"String", Symbol("lifecycle")=>"IoK8sApiCoreV1Lifecycle", Symbol("livenessProbe")=>"IoK8sApiCoreV1Probe", Symbol("name")=>"String", Symbol("ports")=>"Vector{IoK8sApiCoreV1ContainerPort}", Symbol("readinessProbe")=>"IoK8sApiCoreV1Probe", Symbol("resources")=>"IoK8sApiCoreV1ResourceRequirements", Symbol("securityContext")=>"IoK8sApiCoreV1SecurityContext", Symbol("stdin")=>"Bool", Symbol("stdinOnce")=>"Bool", Symbol("terminationMessagePath")=>"String", Symbol("terminationMessagePolicy")=>"String", Symbol("tty")=>"Bool", Symbol("volumeDevices")=>"Vector{IoK8sApiCoreV1VolumeDevice}", Symbol("volumeMounts")=>"Vector{IoK8sApiCoreV1VolumeMount}", Symbol("workingDir")=>"String")
+const _property_map_IoK8sApiCoreV1Container = Dict{Symbol,Symbol}(Symbol("args")=>Symbol("args"), Symbol("command")=>Symbol("command"), Symbol("env")=>Symbol("env"), Symbol("envFrom")=>Symbol("envFrom"), Symbol("image")=>Symbol("image"), Symbol("imagePullPolicy")=>Symbol("imagePullPolicy"), Symbol("lifecycle")=>Symbol("lifecycle"), Symbol("livenessProbe")=>Symbol("livenessProbe"), Symbol("name")=>Symbol("name"), Symbol("ports")=>Symbol("ports"), Symbol("readinessProbe")=>Symbol("readinessProbe"), Symbol("resources")=>Symbol("resources"), Symbol("securityContext")=>Symbol("securityContext"), Symbol("startupProbe")=>Symbol("startupProbe"), Symbol("stdin")=>Symbol("stdin"), Symbol("stdinOnce")=>Symbol("stdinOnce"), Symbol("terminationMessagePath")=>Symbol("terminationMessagePath"), Symbol("terminationMessagePolicy")=>Symbol("terminationMessagePolicy"), Symbol("tty")=>Symbol("tty"), Symbol("volumeDevices")=>Symbol("volumeDevices"), Symbol("volumeMounts")=>Symbol("volumeMounts"), Symbol("workingDir")=>Symbol("workingDir"))
+const _property_types_IoK8sApiCoreV1Container = Dict{Symbol,String}(Symbol("args")=>"Vector{String}", Symbol("command")=>"Vector{String}", Symbol("env")=>"Vector{IoK8sApiCoreV1EnvVar}", Symbol("envFrom")=>"Vector{IoK8sApiCoreV1EnvFromSource}", Symbol("image")=>"String", Symbol("imagePullPolicy")=>"String", Symbol("lifecycle")=>"IoK8sApiCoreV1Lifecycle", Symbol("livenessProbe")=>"IoK8sApiCoreV1Probe", Symbol("name")=>"String", Symbol("ports")=>"Vector{IoK8sApiCoreV1ContainerPort}", Symbol("readinessProbe")=>"IoK8sApiCoreV1Probe", Symbol("resources")=>"IoK8sApiCoreV1ResourceRequirements", Symbol("securityContext")=>"IoK8sApiCoreV1SecurityContext", Symbol("startupProbe")=>"IoK8sApiCoreV1Probe", Symbol("stdin")=>"Bool", Symbol("stdinOnce")=>"Bool", Symbol("terminationMessagePath")=>"String", Symbol("terminationMessagePolicy")=>"String", Symbol("tty")=>"Bool", Symbol("volumeDevices")=>"Vector{IoK8sApiCoreV1VolumeDevice}", Symbol("volumeMounts")=>"Vector{IoK8sApiCoreV1VolumeMount}", Symbol("workingDir")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1Container }) = collect(keys(_property_map_IoK8sApiCoreV1Container))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Container }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Container[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Container }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Container[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Container }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Container[property_name]
 
 function check_required(o::IoK8sApiCoreV1Container)

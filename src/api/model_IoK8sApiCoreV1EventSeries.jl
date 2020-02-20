@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EventSeries <: SwaggerModel
     count::Any # spec type: Union{ Nothing, Int32 } # spec name: count
     lastObservedTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1MicroTime } # spec name: lastObservedTime
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1EventSeries
 const _property_map_IoK8sApiCoreV1EventSeries = Dict{Symbol,Symbol}(Symbol("count")=>Symbol("count"), Symbol("lastObservedTime")=>Symbol("lastObservedTime"), Symbol("state")=>Symbol("state"))
 const _property_types_IoK8sApiCoreV1EventSeries = Dict{Symbol,String}(Symbol("count")=>"Int32", Symbol("lastObservedTime")=>"IoK8sApimachineryPkgApisMetaV1MicroTime", Symbol("state")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1EventSeries }) = collect(keys(_property_map_IoK8sApiCoreV1EventSeries))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EventSeries }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EventSeries[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EventSeries }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EventSeries[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EventSeries }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EventSeries[property_name]
 
 function check_required(o::IoK8sApiCoreV1EventSeries)

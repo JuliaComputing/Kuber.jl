@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1SecurityContext <: SwaggerModel
     allowPrivilegeEscalation::Any # spec type: Union{ Nothing, Bool } # spec name: allowPrivilegeEscalation
     capabilities::Any # spec type: Union{ Nothing, IoK8sApiCoreV1Capabilities } # spec name: capabilities
@@ -13,8 +12,9 @@ mutable struct IoK8sApiCoreV1SecurityContext <: SwaggerModel
     runAsNonRoot::Any # spec type: Union{ Nothing, Bool } # spec name: runAsNonRoot
     runAsUser::Any # spec type: Union{ Nothing, Int64 } # spec name: runAsUser
     seLinuxOptions::Any # spec type: Union{ Nothing, IoK8sApiCoreV1SELinuxOptions } # spec name: seLinuxOptions
+    windowsOptions::Any # spec type: Union{ Nothing, IoK8sApiCoreV1WindowsSecurityContextOptions } # spec name: windowsOptions
 
-    function IoK8sApiCoreV1SecurityContext(;allowPrivilegeEscalation=nothing, capabilities=nothing, privileged=nothing, procMount=nothing, readOnlyRootFilesystem=nothing, runAsGroup=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing)
+    function IoK8sApiCoreV1SecurityContext(;allowPrivilegeEscalation=nothing, capabilities=nothing, privileged=nothing, procMount=nothing, readOnlyRootFilesystem=nothing, runAsGroup=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing, windowsOptions=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1SecurityContext, Symbol("allowPrivilegeEscalation"), allowPrivilegeEscalation)
         setfield!(o, Symbol("allowPrivilegeEscalation"), allowPrivilegeEscalation)
@@ -34,14 +34,16 @@ mutable struct IoK8sApiCoreV1SecurityContext <: SwaggerModel
         setfield!(o, Symbol("runAsUser"), runAsUser)
         validate_property(IoK8sApiCoreV1SecurityContext, Symbol("seLinuxOptions"), seLinuxOptions)
         setfield!(o, Symbol("seLinuxOptions"), seLinuxOptions)
+        validate_property(IoK8sApiCoreV1SecurityContext, Symbol("windowsOptions"), windowsOptions)
+        setfield!(o, Symbol("windowsOptions"), windowsOptions)
         o
     end
 end # type IoK8sApiCoreV1SecurityContext
 
-const _property_map_IoK8sApiCoreV1SecurityContext = Dict{Symbol,Symbol}(Symbol("allowPrivilegeEscalation")=>Symbol("allowPrivilegeEscalation"), Symbol("capabilities")=>Symbol("capabilities"), Symbol("privileged")=>Symbol("privileged"), Symbol("procMount")=>Symbol("procMount"), Symbol("readOnlyRootFilesystem")=>Symbol("readOnlyRootFilesystem"), Symbol("runAsGroup")=>Symbol("runAsGroup"), Symbol("runAsNonRoot")=>Symbol("runAsNonRoot"), Symbol("runAsUser")=>Symbol("runAsUser"), Symbol("seLinuxOptions")=>Symbol("seLinuxOptions"))
-const _property_types_IoK8sApiCoreV1SecurityContext = Dict{Symbol,String}(Symbol("allowPrivilegeEscalation")=>"Bool", Symbol("capabilities")=>"IoK8sApiCoreV1Capabilities", Symbol("privileged")=>"Bool", Symbol("procMount")=>"String", Symbol("readOnlyRootFilesystem")=>"Bool", Symbol("runAsGroup")=>"Int64", Symbol("runAsNonRoot")=>"Bool", Symbol("runAsUser")=>"Int64", Symbol("seLinuxOptions")=>"IoK8sApiCoreV1SELinuxOptions")
+const _property_map_IoK8sApiCoreV1SecurityContext = Dict{Symbol,Symbol}(Symbol("allowPrivilegeEscalation")=>Symbol("allowPrivilegeEscalation"), Symbol("capabilities")=>Symbol("capabilities"), Symbol("privileged")=>Symbol("privileged"), Symbol("procMount")=>Symbol("procMount"), Symbol("readOnlyRootFilesystem")=>Symbol("readOnlyRootFilesystem"), Symbol("runAsGroup")=>Symbol("runAsGroup"), Symbol("runAsNonRoot")=>Symbol("runAsNonRoot"), Symbol("runAsUser")=>Symbol("runAsUser"), Symbol("seLinuxOptions")=>Symbol("seLinuxOptions"), Symbol("windowsOptions")=>Symbol("windowsOptions"))
+const _property_types_IoK8sApiCoreV1SecurityContext = Dict{Symbol,String}(Symbol("allowPrivilegeEscalation")=>"Bool", Symbol("capabilities")=>"IoK8sApiCoreV1Capabilities", Symbol("privileged")=>"Bool", Symbol("procMount")=>"String", Symbol("readOnlyRootFilesystem")=>"Bool", Symbol("runAsGroup")=>"Int64", Symbol("runAsNonRoot")=>"Bool", Symbol("runAsUser")=>"Int64", Symbol("seLinuxOptions")=>"IoK8sApiCoreV1SELinuxOptions", Symbol("windowsOptions")=>"IoK8sApiCoreV1WindowsSecurityContextOptions")
 Base.propertynames(::Type{ IoK8sApiCoreV1SecurityContext }) = collect(keys(_property_map_IoK8sApiCoreV1SecurityContext))
-Swagger.property_type(::Type{ IoK8sApiCoreV1SecurityContext }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1SecurityContext[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1SecurityContext }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1SecurityContext[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1SecurityContext }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1SecurityContext[property_name]
 
 function check_required(o::IoK8sApiCoreV1SecurityContext)

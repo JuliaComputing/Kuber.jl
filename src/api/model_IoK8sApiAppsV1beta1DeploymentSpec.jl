@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta1DeploymentSpec <: SwaggerModel
     minReadySeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: minReadySeconds
     paused::Any # spec type: Union{ Nothing, Bool } # spec name: paused
@@ -41,7 +40,7 @@ end # type IoK8sApiAppsV1beta1DeploymentSpec
 const _property_map_IoK8sApiAppsV1beta1DeploymentSpec = Dict{Symbol,Symbol}(Symbol("minReadySeconds")=>Symbol("minReadySeconds"), Symbol("paused")=>Symbol("paused"), Symbol("progressDeadlineSeconds")=>Symbol("progressDeadlineSeconds"), Symbol("replicas")=>Symbol("replicas"), Symbol("revisionHistoryLimit")=>Symbol("revisionHistoryLimit"), Symbol("rollbackTo")=>Symbol("rollbackTo"), Symbol("selector")=>Symbol("selector"), Symbol("strategy")=>Symbol("strategy"), Symbol("template")=>Symbol("template"))
 const _property_types_IoK8sApiAppsV1beta1DeploymentSpec = Dict{Symbol,String}(Symbol("minReadySeconds")=>"Int32", Symbol("paused")=>"Bool", Symbol("progressDeadlineSeconds")=>"Int32", Symbol("replicas")=>"Int32", Symbol("revisionHistoryLimit")=>"Int32", Symbol("rollbackTo")=>"IoK8sApiAppsV1beta1RollbackConfig", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("strategy")=>"IoK8sApiAppsV1beta1DeploymentStrategy", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta1DeploymentSpec }) = collect(keys(_property_map_IoK8sApiAppsV1beta1DeploymentSpec))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta1DeploymentSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta1DeploymentSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta1DeploymentSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta1DeploymentSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta1DeploymentSpec }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta1DeploymentSpec[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta1DeploymentSpec)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ISCSIVolumeSource <: SwaggerModel
     chapAuthDiscovery::Any # spec type: Union{ Nothing, Bool } # spec name: chapAuthDiscovery
     chapAuthSession::Any # spec type: Union{ Nothing, Bool } # spec name: chapAuthSession
@@ -47,7 +46,7 @@ end # type IoK8sApiCoreV1ISCSIVolumeSource
 const _property_map_IoK8sApiCoreV1ISCSIVolumeSource = Dict{Symbol,Symbol}(Symbol("chapAuthDiscovery")=>Symbol("chapAuthDiscovery"), Symbol("chapAuthSession")=>Symbol("chapAuthSession"), Symbol("fsType")=>Symbol("fsType"), Symbol("initiatorName")=>Symbol("initiatorName"), Symbol("iqn")=>Symbol("iqn"), Symbol("iscsiInterface")=>Symbol("iscsiInterface"), Symbol("lun")=>Symbol("lun"), Symbol("portals")=>Symbol("portals"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("secretRef")=>Symbol("secretRef"), Symbol("targetPortal")=>Symbol("targetPortal"))
 const _property_types_IoK8sApiCoreV1ISCSIVolumeSource = Dict{Symbol,String}(Symbol("chapAuthDiscovery")=>"Bool", Symbol("chapAuthSession")=>"Bool", Symbol("fsType")=>"String", Symbol("initiatorName")=>"String", Symbol("iqn")=>"String", Symbol("iscsiInterface")=>"String", Symbol("lun")=>"Int32", Symbol("portals")=>"Vector{String}", Symbol("readOnly")=>"Bool", Symbol("secretRef")=>"IoK8sApiCoreV1LocalObjectReference", Symbol("targetPortal")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ISCSIVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1ISCSIVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ISCSIVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ISCSIVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ISCSIVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ISCSIVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ISCSIVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ISCSIVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1ISCSIVolumeSource)

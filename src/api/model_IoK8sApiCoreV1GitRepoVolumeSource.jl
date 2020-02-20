@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1GitRepoVolumeSource <: SwaggerModel
     directory::Any # spec type: Union{ Nothing, String } # spec name: directory
     repository::Any # spec type: Union{ Nothing, String } # spec name: repository
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1GitRepoVolumeSource
 const _property_map_IoK8sApiCoreV1GitRepoVolumeSource = Dict{Symbol,Symbol}(Symbol("directory")=>Symbol("directory"), Symbol("repository")=>Symbol("repository"), Symbol("revision")=>Symbol("revision"))
 const _property_types_IoK8sApiCoreV1GitRepoVolumeSource = Dict{Symbol,String}(Symbol("directory")=>"String", Symbol("repository")=>"String", Symbol("revision")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1GitRepoVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1GitRepoVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1GitRepoVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1GitRepoVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1GitRepoVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1GitRepoVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1GitRepoVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1GitRepoVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1GitRepoVolumeSource)

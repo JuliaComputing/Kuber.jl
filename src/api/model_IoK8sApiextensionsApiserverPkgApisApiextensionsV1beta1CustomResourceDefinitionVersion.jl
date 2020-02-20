@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion <: SwaggerModel
     additionalPrinterColumns::Any # spec type: Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition} } # spec name: additionalPrinterColumns
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -32,7 +31,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceD
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,Symbol}(Symbol("additionalPrinterColumns")=>Symbol("additionalPrinterColumns"), Symbol("name")=>Symbol("name"), Symbol("schema")=>Symbol("schema"), Symbol("served")=>Symbol("served"), Symbol("storage")=>Symbol("storage"), Symbol("subresources")=>Symbol("subresources"))
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion = Dict{Symbol,String}(Symbol("additionalPrinterColumns")=>"Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition}", Symbol("name")=>"String", Symbol("schema")=>"IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation", Symbol("served")=>"Bool", Symbol("storage")=>"Bool", Symbol("subresources")=>"IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionVersion)

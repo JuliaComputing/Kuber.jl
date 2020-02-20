@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1DaemonSetCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message
@@ -29,7 +28,7 @@ end # type IoK8sApiAppsV1DaemonSetCondition
 const _property_map_IoK8sApiAppsV1DaemonSetCondition = Dict{Symbol,Symbol}(Symbol("lastTransitionTime")=>Symbol("lastTransitionTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("status")=>Symbol("status"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiAppsV1DaemonSetCondition = Dict{Symbol,String}(Symbol("lastTransitionTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("status")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiAppsV1DaemonSetCondition }) = collect(keys(_property_map_IoK8sApiAppsV1DaemonSetCondition))
-Swagger.property_type(::Type{ IoK8sApiAppsV1DaemonSetCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1DaemonSetCondition[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1DaemonSetCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1DaemonSetCondition[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1DaemonSetCondition }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1DaemonSetCondition[property_name]
 
 function check_required(o::IoK8sApiAppsV1DaemonSetCondition)

@@ -2,16 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeSpec <: SwaggerModel
     configSource::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeConfigSource } # spec name: configSource
     externalID::Any # spec type: Union{ Nothing, String } # spec name: externalID
     podCIDR::Any # spec type: Union{ Nothing, String } # spec name: podCIDR
+    podCIDRs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: podCIDRs
     providerID::Any # spec type: Union{ Nothing, String } # spec name: providerID
     taints::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1Taint} } # spec name: taints
     unschedulable::Any # spec type: Union{ Nothing, Bool } # spec name: unschedulable
 
-    function IoK8sApiCoreV1NodeSpec(;configSource=nothing, externalID=nothing, podCIDR=nothing, providerID=nothing, taints=nothing, unschedulable=nothing)
+    function IoK8sApiCoreV1NodeSpec(;configSource=nothing, externalID=nothing, podCIDR=nothing, podCIDRs=nothing, providerID=nothing, taints=nothing, unschedulable=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1NodeSpec, Symbol("configSource"), configSource)
         setfield!(o, Symbol("configSource"), configSource)
@@ -19,6 +19,8 @@ mutable struct IoK8sApiCoreV1NodeSpec <: SwaggerModel
         setfield!(o, Symbol("externalID"), externalID)
         validate_property(IoK8sApiCoreV1NodeSpec, Symbol("podCIDR"), podCIDR)
         setfield!(o, Symbol("podCIDR"), podCIDR)
+        validate_property(IoK8sApiCoreV1NodeSpec, Symbol("podCIDRs"), podCIDRs)
+        setfield!(o, Symbol("podCIDRs"), podCIDRs)
         validate_property(IoK8sApiCoreV1NodeSpec, Symbol("providerID"), providerID)
         setfield!(o, Symbol("providerID"), providerID)
         validate_property(IoK8sApiCoreV1NodeSpec, Symbol("taints"), taints)
@@ -29,10 +31,10 @@ mutable struct IoK8sApiCoreV1NodeSpec <: SwaggerModel
     end
 end # type IoK8sApiCoreV1NodeSpec
 
-const _property_map_IoK8sApiCoreV1NodeSpec = Dict{Symbol,Symbol}(Symbol("configSource")=>Symbol("configSource"), Symbol("externalID")=>Symbol("externalID"), Symbol("podCIDR")=>Symbol("podCIDR"), Symbol("providerID")=>Symbol("providerID"), Symbol("taints")=>Symbol("taints"), Symbol("unschedulable")=>Symbol("unschedulable"))
-const _property_types_IoK8sApiCoreV1NodeSpec = Dict{Symbol,String}(Symbol("configSource")=>"IoK8sApiCoreV1NodeConfigSource", Symbol("externalID")=>"String", Symbol("podCIDR")=>"String", Symbol("providerID")=>"String", Symbol("taints")=>"Vector{IoK8sApiCoreV1Taint}", Symbol("unschedulable")=>"Bool")
+const _property_map_IoK8sApiCoreV1NodeSpec = Dict{Symbol,Symbol}(Symbol("configSource")=>Symbol("configSource"), Symbol("externalID")=>Symbol("externalID"), Symbol("podCIDR")=>Symbol("podCIDR"), Symbol("podCIDRs")=>Symbol("podCIDRs"), Symbol("providerID")=>Symbol("providerID"), Symbol("taints")=>Symbol("taints"), Symbol("unschedulable")=>Symbol("unschedulable"))
+const _property_types_IoK8sApiCoreV1NodeSpec = Dict{Symbol,String}(Symbol("configSource")=>"IoK8sApiCoreV1NodeConfigSource", Symbol("externalID")=>"String", Symbol("podCIDR")=>"String", Symbol("podCIDRs")=>"Vector{String}", Symbol("providerID")=>"String", Symbol("taints")=>"Vector{IoK8sApiCoreV1Taint}", Symbol("unschedulable")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeSpec }) = collect(keys(_property_map_IoK8sApiCoreV1NodeSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeSpec)

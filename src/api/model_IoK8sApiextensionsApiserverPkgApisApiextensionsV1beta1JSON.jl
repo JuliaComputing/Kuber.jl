@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON <: SwaggerModel
 
     function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON(;)
@@ -14,7 +13,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON = Dict{Symbol,Symbol}()
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON = Dict{Symbol,String}()
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSON)

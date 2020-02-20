@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EventSource <: SwaggerModel
     component::Any # spec type: Union{ Nothing, String } # spec name: component
     host::Any # spec type: Union{ Nothing, String } # spec name: host
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1EventSource
 const _property_map_IoK8sApiCoreV1EventSource = Dict{Symbol,Symbol}(Symbol("component")=>Symbol("component"), Symbol("host")=>Symbol("host"))
 const _property_types_IoK8sApiCoreV1EventSource = Dict{Symbol,String}(Symbol("component")=>"String", Symbol("host")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1EventSource }) = collect(keys(_property_map_IoK8sApiCoreV1EventSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EventSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EventSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EventSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EventSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EventSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EventSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1EventSource)

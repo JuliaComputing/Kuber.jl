@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Toleration <: SwaggerModel
     effect::Any # spec type: Union{ Nothing, String } # spec name: effect
     key::Any # spec type: Union{ Nothing, String } # spec name: key
@@ -29,7 +28,7 @@ end # type IoK8sApiCoreV1Toleration
 const _property_map_IoK8sApiCoreV1Toleration = Dict{Symbol,Symbol}(Symbol("effect")=>Symbol("effect"), Symbol("key")=>Symbol("key"), Symbol("operator")=>Symbol("operator"), Symbol("tolerationSeconds")=>Symbol("tolerationSeconds"), Symbol("value")=>Symbol("value"))
 const _property_types_IoK8sApiCoreV1Toleration = Dict{Symbol,String}(Symbol("effect")=>"String", Symbol("key")=>"String", Symbol("operator")=>"String", Symbol("tolerationSeconds")=>"Int64", Symbol("value")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1Toleration }) = collect(keys(_property_map_IoK8sApiCoreV1Toleration))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Toleration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Toleration[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Toleration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Toleration[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Toleration }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Toleration[property_name]
 
 function check_required(o::IoK8sApiCoreV1Toleration)

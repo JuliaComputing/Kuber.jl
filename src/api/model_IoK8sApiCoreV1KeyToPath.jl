@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1KeyToPath <: SwaggerModel
     key::Any # spec type: Union{ Nothing, String } # spec name: key
     mode::Any # spec type: Union{ Nothing, Int32 } # spec name: mode
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1KeyToPath
 const _property_map_IoK8sApiCoreV1KeyToPath = Dict{Symbol,Symbol}(Symbol("key")=>Symbol("key"), Symbol("mode")=>Symbol("mode"), Symbol("path")=>Symbol("path"))
 const _property_types_IoK8sApiCoreV1KeyToPath = Dict{Symbol,String}(Symbol("key")=>"String", Symbol("mode")=>"Int32", Symbol("path")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1KeyToPath }) = collect(keys(_property_map_IoK8sApiCoreV1KeyToPath))
-Swagger.property_type(::Type{ IoK8sApiCoreV1KeyToPath }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1KeyToPath[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1KeyToPath }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1KeyToPath[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1KeyToPath }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1KeyToPath[property_name]
 
 function check_required(o::IoK8sApiCoreV1KeyToPath)

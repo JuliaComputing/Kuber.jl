@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeAddress <: SwaggerModel
     address::Any # spec type: Union{ Nothing, String } # spec name: address
     type::Any # spec type: Union{ Nothing, String } # spec name: type
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1NodeAddress
 const _property_map_IoK8sApiCoreV1NodeAddress = Dict{Symbol,Symbol}(Symbol("address")=>Symbol("address"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCoreV1NodeAddress = Dict{Symbol,String}(Symbol("address")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeAddress }) = collect(keys(_property_map_IoK8sApiCoreV1NodeAddress))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeAddress }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeAddress[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeAddress }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeAddress[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeAddress }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeAddress[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeAddress)

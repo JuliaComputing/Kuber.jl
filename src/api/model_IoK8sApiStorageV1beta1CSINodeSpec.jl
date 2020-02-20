@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiStorageV1beta1CSINodeSpec <: SwaggerModel
     drivers::Any # spec type: Union{ Nothing, Vector{IoK8sApiStorageV1beta1CSINodeDriver} } # spec name: drivers
 
@@ -17,7 +16,7 @@ end # type IoK8sApiStorageV1beta1CSINodeSpec
 const _property_map_IoK8sApiStorageV1beta1CSINodeSpec = Dict{Symbol,Symbol}(Symbol("drivers")=>Symbol("drivers"))
 const _property_types_IoK8sApiStorageV1beta1CSINodeSpec = Dict{Symbol,String}(Symbol("drivers")=>"Vector{IoK8sApiStorageV1beta1CSINodeDriver}")
 Base.propertynames(::Type{ IoK8sApiStorageV1beta1CSINodeSpec }) = collect(keys(_property_map_IoK8sApiStorageV1beta1CSINodeSpec))
-Swagger.property_type(::Type{ IoK8sApiStorageV1beta1CSINodeSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiStorageV1beta1CSINodeSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiStorageV1beta1CSINodeSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiStorageV1beta1CSINodeSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiStorageV1beta1CSINodeSpec }, property_name::Symbol) =  _property_map_IoK8sApiStorageV1beta1CSINodeSpec[property_name]
 
 function check_required(o::IoK8sApiStorageV1beta1CSINodeSpec)

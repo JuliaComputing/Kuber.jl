@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation <: SwaggerModel
     openAPIV3Schema::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps } # spec name: openAPIV3Schema
 
@@ -17,7 +16,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceV
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation = Dict{Symbol,Symbol}(Symbol("openAPIV3Schema")=>Symbol("openAPIV3Schema"))
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation = Dict{Symbol,String}(Symbol("openAPIV3Schema")=>"IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation)

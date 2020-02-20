@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ContainerStateTerminated <: SwaggerModel
     containerID::Any # spec type: Union{ Nothing, String } # spec name: containerID
     exitCode::Any # spec type: Union{ Nothing, Int32 } # spec name: exitCode
@@ -35,7 +34,7 @@ end # type IoK8sApiCoreV1ContainerStateTerminated
 const _property_map_IoK8sApiCoreV1ContainerStateTerminated = Dict{Symbol,Symbol}(Symbol("containerID")=>Symbol("containerID"), Symbol("exitCode")=>Symbol("exitCode"), Symbol("finishedAt")=>Symbol("finishedAt"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("signal")=>Symbol("signal"), Symbol("startedAt")=>Symbol("startedAt"))
 const _property_types_IoK8sApiCoreV1ContainerStateTerminated = Dict{Symbol,String}(Symbol("containerID")=>"String", Symbol("exitCode")=>"Int32", Symbol("finishedAt")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("signal")=>"Int32", Symbol("startedAt")=>"IoK8sApimachineryPkgApisMetaV1Time")
 Base.propertynames(::Type{ IoK8sApiCoreV1ContainerStateTerminated }) = collect(keys(_property_map_IoK8sApiCoreV1ContainerStateTerminated))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStateTerminated }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ContainerStateTerminated[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStateTerminated }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ContainerStateTerminated[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ContainerStateTerminated }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ContainerStateTerminated[property_name]
 
 function check_required(o::IoK8sApiCoreV1ContainerStateTerminated)

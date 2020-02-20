@@ -21,12 +21,12 @@ then
 fi
 
 # ensure CSTParser is of right version
-cstpver=`${JULIA} -e 'println(Pkg.installed()["CSTParser"] == v"2.1.0")'`
+cstpver=`${JULIA} -e 'using Pkg; println(Pkg.installed()["CSTParser"] == v"2.1.0")'`
 if [ "$cstpver" != "true" ]
 then
     echo "CSTParser v2.1.0 is required"
     exit -1
-end
+fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 GENDIR="$( readlink -e "${DIR}/../" )"

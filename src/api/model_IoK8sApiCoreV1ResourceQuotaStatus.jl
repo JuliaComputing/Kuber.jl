@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ResourceQuotaStatus <: SwaggerModel
     hard::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: hard
     used::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: used
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1ResourceQuotaStatus
 const _property_map_IoK8sApiCoreV1ResourceQuotaStatus = Dict{Symbol,Symbol}(Symbol("hard")=>Symbol("hard"), Symbol("used")=>Symbol("used"))
 const _property_types_IoK8sApiCoreV1ResourceQuotaStatus = Dict{Symbol,String}(Symbol("hard")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("used")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}")
 Base.propertynames(::Type{ IoK8sApiCoreV1ResourceQuotaStatus }) = collect(keys(_property_map_IoK8sApiCoreV1ResourceQuotaStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ResourceQuotaStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ResourceQuotaStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ResourceQuotaStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ResourceQuotaStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ResourceQuotaStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ResourceQuotaStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1ResourceQuotaStatus)

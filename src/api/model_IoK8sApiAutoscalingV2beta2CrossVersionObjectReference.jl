@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta2CrossVersionObjectReference <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -23,7 +22,7 @@ end # type IoK8sApiAutoscalingV2beta2CrossVersionObjectReference
 const _property_map_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"))
 const _property_types_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta2CrossVersionObjectReference }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2CrossVersionObjectReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2CrossVersionObjectReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta2CrossVersionObjectReference }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta2CrossVersionObjectReference[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta2CrossVersionObjectReference)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ConfigMapNodeConfigSource <: SwaggerModel
     kubeletConfigKey::Any # spec type: Union{ Nothing, String } # spec name: kubeletConfigKey
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type IoK8sApiCoreV1ConfigMapNodeConfigSource
 const _property_map_IoK8sApiCoreV1ConfigMapNodeConfigSource = Dict{Symbol,Symbol}(Symbol("kubeletConfigKey")=>Symbol("kubeletConfigKey"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"), Symbol("resourceVersion")=>Symbol("resourceVersion"), Symbol("uid")=>Symbol("uid"))
 const _property_types_IoK8sApiCoreV1ConfigMapNodeConfigSource = Dict{Symbol,String}(Symbol("kubeletConfigKey")=>"String", Symbol("name")=>"String", Symbol("namespace")=>"String", Symbol("resourceVersion")=>"String", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ConfigMapNodeConfigSource }) = collect(keys(_property_map_IoK8sApiCoreV1ConfigMapNodeConfigSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMapNodeConfigSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ConfigMapNodeConfigSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMapNodeConfigSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ConfigMapNodeConfigSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ConfigMapNodeConfigSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ConfigMapNodeConfigSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1ConfigMapNodeConfigSource)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PodAntiAffinity <: SwaggerModel
     preferredDuringSchedulingIgnoredDuringExecution::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1WeightedPodAffinityTerm} } # spec name: preferredDuringSchedulingIgnoredDuringExecution
     requiredDuringSchedulingIgnoredDuringExecution::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1PodAffinityTerm} } # spec name: requiredDuringSchedulingIgnoredDuringExecution
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1PodAntiAffinity
 const _property_map_IoK8sApiCoreV1PodAntiAffinity = Dict{Symbol,Symbol}(Symbol("preferredDuringSchedulingIgnoredDuringExecution")=>Symbol("preferredDuringSchedulingIgnoredDuringExecution"), Symbol("requiredDuringSchedulingIgnoredDuringExecution")=>Symbol("requiredDuringSchedulingIgnoredDuringExecution"))
 const _property_types_IoK8sApiCoreV1PodAntiAffinity = Dict{Symbol,String}(Symbol("preferredDuringSchedulingIgnoredDuringExecution")=>"Vector{IoK8sApiCoreV1WeightedPodAffinityTerm}", Symbol("requiredDuringSchedulingIgnoredDuringExecution")=>"Vector{IoK8sApiCoreV1PodAffinityTerm}")
 Base.propertynames(::Type{ IoK8sApiCoreV1PodAntiAffinity }) = collect(keys(_property_map_IoK8sApiCoreV1PodAntiAffinity))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PodAntiAffinity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PodAntiAffinity[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PodAntiAffinity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PodAntiAffinity[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PodAntiAffinity }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PodAntiAffinity[property_name]
 
 function check_required(o::IoK8sApiCoreV1PodAntiAffinity)

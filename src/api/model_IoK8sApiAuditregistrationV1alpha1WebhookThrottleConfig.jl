@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig <: SwaggerModel
     burst::Any # spec type: Union{ Nothing, Int64 } # spec name: burst
     qps::Any # spec type: Union{ Nothing, Int64 } # spec name: qps
@@ -20,7 +19,7 @@ end # type IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig
 const _property_map_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig = Dict{Symbol,Symbol}(Symbol("burst")=>Symbol("burst"), Symbol("qps")=>Symbol("qps"))
 const _property_types_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig = Dict{Symbol,String}(Symbol("burst")=>"Int64", Symbol("qps")=>"Int64")
 Base.propertynames(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig }) = collect(keys(_property_map_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig))
-Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig }, property_name::Symbol) =  _property_map_IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig[property_name]
 
 function check_required(o::IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig)

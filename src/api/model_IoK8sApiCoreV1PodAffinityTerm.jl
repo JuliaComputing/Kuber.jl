@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PodAffinityTerm <: SwaggerModel
     labelSelector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: labelSelector
     namespaces::Any # spec type: Union{ Nothing, Vector{String} } # spec name: namespaces
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1PodAffinityTerm
 const _property_map_IoK8sApiCoreV1PodAffinityTerm = Dict{Symbol,Symbol}(Symbol("labelSelector")=>Symbol("labelSelector"), Symbol("namespaces")=>Symbol("namespaces"), Symbol("topologyKey")=>Symbol("topologyKey"))
 const _property_types_IoK8sApiCoreV1PodAffinityTerm = Dict{Symbol,String}(Symbol("labelSelector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("namespaces")=>"Vector{String}", Symbol("topologyKey")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1PodAffinityTerm }) = collect(keys(_property_map_IoK8sApiCoreV1PodAffinityTerm))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PodAffinityTerm }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PodAffinityTerm[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PodAffinityTerm }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PodAffinityTerm[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PodAffinityTerm }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PodAffinityTerm[property_name]
 
 function check_required(o::IoK8sApiCoreV1PodAffinityTerm)

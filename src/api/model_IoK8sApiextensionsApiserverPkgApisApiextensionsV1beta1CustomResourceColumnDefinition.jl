@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition <: SwaggerModel
     JSONPath::Any # spec type: Union{ Nothing, String } # spec name: JSONPath
     description::Any # spec type: Union{ Nothing, String } # spec name: description
@@ -32,7 +31,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceC
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition = Dict{Symbol,Symbol}(Symbol("JSONPath")=>Symbol("JSONPath"), Symbol("description")=>Symbol("description"), Symbol("format")=>Symbol("format"), Symbol("name")=>Symbol("name"), Symbol("priority")=>Symbol("priority"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition = Dict{Symbol,String}(Symbol("JSONPath")=>"String", Symbol("description")=>"String", Symbol("format")=>"String", Symbol("name")=>"String", Symbol("priority")=>"Int32", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceColumnDefinition)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ContainerStatus <: SwaggerModel
     containerID::Any # spec type: Union{ Nothing, String } # spec name: containerID
     image::Any # spec type: Union{ Nothing, String } # spec name: image
@@ -11,9 +10,10 @@ mutable struct IoK8sApiCoreV1ContainerStatus <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     ready::Any # spec type: Union{ Nothing, Bool } # spec name: ready
     restartCount::Any # spec type: Union{ Nothing, Int32 } # spec name: restartCount
+    started::Any # spec type: Union{ Nothing, Bool } # spec name: started
     state::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ContainerState } # spec name: state
 
-    function IoK8sApiCoreV1ContainerStatus(;containerID=nothing, image=nothing, imageID=nothing, lastState=nothing, name=nothing, ready=nothing, restartCount=nothing, state=nothing)
+    function IoK8sApiCoreV1ContainerStatus(;containerID=nothing, image=nothing, imageID=nothing, lastState=nothing, name=nothing, ready=nothing, restartCount=nothing, started=nothing, state=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1ContainerStatus, Symbol("containerID"), containerID)
         setfield!(o, Symbol("containerID"), containerID)
@@ -29,16 +29,18 @@ mutable struct IoK8sApiCoreV1ContainerStatus <: SwaggerModel
         setfield!(o, Symbol("ready"), ready)
         validate_property(IoK8sApiCoreV1ContainerStatus, Symbol("restartCount"), restartCount)
         setfield!(o, Symbol("restartCount"), restartCount)
+        validate_property(IoK8sApiCoreV1ContainerStatus, Symbol("started"), started)
+        setfield!(o, Symbol("started"), started)
         validate_property(IoK8sApiCoreV1ContainerStatus, Symbol("state"), state)
         setfield!(o, Symbol("state"), state)
         o
     end
 end # type IoK8sApiCoreV1ContainerStatus
 
-const _property_map_IoK8sApiCoreV1ContainerStatus = Dict{Symbol,Symbol}(Symbol("containerID")=>Symbol("containerID"), Symbol("image")=>Symbol("image"), Symbol("imageID")=>Symbol("imageID"), Symbol("lastState")=>Symbol("lastState"), Symbol("name")=>Symbol("name"), Symbol("ready")=>Symbol("ready"), Symbol("restartCount")=>Symbol("restartCount"), Symbol("state")=>Symbol("state"))
-const _property_types_IoK8sApiCoreV1ContainerStatus = Dict{Symbol,String}(Symbol("containerID")=>"String", Symbol("image")=>"String", Symbol("imageID")=>"String", Symbol("lastState")=>"IoK8sApiCoreV1ContainerState", Symbol("name")=>"String", Symbol("ready")=>"Bool", Symbol("restartCount")=>"Int32", Symbol("state")=>"IoK8sApiCoreV1ContainerState")
+const _property_map_IoK8sApiCoreV1ContainerStatus = Dict{Symbol,Symbol}(Symbol("containerID")=>Symbol("containerID"), Symbol("image")=>Symbol("image"), Symbol("imageID")=>Symbol("imageID"), Symbol("lastState")=>Symbol("lastState"), Symbol("name")=>Symbol("name"), Symbol("ready")=>Symbol("ready"), Symbol("restartCount")=>Symbol("restartCount"), Symbol("started")=>Symbol("started"), Symbol("state")=>Symbol("state"))
+const _property_types_IoK8sApiCoreV1ContainerStatus = Dict{Symbol,String}(Symbol("containerID")=>"String", Symbol("image")=>"String", Symbol("imageID")=>"String", Symbol("lastState")=>"IoK8sApiCoreV1ContainerState", Symbol("name")=>"String", Symbol("ready")=>"Bool", Symbol("restartCount")=>"Int32", Symbol("started")=>"Bool", Symbol("state")=>"IoK8sApiCoreV1ContainerState")
 Base.propertynames(::Type{ IoK8sApiCoreV1ContainerStatus }) = collect(keys(_property_map_IoK8sApiCoreV1ContainerStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ContainerStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ContainerStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ContainerStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ContainerStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1ContainerStatus)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta1DeploymentRollback <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -29,7 +28,7 @@ end # type IoK8sApiAppsV1beta1DeploymentRollback
 const _property_map_IoK8sApiAppsV1beta1DeploymentRollback = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("rollbackTo")=>Symbol("rollbackTo"), Symbol("updatedAnnotations")=>Symbol("updatedAnnotations"))
 const _property_types_IoK8sApiAppsV1beta1DeploymentRollback = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("rollbackTo")=>"IoK8sApiAppsV1beta1RollbackConfig", Symbol("updatedAnnotations")=>"Dict{String, String}")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta1DeploymentRollback }) = collect(keys(_property_map_IoK8sApiAppsV1beta1DeploymentRollback))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta1DeploymentRollback }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta1DeploymentRollback[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta1DeploymentRollback }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta1DeploymentRollback[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta1DeploymentRollback }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta1DeploymentRollback[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta1DeploymentRollback)

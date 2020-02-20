@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1SELinuxOptions <: SwaggerModel
     level::Any # spec type: Union{ Nothing, String } # spec name: level
     role::Any # spec type: Union{ Nothing, String } # spec name: role
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1SELinuxOptions
 const _property_map_IoK8sApiCoreV1SELinuxOptions = Dict{Symbol,Symbol}(Symbol("level")=>Symbol("level"), Symbol("role")=>Symbol("role"), Symbol("type")=>Symbol("type"), Symbol("user")=>Symbol("user"))
 const _property_types_IoK8sApiCoreV1SELinuxOptions = Dict{Symbol,String}(Symbol("level")=>"String", Symbol("role")=>"String", Symbol("type")=>"String", Symbol("user")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1SELinuxOptions }) = collect(keys(_property_map_IoK8sApiCoreV1SELinuxOptions))
-Swagger.property_type(::Type{ IoK8sApiCoreV1SELinuxOptions }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1SELinuxOptions[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1SELinuxOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1SELinuxOptions[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1SELinuxOptions }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1SELinuxOptions[property_name]
 
 function check_required(o::IoK8sApiCoreV1SELinuxOptions)

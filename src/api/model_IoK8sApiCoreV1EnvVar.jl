@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EnvVar <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1EnvVar
 const _property_map_IoK8sApiCoreV1EnvVar = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("value")=>Symbol("value"), Symbol("valueFrom")=>Symbol("valueFrom"))
 const _property_types_IoK8sApiCoreV1EnvVar = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String", Symbol("valueFrom")=>"IoK8sApiCoreV1EnvVarSource")
 Base.propertynames(::Type{ IoK8sApiCoreV1EnvVar }) = collect(keys(_property_map_IoK8sApiCoreV1EnvVar))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EnvVar }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EnvVar[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EnvVar }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EnvVar[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EnvVar }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EnvVar[property_name]
 
 function check_required(o::IoK8sApiCoreV1EnvVar)

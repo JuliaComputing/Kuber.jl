@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NamespaceSpec <: SwaggerModel
     finalizers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: finalizers
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1NamespaceSpec
 const _property_map_IoK8sApiCoreV1NamespaceSpec = Dict{Symbol,Symbol}(Symbol("finalizers")=>Symbol("finalizers"))
 const _property_types_IoK8sApiCoreV1NamespaceSpec = Dict{Symbol,String}(Symbol("finalizers")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiCoreV1NamespaceSpec }) = collect(keys(_property_map_IoK8sApiCoreV1NamespaceSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NamespaceSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NamespaceSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NamespaceSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NamespaceSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NamespaceSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NamespaceSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1NamespaceSpec)

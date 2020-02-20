@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimStatus <: SwaggerModel
     accessModes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: accessModes
     capacity::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: capacity
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1PersistentVolumeClaimStatus
 const _property_map_IoK8sApiCoreV1PersistentVolumeClaimStatus = Dict{Symbol,Symbol}(Symbol("accessModes")=>Symbol("accessModes"), Symbol("capacity")=>Symbol("capacity"), Symbol("conditions")=>Symbol("conditions"), Symbol("phase")=>Symbol("phase"))
 const _property_types_IoK8sApiCoreV1PersistentVolumeClaimStatus = Dict{Symbol,String}(Symbol("accessModes")=>"Vector{String}", Symbol("capacity")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("conditions")=>"Vector{IoK8sApiCoreV1PersistentVolumeClaimCondition}", Symbol("phase")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1PersistentVolumeClaimStatus }) = collect(keys(_property_map_IoK8sApiCoreV1PersistentVolumeClaimStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PersistentVolumeClaimStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PersistentVolumeClaimStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1PersistentVolumeClaimStatus)

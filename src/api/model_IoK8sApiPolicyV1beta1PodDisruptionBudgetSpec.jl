@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec <: SwaggerModel
     maxUnavailable::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: maxUnavailable
     minAvailable::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: minAvailable
@@ -23,7 +22,7 @@ end # type IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec
 const _property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec = Dict{Symbol,Symbol}(Symbol("maxUnavailable")=>Symbol("maxUnavailable"), Symbol("minAvailable")=>Symbol("minAvailable"), Symbol("selector")=>Symbol("selector"))
 const _property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec = Dict{Symbol,String}(Symbol("maxUnavailable")=>"IoK8sApimachineryPkgUtilIntstrIntOrString", Symbol("minAvailable")=>"IoK8sApimachineryPkgUtilIntstrIntOrString", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector")
 Base.propertynames(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec }) = collect(keys(_property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec))
-Swagger.property_type(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec }, property_name::Symbol) =  _property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec[property_name]
 
 function check_required(o::IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1HTTPHeader <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1HTTPHeader
 const _property_map_IoK8sApiCoreV1HTTPHeader = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("value")=>Symbol("value"))
 const _property_types_IoK8sApiCoreV1HTTPHeader = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1HTTPHeader }) = collect(keys(_property_map_IoK8sApiCoreV1HTTPHeader))
-Swagger.property_type(::Type{ IoK8sApiCoreV1HTTPHeader }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1HTTPHeader[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1HTTPHeader }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1HTTPHeader[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1HTTPHeader }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1HTTPHeader[property_name]
 
 function check_required(o::IoK8sApiCoreV1HTTPHeader)

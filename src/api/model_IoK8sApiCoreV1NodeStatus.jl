@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeStatus <: SwaggerModel
     addresses::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NodeAddress} } # spec name: addresses
     allocatable::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: allocatable
@@ -47,7 +46,7 @@ end # type IoK8sApiCoreV1NodeStatus
 const _property_map_IoK8sApiCoreV1NodeStatus = Dict{Symbol,Symbol}(Symbol("addresses")=>Symbol("addresses"), Symbol("allocatable")=>Symbol("allocatable"), Symbol("capacity")=>Symbol("capacity"), Symbol("conditions")=>Symbol("conditions"), Symbol("config")=>Symbol("config"), Symbol("daemonEndpoints")=>Symbol("daemonEndpoints"), Symbol("images")=>Symbol("images"), Symbol("nodeInfo")=>Symbol("nodeInfo"), Symbol("phase")=>Symbol("phase"), Symbol("volumesAttached")=>Symbol("volumesAttached"), Symbol("volumesInUse")=>Symbol("volumesInUse"))
 const _property_types_IoK8sApiCoreV1NodeStatus = Dict{Symbol,String}(Symbol("addresses")=>"Vector{IoK8sApiCoreV1NodeAddress}", Symbol("allocatable")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("capacity")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("conditions")=>"Vector{IoK8sApiCoreV1NodeCondition}", Symbol("config")=>"IoK8sApiCoreV1NodeConfigStatus", Symbol("daemonEndpoints")=>"IoK8sApiCoreV1NodeDaemonEndpoints", Symbol("images")=>"Vector{IoK8sApiCoreV1ContainerImage}", Symbol("nodeInfo")=>"IoK8sApiCoreV1NodeSystemInfo", Symbol("phase")=>"String", Symbol("volumesAttached")=>"Vector{IoK8sApiCoreV1AttachedVolume}", Symbol("volumesInUse")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeStatus }) = collect(keys(_property_map_IoK8sApiCoreV1NodeStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeStatus)

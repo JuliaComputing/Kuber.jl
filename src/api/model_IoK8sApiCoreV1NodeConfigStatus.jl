@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeConfigStatus <: SwaggerModel
     active::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeConfigSource } # spec name: active
     assigned::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeConfigSource } # spec name: assigned
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1NodeConfigStatus
 const _property_map_IoK8sApiCoreV1NodeConfigStatus = Dict{Symbol,Symbol}(Symbol("active")=>Symbol("active"), Symbol("assigned")=>Symbol("assigned"), Symbol("error")=>Symbol("error"), Symbol("lastKnownGood")=>Symbol("lastKnownGood"))
 const _property_types_IoK8sApiCoreV1NodeConfigStatus = Dict{Symbol,String}(Symbol("active")=>"IoK8sApiCoreV1NodeConfigSource", Symbol("assigned")=>"IoK8sApiCoreV1NodeConfigSource", Symbol("error")=>"String", Symbol("lastKnownGood")=>"IoK8sApiCoreV1NodeConfigSource")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeConfigStatus }) = collect(keys(_property_map_IoK8sApiCoreV1NodeConfigStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeConfigStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeConfigStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeConfigStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeConfigStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeConfigStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeConfigStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeConfigStatus)

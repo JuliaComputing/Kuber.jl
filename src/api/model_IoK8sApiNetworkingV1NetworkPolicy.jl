@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNetworkingV1NetworkPolicy <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -26,7 +25,7 @@ end # type IoK8sApiNetworkingV1NetworkPolicy
 const _property_map_IoK8sApiNetworkingV1NetworkPolicy = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("spec")=>Symbol("spec"))
 const _property_types_IoK8sApiNetworkingV1NetworkPolicy = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("spec")=>"IoK8sApiNetworkingV1NetworkPolicySpec")
 Base.propertynames(::Type{ IoK8sApiNetworkingV1NetworkPolicy }) = collect(keys(_property_map_IoK8sApiNetworkingV1NetworkPolicy))
-Swagger.property_type(::Type{ IoK8sApiNetworkingV1NetworkPolicy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNetworkingV1NetworkPolicy[name]))}
+Swagger.property_type(::Type{ IoK8sApiNetworkingV1NetworkPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1NetworkPolicy[name]))}
 Swagger.field_name(::Type{ IoK8sApiNetworkingV1NetworkPolicy }, property_name::Symbol) =  _property_map_IoK8sApiNetworkingV1NetworkPolicy[property_name]
 
 function check_required(o::IoK8sApiNetworkingV1NetworkPolicy)

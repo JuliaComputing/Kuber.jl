@@ -2,22 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NamespaceStatus <: SwaggerModel
+    conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NamespaceCondition} } # spec name: conditions
     phase::Any # spec type: Union{ Nothing, String } # spec name: phase
 
-    function IoK8sApiCoreV1NamespaceStatus(;phase=nothing)
+    function IoK8sApiCoreV1NamespaceStatus(;conditions=nothing, phase=nothing)
         o = new()
+        validate_property(IoK8sApiCoreV1NamespaceStatus, Symbol("conditions"), conditions)
+        setfield!(o, Symbol("conditions"), conditions)
         validate_property(IoK8sApiCoreV1NamespaceStatus, Symbol("phase"), phase)
         setfield!(o, Symbol("phase"), phase)
         o
     end
 end # type IoK8sApiCoreV1NamespaceStatus
 
-const _property_map_IoK8sApiCoreV1NamespaceStatus = Dict{Symbol,Symbol}(Symbol("phase")=>Symbol("phase"))
-const _property_types_IoK8sApiCoreV1NamespaceStatus = Dict{Symbol,String}(Symbol("phase")=>"String")
+const _property_map_IoK8sApiCoreV1NamespaceStatus = Dict{Symbol,Symbol}(Symbol("conditions")=>Symbol("conditions"), Symbol("phase")=>Symbol("phase"))
+const _property_types_IoK8sApiCoreV1NamespaceStatus = Dict{Symbol,String}(Symbol("conditions")=>"Vector{IoK8sApiCoreV1NamespaceCondition}", Symbol("phase")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1NamespaceStatus }) = collect(keys(_property_map_IoK8sApiCoreV1NamespaceStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NamespaceStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NamespaceStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NamespaceStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NamespaceStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NamespaceStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NamespaceStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1NamespaceStatus)

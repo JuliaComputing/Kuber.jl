@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1DaemonSetUpdateStrategy <: SwaggerModel
     rollingUpdate::Any # spec type: Union{ Nothing, IoK8sApiAppsV1RollingUpdateDaemonSet } # spec name: rollingUpdate
     type::Any # spec type: Union{ Nothing, String } # spec name: type
@@ -20,7 +19,7 @@ end # type IoK8sApiAppsV1DaemonSetUpdateStrategy
 const _property_map_IoK8sApiAppsV1DaemonSetUpdateStrategy = Dict{Symbol,Symbol}(Symbol("rollingUpdate")=>Symbol("rollingUpdate"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiAppsV1DaemonSetUpdateStrategy = Dict{Symbol,String}(Symbol("rollingUpdate")=>"IoK8sApiAppsV1RollingUpdateDaemonSet", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiAppsV1DaemonSetUpdateStrategy }) = collect(keys(_property_map_IoK8sApiAppsV1DaemonSetUpdateStrategy))
-Swagger.property_type(::Type{ IoK8sApiAppsV1DaemonSetUpdateStrategy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1DaemonSetUpdateStrategy[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1DaemonSetUpdateStrategy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1DaemonSetUpdateStrategy[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1DaemonSetUpdateStrategy }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1DaemonSetUpdateStrategy[property_name]
 
 function check_required(o::IoK8sApiAppsV1DaemonSetUpdateStrategy)

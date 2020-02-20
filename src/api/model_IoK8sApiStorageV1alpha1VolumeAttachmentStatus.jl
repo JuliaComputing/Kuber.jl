@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiStorageV1alpha1VolumeAttachmentStatus <: SwaggerModel
     attachError::Any # spec type: Union{ Nothing, IoK8sApiStorageV1alpha1VolumeError } # spec name: attachError
     attached::Any # spec type: Union{ Nothing, Bool } # spec name: attached
@@ -26,7 +25,7 @@ end # type IoK8sApiStorageV1alpha1VolumeAttachmentStatus
 const _property_map_IoK8sApiStorageV1alpha1VolumeAttachmentStatus = Dict{Symbol,Symbol}(Symbol("attachError")=>Symbol("attachError"), Symbol("attached")=>Symbol("attached"), Symbol("attachmentMetadata")=>Symbol("attachmentMetadata"), Symbol("detachError")=>Symbol("detachError"))
 const _property_types_IoK8sApiStorageV1alpha1VolumeAttachmentStatus = Dict{Symbol,String}(Symbol("attachError")=>"IoK8sApiStorageV1alpha1VolumeError", Symbol("attached")=>"Bool", Symbol("attachmentMetadata")=>"Dict{String, String}", Symbol("detachError")=>"IoK8sApiStorageV1alpha1VolumeError")
 Base.propertynames(::Type{ IoK8sApiStorageV1alpha1VolumeAttachmentStatus }) = collect(keys(_property_map_IoK8sApiStorageV1alpha1VolumeAttachmentStatus))
-Swagger.property_type(::Type{ IoK8sApiStorageV1alpha1VolumeAttachmentStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiStorageV1alpha1VolumeAttachmentStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiStorageV1alpha1VolumeAttachmentStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiStorageV1alpha1VolumeAttachmentStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiStorageV1alpha1VolumeAttachmentStatus }, property_name::Symbol) =  _property_map_IoK8sApiStorageV1alpha1VolumeAttachmentStatus[property_name]
 
 function check_required(o::IoK8sApiStorageV1alpha1VolumeAttachmentStatus)

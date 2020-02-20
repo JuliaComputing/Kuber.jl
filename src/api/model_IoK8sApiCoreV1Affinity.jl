@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Affinity <: SwaggerModel
     nodeAffinity::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeAffinity } # spec name: nodeAffinity
     podAffinity::Any # spec type: Union{ Nothing, IoK8sApiCoreV1PodAffinity } # spec name: podAffinity
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1Affinity
 const _property_map_IoK8sApiCoreV1Affinity = Dict{Symbol,Symbol}(Symbol("nodeAffinity")=>Symbol("nodeAffinity"), Symbol("podAffinity")=>Symbol("podAffinity"), Symbol("podAntiAffinity")=>Symbol("podAntiAffinity"))
 const _property_types_IoK8sApiCoreV1Affinity = Dict{Symbol,String}(Symbol("nodeAffinity")=>"IoK8sApiCoreV1NodeAffinity", Symbol("podAffinity")=>"IoK8sApiCoreV1PodAffinity", Symbol("podAntiAffinity")=>"IoK8sApiCoreV1PodAntiAffinity")
 Base.propertynames(::Type{ IoK8sApiCoreV1Affinity }) = collect(keys(_property_map_IoK8sApiCoreV1Affinity))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Affinity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Affinity[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Affinity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Affinity[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Affinity }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Affinity[property_name]
 
 function check_required(o::IoK8sApiCoreV1Affinity)

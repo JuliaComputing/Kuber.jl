@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Lifecycle <: SwaggerModel
     postStart::Any # spec type: Union{ Nothing, IoK8sApiCoreV1Handler } # spec name: postStart
     preStop::Any # spec type: Union{ Nothing, IoK8sApiCoreV1Handler } # spec name: preStop
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1Lifecycle
 const _property_map_IoK8sApiCoreV1Lifecycle = Dict{Symbol,Symbol}(Symbol("postStart")=>Symbol("postStart"), Symbol("preStop")=>Symbol("preStop"))
 const _property_types_IoK8sApiCoreV1Lifecycle = Dict{Symbol,String}(Symbol("postStart")=>"IoK8sApiCoreV1Handler", Symbol("preStop")=>"IoK8sApiCoreV1Handler")
 Base.propertynames(::Type{ IoK8sApiCoreV1Lifecycle }) = collect(keys(_property_map_IoK8sApiCoreV1Lifecycle))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Lifecycle }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Lifecycle[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Lifecycle }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Lifecycle[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Lifecycle }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Lifecycle[property_name]
 
 function check_required(o::IoK8sApiCoreV1Lifecycle)

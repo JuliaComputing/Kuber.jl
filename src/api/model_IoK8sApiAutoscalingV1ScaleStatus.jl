@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV1ScaleStatus <: SwaggerModel
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
     selector::Any # spec type: Union{ Nothing, String } # spec name: selector
@@ -20,7 +19,7 @@ end # type IoK8sApiAutoscalingV1ScaleStatus
 const _property_map_IoK8sApiAutoscalingV1ScaleStatus = Dict{Symbol,Symbol}(Symbol("replicas")=>Symbol("replicas"), Symbol("selector")=>Symbol("selector"))
 const _property_types_IoK8sApiAutoscalingV1ScaleStatus = Dict{Symbol,String}(Symbol("replicas")=>"Int32", Symbol("selector")=>"String")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV1ScaleStatus }) = collect(keys(_property_map_IoK8sApiAutoscalingV1ScaleStatus))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV1ScaleStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV1ScaleStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV1ScaleStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV1ScaleStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV1ScaleStatus }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV1ScaleStatus[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV1ScaleStatus)

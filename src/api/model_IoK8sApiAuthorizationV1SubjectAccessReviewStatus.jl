@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1SubjectAccessReviewStatus <: SwaggerModel
     allowed::Any # spec type: Union{ Nothing, Bool } # spec name: allowed
     denied::Any # spec type: Union{ Nothing, Bool } # spec name: denied
@@ -26,7 +25,7 @@ end # type IoK8sApiAuthorizationV1SubjectAccessReviewStatus
 const _property_map_IoK8sApiAuthorizationV1SubjectAccessReviewStatus = Dict{Symbol,Symbol}(Symbol("allowed")=>Symbol("allowed"), Symbol("denied")=>Symbol("denied"), Symbol("evaluationError")=>Symbol("evaluationError"), Symbol("reason")=>Symbol("reason"))
 const _property_types_IoK8sApiAuthorizationV1SubjectAccessReviewStatus = Dict{Symbol,String}(Symbol("allowed")=>"Bool", Symbol("denied")=>"Bool", Symbol("evaluationError")=>"String", Symbol("reason")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewStatus }) = collect(keys(_property_map_IoK8sApiAuthorizationV1SubjectAccessReviewStatus))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectAccessReviewStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectAccessReviewStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewStatus }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1SubjectAccessReviewStatus[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1SubjectAccessReviewStatus)

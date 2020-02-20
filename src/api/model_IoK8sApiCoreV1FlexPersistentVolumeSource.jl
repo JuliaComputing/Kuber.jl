@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1FlexPersistentVolumeSource <: SwaggerModel
     driver::Any # spec type: Union{ Nothing, String } # spec name: driver
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
@@ -29,7 +28,7 @@ end # type IoK8sApiCoreV1FlexPersistentVolumeSource
 const _property_map_IoK8sApiCoreV1FlexPersistentVolumeSource = Dict{Symbol,Symbol}(Symbol("driver")=>Symbol("driver"), Symbol("fsType")=>Symbol("fsType"), Symbol("options")=>Symbol("options"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("secretRef")=>Symbol("secretRef"))
 const _property_types_IoK8sApiCoreV1FlexPersistentVolumeSource = Dict{Symbol,String}(Symbol("driver")=>"String", Symbol("fsType")=>"String", Symbol("options")=>"Dict{String, String}", Symbol("readOnly")=>"Bool", Symbol("secretRef")=>"IoK8sApiCoreV1SecretReference")
 Base.propertynames(::Type{ IoK8sApiCoreV1FlexPersistentVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1FlexPersistentVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1FlexPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1FlexPersistentVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1FlexPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1FlexPersistentVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1FlexPersistentVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1FlexPersistentVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1FlexPersistentVolumeSource)

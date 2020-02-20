@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Taint <: SwaggerModel
     effect::Any # spec type: Union{ Nothing, String } # spec name: effect
     key::Any # spec type: Union{ Nothing, String } # spec name: key
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1Taint
 const _property_map_IoK8sApiCoreV1Taint = Dict{Symbol,Symbol}(Symbol("effect")=>Symbol("effect"), Symbol("key")=>Symbol("key"), Symbol("timeAdded")=>Symbol("timeAdded"), Symbol("value")=>Symbol("value"))
 const _property_types_IoK8sApiCoreV1Taint = Dict{Symbol,String}(Symbol("effect")=>"String", Symbol("key")=>"String", Symbol("timeAdded")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("value")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1Taint }) = collect(keys(_property_map_IoK8sApiCoreV1Taint))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Taint }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Taint[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Taint }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Taint[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Taint }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Taint[property_name]
 
 function check_required(o::IoK8sApiCoreV1Taint)

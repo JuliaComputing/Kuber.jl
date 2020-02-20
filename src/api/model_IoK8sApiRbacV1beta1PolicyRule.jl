@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiRbacV1beta1PolicyRule <: SwaggerModel
     apiGroups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: apiGroups
     nonResourceURLs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nonResourceURLs
@@ -29,7 +28,7 @@ end # type IoK8sApiRbacV1beta1PolicyRule
 const _property_map_IoK8sApiRbacV1beta1PolicyRule = Dict{Symbol,Symbol}(Symbol("apiGroups")=>Symbol("apiGroups"), Symbol("nonResourceURLs")=>Symbol("nonResourceURLs"), Symbol("resourceNames")=>Symbol("resourceNames"), Symbol("resources")=>Symbol("resources"), Symbol("verbs")=>Symbol("verbs"))
 const _property_types_IoK8sApiRbacV1beta1PolicyRule = Dict{Symbol,String}(Symbol("apiGroups")=>"Vector{String}", Symbol("nonResourceURLs")=>"Vector{String}", Symbol("resourceNames")=>"Vector{String}", Symbol("resources")=>"Vector{String}", Symbol("verbs")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiRbacV1beta1PolicyRule }) = collect(keys(_property_map_IoK8sApiRbacV1beta1PolicyRule))
-Swagger.property_type(::Type{ IoK8sApiRbacV1beta1PolicyRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiRbacV1beta1PolicyRule[name]))}
+Swagger.property_type(::Type{ IoK8sApiRbacV1beta1PolicyRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiRbacV1beta1PolicyRule[name]))}
 Swagger.field_name(::Type{ IoK8sApiRbacV1beta1PolicyRule }, property_name::Symbol) =  _property_map_IoK8sApiRbacV1beta1PolicyRule[property_name]
 
 function check_required(o::IoK8sApiRbacV1beta1PolicyRule)

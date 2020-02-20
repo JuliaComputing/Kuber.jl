@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1APIResource <: SwaggerModel
     categories::Any # spec type: Union{ Nothing, Vector{String} } # spec name: categories
     group::Any # spec type: Union{ Nothing, String } # spec name: group
@@ -44,7 +43,7 @@ end # type IoK8sApimachineryPkgApisMetaV1APIResource
 const _property_map_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,Symbol}(Symbol("categories")=>Symbol("categories"), Symbol("group")=>Symbol("group"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("namespaced")=>Symbol("namespaced"), Symbol("shortNames")=>Symbol("shortNames"), Symbol("singularName")=>Symbol("singularName"), Symbol("storageVersionHash")=>Symbol("storageVersionHash"), Symbol("verbs")=>Symbol("verbs"), Symbol("version")=>Symbol("version"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1APIResource = Dict{Symbol,String}(Symbol("categories")=>"Vector{String}", Symbol("group")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("namespaced")=>"Bool", Symbol("shortNames")=>"Vector{String}", Symbol("singularName")=>"String", Symbol("storageVersionHash")=>"String", Symbol("verbs")=>"Vector{String}", Symbol("version")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1APIResource))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1APIResource[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1APIResource[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1APIResource }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1APIResource[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1APIResource)

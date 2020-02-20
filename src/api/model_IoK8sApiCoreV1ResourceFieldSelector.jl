@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ResourceFieldSelector <: SwaggerModel
     containerName::Any # spec type: Union{ Nothing, String } # spec name: containerName
     divisor::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: divisor
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1ResourceFieldSelector
 const _property_map_IoK8sApiCoreV1ResourceFieldSelector = Dict{Symbol,Symbol}(Symbol("containerName")=>Symbol("containerName"), Symbol("divisor")=>Symbol("divisor"), Symbol("resource")=>Symbol("resource"))
 const _property_types_IoK8sApiCoreV1ResourceFieldSelector = Dict{Symbol,String}(Symbol("containerName")=>"String", Symbol("divisor")=>"IoK8sApimachineryPkgApiResourceQuantity", Symbol("resource")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ResourceFieldSelector }) = collect(keys(_property_map_IoK8sApiCoreV1ResourceFieldSelector))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ResourceFieldSelector }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ResourceFieldSelector[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ResourceFieldSelector }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ResourceFieldSelector[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ResourceFieldSelector }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ResourceFieldSelector[property_name]
 
 function check_required(o::IoK8sApiCoreV1ResourceFieldSelector)

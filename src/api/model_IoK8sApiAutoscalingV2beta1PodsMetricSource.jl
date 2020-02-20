@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta1PodsMetricSource <: SwaggerModel
     metricName::Any # spec type: Union{ Nothing, String } # spec name: metricName
     selector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: selector
@@ -23,7 +22,7 @@ end # type IoK8sApiAutoscalingV2beta1PodsMetricSource
 const _property_map_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{Symbol,Symbol}(Symbol("metricName")=>Symbol("metricName"), Symbol("selector")=>Symbol("selector"), Symbol("targetAverageValue")=>Symbol("targetAverageValue"))
 const _property_types_IoK8sApiAutoscalingV2beta1PodsMetricSource = Dict{Symbol,String}(Symbol("metricName")=>"String", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("targetAverageValue")=>"IoK8sApimachineryPkgApiResourceQuantity")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta1PodsMetricSource))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1PodsMetricSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1PodsMetricSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta1PodsMetricSource }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta1PodsMetricSource[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta1PodsMetricSource)

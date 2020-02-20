@@ -2,22 +2,27 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNodeV1alpha1RuntimeClassSpec <: SwaggerModel
+    overhead::Any # spec type: Union{ Nothing, IoK8sApiNodeV1alpha1Overhead } # spec name: overhead
     runtimeHandler::Any # spec type: Union{ Nothing, String } # spec name: runtimeHandler
+    scheduling::Any # spec type: Union{ Nothing, IoK8sApiNodeV1alpha1Scheduling } # spec name: scheduling
 
-    function IoK8sApiNodeV1alpha1RuntimeClassSpec(;runtimeHandler=nothing)
+    function IoK8sApiNodeV1alpha1RuntimeClassSpec(;overhead=nothing, runtimeHandler=nothing, scheduling=nothing)
         o = new()
+        validate_property(IoK8sApiNodeV1alpha1RuntimeClassSpec, Symbol("overhead"), overhead)
+        setfield!(o, Symbol("overhead"), overhead)
         validate_property(IoK8sApiNodeV1alpha1RuntimeClassSpec, Symbol("runtimeHandler"), runtimeHandler)
         setfield!(o, Symbol("runtimeHandler"), runtimeHandler)
+        validate_property(IoK8sApiNodeV1alpha1RuntimeClassSpec, Symbol("scheduling"), scheduling)
+        setfield!(o, Symbol("scheduling"), scheduling)
         o
     end
 end # type IoK8sApiNodeV1alpha1RuntimeClassSpec
 
-const _property_map_IoK8sApiNodeV1alpha1RuntimeClassSpec = Dict{Symbol,Symbol}(Symbol("runtimeHandler")=>Symbol("runtimeHandler"))
-const _property_types_IoK8sApiNodeV1alpha1RuntimeClassSpec = Dict{Symbol,String}(Symbol("runtimeHandler")=>"String")
+const _property_map_IoK8sApiNodeV1alpha1RuntimeClassSpec = Dict{Symbol,Symbol}(Symbol("overhead")=>Symbol("overhead"), Symbol("runtimeHandler")=>Symbol("runtimeHandler"), Symbol("scheduling")=>Symbol("scheduling"))
+const _property_types_IoK8sApiNodeV1alpha1RuntimeClassSpec = Dict{Symbol,String}(Symbol("overhead")=>"IoK8sApiNodeV1alpha1Overhead", Symbol("runtimeHandler")=>"String", Symbol("scheduling")=>"IoK8sApiNodeV1alpha1Scheduling")
 Base.propertynames(::Type{ IoK8sApiNodeV1alpha1RuntimeClassSpec }) = collect(keys(_property_map_IoK8sApiNodeV1alpha1RuntimeClassSpec))
-Swagger.property_type(::Type{ IoK8sApiNodeV1alpha1RuntimeClassSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNodeV1alpha1RuntimeClassSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiNodeV1alpha1RuntimeClassSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNodeV1alpha1RuntimeClassSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiNodeV1alpha1RuntimeClassSpec }, property_name::Symbol) =  _property_map_IoK8sApiNodeV1alpha1RuntimeClassSpec[property_name]
 
 function check_required(o::IoK8sApiNodeV1alpha1RuntimeClassSpec)

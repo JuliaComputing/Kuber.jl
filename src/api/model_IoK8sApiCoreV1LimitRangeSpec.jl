@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1LimitRangeSpec <: SwaggerModel
     limits::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1LimitRangeItem} } # spec name: limits
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1LimitRangeSpec
 const _property_map_IoK8sApiCoreV1LimitRangeSpec = Dict{Symbol,Symbol}(Symbol("limits")=>Symbol("limits"))
 const _property_types_IoK8sApiCoreV1LimitRangeSpec = Dict{Symbol,String}(Symbol("limits")=>"Vector{IoK8sApiCoreV1LimitRangeItem}")
 Base.propertynames(::Type{ IoK8sApiCoreV1LimitRangeSpec }) = collect(keys(_property_map_IoK8sApiCoreV1LimitRangeSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1LimitRangeSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1LimitRangeSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1LimitRangeSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1LimitRangeSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1LimitRangeSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1LimitRangeSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1LimitRangeSpec)

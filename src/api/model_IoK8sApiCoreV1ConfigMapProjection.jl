@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ConfigMapProjection <: SwaggerModel
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1KeyToPath} } # spec name: items
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1ConfigMapProjection
 const _property_map_IoK8sApiCoreV1ConfigMapProjection = Dict{Symbol,Symbol}(Symbol("items")=>Symbol("items"), Symbol("name")=>Symbol("name"), Symbol("optional")=>Symbol("optional"))
 const _property_types_IoK8sApiCoreV1ConfigMapProjection = Dict{Symbol,String}(Symbol("items")=>"Vector{IoK8sApiCoreV1KeyToPath}", Symbol("name")=>"String", Symbol("optional")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1ConfigMapProjection }) = collect(keys(_property_map_IoK8sApiCoreV1ConfigMapProjection))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMapProjection }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ConfigMapProjection[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMapProjection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ConfigMapProjection[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ConfigMapProjection }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ConfigMapProjection[property_name]
 
 function check_required(o::IoK8sApiCoreV1ConfigMapProjection)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Handler <: SwaggerModel
     exec::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ExecAction } # spec name: exec
     httpGet::Any # spec type: Union{ Nothing, IoK8sApiCoreV1HTTPGetAction } # spec name: httpGet
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1Handler
 const _property_map_IoK8sApiCoreV1Handler = Dict{Symbol,Symbol}(Symbol("exec")=>Symbol("exec"), Symbol("httpGet")=>Symbol("httpGet"), Symbol("tcpSocket")=>Symbol("tcpSocket"))
 const _property_types_IoK8sApiCoreV1Handler = Dict{Symbol,String}(Symbol("exec")=>"IoK8sApiCoreV1ExecAction", Symbol("httpGet")=>"IoK8sApiCoreV1HTTPGetAction", Symbol("tcpSocket")=>"IoK8sApiCoreV1TCPSocketAction")
 Base.propertynames(::Type{ IoK8sApiCoreV1Handler }) = collect(keys(_property_map_IoK8sApiCoreV1Handler))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Handler }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Handler[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Handler }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Handler[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Handler }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Handler[property_name]
 
 function check_required(o::IoK8sApiCoreV1Handler)

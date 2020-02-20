@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1Event <: SwaggerModel
     action::Any # spec type: Union{ Nothing, String } # spec name: action
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
@@ -65,7 +64,7 @@ end # type IoK8sApiCoreV1Event
 const _property_map_IoK8sApiCoreV1Event = Dict{Symbol,Symbol}(Symbol("action")=>Symbol("action"), Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("count")=>Symbol("count"), Symbol("eventTime")=>Symbol("eventTime"), Symbol("firstTimestamp")=>Symbol("firstTimestamp"), Symbol("involvedObject")=>Symbol("involvedObject"), Symbol("kind")=>Symbol("kind"), Symbol("lastTimestamp")=>Symbol("lastTimestamp"), Symbol("message")=>Symbol("message"), Symbol("metadata")=>Symbol("metadata"), Symbol("reason")=>Symbol("reason"), Symbol("related")=>Symbol("related"), Symbol("reportingComponent")=>Symbol("reportingComponent"), Symbol("reportingInstance")=>Symbol("reportingInstance"), Symbol("series")=>Symbol("series"), Symbol("source")=>Symbol("source"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCoreV1Event = Dict{Symbol,String}(Symbol("action")=>"String", Symbol("apiVersion")=>"String", Symbol("count")=>"Int32", Symbol("eventTime")=>"IoK8sApimachineryPkgApisMetaV1MicroTime", Symbol("firstTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("involvedObject")=>"IoK8sApiCoreV1ObjectReference", Symbol("kind")=>"String", Symbol("lastTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("reason")=>"String", Symbol("related")=>"IoK8sApiCoreV1ObjectReference", Symbol("reportingComponent")=>"String", Symbol("reportingInstance")=>"String", Symbol("series")=>"IoK8sApiCoreV1EventSeries", Symbol("source")=>"IoK8sApiCoreV1EventSource", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1Event }) = collect(keys(_property_map_IoK8sApiCoreV1Event))
-Swagger.property_type(::Type{ IoK8sApiCoreV1Event }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1Event[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1Event }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1Event[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1Event }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1Event[property_name]
 
 function check_required(o::IoK8sApiCoreV1Event)

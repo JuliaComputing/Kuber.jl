@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1DownwardAPIVolumeFile <: SwaggerModel
     fieldRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ObjectFieldSelector } # spec name: fieldRef
     mode::Any # spec type: Union{ Nothing, Int32 } # spec name: mode
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1DownwardAPIVolumeFile
 const _property_map_IoK8sApiCoreV1DownwardAPIVolumeFile = Dict{Symbol,Symbol}(Symbol("fieldRef")=>Symbol("fieldRef"), Symbol("mode")=>Symbol("mode"), Symbol("path")=>Symbol("path"), Symbol("resourceFieldRef")=>Symbol("resourceFieldRef"))
 const _property_types_IoK8sApiCoreV1DownwardAPIVolumeFile = Dict{Symbol,String}(Symbol("fieldRef")=>"IoK8sApiCoreV1ObjectFieldSelector", Symbol("mode")=>"Int32", Symbol("path")=>"String", Symbol("resourceFieldRef")=>"IoK8sApiCoreV1ResourceFieldSelector")
 Base.propertynames(::Type{ IoK8sApiCoreV1DownwardAPIVolumeFile }) = collect(keys(_property_map_IoK8sApiCoreV1DownwardAPIVolumeFile))
-Swagger.property_type(::Type{ IoK8sApiCoreV1DownwardAPIVolumeFile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1DownwardAPIVolumeFile[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1DownwardAPIVolumeFile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1DownwardAPIVolumeFile[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1DownwardAPIVolumeFile }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1DownwardAPIVolumeFile[property_name]
 
 function check_required(o::IoK8sApiCoreV1DownwardAPIVolumeFile)

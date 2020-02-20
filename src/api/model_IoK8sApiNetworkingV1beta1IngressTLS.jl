@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNetworkingV1beta1IngressTLS <: SwaggerModel
     hosts::Any # spec type: Union{ Nothing, Vector{String} } # spec name: hosts
     secretName::Any # spec type: Union{ Nothing, String } # spec name: secretName
@@ -20,7 +19,7 @@ end # type IoK8sApiNetworkingV1beta1IngressTLS
 const _property_map_IoK8sApiNetworkingV1beta1IngressTLS = Dict{Symbol,Symbol}(Symbol("hosts")=>Symbol("hosts"), Symbol("secretName")=>Symbol("secretName"))
 const _property_types_IoK8sApiNetworkingV1beta1IngressTLS = Dict{Symbol,String}(Symbol("hosts")=>"Vector{String}", Symbol("secretName")=>"String")
 Base.propertynames(::Type{ IoK8sApiNetworkingV1beta1IngressTLS }) = collect(keys(_property_map_IoK8sApiNetworkingV1beta1IngressTLS))
-Swagger.property_type(::Type{ IoK8sApiNetworkingV1beta1IngressTLS }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNetworkingV1beta1IngressTLS[name]))}
+Swagger.property_type(::Type{ IoK8sApiNetworkingV1beta1IngressTLS }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1beta1IngressTLS[name]))}
 Swagger.field_name(::Type{ IoK8sApiNetworkingV1beta1IngressTLS }, property_name::Symbol) =  _property_map_IoK8sApiNetworkingV1beta1IngressTLS[property_name]
 
 function check_required(o::IoK8sApiNetworkingV1beta1IngressTLS)

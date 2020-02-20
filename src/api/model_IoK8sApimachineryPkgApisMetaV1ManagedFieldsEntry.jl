@@ -2,20 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
-    fields::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Fields } # spec name: fields
+    fieldsType::Any # spec type: Union{ Nothing, String } # spec name: fieldsType
+    fieldsV1::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1FieldsV1 } # spec name: fieldsV1
     manager::Any # spec type: Union{ Nothing, String } # spec name: manager
     operation::Any # spec type: Union{ Nothing, String } # spec name: operation
     time::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: time
 
-    function IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry(;apiVersion=nothing, fields=nothing, manager=nothing, operation=nothing, time=nothing)
+    function IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry(;apiVersion=nothing, fieldsType=nothing, fieldsV1=nothing, manager=nothing, operation=nothing, time=nothing)
         o = new()
         validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("apiVersion"), apiVersion)
         setfield!(o, Symbol("apiVersion"), apiVersion)
-        validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("fields"), fields)
-        setfield!(o, Symbol("fields"), fields)
+        validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("fieldsType"), fieldsType)
+        setfield!(o, Symbol("fieldsType"), fieldsType)
+        validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("fieldsV1"), fieldsV1)
+        setfield!(o, Symbol("fieldsV1"), fieldsV1)
         validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("manager"), manager)
         setfield!(o, Symbol("manager"), manager)
         validate_property(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry, Symbol("operation"), operation)
@@ -26,10 +28,10 @@ mutable struct IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry <: SwaggerModel
     end
 end # type IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry
 
-const _property_map_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("fields")=>Symbol("fields"), Symbol("manager")=>Symbol("manager"), Symbol("operation")=>Symbol("operation"), Symbol("time")=>Symbol("time"))
-const _property_types_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("fields")=>"IoK8sApimachineryPkgApisMetaV1Fields", Symbol("manager")=>"String", Symbol("operation")=>"String", Symbol("time")=>"IoK8sApimachineryPkgApisMetaV1Time")
+const _property_map_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("fieldsType")=>Symbol("fieldsType"), Symbol("fieldsV1")=>Symbol("fieldsV1"), Symbol("manager")=>Symbol("manager"), Symbol("operation")=>Symbol("operation"), Symbol("time")=>Symbol("time"))
+const _property_types_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("fieldsType")=>"String", Symbol("fieldsV1")=>"IoK8sApimachineryPkgApisMetaV1FieldsV1", Symbol("manager")=>"String", Symbol("operation")=>"String", Symbol("time")=>"IoK8sApimachineryPkgApisMetaV1Time")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry)

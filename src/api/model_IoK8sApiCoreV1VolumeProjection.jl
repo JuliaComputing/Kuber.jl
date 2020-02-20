@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1VolumeProjection <: SwaggerModel
     configMap::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapProjection } # spec name: configMap
     downwardAPI::Any # spec type: Union{ Nothing, IoK8sApiCoreV1DownwardAPIProjection } # spec name: downwardAPI
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1VolumeProjection
 const _property_map_IoK8sApiCoreV1VolumeProjection = Dict{Symbol,Symbol}(Symbol("configMap")=>Symbol("configMap"), Symbol("downwardAPI")=>Symbol("downwardAPI"), Symbol("secret")=>Symbol("secret"), Symbol("serviceAccountToken")=>Symbol("serviceAccountToken"))
 const _property_types_IoK8sApiCoreV1VolumeProjection = Dict{Symbol,String}(Symbol("configMap")=>"IoK8sApiCoreV1ConfigMapProjection", Symbol("downwardAPI")=>"IoK8sApiCoreV1DownwardAPIProjection", Symbol("secret")=>"IoK8sApiCoreV1SecretProjection", Symbol("serviceAccountToken")=>"IoK8sApiCoreV1ServiceAccountTokenProjection")
 Base.propertynames(::Type{ IoK8sApiCoreV1VolumeProjection }) = collect(keys(_property_map_IoK8sApiCoreV1VolumeProjection))
-Swagger.property_type(::Type{ IoK8sApiCoreV1VolumeProjection }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1VolumeProjection[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1VolumeProjection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1VolumeProjection[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1VolumeProjection }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1VolumeProjection[property_name]
 
 function check_required(o::IoK8sApiCoreV1VolumeProjection)

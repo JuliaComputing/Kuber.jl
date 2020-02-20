@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2DaemonSetStatus <: SwaggerModel
     collisionCount::Any # spec type: Union{ Nothing, Int32 } # spec name: collisionCount
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAppsV1beta2DaemonSetCondition} } # spec name: conditions
@@ -44,7 +43,7 @@ end # type IoK8sApiAppsV1beta2DaemonSetStatus
 const _property_map_IoK8sApiAppsV1beta2DaemonSetStatus = Dict{Symbol,Symbol}(Symbol("collisionCount")=>Symbol("collisionCount"), Symbol("conditions")=>Symbol("conditions"), Symbol("currentNumberScheduled")=>Symbol("currentNumberScheduled"), Symbol("desiredNumberScheduled")=>Symbol("desiredNumberScheduled"), Symbol("numberAvailable")=>Symbol("numberAvailable"), Symbol("numberMisscheduled")=>Symbol("numberMisscheduled"), Symbol("numberReady")=>Symbol("numberReady"), Symbol("numberUnavailable")=>Symbol("numberUnavailable"), Symbol("observedGeneration")=>Symbol("observedGeneration"), Symbol("updatedNumberScheduled")=>Symbol("updatedNumberScheduled"))
 const _property_types_IoK8sApiAppsV1beta2DaemonSetStatus = Dict{Symbol,String}(Symbol("collisionCount")=>"Int32", Symbol("conditions")=>"Vector{IoK8sApiAppsV1beta2DaemonSetCondition}", Symbol("currentNumberScheduled")=>"Int32", Symbol("desiredNumberScheduled")=>"Int32", Symbol("numberAvailable")=>"Int32", Symbol("numberMisscheduled")=>"Int32", Symbol("numberReady")=>"Int32", Symbol("numberUnavailable")=>"Int32", Symbol("observedGeneration")=>"Int64", Symbol("updatedNumberScheduled")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2DaemonSetStatus }) = collect(keys(_property_map_IoK8sApiAppsV1beta2DaemonSetStatus))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DaemonSetStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2DaemonSetStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DaemonSetStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2DaemonSetStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2DaemonSetStatus }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2DaemonSetStatus[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2DaemonSetStatus)

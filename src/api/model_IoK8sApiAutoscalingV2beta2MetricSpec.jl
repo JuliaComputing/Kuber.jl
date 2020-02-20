@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta2MetricSpec <: SwaggerModel
     external::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2ExternalMetricSource } # spec name: external
     object::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2ObjectMetricSource } # spec name: object
@@ -29,7 +28,7 @@ end # type IoK8sApiAutoscalingV2beta2MetricSpec
 const _property_map_IoK8sApiAutoscalingV2beta2MetricSpec = Dict{Symbol,Symbol}(Symbol("external")=>Symbol("external"), Symbol("object")=>Symbol("object"), Symbol("pods")=>Symbol("pods"), Symbol("resource")=>Symbol("resource"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiAutoscalingV2beta2MetricSpec = Dict{Symbol,String}(Symbol("external")=>"IoK8sApiAutoscalingV2beta2ExternalMetricSource", Symbol("object")=>"IoK8sApiAutoscalingV2beta2ObjectMetricSource", Symbol("pods")=>"IoK8sApiAutoscalingV2beta2PodsMetricSource", Symbol("resource")=>"IoK8sApiAutoscalingV2beta2ResourceMetricSource", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta2MetricSpec }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta2MetricSpec))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2MetricSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2MetricSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2MetricSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2MetricSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta2MetricSpec }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta2MetricSpec[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta2MetricSpec)

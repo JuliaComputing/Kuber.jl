@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus <: SwaggerModel
     currentCPUUtilizationPercentage::Any # spec type: Union{ Nothing, Int32 } # spec name: currentCPUUtilizationPercentage
     currentReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: currentReplicas
@@ -29,7 +28,7 @@ end # type IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus
 const _property_map_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus = Dict{Symbol,Symbol}(Symbol("currentCPUUtilizationPercentage")=>Symbol("currentCPUUtilizationPercentage"), Symbol("currentReplicas")=>Symbol("currentReplicas"), Symbol("desiredReplicas")=>Symbol("desiredReplicas"), Symbol("lastScaleTime")=>Symbol("lastScaleTime"), Symbol("observedGeneration")=>Symbol("observedGeneration"))
 const _property_types_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus = Dict{Symbol,String}(Symbol("currentCPUUtilizationPercentage")=>"Int32", Symbol("currentReplicas")=>"Int32", Symbol("desiredReplicas")=>"Int32", Symbol("lastScaleTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("observedGeneration")=>"Int64")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus }) = collect(keys(_property_map_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus)

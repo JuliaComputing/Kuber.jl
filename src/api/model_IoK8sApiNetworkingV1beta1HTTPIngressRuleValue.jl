@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNetworkingV1beta1HTTPIngressRuleValue <: SwaggerModel
     paths::Any # spec type: Union{ Nothing, Vector{IoK8sApiNetworkingV1beta1HTTPIngressPath} } # spec name: paths
 
@@ -17,7 +16,7 @@ end # type IoK8sApiNetworkingV1beta1HTTPIngressRuleValue
 const _property_map_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue = Dict{Symbol,Symbol}(Symbol("paths")=>Symbol("paths"))
 const _property_types_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue = Dict{Symbol,String}(Symbol("paths")=>"Vector{IoK8sApiNetworkingV1beta1HTTPIngressPath}")
 Base.propertynames(::Type{ IoK8sApiNetworkingV1beta1HTTPIngressRuleValue }) = collect(keys(_property_map_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue))
-Swagger.property_type(::Type{ IoK8sApiNetworkingV1beta1HTTPIngressRuleValue }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue[name]))}
+Swagger.property_type(::Type{ IoK8sApiNetworkingV1beta1HTTPIngressRuleValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue[name]))}
 Swagger.field_name(::Type{ IoK8sApiNetworkingV1beta1HTTPIngressRuleValue }, property_name::Symbol) =  _property_map_IoK8sApiNetworkingV1beta1HTTPIngressRuleValue[property_name]
 
 function check_required(o::IoK8sApiNetworkingV1beta1HTTPIngressRuleValue)

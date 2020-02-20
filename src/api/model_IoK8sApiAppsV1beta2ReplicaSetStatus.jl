@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2ReplicaSetStatus <: SwaggerModel
     availableReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: availableReplicas
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAppsV1beta2ReplicaSetCondition} } # spec name: conditions
@@ -32,7 +31,7 @@ end # type IoK8sApiAppsV1beta2ReplicaSetStatus
 const _property_map_IoK8sApiAppsV1beta2ReplicaSetStatus = Dict{Symbol,Symbol}(Symbol("availableReplicas")=>Symbol("availableReplicas"), Symbol("conditions")=>Symbol("conditions"), Symbol("fullyLabeledReplicas")=>Symbol("fullyLabeledReplicas"), Symbol("observedGeneration")=>Symbol("observedGeneration"), Symbol("readyReplicas")=>Symbol("readyReplicas"), Symbol("replicas")=>Symbol("replicas"))
 const _property_types_IoK8sApiAppsV1beta2ReplicaSetStatus = Dict{Symbol,String}(Symbol("availableReplicas")=>"Int32", Symbol("conditions")=>"Vector{IoK8sApiAppsV1beta2ReplicaSetCondition}", Symbol("fullyLabeledReplicas")=>"Int32", Symbol("observedGeneration")=>"Int64", Symbol("readyReplicas")=>"Int32", Symbol("replicas")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2ReplicaSetStatus }) = collect(keys(_property_map_IoK8sApiAppsV1beta2ReplicaSetStatus))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2ReplicaSetStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2ReplicaSetStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2ReplicaSetStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2ReplicaSetStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2ReplicaSetStatus }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2ReplicaSetStatus[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2ReplicaSetStatus)

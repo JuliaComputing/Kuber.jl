@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ScaleIOPersistentVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     gateway::Any # spec type: Union{ Nothing, String } # spec name: gateway
@@ -44,7 +43,7 @@ end # type IoK8sApiCoreV1ScaleIOPersistentVolumeSource
 const _property_map_IoK8sApiCoreV1ScaleIOPersistentVolumeSource = Dict{Symbol,Symbol}(Symbol("fsType")=>Symbol("fsType"), Symbol("gateway")=>Symbol("gateway"), Symbol("protectionDomain")=>Symbol("protectionDomain"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("secretRef")=>Symbol("secretRef"), Symbol("sslEnabled")=>Symbol("sslEnabled"), Symbol("storageMode")=>Symbol("storageMode"), Symbol("storagePool")=>Symbol("storagePool"), Symbol("system")=>Symbol("system"), Symbol("volumeName")=>Symbol("volumeName"))
 const _property_types_IoK8sApiCoreV1ScaleIOPersistentVolumeSource = Dict{Symbol,String}(Symbol("fsType")=>"String", Symbol("gateway")=>"String", Symbol("protectionDomain")=>"String", Symbol("readOnly")=>"Bool", Symbol("secretRef")=>"IoK8sApiCoreV1SecretReference", Symbol("sslEnabled")=>"Bool", Symbol("storageMode")=>"String", Symbol("storagePool")=>"String", Symbol("system")=>"String", Symbol("volumeName")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ScaleIOPersistentVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1ScaleIOPersistentVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ScaleIOPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ScaleIOPersistentVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ScaleIOPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ScaleIOPersistentVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ScaleIOPersistentVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ScaleIOPersistentVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1ScaleIOPersistentVolumeSource)

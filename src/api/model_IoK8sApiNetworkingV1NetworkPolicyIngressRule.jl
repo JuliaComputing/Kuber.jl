@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNetworkingV1NetworkPolicyIngressRule <: SwaggerModel
     from::Any # spec type: Union{ Nothing, Vector{IoK8sApiNetworkingV1NetworkPolicyPeer} } # spec name: from
     ports::Any # spec type: Union{ Nothing, Vector{IoK8sApiNetworkingV1NetworkPolicyPort} } # spec name: ports
@@ -20,7 +19,7 @@ end # type IoK8sApiNetworkingV1NetworkPolicyIngressRule
 const _property_map_IoK8sApiNetworkingV1NetworkPolicyIngressRule = Dict{Symbol,Symbol}(Symbol("from")=>Symbol("from"), Symbol("ports")=>Symbol("ports"))
 const _property_types_IoK8sApiNetworkingV1NetworkPolicyIngressRule = Dict{Symbol,String}(Symbol("from")=>"Vector{IoK8sApiNetworkingV1NetworkPolicyPeer}", Symbol("ports")=>"Vector{IoK8sApiNetworkingV1NetworkPolicyPort}")
 Base.propertynames(::Type{ IoK8sApiNetworkingV1NetworkPolicyIngressRule }) = collect(keys(_property_map_IoK8sApiNetworkingV1NetworkPolicyIngressRule))
-Swagger.property_type(::Type{ IoK8sApiNetworkingV1NetworkPolicyIngressRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNetworkingV1NetworkPolicyIngressRule[name]))}
+Swagger.property_type(::Type{ IoK8sApiNetworkingV1NetworkPolicyIngressRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1NetworkPolicyIngressRule[name]))}
 Swagger.field_name(::Type{ IoK8sApiNetworkingV1NetworkPolicyIngressRule }, property_name::Symbol) =  _property_map_IoK8sApiNetworkingV1NetworkPolicyIngressRule[property_name]
 
 function check_required(o::IoK8sApiNetworkingV1NetworkPolicyIngressRule)

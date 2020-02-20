@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ObjectReference <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     fieldPath::Any # spec type: Union{ Nothing, String } # spec name: fieldPath
@@ -35,7 +34,7 @@ end # type IoK8sApiCoreV1ObjectReference
 const _property_map_IoK8sApiCoreV1ObjectReference = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("fieldPath")=>Symbol("fieldPath"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"), Symbol("resourceVersion")=>Symbol("resourceVersion"), Symbol("uid")=>Symbol("uid"))
 const _property_types_IoK8sApiCoreV1ObjectReference = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("fieldPath")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("namespace")=>"String", Symbol("resourceVersion")=>"String", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ObjectReference }) = collect(keys(_property_map_IoK8sApiCoreV1ObjectReference))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ObjectReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ObjectReference[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ObjectReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ObjectReference[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ObjectReference }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ObjectReference[property_name]
 
 function check_required(o::IoK8sApiCoreV1ObjectReference)

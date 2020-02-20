@@ -2,14 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiNodeV1beta1RuntimeClass <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     handler::Any # spec type: Union{ Nothing, String } # spec name: handler
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
+    overhead::Any # spec type: Union{ Nothing, IoK8sApiNodeV1beta1Overhead } # spec name: overhead
+    scheduling::Any # spec type: Union{ Nothing, IoK8sApiNodeV1beta1Scheduling } # spec name: scheduling
 
-    function IoK8sApiNodeV1beta1RuntimeClass(;apiVersion=nothing, handler=nothing, kind=nothing, metadata=nothing)
+    function IoK8sApiNodeV1beta1RuntimeClass(;apiVersion=nothing, handler=nothing, kind=nothing, metadata=nothing, overhead=nothing, scheduling=nothing)
         o = new()
         validate_property(IoK8sApiNodeV1beta1RuntimeClass, Symbol("apiVersion"), apiVersion)
         setfield!(o, Symbol("apiVersion"), apiVersion)
@@ -19,14 +20,18 @@ mutable struct IoK8sApiNodeV1beta1RuntimeClass <: SwaggerModel
         setfield!(o, Symbol("kind"), kind)
         validate_property(IoK8sApiNodeV1beta1RuntimeClass, Symbol("metadata"), metadata)
         setfield!(o, Symbol("metadata"), metadata)
+        validate_property(IoK8sApiNodeV1beta1RuntimeClass, Symbol("overhead"), overhead)
+        setfield!(o, Symbol("overhead"), overhead)
+        validate_property(IoK8sApiNodeV1beta1RuntimeClass, Symbol("scheduling"), scheduling)
+        setfield!(o, Symbol("scheduling"), scheduling)
         o
     end
 end # type IoK8sApiNodeV1beta1RuntimeClass
 
-const _property_map_IoK8sApiNodeV1beta1RuntimeClass = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("handler")=>Symbol("handler"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
-const _property_types_IoK8sApiNodeV1beta1RuntimeClass = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("handler")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta")
+const _property_map_IoK8sApiNodeV1beta1RuntimeClass = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("handler")=>Symbol("handler"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("overhead")=>Symbol("overhead"), Symbol("scheduling")=>Symbol("scheduling"))
+const _property_types_IoK8sApiNodeV1beta1RuntimeClass = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("handler")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("overhead")=>"IoK8sApiNodeV1beta1Overhead", Symbol("scheduling")=>"IoK8sApiNodeV1beta1Scheduling")
 Base.propertynames(::Type{ IoK8sApiNodeV1beta1RuntimeClass }) = collect(keys(_property_map_IoK8sApiNodeV1beta1RuntimeClass))
-Swagger.property_type(::Type{ IoK8sApiNodeV1beta1RuntimeClass }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiNodeV1beta1RuntimeClass[name]))}
+Swagger.property_type(::Type{ IoK8sApiNodeV1beta1RuntimeClass }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNodeV1beta1RuntimeClass[name]))}
 Swagger.field_name(::Type{ IoK8sApiNodeV1beta1RuntimeClass }, property_name::Symbol) =  _property_map_IoK8sApiNodeV1beta1RuntimeClass[property_name]
 
 function check_required(o::IoK8sApiNodeV1beta1RuntimeClass)

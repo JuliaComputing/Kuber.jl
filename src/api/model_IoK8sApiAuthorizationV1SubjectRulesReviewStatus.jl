@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1SubjectRulesReviewStatus <: SwaggerModel
     evaluationError::Any # spec type: Union{ Nothing, String } # spec name: evaluationError
     incomplete::Any # spec type: Union{ Nothing, Bool } # spec name: incomplete
@@ -26,7 +25,7 @@ end # type IoK8sApiAuthorizationV1SubjectRulesReviewStatus
 const _property_map_IoK8sApiAuthorizationV1SubjectRulesReviewStatus = Dict{Symbol,Symbol}(Symbol("evaluationError")=>Symbol("evaluationError"), Symbol("incomplete")=>Symbol("incomplete"), Symbol("nonResourceRules")=>Symbol("nonResourceRules"), Symbol("resourceRules")=>Symbol("resourceRules"))
 const _property_types_IoK8sApiAuthorizationV1SubjectRulesReviewStatus = Dict{Symbol,String}(Symbol("evaluationError")=>"String", Symbol("incomplete")=>"Bool", Symbol("nonResourceRules")=>"Vector{IoK8sApiAuthorizationV1NonResourceRule}", Symbol("resourceRules")=>"Vector{IoK8sApiAuthorizationV1ResourceRule}")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1SubjectRulesReviewStatus }) = collect(keys(_property_map_IoK8sApiAuthorizationV1SubjectRulesReviewStatus))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectRulesReviewStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectRulesReviewStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectRulesReviewStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectRulesReviewStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1SubjectRulesReviewStatus }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1SubjectRulesReviewStatus[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1SubjectRulesReviewStatus)

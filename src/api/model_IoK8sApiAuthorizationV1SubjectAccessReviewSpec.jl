@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1SubjectAccessReviewSpec <: SwaggerModel
     extra::Any # spec type: Union{ Nothing, Dict{String, Vector{String}} } # spec name: extra
     groups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: groups
@@ -32,7 +31,7 @@ end # type IoK8sApiAuthorizationV1SubjectAccessReviewSpec
 const _property_map_IoK8sApiAuthorizationV1SubjectAccessReviewSpec = Dict{Symbol,Symbol}(Symbol("extra")=>Symbol("extra"), Symbol("groups")=>Symbol("groups"), Symbol("nonResourceAttributes")=>Symbol("nonResourceAttributes"), Symbol("resourceAttributes")=>Symbol("resourceAttributes"), Symbol("uid")=>Symbol("uid"), Symbol("user")=>Symbol("user"))
 const _property_types_IoK8sApiAuthorizationV1SubjectAccessReviewSpec = Dict{Symbol,String}(Symbol("extra")=>"Dict{String, Vector{String}}", Symbol("groups")=>"Vector{String}", Symbol("nonResourceAttributes")=>"IoK8sApiAuthorizationV1NonResourceAttributes", Symbol("resourceAttributes")=>"IoK8sApiAuthorizationV1ResourceAttributes", Symbol("uid")=>"String", Symbol("user")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewSpec }) = collect(keys(_property_map_IoK8sApiAuthorizationV1SubjectAccessReviewSpec))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectAccessReviewSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1SubjectAccessReviewSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1SubjectAccessReviewSpec }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1SubjectAccessReviewSpec[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1SubjectAccessReviewSpec)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuditregistrationV1alpha1WebhookClientConfig <: SwaggerModel
     caBundle::Any # spec type: Union{ Nothing, Vector{UInt8} } # spec name: caBundle
     service::Any # spec type: Union{ Nothing, IoK8sApiAuditregistrationV1alpha1ServiceReference } # spec name: service
@@ -23,7 +22,7 @@ end # type IoK8sApiAuditregistrationV1alpha1WebhookClientConfig
 const _property_map_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig = Dict{Symbol,Symbol}(Symbol("caBundle")=>Symbol("caBundle"), Symbol("service")=>Symbol("service"), Symbol("url")=>Symbol("url"))
 const _property_types_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig = Dict{Symbol,String}(Symbol("caBundle")=>"Vector{UInt8}", Symbol("service")=>"IoK8sApiAuditregistrationV1alpha1ServiceReference", Symbol("url")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookClientConfig }) = collect(keys(_property_map_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig))
-Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookClientConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookClientConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuditregistrationV1alpha1WebhookClientConfig }, property_name::Symbol) =  _property_map_IoK8sApiAuditregistrationV1alpha1WebhookClientConfig[property_name]
 
 function check_required(o::IoK8sApiAuditregistrationV1alpha1WebhookClientConfig)

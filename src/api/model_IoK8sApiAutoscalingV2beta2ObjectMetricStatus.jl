@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta2ObjectMetricStatus <: SwaggerModel
     current::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricValueStatus } # spec name: current
     describedObject::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2CrossVersionObjectReference } # spec name: describedObject
@@ -23,7 +22,7 @@ end # type IoK8sApiAutoscalingV2beta2ObjectMetricStatus
 const _property_map_IoK8sApiAutoscalingV2beta2ObjectMetricStatus = Dict{Symbol,Symbol}(Symbol("current")=>Symbol("current"), Symbol("describedObject")=>Symbol("describedObject"), Symbol("metric")=>Symbol("metric"))
 const _property_types_IoK8sApiAutoscalingV2beta2ObjectMetricStatus = Dict{Symbol,String}(Symbol("current")=>"IoK8sApiAutoscalingV2beta2MetricValueStatus", Symbol("describedObject")=>"IoK8sApiAutoscalingV2beta2CrossVersionObjectReference", Symbol("metric")=>"IoK8sApiAutoscalingV2beta2MetricIdentifier")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta2ObjectMetricStatus }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta2ObjectMetricStatus))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2ObjectMetricStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2ObjectMetricStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta2ObjectMetricStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta2ObjectMetricStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta2ObjectMetricStatus }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta2ObjectMetricStatus[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta2ObjectMetricStatus)

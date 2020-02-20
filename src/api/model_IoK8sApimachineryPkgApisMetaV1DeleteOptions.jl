@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1DeleteOptions <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     dryRun::Any # spec type: Union{ Nothing, Vector{String} } # spec name: dryRun
@@ -35,7 +34,7 @@ end # type IoK8sApimachineryPkgApisMetaV1DeleteOptions
 const _property_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("dryRun")=>Symbol("dryRun"), Symbol("gracePeriodSeconds")=>Symbol("gracePeriodSeconds"), Symbol("kind")=>Symbol("kind"), Symbol("orphanDependents")=>Symbol("orphanDependents"), Symbol("preconditions")=>Symbol("preconditions"), Symbol("propagationPolicy")=>Symbol("propagationPolicy"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1DeleteOptions = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("dryRun")=>"Vector{String}", Symbol("gracePeriodSeconds")=>"Int64", Symbol("kind")=>"String", Symbol("orphanDependents")=>"Bool", Symbol("preconditions")=>"IoK8sApimachineryPkgApisMetaV1Preconditions", Symbol("propagationPolicy")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1DeleteOptions[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1DeleteOptions[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1DeleteOptions }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1DeleteOptions[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1DeleteOptions)

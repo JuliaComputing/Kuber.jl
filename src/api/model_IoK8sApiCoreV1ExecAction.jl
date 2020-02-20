@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ExecAction <: SwaggerModel
     command::Any # spec type: Union{ Nothing, Vector{String} } # spec name: command
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1ExecAction
 const _property_map_IoK8sApiCoreV1ExecAction = Dict{Symbol,Symbol}(Symbol("command")=>Symbol("command"))
 const _property_types_IoK8sApiCoreV1ExecAction = Dict{Symbol,String}(Symbol("command")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiCoreV1ExecAction }) = collect(keys(_property_map_IoK8sApiCoreV1ExecAction))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ExecAction }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ExecAction[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ExecAction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ExecAction[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ExecAction }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ExecAction[property_name]
 
 function check_required(o::IoK8sApiCoreV1ExecAction)

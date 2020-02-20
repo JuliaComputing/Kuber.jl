@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1QuobyteVolumeSource <: SwaggerModel
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
@@ -32,7 +31,7 @@ end # type IoK8sApiCoreV1QuobyteVolumeSource
 const _property_map_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,Symbol}(Symbol("group")=>Symbol("group"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("registry")=>Symbol("registry"), Symbol("tenant")=>Symbol("tenant"), Symbol("user")=>Symbol("user"), Symbol("volume")=>Symbol("volume"))
 const _property_types_IoK8sApiCoreV1QuobyteVolumeSource = Dict{Symbol,String}(Symbol("group")=>"String", Symbol("readOnly")=>"Bool", Symbol("registry")=>"String", Symbol("tenant")=>"String", Symbol("user")=>"String", Symbol("volume")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1QuobyteVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1QuobyteVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1QuobyteVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1QuobyteVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1QuobyteVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1QuobyteVolumeSource)

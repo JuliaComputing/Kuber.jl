@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ServiceAccountTokenProjection <: SwaggerModel
     audience::Any # spec type: Union{ Nothing, String } # spec name: audience
     expirationSeconds::Any # spec type: Union{ Nothing, Int64 } # spec name: expirationSeconds
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1ServiceAccountTokenProjection
 const _property_map_IoK8sApiCoreV1ServiceAccountTokenProjection = Dict{Symbol,Symbol}(Symbol("audience")=>Symbol("audience"), Symbol("expirationSeconds")=>Symbol("expirationSeconds"), Symbol("path")=>Symbol("path"))
 const _property_types_IoK8sApiCoreV1ServiceAccountTokenProjection = Dict{Symbol,String}(Symbol("audience")=>"String", Symbol("expirationSeconds")=>"Int64", Symbol("path")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ServiceAccountTokenProjection }) = collect(keys(_property_map_IoK8sApiCoreV1ServiceAccountTokenProjection))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceAccountTokenProjection }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ServiceAccountTokenProjection[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceAccountTokenProjection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ServiceAccountTokenProjection[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ServiceAccountTokenProjection }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ServiceAccountTokenProjection[property_name]
 
 function check_required(o::IoK8sApiCoreV1ServiceAccountTokenProjection)

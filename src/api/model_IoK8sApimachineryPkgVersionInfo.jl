@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgVersionInfo <: SwaggerModel
     buildDate::Any # spec type: Union{ Nothing, String } # spec name: buildDate
     compiler::Any # spec type: Union{ Nothing, String } # spec name: compiler
@@ -41,7 +40,7 @@ end # type IoK8sApimachineryPkgVersionInfo
 const _property_map_IoK8sApimachineryPkgVersionInfo = Dict{Symbol,Symbol}(Symbol("buildDate")=>Symbol("buildDate"), Symbol("compiler")=>Symbol("compiler"), Symbol("gitCommit")=>Symbol("gitCommit"), Symbol("gitTreeState")=>Symbol("gitTreeState"), Symbol("gitVersion")=>Symbol("gitVersion"), Symbol("goVersion")=>Symbol("goVersion"), Symbol("major")=>Symbol("major"), Symbol("minor")=>Symbol("minor"), Symbol("platform")=>Symbol("platform"))
 const _property_types_IoK8sApimachineryPkgVersionInfo = Dict{Symbol,String}(Symbol("buildDate")=>"String", Symbol("compiler")=>"String", Symbol("gitCommit")=>"String", Symbol("gitTreeState")=>"String", Symbol("gitVersion")=>"String", Symbol("goVersion")=>"String", Symbol("major")=>"String", Symbol("minor")=>"String", Symbol("platform")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgVersionInfo }) = collect(keys(_property_map_IoK8sApimachineryPkgVersionInfo))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgVersionInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgVersionInfo[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgVersionInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgVersionInfo[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgVersionInfo }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgVersionInfo[property_name]
 
 function check_required(o::IoK8sApimachineryPkgVersionInfo)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiBatchV2alpha1CronJobStatus <: SwaggerModel
     active::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1ObjectReference} } # spec name: active
     lastScheduleTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastScheduleTime
@@ -20,7 +19,7 @@ end # type IoK8sApiBatchV2alpha1CronJobStatus
 const _property_map_IoK8sApiBatchV2alpha1CronJobStatus = Dict{Symbol,Symbol}(Symbol("active")=>Symbol("active"), Symbol("lastScheduleTime")=>Symbol("lastScheduleTime"))
 const _property_types_IoK8sApiBatchV2alpha1CronJobStatus = Dict{Symbol,String}(Symbol("active")=>"Vector{IoK8sApiCoreV1ObjectReference}", Symbol("lastScheduleTime")=>"IoK8sApimachineryPkgApisMetaV1Time")
 Base.propertynames(::Type{ IoK8sApiBatchV2alpha1CronJobStatus }) = collect(keys(_property_map_IoK8sApiBatchV2alpha1CronJobStatus))
-Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1CronJobStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiBatchV2alpha1CronJobStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1CronJobStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiBatchV2alpha1CronJobStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiBatchV2alpha1CronJobStatus }, property_name::Symbol) =  _property_map_IoK8sApiBatchV2alpha1CronJobStatus[property_name]
 
 function check_required(o::IoK8sApiBatchV2alpha1CronJobStatus)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ConfigMap <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     binaryData::Any # spec type: Union{ Nothing, Dict{String, Vector{UInt8}} } # spec name: binaryData
@@ -29,7 +28,7 @@ end # type IoK8sApiCoreV1ConfigMap
 const _property_map_IoK8sApiCoreV1ConfigMap = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("binaryData")=>Symbol("binaryData"), Symbol("data")=>Symbol("data"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiCoreV1ConfigMap = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("binaryData")=>"Dict{String, Vector{UInt8}}", Symbol("data")=>"Dict{String, String}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta")
 Base.propertynames(::Type{ IoK8sApiCoreV1ConfigMap }) = collect(keys(_property_map_IoK8sApiCoreV1ConfigMap))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMap }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ConfigMap[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ConfigMap }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ConfigMap[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ConfigMap }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ConfigMap[property_name]
 
 function check_required(o::IoK8sApiCoreV1ConfigMap)

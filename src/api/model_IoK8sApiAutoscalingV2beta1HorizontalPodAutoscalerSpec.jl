@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec <: SwaggerModel
     maxReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: maxReplicas
     metrics::Any # spec type: Union{ Nothing, Vector{IoK8sApiAutoscalingV2beta1MetricSpec} } # spec name: metrics
@@ -26,7 +25,7 @@ end # type IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec
 const _property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec = Dict{Symbol,Symbol}(Symbol("maxReplicas")=>Symbol("maxReplicas"), Symbol("metrics")=>Symbol("metrics"), Symbol("minReplicas")=>Symbol("minReplicas"), Symbol("scaleTargetRef")=>Symbol("scaleTargetRef"))
 const _property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec = Dict{Symbol,String}(Symbol("maxReplicas")=>"Int32", Symbol("metrics")=>"Vector{IoK8sApiAutoscalingV2beta1MetricSpec}", Symbol("minReplicas")=>"Int32", Symbol("scaleTargetRef")=>"IoK8sApiAutoscalingV2beta1CrossVersionObjectReference")
 Base.propertynames(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec }) = collect(keys(_property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec))
-Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec }, property_name::Symbol) =  _property_map_IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec[property_name]
 
 function check_required(o::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerSpec)

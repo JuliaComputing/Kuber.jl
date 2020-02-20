@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PersistentVolumeStatus <: SwaggerModel
     message::Any # spec type: Union{ Nothing, String } # spec name: message
     phase::Any # spec type: Union{ Nothing, String } # spec name: phase
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1PersistentVolumeStatus
 const _property_map_IoK8sApiCoreV1PersistentVolumeStatus = Dict{Symbol,Symbol}(Symbol("message")=>Symbol("message"), Symbol("phase")=>Symbol("phase"), Symbol("reason")=>Symbol("reason"))
 const _property_types_IoK8sApiCoreV1PersistentVolumeStatus = Dict{Symbol,String}(Symbol("message")=>"String", Symbol("phase")=>"String", Symbol("reason")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1PersistentVolumeStatus }) = collect(keys(_property_map_IoK8sApiCoreV1PersistentVolumeStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PersistentVolumeStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PersistentVolumeStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1PersistentVolumeStatus)

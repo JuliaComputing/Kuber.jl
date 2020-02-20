@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1SessionAffinityConfig <: SwaggerModel
     clientIP::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ClientIPConfig } # spec name: clientIP
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1SessionAffinityConfig
 const _property_map_IoK8sApiCoreV1SessionAffinityConfig = Dict{Symbol,Symbol}(Symbol("clientIP")=>Symbol("clientIP"))
 const _property_types_IoK8sApiCoreV1SessionAffinityConfig = Dict{Symbol,String}(Symbol("clientIP")=>"IoK8sApiCoreV1ClientIPConfig")
 Base.propertynames(::Type{ IoK8sApiCoreV1SessionAffinityConfig }) = collect(keys(_property_map_IoK8sApiCoreV1SessionAffinityConfig))
-Swagger.property_type(::Type{ IoK8sApiCoreV1SessionAffinityConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1SessionAffinityConfig[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1SessionAffinityConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1SessionAffinityConfig[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1SessionAffinityConfig }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1SessionAffinityConfig[property_name]
 
 function check_required(o::IoK8sApiCoreV1SessionAffinityConfig)

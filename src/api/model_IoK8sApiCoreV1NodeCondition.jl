@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeCondition <: SwaggerModel
     lastHeartbeatTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastHeartbeatTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
@@ -32,7 +31,7 @@ end # type IoK8sApiCoreV1NodeCondition
 const _property_map_IoK8sApiCoreV1NodeCondition = Dict{Symbol,Symbol}(Symbol("lastHeartbeatTime")=>Symbol("lastHeartbeatTime"), Symbol("lastTransitionTime")=>Symbol("lastTransitionTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("status")=>Symbol("status"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCoreV1NodeCondition = Dict{Symbol,String}(Symbol("lastHeartbeatTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("lastTransitionTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("status")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeCondition }) = collect(keys(_property_map_IoK8sApiCoreV1NodeCondition))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeCondition[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeCondition[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeCondition }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeCondition[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeCondition)

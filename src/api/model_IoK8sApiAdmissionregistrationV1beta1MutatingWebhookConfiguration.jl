@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
-    webhooks::Any # spec type: Union{ Nothing, Vector{IoK8sApiAdmissionregistrationV1beta1Webhook} } # spec name: webhooks
+    webhooks::Any # spec type: Union{ Nothing, Vector{IoK8sApiAdmissionregistrationV1beta1MutatingWebhook} } # spec name: webhooks
 
     function IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration(;apiVersion=nothing, kind=nothing, metadata=nothing, webhooks=nothing)
         o = new()
@@ -24,9 +23,9 @@ mutable struct IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration 
 end # type IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
 
 const _property_map_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("webhooks")=>Symbol("webhooks"))
-const _property_types_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("webhooks")=>"Vector{IoK8sApiAdmissionregistrationV1beta1Webhook}")
+const _property_types_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("webhooks")=>"Vector{IoK8sApiAdmissionregistrationV1beta1MutatingWebhook}")
 Base.propertynames(::Type{ IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration }) = collect(keys(_property_map_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration))
-Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration[name]))}
+Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration[name]))}
 Swagger.field_name(::Type{ IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration }, property_name::Symbol) =  _property_map_IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration[property_name]
 
 function check_required(o::IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration)

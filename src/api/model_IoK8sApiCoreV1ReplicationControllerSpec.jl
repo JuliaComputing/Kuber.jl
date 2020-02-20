@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ReplicationControllerSpec <: SwaggerModel
     minReadySeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: minReadySeconds
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1ReplicationControllerSpec
 const _property_map_IoK8sApiCoreV1ReplicationControllerSpec = Dict{Symbol,Symbol}(Symbol("minReadySeconds")=>Symbol("minReadySeconds"), Symbol("replicas")=>Symbol("replicas"), Symbol("selector")=>Symbol("selector"), Symbol("template")=>Symbol("template"))
 const _property_types_IoK8sApiCoreV1ReplicationControllerSpec = Dict{Symbol,String}(Symbol("minReadySeconds")=>"Int32", Symbol("replicas")=>"Int32", Symbol("selector")=>"Dict{String, String}", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec")
 Base.propertynames(::Type{ IoK8sApiCoreV1ReplicationControllerSpec }) = collect(keys(_property_map_IoK8sApiCoreV1ReplicationControllerSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ReplicationControllerSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ReplicationControllerSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ReplicationControllerSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ReplicationControllerSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ReplicationControllerSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ReplicationControllerSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1ReplicationControllerSpec)
