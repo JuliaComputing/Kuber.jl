@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec <: SwaggerModel
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace
 
@@ -17,7 +16,7 @@ end # type IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec
 const _property_map_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec = Dict{Symbol,Symbol}(Symbol("namespace")=>Symbol("namespace"))
 const _property_types_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec = Dict{Symbol,String}(Symbol("namespace")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec }) = collect(keys(_property_map_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1SelfSubjectRulesReviewSpec)

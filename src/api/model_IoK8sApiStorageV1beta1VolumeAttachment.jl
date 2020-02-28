@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiStorageV1beta1VolumeAttachment <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -29,7 +28,7 @@ end # type IoK8sApiStorageV1beta1VolumeAttachment
 const _property_map_IoK8sApiStorageV1beta1VolumeAttachment = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("spec")=>Symbol("spec"), Symbol("status")=>Symbol("status"))
 const _property_types_IoK8sApiStorageV1beta1VolumeAttachment = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("spec")=>"IoK8sApiStorageV1beta1VolumeAttachmentSpec", Symbol("status")=>"IoK8sApiStorageV1beta1VolumeAttachmentStatus")
 Base.propertynames(::Type{ IoK8sApiStorageV1beta1VolumeAttachment }) = collect(keys(_property_map_IoK8sApiStorageV1beta1VolumeAttachment))
-Swagger.property_type(::Type{ IoK8sApiStorageV1beta1VolumeAttachment }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiStorageV1beta1VolumeAttachment[name]))}
+Swagger.property_type(::Type{ IoK8sApiStorageV1beta1VolumeAttachment }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiStorageV1beta1VolumeAttachment[name]))}
 Swagger.field_name(::Type{ IoK8sApiStorageV1beta1VolumeAttachment }, property_name::Symbol) =  _property_map_IoK8sApiStorageV1beta1VolumeAttachment[property_name]
 
 function check_required(o::IoK8sApiStorageV1beta1VolumeAttachment)

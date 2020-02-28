@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuditregistrationV1alpha1AuditSinkList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiAuditregistrationV1alpha1AuditSink} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiAuditregistrationV1alpha1AuditSinkList
 const _property_map_IoK8sApiAuditregistrationV1alpha1AuditSinkList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiAuditregistrationV1alpha1AuditSinkList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiAuditregistrationV1alpha1AuditSink}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiAuditregistrationV1alpha1AuditSinkList }) = collect(keys(_property_map_IoK8sApiAuditregistrationV1alpha1AuditSinkList))
-Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1AuditSinkList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1AuditSinkList[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1AuditSinkList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1AuditSinkList[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuditregistrationV1alpha1AuditSinkList }, property_name::Symbol) =  _property_map_IoK8sApiAuditregistrationV1alpha1AuditSinkList[property_name]
 
 function check_required(o::IoK8sApiAuditregistrationV1alpha1AuditSinkList)

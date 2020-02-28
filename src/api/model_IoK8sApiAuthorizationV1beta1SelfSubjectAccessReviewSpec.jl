@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec <: SwaggerModel
     nonResourceAttributes::Any # spec type: Union{ Nothing, IoK8sApiAuthorizationV1beta1NonResourceAttributes } # spec name: nonResourceAttributes
     resourceAttributes::Any # spec type: Union{ Nothing, IoK8sApiAuthorizationV1beta1ResourceAttributes } # spec name: resourceAttributes
@@ -20,7 +19,7 @@ end # type IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec
 const _property_map_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{Symbol,Symbol}(Symbol("nonResourceAttributes")=>Symbol("nonResourceAttributes"), Symbol("resourceAttributes")=>Symbol("resourceAttributes"))
 const _property_types_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec = Dict{Symbol,String}(Symbol("nonResourceAttributes")=>"IoK8sApiAuthorizationV1beta1NonResourceAttributes", Symbol("resourceAttributes")=>"IoK8sApiAuthorizationV1beta1ResourceAttributes")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec }) = collect(keys(_property_map_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1beta1SelfSubjectAccessReviewSpec)

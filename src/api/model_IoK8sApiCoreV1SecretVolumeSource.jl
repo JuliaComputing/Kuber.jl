@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1SecretVolumeSource <: SwaggerModel
     defaultMode::Any # spec type: Union{ Nothing, Int32 } # spec name: defaultMode
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1KeyToPath} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1SecretVolumeSource
 const _property_map_IoK8sApiCoreV1SecretVolumeSource = Dict{Symbol,Symbol}(Symbol("defaultMode")=>Symbol("defaultMode"), Symbol("items")=>Symbol("items"), Symbol("optional")=>Symbol("optional"), Symbol("secretName")=>Symbol("secretName"))
 const _property_types_IoK8sApiCoreV1SecretVolumeSource = Dict{Symbol,String}(Symbol("defaultMode")=>"Int32", Symbol("items")=>"Vector{IoK8sApiCoreV1KeyToPath}", Symbol("optional")=>"Bool", Symbol("secretName")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1SecretVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1SecretVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1SecretVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1SecretVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1SecretVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1SecretVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1SecretVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1SecretVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1SecretVolumeSource)

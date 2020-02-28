@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ServiceAccount <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     automountServiceAccountToken::Any # spec type: Union{ Nothing, Bool } # spec name: automountServiceAccountToken
@@ -32,7 +31,7 @@ end # type IoK8sApiCoreV1ServiceAccount
 const _property_map_IoK8sApiCoreV1ServiceAccount = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("automountServiceAccountToken")=>Symbol("automountServiceAccountToken"), Symbol("imagePullSecrets")=>Symbol("imagePullSecrets"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("secrets")=>Symbol("secrets"))
 const _property_types_IoK8sApiCoreV1ServiceAccount = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("automountServiceAccountToken")=>"Bool", Symbol("imagePullSecrets")=>"Vector{IoK8sApiCoreV1LocalObjectReference}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("secrets")=>"Vector{IoK8sApiCoreV1ObjectReference}")
 Base.propertynames(::Type{ IoK8sApiCoreV1ServiceAccount }) = collect(keys(_property_map_IoK8sApiCoreV1ServiceAccount))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceAccount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ServiceAccount[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceAccount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ServiceAccount[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ServiceAccount }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ServiceAccount[property_name]
 
 function check_required(o::IoK8sApiCoreV1ServiceAccount)

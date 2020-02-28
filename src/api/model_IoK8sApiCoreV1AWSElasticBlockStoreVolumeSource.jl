@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     partition::Any # spec type: Union{ Nothing, Int32 } # spec name: partition
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource
 const _property_map_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource = Dict{Symbol,Symbol}(Symbol("fsType")=>Symbol("fsType"), Symbol("partition")=>Symbol("partition"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("volumeID")=>Symbol("volumeID"))
 const _property_types_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource = Dict{Symbol,String}(Symbol("fsType")=>"String", Symbol("partition")=>"Int32", Symbol("readOnly")=>"Bool", Symbol("volumeID")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource)

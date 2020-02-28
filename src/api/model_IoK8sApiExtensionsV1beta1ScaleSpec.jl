@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1ScaleSpec <: SwaggerModel
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
 
@@ -17,7 +16,7 @@ end # type IoK8sApiExtensionsV1beta1ScaleSpec
 const _property_map_IoK8sApiExtensionsV1beta1ScaleSpec = Dict{Symbol,Symbol}(Symbol("replicas")=>Symbol("replicas"))
 const _property_types_IoK8sApiExtensionsV1beta1ScaleSpec = Dict{Symbol,String}(Symbol("replicas")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1ScaleSpec }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1ScaleSpec))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1ScaleSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1ScaleSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1ScaleSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1ScaleSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1ScaleSpec }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1ScaleSpec[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1ScaleSpec)

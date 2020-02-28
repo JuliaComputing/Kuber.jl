@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimSpec <: SwaggerModel
     accessModes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: accessModes
     dataSource::Any # spec type: Union{ Nothing, IoK8sApiCoreV1TypedLocalObjectReference } # spec name: dataSource
@@ -35,7 +34,7 @@ end # type IoK8sApiCoreV1PersistentVolumeClaimSpec
 const _property_map_IoK8sApiCoreV1PersistentVolumeClaimSpec = Dict{Symbol,Symbol}(Symbol("accessModes")=>Symbol("accessModes"), Symbol("dataSource")=>Symbol("dataSource"), Symbol("resources")=>Symbol("resources"), Symbol("selector")=>Symbol("selector"), Symbol("storageClassName")=>Symbol("storageClassName"), Symbol("volumeMode")=>Symbol("volumeMode"), Symbol("volumeName")=>Symbol("volumeName"))
 const _property_types_IoK8sApiCoreV1PersistentVolumeClaimSpec = Dict{Symbol,String}(Symbol("accessModes")=>"Vector{String}", Symbol("dataSource")=>"IoK8sApiCoreV1TypedLocalObjectReference", Symbol("resources")=>"IoK8sApiCoreV1ResourceRequirements", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("storageClassName")=>"String", Symbol("volumeMode")=>"String", Symbol("volumeName")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1PersistentVolumeClaimSpec }) = collect(keys(_property_map_IoK8sApiCoreV1PersistentVolumeClaimSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PersistentVolumeClaimSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PersistentVolumeClaimSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PersistentVolumeClaimSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PersistentVolumeClaimSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1PersistentVolumeClaimSpec)

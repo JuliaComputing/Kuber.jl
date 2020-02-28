@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PodSecurityContext <: SwaggerModel
     fsGroup::Any # spec type: Union{ Nothing, Int64 } # spec name: fsGroup
     runAsGroup::Any # spec type: Union{ Nothing, Int64 } # spec name: runAsGroup
@@ -11,8 +10,9 @@ mutable struct IoK8sApiCoreV1PodSecurityContext <: SwaggerModel
     seLinuxOptions::Any # spec type: Union{ Nothing, IoK8sApiCoreV1SELinuxOptions } # spec name: seLinuxOptions
     supplementalGroups::Any # spec type: Union{ Nothing, Vector{Int64} } # spec name: supplementalGroups
     sysctls::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1Sysctl} } # spec name: sysctls
+    windowsOptions::Any # spec type: Union{ Nothing, IoK8sApiCoreV1WindowsSecurityContextOptions } # spec name: windowsOptions
 
-    function IoK8sApiCoreV1PodSecurityContext(;fsGroup=nothing, runAsGroup=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing, supplementalGroups=nothing, sysctls=nothing)
+    function IoK8sApiCoreV1PodSecurityContext(;fsGroup=nothing, runAsGroup=nothing, runAsNonRoot=nothing, runAsUser=nothing, seLinuxOptions=nothing, supplementalGroups=nothing, sysctls=nothing, windowsOptions=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1PodSecurityContext, Symbol("fsGroup"), fsGroup)
         setfield!(o, Symbol("fsGroup"), fsGroup)
@@ -28,14 +28,16 @@ mutable struct IoK8sApiCoreV1PodSecurityContext <: SwaggerModel
         setfield!(o, Symbol("supplementalGroups"), supplementalGroups)
         validate_property(IoK8sApiCoreV1PodSecurityContext, Symbol("sysctls"), sysctls)
         setfield!(o, Symbol("sysctls"), sysctls)
+        validate_property(IoK8sApiCoreV1PodSecurityContext, Symbol("windowsOptions"), windowsOptions)
+        setfield!(o, Symbol("windowsOptions"), windowsOptions)
         o
     end
 end # type IoK8sApiCoreV1PodSecurityContext
 
-const _property_map_IoK8sApiCoreV1PodSecurityContext = Dict{Symbol,Symbol}(Symbol("fsGroup")=>Symbol("fsGroup"), Symbol("runAsGroup")=>Symbol("runAsGroup"), Symbol("runAsNonRoot")=>Symbol("runAsNonRoot"), Symbol("runAsUser")=>Symbol("runAsUser"), Symbol("seLinuxOptions")=>Symbol("seLinuxOptions"), Symbol("supplementalGroups")=>Symbol("supplementalGroups"), Symbol("sysctls")=>Symbol("sysctls"))
-const _property_types_IoK8sApiCoreV1PodSecurityContext = Dict{Symbol,String}(Symbol("fsGroup")=>"Int64", Symbol("runAsGroup")=>"Int64", Symbol("runAsNonRoot")=>"Bool", Symbol("runAsUser")=>"Int64", Symbol("seLinuxOptions")=>"IoK8sApiCoreV1SELinuxOptions", Symbol("supplementalGroups")=>"Vector{Int64}", Symbol("sysctls")=>"Vector{IoK8sApiCoreV1Sysctl}")
+const _property_map_IoK8sApiCoreV1PodSecurityContext = Dict{Symbol,Symbol}(Symbol("fsGroup")=>Symbol("fsGroup"), Symbol("runAsGroup")=>Symbol("runAsGroup"), Symbol("runAsNonRoot")=>Symbol("runAsNonRoot"), Symbol("runAsUser")=>Symbol("runAsUser"), Symbol("seLinuxOptions")=>Symbol("seLinuxOptions"), Symbol("supplementalGroups")=>Symbol("supplementalGroups"), Symbol("sysctls")=>Symbol("sysctls"), Symbol("windowsOptions")=>Symbol("windowsOptions"))
+const _property_types_IoK8sApiCoreV1PodSecurityContext = Dict{Symbol,String}(Symbol("fsGroup")=>"Int64", Symbol("runAsGroup")=>"Int64", Symbol("runAsNonRoot")=>"Bool", Symbol("runAsUser")=>"Int64", Symbol("seLinuxOptions")=>"IoK8sApiCoreV1SELinuxOptions", Symbol("supplementalGroups")=>"Vector{Int64}", Symbol("sysctls")=>"Vector{IoK8sApiCoreV1Sysctl}", Symbol("windowsOptions")=>"IoK8sApiCoreV1WindowsSecurityContextOptions")
 Base.propertynames(::Type{ IoK8sApiCoreV1PodSecurityContext }) = collect(keys(_property_map_IoK8sApiCoreV1PodSecurityContext))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PodSecurityContext }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PodSecurityContext[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PodSecurityContext }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PodSecurityContext[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PodSecurityContext }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PodSecurityContext[property_name]
 
 function check_required(o::IoK8sApiCoreV1PodSecurityContext)

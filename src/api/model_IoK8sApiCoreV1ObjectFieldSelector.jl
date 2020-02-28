@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ObjectFieldSelector <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     fieldPath::Any # spec type: Union{ Nothing, String } # spec name: fieldPath
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1ObjectFieldSelector
 const _property_map_IoK8sApiCoreV1ObjectFieldSelector = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("fieldPath")=>Symbol("fieldPath"))
 const _property_types_IoK8sApiCoreV1ObjectFieldSelector = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("fieldPath")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ObjectFieldSelector }) = collect(keys(_property_map_IoK8sApiCoreV1ObjectFieldSelector))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ObjectFieldSelector }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ObjectFieldSelector[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ObjectFieldSelector }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ObjectFieldSelector[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ObjectFieldSelector }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ObjectFieldSelector[property_name]
 
 function check_required(o::IoK8sApiCoreV1ObjectFieldSelector)

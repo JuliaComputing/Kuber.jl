@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1OwnerReference <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     blockOwnerDeletion::Any # spec type: Union{ Nothing, Bool } # spec name: blockOwnerDeletion
@@ -32,7 +31,7 @@ end # type IoK8sApimachineryPkgApisMetaV1OwnerReference
 const _property_map_IoK8sApimachineryPkgApisMetaV1OwnerReference = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("blockOwnerDeletion")=>Symbol("blockOwnerDeletion"), Symbol("controller")=>Symbol("controller"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("uid")=>Symbol("uid"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1OwnerReference = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("blockOwnerDeletion")=>"Bool", Symbol("controller")=>"Bool", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1OwnerReference }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1OwnerReference))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1OwnerReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1OwnerReference[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1OwnerReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1OwnerReference[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1OwnerReference }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1OwnerReference[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1OwnerReference)

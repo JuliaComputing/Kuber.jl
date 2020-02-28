@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PodDNSConfig <: SwaggerModel
     nameservers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nameservers
     options::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1PodDNSConfigOption} } # spec name: options
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1PodDNSConfig
 const _property_map_IoK8sApiCoreV1PodDNSConfig = Dict{Symbol,Symbol}(Symbol("nameservers")=>Symbol("nameservers"), Symbol("options")=>Symbol("options"), Symbol("searches")=>Symbol("searches"))
 const _property_types_IoK8sApiCoreV1PodDNSConfig = Dict{Symbol,String}(Symbol("nameservers")=>"Vector{String}", Symbol("options")=>"Vector{IoK8sApiCoreV1PodDNSConfigOption}", Symbol("searches")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiCoreV1PodDNSConfig }) = collect(keys(_property_map_IoK8sApiCoreV1PodDNSConfig))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PodDNSConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PodDNSConfig[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PodDNSConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PodDNSConfig[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PodDNSConfig }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PodDNSConfig[property_name]
 
 function check_required(o::IoK8sApiCoreV1PodDNSConfig)

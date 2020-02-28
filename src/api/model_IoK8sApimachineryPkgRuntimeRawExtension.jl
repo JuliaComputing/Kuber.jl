@@ -2,30 +2,23 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgRuntimeRawExtension <: SwaggerModel
-    Raw::Any # spec type: Union{ Nothing, Vector{UInt8} } # spec name: Raw
 
-    function IoK8sApimachineryPkgRuntimeRawExtension(;Raw=nothing)
+    function IoK8sApimachineryPkgRuntimeRawExtension(;)
         o = new()
-        validate_property(IoK8sApimachineryPkgRuntimeRawExtension, Symbol("Raw"), Raw)
-        setfield!(o, Symbol("Raw"), Raw)
         o
     end
 end # type IoK8sApimachineryPkgRuntimeRawExtension
 
-const _property_map_IoK8sApimachineryPkgRuntimeRawExtension = Dict{Symbol,Symbol}(Symbol("Raw")=>Symbol("Raw"))
-const _property_types_IoK8sApimachineryPkgRuntimeRawExtension = Dict{Symbol,String}(Symbol("Raw")=>"Vector{UInt8}")
+const _property_map_IoK8sApimachineryPkgRuntimeRawExtension = Dict{Symbol,Symbol}()
+const _property_types_IoK8sApimachineryPkgRuntimeRawExtension = Dict{Symbol,String}()
 Base.propertynames(::Type{ IoK8sApimachineryPkgRuntimeRawExtension }) = collect(keys(_property_map_IoK8sApimachineryPkgRuntimeRawExtension))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgRuntimeRawExtension }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgRuntimeRawExtension[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgRuntimeRawExtension }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgRuntimeRawExtension[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgRuntimeRawExtension }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgRuntimeRawExtension[property_name]
 
 function check_required(o::IoK8sApimachineryPkgRuntimeRawExtension)
-    (getproperty(o, Symbol("Raw")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ IoK8sApimachineryPkgRuntimeRawExtension }, name::Symbol, val)
-    if name === Symbol("Raw")
-    end
 end

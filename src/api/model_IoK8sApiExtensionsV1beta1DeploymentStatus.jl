@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1DeploymentStatus <: SwaggerModel
     availableReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: availableReplicas
     collisionCount::Any # spec type: Union{ Nothing, Int32 } # spec name: collisionCount
@@ -38,7 +37,7 @@ end # type IoK8sApiExtensionsV1beta1DeploymentStatus
 const _property_map_IoK8sApiExtensionsV1beta1DeploymentStatus = Dict{Symbol,Symbol}(Symbol("availableReplicas")=>Symbol("availableReplicas"), Symbol("collisionCount")=>Symbol("collisionCount"), Symbol("conditions")=>Symbol("conditions"), Symbol("observedGeneration")=>Symbol("observedGeneration"), Symbol("readyReplicas")=>Symbol("readyReplicas"), Symbol("replicas")=>Symbol("replicas"), Symbol("unavailableReplicas")=>Symbol("unavailableReplicas"), Symbol("updatedReplicas")=>Symbol("updatedReplicas"))
 const _property_types_IoK8sApiExtensionsV1beta1DeploymentStatus = Dict{Symbol,String}(Symbol("availableReplicas")=>"Int32", Symbol("collisionCount")=>"Int32", Symbol("conditions")=>"Vector{IoK8sApiExtensionsV1beta1DeploymentCondition}", Symbol("observedGeneration")=>"Int64", Symbol("readyReplicas")=>"Int32", Symbol("replicas")=>"Int32", Symbol("unavailableReplicas")=>"Int32", Symbol("updatedReplicas")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1DeploymentStatus }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1DeploymentStatus))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1DeploymentStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1DeploymentStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1DeploymentStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1DeploymentStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1DeploymentStatus }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1DeploymentStatus[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1DeploymentStatus)

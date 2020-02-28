@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1LoadBalancerStatus <: SwaggerModel
     ingress::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1LoadBalancerIngress} } # spec name: ingress
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1LoadBalancerStatus
 const _property_map_IoK8sApiCoreV1LoadBalancerStatus = Dict{Symbol,Symbol}(Symbol("ingress")=>Symbol("ingress"))
 const _property_types_IoK8sApiCoreV1LoadBalancerStatus = Dict{Symbol,String}(Symbol("ingress")=>"Vector{IoK8sApiCoreV1LoadBalancerIngress}")
 Base.propertynames(::Type{ IoK8sApiCoreV1LoadBalancerStatus }) = collect(keys(_property_map_IoK8sApiCoreV1LoadBalancerStatus))
-Swagger.property_type(::Type{ IoK8sApiCoreV1LoadBalancerStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1LoadBalancerStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1LoadBalancerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1LoadBalancerStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1LoadBalancerStatus }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1LoadBalancerStatus[property_name]
 
 function check_required(o::IoK8sApiCoreV1LoadBalancerStatus)

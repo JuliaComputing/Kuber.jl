@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message
@@ -29,7 +28,7 @@ end # type IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition
 const _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition = Dict{Symbol,Symbol}(Symbol("lastTransitionTime")=>Symbol("lastTransitionTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("status")=>Symbol("status"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition = Dict{Symbol,String}(Symbol("lastTransitionTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("status")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition }) = collect(keys(_property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition))
-Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition[name]))}
+Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition[name]))}
 Swagger.field_name(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition }, property_name::Symbol) =  _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition[property_name]
 
 function check_required(o::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition)

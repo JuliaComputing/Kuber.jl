@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAdmissionregistrationV1beta1RuleWithOperations <: SwaggerModel
     apiGroups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: apiGroups
     apiVersions::Any # spec type: Union{ Nothing, Vector{String} } # spec name: apiVersions
@@ -29,7 +28,7 @@ end # type IoK8sApiAdmissionregistrationV1beta1RuleWithOperations
 const _property_map_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations = Dict{Symbol,Symbol}(Symbol("apiGroups")=>Symbol("apiGroups"), Symbol("apiVersions")=>Symbol("apiVersions"), Symbol("operations")=>Symbol("operations"), Symbol("resources")=>Symbol("resources"), Symbol("scope")=>Symbol("scope"))
 const _property_types_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations = Dict{Symbol,String}(Symbol("apiGroups")=>"Vector{String}", Symbol("apiVersions")=>"Vector{String}", Symbol("operations")=>"Vector{String}", Symbol("resources")=>"Vector{String}", Symbol("scope")=>"String")
 Base.propertynames(::Type{ IoK8sApiAdmissionregistrationV1beta1RuleWithOperations }) = collect(keys(_property_map_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations))
-Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1RuleWithOperations }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations[name]))}
+Swagger.property_type(::Type{ IoK8sApiAdmissionregistrationV1beta1RuleWithOperations }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations[name]))}
 Swagger.field_name(::Type{ IoK8sApiAdmissionregistrationV1beta1RuleWithOperations }, property_name::Symbol) =  _property_map_IoK8sApiAdmissionregistrationV1beta1RuleWithOperations[property_name]
 
 function check_required(o::IoK8sApiAdmissionregistrationV1beta1RuleWithOperations)

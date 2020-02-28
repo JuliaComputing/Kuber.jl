@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1IngressList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1Ingress} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiExtensionsV1beta1IngressList
 const _property_map_IoK8sApiExtensionsV1beta1IngressList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiExtensionsV1beta1IngressList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiExtensionsV1beta1Ingress}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1IngressList }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1IngressList))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1IngressList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1IngressList[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1IngressList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1IngressList[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1IngressList }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1IngressList[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1IngressList)

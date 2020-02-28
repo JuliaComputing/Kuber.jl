@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus <: SwaggerModel
     currentHealthy::Any # spec type: Union{ Nothing, Int32 } # spec name: currentHealthy
     desiredHealthy::Any # spec type: Union{ Nothing, Int32 } # spec name: desiredHealthy
@@ -32,7 +31,7 @@ end # type IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus
 const _property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus = Dict{Symbol,Symbol}(Symbol("currentHealthy")=>Symbol("currentHealthy"), Symbol("desiredHealthy")=>Symbol("desiredHealthy"), Symbol("disruptedPods")=>Symbol("disruptedPods"), Symbol("disruptionsAllowed")=>Symbol("disruptionsAllowed"), Symbol("expectedPods")=>Symbol("expectedPods"), Symbol("observedGeneration")=>Symbol("observedGeneration"))
 const _property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus = Dict{Symbol,String}(Symbol("currentHealthy")=>"Int32", Symbol("desiredHealthy")=>"Int32", Symbol("disruptedPods")=>"Dict{String, IoK8sApimachineryPkgApisMetaV1Time}", Symbol("disruptionsAllowed")=>"Int32", Symbol("expectedPods")=>"Int32", Symbol("observedGeneration")=>"Int64")
 Base.propertynames(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus }) = collect(keys(_property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus))
-Swagger.property_type(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus }, property_name::Symbol) =  _property_map_IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus[property_name]
 
 function check_required(o::IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus)

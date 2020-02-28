@@ -2,13 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ServiceSpec <: SwaggerModel
     clusterIP::Any # spec type: Union{ Nothing, String } # spec name: clusterIP
     externalIPs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: externalIPs
     externalName::Any # spec type: Union{ Nothing, String } # spec name: externalName
     externalTrafficPolicy::Any # spec type: Union{ Nothing, String } # spec name: externalTrafficPolicy
     healthCheckNodePort::Any # spec type: Union{ Nothing, Int32 } # spec name: healthCheckNodePort
+    ipFamily::Any # spec type: Union{ Nothing, String } # spec name: ipFamily
     loadBalancerIP::Any # spec type: Union{ Nothing, String } # spec name: loadBalancerIP
     loadBalancerSourceRanges::Any # spec type: Union{ Nothing, Vector{String} } # spec name: loadBalancerSourceRanges
     ports::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1ServicePort} } # spec name: ports
@@ -16,9 +16,10 @@ mutable struct IoK8sApiCoreV1ServiceSpec <: SwaggerModel
     selector::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: selector
     sessionAffinity::Any # spec type: Union{ Nothing, String } # spec name: sessionAffinity
     sessionAffinityConfig::Any # spec type: Union{ Nothing, IoK8sApiCoreV1SessionAffinityConfig } # spec name: sessionAffinityConfig
+    topologyKeys::Any # spec type: Union{ Nothing, Vector{String} } # spec name: topologyKeys
     type::Any # spec type: Union{ Nothing, String } # spec name: type
 
-    function IoK8sApiCoreV1ServiceSpec(;clusterIP=nothing, externalIPs=nothing, externalName=nothing, externalTrafficPolicy=nothing, healthCheckNodePort=nothing, loadBalancerIP=nothing, loadBalancerSourceRanges=nothing, ports=nothing, publishNotReadyAddresses=nothing, selector=nothing, sessionAffinity=nothing, sessionAffinityConfig=nothing, type=nothing)
+    function IoK8sApiCoreV1ServiceSpec(;clusterIP=nothing, externalIPs=nothing, externalName=nothing, externalTrafficPolicy=nothing, healthCheckNodePort=nothing, ipFamily=nothing, loadBalancerIP=nothing, loadBalancerSourceRanges=nothing, ports=nothing, publishNotReadyAddresses=nothing, selector=nothing, sessionAffinity=nothing, sessionAffinityConfig=nothing, topologyKeys=nothing, type=nothing)
         o = new()
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("clusterIP"), clusterIP)
         setfield!(o, Symbol("clusterIP"), clusterIP)
@@ -30,6 +31,8 @@ mutable struct IoK8sApiCoreV1ServiceSpec <: SwaggerModel
         setfield!(o, Symbol("externalTrafficPolicy"), externalTrafficPolicy)
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("healthCheckNodePort"), healthCheckNodePort)
         setfield!(o, Symbol("healthCheckNodePort"), healthCheckNodePort)
+        validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("ipFamily"), ipFamily)
+        setfield!(o, Symbol("ipFamily"), ipFamily)
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("loadBalancerIP"), loadBalancerIP)
         setfield!(o, Symbol("loadBalancerIP"), loadBalancerIP)
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("loadBalancerSourceRanges"), loadBalancerSourceRanges)
@@ -44,16 +47,18 @@ mutable struct IoK8sApiCoreV1ServiceSpec <: SwaggerModel
         setfield!(o, Symbol("sessionAffinity"), sessionAffinity)
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("sessionAffinityConfig"), sessionAffinityConfig)
         setfield!(o, Symbol("sessionAffinityConfig"), sessionAffinityConfig)
+        validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("topologyKeys"), topologyKeys)
+        setfield!(o, Symbol("topologyKeys"), topologyKeys)
         validate_property(IoK8sApiCoreV1ServiceSpec, Symbol("type"), type)
         setfield!(o, Symbol("type"), type)
         o
     end
 end # type IoK8sApiCoreV1ServiceSpec
 
-const _property_map_IoK8sApiCoreV1ServiceSpec = Dict{Symbol,Symbol}(Symbol("clusterIP")=>Symbol("clusterIP"), Symbol("externalIPs")=>Symbol("externalIPs"), Symbol("externalName")=>Symbol("externalName"), Symbol("externalTrafficPolicy")=>Symbol("externalTrafficPolicy"), Symbol("healthCheckNodePort")=>Symbol("healthCheckNodePort"), Symbol("loadBalancerIP")=>Symbol("loadBalancerIP"), Symbol("loadBalancerSourceRanges")=>Symbol("loadBalancerSourceRanges"), Symbol("ports")=>Symbol("ports"), Symbol("publishNotReadyAddresses")=>Symbol("publishNotReadyAddresses"), Symbol("selector")=>Symbol("selector"), Symbol("sessionAffinity")=>Symbol("sessionAffinity"), Symbol("sessionAffinityConfig")=>Symbol("sessionAffinityConfig"), Symbol("type")=>Symbol("type"))
-const _property_types_IoK8sApiCoreV1ServiceSpec = Dict{Symbol,String}(Symbol("clusterIP")=>"String", Symbol("externalIPs")=>"Vector{String}", Symbol("externalName")=>"String", Symbol("externalTrafficPolicy")=>"String", Symbol("healthCheckNodePort")=>"Int32", Symbol("loadBalancerIP")=>"String", Symbol("loadBalancerSourceRanges")=>"Vector{String}", Symbol("ports")=>"Vector{IoK8sApiCoreV1ServicePort}", Symbol("publishNotReadyAddresses")=>"Bool", Symbol("selector")=>"Dict{String, String}", Symbol("sessionAffinity")=>"String", Symbol("sessionAffinityConfig")=>"IoK8sApiCoreV1SessionAffinityConfig", Symbol("type")=>"String")
+const _property_map_IoK8sApiCoreV1ServiceSpec = Dict{Symbol,Symbol}(Symbol("clusterIP")=>Symbol("clusterIP"), Symbol("externalIPs")=>Symbol("externalIPs"), Symbol("externalName")=>Symbol("externalName"), Symbol("externalTrafficPolicy")=>Symbol("externalTrafficPolicy"), Symbol("healthCheckNodePort")=>Symbol("healthCheckNodePort"), Symbol("ipFamily")=>Symbol("ipFamily"), Symbol("loadBalancerIP")=>Symbol("loadBalancerIP"), Symbol("loadBalancerSourceRanges")=>Symbol("loadBalancerSourceRanges"), Symbol("ports")=>Symbol("ports"), Symbol("publishNotReadyAddresses")=>Symbol("publishNotReadyAddresses"), Symbol("selector")=>Symbol("selector"), Symbol("sessionAffinity")=>Symbol("sessionAffinity"), Symbol("sessionAffinityConfig")=>Symbol("sessionAffinityConfig"), Symbol("topologyKeys")=>Symbol("topologyKeys"), Symbol("type")=>Symbol("type"))
+const _property_types_IoK8sApiCoreV1ServiceSpec = Dict{Symbol,String}(Symbol("clusterIP")=>"String", Symbol("externalIPs")=>"Vector{String}", Symbol("externalName")=>"String", Symbol("externalTrafficPolicy")=>"String", Symbol("healthCheckNodePort")=>"Int32", Symbol("ipFamily")=>"String", Symbol("loadBalancerIP")=>"String", Symbol("loadBalancerSourceRanges")=>"Vector{String}", Symbol("ports")=>"Vector{IoK8sApiCoreV1ServicePort}", Symbol("publishNotReadyAddresses")=>"Bool", Symbol("selector")=>"Dict{String, String}", Symbol("sessionAffinity")=>"String", Symbol("sessionAffinityConfig")=>"IoK8sApiCoreV1SessionAffinityConfig", Symbol("topologyKeys")=>"Vector{String}", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ServiceSpec }) = collect(keys(_property_map_IoK8sApiCoreV1ServiceSpec))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ServiceSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ServiceSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ServiceSpec }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ServiceSpec[property_name]
 
 function check_required(o::IoK8sApiCoreV1ServiceSpec)

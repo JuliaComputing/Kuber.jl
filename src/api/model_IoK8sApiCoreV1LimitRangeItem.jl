@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1LimitRangeItem <: SwaggerModel
     default::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: default
     defaultRequest::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: defaultRequest
@@ -32,7 +31,7 @@ end # type IoK8sApiCoreV1LimitRangeItem
 const _property_map_IoK8sApiCoreV1LimitRangeItem = Dict{Symbol,Symbol}(Symbol("default")=>Symbol("default"), Symbol("defaultRequest")=>Symbol("defaultRequest"), Symbol("max")=>Symbol("max"), Symbol("maxLimitRequestRatio")=>Symbol("maxLimitRequestRatio"), Symbol("min")=>Symbol("min"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCoreV1LimitRangeItem = Dict{Symbol,String}(Symbol("default")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("defaultRequest")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("max")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("maxLimitRequestRatio")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("min")=>"Dict{String, IoK8sApimachineryPkgApiResourceQuantity}", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1LimitRangeItem }) = collect(keys(_property_map_IoK8sApiCoreV1LimitRangeItem))
-Swagger.property_type(::Type{ IoK8sApiCoreV1LimitRangeItem }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1LimitRangeItem[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1LimitRangeItem }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1LimitRangeItem[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1LimitRangeItem }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1LimitRangeItem[property_name]
 
 function check_required(o::IoK8sApiCoreV1LimitRangeItem)

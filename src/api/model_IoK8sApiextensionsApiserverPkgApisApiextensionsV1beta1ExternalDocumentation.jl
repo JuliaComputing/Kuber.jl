@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation <: SwaggerModel
     description::Any # spec type: Union{ Nothing, String } # spec name: description
     url::Any # spec type: Union{ Nothing, String } # spec name: url
@@ -20,7 +19,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumen
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation = Dict{Symbol,Symbol}(Symbol("description")=>Symbol("description"), Symbol("url")=>Symbol("url"))
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation = Dict{Symbol,String}(Symbol("description")=>"String", Symbol("url")=>"String")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1ExternalDocumentation)

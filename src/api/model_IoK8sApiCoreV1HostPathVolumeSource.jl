@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1HostPathVolumeSource <: SwaggerModel
     path::Any # spec type: Union{ Nothing, String } # spec name: path
     type::Any # spec type: Union{ Nothing, String } # spec name: type
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1HostPathVolumeSource
 const _property_map_IoK8sApiCoreV1HostPathVolumeSource = Dict{Symbol,Symbol}(Symbol("path")=>Symbol("path"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCoreV1HostPathVolumeSource = Dict{Symbol,String}(Symbol("path")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1HostPathVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1HostPathVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1HostPathVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1HostPathVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1HostPathVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1HostPathVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1HostPathVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1HostPathVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1HostPathVolumeSource)

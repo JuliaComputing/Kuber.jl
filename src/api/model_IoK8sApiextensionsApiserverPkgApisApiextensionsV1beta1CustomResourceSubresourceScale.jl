@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale <: SwaggerModel
     labelSelectorPath::Any # spec type: Union{ Nothing, String } # spec name: labelSelectorPath
     specReplicasPath::Any # spec type: Union{ Nothing, String } # spec name: specReplicasPath
@@ -23,7 +22,7 @@ end # type IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceS
 const _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale = Dict{Symbol,Symbol}(Symbol("labelSelectorPath")=>Symbol("labelSelectorPath"), Symbol("specReplicasPath")=>Symbol("specReplicasPath"), Symbol("statusReplicasPath")=>Symbol("statusReplicasPath"))
 const _property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale = Dict{Symbol,String}(Symbol("labelSelectorPath")=>"String", Symbol("specReplicasPath")=>"String", Symbol("statusReplicasPath")=>"String")
 Base.propertynames(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale }) = collect(keys(_property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale))
-Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale[name]))}
+Swagger.property_type(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale[name]))}
 Swagger.field_name(::Type{ IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale }, property_name::Symbol) =  _property_map_IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale[property_name]
 
 function check_required(o::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale)

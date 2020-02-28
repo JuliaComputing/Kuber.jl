@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiSettingsV1alpha1PodPresetList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiSettingsV1alpha1PodPreset} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiSettingsV1alpha1PodPresetList
 const _property_map_IoK8sApiSettingsV1alpha1PodPresetList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiSettingsV1alpha1PodPresetList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiSettingsV1alpha1PodPreset}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiSettingsV1alpha1PodPresetList }) = collect(keys(_property_map_IoK8sApiSettingsV1alpha1PodPresetList))
-Swagger.property_type(::Type{ IoK8sApiSettingsV1alpha1PodPresetList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiSettingsV1alpha1PodPresetList[name]))}
+Swagger.property_type(::Type{ IoK8sApiSettingsV1alpha1PodPresetList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiSettingsV1alpha1PodPresetList[name]))}
 Swagger.field_name(::Type{ IoK8sApiSettingsV1alpha1PodPresetList }, property_name::Symbol) =  _property_map_IoK8sApiSettingsV1alpha1PodPresetList[property_name]
 
 function check_required(o::IoK8sApiSettingsV1alpha1PodPresetList)

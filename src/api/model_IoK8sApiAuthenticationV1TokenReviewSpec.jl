@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthenticationV1TokenReviewSpec <: SwaggerModel
     audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     token::Any # spec type: Union{ Nothing, String } # spec name: token
@@ -20,7 +19,7 @@ end # type IoK8sApiAuthenticationV1TokenReviewSpec
 const _property_map_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,Symbol}(Symbol("audiences")=>Symbol("audiences"), Symbol("token")=>Symbol("token"))
 const _property_types_IoK8sApiAuthenticationV1TokenReviewSpec = Dict{Symbol,String}(Symbol("audiences")=>"Vector{String}", Symbol("token")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }) = collect(keys(_property_map_IoK8sApiAuthenticationV1TokenReviewSpec))
-Swagger.property_type(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthenticationV1TokenReviewSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthenticationV1TokenReviewSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthenticationV1TokenReviewSpec }, property_name::Symbol) =  _property_map_IoK8sApiAuthenticationV1TokenReviewSpec[property_name]
 
 function check_required(o::IoK8sApiAuthenticationV1TokenReviewSpec)

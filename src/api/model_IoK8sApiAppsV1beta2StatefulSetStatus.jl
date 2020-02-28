@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2StatefulSetStatus <: SwaggerModel
     collisionCount::Any # spec type: Union{ Nothing, Int32 } # spec name: collisionCount
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAppsV1beta2StatefulSetCondition} } # spec name: conditions
@@ -41,7 +40,7 @@ end # type IoK8sApiAppsV1beta2StatefulSetStatus
 const _property_map_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{Symbol,Symbol}(Symbol("collisionCount")=>Symbol("collisionCount"), Symbol("conditions")=>Symbol("conditions"), Symbol("currentReplicas")=>Symbol("currentReplicas"), Symbol("currentRevision")=>Symbol("currentRevision"), Symbol("observedGeneration")=>Symbol("observedGeneration"), Symbol("readyReplicas")=>Symbol("readyReplicas"), Symbol("replicas")=>Symbol("replicas"), Symbol("updateRevision")=>Symbol("updateRevision"), Symbol("updatedReplicas")=>Symbol("updatedReplicas"))
 const _property_types_IoK8sApiAppsV1beta2StatefulSetStatus = Dict{Symbol,String}(Symbol("collisionCount")=>"Int32", Symbol("conditions")=>"Vector{IoK8sApiAppsV1beta2StatefulSetCondition}", Symbol("currentReplicas")=>"Int32", Symbol("currentRevision")=>"String", Symbol("observedGeneration")=>"Int64", Symbol("readyReplicas")=>"Int32", Symbol("replicas")=>"Int32", Symbol("updateRevision")=>"String", Symbol("updatedReplicas")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }) = collect(keys(_property_map_IoK8sApiAppsV1beta2StatefulSetStatus))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2StatefulSetStatus[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2StatefulSetStatus[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2StatefulSetStatus }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2StatefulSetStatus[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2StatefulSetStatus)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1APIGroup <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -32,7 +31,7 @@ end # type IoK8sApimachineryPkgApisMetaV1APIGroup
 const _property_map_IoK8sApimachineryPkgApisMetaV1APIGroup = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("preferredVersion")=>Symbol("preferredVersion"), Symbol("serverAddressByClientCIDRs")=>Symbol("serverAddressByClientCIDRs"), Symbol("versions")=>Symbol("versions"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1APIGroup = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("preferredVersion")=>"IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery", Symbol("serverAddressByClientCIDRs")=>"Vector{IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR}", Symbol("versions")=>"Vector{IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery}")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1APIGroup }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1APIGroup))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1APIGroup }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1APIGroup[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1APIGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1APIGroup[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1APIGroup }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1APIGroup[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1APIGroup)

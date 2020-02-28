@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EndpointAddress <: SwaggerModel
     hostname::Any # spec type: Union{ Nothing, String } # spec name: hostname
     ip::Any # spec type: Union{ Nothing, String } # spec name: ip
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1EndpointAddress
 const _property_map_IoK8sApiCoreV1EndpointAddress = Dict{Symbol,Symbol}(Symbol("hostname")=>Symbol("hostname"), Symbol("ip")=>Symbol("ip"), Symbol("nodeName")=>Symbol("nodeName"), Symbol("targetRef")=>Symbol("targetRef"))
 const _property_types_IoK8sApiCoreV1EndpointAddress = Dict{Symbol,String}(Symbol("hostname")=>"String", Symbol("ip")=>"String", Symbol("nodeName")=>"String", Symbol("targetRef")=>"IoK8sApiCoreV1ObjectReference")
 Base.propertynames(::Type{ IoK8sApiCoreV1EndpointAddress }) = collect(keys(_property_map_IoK8sApiCoreV1EndpointAddress))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EndpointAddress }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EndpointAddress[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EndpointAddress }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EndpointAddress[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EndpointAddress }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EndpointAddress[property_name]
 
 function check_required(o::IoK8sApiCoreV1EndpointAddress)

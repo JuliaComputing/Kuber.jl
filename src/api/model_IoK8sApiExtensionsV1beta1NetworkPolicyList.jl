@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1NetworkPolicyList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1NetworkPolicy} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiExtensionsV1beta1NetworkPolicyList
 const _property_map_IoK8sApiExtensionsV1beta1NetworkPolicyList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiExtensionsV1beta1NetworkPolicyList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiExtensionsV1beta1NetworkPolicy}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1NetworkPolicyList }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1NetworkPolicyList))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1NetworkPolicyList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1NetworkPolicyList[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1NetworkPolicyList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1NetworkPolicyList[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1NetworkPolicyList }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1NetworkPolicyList[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1NetworkPolicyList)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiBatchV1JobCondition <: SwaggerModel
     lastProbeTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastProbeTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
@@ -32,7 +31,7 @@ end # type IoK8sApiBatchV1JobCondition
 const _property_map_IoK8sApiBatchV1JobCondition = Dict{Symbol,Symbol}(Symbol("lastProbeTime")=>Symbol("lastProbeTime"), Symbol("lastTransitionTime")=>Symbol("lastTransitionTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("status")=>Symbol("status"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiBatchV1JobCondition = Dict{Symbol,String}(Symbol("lastProbeTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("lastTransitionTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("status")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiBatchV1JobCondition }) = collect(keys(_property_map_IoK8sApiBatchV1JobCondition))
-Swagger.property_type(::Type{ IoK8sApiBatchV1JobCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiBatchV1JobCondition[name]))}
+Swagger.property_type(::Type{ IoK8sApiBatchV1JobCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiBatchV1JobCondition[name]))}
 Swagger.field_name(::Type{ IoK8sApiBatchV1JobCondition }, property_name::Symbol) =  _property_map_IoK8sApiBatchV1JobCondition[property_name]
 
 function check_required(o::IoK8sApiBatchV1JobCondition)

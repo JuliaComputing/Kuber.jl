@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1HostAlias <: SwaggerModel
     hostnames::Any # spec type: Union{ Nothing, Vector{String} } # spec name: hostnames
     ip::Any # spec type: Union{ Nothing, String } # spec name: ip
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1HostAlias
 const _property_map_IoK8sApiCoreV1HostAlias = Dict{Symbol,Symbol}(Symbol("hostnames")=>Symbol("hostnames"), Symbol("ip")=>Symbol("ip"))
 const _property_types_IoK8sApiCoreV1HostAlias = Dict{Symbol,String}(Symbol("hostnames")=>"Vector{String}", Symbol("ip")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1HostAlias }) = collect(keys(_property_map_IoK8sApiCoreV1HostAlias))
-Swagger.property_type(::Type{ IoK8sApiCoreV1HostAlias }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1HostAlias[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1HostAlias }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1HostAlias[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1HostAlias }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1HostAlias[property_name]
 
 function check_required(o::IoK8sApiCoreV1HostAlias)

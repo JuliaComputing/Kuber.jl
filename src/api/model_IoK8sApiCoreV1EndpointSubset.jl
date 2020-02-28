@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EndpointSubset <: SwaggerModel
     addresses::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EndpointAddress} } # spec name: addresses
     notReadyAddresses::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EndpointAddress} } # spec name: notReadyAddresses
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1EndpointSubset
 const _property_map_IoK8sApiCoreV1EndpointSubset = Dict{Symbol,Symbol}(Symbol("addresses")=>Symbol("addresses"), Symbol("notReadyAddresses")=>Symbol("notReadyAddresses"), Symbol("ports")=>Symbol("ports"))
 const _property_types_IoK8sApiCoreV1EndpointSubset = Dict{Symbol,String}(Symbol("addresses")=>"Vector{IoK8sApiCoreV1EndpointAddress}", Symbol("notReadyAddresses")=>"Vector{IoK8sApiCoreV1EndpointAddress}", Symbol("ports")=>"Vector{IoK8sApiCoreV1EndpointPort}")
 Base.propertynames(::Type{ IoK8sApiCoreV1EndpointSubset }) = collect(keys(_property_map_IoK8sApiCoreV1EndpointSubset))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EndpointSubset }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EndpointSubset[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EndpointSubset }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EndpointSubset[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EndpointSubset }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EndpointSubset[property_name]
 
 function check_required(o::IoK8sApiCoreV1EndpointSubset)

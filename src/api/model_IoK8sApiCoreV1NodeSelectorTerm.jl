@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1NodeSelectorTerm <: SwaggerModel
     matchExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # spec name: matchExpressions
     matchFields::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # spec name: matchFields
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1NodeSelectorTerm
 const _property_map_IoK8sApiCoreV1NodeSelectorTerm = Dict{Symbol,Symbol}(Symbol("matchExpressions")=>Symbol("matchExpressions"), Symbol("matchFields")=>Symbol("matchFields"))
 const _property_types_IoK8sApiCoreV1NodeSelectorTerm = Dict{Symbol,String}(Symbol("matchExpressions")=>"Vector{IoK8sApiCoreV1NodeSelectorRequirement}", Symbol("matchFields")=>"Vector{IoK8sApiCoreV1NodeSelectorRequirement}")
 Base.propertynames(::Type{ IoK8sApiCoreV1NodeSelectorTerm }) = collect(keys(_property_map_IoK8sApiCoreV1NodeSelectorTerm))
-Swagger.property_type(::Type{ IoK8sApiCoreV1NodeSelectorTerm }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1NodeSelectorTerm[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1NodeSelectorTerm }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1NodeSelectorTerm[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1NodeSelectorTerm }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1NodeSelectorTerm[property_name]
 
 function check_required(o::IoK8sApiCoreV1NodeSelectorTerm)

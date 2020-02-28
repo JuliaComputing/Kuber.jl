@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1DaemonSetSpec <: SwaggerModel
     minReadySeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: minReadySeconds
     revisionHistoryLimit::Any # spec type: Union{ Nothing, Int32 } # spec name: revisionHistoryLimit
@@ -32,7 +31,7 @@ end # type IoK8sApiExtensionsV1beta1DaemonSetSpec
 const _property_map_IoK8sApiExtensionsV1beta1DaemonSetSpec = Dict{Symbol,Symbol}(Symbol("minReadySeconds")=>Symbol("minReadySeconds"), Symbol("revisionHistoryLimit")=>Symbol("revisionHistoryLimit"), Symbol("selector")=>Symbol("selector"), Symbol("template")=>Symbol("template"), Symbol("templateGeneration")=>Symbol("templateGeneration"), Symbol("updateStrategy")=>Symbol("updateStrategy"))
 const _property_types_IoK8sApiExtensionsV1beta1DaemonSetSpec = Dict{Symbol,String}(Symbol("minReadySeconds")=>"Int32", Symbol("revisionHistoryLimit")=>"Int32", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec", Symbol("templateGeneration")=>"Int64", Symbol("updateStrategy")=>"IoK8sApiExtensionsV1beta1DaemonSetUpdateStrategy")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1DaemonSetSpec }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1DaemonSetSpec))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1DaemonSetSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1DaemonSetSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1DaemonSetSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1DaemonSetSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1DaemonSetSpec }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1DaemonSetSpec[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1DaemonSetSpec)

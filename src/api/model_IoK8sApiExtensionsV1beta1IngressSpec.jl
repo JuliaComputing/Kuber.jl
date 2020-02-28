@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1IngressSpec <: SwaggerModel
     backend::Any # spec type: Union{ Nothing, IoK8sApiExtensionsV1beta1IngressBackend } # spec name: backend
     rules::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1IngressRule} } # spec name: rules
@@ -23,7 +22,7 @@ end # type IoK8sApiExtensionsV1beta1IngressSpec
 const _property_map_IoK8sApiExtensionsV1beta1IngressSpec = Dict{Symbol,Symbol}(Symbol("backend")=>Symbol("backend"), Symbol("rules")=>Symbol("rules"), Symbol("tls")=>Symbol("tls"))
 const _property_types_IoK8sApiExtensionsV1beta1IngressSpec = Dict{Symbol,String}(Symbol("backend")=>"IoK8sApiExtensionsV1beta1IngressBackend", Symbol("rules")=>"Vector{IoK8sApiExtensionsV1beta1IngressRule}", Symbol("tls")=>"Vector{IoK8sApiExtensionsV1beta1IngressTLS}")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1IngressSpec }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1IngressSpec))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1IngressSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1IngressSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1IngressSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1IngressSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1IngressSpec }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1IngressSpec[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1IngressSpec)

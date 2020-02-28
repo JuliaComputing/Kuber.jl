@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1GlusterfsVolumeSource <: SwaggerModel
     endpoints::Any # spec type: Union{ Nothing, String } # spec name: endpoints
     path::Any # spec type: Union{ Nothing, String } # spec name: path
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1GlusterfsVolumeSource
 const _property_map_IoK8sApiCoreV1GlusterfsVolumeSource = Dict{Symbol,Symbol}(Symbol("endpoints")=>Symbol("endpoints"), Symbol("path")=>Symbol("path"), Symbol("readOnly")=>Symbol("readOnly"))
 const _property_types_IoK8sApiCoreV1GlusterfsVolumeSource = Dict{Symbol,String}(Symbol("endpoints")=>"String", Symbol("path")=>"String", Symbol("readOnly")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1GlusterfsVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1GlusterfsVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1GlusterfsVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1GlusterfsVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1GlusterfsVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1GlusterfsVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1GlusterfsVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1GlusterfsVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1GlusterfsVolumeSource)

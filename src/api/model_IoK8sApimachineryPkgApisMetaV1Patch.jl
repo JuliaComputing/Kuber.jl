@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1Patch <: SwaggerModel
 
     function IoK8sApimachineryPkgApisMetaV1Patch(;)
@@ -14,7 +13,7 @@ end # type IoK8sApimachineryPkgApisMetaV1Patch
 const _property_map_IoK8sApimachineryPkgApisMetaV1Patch = Dict{Symbol,Symbol}()
 const _property_types_IoK8sApimachineryPkgApisMetaV1Patch = Dict{Symbol,String}()
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1Patch }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1Patch))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1Patch }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1Patch[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1Patch }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1Patch[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1Patch }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1Patch[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1Patch)

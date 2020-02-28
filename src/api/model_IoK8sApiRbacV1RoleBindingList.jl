@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiRbacV1RoleBindingList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiRbacV1RoleBinding} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiRbacV1RoleBindingList
 const _property_map_IoK8sApiRbacV1RoleBindingList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiRbacV1RoleBindingList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiRbacV1RoleBinding}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiRbacV1RoleBindingList }) = collect(keys(_property_map_IoK8sApiRbacV1RoleBindingList))
-Swagger.property_type(::Type{ IoK8sApiRbacV1RoleBindingList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiRbacV1RoleBindingList[name]))}
+Swagger.property_type(::Type{ IoK8sApiRbacV1RoleBindingList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiRbacV1RoleBindingList[name]))}
 Swagger.field_name(::Type{ IoK8sApiRbacV1RoleBindingList }, property_name::Symbol) =  _property_map_IoK8sApiRbacV1RoleBindingList[property_name]
 
 function check_required(o::IoK8sApiRbacV1RoleBindingList)

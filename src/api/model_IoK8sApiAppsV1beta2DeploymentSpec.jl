@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2DeploymentSpec <: SwaggerModel
     minReadySeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: minReadySeconds
     paused::Any # spec type: Union{ Nothing, Bool } # spec name: paused
@@ -38,7 +37,7 @@ end # type IoK8sApiAppsV1beta2DeploymentSpec
 const _property_map_IoK8sApiAppsV1beta2DeploymentSpec = Dict{Symbol,Symbol}(Symbol("minReadySeconds")=>Symbol("minReadySeconds"), Symbol("paused")=>Symbol("paused"), Symbol("progressDeadlineSeconds")=>Symbol("progressDeadlineSeconds"), Symbol("replicas")=>Symbol("replicas"), Symbol("revisionHistoryLimit")=>Symbol("revisionHistoryLimit"), Symbol("selector")=>Symbol("selector"), Symbol("strategy")=>Symbol("strategy"), Symbol("template")=>Symbol("template"))
 const _property_types_IoK8sApiAppsV1beta2DeploymentSpec = Dict{Symbol,String}(Symbol("minReadySeconds")=>"Int32", Symbol("paused")=>"Bool", Symbol("progressDeadlineSeconds")=>"Int32", Symbol("replicas")=>"Int32", Symbol("revisionHistoryLimit")=>"Int32", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("strategy")=>"IoK8sApiAppsV1beta2DeploymentStrategy", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2DeploymentSpec }) = collect(keys(_property_map_IoK8sApiAppsV1beta2DeploymentSpec))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DeploymentSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2DeploymentSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DeploymentSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2DeploymentSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2DeploymentSpec }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2DeploymentSpec[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2DeploymentSpec)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PodTemplate <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1PodTemplate
 const _property_map_IoK8sApiCoreV1PodTemplate = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("template")=>Symbol("template"))
 const _property_types_IoK8sApiCoreV1PodTemplate = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("template")=>"IoK8sApiCoreV1PodTemplateSpec")
 Base.propertynames(::Type{ IoK8sApiCoreV1PodTemplate }) = collect(keys(_property_map_IoK8sApiCoreV1PodTemplate))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PodTemplate }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PodTemplate[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PodTemplate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PodTemplate[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PodTemplate }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PodTemplate[property_name]
 
 function check_required(o::IoK8sApiCoreV1PodTemplate)

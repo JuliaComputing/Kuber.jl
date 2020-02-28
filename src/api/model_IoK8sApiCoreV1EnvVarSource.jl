@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1EnvVarSource <: SwaggerModel
     configMapKeyRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapKeySelector } # spec name: configMapKeyRef
     fieldRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ObjectFieldSelector } # spec name: fieldRef
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1EnvVarSource
 const _property_map_IoK8sApiCoreV1EnvVarSource = Dict{Symbol,Symbol}(Symbol("configMapKeyRef")=>Symbol("configMapKeyRef"), Symbol("fieldRef")=>Symbol("fieldRef"), Symbol("resourceFieldRef")=>Symbol("resourceFieldRef"), Symbol("secretKeyRef")=>Symbol("secretKeyRef"))
 const _property_types_IoK8sApiCoreV1EnvVarSource = Dict{Symbol,String}(Symbol("configMapKeyRef")=>"IoK8sApiCoreV1ConfigMapKeySelector", Symbol("fieldRef")=>"IoK8sApiCoreV1ObjectFieldSelector", Symbol("resourceFieldRef")=>"IoK8sApiCoreV1ResourceFieldSelector", Symbol("secretKeyRef")=>"IoK8sApiCoreV1SecretKeySelector")
 Base.propertynames(::Type{ IoK8sApiCoreV1EnvVarSource }) = collect(keys(_property_map_IoK8sApiCoreV1EnvVarSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1EnvVarSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1EnvVarSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1EnvVarSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1EnvVarSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1EnvVarSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1EnvVarSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1EnvVarSource)

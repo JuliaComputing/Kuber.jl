@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1StatusDetails <: SwaggerModel
     causes::Any # spec type: Union{ Nothing, Vector{IoK8sApimachineryPkgApisMetaV1StatusCause} } # spec name: causes
     group::Any # spec type: Union{ Nothing, String } # spec name: group
@@ -32,7 +31,7 @@ end # type IoK8sApimachineryPkgApisMetaV1StatusDetails
 const _property_map_IoK8sApimachineryPkgApisMetaV1StatusDetails = Dict{Symbol,Symbol}(Symbol("causes")=>Symbol("causes"), Symbol("group")=>Symbol("group"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("retryAfterSeconds")=>Symbol("retryAfterSeconds"), Symbol("uid")=>Symbol("uid"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1StatusDetails = Dict{Symbol,String}(Symbol("causes")=>"Vector{IoK8sApimachineryPkgApisMetaV1StatusCause}", Symbol("group")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("retryAfterSeconds")=>"Int32", Symbol("uid")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1StatusDetails }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1StatusDetails))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1StatusDetails }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1StatusDetails[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1StatusDetails }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1StatusDetails[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1StatusDetails }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1StatusDetails[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1StatusDetails)

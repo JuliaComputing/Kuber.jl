@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiSettingsV1alpha1PodPresetSpec <: SwaggerModel
     env::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EnvVar} } # spec name: env
     envFrom::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EnvFromSource} } # spec name: envFrom
@@ -29,7 +28,7 @@ end # type IoK8sApiSettingsV1alpha1PodPresetSpec
 const _property_map_IoK8sApiSettingsV1alpha1PodPresetSpec = Dict{Symbol,Symbol}(Symbol("env")=>Symbol("env"), Symbol("envFrom")=>Symbol("envFrom"), Symbol("selector")=>Symbol("selector"), Symbol("volumeMounts")=>Symbol("volumeMounts"), Symbol("volumes")=>Symbol("volumes"))
 const _property_types_IoK8sApiSettingsV1alpha1PodPresetSpec = Dict{Symbol,String}(Symbol("env")=>"Vector{IoK8sApiCoreV1EnvVar}", Symbol("envFrom")=>"Vector{IoK8sApiCoreV1EnvFromSource}", Symbol("selector")=>"IoK8sApimachineryPkgApisMetaV1LabelSelector", Symbol("volumeMounts")=>"Vector{IoK8sApiCoreV1VolumeMount}", Symbol("volumes")=>"Vector{IoK8sApiCoreV1Volume}")
 Base.propertynames(::Type{ IoK8sApiSettingsV1alpha1PodPresetSpec }) = collect(keys(_property_map_IoK8sApiSettingsV1alpha1PodPresetSpec))
-Swagger.property_type(::Type{ IoK8sApiSettingsV1alpha1PodPresetSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiSettingsV1alpha1PodPresetSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiSettingsV1alpha1PodPresetSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiSettingsV1alpha1PodPresetSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiSettingsV1alpha1PodPresetSpec }, property_name::Symbol) =  _property_map_IoK8sApiSettingsV1alpha1PodPresetSpec[property_name]
 
 function check_required(o::IoK8sApiSettingsV1alpha1PodPresetSpec)

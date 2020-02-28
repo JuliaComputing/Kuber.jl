@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuditregistrationV1alpha1Policy <: SwaggerModel
     level::Any # spec type: Union{ Nothing, String } # spec name: level
     stages::Any # spec type: Union{ Nothing, Vector{String} } # spec name: stages
@@ -20,7 +19,7 @@ end # type IoK8sApiAuditregistrationV1alpha1Policy
 const _property_map_IoK8sApiAuditregistrationV1alpha1Policy = Dict{Symbol,Symbol}(Symbol("level")=>Symbol("level"), Symbol("stages")=>Symbol("stages"))
 const _property_types_IoK8sApiAuditregistrationV1alpha1Policy = Dict{Symbol,String}(Symbol("level")=>"String", Symbol("stages")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiAuditregistrationV1alpha1Policy }) = collect(keys(_property_map_IoK8sApiAuditregistrationV1alpha1Policy))
-Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1Policy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1Policy[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuditregistrationV1alpha1Policy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuditregistrationV1alpha1Policy[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuditregistrationV1alpha1Policy }, property_name::Symbol) =  _property_map_IoK8sApiAuditregistrationV1alpha1Policy[property_name]
 
 function check_required(o::IoK8sApiAuditregistrationV1alpha1Policy)

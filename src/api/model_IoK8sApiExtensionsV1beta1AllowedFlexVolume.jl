@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiExtensionsV1beta1AllowedFlexVolume <: SwaggerModel
     driver::Any # spec type: Union{ Nothing, String } # spec name: driver
 
@@ -17,7 +16,7 @@ end # type IoK8sApiExtensionsV1beta1AllowedFlexVolume
 const _property_map_IoK8sApiExtensionsV1beta1AllowedFlexVolume = Dict{Symbol,Symbol}(Symbol("driver")=>Symbol("driver"))
 const _property_types_IoK8sApiExtensionsV1beta1AllowedFlexVolume = Dict{Symbol,String}(Symbol("driver")=>"String")
 Base.propertynames(::Type{ IoK8sApiExtensionsV1beta1AllowedFlexVolume }) = collect(keys(_property_map_IoK8sApiExtensionsV1beta1AllowedFlexVolume))
-Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1AllowedFlexVolume }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiExtensionsV1beta1AllowedFlexVolume[name]))}
+Swagger.property_type(::Type{ IoK8sApiExtensionsV1beta1AllowedFlexVolume }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiExtensionsV1beta1AllowedFlexVolume[name]))}
 Swagger.field_name(::Type{ IoK8sApiExtensionsV1beta1AllowedFlexVolume }, property_name::Symbol) =  _property_map_IoK8sApiExtensionsV1beta1AllowedFlexVolume[property_name]
 
 function check_required(o::IoK8sApiExtensionsV1beta1AllowedFlexVolume)

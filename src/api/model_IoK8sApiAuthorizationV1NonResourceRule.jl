@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1NonResourceRule <: SwaggerModel
     nonResourceURLs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nonResourceURLs
     verbs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: verbs
@@ -20,7 +19,7 @@ end # type IoK8sApiAuthorizationV1NonResourceRule
 const _property_map_IoK8sApiAuthorizationV1NonResourceRule = Dict{Symbol,Symbol}(Symbol("nonResourceURLs")=>Symbol("nonResourceURLs"), Symbol("verbs")=>Symbol("verbs"))
 const _property_types_IoK8sApiAuthorizationV1NonResourceRule = Dict{Symbol,String}(Symbol("nonResourceURLs")=>"Vector{String}", Symbol("verbs")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1NonResourceRule }) = collect(keys(_property_map_IoK8sApiAuthorizationV1NonResourceRule))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1NonResourceRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1NonResourceRule[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1NonResourceRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1NonResourceRule[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1NonResourceRule }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1NonResourceRule[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1NonResourceRule)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiRbacV1beta1Subject <: SwaggerModel
     apiGroup::Any # spec type: Union{ Nothing, String } # spec name: apiGroup
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -26,7 +25,7 @@ end # type IoK8sApiRbacV1beta1Subject
 const _property_map_IoK8sApiRbacV1beta1Subject = Dict{Symbol,Symbol}(Symbol("apiGroup")=>Symbol("apiGroup"), Symbol("kind")=>Symbol("kind"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"))
 const _property_types_IoK8sApiRbacV1beta1Subject = Dict{Symbol,String}(Symbol("apiGroup")=>"String", Symbol("kind")=>"String", Symbol("name")=>"String", Symbol("namespace")=>"String")
 Base.propertynames(::Type{ IoK8sApiRbacV1beta1Subject }) = collect(keys(_property_map_IoK8sApiRbacV1beta1Subject))
-Swagger.property_type(::Type{ IoK8sApiRbacV1beta1Subject }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiRbacV1beta1Subject[name]))}
+Swagger.property_type(::Type{ IoK8sApiRbacV1beta1Subject }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiRbacV1beta1Subject[name]))}
 Swagger.field_name(::Type{ IoK8sApiRbacV1beta1Subject }, property_name::Symbol) =  _property_map_IoK8sApiRbacV1beta1Subject[property_name]
 
 function check_required(o::IoK8sApiRbacV1beta1Subject)

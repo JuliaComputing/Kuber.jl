@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1GlusterfsPersistentVolumeSource <: SwaggerModel
     endpoints::Any # spec type: Union{ Nothing, String } # spec name: endpoints
     endpointsNamespace::Any # spec type: Union{ Nothing, String } # spec name: endpointsNamespace
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1GlusterfsPersistentVolumeSource
 const _property_map_IoK8sApiCoreV1GlusterfsPersistentVolumeSource = Dict{Symbol,Symbol}(Symbol("endpoints")=>Symbol("endpoints"), Symbol("endpointsNamespace")=>Symbol("endpointsNamespace"), Symbol("path")=>Symbol("path"), Symbol("readOnly")=>Symbol("readOnly"))
 const _property_types_IoK8sApiCoreV1GlusterfsPersistentVolumeSource = Dict{Symbol,String}(Symbol("endpoints")=>"String", Symbol("endpointsNamespace")=>"String", Symbol("path")=>"String", Symbol("readOnly")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1GlusterfsPersistentVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1GlusterfsPersistentVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1GlusterfsPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1GlusterfsPersistentVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1GlusterfsPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1GlusterfsPersistentVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1GlusterfsPersistentVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1GlusterfsPersistentVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1GlusterfsPersistentVolumeSource)

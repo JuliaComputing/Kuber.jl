@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiStorageV1StorageClass <: SwaggerModel
     allowVolumeExpansion::Any # spec type: Union{ Nothing, Bool } # spec name: allowVolumeExpansion
     allowedTopologies::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1TopologySelectorTerm} } # spec name: allowedTopologies
@@ -44,7 +43,7 @@ end # type IoK8sApiStorageV1StorageClass
 const _property_map_IoK8sApiStorageV1StorageClass = Dict{Symbol,Symbol}(Symbol("allowVolumeExpansion")=>Symbol("allowVolumeExpansion"), Symbol("allowedTopologies")=>Symbol("allowedTopologies"), Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("mountOptions")=>Symbol("mountOptions"), Symbol("parameters")=>Symbol("parameters"), Symbol("provisioner")=>Symbol("provisioner"), Symbol("reclaimPolicy")=>Symbol("reclaimPolicy"), Symbol("volumeBindingMode")=>Symbol("volumeBindingMode"))
 const _property_types_IoK8sApiStorageV1StorageClass = Dict{Symbol,String}(Symbol("allowVolumeExpansion")=>"Bool", Symbol("allowedTopologies")=>"Vector{IoK8sApiCoreV1TopologySelectorTerm}", Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("mountOptions")=>"Vector{String}", Symbol("parameters")=>"Dict{String, String}", Symbol("provisioner")=>"String", Symbol("reclaimPolicy")=>"String", Symbol("volumeBindingMode")=>"String")
 Base.propertynames(::Type{ IoK8sApiStorageV1StorageClass }) = collect(keys(_property_map_IoK8sApiStorageV1StorageClass))
-Swagger.property_type(::Type{ IoK8sApiStorageV1StorageClass }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiStorageV1StorageClass[name]))}
+Swagger.property_type(::Type{ IoK8sApiStorageV1StorageClass }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiStorageV1StorageClass[name]))}
 Swagger.field_name(::Type{ IoK8sApiStorageV1StorageClass }, property_name::Symbol) =  _property_map_IoK8sApiStorageV1StorageClass[property_name]
 
 function check_required(o::IoK8sApiStorageV1StorageClass)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1VolumeNodeAffinity <: SwaggerModel
     required::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeSelector } # spec name: required
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1VolumeNodeAffinity
 const _property_map_IoK8sApiCoreV1VolumeNodeAffinity = Dict{Symbol,Symbol}(Symbol("required")=>Symbol("required"))
 const _property_types_IoK8sApiCoreV1VolumeNodeAffinity = Dict{Symbol,String}(Symbol("required")=>"IoK8sApiCoreV1NodeSelector")
 Base.propertynames(::Type{ IoK8sApiCoreV1VolumeNodeAffinity }) = collect(keys(_property_map_IoK8sApiCoreV1VolumeNodeAffinity))
-Swagger.property_type(::Type{ IoK8sApiCoreV1VolumeNodeAffinity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1VolumeNodeAffinity[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1VolumeNodeAffinity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1VolumeNodeAffinity[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1VolumeNodeAffinity }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1VolumeNodeAffinity[property_name]
 
 function check_required(o::IoK8sApiCoreV1VolumeNodeAffinity)

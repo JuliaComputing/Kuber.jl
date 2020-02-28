@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1AzureFileVolumeSource <: SwaggerModel
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
     secretName::Any # spec type: Union{ Nothing, String } # spec name: secretName
@@ -23,7 +22,7 @@ end # type IoK8sApiCoreV1AzureFileVolumeSource
 const _property_map_IoK8sApiCoreV1AzureFileVolumeSource = Dict{Symbol,Symbol}(Symbol("readOnly")=>Symbol("readOnly"), Symbol("secretName")=>Symbol("secretName"), Symbol("shareName")=>Symbol("shareName"))
 const _property_types_IoK8sApiCoreV1AzureFileVolumeSource = Dict{Symbol,String}(Symbol("readOnly")=>"Bool", Symbol("secretName")=>"String", Symbol("shareName")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1AzureFileVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1AzureFileVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1AzureFileVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1AzureFileVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1AzureFileVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1AzureFileVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1AzureFileVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1AzureFileVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1AzureFileVolumeSource)

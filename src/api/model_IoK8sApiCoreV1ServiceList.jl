@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ServiceList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1Service} } # spec name: items
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1ServiceList
 const _property_map_IoK8sApiCoreV1ServiceList = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("items")=>Symbol("items"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"))
 const _property_types_IoK8sApiCoreV1ServiceList = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("items")=>"Vector{IoK8sApiCoreV1Service}", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ListMeta")
 Base.propertynames(::Type{ IoK8sApiCoreV1ServiceList }) = collect(keys(_property_map_IoK8sApiCoreV1ServiceList))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ServiceList[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ServiceList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ServiceList[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ServiceList }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ServiceList[property_name]
 
 function check_required(o::IoK8sApiCoreV1ServiceList)

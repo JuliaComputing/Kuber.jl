@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1ContainerStateWaiting <: SwaggerModel
     message::Any # spec type: Union{ Nothing, String } # spec name: message
     reason::Any # spec type: Union{ Nothing, String } # spec name: reason
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1ContainerStateWaiting
 const _property_map_IoK8sApiCoreV1ContainerStateWaiting = Dict{Symbol,Symbol}(Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"))
 const _property_types_IoK8sApiCoreV1ContainerStateWaiting = Dict{Symbol,String}(Symbol("message")=>"String", Symbol("reason")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1ContainerStateWaiting }) = collect(keys(_property_map_IoK8sApiCoreV1ContainerStateWaiting))
-Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStateWaiting }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1ContainerStateWaiting[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1ContainerStateWaiting }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ContainerStateWaiting[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1ContainerStateWaiting }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1ContainerStateWaiting[property_name]
 
 function check_required(o::IoK8sApiCoreV1ContainerStateWaiting)

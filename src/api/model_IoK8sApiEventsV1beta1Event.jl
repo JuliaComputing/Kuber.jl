@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiEventsV1beta1Event <: SwaggerModel
     action::Any # spec type: Union{ Nothing, String } # spec name: action
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
@@ -65,7 +64,7 @@ end # type IoK8sApiEventsV1beta1Event
 const _property_map_IoK8sApiEventsV1beta1Event = Dict{Symbol,Symbol}(Symbol("action")=>Symbol("action"), Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("deprecatedCount")=>Symbol("deprecatedCount"), Symbol("deprecatedFirstTimestamp")=>Symbol("deprecatedFirstTimestamp"), Symbol("deprecatedLastTimestamp")=>Symbol("deprecatedLastTimestamp"), Symbol("deprecatedSource")=>Symbol("deprecatedSource"), Symbol("eventTime")=>Symbol("eventTime"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("note")=>Symbol("note"), Symbol("reason")=>Symbol("reason"), Symbol("regarding")=>Symbol("regarding"), Symbol("related")=>Symbol("related"), Symbol("reportingController")=>Symbol("reportingController"), Symbol("reportingInstance")=>Symbol("reportingInstance"), Symbol("series")=>Symbol("series"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiEventsV1beta1Event = Dict{Symbol,String}(Symbol("action")=>"String", Symbol("apiVersion")=>"String", Symbol("deprecatedCount")=>"Int32", Symbol("deprecatedFirstTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("deprecatedLastTimestamp")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("deprecatedSource")=>"IoK8sApiCoreV1EventSource", Symbol("eventTime")=>"IoK8sApimachineryPkgApisMetaV1MicroTime", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("note")=>"String", Symbol("reason")=>"String", Symbol("regarding")=>"IoK8sApiCoreV1ObjectReference", Symbol("related")=>"IoK8sApiCoreV1ObjectReference", Symbol("reportingController")=>"String", Symbol("reportingInstance")=>"String", Symbol("series")=>"IoK8sApiEventsV1beta1EventSeries", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiEventsV1beta1Event }) = collect(keys(_property_map_IoK8sApiEventsV1beta1Event))
-Swagger.property_type(::Type{ IoK8sApiEventsV1beta1Event }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiEventsV1beta1Event[name]))}
+Swagger.property_type(::Type{ IoK8sApiEventsV1beta1Event }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiEventsV1beta1Event[name]))}
 Swagger.field_name(::Type{ IoK8sApiEventsV1beta1Event }, property_name::Symbol) =  _property_map_IoK8sApiEventsV1beta1Event[property_name]
 
 function check_required(o::IoK8sApiEventsV1beta1Event)

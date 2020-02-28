@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1TopologySelectorTerm <: SwaggerModel
     matchLabelExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1TopologySelectorLabelRequirement} } # spec name: matchLabelExpressions
 
@@ -17,7 +16,7 @@ end # type IoK8sApiCoreV1TopologySelectorTerm
 const _property_map_IoK8sApiCoreV1TopologySelectorTerm = Dict{Symbol,Symbol}(Symbol("matchLabelExpressions")=>Symbol("matchLabelExpressions"))
 const _property_types_IoK8sApiCoreV1TopologySelectorTerm = Dict{Symbol,String}(Symbol("matchLabelExpressions")=>"Vector{IoK8sApiCoreV1TopologySelectorLabelRequirement}")
 Base.propertynames(::Type{ IoK8sApiCoreV1TopologySelectorTerm }) = collect(keys(_property_map_IoK8sApiCoreV1TopologySelectorTerm))
-Swagger.property_type(::Type{ IoK8sApiCoreV1TopologySelectorTerm }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1TopologySelectorTerm[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1TopologySelectorTerm }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1TopologySelectorTerm[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1TopologySelectorTerm }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1TopologySelectorTerm[property_name]
 
 function check_required(o::IoK8sApiCoreV1TopologySelectorTerm)

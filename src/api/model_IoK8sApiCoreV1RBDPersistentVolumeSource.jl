@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1RBDPersistentVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     image::Any # spec type: Union{ Nothing, String } # spec name: image
@@ -38,7 +37,7 @@ end # type IoK8sApiCoreV1RBDPersistentVolumeSource
 const _property_map_IoK8sApiCoreV1RBDPersistentVolumeSource = Dict{Symbol,Symbol}(Symbol("fsType")=>Symbol("fsType"), Symbol("image")=>Symbol("image"), Symbol("keyring")=>Symbol("keyring"), Symbol("monitors")=>Symbol("monitors"), Symbol("pool")=>Symbol("pool"), Symbol("readOnly")=>Symbol("readOnly"), Symbol("secretRef")=>Symbol("secretRef"), Symbol("user")=>Symbol("user"))
 const _property_types_IoK8sApiCoreV1RBDPersistentVolumeSource = Dict{Symbol,String}(Symbol("fsType")=>"String", Symbol("image")=>"String", Symbol("keyring")=>"String", Symbol("monitors")=>"Vector{String}", Symbol("pool")=>"String", Symbol("readOnly")=>"Bool", Symbol("secretRef")=>"IoK8sApiCoreV1SecretReference", Symbol("user")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1RBDPersistentVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1RBDPersistentVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1RBDPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1RBDPersistentVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1RBDPersistentVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1RBDPersistentVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1RBDPersistentVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1RBDPersistentVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1RBDPersistentVolumeSource)

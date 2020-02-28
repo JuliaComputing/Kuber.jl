@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAuthorizationV1ResourceAttributes <: SwaggerModel
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -35,7 +34,7 @@ end # type IoK8sApiAuthorizationV1ResourceAttributes
 const _property_map_IoK8sApiAuthorizationV1ResourceAttributes = Dict{Symbol,Symbol}(Symbol("group")=>Symbol("group"), Symbol("name")=>Symbol("name"), Symbol("namespace")=>Symbol("namespace"), Symbol("resource")=>Symbol("resource"), Symbol("subresource")=>Symbol("subresource"), Symbol("verb")=>Symbol("verb"), Symbol("version")=>Symbol("version"))
 const _property_types_IoK8sApiAuthorizationV1ResourceAttributes = Dict{Symbol,String}(Symbol("group")=>"String", Symbol("name")=>"String", Symbol("namespace")=>"String", Symbol("resource")=>"String", Symbol("subresource")=>"String", Symbol("verb")=>"String", Symbol("version")=>"String")
 Base.propertynames(::Type{ IoK8sApiAuthorizationV1ResourceAttributes }) = collect(keys(_property_map_IoK8sApiAuthorizationV1ResourceAttributes))
-Swagger.property_type(::Type{ IoK8sApiAuthorizationV1ResourceAttributes }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAuthorizationV1ResourceAttributes[name]))}
+Swagger.property_type(::Type{ IoK8sApiAuthorizationV1ResourceAttributes }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAuthorizationV1ResourceAttributes[name]))}
 Swagger.field_name(::Type{ IoK8sApiAuthorizationV1ResourceAttributes }, property_name::Symbol) =  _property_map_IoK8sApiAuthorizationV1ResourceAttributes[property_name]
 
 function check_required(o::IoK8sApiAuthorizationV1ResourceAttributes)

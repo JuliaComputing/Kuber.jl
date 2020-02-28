@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2DaemonSet <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -29,7 +28,7 @@ end # type IoK8sApiAppsV1beta2DaemonSet
 const _property_map_IoK8sApiAppsV1beta2DaemonSet = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("spec")=>Symbol("spec"), Symbol("status")=>Symbol("status"))
 const _property_types_IoK8sApiAppsV1beta2DaemonSet = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("spec")=>"IoK8sApiAppsV1beta2DaemonSetSpec", Symbol("status")=>"IoK8sApiAppsV1beta2DaemonSetStatus")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2DaemonSet }) = collect(keys(_property_map_IoK8sApiAppsV1beta2DaemonSet))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DaemonSet }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2DaemonSet[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DaemonSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2DaemonSet[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2DaemonSet }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2DaemonSet[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2DaemonSet)

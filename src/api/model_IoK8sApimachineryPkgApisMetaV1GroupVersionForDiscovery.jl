@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery <: SwaggerModel
     groupVersion::Any # spec type: Union{ Nothing, String } # spec name: groupVersion
     version::Any # spec type: Union{ Nothing, String } # spec name: version
@@ -20,7 +19,7 @@ end # type IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery
 const _property_map_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = Dict{Symbol,Symbol}(Symbol("groupVersion")=>Symbol("groupVersion"), Symbol("version")=>Symbol("version"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = Dict{Symbol,String}(Symbol("groupVersion")=>"String", Symbol("version")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery)

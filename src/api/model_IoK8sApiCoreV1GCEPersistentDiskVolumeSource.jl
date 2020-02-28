@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1GCEPersistentDiskVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     partition::Any # spec type: Union{ Nothing, Int32 } # spec name: partition
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1GCEPersistentDiskVolumeSource
 const _property_map_IoK8sApiCoreV1GCEPersistentDiskVolumeSource = Dict{Symbol,Symbol}(Symbol("fsType")=>Symbol("fsType"), Symbol("partition")=>Symbol("partition"), Symbol("pdName")=>Symbol("pdName"), Symbol("readOnly")=>Symbol("readOnly"))
 const _property_types_IoK8sApiCoreV1GCEPersistentDiskVolumeSource = Dict{Symbol,String}(Symbol("fsType")=>"String", Symbol("partition")=>"Int32", Symbol("pdName")=>"String", Symbol("readOnly")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1GCEPersistentDiskVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1GCEPersistentDiskVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1GCEPersistentDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1GCEPersistentDiskVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1GCEPersistentDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1GCEPersistentDiskVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1GCEPersistentDiskVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1GCEPersistentDiskVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1GCEPersistentDiskVolumeSource)

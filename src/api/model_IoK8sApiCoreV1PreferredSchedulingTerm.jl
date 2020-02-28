@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1PreferredSchedulingTerm <: SwaggerModel
     preference::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeSelectorTerm } # spec name: preference
     weight::Any # spec type: Union{ Nothing, Int32 } # spec name: weight
@@ -20,7 +19,7 @@ end # type IoK8sApiCoreV1PreferredSchedulingTerm
 const _property_map_IoK8sApiCoreV1PreferredSchedulingTerm = Dict{Symbol,Symbol}(Symbol("preference")=>Symbol("preference"), Symbol("weight")=>Symbol("weight"))
 const _property_types_IoK8sApiCoreV1PreferredSchedulingTerm = Dict{Symbol,String}(Symbol("preference")=>"IoK8sApiCoreV1NodeSelectorTerm", Symbol("weight")=>"Int32")
 Base.propertynames(::Type{ IoK8sApiCoreV1PreferredSchedulingTerm }) = collect(keys(_property_map_IoK8sApiCoreV1PreferredSchedulingTerm))
-Swagger.property_type(::Type{ IoK8sApiCoreV1PreferredSchedulingTerm }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1PreferredSchedulingTerm[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1PreferredSchedulingTerm }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1PreferredSchedulingTerm[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1PreferredSchedulingTerm }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1PreferredSchedulingTerm[property_name]
 
 function check_required(o::IoK8sApiCoreV1PreferredSchedulingTerm)

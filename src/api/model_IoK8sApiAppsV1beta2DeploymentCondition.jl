@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiAppsV1beta2DeploymentCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     lastUpdateTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastUpdateTime
@@ -32,7 +31,7 @@ end # type IoK8sApiAppsV1beta2DeploymentCondition
 const _property_map_IoK8sApiAppsV1beta2DeploymentCondition = Dict{Symbol,Symbol}(Symbol("lastTransitionTime")=>Symbol("lastTransitionTime"), Symbol("lastUpdateTime")=>Symbol("lastUpdateTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("status")=>Symbol("status"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiAppsV1beta2DeploymentCondition = Dict{Symbol,String}(Symbol("lastTransitionTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("lastUpdateTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("status")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiAppsV1beta2DeploymentCondition }) = collect(keys(_property_map_IoK8sApiAppsV1beta2DeploymentCondition))
-Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DeploymentCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiAppsV1beta2DeploymentCondition[name]))}
+Swagger.property_type(::Type{ IoK8sApiAppsV1beta2DeploymentCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiAppsV1beta2DeploymentCondition[name]))}
 Swagger.field_name(::Type{ IoK8sApiAppsV1beta2DeploymentCondition }, property_name::Symbol) =  _property_map_IoK8sApiAppsV1beta2DeploymentCondition[property_name]
 
 function check_required(o::IoK8sApiAppsV1beta2DeploymentCondition)

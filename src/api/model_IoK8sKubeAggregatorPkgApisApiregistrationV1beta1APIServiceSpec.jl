@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec <: SwaggerModel
     caBundle::Any # spec type: Union{ Nothing, Vector{UInt8} } # spec name: caBundle
     group::Any # spec type: Union{ Nothing, String } # spec name: group
@@ -35,7 +34,7 @@ end # type IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec
 const _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec = Dict{Symbol,Symbol}(Symbol("caBundle")=>Symbol("caBundle"), Symbol("group")=>Symbol("group"), Symbol("groupPriorityMinimum")=>Symbol("groupPriorityMinimum"), Symbol("insecureSkipTLSVerify")=>Symbol("insecureSkipTLSVerify"), Symbol("service")=>Symbol("service"), Symbol("version")=>Symbol("version"), Symbol("versionPriority")=>Symbol("versionPriority"))
 const _property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec = Dict{Symbol,String}(Symbol("caBundle")=>"Vector{UInt8}", Symbol("group")=>"String", Symbol("groupPriorityMinimum")=>"Int32", Symbol("insecureSkipTLSVerify")=>"Bool", Symbol("service")=>"IoK8sKubeAggregatorPkgApisApiregistrationV1beta1ServiceReference", Symbol("version")=>"String", Symbol("versionPriority")=>"Int32")
 Base.propertynames(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec }) = collect(keys(_property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec))
-Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec[name]))}
+Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec[name]))}
 Swagger.field_name(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec }, property_name::Symbol) =  _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec[property_name]
 
 function check_required(o::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceSpec)

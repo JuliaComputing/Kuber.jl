@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition <: SwaggerModel
     lastUpdateTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastUpdateTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message
@@ -26,7 +25,7 @@ end # type IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition
 const _property_map_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition = Dict{Symbol,Symbol}(Symbol("lastUpdateTime")=>Symbol("lastUpdateTime"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"), Symbol("type")=>Symbol("type"))
 const _property_types_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition = Dict{Symbol,String}(Symbol("lastUpdateTime")=>"IoK8sApimachineryPkgApisMetaV1Time", Symbol("message")=>"String", Symbol("reason")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition }) = collect(keys(_property_map_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition))
-Swagger.property_type(::Type{ IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition[name]))}
+Swagger.property_type(::Type{ IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition[name]))}
 Swagger.field_name(::Type{ IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition }, property_name::Symbol) =  _property_map_IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition[property_name]
 
 function check_required(o::IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition)

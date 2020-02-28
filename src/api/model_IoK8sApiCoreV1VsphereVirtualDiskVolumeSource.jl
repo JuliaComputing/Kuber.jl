@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1VsphereVirtualDiskVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     storagePolicyID::Any # spec type: Union{ Nothing, String } # spec name: storagePolicyID
@@ -26,7 +25,7 @@ end # type IoK8sApiCoreV1VsphereVirtualDiskVolumeSource
 const _property_map_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource = Dict{Symbol,Symbol}(Symbol("fsType")=>Symbol("fsType"), Symbol("storagePolicyID")=>Symbol("storagePolicyID"), Symbol("storagePolicyName")=>Symbol("storagePolicyName"), Symbol("volumePath")=>Symbol("volumePath"))
 const _property_types_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource = Dict{Symbol,String}(Symbol("fsType")=>"String", Symbol("storagePolicyID")=>"String", Symbol("storagePolicyName")=>"String", Symbol("volumePath")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1VsphereVirtualDiskVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1VsphereVirtualDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1VsphereVirtualDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1VsphereVirtualDiskVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1VsphereVirtualDiskVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1VsphereVirtualDiskVolumeSource)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1StatusCause <: SwaggerModel
     field::Any # spec type: Union{ Nothing, String } # spec name: field
     message::Any # spec type: Union{ Nothing, String } # spec name: message
@@ -23,7 +22,7 @@ end # type IoK8sApimachineryPkgApisMetaV1StatusCause
 const _property_map_IoK8sApimachineryPkgApisMetaV1StatusCause = Dict{Symbol,Symbol}(Symbol("field")=>Symbol("field"), Symbol("message")=>Symbol("message"), Symbol("reason")=>Symbol("reason"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1StatusCause = Dict{Symbol,String}(Symbol("field")=>"String", Symbol("message")=>"String", Symbol("reason")=>"String")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1StatusCause }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1StatusCause))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1StatusCause }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1StatusCause[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1StatusCause }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1StatusCause[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1StatusCause }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1StatusCause[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1StatusCause)

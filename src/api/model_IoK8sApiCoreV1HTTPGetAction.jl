@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1HTTPGetAction <: SwaggerModel
     host::Any # spec type: Union{ Nothing, String } # spec name: host
     httpHeaders::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1HTTPHeader} } # spec name: httpHeaders
@@ -29,7 +28,7 @@ end # type IoK8sApiCoreV1HTTPGetAction
 const _property_map_IoK8sApiCoreV1HTTPGetAction = Dict{Symbol,Symbol}(Symbol("host")=>Symbol("host"), Symbol("httpHeaders")=>Symbol("httpHeaders"), Symbol("path")=>Symbol("path"), Symbol("port")=>Symbol("port"), Symbol("scheme")=>Symbol("scheme"))
 const _property_types_IoK8sApiCoreV1HTTPGetAction = Dict{Symbol,String}(Symbol("host")=>"String", Symbol("httpHeaders")=>"Vector{IoK8sApiCoreV1HTTPHeader}", Symbol("path")=>"String", Symbol("port")=>"IoK8sApimachineryPkgUtilIntstrIntOrString", Symbol("scheme")=>"String")
 Base.propertynames(::Type{ IoK8sApiCoreV1HTTPGetAction }) = collect(keys(_property_map_IoK8sApiCoreV1HTTPGetAction))
-Swagger.property_type(::Type{ IoK8sApiCoreV1HTTPGetAction }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1HTTPGetAction[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1HTTPGetAction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1HTTPGetAction[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1HTTPGetAction }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1HTTPGetAction[property_name]
 
 function check_required(o::IoK8sApiCoreV1HTTPGetAction)

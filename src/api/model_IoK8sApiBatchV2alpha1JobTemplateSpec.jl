@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiBatchV2alpha1JobTemplateSpec <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
     spec::Any # spec type: Union{ Nothing, IoK8sApiBatchV1JobSpec } # spec name: spec
@@ -20,7 +19,7 @@ end # type IoK8sApiBatchV2alpha1JobTemplateSpec
 const _property_map_IoK8sApiBatchV2alpha1JobTemplateSpec = Dict{Symbol,Symbol}(Symbol("metadata")=>Symbol("metadata"), Symbol("spec")=>Symbol("spec"))
 const _property_types_IoK8sApiBatchV2alpha1JobTemplateSpec = Dict{Symbol,String}(Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("spec")=>"IoK8sApiBatchV1JobSpec")
 Base.propertynames(::Type{ IoK8sApiBatchV2alpha1JobTemplateSpec }) = collect(keys(_property_map_IoK8sApiBatchV2alpha1JobTemplateSpec))
-Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1JobTemplateSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiBatchV2alpha1JobTemplateSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1JobTemplateSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiBatchV2alpha1JobTemplateSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiBatchV2alpha1JobTemplateSpec }, property_name::Symbol) =  _property_map_IoK8sApiBatchV2alpha1JobTemplateSpec[property_name]
 
 function check_required(o::IoK8sApiBatchV2alpha1JobTemplateSpec)

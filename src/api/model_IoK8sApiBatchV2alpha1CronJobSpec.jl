@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiBatchV2alpha1CronJobSpec <: SwaggerModel
     concurrencyPolicy::Any # spec type: Union{ Nothing, String } # spec name: concurrencyPolicy
     failedJobsHistoryLimit::Any # spec type: Union{ Nothing, Int32 } # spec name: failedJobsHistoryLimit
@@ -35,7 +34,7 @@ end # type IoK8sApiBatchV2alpha1CronJobSpec
 const _property_map_IoK8sApiBatchV2alpha1CronJobSpec = Dict{Symbol,Symbol}(Symbol("concurrencyPolicy")=>Symbol("concurrencyPolicy"), Symbol("failedJobsHistoryLimit")=>Symbol("failedJobsHistoryLimit"), Symbol("jobTemplate")=>Symbol("jobTemplate"), Symbol("schedule")=>Symbol("schedule"), Symbol("startingDeadlineSeconds")=>Symbol("startingDeadlineSeconds"), Symbol("successfulJobsHistoryLimit")=>Symbol("successfulJobsHistoryLimit"), Symbol("suspend")=>Symbol("suspend"))
 const _property_types_IoK8sApiBatchV2alpha1CronJobSpec = Dict{Symbol,String}(Symbol("concurrencyPolicy")=>"String", Symbol("failedJobsHistoryLimit")=>"Int32", Symbol("jobTemplate")=>"IoK8sApiBatchV2alpha1JobTemplateSpec", Symbol("schedule")=>"String", Symbol("startingDeadlineSeconds")=>"Int64", Symbol("successfulJobsHistoryLimit")=>"Int32", Symbol("suspend")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiBatchV2alpha1CronJobSpec }) = collect(keys(_property_map_IoK8sApiBatchV2alpha1CronJobSpec))
-Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1CronJobSpec }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiBatchV2alpha1CronJobSpec[name]))}
+Swagger.property_type(::Type{ IoK8sApiBatchV2alpha1CronJobSpec }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiBatchV2alpha1CronJobSpec[name]))}
 Swagger.field_name(::Type{ IoK8sApiBatchV2alpha1CronJobSpec }, property_name::Symbol) =  _property_map_IoK8sApiBatchV2alpha1CronJobSpec[property_name]
 
 function check_required(o::IoK8sApiBatchV2alpha1CronJobSpec)

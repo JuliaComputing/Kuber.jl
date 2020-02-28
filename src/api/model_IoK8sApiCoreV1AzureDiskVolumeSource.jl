@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApiCoreV1AzureDiskVolumeSource <: SwaggerModel
     cachingMode::Any # spec type: Union{ Nothing, String } # spec name: cachingMode
     diskName::Any # spec type: Union{ Nothing, String } # spec name: diskName
@@ -32,7 +31,7 @@ end # type IoK8sApiCoreV1AzureDiskVolumeSource
 const _property_map_IoK8sApiCoreV1AzureDiskVolumeSource = Dict{Symbol,Symbol}(Symbol("cachingMode")=>Symbol("cachingMode"), Symbol("diskName")=>Symbol("diskName"), Symbol("diskURI")=>Symbol("diskURI"), Symbol("fsType")=>Symbol("fsType"), Symbol("kind")=>Symbol("kind"), Symbol("readOnly")=>Symbol("readOnly"))
 const _property_types_IoK8sApiCoreV1AzureDiskVolumeSource = Dict{Symbol,String}(Symbol("cachingMode")=>"String", Symbol("diskName")=>"String", Symbol("diskURI")=>"String", Symbol("fsType")=>"String", Symbol("kind")=>"String", Symbol("readOnly")=>"Bool")
 Base.propertynames(::Type{ IoK8sApiCoreV1AzureDiskVolumeSource }) = collect(keys(_property_map_IoK8sApiCoreV1AzureDiskVolumeSource))
-Swagger.property_type(::Type{ IoK8sApiCoreV1AzureDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApiCoreV1AzureDiskVolumeSource[name]))}
+Swagger.property_type(::Type{ IoK8sApiCoreV1AzureDiskVolumeSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1AzureDiskVolumeSource[name]))}
 Swagger.field_name(::Type{ IoK8sApiCoreV1AzureDiskVolumeSource }, property_name::Symbol) =  _property_map_IoK8sApiCoreV1AzureDiskVolumeSource[property_name]
 
 function check_required(o::IoK8sApiCoreV1AzureDiskVolumeSource)

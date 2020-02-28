@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1APIService <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -29,7 +28,7 @@ end # type IoK8sKubeAggregatorPkgApisApiregistrationV1APIService
 const _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService = Dict{Symbol,Symbol}(Symbol("apiVersion")=>Symbol("apiVersion"), Symbol("kind")=>Symbol("kind"), Symbol("metadata")=>Symbol("metadata"), Symbol("spec")=>Symbol("spec"), Symbol("status")=>Symbol("status"))
 const _property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService = Dict{Symbol,String}(Symbol("apiVersion")=>"String", Symbol("kind")=>"String", Symbol("metadata")=>"IoK8sApimachineryPkgApisMetaV1ObjectMeta", Symbol("spec")=>"IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec", Symbol("status")=>"IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceStatus")
 Base.propertynames(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1APIService }) = collect(keys(_property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService))
-Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1APIService }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService[name]))}
+Swagger.property_type(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1APIService }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService[name]))}
 Swagger.field_name(::Type{ IoK8sKubeAggregatorPkgApisApiregistrationV1APIService }, property_name::Symbol) =  _property_map_IoK8sKubeAggregatorPkgApisApiregistrationV1APIService[property_name]
 
 function check_required(o::IoK8sKubeAggregatorPkgApisApiregistrationV1APIService)

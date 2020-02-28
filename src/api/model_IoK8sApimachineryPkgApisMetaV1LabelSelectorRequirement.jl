@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement <: SwaggerModel
     key::Any # spec type: Union{ Nothing, String } # spec name: key
     operator::Any # spec type: Union{ Nothing, String } # spec name: operator
@@ -23,7 +22,7 @@ end # type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement
 const _property_map_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = Dict{Symbol,Symbol}(Symbol("key")=>Symbol("key"), Symbol("operator")=>Symbol("operator"), Symbol("values")=>Symbol("values"))
 const _property_types_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = Dict{Symbol,String}(Symbol("key")=>"String", Symbol("operator")=>"String", Symbol("values")=>"Vector{String}")
 Base.propertynames(::Type{ IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement }) = collect(keys(_property_map_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement))
-Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[name]))}
+Swagger.property_type(::Type{ IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[name]))}
 Swagger.field_name(::Type{ IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement }, property_name::Symbol) =  _property_map_IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement[property_name]
 
 function check_required(o::IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement)
