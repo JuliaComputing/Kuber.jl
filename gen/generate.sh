@@ -21,10 +21,10 @@ then
 fi
 
 # ensure CSTParser is of right version
-cstpver=`${JULIA} -e 'using Pkg; println(Pkg.installed()["CSTParser"] == v"2.1.0")'`
+cstpver=`${JULIA} -e 'using Pkg; println(Pkg.installed()["CSTParser"] == v"2.2.0")'`
 if [ "$cstpver" != "true" ]
 then
-    echo "CSTParser v2.1.0 is required"
+    echo "CSTParser v2.2.0 is required"
     exit -1
 fi
 
