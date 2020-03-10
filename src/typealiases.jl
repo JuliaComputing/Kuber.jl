@@ -643,6 +643,14 @@ module Typedefs
         using ..Kubernetes
         const APIGroup = Kubernetes.IoK8sApimachineryPkgApisMetaV1APIGroup
     end # module Authentication
+    module MetricsV1beta1
+        using ..Kubernetes
+        const ContainerMetrics = Kubernetes.IoK8sApiMetricsV1beta1ContainerMetrics
+        const NodeMetrics = Kubernetes.IoK8sApiMetricsV1beta1NodeMetrics
+        const PodMetrics = Kubernetes.IoK8sApiMetricsV1beta1PodMetrics
+        const PodMetricsList = Kubernetes.IoK8sApiMetricsV1beta1PodMetricsList
+        const NodeMetricsList = Kubernetes.IoK8sApiMetricsV1beta1NodeMetricsList
+    end # module MetricsV1beta1
     module CoordinationV1beta1
         using ..Kubernetes
         const LeaseSpec = Kubernetes.IoK8sApiCoordinationV1beta1LeaseSpec

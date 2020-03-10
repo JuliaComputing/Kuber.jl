@@ -1,3 +1,7 @@
+# listPodMetrics
+listPodMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listMetricsV1beta1PodMetrics(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listPodMetrics
+
 # connectHeadNodeProxy
 connectHeadNodeProxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing) = connectCoreV1HeadNodeProxy(_api, name; path=path, _mediaType=_mediaType)
 export connectHeadNodeProxy
@@ -1086,6 +1090,10 @@ replaceNamespacedDeploymentScale(_api::AppsV1beta2Api, name::String, namespace::
 replaceNamespacedDeploymentScale(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing) = replaceExtensionsV1beta1NamespacedDeploymentScale(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
 export replaceNamespacedDeploymentScale
 
+# readNodeMetrics
+readNodeMetrics(_api::MetricsV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing) = readMetricsV1beta1NodeMetrics(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
+export readNodeMetrics
+
 # connectGetNodeProxy
 connectGetNodeProxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing) = connectCoreV1GetNodeProxy(_api, name; path=path, _mediaType=_mediaType)
 export connectGetNodeProxy
@@ -1151,6 +1159,10 @@ replaceNamespacedReplicaSetStatus(_api::AppsV1Api, name::String, namespace::Stri
 replaceNamespacedReplicaSetStatus(_api::AppsV1beta2Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing) = replaceAppsV1beta2NamespacedReplicaSetStatus(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
 replaceNamespacedReplicaSetStatus(_api::ExtensionsV1beta1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing) = replaceExtensionsV1beta1NamespacedReplicaSetStatus(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
 export replaceNamespacedReplicaSetStatus
+
+# readNamespacedPodMetrics
+readNamespacedPodMetrics(_api::MetricsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing) = readMetricsV1beta1NamespacedPodMetrics(_api, name, namespace; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
+export readNamespacedPodMetrics
 
 # listNamespacedLimitRange
 listNamespacedLimitRange(_api::CoreV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listCoreV1NamespacedLimitRange(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
@@ -2122,6 +2134,10 @@ export watchServiceListForAllNamespaces
 patchCustomResourceDefinitionStatus(_api::ApiextensionsV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing) = patchApiextensionsV1CustomResourceDefinitionStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
 patchCustomResourceDefinitionStatus(_api::ApiextensionsV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing) = patchApiextensionsV1beta1CustomResourceDefinitionStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
 export patchCustomResourceDefinitionStatus
+
+# listNodeMetrics
+listNodeMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = listMetricsV1beta1NodeMetrics(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+export listNodeMetrics
 
 # watchCertificateSigningRequestList
 watchCertificateSigningRequestList(_api::CertificatesV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = watchCertificatesV1beta1CertificateSigningRequestList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
