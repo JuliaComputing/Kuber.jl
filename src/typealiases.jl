@@ -59,6 +59,11 @@ module Typedefs
         const Overhead = Kubernetes.IoK8sApiNodeV1alpha1Overhead
         const Scheduling = Kubernetes.IoK8sApiNodeV1alpha1Scheduling
     end # module NodeV1alpha1
+    module CustomMetricsV1beta1
+        using ..Kubernetes
+        const MetricValue = Kubernetes.IoK8sApiCustomMetricsV1beta1MetricValue
+        const MetricValueList = Kubernetes.IoK8sApiCustomMetricsV1beta1MetricValueList
+    end # module CustomMetricsV1beta1
     module ApiregistrationV1
         using ..Kubernetes
         const WatchEvent = Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
