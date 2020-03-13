@@ -8,9 +8,13 @@ An easy to use API to access Kubernetes clusters from Julia. The `Kuber.Kubernet
 
 Most of the low level APIs fit into a common usage pattern. Kuber.jl makes it possible to use all of them with only a few intuitive verb based APIs. Verbs act on entities. Entities can be identified by names or selector patterns, or otherwise can apply to all entities of that class. Verbs can take additional parameters, e.g. when creating or updating entities.
 
-A [tutorial](https://juliacomputing.com/blog/2018/12/15/kuber.html) on using Kuber.jl.
-
 API and Entity naming convention follows the standard Kubernetes API and Model naming conventions.
+
+Here are a few helpful resources:
+
+- [Tutorial](https://juliacomputing.com/blog/2018/12/15/kuber.html) on using Kuber.jl.
+- [Article](Metrics.md) on using metrics and custom metrics with Kuber.jl
+
 
 ### Entities:
 
@@ -29,6 +33,7 @@ Any Kubernetes entity supported. APIs identify an entity by symbol named as per 
 Kubernetes APIs are mapped to these easy to use verbs, familiar to Julia users.
 
 - `get`: list or fetch entities
+- `list`: list entities
 - `put!`: create entities
 - `update!`: update existing entities
 - `delete!`: delete existing entities
@@ -47,6 +52,7 @@ Other convenience methods:
 
 - `kuber_type`: identify the Julia object corresponding to the Kubernetes specification
 - `kuber_obj`: instantiate a Julia object from for the supplied Kubernetes specification
+- Helper methods for [accessing metrics](Metrics.md)
 
 ### References:
 - API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md
