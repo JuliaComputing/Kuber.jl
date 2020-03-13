@@ -9,6 +9,46 @@ sel(cnd::String...) = join(cnd, ", ")
 
 _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
+function list(ctx::KuberContext, O::Symbol, name::String; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
+
+    if allnamespaces
+        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
+        return apicall(apictx, name; kwargs...)
+    elseif namespaced
+        apicall = eval(Symbol("listNamespaced$O"))
+        return apicall(apictx, name, namespace; kwargs...)
+    else
+        apicall = eval(Symbol("list$O"))
+        return apicall(apictx, name; kwargs...)
+    end
+end
+
+function list(ctx::KuberContext, O::Symbol; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+    isempty(ctx.apis) && set_api_versions!(ctx)
+
+    kapi = ctx.modelapi[O]
+    apictx = kapi.api(ctx.client)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
+
+    if allnamespaces
+        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
+        return apicall(apictx; kwargs...)
+    elseif namespaced
+        apicall = eval(Symbol("listNamespaced$O"))
+        return apicall(apictx, namespace; kwargs...)
+    else
+        apicall = eval(Symbol("list$O"))
+        return apicall(apictx; kwargs...)
+    end
+end
+
 function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
@@ -139,3 +179,10 @@ Keyword Args:
 Returns: String of all log entries, one per line
 """
 get_logs(ctx::KuberContext, pod_name::String; kwargs...) = get(ctx, :PodLog, pod_name; kwargs...)
+
+list_namespaced_custom_metrics(ctx::KuberContext, metricname::String; kwargs...) = list(ctx, :MetricValue, "metrics/"*metricname; kwargs...)
+list_namespaced_custom_metrics(ctx::KuberContext, objecttype::String, metricname::String; kwargs...) = list(ctx, :MetricValue, objecttype * "/*/" * metricname; kwargs...)
+list_namespaced_custom_metrics(ctx::KuberContext, objecttype::String, objectname::String, metricname::String; kwargs...) = list(ctx, :MetricValue, objecttype * "/" * objectname * "/" * metricname; kwargs...)
+
+list_custom_metrics(ctx::KuberContext, objecttype::String, metricname::String; kwargs...) = list(ctx, :MetricValue, objecttype * "/*/" * metricname; namespace=nothing, kwargs...)
+list_custom_metrics(ctx::KuberContext, objecttype::String, objectname::String, metricname::String; kwargs...) = list(ctx, :MetricValue, objecttype * "/" * objectname * "/" * metricname; namespace=nothing, kwargs...)

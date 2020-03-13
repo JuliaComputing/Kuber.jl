@@ -746,6 +746,10 @@ deletePodSecurityPolicy(_api::ExtensionsV1beta1Api, name::String; pretty=nothing
 deletePodSecurityPolicy(_api::PolicyV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing) = deletePolicyV1beta1PodSecurityPolicy(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
 export deletePodSecurityPolicy
 
+# listMetricValue
+listMetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing) = listCustomMetricsV1beta1MetricValue(_api, compositemetricname; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
+export listMetricValue
+
 # deleteCollectionNamespacedPersistentVolumeClaim
 deleteCollectionNamespacedPersistentVolumeClaim(_api::CoreV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing) = deleteCoreV1CollectionNamespacedPersistentVolumeClaim(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
 export deleteCollectionNamespacedPersistentVolumeClaim
@@ -1973,6 +1977,10 @@ export watchNamespacedPodTemplate
 # connectPutNamespacedServiceProxyWithPath
 connectPutNamespacedServiceProxyWithPath(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing) = connectCoreV1PutNamespacedServiceProxyWithPath(_api, name, namespace, path; path2=path2, _mediaType=_mediaType)
 export connectPutNamespacedServiceProxyWithPath
+
+# listNamespacedMetricValue
+listNamespacedMetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing) = listCustomMetricsV1beta1NamespacedMetricValue(_api, compositemetricname, namespace; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
+export listNamespacedMetricValue
 
 # readPersistentVolume
 readPersistentVolume(_api::CoreV1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing) = readCoreV1PersistentVolume(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
