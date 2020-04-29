@@ -51,9 +51,18 @@ end
 
 function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
+    d = Dict(kwargs)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    if haskey(d, :apiVersion)
+        v = d[:apiVersion]
+        k = Kuber.api_group_type(v)
+        apictx = k(ctx.client)
+	delete!(d, :apiVersion)
+	kwargs = d
+    else
+        kapi = ctx.modelapi[O]
+        apictx = kapi.api(ctx.client)
+    end
 
     try
         apicall = eval(Symbol("read$O"))
@@ -120,9 +129,19 @@ end
 
 function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
+    d = Dict(kwargs)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    if haskey(d, :apiVersion)
+        v = d[:apiVersion]
+        k = Kuber.api_group_type(v)
+        apictx = k(ctx.client)
+	delete!(d, :apiVersion)
+	kwargs = d
+    else
+        kapi = ctx.modelapi[O]
+        apictx = kapi.api(ctx.client)
+    end
+
     params = [apictx, name]
 
     try
