@@ -57,8 +57,8 @@ function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
         v = d[:apiVersion]
         k = Kuber.api_group_type(v)
         apictx = k(ctx.client)
-	delete!(d, :apiVersion)
-	kwargs = d
+        delete!(d, :apiVersion)
+        kwargs = d
     else
         kapi = ctx.modelapi[O]
         apictx = kapi.api(ctx.client)
@@ -135,8 +135,8 @@ function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
         v = d[:apiVersion]
         k = Kuber.api_group_type(v)
         apictx = k(ctx.client)
-	delete!(d, :apiVersion)
-	kwargs = d
+        delete!(d, :apiVersion)
+        kwargs = d
     else
         kapi = ctx.modelapi[O]
         apictx = kapi.api(ctx.client)
