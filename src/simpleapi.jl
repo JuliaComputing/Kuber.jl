@@ -10,7 +10,7 @@ sel(cnd::String...) = join(cnd, ", ")
 _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
 function _get_apictx(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing})
-    if apiversion != nothing
+    if apiversion !== nothing
         k = Kuber.api_group_type(apiversion)
         apictx = k(ctx.client)
     else
@@ -97,7 +97,7 @@ end
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    apictx = _get_apictx(ctx, O, haskey(d, "apiVersion") ? d["apiVersion"] : nothing)
+    apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     try
         apicall = eval(Symbol("create$O"))
         return apicall(apictx, d)
@@ -112,7 +112,7 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    delete!(ctx, Symbol(kind), name, (haskey(vjson, "apiVersion") ? vjson["apiVersion"] : nothing); kwargs...)
+    delete!(ctx, Symbol(kind), name, get(vjson, "apiVersion", nothing); kwargs...)
 end
 
 function delete!(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; kwargs...)
@@ -136,7 +136,7 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    update!(ctx, Symbol(kind), name, patch, patch_type, (haskey(vjson, "apiVersion") ? vjson["apiVersion"] : nothing))
+    update!(ctx, Symbol(kind), name, patch, patch_type, get(vjson, "apiVersion", nothing))
 end
 
 function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type, apiversion::Union{String,Nothing}=nothing)
