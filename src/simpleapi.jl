@@ -9,11 +9,21 @@ sel(cnd::String...) = join(cnd, ", ")
 
 _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
-function list(ctx::KuberContext, O::Symbol, name::String; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+function _get_apictx(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing})
+    if apiversion !== nothing
+        k = Kuber.api_group_type(apiversion)
+        apictx = k(ctx.client)
+    else
+        kapi = ctx.modelapi[O]
+        apictx = kapi.api(ctx.client)
+    end
+    apictx
+end
+
+function list(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    apictx = _get_apictx(ctx, O, apiversion)
     namespaced = (namespace !== nothing) && !isempty(namespace)
     allnamespaces = namespaced && (namespace == "*")
 
@@ -29,11 +39,10 @@ function list(ctx::KuberContext, O::Symbol, name::String; namespace::Union{Strin
     end
 end
 
-function list(ctx::KuberContext, O::Symbol; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+function list(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    apictx = _get_apictx(ctx, O, apiversion)
     namespaced = (namespace !== nothing) && !isempty(namespace)
     allnamespaces = namespaced && (namespace == "*")
 
@@ -49,12 +58,10 @@ function list(ctx::KuberContext, O::Symbol; namespace::Union{String,Nothing}=ctx
     end
 end
 
-function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
+function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
-
+    apictx = _get_apictx(ctx, O, apiversion)
     try
         apicall = eval(Symbol("read$O"))
         return apicall(apictx, name; kwargs...)
@@ -65,12 +72,10 @@ function get(ctx::KuberContext, O::Symbol, name::String; kwargs...)
     end
 end
 
-function get(ctx::KuberContext, O::Symbol; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace)
+function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
-
+    apictx = _get_apictx(ctx, O, apiversion)
     try
         apiname = "list$O"
         (namespace === nothing) && (apiname *= "ForAllNamespaces")
@@ -92,15 +97,7 @@ end
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    if haskey(d, "apiVersion")
-        v = d["apiVersion"]
-        k = Kuber.api_group_type(v)
-        apictx = k(ctx.client)
-    else
-        kapi = ctx.modelapi[O]
-        apictx = kapi.api(ctx.client)
-    end
-
+    apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     try
         apicall = eval(Symbol("create$O"))
         return apicall(apictx, d)
@@ -115,14 +112,13 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    delete!(ctx, Symbol(kind), name; kwargs...)
+    delete!(ctx, Symbol(kind), name, get(vjson, "apiVersion", nothing); kwargs...)
 end
 
-function delete!(ctx::KuberContext, O::Symbol, name::String; kwargs...)
+function delete!(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
+    apictx = _get_apictx(ctx, O, apiversion)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
     params = [apictx, name]
 
     try
@@ -140,14 +136,13 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    update!(ctx, Symbol(kind), name, patch, patch_type)
+    update!(ctx, Symbol(kind), name, patch, patch_type, get(vjson, "apiVersion", nothing))
 end
 
-function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type)
+function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type, apiversion::Union{String,Nothing}=nothing)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
-    kapi = ctx.modelapi[O]
-    apictx = kapi.api(ctx.client)
+    apictx = _get_apictx(ctx, O, apiversion)
 
     try
         apicall = eval(Symbol("patch$O"))
