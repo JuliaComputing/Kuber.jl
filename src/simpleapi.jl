@@ -86,6 +86,7 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
             return apicall(apictx; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
+                @warn("Retrying ", apiname)
                 sleep(3)
             end
         end
