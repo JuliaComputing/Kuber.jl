@@ -1,3 +1,5 @@
+using Retry
+
 # simple Julia APIs over Kubernetes Swagger interface
 
 function sel(label::String, op::Symbol)
@@ -80,7 +82,13 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
         apiname = "list$O"
         (namespace === nothing) && (apiname *= "ForAllNamespaces")
         apicall = eval(Symbol(apiname))
-        return apicall(apictx; labelSelector=label_selector)
+        @repeat 3 try
+            return apicall(apictx; labelSelector=label_selector)
+        catch e
+            @retry if isa(e, IOError)
+                sleep(3)
+            end
+        end
     catch ex
         isa(ex, UndefVarError) || rethrow()
         (namespace === nothing) && rethrow()
