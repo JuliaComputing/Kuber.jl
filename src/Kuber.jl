@@ -3,6 +3,7 @@ module Kuber
 using JSON
 using Swagger
 using HTTP
+using Retry, HTTP.IOExtras
 
 include("api/Kubernetes.jl")
 using .Kubernetes

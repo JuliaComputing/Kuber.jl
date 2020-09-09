@@ -1,5 +1,3 @@
-using Retry, HTTP.IOExtras
-
 # simple Julia APIs over Kubernetes Swagger interface
 
 function sel(label::String, op::Symbol)
