@@ -58,34 +58,62 @@ function list(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=no
     end
 end
 
-function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; max_tries::Integer=1, kwargs...)
+    isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     try
         apicall = eval(Symbol("read$O"))
-        return apicall(apictx, name; kwargs...)
+        @repeat max_tries try
+            return apicall(apictx, name; kwargs...)
+        catch e
+            @retry if isa(e, IOError)
+                @debug("Retrying ", "read$O")
+                sleep(2)
+            end
+        end
     catch ex
         isa(ex, UndefVarError) || rethrow()
         apicall = eval(Symbol("readNamespaced$O"))
-        return apicall(apictx, name, ctx.namespace; kwargs...)
+        @repeat max_tries try
+            return apicall(apictx, name, ctx.namespace; kwargs...)
+        catch e
+            @retry if isa(e, IOError)
+                @debug("Retrying ", "readNamespaced$O")
+                sleep(2)
+            end
+        end
     end
 end
 
-function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Integer=1)
+    isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     try
         apiname = "list$O"
         (namespace === nothing) && (apiname *= "ForAllNamespaces")
         apicall = eval(Symbol(apiname))
-        return apicall(apictx; labelSelector=label_selector)
+        @repeat max_tries try
+            return apicall(apictx; labelSelector=label_selector)
+        catch e
+            @retry if isa(e, IOError)
+                @debug("Retrying ", apiname)
+                sleep(2)
+            end
+        end
     catch ex
         isa(ex, UndefVarError) || rethrow()
         (namespace === nothing) && rethrow()
         apicall = eval(Symbol("listNamespaced$O"))
-        return apicall(apictx, namespace; labelSelector=label_selector)
+        @repeat max_tries try
+            return apicall(apictx, namespace; labelSelector=label_selector)
+        catch e
+            @retry if isa(e, IOError)
+                @debug("Retrying ", "listNamespaced$O")
+                sleep(2)
+            end
+        end
     end
 end
 

@@ -12,6 +12,7 @@ HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 Swagger = "2d69052b-6a58-5cd9-a030-a48559c324ac"
+Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 
 [compat]
 HTTP = "0.8"
