@@ -1,4 +1,4 @@
-using Retry
+using Retry, HTTP.IOExtras
 
 # simple Julia APIs over Kubernetes Swagger interface
 
