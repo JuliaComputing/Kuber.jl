@@ -61,11 +61,11 @@ show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, 
 get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace
 
-function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; num_tries=1, kwargs...)
+function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=1, kwargs...)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
-    reset_api_versions && set_api_versions!(ctx; num_tries=num_tries)
+    reset_api_versions && set_api_versions!(ctx; max_tries=max_tries)
     ctx.client
 end
 
@@ -113,9 +113,9 @@ function override_pref(name, server_pref, override)
     server_pref
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
+function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
     apis = ctx.apis
-    vers = @repeat num_tries try
+    vers = @repeat max_tries try
         getAPIVersions(ApisApi(ctx.client))
     catch e
         @retry if isa(e, IOError)
@@ -157,9 +157,9 @@ function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::
     apis
 end
 
-function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
+function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
     apis = ctx.apis
-    api_vers = @repeat num_tries try
+    api_vers = @repeat max_tries try
         getCoreAPIVersions(CoreApi(ctx.client))
     catch e
         @retry if isa(e, IOError)
@@ -208,7 +208,7 @@ function build_model_api_map(ctx::KuberContext)
     modelapi
 end
 
-function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
+function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
     empty!(ctx.apis)
     empty!(ctx.modelapi)
 
@@ -217,8 +217,8 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     build_model_api_map(ctx)
 
     # fetch apis and map the types
-    fetch_core_version(ctx; override=override, verbose=verbose, num_tries=num_tries)
-    fetch_misc_apis_versions(ctx; override=override, verbose=verbose, num_tries=num_tries)
+    fetch_core_version(ctx; override=override, verbose=verbose, max_tries=max_tries)
+    fetch_misc_apis_versions(ctx; override=override, verbose=verbose, max_tries=max_tries)
     build_model_api_map(ctx)
 
     # add custom models
