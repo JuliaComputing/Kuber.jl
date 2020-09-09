@@ -59,7 +59,7 @@ function list(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=no
 end
 
 function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; num_tries::Integer=1, kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    isempty(ctx.apis) && set_api_versions!(ctx; num_tries=num_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     try
@@ -68,7 +68,7 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
             return apicall(apictx, name; kwargs...)
         catch e
             @retry if isa(e, IOError)
-                @warn("Retrying ", "read$O")
+                @debug("Retrying ", "read$O")
                 sleep(2)
             end
         end
@@ -79,7 +79,7 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
             return apicall(apictx, name, ctx.namespace; kwargs...)
         catch e
             @retry if isa(e, IOError)
-                @warn("Retrying ", "readNamespaced$O")
+                @debug("Retrying ", "readNamespaced$O")
                 sleep(2)
             end
         end
@@ -87,7 +87,7 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
 end
 
 function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, num_tries::Integer=1)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    isempty(ctx.apis) && set_api_versions!(ctx; num_tries=num_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     try
@@ -98,7 +98,7 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
             return apicall(apictx; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
-                @warn("Retrying ", apiname)
+                @debug("Retrying ", apiname)
                 sleep(2)
             end
         end
@@ -110,7 +110,7 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
             return apicall(apictx, namespace; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
-                @warn("Retrying ", "listNamespaced$O")
+                @debug("Retrying ", "listNamespaced$O")
                 sleep(2)
             end
         end

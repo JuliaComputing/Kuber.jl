@@ -61,11 +61,11 @@ show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, 
 get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace
 
-function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; kwargs...)
+function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; num_tries=1, kwargs...)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
-    reset_api_versions && set_api_versions!(ctx)
+    reset_api_versions && set_api_versions!(ctx; num_tries=num_tries)
     ctx.client
 end
 
@@ -113,59 +113,73 @@ function override_pref(name, server_pref, override)
     server_pref
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false)
+function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
     apis = ctx.apis
-    vers = getAPIVersions(ApisApi(ctx.client))
-    api_groups = vers.groups
-    for apigrp in api_groups
-        name = apigrp.name
-        pref_vers_type = apigrp.preferredVersion
-        pref_vers_version = override_pref(name, pref_vers_type.version, override)
-        pref_vers = name * "/" * pref_vers_version
-        verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
+    @repeat num_tries try
+        vers = getAPIVersions(ApisApi(ctx.client))
+        api_groups = vers.groups
+        for apigrp in api_groups
+            name = apigrp.name
+            pref_vers_type = apigrp.preferredVersion
+            pref_vers_version = override_pref(name, pref_vers_type.version, override)
+            pref_vers = name * "/" * pref_vers_version
+            verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
 
-        try
-            apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
-        catch ex
-            if isa(ex, UndefVarError)
-                @info("unsupported $pref_vers")
-                continue
-            else
-                rethrow()
+            try
+                apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
+            catch ex
+                if isa(ex, UndefVarError)
+                    @info("unsupported $pref_vers")
+                    continue
+                else
+                    rethrow()
+                end
+            end
+
+            for api_vers in apigrp.versions
+                try
+                    gt = api_group_type(api_vers.groupVersion)
+                    td = api_typedefs(api_vers.groupVersion)
+                    ka = KApi(gt, td)
+                    kalist = apis[Symbol(api_group(name))]
+                    (ka == kalist[1]) || push!(kalist, ka)
+                catch
+                    @info("unsupported $(api_vers.groupVersion)")
+                end
             end
         end
-
-        for api_vers in apigrp.versions
-            try
-                gt = api_group_type(api_vers.groupVersion)
-                td = api_typedefs(api_vers.groupVersion)
-                ka = KApi(gt, td)
-                kalist = apis[Symbol(api_group(name))]
-                (ka == kalist[1]) || push!(kalist, ka)
-            catch
-                @info("unsupported $(api_vers.groupVersion)")
-            end
+    catch e
+        @retry if isa(e, IOError)
+            @debug("Retrying getAPIVersions")
+            sleep(2)
         end
     end
     apis
 end
 
-function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false)
+function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
     apis = ctx.apis
-    api_vers = getCoreAPIVersions(CoreApi(ctx.client))
-    name = "Core"
-    pref_vers = override_pref(name, api_vers.versions[1], override)
-    verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
-    apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
-    for api_vers in api_vers.versions
-        try
-            gt = getfield(@__MODULE__, Symbol("Core" * camel(api_vers) * "Api"))
-            td = getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(api_vers)))
-            ka = KApi(gt, td)
-            kalist = apis[:Core]
-            (ka == kalist[1]) || push!(kalist, ka)
-        catch
-            @info("unsupported Core $api_vers")
+    @repeat num_tries try
+        api_vers = getCoreAPIVersions(CoreApi(ctx.client))
+        name = "Core"
+        pref_vers = override_pref(name, api_vers.versions[1], override)
+        verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
+        apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
+        for api_vers in api_vers.versions
+            try
+                gt = getfield(@__MODULE__, Symbol("Core" * camel(api_vers) * "Api"))
+                td = getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(api_vers)))
+                ka = KApi(gt, td)
+                kalist = apis[:Core]
+                (ka == kalist[1]) || push!(kalist, ka)
+            catch
+                @info("unsupported Core $api_vers")
+            end
+        end
+    catch e
+        @retry if isa(e, IOError)
+            @debug("Retrying getCoreAPIVersions")
+            sleep(2)
         end
     end
     apis
@@ -194,7 +208,7 @@ function build_model_api_map(ctx::KuberContext)
     modelapi
 end
 
-function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false)
+function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
     empty!(ctx.apis)
     empty!(ctx.modelapi)
 
@@ -203,8 +217,8 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     build_model_api_map(ctx)
 
     # fetch apis and map the types
-    fetch_core_version(ctx; override=override, verbose=verbose)
-    fetch_misc_apis_versions(ctx; override=override, verbose=verbose)
+    fetch_core_version(ctx; override=override, verbose=verbose, num_tries=num_tries)
+    fetch_misc_apis_versions(ctx; override=override, verbose=verbose, num_tries=num_tries)
     build_model_api_map(ctx)
 
     # add custom models
