@@ -115,43 +115,43 @@ end
 
 function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
     apis = ctx.apis
-    @repeat num_tries try
-        vers = getAPIVersions(ApisApi(ctx.client))
-        api_groups = vers.groups
-        for apigrp in api_groups
-            name = apigrp.name
-            pref_vers_type = apigrp.preferredVersion
-            pref_vers_version = override_pref(name, pref_vers_type.version, override)
-            pref_vers = name * "/" * pref_vers_version
-            verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
-
-            try
-                apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
-            catch ex
-                if isa(ex, UndefVarError)
-                    @info("unsupported $pref_vers")
-                    continue
-                else
-                    rethrow()
-                end
-            end
-
-            for api_vers in apigrp.versions
-                try
-                    gt = api_group_type(api_vers.groupVersion)
-                    td = api_typedefs(api_vers.groupVersion)
-                    ka = KApi(gt, td)
-                    kalist = apis[Symbol(api_group(name))]
-                    (ka == kalist[1]) || push!(kalist, ka)
-                catch
-                    @info("unsupported $(api_vers.groupVersion)")
-                end
-            end
-        end
+    vers = @repeat num_tries try
+        getAPIVersions(ApisApi(ctx.client))
     catch e
         @retry if isa(e, IOError)
             @debug("Retrying getAPIVersions")
             sleep(2)
+        end
+    end
+    api_groups = vers.groups
+    for apigrp in api_groups
+        name = apigrp.name
+        pref_vers_type = apigrp.preferredVersion
+        pref_vers_version = override_pref(name, pref_vers_type.version, override)
+        pref_vers = name * "/" * pref_vers_version
+        verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
+
+        try
+            apis[Symbol(api_group(name))] = [KApi(api_group_type(pref_vers), api_typedefs(pref_vers))]
+        catch ex
+            if isa(ex, UndefVarError)
+                @info("unsupported $pref_vers")
+                continue
+            else
+                rethrow()
+            end
+        end
+
+        for api_vers in apigrp.versions
+            try
+                gt = api_group_type(api_vers.groupVersion)
+                td = api_typedefs(api_vers.groupVersion)
+                ka = KApi(gt, td)
+                kalist = apis[Symbol(api_group(name))]
+                (ka == kalist[1]) || push!(kalist, ka)
+            catch
+                @info("unsupported $(api_vers.groupVersion)")
+            end
         end
     end
     apis
@@ -159,27 +159,27 @@ end
 
 function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, num_tries=1)
     apis = ctx.apis
-    @repeat num_tries try
-        api_vers = getCoreAPIVersions(CoreApi(ctx.client))
-        name = "Core"
-        pref_vers = override_pref(name, api_vers.versions[1], override)
-        verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
-        apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
-        for api_vers in api_vers.versions
-            try
-                gt = getfield(@__MODULE__, Symbol("Core" * camel(api_vers) * "Api"))
-                td = getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(api_vers)))
-                ka = KApi(gt, td)
-                kalist = apis[:Core]
-                (ka == kalist[1]) || push!(kalist, ka)
-            catch
-                @info("unsupported Core $api_vers")
-            end
-        end
+    api_vers = @repeat num_tries try
+        getCoreAPIVersions(CoreApi(ctx.client))
     catch e
         @retry if isa(e, IOError)
             @debug("Retrying getCoreAPIVersions")
             sleep(2)
+        end
+    end
+    name = "Core"
+    pref_vers = override_pref(name, api_vers.versions[1], override)
+    verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
+    apis[:Core] = [KApi(getfield(@__MODULE__, Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(pref_vers))))]
+    for api_vers in api_vers.versions
+        try
+            gt = getfield(@__MODULE__, Symbol("Core" * camel(api_vers) * "Api"))
+            td = getfield(getfield(@__MODULE__, :Typedefs), Symbol("Core" * camel(api_vers)))
+            ka = KApi(gt, td)
+            kalist = apis[:Core]
+            (ka == kalist[1]) || push!(kalist, ka)
+        catch
+            @info("unsupported Core $api_vers")
         end
     end
     apis
