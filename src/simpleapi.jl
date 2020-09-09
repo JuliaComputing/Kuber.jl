@@ -58,13 +58,13 @@ function list(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=no
     end
 end
 
-function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; num_retries::Integer=0, kwargs...)
+function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; num_tries::Integer=1, kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
     try
         apicall = eval(Symbol("read$O"))
-        @repeat num_retries try
+        @repeat num_tries try
             return apicall(apictx, name; kwargs...)
         catch e
             @retry if isa(e, IOError)
@@ -75,7 +75,7 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
     catch ex
         isa(ex, UndefVarError) || rethrow()
         apicall = eval(Symbol("readNamespaced$O"))
-        @repeat num_retries try
+        @repeat num_tries try
             return apicall(apictx, name, ctx.namespace; kwargs...)
         catch e
             @retry if isa(e, IOError)
@@ -86,7 +86,7 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
     end
 end
 
-function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, num_retries::Integer=0)
+function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=nothing; label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, num_tries::Integer=1)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
@@ -94,7 +94,7 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
         apiname = "list$O"
         (namespace === nothing) && (apiname *= "ForAllNamespaces")
         apicall = eval(Symbol(apiname))
-        @repeat num_retries try
+        @repeat num_tries try
             return apicall(apictx; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
@@ -106,7 +106,7 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
         isa(ex, UndefVarError) || rethrow()
         (namespace === nothing) && rethrow()
         apicall = eval(Symbol("listNamespaced$O"))
-        @repeat num_retries try
+        @repeat num_tries try
             return apicall(apictx, namespace; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
