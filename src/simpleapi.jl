@@ -20,6 +20,9 @@ function _get_apictx(ctx::KuberContext, O::Symbol, apiversion::Union{String,Noth
     apictx
 end
 
+_api_function(name::Symbol) = isdefined(@__MODULE__, name) ? eval(name) : nothing
+_api_function(name) = _api_function(Symbol(name))
+
 function list(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{String,Nothing}=nothing; namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
     isempty(ctx.apis) && set_api_versions!(ctx)
 
@@ -62,27 +65,26 @@ function get(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{Strin
     isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
-    try
-        apicall = eval(Symbol("read$O"))
+    if (apicall = _api_function("read$O")) !== nothing
         @repeat max_tries try
             return apicall(apictx, name; kwargs...)
         catch e
             @retry if isa(e, IOError)
-                @debug("Retrying ", "read$O")
+                @debug("Retrying ", nameof(apicall))
                 sleep(2)
             end
         end
-    catch ex
-        isa(ex, UndefVarError) || rethrow()
-        apicall = eval(Symbol("readNamespaced$O"))
+    elseif (apicall = _api_function("readNamespaced$O")) !== nothing
         @repeat max_tries try
             return apicall(apictx, name, ctx.namespace; kwargs...)
         catch e
             @retry if isa(e, IOError)
-                @debug("Retrying ", "readNamespaced$O")
+                @debug("Retrying ", nameof(apicall))
                 sleep(2)
             end
         end
+    else
+        throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
@@ -90,30 +92,28 @@ function get(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing}=not
     isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
-    try
-        apiname = "list$O"
-        (namespace === nothing) && (apiname *= "ForAllNamespaces")
-        apicall = eval(Symbol(apiname))
+    apiname = "list$O"
+    namespace === nothing && (apiname *= "ForAllNamespaces")
+    if (apicall = _api_function(apiname)) !== nothing
         @repeat max_tries try
             return apicall(apictx; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
-                @debug("Retrying ", apiname)
+                @debug("Retrying ", nameof(apicall))
                 sleep(2)
             end
         end
-    catch ex
-        isa(ex, UndefVarError) || rethrow()
-        (namespace === nothing) && rethrow()
-        apicall = eval(Symbol("listNamespaced$O"))
+    elseif (apicall = _api_function("listNamespaced$O")) !== nothing
         @repeat max_tries try
             return apicall(apictx, namespace; labelSelector=label_selector)
         catch e
             @retry if isa(e, IOError)
-                @debug("Retrying ", "listNamespaced$O")
+                @debug("Retrying ", nameof(apicall))
                 sleep(2)
             end
         end
+    else
+        throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
@@ -126,13 +126,12 @@ function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     isempty(ctx.apis) && set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
-    try
-        apicall = eval(Symbol("create$O"))
+    if (apicall = _api_function("create$O")) !== nothing
         return apicall(apictx, d)
-    catch ex
-        isa(ex, UndefVarError) || rethrow()
-        apicall = eval(Symbol("createNamespaced$O"))
+    elseif (apicall = _api_function("createNamespaced$O")) !== nothing
         return apicall(apictx, ctx.namespace, d)
+    else
+        throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
@@ -149,14 +148,13 @@ function delete!(ctx::KuberContext, O::Symbol, name::String, apiversion::Union{S
 
     params = [apictx, name]
 
-    try
-        apicall = eval(Symbol("delete$O"))
+    if (apicall = _api_function("delete$O")) !== nothing
         return apicall(params...; kwargs...)
-    catch ex
-        isa(ex, UndefVarError) || rethrow()
-        apicall = eval(Symbol("deleteNamespaced$O"))
+    elseif (apicall = _api_function("deleteNamespaced$O")) !== nothing
         push!(params, ctx.namespace)
         return apicall(params...; kwargs...)
+    else
+        throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
@@ -172,13 +170,12 @@ function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type, 
 
     apictx = _get_apictx(ctx, O, apiversion)
 
-    try
-        apicall = eval(Symbol("patch$O"))
+    if (apicall = _api_function("patch$O")) !== nothing
         return apicall(apictx, name, patch; _mediaType=patch_type)
-    catch ex
-        isa(ex, UndefVarError) || rethrow()
-        apicall = eval(Symbol("patchNamespaced$O"))
+    elseif (apicall = _api_function("patchNamespaced$O")) !== nothing
         return apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+    else
+        throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
