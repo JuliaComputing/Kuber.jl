@@ -11,11 +11,12 @@ mutable struct KuberContext
     apis::Dict{Symbol,Vector{KApi}}
     modelapi::Dict{Symbol,KApi}
     namespace::String
+    initialized::Bool
 
     function KuberContext()
         ctx = Swagger.Client(DEFAULT_URI)
         ctx.headers["Connection"] = "close"
-        new(ctx, Dict{Symbol,Vector}(), Dict{Symbol,KApi}(), DEFAULT_NAMESPACE)
+        new(ctx, Dict{Symbol,Vector}(), Dict{Symbol,KApi}(), DEFAULT_NAMESPACE, false)
     end
 end
 
@@ -211,6 +212,7 @@ function build_model_api_map(ctx::KuberContext)
 end
 
 function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
+    ctx.initialized = false
     empty!(ctx.apis)
     empty!(ctx.modelapi)
 
@@ -225,5 +227,6 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
 
     # add custom models
     ctx.modelapi[:PodLog] = ctx.modelapi[:Pod]
+    ctx.initialized = true
     nothing
 end
