@@ -24,7 +24,7 @@ _api_function(name::Symbol) = isdefined(@__MODULE__, name) ? eval(name) : nothin
 _api_function(name) = _api_function(Symbol(name))
 
 function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -43,7 +43,7 @@ function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{Stri
 end
 
 function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -62,7 +62,7 @@ function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=no
 end
 
 function get(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Integer=1, kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
+    ctx.initialized || set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     if (apicall = _api_function("read$O")) !== nothing
@@ -89,7 +89,7 @@ function get(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{Strin
 end
 
 function get(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Integer=1)
-    isempty(ctx.apis) && set_api_versions!(ctx; max_tries=max_tries)
+    ctx.initialized || set_api_versions!(ctx; max_tries=max_tries)
 
     apictx = _get_apictx(ctx, O, apiversion)
     apiname = "list$O"
@@ -123,7 +123,7 @@ function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
 end
 
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     if (apicall = _api_function("create$O")) !== nothing
@@ -143,7 +143,7 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
 end
 
 function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, kwargs...)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    ctx.initialized || set_api_versions!(ctx)
     apictx = _get_apictx(ctx, O, apiversion)
 
     params = [apictx, name]
@@ -166,7 +166,7 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
 end
 
 function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing)
-    isempty(ctx.apis) && set_api_versions!(ctx)
+    ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
 
