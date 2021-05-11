@@ -94,14 +94,14 @@ function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
     put!(ctx, Symbol(vjson["kind"]), vjson)
 end
 
-function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any}; max_tries::Int=1)
+function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     if (apicall = _api_function("create$O")) !== nothing
-        return @retry_on_error apicall(apictx, d)
+        return apicall(apictx, d)
     elseif (apicall = _api_function("createNamespaced$O")) !== nothing
-        return @retry_on_error apicall(apictx, ctx.namespace, d)
+        return apicall(apictx, ctx.namespace, d)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
@@ -114,17 +114,17 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
     delete!(ctx, Symbol(kind), name; apiversion=get(vjson, "apiVersion", nothing), kwargs...)
 end
 
-function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Int=1, kwargs...)
+function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, kwargs...)
     ctx.initialized || set_api_versions!(ctx)
     apictx = _get_apictx(ctx, O, apiversion)
 
     params = [apictx, name]
 
     if (apicall = _api_function("delete$O")) !== nothing
-        return @retry_on_error apicall(params...; kwargs...)
+        return apicall(params...; kwargs...)
     elseif (apicall = _api_function("deleteNamespaced$O")) !== nothing
         push!(params, ctx.namespace)
-        return @retry_on_error apicall(params...; kwargs...)
+        return apicall(params...; kwargs...)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
@@ -137,15 +137,15 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
     update!(ctx, Symbol(kind), name, patch, patch_type; apiversion=get(vjson, "apiVersion", nothing))
 end
 
-function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing, max_tries::Int=1)
+function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing)
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
 
     if (apicall = _api_function("patch$O")) !== nothing
-        return @retry_on_error apicall(apictx, name, patch; _mediaType=patch_type)
+        return apicall(apictx, name, patch; _mediaType=patch_type)
     elseif (apicall = _api_function("patchNamespaced$O")) !== nothing
-        return @retry_on_error apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+        return apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
