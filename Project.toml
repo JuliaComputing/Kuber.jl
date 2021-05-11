@@ -4,7 +4,7 @@ authors = ["Tanmay Mohapatra <tanmaykm@gmail.com>"]
 keywords = ["kubernetes", "client"]
 license = "MIT"
 desc = "Julia Kubernetes Client"
-version = "0.4.0"
+version = "0.4.1"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
@@ -15,7 +15,7 @@ Swagger = "2d69052b-6a58-5cd9-a030-a48559c324ac"
 Retry = "20febd7b-183b-5ae2-ac4a-720e7ce64774"
 
 [compat]
-HTTP = "0.8"
+HTTP = "0.8, 0.9"
 Swagger = "0.2"
 JSON = "0.21"
 Retry = "0.4"
