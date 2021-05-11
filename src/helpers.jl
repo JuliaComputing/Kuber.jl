@@ -230,3 +230,28 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     ctx.initialized = true
     nothing
 end
+
+"""
+Retry function `f` for `max_tries` number of times if function fails with `IOError`
+"""
+function retry_on_error(f::Function; max_tries=1)
+    @repeat max_tries try
+        return f()
+    catch e
+        @retry if isa(e, IOError)
+            @debug("Retrying Kubernetes API call ...")
+            sleep(2)
+        end
+    end
+end
+
+"""
+Macro to retry an expression on `IOError`. Note that the variable `max_tries` needs to be inscope for this to work.
+"""
+macro retry_on_error(e)
+   esc(quote
+      retry_on_error(;max_tries=max_tries) do
+          $(e)
+      end
+   end)
+end
