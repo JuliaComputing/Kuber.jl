@@ -94,7 +94,7 @@ function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
     put!(ctx, Symbol(vjson["kind"]), vjson)
 end
 
-function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
+function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any}; max_tries::Int=1)
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
@@ -114,7 +114,7 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
     delete!(ctx, Symbol(kind), name; apiversion=get(vjson, "apiVersion", nothing), kwargs...)
 end
 
-function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, kwargs...)
+function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Int=1, kwargs...)
     ctx.initialized || set_api_versions!(ctx)
     apictx = _get_apictx(ctx, O, apiversion)
 
@@ -137,7 +137,7 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
     update!(ctx, Symbol(kind), name, patch, patch_type; apiversion=get(vjson, "apiVersion", nothing))
 end
 
-function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing)
+function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing, max_tries::Int=1)
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
