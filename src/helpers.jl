@@ -250,7 +250,7 @@ Macro to retry an expression on `IOError`. Note that the variable `max_tries` ne
 """
 macro retry_on_error(e)
    esc(quote
-      retry_on_error(;max_tries=max_tries) do
+      retry_on_error(;max_tries=(@isdefined max_tries) ? max_tries : 1) do
           $(e)
       end
    end)
