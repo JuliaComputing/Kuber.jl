@@ -23,7 +23,7 @@ end
 _api_function(name::Symbol) = isdefined(@__MODULE__, name) ? eval(name) : nothing
 _api_function(name) = _api_function(Symbol(name))
 
-function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Int=1, kwargs...)
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
@@ -32,17 +32,17 @@ function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{Stri
 
     if allnamespaces
         apicall = eval(Symbol("list$(O)ForAllNamespaces"))
-        return apicall(apictx, name; kwargs...)
+        return @retry_on_error apicall(apictx, name; kwargs...)
     elseif namespaced
         apicall = eval(Symbol("listNamespaced$O"))
-        return apicall(apictx, name, namespace; kwargs...)
+        return @retry_on_error apicall(apictx, name, namespace; kwargs...)
     else
         apicall = eval(Symbol("list$O"))
-        return apicall(apictx, name; kwargs...)
+        return @retry_on_error apicall(apictx, name; kwargs...)
     end
 end
 
-function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, kwargs...)
+function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Int=1, kwargs...)
     ctx.initialized || set_api_versions!(ctx)
 
     apictx = _get_apictx(ctx, O, apiversion)
@@ -51,13 +51,13 @@ function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=no
 
     if allnamespaces
         apicall = eval(Symbol("list$(O)ForAllNamespaces"))
-        return apicall(apictx; kwargs...)
+        return @retry_on_error apicall(apictx; kwargs...)
     elseif namespaced
         apicall = eval(Symbol("listNamespaced$O"))
-        return apicall(apictx, namespace; kwargs...)
+        return @retry_on_error apicall(apictx, namespace; kwargs...)
     else
         apicall = eval(Symbol("list$O"))
-        return apicall(apictx; kwargs...)
+        return @retry_on_error apicall(apictx; kwargs...)
     end
 end
 
@@ -66,23 +66,9 @@ function get(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{Strin
 
     apictx = _get_apictx(ctx, O, apiversion)
     if (apicall = _api_function("read$O")) !== nothing
-        @repeat max_tries try
-            return apicall(apictx, name; kwargs...)
-        catch e
-            @retry if isa(e, IOError)
-                @debug("Retrying ", nameof(apicall))
-                sleep(2)
-            end
-        end
+        return @retry_on_error apicall(apictx, name; kwargs...)
     elseif (apicall = _api_function("readNamespaced$O")) !== nothing
-        @repeat max_tries try
-            return apicall(apictx, name, ctx.namespace; kwargs...)
-        catch e
-            @retry if isa(e, IOError)
-                @debug("Retrying ", nameof(apicall))
-                sleep(2)
-            end
-        end
+        return @retry_on_error apicall(apictx, name, ctx.namespace; kwargs...)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
@@ -95,23 +81,9 @@ function get(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=not
     apiname = "list$O"
     namespace === nothing && (apiname *= "ForAllNamespaces")
     if (apicall = _api_function(apiname)) !== nothing
-        @repeat max_tries try
-            return apicall(apictx; labelSelector=label_selector)
-        catch e
-            @retry if isa(e, IOError)
-                @debug("Retrying ", nameof(apicall))
-                sleep(2)
-            end
-        end
+        return @retry_on_error apicall(apictx; labelSelector=label_selector)
     elseif (apicall = _api_function("listNamespaced$O")) !== nothing
-        @repeat max_tries try
-            return apicall(apictx, namespace; labelSelector=label_selector)
-        catch e
-            @retry if isa(e, IOError)
-                @debug("Retrying ", nameof(apicall))
-                sleep(2)
-            end
-        end
+        return @retry_on_error apicall(apictx, namespace; labelSelector=label_selector)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
