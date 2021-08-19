@@ -12,7 +12,7 @@ API and Entity naming convention follows the standard Kubernetes API and Model n
 
 Here are a few helpful resources:
 
-- [Tutorial](https://juliacomputing.com/blog/2018/12/15/kuber.html) on using Kuber.jl.
+- [Tutorial](https://juliacomputing.com/blog/2018/12/kuber/) on using Kuber.jl.
 - [Article](Metrics.md) on using metrics and custom metrics with Kuber.jl
 
 
