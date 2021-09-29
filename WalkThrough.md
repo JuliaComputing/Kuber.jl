@@ -1,6 +1,10 @@
+Kubernetes is an open-source container-orchestration system for deployment, scaling and management of containerized applications. Widespread adoption of Kubernetes allows freedom of deploying applications on-premises, on public cloud, or on a hybrid infrastructure.
+
 The Julia package Kuber.jl makes Kubernetes clusters easy to use and plug in to from Julia code.
 
 In this article, we shall launch a Kubernetes cluster on Azure and use it from Julia. Kuber.jl can also be used with Kubernetes clusters created by other mechanisms. In the command samples displayed in this article, those decorated with the `$` prefix indicate a command run in a shell, and those with the `julia>` prefix are run in the Julia REPL.
+
+> Note: In the command samples displayed in this article, those with the $ prefix indicate a command run in a shell, and those with the julia> prefix are run in the Julia REPL.
 
 ## Kubernetes Cluster using Azure AKS
 
