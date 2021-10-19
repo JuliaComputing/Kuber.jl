@@ -53,3 +53,4 @@ ${JULIA} ${DIR}/gentypealiases.jl
 # the following models are not generated correctly by Swagger, hand code them for now
 cp ${DIR}/model_IoK8sApimachineryPkgApisMetaV1Time.jl ${GENDIR}/src/api/
 cp ${DIR}/model_IoK8sApimachineryPkgUtilIntstrIntOrString.jl ${GENDIR}/src/api/
+cp ${DIR}/model_IoK8sApimachineryPkgApisMetaV1WatchEvent.jl ${GENDIR}/src/api/

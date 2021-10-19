@@ -1,6 +1,8 @@
 const DEFAULT_NAMESPACE = "default"
 const DEFAULT_URI = "http://localhost:8001"
 
+const KuberEventStream = Channel{Any}
+
 struct KApi
     api::DataType
     types::Module
@@ -14,10 +16,24 @@ mutable struct KuberContext
     initialized::Bool
 
     function KuberContext()
-        ctx = Swagger.Client(DEFAULT_URI)
-        ctx.headers["Connection"] = "close"
-        new(ctx, Dict{Symbol,Vector}(), Dict{Symbol,KApi}(), DEFAULT_NAMESPACE, false)
+        kctx = new()
+
+        rtfn = (default,data)->kuber_type(kctx, default, data)
+        swaggerclient = Swagger.Client(DEFAULT_URI; get_return_type=rtfn)
+        swaggerclient.headers["Connection"] = "close"
+
+        kctx.client = swaggerclient
+        kctx.apis = Dict{Symbol,Vector}()
+        kctx.modelapi = Dict{Symbol,KApi}()
+        kctx.namespace = DEFAULT_NAMESPACE
+        kctx.initialized = false
+        return kctx
     end
+end
+
+struct KuberWatchContext
+    ctx::KuberContext
+    stream::KuberEventStream
 end
 
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
@@ -42,14 +58,16 @@ function kuber_type(ctx::KuberContext, T, resp::HTTP.Response)
 end
 
 function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
-    if ("kind" in keys(j)) && !isempty(ctx.apis)
+    if haskey(j, "kind") && !isempty(ctx.apis)
         kind = j["kind"]
-        version = ("apiVersion" in keys(j)) ? j["apiVersion"] : nothing
+        version = haskey(j, "apiVersion") ? j["apiVersion"] : nothing
         try
             T = kind_to_type(ctx, kind, version)
         catch ex
             @warn("Type not found.", kind, version)
         end
+    elseif haskey(j, "type") && haskey(j, "object")
+        return Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent
     end
     T
 end

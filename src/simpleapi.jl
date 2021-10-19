@@ -9,13 +9,19 @@ sel(cnd::String...) = join(cnd, ", ")
 
 _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
-function _get_apictx(ctx::KuberContext, O::Symbol, apiversion::Union{String,Nothing})
+_kubectx(ctx::KuberContext) = ctx
+_kubectx(ctx::KuberWatchContext) = ctx.ctx
+
+function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiversion::Union{String,Nothing}; max_tries::Int=1)
+    kubectx = _kubectx(ctx)
+    kubectx.initialized || set_api_versions!(kubectx; max_tries=max_tries)
+
     if apiversion !== nothing
         k = Kuber.api_group_type(apiversion)
-        apictx = k(ctx.client)
+        apictx = k(kubectx.client)
     else
-        kapi = ctx.modelapi[O]
-        apictx = kapi.api(ctx.client)
+        kapi = kubectx.modelapi[O]
+        apictx = kapi.api(kubectx.client)
     end
     apictx
 end
@@ -23,69 +29,218 @@ end
 _api_function(name::Symbol) = isdefined(@__MODULE__, name) ? eval(name) : nothing
 _api_function(name) = _api_function(Symbol(name))
 
-function list(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Int=1, kwargs...)
-    ctx.initialized || set_api_versions!(ctx)
+function watch(fn::Function, ctx::KuberContext; buffersize::Int=1024, stream::KuberEventStream=KuberEventStream(buffersize))
+    watchctx = KuberWatchContext(ctx, stream)
+    fn(watchctx, stream)
+end
 
-    apictx = _get_apictx(ctx, O, apiversion)
-    namespaced = (namespace !== nothing) && !isempty(namespace)
-    allnamespaces = namespaced && (namespace == "*")
-
-    if allnamespaces
-        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
-        return @retry_on_error apicall(apictx, name; kwargs...)
-    elseif namespaced
-        apicall = eval(Symbol("listNamespaced$O"))
-        return @retry_on_error apicall(apictx, name, namespace; kwargs...)
-    else
-        apicall = eval(Symbol("list$O"))
-        return @retry_on_error apicall(apictx, name; kwargs...)
+function watch(streamprocessor::Function, ctx::KuberContext, watched::Function, args...; kwargs...)
+    watch(ctx) do watchctx, stream
+        @sync begin
+            @async try
+                watched(watchctx, args...; kwargs...)
+            finally
+                close(stream)
+            end
+            @async streamprocessor(stream)
+        end
     end
 end
 
-function list(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Int=1, kwargs...)
-    ctx.initialized || set_api_versions!(ctx)
-
-    apictx = _get_apictx(ctx, O, apiversion)
+function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
+        apiversion::Union{String,Nothing}=nothing,
+        namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
+        max_tries::Int=1,
+        watch=isa(ctx, KuberWatchContext),
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
     allnamespaces = namespaced && (namespace == "*")
 
+    eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
+    result = nothing
+    args = Any[name]
     if allnamespaces
         apicall = eval(Symbol("list$(O)ForAllNamespaces"))
-        return @retry_on_error apicall(apictx; kwargs...)
     elseif namespaced
         apicall = eval(Symbol("listNamespaced$O"))
-        return @retry_on_error apicall(apictx, namespace; kwargs...)
+        push!(args, namespace)
     else
         apicall = eval(Symbol("list$O"))
-        return @retry_on_error apicall(apictx; kwargs...)
     end
+
+    if !watch || resourceVersion === nothing
+        result = @retry_on_error apicall(apictx, args...; kwargs...)
+    end
+
+    # if not watching, retuen the first result
+    watch || (return result)
+    if result !== nothing
+        resourceVersion = result.metadata.resourceVersion
+        # push the first Event consisting of existing data
+        put!(eventstream, result)
+    end
+
+    # start watch and return the HTTP response object on completion
+    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
 end
 
-function get(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Integer=1, kwargs...)
-    ctx.initialized || set_api_versions!(ctx; max_tries=max_tries)
+function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
+        apiversion::Union{String,Nothing}=nothing,
+        namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
+        max_tries::Int=1,
+        watch=isa(ctx, KuberWatchContext),
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
 
-    apictx = _get_apictx(ctx, O, apiversion)
+    eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
+
+    result = nothing
+    args = Any[]
+    if allnamespaces
+        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
+    elseif namespaced
+        apicall = eval(Symbol("listNamespaced$O"))
+        push!(args, namespace)
+    else
+        apicall = eval(Symbol("list$O"))
+    end
+
+    if !watch || resourceVersion === nothing
+        result = @retry_on_error apicall(apictx, args...; kwargs...)
+    end
+
+    # if not watching, retuen the first result
+    watch || (return result)
+    if result !== nothing
+        resourceVersion = result.metadata.resourceVersion
+        # push the first Event consisting of existing data
+        put!(eventstream, result)
+    end
+
+    # start watch and return the HTTP response object on completion
+    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+end
+
+function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
+        apiversion::Union{String,Nothing}=nothing,
+        max_tries::Integer=1,
+        watch=isa(ctx, KuberWatchContext),
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+
+    eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
+    result = nothing
+    args = Any[name]
     if (apicall = _api_function("read$O")) !== nothing
-        return @retry_on_error apicall(apictx, name; kwargs...)
+        # nothing
     elseif (apicall = _api_function("readNamespaced$O")) !== nothing
-        return @retry_on_error apicall(apictx, name, ctx.namespace; kwargs...)
+        push!(args, _kubectx(ctx).namespace)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
+
+    if !watch || resourceVersion === nothing
+        result = @retry_on_error apicall(apictx, args...; kwargs...)
+    end
+
+    # if not watching, retuen the first result
+    watch || (return result)
+    if result !== nothing
+        resourceVersion = result.metadata.resourceVersion
+        # push the first Event consisting of existing data
+        put!(eventstream, result)
+    end
+
+    # start watch and return the HTTP response object on completion
+    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
 end
 
-function get(ctx::KuberContext, O::Symbol; apiversion::Union{String,Nothing}=nothing, label_selector=nothing, namespace::Union{String,Nothing}=ctx.namespace, max_tries::Integer=1)
-    ctx.initialized || set_api_versions!(ctx; max_tries=max_tries)
+function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
+        apiversion::Union{String,Nothing}=nothing,
+        label_selector=nothing,
+        namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
+        max_tries::Integer=1,
+        watch=isa(ctx, KuberWatchContext),
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
 
-    apictx = _get_apictx(ctx, O, apiversion)
+    eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
+    result = nothing
+    args = Any[]
     apiname = "list$O"
     namespace === nothing && (apiname *= "ForAllNamespaces")
     if (apicall = _api_function(apiname)) !== nothing
-        return @retry_on_error apicall(apictx; labelSelector=label_selector)
+        # nothing
     elseif (apicall = _api_function("listNamespaced$O")) !== nothing
-        return @retry_on_error apicall(apictx, namespace; labelSelector=label_selector)
+        push!(args, namespace)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
+    end
+
+    if !watch || resourceVersion === nothing
+        result = @retry_on_error apicall(apictx, args...; labelSelector=label_selector, kwargs...)
+    end
+
+    # if not watching, retuen the first result
+    watch || (return result)
+    if result !== nothing
+        resourceVersion = result.metadata.resourceVersion
+        # push the first Event consisting of existing data
+        put!(eventstream, result)
+    end
+
+    # start watch and return the HTTP response object on completion
+    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, labelSelector=label_selector, kwargs...)
+end
+
+function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
+        apiversion::Union{String,Nothing}=nothing,
+        namespace::Union{String,Nothing}=ctx.namespace,
+        max_tries::Int=1,
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
+
+    if allnamespaces
+        apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
+        return @retry_on_error apicall(apictx, outstream, name; kwargs...)
+    elseif namespaced
+        apicall = eval(Symbol("watchNamespaced$O"))
+        return @retry_on_error apicall(apictx, outstream, name, namespace; kwargs...)
+    else
+        apicall = eval(Symbol("watch$O"))
+        return @retry_on_error apicall(apictx, outstream, name; kwargs...)
+    end
+end
+
+function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
+        apiversion::Union{String,Nothing}=nothing,
+        namespace::Union{String,Nothing}=ctx.namespace,
+        max_tries::Int=1,
+        resourceVersion=nothing,
+        kwargs...)
+    apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
+
+    if allnamespaces
+        apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
+        return @retry_on_error apicall(apictx, outstream; kwargs...)
+    elseif namespaced
+        apicall = eval(Symbol("watchNamespaced$O"))
+        return @retry_on_error apicall(apictx, outstream, namespace; kwargs...)
+    else
+        apicall = eval(Symbol("watch$O"))
+        return @retry_on_error apicall(apictx, outstream; kwargs...)
     end
 end
 
@@ -95,8 +250,6 @@ function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
 end
 
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
-    ctx.initialized || set_api_versions!(ctx)
-
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     if (apicall = _api_function("create$O")) !== nothing
         return apicall(apictx, d)
@@ -115,7 +268,6 @@ function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
 end
 
 function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, kwargs...)
-    ctx.initialized || set_api_versions!(ctx)
     apictx = _get_apictx(ctx, O, apiversion)
 
     params = [apictx, name]
@@ -138,8 +290,6 @@ function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerMo
 end
 
 function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing)
-    ctx.initialized || set_api_versions!(ctx)
-
     apictx = _get_apictx(ctx, O, apiversion)
 
     if (apicall = _api_function("patch$O")) !== nothing

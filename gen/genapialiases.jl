@@ -69,8 +69,11 @@ function kuberapi(file::String)
             #       because of the Julia restriction of type being defined before use
             fn_expr = ((x.typ === CSTParser.MacroCall) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
             if fn_expr !== nothing
-                alias = emit_alias(fn_expr, api_decoration)
-                (alias === nothing) || push!(aliases, alias)
+                fn_name = CSTParser.str_value(CSTParser.get_name(fn_expr))
+                if !startswith(fn_name, "_swaggerinternal_")
+                    alias = emit_alias(fn_expr, api_decoration)
+                    (alias === nothing) || push!(aliases, alias)
+                end
             end
         end
         x, ps = CSTParser.parse(ps)
