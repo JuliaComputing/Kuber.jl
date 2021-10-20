@@ -51,8 +51,15 @@ end
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
 kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, JSON.parse(data))
 
-function kuber_type(ctx::KuberContext, T, resp::HTTP.Response)
-    ctype = HTTP.header(resp, "Content-Type", "application/json")
+function header(resp::Downloads.Response, name::AbstractString, defaultval::AbstractString)
+    for (n,v) in resp.headers
+        (n == name) && (return v)
+    end
+    return defaultval
+end
+
+function kuber_type(ctx::KuberContext, T, resp::Downloads.Response)
+    ctype = header(resp, "Content-Type", "application/json")
     !is_json_mime(ctype) && return T
     kuber_type(ctx, T, String(copy(resp.body)))
 end
