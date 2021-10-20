@@ -39,7 +39,37 @@ Kubernetes APIs are mapped to these easy to use verbs, familiar to Julia users.
 - `delete!`: delete existing entities
 - `sel`: creates a label selector to use with other verbs
 
-All verbs have the signature: `verb(ctx::KuberContext, T::Symbol, args...; kwargs...)`.
+All verbs have the signature:
+
+```julia
+verb(ctx::KuberContext, T::Symbol, args...; kwargs...)
+```
+
+Kubernetes also provides efficient change notifications on resources via "watches". Certain entities have the special `watch` APIs defined for them and that can be invoked with the `watch` verb. The `watch` API accepts a `Channel` through which it streams events.
+
+```julia
+watch(ctx::KuberContext, T::Symbol, outstream::Channel, args...; kwargs...)
+```
+
+In addition, verbs like `get` and `list` also support watches, and those can be invoked as:
+
+```julia
+watch(ctx, verb, args...; kwargs...) do stream
+    for event in stream
+        # process event
+    end
+end
+```
+
+E.g.:
+
+```julia
+watch(ctx, list, :Pod; resourceVersion=19451) do stream
+    for event in stream
+        @info("got event", event)
+    end
+end
+```
 
 ### Helper methods:
 

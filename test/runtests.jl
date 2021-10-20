@@ -256,8 +256,35 @@ function test_versioned(ctx, testid)
         create_versioned_models(ctx)
     end
 
+    # start a watch on pods
+    lck = ReentrantLock()
+    events = Any[]
+    @async begin
+        watch(ctx, list, :Pod) do stream
+            for event in stream
+                lock(lck) do
+                    push!(events, event)
+                end
+            end
+        end
+    end
+
     @testset "Create/Delete Objects" begin
         create_delete_job(ctx, testid)
+    end
+
+    @testset "Watch Events" begin
+        timedwait(10.0; pollint=1.0) do
+            lock(lck) do
+                any(isa(event, Kuber.Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent) && (event.type == "DELETED") for event in events)
+            end
+        end
+        lock(lck) do
+            @test !isempty(events)
+            for event in events
+                @test isa(event, Union{Kuber.Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent,Kuber.Kubernetes.IoK8sApiCoreV1PodList})
+            end
+        end
     end
 end
 

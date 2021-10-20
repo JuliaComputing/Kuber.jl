@@ -14,14 +14,24 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
 """
-function createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+function _swaggerinternal_createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -33,14 +43,24 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration
 """
-function createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+function _swaggerinternal_createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -62,7 +82,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -79,7 +99,17 @@ function deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguratio
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -101,7 +131,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -118,7 +148,17 @@ function deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfigurat
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -133,7 +173,7 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function _swaggerinternal_deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -143,7 +183,17 @@ function deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::Ad
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -158,7 +208,7 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+function _swaggerinternal_deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -168,7 +218,17 @@ function deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::
     Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -176,11 +236,21 @@ end
 get available resources
 Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
 """
-function getAdmissionregistrationV1beta1APIResources(_api::AdmissionregistrationV1beta1Api; _mediaType=nothing)
+function _swaggerinternal_getAdmissionregistrationV1beta1APIResources(_api::AdmissionregistrationV1beta1Api; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIResourceList, "/apis/admissionregistration.k8s.io/v1beta1/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
+    return _ctx
+end
+
+function getAdmissionregistrationV1beta1APIResources(_api::AdmissionregistrationV1beta1Api; _mediaType=nothing)
+    _ctx = _swaggerinternal_getAdmissionregistrationV1beta1APIResources(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function getAdmissionregistrationV1beta1APIResources(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; _mediaType=nothing)
+    _ctx = _swaggerinternal_getAdmissionregistrationV1beta1APIResources(_api; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -197,7 +267,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfigurationList
 """
-function listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfigurationList, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -210,7 +280,17 @@ function listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::Admi
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -227,7 +307,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfigurationList
 """
-function listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfigurationList, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -240,7 +320,17 @@ function listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::Ad
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -254,7 +344,7 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
 """
-function patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+function _swaggerinternal_patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -263,7 +353,17 @@ function patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::Adm
     Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
+end
+
+function patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -277,7 +377,7 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration
 """
-function patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+function _swaggerinternal_patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -286,7 +386,17 @@ function patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::A
     Swagger.set_param(_ctx.query, "force", force)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
+end
+
+function patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -298,7 +408,7 @@ Param: exact::Bool
 Param: __export__::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
 """
-function readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+function _swaggerinternal_readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -306,7 +416,17 @@ function readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::Admi
     Swagger.set_param(_ctx.query, "export", __export__)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_readAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -318,7 +438,7 @@ Param: exact::Bool
 Param: __export__::Bool
 Return: IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration
 """
-function readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+function _swaggerinternal_readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -326,7 +446,17 @@ function readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::Ad
     Swagger.set_param(_ctx.query, "export", __export__)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_readAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -339,7 +469,7 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration
 """
-function replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+function _swaggerinternal_replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -347,7 +477,17 @@ function replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::A
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -360,7 +500,7 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration
 """
-function replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+function _swaggerinternal_replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -368,7 +508,17 @@ function replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api:
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -386,7 +536,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -400,7 +550,17 @@ function watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::Adm
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -417,7 +577,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -430,7 +590,17 @@ function watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api:
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -448,7 +618,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -462,7 +632,17 @@ function watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::A
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api::AdmissionregistrationV1beta1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -479,7 +659,7 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
-function watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+function _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -492,7 +672,17 @@ function watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_ap
     Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api::AdmissionregistrationV1beta1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export createAdmissionregistrationV1beta1MutatingWebhookConfiguration, createAdmissionregistrationV1beta1ValidatingWebhookConfiguration, deleteAdmissionregistrationV1beta1CollectionMutatingWebhookConfiguration, deleteAdmissionregistrationV1beta1CollectionValidatingWebhookConfiguration, deleteAdmissionregistrationV1beta1MutatingWebhookConfiguration, deleteAdmissionregistrationV1beta1ValidatingWebhookConfiguration, getAdmissionregistrationV1beta1APIResources, listAdmissionregistrationV1beta1MutatingWebhookConfiguration, listAdmissionregistrationV1beta1ValidatingWebhookConfiguration, patchAdmissionregistrationV1beta1MutatingWebhookConfiguration, patchAdmissionregistrationV1beta1ValidatingWebhookConfiguration, readAdmissionregistrationV1beta1MutatingWebhookConfiguration, readAdmissionregistrationV1beta1ValidatingWebhookConfiguration, replaceAdmissionregistrationV1beta1MutatingWebhookConfiguration, replaceAdmissionregistrationV1beta1ValidatingWebhookConfiguration, watchAdmissionregistrationV1beta1MutatingWebhookConfiguration, watchAdmissionregistrationV1beta1MutatingWebhookConfigurationList, watchAdmissionregistrationV1beta1ValidatingWebhookConfiguration, watchAdmissionregistrationV1beta1ValidatingWebhookConfigurationList

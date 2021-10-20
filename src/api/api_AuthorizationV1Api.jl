@@ -15,7 +15,7 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1LocalSubjectAccessReview
 """
-function createAuthorizationV1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1Api, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+function _swaggerinternal_createAuthorizationV1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1Api, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1LocalSubjectAccessReview, "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
@@ -23,7 +23,17 @@ function createAuthorizationV1NamespacedLocalSubjectAccessReview(_api::Authoriza
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAuthorizationV1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1Api, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1NamespacedLocalSubjectAccessReview(_api, namespace, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAuthorizationV1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1Api, response_stream::Channel, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1NamespacedLocalSubjectAccessReview(_api, namespace, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,14 +45,24 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1SelfSubjectAccessReview
 """
-function createAuthorizationV1SelfSubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+function _swaggerinternal_createAuthorizationV1SelfSubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAuthorizationV1SelfSubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SelfSubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAuthorizationV1SelfSubjectAccessReview(_api::AuthorizationV1Api, response_stream::Channel, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SelfSubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -54,14 +74,24 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1SelfSubjectRulesReview
 """
-function createAuthorizationV1SelfSubjectRulesReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+function _swaggerinternal_createAuthorizationV1SelfSubjectRulesReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1SelfSubjectRulesReview, "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAuthorizationV1SelfSubjectRulesReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SelfSubjectRulesReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAuthorizationV1SelfSubjectRulesReview(_api::AuthorizationV1Api, response_stream::Channel, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SelfSubjectRulesReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -73,14 +103,24 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1SubjectAccessReview
 """
-function createAuthorizationV1SubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+function _swaggerinternal_createAuthorizationV1SubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1SubjectAccessReview, "/apis/authorization.k8s.io/v1/subjectaccessreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
     Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function createAuthorizationV1SubjectAccessReview(_api::AuthorizationV1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function createAuthorizationV1SubjectAccessReview(_api::AuthorizationV1Api, response_stream::Channel, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_createAuthorizationV1SubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -88,11 +128,21 @@ end
 get available resources
 Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
 """
-function getAuthorizationV1APIResources(_api::AuthorizationV1Api; _mediaType=nothing)
+function _swaggerinternal_getAuthorizationV1APIResources(_api::AuthorizationV1Api; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIResourceList, "/apis/authorization.k8s.io/v1/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"] : [_mediaType])
+    return _ctx
+end
+
+function getAuthorizationV1APIResources(_api::AuthorizationV1Api; _mediaType=nothing)
+    _ctx = _swaggerinternal_getAuthorizationV1APIResources(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function getAuthorizationV1APIResources(_api::AuthorizationV1Api, response_stream::Channel; _mediaType=nothing)
+    _ctx = _swaggerinternal_getAuthorizationV1APIResources(_api; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export createAuthorizationV1NamespacedLocalSubjectAccessReview, createAuthorizationV1SelfSubjectAccessReview, createAuthorizationV1SelfSubjectRulesReview, createAuthorizationV1SubjectAccessReview, getAuthorizationV1APIResources

@@ -15,7 +15,7 @@ Param: labelSelector::String
 Param: limit::Int32
 Return: IoK8sApiCustomMetricsV1beta1MetricValueList
 """
-function listCustomMetricsV1beta1MetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+function _swaggerinternal_listCustomMetricsV1beta1MetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCustomMetricsV1beta1MetricValueList, "/apis/custom.metrics.k8s.io/v1beta1/{compositemetricname}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "compositemetricname", compositemetricname)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -24,7 +24,17 @@ function listCustomMetricsV1beta1MetricValue(_api::CustomMetricsV1beta1Api, comp
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function listCustomMetricsV1beta1MetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listCustomMetricsV1beta1MetricValue(_api, compositemetricname; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function listCustomMetricsV1beta1MetricValue(_api::CustomMetricsV1beta1Api, response_stream::Channel, compositemetricname::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listCustomMetricsV1beta1MetricValue(_api, compositemetricname; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: labelSelector::String
 Param: limit::Int32
 Return: IoK8sApiCustomMetricsV1beta1MetricValueList
 """
-function listCustomMetricsV1beta1NamespacedMetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+function _swaggerinternal_listCustomMetricsV1beta1NamespacedMetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiCustomMetricsV1beta1MetricValueList, "/apis/custom.metrics.k8s.io/v1beta1/namespaces/{namespace}/{compositemetricname}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "compositemetricname", compositemetricname)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -48,7 +58,17 @@ function listCustomMetricsV1beta1NamespacedMetricValue(_api::CustomMetricsV1beta
     Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", "application/json;stream=watch", "application/vnd.kubernetes.protobuf;stream=watch"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
+end
+
+function listCustomMetricsV1beta1NamespacedMetricValue(_api::CustomMetricsV1beta1Api, compositemetricname::String, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listCustomMetricsV1beta1NamespacedMetricValue(_api, compositemetricname, namespace; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function listCustomMetricsV1beta1NamespacedMetricValue(_api::CustomMetricsV1beta1Api, response_stream::Channel, compositemetricname::String, namespace::String; pretty=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listCustomMetricsV1beta1NamespacedMetricValue(_api, compositemetricname, namespace; pretty=pretty, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export listCustomMetricsV1beta1MetricValue, listCustomMetricsV1beta1NamespacedMetricValue
