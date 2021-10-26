@@ -51,8 +51,15 @@ end
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
 kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, JSON.parse(data))
 
-function kuber_type(ctx::KuberContext, T, resp::HTTP.Response)
-    ctype = HTTP.header(resp, "Content-Type", "application/json")
+function header(resp::Downloads.Response, name::AbstractString, defaultval::AbstractString)
+    for (n,v) in resp.headers
+        (n == name) && (return v)
+    end
+    return defaultval
+end
+
+function kuber_type(ctx::KuberContext, T, resp::Downloads.Response)
+    ctype = header(resp, "Content-Type", "application/json")
     !is_json_mime(ctype) && return T
     kuber_type(ctx, T, String(copy(resp.body)))
 end
@@ -137,7 +144,7 @@ function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::
     vers = @repeat max_tries try
         getAPIVersions(ApisApi(ctx.client))
     catch e
-        @retry if isa(e, IOError)
+        @retry if isa(e, Base.IOError)
             @debug("Retrying getAPIVersions")
             sleep(2)
         end
@@ -181,7 +188,7 @@ function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=f
     api_vers = @repeat max_tries try
         getCoreAPIVersions(CoreApi(ctx.client))
     catch e
-        @retry if isa(e, IOError)
+        @retry if isa(e, Base.IOError)
             @debug("Retrying getCoreAPIVersions")
             sleep(2)
         end
@@ -256,7 +263,7 @@ function retry_on_error(f::Function; max_tries=1)
     @repeat max_tries try
         return f()
     catch e
-        @retry if isa(e, IOError)
+        @retry if isa(e, Base.IOError)
             @debug("Retrying Kubernetes API call ...")
             sleep(2)
         end
