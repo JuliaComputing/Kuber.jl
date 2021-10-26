@@ -19,20 +19,18 @@ jobs:
           - ubuntu-latest
         arch:
           - x64
-          - x86
-        include:
-          # test macOS and Windows with latest Julia only
-          - os: macOS-latest
-            arch: x64
-            version: 1
-          - os: windows-latest
-            arch: x64
-            version: 1
-          - os: windows-latest
-            arch: x86
-            version: 1
     steps:
       - uses: actions/checkout@v2
+      - uses: engineerd/setup-kind@v0.5.0
+        with:
+          version: "v0.11.1"
+      - name: Testing
+        run: |
+          kubectl cluster-info
+          kubectl get pods -n kube-system
+          echo "current-context:" $(kubectl config current-context)
+          echo "environment-kubeconfig:" ${KUBECONFIG}
+          kubectl proxy &
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
