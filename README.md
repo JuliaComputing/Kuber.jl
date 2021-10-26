@@ -1,6 +1,6 @@
 # Kuber
 
-[![Build Status](https://travis-ci.org/JuliaComputing/Kuber.jl.svg?branch=master)](https://travis-ci.org/JuliaComputing/Kuber.jl)
+[![Build Status](https://github.com/JuliaComputing/Kuber.jl/workflows/CI/badge.svg)](https://github.com/JuliaComputing/Kuber.jl/actions?query=workflow%3ACI+branch%3Amaster)
 
 A Julia Kubernetes Client.
 

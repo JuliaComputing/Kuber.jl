@@ -276,13 +276,13 @@ function test_versioned(ctx, testid)
     @testset "Watch Events" begin
         timedwait(10.0; pollint=1.0) do
             lock(lck) do
-                any(isa(event, Kuber.Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent) && (event.type == "DELETED") for event in events)
+                any(isa(event, Kuber.Typedefs.MetaV1.WatchEvent) && (event.type == "DELETED") for event in events)
             end
         end
         lock(lck) do
             @test !isempty(events)
             for event in events
-                @test isa(event, Union{Kuber.Kubernetes.IoK8sApimachineryPkgApisMetaV1WatchEvent,Kuber.Kubernetes.IoK8sApiCoreV1PodList})
+                @test isa(event, Union{Kuber.Typedefs.MetaV1.WatchEvent,Kuber.Typedefs.CoreV1.PodList})
             end
         end
     end
@@ -308,6 +308,6 @@ function test_all()
     end
 end
 
-if !parse(Bool, get(ENV, "CI", "false"))
+#if !parse(Bool, get(ENV, "CI", "false"))
     test_all()
-end
+#end
