@@ -75,8 +75,9 @@ end
 
 A Kubernetes context can be manipulated with:
 
-- `set_server`: Set the API server location
-- `set_ns`: Set the namespace to deal with
+- `set_server`: Set the API server location ("http://localhost:8001" if not set)
+- `set_ns`: Set the namespace to deal with (`default` namespace is not set)
+- `set_retries`: Set the number of times an API call should be retried on a retriable error (5 if not set)
 
 Other convenience methods:
 

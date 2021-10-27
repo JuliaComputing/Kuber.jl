@@ -15,6 +15,7 @@ function init_context(override=nothing, verbose=true)
     ctx = KuberContext()
     set_server(ctx, "http://localhost:8001")
     set_ns(ctx, "default")
+    set_retries(ctx, 3)
     Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
     ctx
 end
@@ -308,6 +309,4 @@ function test_all()
     end
 end
 
-#if !parse(Bool, get(ENV, "CI", "false"))
-    test_all()
-#end
+test_all()
