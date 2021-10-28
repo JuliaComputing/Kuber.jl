@@ -1,6 +1,29 @@
 const DEFAULT_NAMESPACE = "default"
 const DEFAULT_URI = "http://localhost:8001"
 
+"""delay customized by TPS requirement"""
+k8s_delay(tps, max_tries=1) = ExponentialBackOff(n=max_tries, first_delay=(1/tps), factor=1.75, jitter=0.1)
+
+"""
+Swagger status codes that can be retried.
+0: network error (HTTP was not even attempted)
+500-504: unexpected server error
+"""
+const k8s_retryable_codes = [0, 500, 501, 502, 503, 504]
+
+function k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes)
+    if (e isa Swagger.ApiException) && (e.status in retryable_codes)
+        return (s, true)
+    end
+    (s, false)
+end
+
+"""
+Retry api call automatically (if `max_tries > 1`) on certain retryable failures.
+Backoff to use when retrying k8s APIs. The default minimum is 2 TPS.
+"""
+k8s_retry(f; max_tries=1, tps=2) = retry(f, delays=k8s_delay(tps,max_tries), check=k8s_retry_cond)()
+
 const KuberEventStream = Channel{Any}
 
 struct KApi
@@ -13,6 +36,7 @@ mutable struct KuberContext
     apis::Dict{Symbol,Vector{KApi}}
     modelapi::Dict{Symbol,KApi}
     namespace::String
+    default_retries::Int
     initialized::Bool
 
     function KuberContext()
@@ -26,6 +50,7 @@ mutable struct KuberContext
         kctx.apis = Dict{Symbol,Vector}()
         kctx.modelapi = Dict{Symbol,KApi}()
         kctx.namespace = DEFAULT_NAMESPACE
+        kctx.default_retries = 5
         kctx.initialized = false
         return kctx
     end
@@ -35,6 +60,12 @@ struct KuberWatchContext
     ctx::KuberContext
     stream::KuberEventStream
 end
+
+function set_retries(ctx::KuberContext, n)
+    ctx.default_retries = n
+end
+retries(ctx::KuberContext) = ctx.default_retries
+retries(watch::KuberWatchContext) = retries(watch.ctx)
 
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
 convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
@@ -87,7 +118,7 @@ show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, 
 get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace
 
-function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=1, kwargs...)
+function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=retries(ctx), kwargs...)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
@@ -139,15 +170,10 @@ function override_pref(name, server_pref, override)
     server_pref
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
+function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
     apis = ctx.apis
-    vers = @repeat max_tries try
+    vers = k8s_retry(; max_tries=max_tries) do
         getAPIVersions(ApisApi(ctx.client))
-    catch e
-        @retry if isa(e, Base.IOError)
-            @debug("Retrying getAPIVersions")
-            sleep(2)
-        end
     end
     api_groups = vers.groups
     for apigrp in api_groups
@@ -183,15 +209,10 @@ function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::
     apis
 end
 
-function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
+function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
     apis = ctx.apis
-    api_vers = @repeat max_tries try
+    api_vers = k8s_retry(; max_tries=max_tries) do
         getCoreAPIVersions(CoreApi(ctx.client))
-    catch e
-        @retry if isa(e, Base.IOError)
-            @debug("Retrying getCoreAPIVersions")
-            sleep(2)
-        end
     end
     name = "Core"
     pref_vers = override_pref(name, api_vers.versions[1], override)
@@ -236,7 +257,7 @@ function build_model_api_map(ctx::KuberContext)
     modelapi
 end
 
-function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=1)
+function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
     ctx.initialized = false
     empty!(ctx.apis)
     empty!(ctx.modelapi)
@@ -254,29 +275,4 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     ctx.modelapi[:PodLog] = ctx.modelapi[:Pod]
     ctx.initialized = true
     nothing
-end
-
-"""
-Retry function `f` for `max_tries` number of times if function fails with `IOError`
-"""
-function retry_on_error(f::Function; max_tries=1)
-    @repeat max_tries try
-        return f()
-    catch e
-        @retry if isa(e, Base.IOError)
-            @debug("Retrying Kubernetes API call ...")
-            sleep(2)
-        end
-    end
-end
-
-"""
-Macro to retry an expression on `IOError`. Note that the variable `max_tries` needs to be inscope for this to work.
-"""
-macro retry_on_error(e)
-   esc(quote
-      retry_on_error(;max_tries=(@isdefined max_tries) ? max_tries : 1) do
-          $(e)
-      end
-   end)
 end

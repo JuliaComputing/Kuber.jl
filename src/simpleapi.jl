@@ -12,7 +12,7 @@ _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.M
 _kubectx(ctx::KuberContext) = ctx
 _kubectx(ctx::KuberWatchContext) = ctx.ctx
 
-function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiversion::Union{String,Nothing}; max_tries::Int=1)
+function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiversion::Union{String,Nothing}; max_tries::Int=retries(ctx))
     kubectx = _kubectx(ctx)
     kubectx.initialized || set_api_versions!(kubectx; max_tries=max_tries)
 
@@ -50,7 +50,7 @@ end
 function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Int=1,
+        max_tries::Int=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -71,7 +71,9 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     end
 
     if !watch || resourceVersion === nothing
-        result = @retry_on_error apicall(apictx, args...; kwargs...)
+        result = k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, args...; kwargs...)
+        end
     end
 
     # if not watching, retuen the first result
@@ -83,13 +85,15 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     end
 
     # start watch and return the HTTP response object on completion
-    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    return k8s_retry(; max_tries=max_tries) do
+        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    end
 end
 
 function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Int=1,
+        max_tries::Int=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -111,7 +115,9 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     if !watch || resourceVersion === nothing
-        result = @retry_on_error apicall(apictx, args...; kwargs...)
+        result = k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, args...; kwargs...)
+        end
     end
 
     # if not watching, retuen the first result
@@ -123,12 +129,14 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     # start watch and return the HTTP response object on completion
-    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    return k8s_retry(; max_tries=max_tries) do
+        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    end
 end
 
 function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
         apiversion::Union{String,Nothing}=nothing,
-        max_tries::Integer=1,
+        max_tries::Integer=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -146,7 +154,9 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     end
 
     if !watch || resourceVersion === nothing
-        result = @retry_on_error apicall(apictx, args...; kwargs...)
+        result = k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, args...; kwargs...)
+        end
     end
 
     # if not watching, retuen the first result
@@ -158,14 +168,16 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     end
 
     # start watch and return the HTTP response object on completion
-    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    return k8s_retry(; max_tries=max_tries) do
+        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    end
 end
 
 function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         apiversion::Union{String,Nothing}=nothing,
         label_selector=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Integer=1,
+        max_tries::Integer=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -185,7 +197,9 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     if !watch || resourceVersion === nothing
-        result = @retry_on_error apicall(apictx, args...; labelSelector=label_selector, kwargs...)
+        result = k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, args...; labelSelector=label_selector, kwargs...)
+        end
     end
 
     # if not watching, retuen the first result
@@ -197,14 +211,15 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     # start watch and return the HTTP response object on completion
-    return @retry_on_error apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, labelSelector=label_selector, kwargs...)
+    return k8s_retry(; max_tries=max_tries) do
+        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, labelSelector=label_selector, kwargs...)
+    end
 end
 
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=ctx.namespace,
-        max_tries::Int=1,
-        resourceVersion=nothing,
+        max_tries::Int=retries(ctx),
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -212,21 +227,26 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
 
     if allnamespaces
         apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
-        return @retry_on_error apicall(apictx, outstream, name; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream, name; kwargs...)
+        end
     elseif namespaced
         apicall = eval(Symbol("watchNamespaced$O"))
-        return @retry_on_error apicall(apictx, outstream, name, namespace; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream, name, namespace; kwargs...)
+        end
     else
         apicall = eval(Symbol("watch$O"))
-        return @retry_on_error apicall(apictx, outstream, name; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream, name; kwargs...)
+        end
     end
 end
 
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=ctx.namespace,
-        max_tries::Int=1,
-        resourceVersion=nothing,
+        max_tries::Int=retries(ctx),
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -234,13 +254,19 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
 
     if allnamespaces
         apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
-        return @retry_on_error apicall(apictx, outstream; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream; kwargs...)
+        end
     elseif namespaced
         apicall = eval(Symbol("watchNamespaced$O"))
-        return @retry_on_error apicall(apictx, outstream, namespace; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream, namespace; kwargs...)
+        end
     else
         apicall = eval(Symbol("watch$O"))
-        return @retry_on_error apicall(apictx, outstream; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, outstream; kwargs...)
+        end
     end
 end
 
