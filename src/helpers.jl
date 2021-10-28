@@ -37,6 +37,7 @@ mutable struct KuberContext
     modelapi::Dict{Symbol,KApi}
     namespace::String
     default_retries::Int
+    retry_all_apis::Bool
     initialized::Bool
 
     function KuberContext()
@@ -51,6 +52,7 @@ mutable struct KuberContext
         kctx.modelapi = Dict{Symbol,KApi}()
         kctx.namespace = DEFAULT_NAMESPACE
         kctx.default_retries = 5
+        kctx.retry_all_apis = false
         kctx.initialized = false
         return kctx
     end
@@ -61,11 +63,23 @@ struct KuberWatchContext
     stream::KuberEventStream
 end
 
-function set_retries(ctx::KuberContext, n)
-    ctx.default_retries = n
+"""
+    set_retries(ctx; count=5, all_apis=false)
+
+Args:
+- ctx: the context to set the options for
+
+Keyword Args:
+- count: how many times to retry (default 5)
+- all_apis: whether to retry even mutating APIs e.g. `put!` (default false)
+"""
+function set_retries(ctx::KuberContext; count::Int=ctx.default_retries, all_apis::Bool=ctx.all_apis)
+    ctx.default_retries = count
+    ctx.retry_all_apis = all_apis
+    ctx
 end
-retries(ctx::KuberContext) = ctx.default_retries
-retries(watch::KuberWatchContext) = retries(watch.ctx)
+retries(ctx::KuberContext, mutating::Bool=true) = (mutating && !ctx.retry_all_apis) ? 1 : ctx.default_retries
+retries(watch::KuberWatchContext, mutating::Bool=true) = retries(watch.ctx, mutating)
 
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
 convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
@@ -118,7 +132,21 @@ show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, 
 get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace
 
-function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=retries(ctx), kwargs...)
+"""
+    set_server(ctx, uri, reset_api_versions=false; max_tries=5, kwargs...)
+
+Set the Kubernetes API server endpoint for a context.
+
+Args:
+- ctx: the context for which to set the API server endpoint
+- uri: the API server endpoint uri
+- reset_api_versions: whether to probe the server again for API versions supported (false by default)
+
+Keyword Args:
+- max_tries: retries allowed while probing API versions from server
+- kwargs: other keyword args to pass on while constructing the client for API server (see Swagger.jl - https://github.com/JuliaComputing/Swagger.jl#readme)
+"""
+function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=retries(ctx, false), kwargs...)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
@@ -126,6 +154,15 @@ function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versio
     ctx.client
 end
 
+"""
+    set_ns(ctx, namespace)
+
+Set the namespace this context should operate with.
+
+Args:
+- ctx: the context to set the namespace for
+- namespace: the namespace to set (String)
+"""
 set_ns(ctx::KuberContext, namespace::String) = (ctx.namespace = namespace)
 
 camel(a) = string(uppercase(a[1])) * (a[2:end])
@@ -170,7 +207,7 @@ function override_pref(name, server_pref, override)
     server_pref
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
+function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
     apis = ctx.apis
     vers = k8s_retry(; max_tries=max_tries) do
         getAPIVersions(ApisApi(ctx.client))
@@ -209,7 +246,7 @@ function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::
     apis
 end
 
-function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
+function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
     apis = ctx.apis
     api_vers = k8s_retry(; max_tries=max_tries) do
         getCoreAPIVersions(CoreApi(ctx.client))
@@ -257,7 +294,7 @@ function build_model_api_map(ctx::KuberContext)
     modelapi
 end
 
-function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx))
+function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
     ctx.initialized = false
     empty!(ctx.apis)
     empty!(ctx.modelapi)
