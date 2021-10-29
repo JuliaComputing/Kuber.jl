@@ -12,7 +12,7 @@ _delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.M
 _kubectx(ctx::KuberContext) = ctx
 _kubectx(ctx::KuberWatchContext) = ctx.ctx
 
-function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiversion::Union{String,Nothing}; max_tries::Int=retries(ctx))
+function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiversion::Union{String,Nothing}; max_tries::Int=retries(ctx, false))
     kubectx = _kubectx(ctx)
     kubectx.initialized || set_api_versions!(kubectx; max_tries=max_tries)
 
@@ -50,7 +50,7 @@ end
 function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Int=retries(ctx),
+        max_tries::Int=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -76,7 +76,7 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
         end
     end
 
-    # if not watching, retuen the first result
+    # if not watching, return the first result
     watch || (return result)
     if result !== nothing
         resourceVersion = result.metadata.resourceVersion
@@ -93,7 +93,7 @@ end
 function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Int=retries(ctx),
+        max_tries::Int=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -177,7 +177,7 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         apiversion::Union{String,Nothing}=nothing,
         label_selector=nothing,
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
-        max_tries::Integer=retries(ctx),
+        max_tries::Integer=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
         resourceVersion=nothing,
         kwargs...)
@@ -219,7 +219,7 @@ end
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=ctx.namespace,
-        max_tries::Int=retries(ctx),
+        max_tries::Int=retries(ctx, false),
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -246,7 +246,7 @@ end
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
         apiversion::Union{String,Nothing}=nothing,
         namespace::Union{String,Nothing}=ctx.namespace,
-        max_tries::Int=retries(ctx),
+        max_tries::Int=retries(ctx, false),
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -270,58 +270,70 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
     end
 end
 
-function put!(ctx::KuberContext, v::T) where {T<:SwaggerModel}
+function put!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true)) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
-    put!(ctx, Symbol(vjson["kind"]), vjson)
+    put!(ctx, Symbol(vjson["kind"]), vjson; max_tries=max_tries)
 end
 
-function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any})
+function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any}; max_tries::Int=retries(ctx, true))
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
     if (apicall = _api_function("create$O")) !== nothing
-        return apicall(apictx, d)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, d)
+        end
     elseif (apicall = _api_function("createNamespaced$O")) !== nothing
-        return apicall(apictx, ctx.namespace, d)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, ctx.namespace, d)
+        end
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
-function delete!(ctx::KuberContext, v::T; kwargs...) where {T<:SwaggerModel}
+function delete!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true), kwargs...) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    delete!(ctx, Symbol(kind), name; apiversion=get(vjson, "apiVersion", nothing), kwargs...)
+    delete!(ctx, Symbol(kind), name; apiversion=get(vjson, "apiVersion", nothing), max_tries=max_tries, kwargs...)
 end
 
-function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, kwargs...)
+function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Int=retries(ctx, true), kwargs...)
     apictx = _get_apictx(ctx, O, apiversion)
 
     params = [apictx, name]
 
     if (apicall = _api_function("delete$O")) !== nothing
-        return apicall(params...; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(params...; kwargs...)
+        end
     elseif (apicall = _api_function("deleteNamespaced$O")) !== nothing
         push!(params, ctx.namespace)
-        return apicall(params...; kwargs...)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(params...; kwargs...)
+        end
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end
 end
 
-function update!(ctx::KuberContext, v::T, patch, patch_type) where {T<:SwaggerModel}
+function update!(ctx::KuberContext, v::T, patch, patch_type; max_tries::Int=retries(ctx, true)) where {T<:SwaggerModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
-    update!(ctx, Symbol(kind), name, patch, patch_type; apiversion=get(vjson, "apiVersion", nothing))
+    update!(ctx, Symbol(kind), name, patch, patch_type; apiversion=get(vjson, "apiVersion", nothing), max_tries=max_tries)
 end
 
-function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing)
+function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing, max_tries::Int=retries(ctx, true))
     apictx = _get_apictx(ctx, O, apiversion)
 
     if (apicall = _api_function("patch$O")) !== nothing
-        return apicall(apictx, name, patch; _mediaType=patch_type)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, name, patch; _mediaType=patch_type)
+        end
     elseif (apicall = _api_function("patchNamespaced$O")) !== nothing
-        return apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+        return k8s_retry(; max_tries=max_tries) do
+            apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+        end
     else
         throw(ArgumentError("No API functions could be located using :$O"))
     end

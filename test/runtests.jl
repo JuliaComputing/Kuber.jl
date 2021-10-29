@@ -15,7 +15,7 @@ function init_context(override=nothing, verbose=true)
     ctx = KuberContext()
     set_server(ctx, "http://localhost:8001")
     set_ns(ctx, "default")
-    set_retries(ctx, 3)
+    set_retries(ctx; count=3, all_apis=false)
     Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
     ctx
 end
