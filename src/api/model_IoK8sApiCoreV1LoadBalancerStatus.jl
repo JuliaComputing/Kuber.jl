@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LoadBalancerStatus represents the status of a load-balancer.
+
+    IoK8sApiCoreV1LoadBalancerStatus(;
+        ingress=nothing,
+    )
+
+    - ingress::Vector{IoK8sApiCoreV1LoadBalancerIngress} : Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.
+"""
 mutable struct IoK8sApiCoreV1LoadBalancerStatus <: SwaggerModel
     ingress::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1LoadBalancerIngress} } # spec name: ingress
 

@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""GroupVersion contains the \&quot;group/version\&quot; and \&quot;version\&quot; string of a version. It is made a struct to keep extensibility.
+
+    IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery(;
+        groupVersion=nothing,
+        version=nothing,
+    )
+
+    - groupVersion::String : groupVersion specifies the API group and version in the form \&quot;group/version\&quot;
+    - version::String : version specifies the version in the form of \&quot;version\&quot;. This is to save the clients the trouble of splitting the GroupVersion.
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery <: SwaggerModel
     groupVersion::Any # spec type: Union{ Nothing, String } # spec name: groupVersion
     version::Any # spec type: Union{ Nothing, String } # spec name: version

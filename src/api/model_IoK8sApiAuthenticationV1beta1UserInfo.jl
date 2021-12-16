@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""UserInfo holds the information about the user needed to implement the user.Info interface.
+
+    IoK8sApiAuthenticationV1beta1UserInfo(;
+        extra=nothing,
+        groups=nothing,
+        uid=nothing,
+        username=nothing,
+    )
+
+    - extra::Dict{String, Vector{String}} : Any additional information provided by the authenticator.
+    - groups::Vector{String} : The names of groups this user is a part of.
+    - uid::String : A unique value that identifies this user across time. If this user is deleted and another user by the same name is added, they will have different UIDs.
+    - username::String : The name that uniquely identifies this user among all active users.
+"""
 mutable struct IoK8sApiAuthenticationV1beta1UserInfo <: SwaggerModel
     extra::Any # spec type: Union{ Nothing, Dict{String, Vector{String}} } # spec name: extra
     groups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: groups

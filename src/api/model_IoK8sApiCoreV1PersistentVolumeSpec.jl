@@ -2,6 +2,72 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PersistentVolumeSpec is the specification of a persistent volume.
+
+    IoK8sApiCoreV1PersistentVolumeSpec(;
+        accessModes=nothing,
+        awsElasticBlockStore=nothing,
+        azureDisk=nothing,
+        azureFile=nothing,
+        capacity=nothing,
+        cephfs=nothing,
+        cinder=nothing,
+        claimRef=nothing,
+        csi=nothing,
+        fc=nothing,
+        flexVolume=nothing,
+        flocker=nothing,
+        gcePersistentDisk=nothing,
+        glusterfs=nothing,
+        hostPath=nothing,
+        iscsi=nothing,
+        __local__=nothing,
+        mountOptions=nothing,
+        nfs=nothing,
+        nodeAffinity=nothing,
+        persistentVolumeReclaimPolicy=nothing,
+        photonPersistentDisk=nothing,
+        portworxVolume=nothing,
+        quobyte=nothing,
+        rbd=nothing,
+        scaleIO=nothing,
+        storageClassName=nothing,
+        storageos=nothing,
+        volumeMode=nothing,
+        vsphereVolume=nothing,
+    )
+
+    - accessModes::Vector{String} : AccessModes contains all ways the volume can be mounted. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes
+    - awsElasticBlockStore::IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource : AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    - azureDisk::IoK8sApiCoreV1AzureDiskVolumeSource : AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+    - azureFile::IoK8sApiCoreV1AzureFilePersistentVolumeSource : AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+    - capacity::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : A description of the persistent volume&#39;s resources and capacity. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#capacity
+    - cephfs::IoK8sApiCoreV1CephFSPersistentVolumeSource : CephFS represents a Ceph FS mount on the host that shares a pod&#39;s lifetime
+    - cinder::IoK8sApiCoreV1CinderPersistentVolumeSource : Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+    - claimRef::IoK8sApiCoreV1ObjectReference : ClaimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding
+    - csi::IoK8sApiCoreV1CSIPersistentVolumeSource : CSI represents storage that is handled by an external CSI driver (Beta feature).
+    - fc::IoK8sApiCoreV1FCVolumeSource : FC represents a Fibre Channel resource that is attached to a kubelet&#39;s host machine and then exposed to the pod.
+    - flexVolume::IoK8sApiCoreV1FlexPersistentVolumeSource : FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+    - flocker::IoK8sApiCoreV1FlockerVolumeSource : Flocker represents a Flocker volume attached to a kubelet&#39;s host machine and exposed to the pod for its usage. This depends on the Flocker control service being running
+    - gcePersistentDisk::IoK8sApiCoreV1GCEPersistentDiskVolumeSource : GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    - glusterfs::IoK8sApiCoreV1GlusterfsPersistentVolumeSource : Glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+    - hostPath::IoK8sApiCoreV1HostPathVolumeSource : HostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    - iscsi::IoK8sApiCoreV1ISCSIPersistentVolumeSource : ISCSI represents an ISCSI Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. Provisioned by an admin.
+    - __local__::IoK8sApiCoreV1LocalVolumeSource : Local represents directly-attached storage with node affinity
+    - mountOptions::Vector{String} : A list of mount options, e.g. [\&quot;ro\&quot;, \&quot;soft\&quot;]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options
+    - nfs::IoK8sApiCoreV1NFSVolumeSource : NFS represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    - nodeAffinity::IoK8sApiCoreV1VolumeNodeAffinity : NodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume.
+    - persistentVolumeReclaimPolicy::String : What happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming
+    - photonPersistentDisk::IoK8sApiCoreV1PhotonPersistentDiskVolumeSource : PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+    - portworxVolume::IoK8sApiCoreV1PortworxVolumeSource : PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
+    - quobyte::IoK8sApiCoreV1QuobyteVolumeSource : Quobyte represents a Quobyte mount on the host that shares a pod&#39;s lifetime
+    - rbd::IoK8sApiCoreV1RBDPersistentVolumeSource : RBD represents a Rados Block Device mount on the host that shares a pod&#39;s lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+    - scaleIO::IoK8sApiCoreV1ScaleIOPersistentVolumeSource : ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+    - storageClassName::String : Name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.
+    - storageos::IoK8sApiCoreV1StorageOSPersistentVolumeSource : StorageOS represents a StorageOS volume that is attached to the kubelet&#39;s host machine and mounted into the pod More info: https://examples.k8s.io/volumes/storageos/README.md
+    - volumeMode::String : volumeMode defines if a volume is intended to be used with a formatted filesystem or to remain in raw block state. Value of Filesystem is implied when not included in spec. This is a beta feature.
+    - vsphereVolume::IoK8sApiCoreV1VsphereVirtualDiskVolumeSource : VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+"""
 mutable struct IoK8sApiCoreV1PersistentVolumeSpec <: SwaggerModel
     accessModes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: accessModes
     awsElasticBlockStore::Any # spec type: Union{ Nothing, IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource } # spec name: awsElasticBlockStore

@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a StorageOS persistent volume resource.
+
+    IoK8sApiCoreV1StorageOSVolumeSource(;
+        fsType=nothing,
+        readOnly=nothing,
+        secretRef=nothing,
+        volumeName=nothing,
+        volumeNamespace=nothing,
+    )
+
+    - fsType::String : Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified.
+    - readOnly::Bool : Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+    - secretRef::IoK8sApiCoreV1LocalObjectReference : SecretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted.
+    - volumeName::String : VolumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.
+    - volumeNamespace::String : VolumeNamespace specifies the scope of the volume within StorageOS.  If no namespace is specified then the Pod&#39;s namespace will be used.  This allows the Kubernetes name scoping to be mirrored within StorageOS for tighter integration. Set VolumeName to any name to override the default behaviour. Set to \&quot;default\&quot; if you are not using namespaces within StorageOS. Namespaces that do not pre-exist within StorageOS will be created.
+"""
 mutable struct IoK8sApiCoreV1StorageOSVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly

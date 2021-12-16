@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""IngressSpec describes the Ingress the user wishes to exist.
+
+    IoK8sApiExtensionsV1beta1IngressSpec(;
+        backend=nothing,
+        rules=nothing,
+        tls=nothing,
+    )
+
+    - backend::IoK8sApiExtensionsV1beta1IngressBackend : A default backend capable of servicing requests that don&#39;t match any rule. At least one of &#39;backend&#39; or &#39;rules&#39; must be specified. This field is optional to allow the loadbalancer controller or defaulting logic to specify a global default.
+    - rules::Vector{IoK8sApiExtensionsV1beta1IngressRule} : A list of host rules used to configure the Ingress. If unspecified, or no rule matches, all traffic is sent to the default backend.
+    - tls::Vector{IoK8sApiExtensionsV1beta1IngressTLS} : TLS configuration. Currently the Ingress only supports a single TLS port, 443. If multiple members of this list specify different hosts, they will be multiplexed on the same port according to the hostname specified through the SNI TLS extension, if the ingress controller fulfilling the ingress supports SNI.
+"""
 mutable struct IoK8sApiExtensionsV1beta1IngressSpec <: SwaggerModel
     backend::Any # spec type: Union{ Nothing, IoK8sApiExtensionsV1beta1IngressBackend } # spec name: backend
     rules::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1IngressRule} } # spec name: rules

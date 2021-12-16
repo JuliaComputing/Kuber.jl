@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PriorityLevelConfigurationStatus represents the current state of a \&quot;request-priority\&quot;.
+
+    IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationStatus(;
+        conditions=nothing,
+    )
+
+    - conditions::Vector{IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationCondition} : &#x60;conditions&#x60; is the current state of \&quot;request-priority\&quot;.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationCondition} } # spec name: conditions
 

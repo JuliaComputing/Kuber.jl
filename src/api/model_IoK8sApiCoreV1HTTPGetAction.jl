@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HTTPGetAction describes an action based on HTTP Get requests.
+
+    IoK8sApiCoreV1HTTPGetAction(;
+        host=nothing,
+        httpHeaders=nothing,
+        path=nothing,
+        port=nothing,
+        scheme=nothing,
+    )
+
+    - host::String : Host name to connect to, defaults to the pod IP. You probably want to set \&quot;Host\&quot; in httpHeaders instead.
+    - httpHeaders::Vector{IoK8sApiCoreV1HTTPHeader} : Custom headers to set in the request. HTTP allows repeated headers.
+    - path::String : Path to access on the HTTP server.
+    - port::IoK8sApimachineryPkgUtilIntstrIntOrString : Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+    - scheme::String : Scheme to use for connecting to the host. Defaults to HTTP.
+"""
 mutable struct IoK8sApiCoreV1HTTPGetAction <: SwaggerModel
     host::Any # spec type: Union{ Nothing, String } # spec name: host
     httpHeaders::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1HTTPHeader} } # spec name: httpHeaders

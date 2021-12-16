@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NetworkPolicyPeer describes a peer to allow traffic from. Only certain combinations of fields are allowed
+
+    IoK8sApiNetworkingV1NetworkPolicyPeer(;
+        ipBlock=nothing,
+        namespaceSelector=nothing,
+        podSelector=nothing,
+    )
+
+    - ipBlock::IoK8sApiNetworkingV1IPBlock : IPBlock defines policy on a particular IPBlock. If this field is set then neither of the other fields can be.
+    - namespaceSelector::IoK8sApimachineryPkgApisMetaV1LabelSelector : Selects Namespaces using cluster-scoped labels. This field follows standard label selector semantics; if present but empty, it selects all namespaces.  If PodSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects all Pods in the Namespaces selected by NamespaceSelector.
+    - podSelector::IoK8sApimachineryPkgApisMetaV1LabelSelector : This is a label selector which selects Pods. This field follows standard label selector semantics; if present but empty, it selects all pods.  If NamespaceSelector is also set, then the NetworkPolicyPeer as a whole selects the Pods matching PodSelector in the Namespaces selected by NamespaceSelector. Otherwise it selects the Pods matching PodSelector in the policy&#39;s own Namespace.
+"""
 mutable struct IoK8sApiNetworkingV1NetworkPolicyPeer <: SwaggerModel
     ipBlock::Any # spec type: Union{ Nothing, IoK8sApiNetworkingV1IPBlock } # spec name: ipBlock
     namespaceSelector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: namespaceSelector

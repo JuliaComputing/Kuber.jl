@@ -5,15 +5,6 @@ struct FlowcontrolApiserverV1alpha1Api <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-create a FlowSchema
-Param: body::IoK8sApiFlowcontrolV1alpha1FlowSchema (required)
-Param: pretty::String
-Param: dryRun::String
-Param: fieldManager::String
-Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
-"""
 function _swaggerinternal_createFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -24,6 +15,15 @@ function _swaggerinternal_createFlowcontrolApiserverV1alpha1FlowSchema(_api::Flo
     return _ctx
 end
 
+"""
+
+create a FlowSchema
+Param: body::IoK8sApiFlowcontrolV1alpha1FlowSchema (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
+"""
 function createFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createFlowcontrolApiserverV1alpha1FlowSchema(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -32,6 +32,16 @@ end
 function createFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createFlowcontrolApiserverV1alpha1FlowSchema(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -43,16 +53,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
 """
-function _swaggerinternal_createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -61,6 +61,26 @@ end
 function createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -82,8 +102,18 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken"], body)
+function deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -100,16 +130,6 @@ function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionFlowSchema(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -131,26 +151,6 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
-    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
-    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
-    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
-    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
-    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
-    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -159,6 +159,19 @@ end
 function deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1CollectionPriorityLevelConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -173,8 +186,18 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
+function deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
@@ -184,16 +207,6 @@ function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::Flo
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1FlowSchema(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -208,19 +221,6 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
-    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function deleteFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -231,11 +231,6 @@ function deleteFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::Flow
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-get available resources
-Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
-"""
 function _swaggerinternal_getFlowcontrolApiserverV1alpha1APIResources(_api::FlowcontrolApiserverV1alpha1Api; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIResourceList, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -243,6 +238,11 @@ function _swaggerinternal_getFlowcontrolApiserverV1alpha1APIResources(_api::Flow
     return _ctx
 end
 
+"""
+
+get available resources
+Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
+"""
 function getFlowcontrolApiserverV1alpha1APIResources(_api::FlowcontrolApiserverV1alpha1Api; _mediaType=nothing)
     _ctx = _swaggerinternal_getFlowcontrolApiserverV1alpha1APIResources(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -253,20 +253,6 @@ function getFlowcontrolApiserverV1alpha1APIResources(_api::FlowcontrolApiserverV
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind FlowSchema
-Param: pretty::String
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiFlowcontrolV1alpha1FlowSchemaList
-"""
 function _swaggerinternal_listFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1FlowSchemaList, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -283,6 +269,20 @@ function _swaggerinternal_listFlowcontrolApiserverV1alpha1FlowSchema(_api::Flowc
     return _ctx
 end
 
+"""
+
+list or watch objects of kind FlowSchema
+Param: pretty::String
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiFlowcontrolV1alpha1FlowSchemaList
+"""
 function listFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listFlowcontrolApiserverV1alpha1FlowSchema(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -293,20 +293,6 @@ function listFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind PriorityLevelConfiguration
-Param: pretty::String
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationList
-"""
 function _swaggerinternal_listFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationList, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -323,6 +309,20 @@ function _swaggerinternal_listFlowcontrolApiserverV1alpha1PriorityLevelConfigura
     return _ctx
 end
 
+"""
+
+list or watch objects of kind PriorityLevelConfiguration
+Param: pretty::String
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationList
+"""
 function listFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -331,6 +331,18 @@ end
 function listFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -344,18 +356,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
 """
-function _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchema(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -364,6 +364,18 @@ end
 function patchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchema(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -377,18 +389,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
 """
-function _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -397,6 +397,18 @@ end
 function patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -410,18 +422,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
 """
-function _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -430,6 +430,18 @@ end
 function patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -443,18 +455,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
 """
-function _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -465,15 +465,6 @@ function patchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api:
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified FlowSchema
-Param: name::String (required)
-Param: pretty::String
-Param: exact::Bool
-Param: __export__::Bool
-Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
-"""
 function _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -485,6 +476,15 @@ function _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchema(_api::Flowc
     return _ctx
 end
 
+"""
+
+read the specified FlowSchema
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
+"""
 function readFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchema(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -495,13 +495,6 @@ function readFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read status of the specified FlowSchema
-Param: name::String (required)
-Param: pretty::String
-Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
-"""
 function _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -511,6 +504,13 @@ function _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api:
     return _ctx
 end
 
+"""
+
+read status of the specified FlowSchema
+Param: name::String (required)
+Param: pretty::String
+Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
+"""
 function readFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api, name; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -521,15 +521,6 @@ function readFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApise
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified PriorityLevelConfiguration
-Param: name::String (required)
-Param: pretty::String
-Param: exact::Bool
-Param: __export__::Bool
-Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
-"""
 function _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -541,6 +532,15 @@ function _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfigura
     return _ctx
 end
 
+"""
+
+read the specified PriorityLevelConfiguration
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
+"""
 function readFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -551,13 +551,6 @@ function readFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::Flowco
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read status of the specified PriorityLevelConfiguration
-Param: name::String (required)
-Param: pretty::String
-Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
-"""
 function _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -567,6 +560,13 @@ function _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfigura
     return _ctx
 end
 
+"""
+
+read status of the specified PriorityLevelConfiguration
+Param: name::String (required)
+Param: pretty::String
+Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
+"""
 function readFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api, name; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -575,6 +575,17 @@ end
 function readFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api, name; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -587,17 +598,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
 """
-function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchema(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -606,6 +606,17 @@ end
 function replaceFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchema(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -618,17 +629,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiFlowcontrolV1alpha1FlowSchema
 """
-function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1FlowSchema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -637,6 +637,17 @@ end
 function replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1FlowSchemaStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -649,17 +660,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
 """
-function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -668,6 +668,17 @@ end
 function replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -680,17 +691,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration
 """
-function _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api::FlowcontrolApiserverV1alpha1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -701,21 +701,6 @@ function replaceFlowcontrolApiserverV1alpha1PriorityLevelConfigurationStatus(_ap
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
-Param: name::String (required)
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: pretty::String
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
-"""
 function _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -733,19 +718,10 @@ function _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api::Flow
     return _ctx
 end
 
-function watchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list operation instead.
+watch changes to an object of kind FlowSchema. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -757,6 +733,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchFlowcontrolApiserverV1alpha1FlowSchema(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchema(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::FlowcontrolApiserverV1alpha1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -773,20 +759,9 @@ function _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::
     return _ctx
 end
 
-function watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::FlowcontrolApiserverV1alpha1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
-Param: name::String (required)
+watch individual changes to a list of FlowSchema. deprecated: use the 'watch' parameter with a list operation instead.
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -798,6 +773,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::FlowcontrolApiserverV1alpha1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1FlowSchemaList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -815,19 +800,10 @@ function _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfigur
     return _ctx
 end
 
-function watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
+watch changes to an object of kind PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -839,6 +815,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api::FlowcontrolApiserverV1alpha1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfiguration(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationList(_api::FlowcontrolApiserverV1alpha1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -855,6 +841,20 @@ function _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfigur
     return _ctx
 end
 
+"""
+
+watch individual changes to a list of PriorityLevelConfiguration. deprecated: use the 'watch' parameter with a list operation instead.
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
 function watchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationList(_api::FlowcontrolApiserverV1alpha1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_watchFlowcontrolApiserverV1alpha1PriorityLevelConfigurationList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)

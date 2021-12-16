@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""APIServiceCondition describes the state of an APIService at a particular point
+
+    IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transitioned from one status to another.
+    - message::String : Human-readable message indicating details about last transition.
+    - reason::String : Unique, one-word, CamelCase reason for the condition&#39;s last transition.
+    - status::String : Status is the status of the condition. Can be True, False, Unknown.
+    - type::String : Type is the type of the condition.
+"""
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

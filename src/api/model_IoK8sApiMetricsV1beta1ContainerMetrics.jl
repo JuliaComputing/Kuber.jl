@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerMetrics sets resource usage metrics of a container.
+
+    IoK8sApiMetricsV1beta1ContainerMetrics(;
+        name=nothing,
+        usage=nothing,
+    )
+
+    - name::String : Container name corresponding to the one from pod.spec.containers.
+    - usage::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : The memory usage is the memory working set.
+"""
 mutable struct IoK8sApiMetricsV1beta1ContainerMetrics <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     usage::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: usage

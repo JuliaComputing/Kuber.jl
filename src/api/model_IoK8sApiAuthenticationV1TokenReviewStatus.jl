@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TokenReviewStatus is the result of the token authentication request.
+
+    IoK8sApiAuthenticationV1TokenReviewStatus(;
+        audiences=nothing,
+        authenticated=nothing,
+        error=nothing,
+        user=nothing,
+    )
+
+    - audiences::Vector{String} : Audiences are audience identifiers chosen by the authenticator that are compatible with both the TokenReview and token. An identifier is any identifier in the intersection of the TokenReviewSpec audiences and the token&#39;s audiences. A client of the TokenReview API that sets the spec.audiences field should validate that a compatible audience identifier is returned in the status.audiences field to ensure that the TokenReview server is audience aware. If a TokenReview returns an empty status.audience field where status.authenticated is \&quot;true\&quot;, the token is valid against the audience of the Kubernetes API server.
+    - authenticated::Bool : Authenticated indicates that the token was associated with a known user.
+    - error::String : Error indicates that the token couldn&#39;t be checked
+    - user::IoK8sApiAuthenticationV1UserInfo : User is the UserInfo associated with the provided token.
+"""
 mutable struct IoK8sApiAuthenticationV1TokenReviewStatus <: SwaggerModel
     audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     authenticated::Any # spec type: Union{ Nothing, Bool } # spec name: authenticated

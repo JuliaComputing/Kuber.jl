@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RunAsUserStrategyOptions defines the strategy type and any options used to create the strategy.
+
+    IoK8sApiPolicyV1beta1RunAsUserStrategyOptions(;
+        ranges=nothing,
+        rule=nothing,
+    )
+
+    - ranges::Vector{IoK8sApiPolicyV1beta1IDRange} : ranges are the allowed ranges of uids that may be used. If you would like to force a single uid then supply a single range with the same start and end. Required for MustRunAs.
+    - rule::String : rule is the strategy that will dictate the allowable RunAsUser values that may be set.
+"""
 mutable struct IoK8sApiPolicyV1beta1RunAsUserStrategyOptions <: SwaggerModel
     ranges::Any # spec type: Union{ Nothing, Vector{IoK8sApiPolicyV1beta1IDRange} } # spec name: ranges
     rule::Any # spec type: Union{ Nothing, String } # spec name: rule

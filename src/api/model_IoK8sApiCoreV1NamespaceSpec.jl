@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NamespaceSpec describes the attributes on a Namespace.
+
+    IoK8sApiCoreV1NamespaceSpec(;
+        finalizers=nothing,
+    )
+
+    - finalizers::Vector{String} : Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+"""
 mutable struct IoK8sApiCoreV1NamespaceSpec <: SwaggerModel
     finalizers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: finalizers
 

@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeAddress contains information for the node&#39;s address.
+
+    IoK8sApiCoreV1NodeAddress(;
+        address=nothing,
+        type=nothing,
+    )
+
+    - address::String : The node address.
+    - type::String : Node address type, one of Hostname, ExternalIP or InternalIP.
+"""
 mutable struct IoK8sApiCoreV1NodeAddress <: SwaggerModel
     address::Any # spec type: Union{ Nothing, String } # spec name: address
     type::Any # spec type: Union{ Nothing, String } # spec name: type

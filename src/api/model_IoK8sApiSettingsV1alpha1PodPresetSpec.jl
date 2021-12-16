@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodPresetSpec is a description of a pod preset.
+
+    IoK8sApiSettingsV1alpha1PodPresetSpec(;
+        env=nothing,
+        envFrom=nothing,
+        selector=nothing,
+        volumeMounts=nothing,
+        volumes=nothing,
+    )
+
+    - env::Vector{IoK8sApiCoreV1EnvVar} : Env defines the collection of EnvVar to inject into containers.
+    - envFrom::Vector{IoK8sApiCoreV1EnvFromSource} : EnvFrom defines the collection of EnvFromSource to inject into containers.
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : Selector is a label query over a set of resources, in this case pods. Required.
+    - volumeMounts::Vector{IoK8sApiCoreV1VolumeMount} : VolumeMounts defines the collection of VolumeMount to inject into containers.
+    - volumes::Vector{IoK8sApiCoreV1Volume} : Volumes defines the collection of Volume to inject into the pod.
+"""
 mutable struct IoK8sApiSettingsV1alpha1PodPresetSpec <: SwaggerModel
     env::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EnvVar} } # spec name: env
     envFrom::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1EnvFromSource} } # spec name: envFrom

@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodDisruptionBudget is an object to define the max disruption that can be caused to a collection of pods
+
+    IoK8sApiPolicyV1beta1PodDisruptionBudget(;
+        apiVersion=nothing,
+        kind=nothing,
+        metadata=nothing,
+        spec=nothing,
+        status=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta
+    - spec::IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec : Specification of the desired behavior of the PodDisruptionBudget.
+    - status::IoK8sApiPolicyV1beta1PodDisruptionBudgetStatus : Most recently observed status of the PodDisruptionBudget.
+"""
 mutable struct IoK8sApiPolicyV1beta1PodDisruptionBudget <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

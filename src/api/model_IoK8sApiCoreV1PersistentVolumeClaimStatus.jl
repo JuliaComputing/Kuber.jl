@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PersistentVolumeClaimStatus is the current status of a persistent volume claim.
+
+    IoK8sApiCoreV1PersistentVolumeClaimStatus(;
+        accessModes=nothing,
+        capacity=nothing,
+        conditions=nothing,
+        phase=nothing,
+    )
+
+    - accessModes::Vector{String} : AccessModes contains the actual access modes the volume backing the PVC has. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+    - capacity::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Represents the actual resources of the underlying volume.
+    - conditions::Vector{IoK8sApiCoreV1PersistentVolumeClaimCondition} : Current Condition of persistent volume claim. If underlying persistent volume is being resized then the Condition will be set to &#39;ResizeStarted&#39;.
+    - phase::String : Phase represents the current phase of PersistentVolumeClaim.
+"""
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimStatus <: SwaggerModel
     accessModes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: accessModes
     capacity::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: capacity

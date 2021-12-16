@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DeploymentCondition describes the state of a deployment at a certain point.
+
+    IoK8sApiAppsV1beta2DeploymentCondition(;
+        lastTransitionTime=nothing,
+        lastUpdateTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transitioned from one status to another.
+    - lastUpdateTime::IoK8sApimachineryPkgApisMetaV1Time : The last time this condition was updated.
+    - message::String : A human readable message indicating details about the transition.
+    - reason::String : The reason for the condition&#39;s last transition.
+    - status::String : Status of the condition, one of True, False, Unknown.
+    - type::String : Type of deployment condition.
+"""
 mutable struct IoK8sApiAppsV1beta2DeploymentCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     lastUpdateTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastUpdateTime

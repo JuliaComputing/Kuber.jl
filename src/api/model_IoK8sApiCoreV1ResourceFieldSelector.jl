@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceFieldSelector represents container resources (cpu, memory) and their output format
+
+    IoK8sApiCoreV1ResourceFieldSelector(;
+        containerName=nothing,
+        divisor=nothing,
+        resource=nothing,
+    )
+
+    - containerName::String : Container name: required for volumes, optional for env vars
+    - divisor::IoK8sApimachineryPkgApiResourceQuantity : Specifies the output format of the exposed resources, defaults to \&quot;1\&quot;
+    - resource::String : Required: resource to select
+"""
 mutable struct IoK8sApiCoreV1ResourceFieldSelector <: SwaggerModel
     containerName::Any # spec type: Union{ Nothing, String } # spec name: containerName
     divisor::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: divisor

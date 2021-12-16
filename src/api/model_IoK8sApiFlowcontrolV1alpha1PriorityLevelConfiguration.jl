@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PriorityLevelConfiguration represents the configuration of a priority level.
+
+    IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration(;
+        apiVersion=nothing,
+        kind=nothing,
+        metadata=nothing,
+        spec=nothing,
+        status=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : &#x60;metadata&#x60; is the standard object&#39;s metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+    - spec::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationSpec : &#x60;spec&#x60; is the specification of the desired behavior of a \&quot;request-priority\&quot;. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+    - status::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationStatus : &#x60;status&#x60; is the current status of a \&quot;request-priority\&quot;. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

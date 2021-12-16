@@ -2,6 +2,12 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Patch is provided to give a concrete name and type to the Kubernetes PATCH request body.
+
+    IoK8sApimachineryPkgApisMetaV1Patch(;
+    )
+
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1Patch <: SwaggerModel
 
     function IoK8sApimachineryPkgApisMetaV1Patch(;)

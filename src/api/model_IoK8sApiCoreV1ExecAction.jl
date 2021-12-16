@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ExecAction describes a \&quot;run in container\&quot; action.
+
+    IoK8sApiCoreV1ExecAction(;
+        command=nothing,
+    )
+
+    - command::Vector{String} : Command is the command line to execute inside the container, the working directory for the command  is root (&#39;/&#39;) in the container&#39;s filesystem. The command is simply exec&#39;d, it is not run inside a shell, so traditional shell instructions (&#39;|&#39;, etc) won&#39;t work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+"""
 mutable struct IoK8sApiCoreV1ExecAction <: SwaggerModel
     command::Any # spec type: Union{ Nothing, Vector{String} } # spec name: command
 

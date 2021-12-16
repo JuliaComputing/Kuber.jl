@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlowSchemaList is a list of FlowSchema objects.
+
+    IoK8sApiFlowcontrolV1alpha1FlowSchemaList(;
+        apiVersion=nothing,
+        items=nothing,
+        kind=nothing,
+        metadata=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - items::Vector{IoK8sApiFlowcontrolV1alpha1FlowSchema} : &#x60;items&#x60; is a list of FlowSchemas.
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ListMeta : &#x60;metadata&#x60; is the standard list metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1FlowSchemaList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiFlowcontrolV1alpha1FlowSchema} } # spec name: items

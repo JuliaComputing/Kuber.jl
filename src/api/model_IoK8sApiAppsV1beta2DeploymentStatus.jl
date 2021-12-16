@@ -2,6 +2,28 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DeploymentStatus is the most recently observed status of the Deployment.
+
+    IoK8sApiAppsV1beta2DeploymentStatus(;
+        availableReplicas=nothing,
+        collisionCount=nothing,
+        conditions=nothing,
+        observedGeneration=nothing,
+        readyReplicas=nothing,
+        replicas=nothing,
+        unavailableReplicas=nothing,
+        updatedReplicas=nothing,
+    )
+
+    - availableReplicas::Int32 : Total number of available pods (ready for at least minReadySeconds) targeted by this deployment.
+    - collisionCount::Int32 : Count of hash collisions for the Deployment. The Deployment controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ReplicaSet.
+    - conditions::Vector{IoK8sApiAppsV1beta2DeploymentCondition} : Represents the latest available observations of a deployment&#39;s current state.
+    - observedGeneration::Int64 : The generation observed by the deployment controller.
+    - readyReplicas::Int32 : Total number of ready pods targeted by this deployment.
+    - replicas::Int32 : Total number of non-terminated pods targeted by this deployment (their labels match the selector).
+    - unavailableReplicas::Int32 : Total number of unavailable pods targeted by this deployment. This is the total number of pods that are still required for the deployment to have 100% available capacity. They may either be pods that are running but not yet available or pods that still have not been created.
+    - updatedReplicas::Int32 : Total number of non-terminated pods targeted by this deployment that have the desired template spec.
+"""
 mutable struct IoK8sApiAppsV1beta2DeploymentStatus <: SwaggerModel
     availableReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: availableReplicas
     collisionCount::Any # spec type: Union{ Nothing, Int32 } # spec name: collisionCount

@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.
+
+    IoK8sApiAutoscalingV2beta2PodsMetricSource(;
+        metric=nothing,
+        target=nothing,
+    )
+
+    - metric::IoK8sApiAutoscalingV2beta2MetricIdentifier : metric identifies the target metric by name and selector
+    - target::IoK8sApiAutoscalingV2beta2MetricTarget : target specifies the target value for the given metric
+"""
 mutable struct IoK8sApiAutoscalingV2beta2PodsMetricSource <: SwaggerModel
     metric::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricIdentifier } # spec name: metric
     target::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricTarget } # spec name: target

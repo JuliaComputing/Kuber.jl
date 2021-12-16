@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RuntimeClassStrategyOptions define the strategy that will dictate the allowable RuntimeClasses for a pod.
+
+    IoK8sApiPolicyV1beta1RuntimeClassStrategyOptions(;
+        allowedRuntimeClassNames=nothing,
+        defaultRuntimeClassName=nothing,
+    )
+
+    - allowedRuntimeClassNames::Vector{String} : allowedRuntimeClassNames is a whitelist of RuntimeClass names that may be specified on a pod. A value of \&quot;*\&quot; means that any RuntimeClass name is allowed, and must be the only item in the list. An empty list requires the RuntimeClassName field to be unset.
+    - defaultRuntimeClassName::String : defaultRuntimeClassName is the default RuntimeClassName to set on the pod. The default MUST be allowed by the allowedRuntimeClassNames list. A value of nil does not mutate the Pod.
+"""
 mutable struct IoK8sApiPolicyV1beta1RuntimeClassStrategyOptions <: SwaggerModel
     allowedRuntimeClassNames::Any # spec type: Union{ Nothing, Vector{String} } # spec name: allowedRuntimeClassNames
     defaultRuntimeClassName::Any # spec type: Union{ Nothing, String } # spec name: defaultRuntimeClassName

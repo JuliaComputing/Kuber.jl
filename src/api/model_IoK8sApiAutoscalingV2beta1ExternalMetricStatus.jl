@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
+
+    IoK8sApiAutoscalingV2beta1ExternalMetricStatus(;
+        currentAverageValue=nothing,
+        currentValue=nothing,
+        metricName=nothing,
+        metricSelector=nothing,
+    )
+
+    - currentAverageValue::IoK8sApimachineryPkgApiResourceQuantity : currentAverageValue is the current value of metric averaged over autoscaled pods.
+    - currentValue::IoK8sApimachineryPkgApiResourceQuantity : currentValue is the current value of the metric (as a quantity)
+    - metricName::String : metricName is the name of a metric used for autoscaling in metric system.
+    - metricSelector::IoK8sApimachineryPkgApisMetaV1LabelSelector : metricSelector is used to identify a specific time series within a given metric.
+"""
 mutable struct IoK8sApiAutoscalingV2beta1ExternalMetricStatus <: SwaggerModel
     currentAverageValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: currentAverageValue
     currentValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: currentValue

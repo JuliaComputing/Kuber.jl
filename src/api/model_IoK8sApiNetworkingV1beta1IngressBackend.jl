@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""IngressBackend describes all endpoints for a given service and port.
+
+    IoK8sApiNetworkingV1beta1IngressBackend(;
+        serviceName=nothing,
+        servicePort=nothing,
+    )
+
+    - serviceName::String : Specifies the name of the referenced service.
+    - servicePort::IoK8sApimachineryPkgUtilIntstrIntOrString : Specifies the port of the referenced service.
+"""
 mutable struct IoK8sApiNetworkingV1beta1IngressBackend <: SwaggerModel
     serviceName::Any # spec type: Union{ Nothing, String } # spec name: serviceName
     servicePort::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: servicePort

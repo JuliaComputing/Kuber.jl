@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""describes the attributes of a scale subresource
+
+    IoK8sApiExtensionsV1beta1ScaleSpec(;
+        replicas=nothing,
+    )
+
+    - replicas::Int32 : desired number of instances for the scaled object.
+"""
 mutable struct IoK8sApiExtensionsV1beta1ScaleSpec <: SwaggerModel
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
 

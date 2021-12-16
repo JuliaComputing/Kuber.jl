@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SelfSubjectAccessReviewSpec is a description of the access request.  Exactly one of ResourceAuthorizationAttributes and NonResourceAuthorizationAttributes must be set
+
+    IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec(;
+        nonResourceAttributes=nothing,
+        resourceAttributes=nothing,
+    )
+
+    - nonResourceAttributes::IoK8sApiAuthorizationV1NonResourceAttributes : NonResourceAttributes describes information for a non-resource access request
+    - resourceAttributes::IoK8sApiAuthorizationV1ResourceAttributes : ResourceAuthorizationAttributes describes information for a resource access request
+"""
 mutable struct IoK8sApiAuthorizationV1SelfSubjectAccessReviewSpec <: SwaggerModel
     nonResourceAttributes::Any # spec type: Union{ Nothing, IoK8sApiAuthorizationV1NonResourceAttributes } # spec name: nonResourceAttributes
     resourceAttributes::Any # spec type: Union{ Nothing, IoK8sApiAuthorizationV1ResourceAttributes } # spec name: resourceAttributes

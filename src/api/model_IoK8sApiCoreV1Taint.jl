@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""The node this Taint is attached to has the \&quot;effect\&quot; on any pod that does not tolerate the Taint.
+
+    IoK8sApiCoreV1Taint(;
+        effect=nothing,
+        key=nothing,
+        timeAdded=nothing,
+        value=nothing,
+    )
+
+    - effect::String : Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.
+    - key::String : Required. The taint key to be applied to a node.
+    - timeAdded::IoK8sApimachineryPkgApisMetaV1Time : TimeAdded represents the time at which the taint was added. It is only written for NoExecute taints.
+    - value::String : Required. The taint value corresponding to the taint key.
+"""
 mutable struct IoK8sApiCoreV1Taint <: SwaggerModel
     effect::Any # spec type: Union{ Nothing, String } # spec name: effect
     key::Any # spec type: Union{ Nothing, String } # spec name: key

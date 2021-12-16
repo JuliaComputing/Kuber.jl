@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""An empty preferred scheduling term matches all objects with implicit weight 0 (i.e. it&#39;s a no-op). A null preferred scheduling term matches no objects (i.e. is also a no-op).
+
+    IoK8sApiCoreV1PreferredSchedulingTerm(;
+        preference=nothing,
+        weight=nothing,
+    )
+
+    - preference::IoK8sApiCoreV1NodeSelectorTerm : A node selector term, associated with the corresponding weight.
+    - weight::Int32 : Weight associated with matching the corresponding nodeSelectorTerm, in the range 1-100.
+"""
 mutable struct IoK8sApiCoreV1PreferredSchedulingTerm <: SwaggerModel
     preference::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeSelectorTerm } # spec name: preference
     weight::Any # spec type: Union{ Nothing, Int32 } # spec name: weight

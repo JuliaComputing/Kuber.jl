@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DownwardAPIVolumeSource represents a volume containing downward API info. Downward API volumes support ownership management and SELinux relabeling.
+
+    IoK8sApiCoreV1DownwardAPIVolumeSource(;
+        defaultMode=nothing,
+        items=nothing,
+    )
+
+    - defaultMode::Int32 : Optional: mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+    - items::Vector{IoK8sApiCoreV1DownwardAPIVolumeFile} : Items is a list of downward API volume file
+"""
 mutable struct IoK8sApiCoreV1DownwardAPIVolumeSource <: SwaggerModel
     defaultMode::Any # spec type: Union{ Nothing, Int32 } # spec name: defaultMode
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1DownwardAPIVolumeFile} } # spec name: items

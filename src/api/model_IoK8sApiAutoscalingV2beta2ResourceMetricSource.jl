@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  The values will be averaged together before being compared to the target.  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \&quot;pods\&quot; source.  Only one \&quot;target\&quot; type should be set.
+
+    IoK8sApiAutoscalingV2beta2ResourceMetricSource(;
+        name=nothing,
+        target=nothing,
+    )
+
+    - name::String : name is the name of the resource in question.
+    - target::IoK8sApiAutoscalingV2beta2MetricTarget : target specifies the target value for the given metric
+"""
 mutable struct IoK8sApiAutoscalingV2beta2ResourceMetricSource <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     target::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricTarget } # spec name: target

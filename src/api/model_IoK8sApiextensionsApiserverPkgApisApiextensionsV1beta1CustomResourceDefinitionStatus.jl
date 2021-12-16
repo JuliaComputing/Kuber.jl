@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CustomResourceDefinitionStatus indicates the state of the CustomResourceDefinition
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus(;
+        acceptedNames=nothing,
+        conditions=nothing,
+        storedVersions=nothing,
+    )
+
+    - acceptedNames::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames : acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
+    - conditions::Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition} : conditions indicate state for particular aspects of a CustomResourceDefinition
+    - storedVersions::Vector{String} : storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from &#x60;spec.versions&#x60; while they exist in this list.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionStatus <: SwaggerModel
     acceptedNames::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionNames } # spec name: acceptedNames
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition} } # spec name: conditions

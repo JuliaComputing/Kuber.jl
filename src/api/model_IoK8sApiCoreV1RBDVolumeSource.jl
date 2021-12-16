@@ -2,6 +2,28 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Rados Block Device mount that lasts the lifetime of a pod. RBD volumes support ownership management and SELinux relabeling.
+
+    IoK8sApiCoreV1RBDVolumeSource(;
+        fsType=nothing,
+        image=nothing,
+        keyring=nothing,
+        monitors=nothing,
+        pool=nothing,
+        readOnly=nothing,
+        secretRef=nothing,
+        user=nothing,
+    )
+
+    - fsType::String : Filesystem type of the volume that you want to mount. Tip: Ensure that the filesystem type is supported by the host operating system. Examples: \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified. More info: https://kubernetes.io/docs/concepts/storage/volumes#rbd
+    - image::String : The rados image name. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - keyring::String : Keyring is the path to key ring for RBDUser. Default is /etc/ceph/keyring. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - monitors::Vector{String} : A collection of Ceph monitors. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - pool::String : The rados pool name. Default is rbd. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - readOnly::Bool : ReadOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - secretRef::IoK8sApiCoreV1LocalObjectReference : SecretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+    - user::String : The rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
+"""
 mutable struct IoK8sApiCoreV1RBDVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     image::Any # spec type: Union{ Nothing, String } # spec name: image

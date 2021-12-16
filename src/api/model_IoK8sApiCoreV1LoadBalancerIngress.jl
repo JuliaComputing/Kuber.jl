@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LoadBalancerIngress represents the status of a load-balancer ingress point: traffic intended for the service should be sent to an ingress point.
+
+    IoK8sApiCoreV1LoadBalancerIngress(;
+        hostname=nothing,
+        ip=nothing,
+    )
+
+    - hostname::String : Hostname is set for load-balancer ingress points that are DNS based (typically AWS load-balancers)
+    - ip::String : IP is set for load-balancer ingress points that are IP based (typically GCE or OpenStack load-balancers)
+"""
 mutable struct IoK8sApiCoreV1LoadBalancerIngress <: SwaggerModel
     hostname::Any # spec type: Union{ Nothing, String } # spec name: hostname
     ip::Any # spec type: Union{ Nothing, String } # spec name: ip

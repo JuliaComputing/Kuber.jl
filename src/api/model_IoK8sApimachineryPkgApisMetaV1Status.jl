@@ -2,6 +2,28 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Status is a return value for calls that don&#39;t return other objects.
+
+    IoK8sApimachineryPkgApisMetaV1Status(;
+        apiVersion=nothing,
+        code=nothing,
+        details=nothing,
+        kind=nothing,
+        message=nothing,
+        metadata=nothing,
+        reason=nothing,
+        status=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - code::Int32 : Suggested HTTP return code for this status, 0 if not set.
+    - details::IoK8sApimachineryPkgApisMetaV1StatusDetails : Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type.
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - message::String : A human-readable description of the status of this operation.
+    - metadata::IoK8sApimachineryPkgApisMetaV1ListMeta : Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - reason::String : A machine-readable description of why this operation is in the \&quot;Failure\&quot; status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.
+    - status::String : Status of the operation. One of: \&quot;Success\&quot; or \&quot;Failure\&quot;. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1Status <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     code::Any # spec type: Union{ Nothing, Int32 } # spec name: code

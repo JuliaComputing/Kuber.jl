@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceRequirements describes the compute resource requirements.
+
+    IoK8sApiCoreV1ResourceRequirements(;
+        limits=nothing,
+        requests=nothing,
+    )
+
+    - limits::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Limits describes the maximum amount of compute resources allowed. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+    - requests::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. More info: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/
+"""
 mutable struct IoK8sApiCoreV1ResourceRequirements <: SwaggerModel
     limits::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: limits
     requests::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: requests

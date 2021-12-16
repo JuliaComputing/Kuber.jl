@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AllowedCSIDriver represents a single inline CSI Driver that is allowed to be used.
+
+    IoK8sApiPolicyV1beta1AllowedCSIDriver(;
+        name=nothing,
+    )
+
+    - name::String : Name is the registered name of the CSI driver
+"""
 mutable struct IoK8sApiPolicyV1beta1AllowedCSIDriver <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
 

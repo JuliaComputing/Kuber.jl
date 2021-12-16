@@ -2,6 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""
+    IoK8sApiAuthorizationV1beta1SelfSubjectRulesReviewSpec(;
+        namespace=nothing,
+    )
+
+    - namespace::String : Namespace to evaluate rules for. Required.
+"""
 mutable struct IoK8sApiAuthorizationV1beta1SelfSubjectRulesReviewSpec <: SwaggerModel
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace
 

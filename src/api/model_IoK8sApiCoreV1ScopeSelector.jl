@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""A scope selector represents the AND of the selectors represented by the scoped-resource selector requirements.
+
+    IoK8sApiCoreV1ScopeSelector(;
+        matchExpressions=nothing,
+    )
+
+    - matchExpressions::Vector{IoK8sApiCoreV1ScopedResourceSelectorRequirement} : A list of scope selector requirements by scope of the resources.
+"""
 mutable struct IoK8sApiCoreV1ScopeSelector <: SwaggerModel
     matchExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1ScopedResourceSelectorRequirement} } # spec name: matchExpressions
 

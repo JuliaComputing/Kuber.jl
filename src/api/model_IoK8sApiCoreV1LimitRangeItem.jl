@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LimitRangeItem defines a min/max usage limit for any resource that matches on kind.
+
+    IoK8sApiCoreV1LimitRangeItem(;
+        default=nothing,
+        defaultRequest=nothing,
+        max=nothing,
+        maxLimitRequestRatio=nothing,
+        min=nothing,
+        type=nothing,
+    )
+
+    - default::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Default resource requirement limit value by resource name if resource limit is omitted.
+    - defaultRequest::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : DefaultRequest is the default resource requirement request value by resource name if resource request is omitted.
+    - max::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Max usage constraints on this kind by resource name.
+    - maxLimitRequestRatio::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : MaxLimitRequestRatio if specified, the named resource must have a request and limit that are both non-zero where limit divided by request is less than or equal to the enumerated value; this represents the max burst for the named resource.
+    - min::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Min usage constraints on this kind by resource name.
+    - type::String : Type of resource that this limit applies to.
+"""
 mutable struct IoK8sApiCoreV1LimitRangeItem <: SwaggerModel
     default::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: default
     defaultRequest::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: defaultRequest

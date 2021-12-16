@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeCondition contains condition information for a node.
+
+    IoK8sApiCoreV1NodeCondition(;
+        lastHeartbeatTime=nothing,
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastHeartbeatTime::IoK8sApimachineryPkgApisMetaV1Time : Last time we got an update on a given condition.
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transit from one status to another.
+    - message::String : Human readable message indicating details about last transition.
+    - reason::String : (brief) reason for the condition&#39;s last transition.
+    - status::String : Status of the condition, one of True, False, Unknown.
+    - type::String : Type of node condition.
+"""
 mutable struct IoK8sApiCoreV1NodeCondition <: SwaggerModel
     lastHeartbeatTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastHeartbeatTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime

@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CustomResourceDefinitionCondition contains details for the current condition of this pod.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : lastTransitionTime last time the condition transitioned from one status to another.
+    - message::String : message is a human-readable message indicating details about last transition.
+    - reason::String : reason is a unique, one-word, CamelCase reason for the condition&#39;s last transition.
+    - status::String : status is the status of the condition. Can be True, False, Unknown.
+    - type::String : type is the type of the condition. Types include Established, NamesAccepted and Terminating.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceDefinitionCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

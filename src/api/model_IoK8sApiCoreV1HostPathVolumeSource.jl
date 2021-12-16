@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a host path mapped into a pod. Host path volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1HostPathVolumeSource(;
+        path=nothing,
+        type=nothing,
+    )
+
+    - path::String : Path of the directory on the host. If the path is a symlink, it will follow the link to the real path. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    - type::String : Type for HostPath Volume Defaults to \&quot;\&quot; More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+"""
 mutable struct IoK8sApiCoreV1HostPathVolumeSource <: SwaggerModel
     path::Any # spec type: Union{ Nothing, String } # spec name: path
     type::Any # spec type: Union{ Nothing, String } # spec name: type

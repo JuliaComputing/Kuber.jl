@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""MetricValueStatus holds the current value for a metric
+
+    IoK8sApiAutoscalingV2beta2MetricValueStatus(;
+        averageUtilization=nothing,
+        averageValue=nothing,
+        value=nothing,
+    )
+
+    - averageUtilization::Int32 : currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
+    - averageValue::IoK8sApimachineryPkgApiResourceQuantity : averageValue is the current value of the average of the metric across all relevant pods (as a quantity)
+    - value::IoK8sApimachineryPkgApiResourceQuantity : value is the current value of the metric (as a quantity).
+"""
 mutable struct IoK8sApiAutoscalingV2beta2MetricValueStatus <: SwaggerModel
     averageUtilization::Any # spec type: Union{ Nothing, Int32 } # spec name: averageUtilization
     averageValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: averageValue

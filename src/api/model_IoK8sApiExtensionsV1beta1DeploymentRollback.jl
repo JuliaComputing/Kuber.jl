@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DEPRECATED. DeploymentRollback stores the information required to rollback a deployment.
+
+    IoK8sApiExtensionsV1beta1DeploymentRollback(;
+        apiVersion=nothing,
+        kind=nothing,
+        name=nothing,
+        rollbackTo=nothing,
+        updatedAnnotations=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - name::String : Required: This must match the Name of a deployment.
+    - rollbackTo::IoK8sApiExtensionsV1beta1RollbackConfig : The config of this deployment rollback.
+    - updatedAnnotations::Dict{String, String} : The annotations to be updated to a deployment
+"""
 mutable struct IoK8sApiExtensionsV1beta1DeploymentRollback <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

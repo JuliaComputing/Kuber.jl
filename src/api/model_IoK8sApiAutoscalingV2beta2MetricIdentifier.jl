@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""MetricIdentifier defines the name and optionally selector for a metric
+
+    IoK8sApiAutoscalingV2beta2MetricIdentifier(;
+        name=nothing,
+        selector=nothing,
+    )
+
+    - name::String : name is the name of the given metric
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics.
+"""
 mutable struct IoK8sApiAutoscalingV2beta2MetricIdentifier <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     selector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: selector

@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""UserSubject holds detailed information for user-kind subject.
+
+    IoK8sApiFlowcontrolV1alpha1UserSubject(;
+        name=nothing,
+    )
+
+    - name::String : &#x60;name&#x60; is the username that matches, or \&quot;*\&quot; to match all usernames. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1UserSubject <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
 

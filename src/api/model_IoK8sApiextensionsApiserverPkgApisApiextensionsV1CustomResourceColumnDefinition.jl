@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CustomResourceColumnDefinition specifies a column for server side printing.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition(;
+        description=nothing,
+        format=nothing,
+        jsonPath=nothing,
+        name=nothing,
+        priority=nothing,
+        type=nothing,
+    )
+
+    - description::String : description is a human readable description of this column.
+    - format::String : format is an optional OpenAPI type definition for this column. The &#39;name&#39; format is applied to the primary identifier column to assist in clients identifying column is the resource name. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
+    - jsonPath::String : jsonPath is a simple JSON path (i.e. with array notation) which is evaluated against each custom resource to produce the value for this column.
+    - name::String : name is a human readable name for the column.
+    - priority::Int32 : priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.
+    - type::String : type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceColumnDefinition <: SwaggerModel
     description::Any # spec type: Union{ Nothing, String } # spec name: description
     format::Any # spec type: Union{ Nothing, String } # spec name: format

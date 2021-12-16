@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ExternalDocumentation allows referencing an external resource for extended documentation.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation(;
+        description=nothing,
+        url=nothing,
+    )
+
+    - description::String
+    - url::String
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1ExternalDocumentation <: SwaggerModel
     description::Any # spec type: Union{ Nothing, String } # spec name: description
     url::Any # spec type: Union{ Nothing, String } # spec name: url

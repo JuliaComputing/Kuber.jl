@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Adds and removes POSIX capabilities from running containers.
+
+    IoK8sApiCoreV1Capabilities(;
+        add=nothing,
+        drop=nothing,
+    )
+
+    - add::Vector{String} : Added capabilities
+    - drop::Vector{String} : Removed capabilities
+"""
 mutable struct IoK8sApiCoreV1Capabilities <: SwaggerModel
     add::Any # spec type: Union{ Nothing, Vector{String} } # spec name: add
     drop::Any # spec type: Union{ Nothing, Vector{String} } # spec name: drop

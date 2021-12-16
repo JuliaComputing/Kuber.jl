@@ -5,16 +5,6 @@ struct AuthorizationV1beta1Api <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-create a LocalSubjectAccessReview
-Param: namespace::String (required)
-Param: body::IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview (required)
-Param: dryRun::String
-Param: fieldManager::String
-Param: pretty::String
-Return: IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview
-"""
 function _swaggerinternal_createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1beta1Api, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/namespaces/{namespace}/localsubjectaccessreviews", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -26,6 +16,16 @@ function _swaggerinternal_createAuthorizationV1beta1NamespacedLocalSubjectAccess
     return _ctx
 end
 
+"""
+
+create a LocalSubjectAccessReview
+Param: namespace::String (required)
+Param: body::IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview (required)
+Param: dryRun::String
+Param: fieldManager::String
+Param: pretty::String
+Return: IoK8sApiAuthorizationV1beta1LocalSubjectAccessReview
+"""
 function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1beta1Api, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api, namespace, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -34,6 +34,16 @@ end
 function createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api::AuthorizationV1beta1Api, response_stream::Channel, namespace::String, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1NamespacedLocalSubjectAccessReview(_api, namespace, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectaccessreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -45,16 +55,6 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview
 """
-function _swaggerinternal_createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectaccessreviews", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1SelfSubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -63,6 +63,16 @@ end
 function createAuthorizationV1beta1SelfSubjectAccessReview(_api::AuthorizationV1beta1Api, response_stream::Channel, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1SelfSubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectrulesreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -74,16 +84,6 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview
 """
-function _swaggerinternal_createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SelfSubjectRulesReview, "/apis/authorization.k8s.io/v1beta1/selfsubjectrulesreviews", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1SelfSubjectRulesReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -92,6 +92,16 @@ end
 function createAuthorizationV1beta1SelfSubjectRulesReview(_api::AuthorizationV1beta1Api, response_stream::Channel, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1SelfSubjectRulesReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/subjectaccessreviews", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -103,16 +113,6 @@ Param: fieldManager::String
 Param: pretty::String
 Return: IoK8sApiAuthorizationV1beta1SubjectAccessReview
 """
-function _swaggerinternal_createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiAuthorizationV1beta1SubjectAccessReview, "/apis/authorization.k8s.io/v1beta1/subjectaccessreviews", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta1Api, body; dryRun=nothing, fieldManager=nothing, pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createAuthorizationV1beta1SubjectAccessReview(_api, body; dryRun=dryRun, fieldManager=fieldManager, pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -123,11 +123,6 @@ function createAuthorizationV1beta1SubjectAccessReview(_api::AuthorizationV1beta
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-get available resources
-Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
-"""
 function _swaggerinternal_getAuthorizationV1beta1APIResources(_api::AuthorizationV1beta1Api; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIResourceList, "/apis/authorization.k8s.io/v1beta1/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -135,6 +130,11 @@ function _swaggerinternal_getAuthorizationV1beta1APIResources(_api::Authorizatio
     return _ctx
 end
 
+"""
+
+get available resources
+Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
+"""
 function getAuthorizationV1beta1APIResources(_api::AuthorizationV1beta1Api; _mediaType=nothing)
     _ctx = _swaggerinternal_getAuthorizationV1beta1APIResources(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)

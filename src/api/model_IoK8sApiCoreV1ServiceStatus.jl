@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ServiceStatus represents the current status of a service.
+
+    IoK8sApiCoreV1ServiceStatus(;
+        loadBalancer=nothing,
+    )
+
+    - loadBalancer::IoK8sApiCoreV1LoadBalancerStatus : LoadBalancer contains the current status of the load-balancer, if one is present.
+"""
 mutable struct IoK8sApiCoreV1ServiceStatus <: SwaggerModel
     loadBalancer::Any # spec type: Union{ Nothing, IoK8sApiCoreV1LoadBalancerStatus } # spec name: loadBalancer
 

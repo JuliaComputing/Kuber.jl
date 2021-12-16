@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Subject contains a reference to the object or user identities a role binding applies to.  This can either hold a direct API object reference, or a value for non-objects such as user and group names.
+
+    IoK8sApiRbacV1beta1Subject(;
+        apiGroup=nothing,
+        kind=nothing,
+        name=nothing,
+        namespace=nothing,
+    )
+
+    - apiGroup::String : APIGroup holds the API group of the referenced subject. Defaults to \&quot;\&quot; for ServiceAccount subjects. Defaults to \&quot;rbac.authorization.k8s.io\&quot; for User and Group subjects.
+    - kind::String : Kind of object being referenced. Values defined by this API group are \&quot;User\&quot;, \&quot;Group\&quot;, and \&quot;ServiceAccount\&quot;. If the Authorizer does not recognized the kind value, the Authorizer should report an error.
+    - name::String : Name of the object being referenced.
+    - namespace::String : Namespace of the referenced object.  If the object kind is non-namespace, such as \&quot;User\&quot; or \&quot;Group\&quot;, and this value is not empty the Authorizer should report an error.
+"""
 mutable struct IoK8sApiRbacV1beta1Subject <: SwaggerModel
     apiGroup::Any # spec type: Union{ Nothing, String } # spec name: apiGroup
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

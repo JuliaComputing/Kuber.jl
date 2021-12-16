@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LimitedPriorityLevelConfiguration specifies how to handle requests that are subject to limits. It addresses two issues:  * How are requests for this priority level limited?  * What should be done with requests that exceed the limit?
+
+    IoK8sApiFlowcontrolV1alpha1LimitedPriorityLevelConfiguration(;
+        assuredConcurrencyShares=nothing,
+        limitResponse=nothing,
+    )
+
+    - assuredConcurrencyShares::Int32 : &#x60;assuredConcurrencyShares&#x60; (ACS) configures the execution limit, which is a limit on the number of requests of this priority level that may be exeucting at a given time.  ACS must be a positive number. The server&#39;s concurrency limit (SCL) is divided among the concurrency-controlled priority levels in proportion to their assured concurrency shares. This produces the assured concurrency value (ACV) --- the number of requests that may be executing at a time --- for each such priority level:              ACV(l) &#x3D; ceil( SCL * ACS(l) / ( sum[priority levels k] ACS(k) ) )  bigger numbers of ACS mean more reserved concurrent requests (at the expense of every other PL). This field has a default value of 30.
+    - limitResponse::IoK8sApiFlowcontrolV1alpha1LimitResponse : &#x60;limitResponse&#x60; indicates what to do with requests that can not be executed right now
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1LimitedPriorityLevelConfiguration <: SwaggerModel
     assuredConcurrencyShares::Any # spec type: Union{ Nothing, Int32 } # spec name: assuredConcurrencyShares
     limitResponse::Any # spec type: Union{ Nothing, IoK8sApiFlowcontrolV1alpha1LimitResponse } # spec name: limitResponse

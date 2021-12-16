@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""MetricTarget defines the target value, average value, or average utilization of a specific metric
+
+    IoK8sApiAutoscalingV2beta2MetricTarget(;
+        averageUtilization=nothing,
+        averageValue=nothing,
+        type=nothing,
+        value=nothing,
+    )
+
+    - averageUtilization::Int32 : averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type
+    - averageValue::IoK8sApimachineryPkgApiResourceQuantity : averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
+    - type::String : type represents whether the metric type is Utilization, Value, or AverageValue
+    - value::IoK8sApimachineryPkgApiResourceQuantity : value is the target value of the metric (as a quantity).
+"""
 mutable struct IoK8sApiAutoscalingV2beta2MetricTarget <: SwaggerModel
     averageUtilization::Any # spec type: Union{ Nothing, Int32 } # spec name: averageUtilization
     averageValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: averageValue

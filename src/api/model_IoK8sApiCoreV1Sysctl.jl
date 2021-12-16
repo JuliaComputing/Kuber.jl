@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Sysctl defines a kernel parameter to be set
+
+    IoK8sApiCoreV1Sysctl(;
+        name=nothing,
+        value=nothing,
+    )
+
+    - name::String : Name of a property to set
+    - value::String : Value of a property to set
+"""
 mutable struct IoK8sApiCoreV1Sysctl <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value

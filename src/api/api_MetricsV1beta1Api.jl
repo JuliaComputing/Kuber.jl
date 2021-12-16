@@ -5,19 +5,6 @@ struct MetricsV1beta1Api <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-list or watch objects of kind NodeMetrics
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiMetricsV1beta1NodeMetricsList
-"""
 function _swaggerinternal_listMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiMetricsV1beta1NodeMetricsList, "/apis/metrics.k8s.io/v1beta1/nodes", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -33,6 +20,19 @@ function _swaggerinternal_listMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api;
     return _ctx
 end
 
+"""
+
+list or watch objects of kind NodeMetrics
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiMetricsV1beta1NodeMetricsList
+"""
 function listMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listMetricsV1beta1NodeMetrics(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -43,19 +43,6 @@ function listMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api, response_stream:
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind PodMetrics
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiMetricsV1beta1PodMetricsList
-"""
 function _swaggerinternal_listMetricsV1beta1PodMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiMetricsV1beta1PodMetricsList, "/apis/metrics.k8s.io/v1beta1/pods", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -71,6 +58,19 @@ function _swaggerinternal_listMetricsV1beta1PodMetrics(_api::MetricsV1beta1Api; 
     return _ctx
 end
 
+"""
+
+list or watch objects of kind PodMetrics
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiMetricsV1beta1PodMetricsList
+"""
 function listMetricsV1beta1PodMetrics(_api::MetricsV1beta1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listMetricsV1beta1PodMetrics(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -81,16 +81,6 @@ function listMetricsV1beta1PodMetrics(_api::MetricsV1beta1Api, response_stream::
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified PodMetrics
-Param: name::String (required)
-Param: namespace::String (required)
-Param: pretty::String
-Param: exact::Bool
-Param: __export__::Bool
-Return: IoK8sApiMetricsV1beta1PodMetrics
-"""
 function _swaggerinternal_readMetricsV1beta1NamespacedPodMetrics(_api::MetricsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiMetricsV1beta1PodMetrics, "/apis/metrics.k8s.io/v1beta1/namespaces/{namespace}/pods/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -103,6 +93,16 @@ function _swaggerinternal_readMetricsV1beta1NamespacedPodMetrics(_api::MetricsV1
     return _ctx
 end
 
+"""
+
+read the specified PodMetrics
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiMetricsV1beta1PodMetrics
+"""
 function readMetricsV1beta1NamespacedPodMetrics(_api::MetricsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readMetricsV1beta1NamespacedPodMetrics(_api, name, namespace; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -113,15 +113,6 @@ function readMetricsV1beta1NamespacedPodMetrics(_api::MetricsV1beta1Api, respons
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified NodeMetrics
-Param: name::String (required)
-Param: pretty::String
-Param: exact::Bool
-Param: __export__::Bool
-Return: IoK8sApiMetricsV1beta1NodeMetrics
-"""
 function _swaggerinternal_readMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiMetricsV1beta1NodeMetrics, "/apis/metrics.k8s.io/v1beta1/nodes/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -133,6 +124,15 @@ function _swaggerinternal_readMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api,
     return _ctx
 end
 
+"""
+
+read the specified NodeMetrics
+Param: name::String (required)
+Param: pretty::String
+Param: exact::Bool
+Param: __export__::Bool
+Return: IoK8sApiMetricsV1beta1NodeMetrics
+"""
 function readMetricsV1beta1NodeMetrics(_api::MetricsV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readMetricsV1beta1NodeMetrics(_api, name; pretty=pretty, exact=exact, __export__=__export__, _mediaType=_mediaType)
     Swagger.exec(_ctx)

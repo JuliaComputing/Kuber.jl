@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""current status of a horizontal pod autoscaler
+
+    IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus(;
+        currentCPUUtilizationPercentage=nothing,
+        currentReplicas=nothing,
+        desiredReplicas=nothing,
+        lastScaleTime=nothing,
+        observedGeneration=nothing,
+    )
+
+    - currentCPUUtilizationPercentage::Int32 : current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU.
+    - currentReplicas::Int32 : current number of replicas of pods managed by this autoscaler.
+    - desiredReplicas::Int32 : desired number of replicas of pods managed by this autoscaler.
+    - lastScaleTime::IoK8sApimachineryPkgApisMetaV1Time : last time the HorizontalPodAutoscaler scaled the number of pods; used by the autoscaler to control how often the number of pods is changed.
+    - observedGeneration::Int64 : most recent generation observed by this autoscaler.
+"""
 mutable struct IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus <: SwaggerModel
     currentCPUUtilizationPercentage::Any # spec type: Union{ Nothing, Int32 } # spec name: currentCPUUtilizationPercentage
     currentReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: currentReplicas

@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ServiceAccountTokenProjection represents a projected service account token volume. This projection can be used to insert a service account token into the pods runtime filesystem for use against APIs (Kubernetes API Server or otherwise).
+
+    IoK8sApiCoreV1ServiceAccountTokenProjection(;
+        audience=nothing,
+        expirationSeconds=nothing,
+        path=nothing,
+    )
+
+    - audience::String : Audience is the intended audience of the token. A recipient of a token must identify itself with an identifier specified in the audience of the token, and otherwise should reject the token. The audience defaults to the identifier of the apiserver.
+    - expirationSeconds::Int64 : ExpirationSeconds is the requested duration of validity of the service account token. As the token approaches expiration, the kubelet volume plugin will proactively rotate the service account token. The kubelet will start trying to rotate the token if the token is older than 80 percent of its time to live or if the token is older than 24 hours.Defaults to 1 hour and must be at least 10 minutes.
+    - path::String : Path is the path relative to the mount point of the file to project the token into.
+"""
 mutable struct IoK8sApiCoreV1ServiceAccountTokenProjection <: SwaggerModel
     audience::Any # spec type: Union{ Nothing, String } # spec name: audience
     expirationSeconds::Any # spec type: Union{ Nothing, Int64 } # spec name: expirationSeconds

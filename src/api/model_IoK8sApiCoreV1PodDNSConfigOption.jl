@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodDNSConfigOption defines DNS resolver options of a pod.
+
+    IoK8sApiCoreV1PodDNSConfigOption(;
+        name=nothing,
+        value=nothing,
+    )
+
+    - name::String : Required.
+    - value::String
+"""
 mutable struct IoK8sApiCoreV1PodDNSConfigOption <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value

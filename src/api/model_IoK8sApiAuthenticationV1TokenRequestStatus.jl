@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TokenRequestStatus is the result of a token request.
+
+    IoK8sApiAuthenticationV1TokenRequestStatus(;
+        expirationTimestamp=nothing,
+        token=nothing,
+    )
+
+    - expirationTimestamp::IoK8sApimachineryPkgApisMetaV1Time : ExpirationTimestamp is the time of expiration of the returned token.
+    - token::String : Token is the opaque bearer token.
+"""
 mutable struct IoK8sApiAuthenticationV1TokenRequestStatus <: SwaggerModel
     expirationTimestamp::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: expirationTimestamp
     token::Any # spec type: Union{ Nothing, String } # spec name: token

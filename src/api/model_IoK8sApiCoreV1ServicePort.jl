@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ServicePort contains information on service&#39;s port.
+
+    IoK8sApiCoreV1ServicePort(;
+        name=nothing,
+        nodePort=nothing,
+        port=nothing,
+        protocol=nothing,
+        targetPort=nothing,
+    )
+
+    - name::String : The name of this port within the service. This must be a DNS_LABEL. All ports within a ServiceSpec must have unique names. When considering the endpoints for a Service, this must match the &#39;name&#39; field in the EndpointPort. Optional if only one ServicePort is defined on this service.
+    - nodePort::Int32 : The port on each node on which this service is exposed when type&#x3D;NodePort or LoadBalancer. Usually assigned by the system. If specified, it will be allocated to the service if unused or else creation of the service will fail. Default is to auto-allocate a port if the ServiceType of this Service requires one. More info: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
+    - port::Int32 : The port that will be exposed by this service.
+    - protocol::String : The IP protocol for this port. Supports \&quot;TCP\&quot;, \&quot;UDP\&quot;, and \&quot;SCTP\&quot;. Default is TCP.
+    - targetPort::IoK8sApimachineryPkgUtilIntstrIntOrString : Number or name of the port to access on the pods targeted by the service. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. If this is a string, it will be looked up as a named port in the target Pod&#39;s container ports. If this is not specified, the value of the &#39;port&#39; field is used (an identity map). This field is ignored for services with clusterIP&#x3D;None, and should be omitted or set equal to the &#39;port&#39; field. More info: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
+"""
 mutable struct IoK8sApiCoreV1ServicePort <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     nodePort::Any # spec type: Union{ Nothing, Int32 } # spec name: nodePort

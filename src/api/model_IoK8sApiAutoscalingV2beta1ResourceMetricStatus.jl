@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \&quot;pods\&quot; source.
+
+    IoK8sApiAutoscalingV2beta1ResourceMetricStatus(;
+        currentAverageUtilization=nothing,
+        currentAverageValue=nothing,
+        name=nothing,
+    )
+
+    - currentAverageUtilization::Int32 : currentAverageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.  It will only be present if &#x60;targetAverageValue&#x60; was set in the corresponding metric specification.
+    - currentAverageValue::IoK8sApimachineryPkgApiResourceQuantity : currentAverageValue is the current value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the \&quot;pods\&quot; metric source type. It will always be set, regardless of the corresponding metric specification.
+    - name::String : name is the name of the resource in question.
+"""
 mutable struct IoK8sApiAutoscalingV2beta1ResourceMetricStatus <: SwaggerModel
     currentAverageUtilization::Any # spec type: Union{ Nothing, Int32 } # spec name: currentAverageUtilization
     currentAverageValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: currentAverageValue

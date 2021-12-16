@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Fibre Channel volume. Fibre Channel volumes can only be mounted as read/write once. Fibre Channel volumes support ownership management and SELinux relabeling.
+
+    IoK8sApiCoreV1FCVolumeSource(;
+        fsType=nothing,
+        lun=nothing,
+        readOnly=nothing,
+        targetWWNs=nothing,
+        wwids=nothing,
+    )
+
+    - fsType::String : Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified.
+    - lun::Int32 : Optional: FC target lun number
+    - readOnly::Bool : Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+    - targetWWNs::Vector{String} : Optional: FC target worldwide names (WWNs)
+    - wwids::Vector{String} : Optional: FC volume world wide identifiers (wwids) Either wwids or combination of targetWWNs and lun must be set, but not both simultaneously.
+"""
 mutable struct IoK8sApiCoreV1FCVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     lun::Any # spec type: Union{ Nothing, Int32 } # spec name: lun

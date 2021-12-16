@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ScaleStatus represents the current status of a scale subresource.
+
+    IoK8sApiAutoscalingV1ScaleStatus(;
+        replicas=nothing,
+        selector=nothing,
+    )
+
+    - replicas::Int32 : actual number of observed instances of the scaled object.
+    - selector::String : label query over pods that should match the replicas count. This is same as the label selector but in the string format to avoid introspection by clients. The string will be in the same format as the query-param syntax. More info about label selectors: http://kubernetes.io/docs/user-guide/labels#label-selectors
+"""
 mutable struct IoK8sApiAutoscalingV1ScaleStatus <: SwaggerModel
     replicas::Any # spec type: Union{ Nothing, Int32 } # spec name: replicas
     selector::Any # spec type: Union{ Nothing, String } # spec name: selector

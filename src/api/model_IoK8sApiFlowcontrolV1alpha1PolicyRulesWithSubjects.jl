@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PolicyRulesWithSubjects prescribes a test that applies to a request to an apiserver. The test considers the subject making the request, the verb being requested, and the resource to be acted upon. This PolicyRulesWithSubjects matches a request if and only if both (a) at least one member of subjects matches the request and (b) at least one member of resourceRules or nonResourceRules matches the request.
+
+    IoK8sApiFlowcontrolV1alpha1PolicyRulesWithSubjects(;
+        nonResourceRules=nothing,
+        resourceRules=nothing,
+        subjects=nothing,
+    )
+
+    - nonResourceRules::Vector{IoK8sApiFlowcontrolV1alpha1NonResourcePolicyRule} : &#x60;nonResourceRules&#x60; is a list of NonResourcePolicyRules that identify matching requests according to their verb and the target non-resource URL.
+    - resourceRules::Vector{IoK8sApiFlowcontrolV1alpha1ResourcePolicyRule} : &#x60;resourceRules&#x60; is a slice of ResourcePolicyRules that identify matching requests according to their verb and the target resource. At least one of &#x60;resourceRules&#x60; and &#x60;nonResourceRules&#x60; has to be non-empty.
+    - subjects::Vector{IoK8sApiFlowcontrolV1alpha1Subject} : subjects is the list of normal user, serviceaccount, or group that this rule cares about. There must be at least one member in this slice. A slice that includes both the system:authenticated and system:unauthenticated user groups matches every request. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1PolicyRulesWithSubjects <: SwaggerModel
     nonResourceRules::Any # spec type: Union{ Nothing, Vector{IoK8sApiFlowcontrolV1alpha1NonResourcePolicyRule} } # spec name: nonResourceRules
     resourceRules::Any # spec type: Union{ Nothing, Vector{IoK8sApiFlowcontrolV1alpha1ResourcePolicyRule} } # spec name: resourceRules

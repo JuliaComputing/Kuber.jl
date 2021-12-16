@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""WebhookConversion describes how to call a conversion webhook
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion(;
+        clientConfig=nothing,
+        conversionReviewVersions=nothing,
+    )
+
+    - clientConfig::IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig : clientConfig is the instructions for how to call the webhook if strategy is &#x60;Webhook&#x60;.
+    - conversionReviewVersions::Vector{String} : conversionReviewVersions is an ordered list of preferred &#x60;ConversionReview&#x60; versions the Webhook expects. The API server will use the first version in the list which it supports. If none of the versions specified in this list are supported by API server, conversion will fail for the custom resource. If a persisted Webhook configuration specifies allowed versions and does not include any versions known to the API Server, calls to the webhook will fail.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion <: SwaggerModel
     clientConfig::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig } # spec name: clientConfig
     conversionReviewVersions::Any # spec type: Union{ Nothing, Vector{String} } # spec name: conversionReviewVersions

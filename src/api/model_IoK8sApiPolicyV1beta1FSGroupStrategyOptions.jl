@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FSGroupStrategyOptions defines the strategy type and options used to create the strategy.
+
+    IoK8sApiPolicyV1beta1FSGroupStrategyOptions(;
+        ranges=nothing,
+        rule=nothing,
+    )
+
+    - ranges::Vector{IoK8sApiPolicyV1beta1IDRange} : ranges are the allowed ranges of fs groups.  If you would like to force a single fs group then supply a single range with the same start and end. Required for MustRunAs.
+    - rule::String : rule is the strategy that will dictate what FSGroup is used in the SecurityContext.
+"""
 mutable struct IoK8sApiPolicyV1beta1FSGroupStrategyOptions <: SwaggerModel
     ranges::Any # spec type: Union{ Nothing, Vector{IoK8sApiPolicyV1beta1IDRange} } # spec name: ranges
     rule::Any # spec type: Union{ Nothing, String } # spec name: rule

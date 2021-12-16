@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""A topology selector term represents the result of label queries. A null or empty topology selector term matches no objects. The requirements of them are ANDed. It provides a subset of functionality as NodeSelectorTerm. This is an alpha feature and may change in the future.
+
+    IoK8sApiCoreV1TopologySelectorTerm(;
+        matchLabelExpressions=nothing,
+    )
+
+    - matchLabelExpressions::Vector{IoK8sApiCoreV1TopologySelectorLabelRequirement} : A list of topology selector requirements by labels.
+"""
 mutable struct IoK8sApiCoreV1TopologySelectorTerm <: SwaggerModel
     matchLabelExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1TopologySelectorLabelRequirement} } # spec name: matchLabelExpressions
 

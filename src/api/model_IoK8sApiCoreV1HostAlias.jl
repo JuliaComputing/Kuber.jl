@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod&#39;s hosts file.
+
+    IoK8sApiCoreV1HostAlias(;
+        hostnames=nothing,
+        ip=nothing,
+    )
+
+    - hostnames::Vector{String} : Hostnames for the above IP address.
+    - ip::String : IP address of the host file entry.
+"""
 mutable struct IoK8sApiCoreV1HostAlias <: SwaggerModel
     hostnames::Any # spec type: Union{ Nothing, Vector{String} } # spec name: hostnames
     ip::Any # spec type: Union{ Nothing, String } # spec name: ip

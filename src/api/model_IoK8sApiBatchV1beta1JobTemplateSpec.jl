@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JobTemplateSpec describes the data a Job should have when created from a template
+
+    IoK8sApiBatchV1beta1JobTemplateSpec(;
+        metadata=nothing,
+        spec=nothing,
+    )
+
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : Standard object&#39;s metadata of the jobs created from this template. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    - spec::IoK8sApiBatchV1JobSpec : Specification of the desired behavior of the job. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+"""
 mutable struct IoK8sApiBatchV1beta1JobTemplateSpec <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
     spec::Any # spec type: Union{ Nothing, IoK8sApiBatchV1JobSpec } # spec name: spec

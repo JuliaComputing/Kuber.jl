@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ObjectFieldSelector selects an APIVersioned field of an object.
+
+    IoK8sApiCoreV1ObjectFieldSelector(;
+        apiVersion=nothing,
+        fieldPath=nothing,
+    )
+
+    - apiVersion::String : Version of the schema the FieldPath is written in terms of, defaults to \&quot;v1\&quot;.
+    - fieldPath::String : Path of the field to select in the specified API version.
+"""
 mutable struct IoK8sApiCoreV1ObjectFieldSelector <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     fieldPath::Any # spec type: Union{ Nothing, String } # spec name: fieldPath

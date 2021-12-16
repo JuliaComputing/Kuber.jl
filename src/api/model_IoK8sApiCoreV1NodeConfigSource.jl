@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeConfigSource specifies a source of node configuration. Exactly one subfield (excluding metadata) must be non-nil.
+
+    IoK8sApiCoreV1NodeConfigSource(;
+        configMap=nothing,
+    )
+
+    - configMap::IoK8sApiCoreV1ConfigMapNodeConfigSource : ConfigMap is a reference to a Node&#39;s ConfigMap
+"""
 mutable struct IoK8sApiCoreV1NodeConfigSource <: SwaggerModel
     configMap::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapNodeConfigSource } # spec name: configMap
 

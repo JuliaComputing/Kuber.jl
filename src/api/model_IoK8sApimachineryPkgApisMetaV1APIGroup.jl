@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""APIGroup contains the name, the supported versions, and the preferred version of a group.
+
+    IoK8sApimachineryPkgApisMetaV1APIGroup(;
+        apiVersion=nothing,
+        kind=nothing,
+        name=nothing,
+        preferredVersion=nothing,
+        serverAddressByClientCIDRs=nothing,
+        versions=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - name::String : name is the name of the group.
+    - preferredVersion::IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery : preferredVersion is the version preferred by the API server, which probably is the storage version.
+    - serverAddressByClientCIDRs::Vector{IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR} : a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP.
+    - versions::Vector{IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery} : versions are the versions supported in this group.
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1APIGroup <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

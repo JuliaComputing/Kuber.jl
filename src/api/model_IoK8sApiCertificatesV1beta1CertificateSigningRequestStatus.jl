@@ -2,6 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""
+    IoK8sApiCertificatesV1beta1CertificateSigningRequestStatus(;
+        certificate=nothing,
+        conditions=nothing,
+    )
+
+    - certificate::Vector{UInt8} : If request was approved, the controller will place the issued certificate here.
+    - conditions::Vector{IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition} : Conditions applied to the request, such as approval or denial.
+"""
 mutable struct IoK8sApiCertificatesV1beta1CertificateSigningRequestStatus <: SwaggerModel
     certificate::Any # spec type: Union{ Nothing, Vector{UInt8} } # spec name: certificate
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition} } # spec name: conditions

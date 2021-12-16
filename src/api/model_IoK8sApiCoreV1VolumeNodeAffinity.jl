@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.
+
+    IoK8sApiCoreV1VolumeNodeAffinity(;
+        required=nothing,
+    )
+
+    - required::IoK8sApiCoreV1NodeSelector : Required specifies hard node constraints that must be met.
+"""
 mutable struct IoK8sApiCoreV1VolumeNodeAffinity <: SwaggerModel
     required::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeSelector } # spec name: required
 

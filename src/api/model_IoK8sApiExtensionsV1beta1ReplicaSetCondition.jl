@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ReplicaSetCondition describes the state of a replica set at a certain point.
+
+    IoK8sApiExtensionsV1beta1ReplicaSetCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : The last time the condition transitioned from one status to another.
+    - message::String : A human readable message indicating details about the transition.
+    - reason::String : The reason for the condition&#39;s last transition.
+    - status::String : Status of the condition, one of True, False, Unknown.
+    - type::String : Type of replica set condition.
+"""
 mutable struct IoK8sApiExtensionsV1beta1ReplicaSetCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

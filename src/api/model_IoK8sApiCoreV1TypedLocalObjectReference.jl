@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TypedLocalObjectReference contains enough information to let you locate the typed referenced object inside the same namespace.
+
+    IoK8sApiCoreV1TypedLocalObjectReference(;
+        apiGroup=nothing,
+        kind=nothing,
+        name=nothing,
+    )
+
+    - apiGroup::String : APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
+    - kind::String : Kind is the type of resource being referenced
+    - name::String : Name is the name of resource being referenced
+"""
 mutable struct IoK8sApiCoreV1TypedLocalObjectReference <: SwaggerModel
     apiGroup::Any # spec type: Union{ Nothing, String } # spec name: apiGroup
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

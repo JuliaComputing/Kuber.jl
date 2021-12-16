@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents an NFS mount that lasts the lifetime of a pod. NFS volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1NFSVolumeSource(;
+        path=nothing,
+        readOnly=nothing,
+        server=nothing,
+    )
+
+    - path::String : Path that is exported by the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    - readOnly::Bool : ReadOnly here will force the NFS export to be mounted with read-only permissions. Defaults to false. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    - server::String : Server is the hostname or IP address of the NFS server. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+"""
 mutable struct IoK8sApiCoreV1NFSVolumeSource <: SwaggerModel
     path::Any # spec type: Union{ Nothing, String } # spec name: path
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly

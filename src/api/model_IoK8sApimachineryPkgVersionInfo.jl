@@ -2,6 +2,30 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Info contains versioning information. how we&#39;ll want to distribute that information.
+
+    IoK8sApimachineryPkgVersionInfo(;
+        buildDate=nothing,
+        compiler=nothing,
+        gitCommit=nothing,
+        gitTreeState=nothing,
+        gitVersion=nothing,
+        goVersion=nothing,
+        major=nothing,
+        minor=nothing,
+        platform=nothing,
+    )
+
+    - buildDate::String
+    - compiler::String
+    - gitCommit::String
+    - gitTreeState::String
+    - gitVersion::String
+    - goVersion::String
+    - major::String
+    - minor::String
+    - platform::String
+"""
 mutable struct IoK8sApimachineryPkgVersionInfo <: SwaggerModel
     buildDate::Any # spec type: Union{ Nothing, String } # spec name: buildDate
     compiler::Any # spec type: Union{ Nothing, String } # spec name: compiler

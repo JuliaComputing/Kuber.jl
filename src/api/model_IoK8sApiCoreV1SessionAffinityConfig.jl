@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SessionAffinityConfig represents the configurations of session affinity.
+
+    IoK8sApiCoreV1SessionAffinityConfig(;
+        clientIP=nothing,
+    )
+
+    - clientIP::IoK8sApiCoreV1ClientIPConfig : clientIP contains the configurations of Client IP based session affinity.
+"""
 mutable struct IoK8sApiCoreV1SessionAffinityConfig <: SwaggerModel
     clientIP::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ClientIPConfig } # spec name: clientIP
 

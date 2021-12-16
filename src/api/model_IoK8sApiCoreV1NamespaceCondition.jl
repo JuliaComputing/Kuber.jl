@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NamespaceCondition contains details about state of namespace.
+
+    IoK8sApiCoreV1NamespaceCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time
+    - message::String
+    - reason::String
+    - status::String : Status of the condition, one of True, False, Unknown.
+    - type::String : Type of namespace controller condition.
+"""
 mutable struct IoK8sApiCoreV1NamespaceCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

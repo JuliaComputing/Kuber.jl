@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CronJobSpec describes how the job execution will look like and when it will actually run.
+
+    IoK8sApiBatchV1beta1CronJobSpec(;
+        concurrencyPolicy=nothing,
+        failedJobsHistoryLimit=nothing,
+        jobTemplate=nothing,
+        schedule=nothing,
+        startingDeadlineSeconds=nothing,
+        successfulJobsHistoryLimit=nothing,
+        suspend=nothing,
+    )
+
+    - concurrencyPolicy::String : Specifies how to treat concurrent executions of a Job. Valid values are: - \&quot;Allow\&quot; (default): allows CronJobs to run concurrently; - \&quot;Forbid\&quot;: forbids concurrent runs, skipping next run if previous run hasn&#39;t finished yet; - \&quot;Replace\&quot;: cancels currently running job and replaces it with a new one
+    - failedJobsHistoryLimit::Int32 : The number of failed finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+    - jobTemplate::IoK8sApiBatchV1beta1JobTemplateSpec : Specifies the job that will be created when executing a CronJob.
+    - schedule::String : The schedule in Cron format, see https://en.wikipedia.org/wiki/Cron.
+    - startingDeadlineSeconds::Int64 : Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
+    - successfulJobsHistoryLimit::Int32 : The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified. Defaults to 3.
+    - suspend::Bool : This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
+"""
 mutable struct IoK8sApiBatchV1beta1CronJobSpec <: SwaggerModel
     concurrencyPolicy::Any # spec type: Union{ Nothing, String } # spec name: concurrencyPolicy
     failedJobsHistoryLimit::Any # spec type: Union{ Nothing, Int32 } # spec name: failedJobsHistoryLimit

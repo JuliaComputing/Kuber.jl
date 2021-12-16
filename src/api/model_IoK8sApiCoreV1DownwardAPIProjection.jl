@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents downward API info for projecting into a projected volume. Note that this is identical to a downwardAPI volume source without the default mode.
+
+    IoK8sApiCoreV1DownwardAPIProjection(;
+        items=nothing,
+    )
+
+    - items::Vector{IoK8sApiCoreV1DownwardAPIVolumeFile} : Items is a list of DownwardAPIVolume file
+"""
 mutable struct IoK8sApiCoreV1DownwardAPIProjection <: SwaggerModel
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1DownwardAPIVolumeFile} } # spec name: items
 

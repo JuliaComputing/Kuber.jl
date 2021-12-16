@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""MetricSpec specifies how to scale based on a single metric (only &#x60;type&#x60; and one other matching field should be set at once).
+
+    IoK8sApiAutoscalingV2beta1MetricSpec(;
+        external=nothing,
+        object=nothing,
+        pods=nothing,
+        resource=nothing,
+        type=nothing,
+    )
+
+    - external::IoK8sApiAutoscalingV2beta1ExternalMetricSource : external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).
+    - object::IoK8sApiAutoscalingV2beta1ObjectMetricSource : object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object).
+    - pods::IoK8sApiAutoscalingV2beta1PodsMetricSource : pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value.
+    - resource::IoK8sApiAutoscalingV2beta1ResourceMetricSource : resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \&quot;pods\&quot; source.
+    - type::String : type is the type of metric source.  It should be one of \&quot;Object\&quot;, \&quot;Pods\&quot; or \&quot;Resource\&quot;, each mapping to a matching field in the object.
+"""
 mutable struct IoK8sApiAutoscalingV2beta1MetricSpec <: SwaggerModel
     external::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta1ExternalMetricSource } # spec name: external
     object::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta1ObjectMetricSource } # spec name: object

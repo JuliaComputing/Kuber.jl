@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceAttributes includes the authorization attributes available for resource requests to the Authorizer interface
+
+    IoK8sApiAuthorizationV1ResourceAttributes(;
+        group=nothing,
+        name=nothing,
+        namespace=nothing,
+        resource=nothing,
+        subresource=nothing,
+        verb=nothing,
+        version=nothing,
+    )
+
+    - group::String : Group is the API Group of the Resource.  \&quot;*\&quot; means all.
+    - name::String : Name is the name of the resource being requested for a \&quot;get\&quot; or deleted for a \&quot;delete\&quot;. \&quot;\&quot; (empty) means all.
+    - namespace::String : Namespace is the namespace of the action being requested.  Currently, there is no distinction between no namespace and all namespaces \&quot;\&quot; (empty) is defaulted for LocalSubjectAccessReviews \&quot;\&quot; (empty) is empty for cluster-scoped resources \&quot;\&quot; (empty) means \&quot;all\&quot; for namespace scoped resources from a SubjectAccessReview or SelfSubjectAccessReview
+    - resource::String : Resource is one of the existing resource types.  \&quot;*\&quot; means all.
+    - subresource::String : Subresource is one of the existing resource types.  \&quot;\&quot; means none.
+    - verb::String : Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  \&quot;*\&quot; means all.
+    - version::String : Version is the API Version of the Resource.  \&quot;*\&quot; means all.
+"""
 mutable struct IoK8sApiAuthorizationV1ResourceAttributes <: SwaggerModel
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     name::Any # spec type: Union{ Nothing, String } # spec name: name

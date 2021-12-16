@@ -5,15 +5,6 @@ struct RbacAuthorizationV1Api <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-create a ClusterRole
-Param: body::IoK8sApiRbacV1ClusterRole (required)
-Param: pretty::String
-Param: dryRun::String
-Param: fieldManager::String
-Return: IoK8sApiRbacV1ClusterRole
-"""
 function _swaggerinternal_createRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -24,6 +15,15 @@ function _swaggerinternal_createRbacAuthorizationV1ClusterRole(_api::RbacAuthori
     return _ctx
 end
 
+"""
+
+create a ClusterRole
+Param: body::IoK8sApiRbacV1ClusterRole (required)
+Param: pretty::String
+Param: dryRun::String
+Param: fieldManager::String
+Return: IoK8sApiRbacV1ClusterRole
+"""
 function createRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1ClusterRole(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -32,6 +32,16 @@ end
 function createRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1ClusterRole(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -43,16 +53,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1ClusterRoleBinding
 """
-function _swaggerinternal_createRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings", ["BearerToken"], body)
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1ClusterRoleBinding(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -61,6 +61,17 @@ end
 function createRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1ClusterRoleBinding(_api, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -73,17 +84,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1Role
 """
-function _swaggerinternal_createRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1NamespacedRole(_api, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -92,6 +92,17 @@ end
 function createRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1NamespacedRole(_api, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_createRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -104,17 +115,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1RoleBinding
 """
-function _swaggerinternal_createRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function createRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1NamespacedRoleBinding(_api, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -123,6 +123,19 @@ end
 function createRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_createRbacAuthorizationV1NamespacedRoleBinding(_api, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -137,8 +150,18 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
+function deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
@@ -148,16 +171,6 @@ function _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthori
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRole(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -172,19 +185,6 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
-    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function deleteRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRoleBinding(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -193,6 +193,26 @@ end
 function deleteRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteRbacAuthorizationV1ClusterRoleBinding(_api, name; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterroles", ["BearerToken"], body)
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
+    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
+    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
+    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -214,8 +234,18 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterroles", ["BearerToken"], body)
+function deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings", ["BearerToken"], body)
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -232,16 +262,6 @@ function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api::R
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteRbacAuthorizationV1CollectionClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRole(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -263,8 +283,19 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings", ["BearerToken"], body)
+function deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
     Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -281,16 +312,6 @@ function _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionClusterRoleBinding(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -313,8 +334,18 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles", ["BearerToken"], body)
+function deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -332,16 +363,6 @@ function _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteRbacAuthorizationV1CollectionNamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -364,27 +385,6 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
-    Swagger.set_param(_ctx.query, "continue", __continue__)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldSelector", fieldSelector)  # type String
-    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "labelSelector", labelSelector)  # type String
-    Swagger.set_param(_ctx.query, "limit", limit)  # type Int32
-    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
-    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
-    Swagger.set_param(_ctx.query, "resourceVersion", resourceVersion)  # type String
-    Swagger.set_param(_ctx.query, "timeoutSeconds", timeoutSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "watch", watch)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -393,6 +393,20 @@ end
 function deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, body=nothing, __continue__=nothing, dryRun=nothing, fieldSelector=nothing, gracePeriodSeconds=nothing, labelSelector=nothing, limit=nothing, orphanDependents=nothing, propagationPolicy=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteRbacAuthorizationV1CollectionNamespacedRoleBinding(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, body=body, __continue__=__continue__, dryRun=dryRun, fieldSelector=fieldSelector, gracePeriodSeconds=gracePeriodSeconds, labelSelector=labelSelector, limit=limit, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
+    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
+    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -408,8 +422,18 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
+function deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api, name, namespace; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api, name, namespace; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_deleteRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -420,16 +444,6 @@ function _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuth
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
     return _ctx
-end
-
-function deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api, name, namespace; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function deleteRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_deleteRbacAuthorizationV1NamespacedRole(_api, name, namespace; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -445,20 +459,6 @@ Param: orphanDependents::Bool
 Param: propagationPolicy::String
 Return: IoK8sApimachineryPkgApisMetaV1Status
 """
-function _swaggerinternal_deleteRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "DELETE", IoK8sApimachineryPkgApisMetaV1Status, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "gracePeriodSeconds", gracePeriodSeconds)  # type Int32
-    Swagger.set_param(_ctx.query, "orphanDependents", orphanDependents)  # type Bool
-    Swagger.set_param(_ctx.query, "propagationPolicy", propagationPolicy)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function deleteRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, body=nothing, dryRun=nothing, gracePeriodSeconds=nothing, orphanDependents=nothing, propagationPolicy=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_deleteRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; pretty=pretty, body=body, dryRun=dryRun, gracePeriodSeconds=gracePeriodSeconds, orphanDependents=orphanDependents, propagationPolicy=propagationPolicy, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -469,11 +469,6 @@ function deleteRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-get available resources
-Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
-"""
 function _swaggerinternal_getRbacAuthorizationV1APIResources(_api::RbacAuthorizationV1Api; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIResourceList, "/apis/rbac.authorization.k8s.io/v1/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -481,6 +476,11 @@ function _swaggerinternal_getRbacAuthorizationV1APIResources(_api::RbacAuthoriza
     return _ctx
 end
 
+"""
+
+get available resources
+Return: IoK8sApimachineryPkgApisMetaV1APIResourceList
+"""
 function getRbacAuthorizationV1APIResources(_api::RbacAuthorizationV1Api; _mediaType=nothing)
     _ctx = _swaggerinternal_getRbacAuthorizationV1APIResources(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -491,20 +491,6 @@ function getRbacAuthorizationV1APIResources(_api::RbacAuthorizationV1Api, respon
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind ClusterRole
-Param: pretty::String
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiRbacV1ClusterRoleList
-"""
 function _swaggerinternal_listRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1ClusterRoleList, "/apis/rbac.authorization.k8s.io/v1/clusterroles", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -521,6 +507,20 @@ function _swaggerinternal_listRbacAuthorizationV1ClusterRole(_api::RbacAuthoriza
     return _ctx
 end
 
+"""
+
+list or watch objects of kind ClusterRole
+Param: pretty::String
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiRbacV1ClusterRoleList
+"""
 function listRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1ClusterRole(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -531,20 +531,6 @@ function listRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, respon
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind ClusterRoleBinding
-Param: pretty::String
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiRbacV1ClusterRoleBindingList
-"""
 function _swaggerinternal_listRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1ClusterRoleBindingList, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -561,6 +547,20 @@ function _swaggerinternal_listRbacAuthorizationV1ClusterRoleBinding(_api::RbacAu
     return _ctx
 end
 
+"""
+
+list or watch objects of kind ClusterRoleBinding
+Param: pretty::String
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiRbacV1ClusterRoleBindingList
+"""
 function listRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1ClusterRoleBinding(_api; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -571,21 +571,6 @@ function listRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api,
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind Role
-Param: namespace::String (required)
-Param: pretty::String
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiRbacV1RoleList
-"""
 function _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1RoleList, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -603,19 +588,9 @@ function _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api::RbacAuthor
     return _ctx
 end
 
-function listRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function listRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-list or watch objects of kind RoleBinding
+list or watch objects of kind Role
 Param: namespace::String (required)
 Param: pretty::String
 Param: allowWatchBookmarks::Bool
@@ -626,8 +601,18 @@ Param: limit::Int32
 Param: resourceVersion::String
 Param: timeoutSeconds::Int32
 Param: watch::Bool
-Return: IoK8sApiRbacV1RoleBindingList
+Return: IoK8sApiRbacV1RoleList
 """
+function listRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function listRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_listRbacAuthorizationV1NamespacedRole(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_listRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -645,6 +630,21 @@ function _swaggerinternal_listRbacAuthorizationV1NamespacedRoleBinding(_api::Rba
     return _ctx
 end
 
+"""
+
+list or watch objects of kind RoleBinding
+Param: namespace::String (required)
+Param: pretty::String
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiRbacV1RoleBindingList
+"""
 function listRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, namespace::String; pretty=nothing, allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1NamespacedRoleBinding(_api, namespace; pretty=pretty, allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -655,20 +655,6 @@ function listRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1A
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind RoleBinding
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: pretty::String
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiRbacV1RoleBindingList
-"""
 function _swaggerinternal_listRbacAuthorizationV1RoleBindingForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1RoleBindingList, "/apis/rbac.authorization.k8s.io/v1/rolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -685,6 +671,20 @@ function _swaggerinternal_listRbacAuthorizationV1RoleBindingForAllNamespaces(_ap
     return _ctx
 end
 
+"""
+
+list or watch objects of kind RoleBinding
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiRbacV1RoleBindingList
+"""
 function listRbacAuthorizationV1RoleBindingForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1RoleBindingForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -695,20 +695,6 @@ function listRbacAuthorizationV1RoleBindingForAllNamespaces(_api::RbacAuthorizat
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-list or watch objects of kind Role
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: pretty::String
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApiRbacV1RoleList
-"""
 function _swaggerinternal_listRbacAuthorizationV1RoleForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1RoleList, "/apis/rbac.authorization.k8s.io/v1/roles", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -725,6 +711,20 @@ function _swaggerinternal_listRbacAuthorizationV1RoleForAllNamespaces(_api::Rbac
     return _ctx
 end
 
+"""
+
+list or watch objects of kind Role
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApiRbacV1RoleList
+"""
 function listRbacAuthorizationV1RoleForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1RoleForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -733,6 +733,18 @@ end
 function listRbacAuthorizationV1RoleForAllNamespaces(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_listRbacAuthorizationV1RoleForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -746,18 +758,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiRbacV1ClusterRole
 """
-function _swaggerinternal_patchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchRbacAuthorizationV1ClusterRole(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -766,6 +766,18 @@ end
 function patchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchRbacAuthorizationV1ClusterRole(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -779,18 +791,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiRbacV1ClusterRoleBinding
 """
-function _swaggerinternal_patchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchRbacAuthorizationV1ClusterRoleBinding(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -799,6 +799,19 @@ end
 function patchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchRbacAuthorizationV1ClusterRoleBinding(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_param(_ctx.query, "force", force)  # type Bool
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -813,8 +826,18 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiRbacV1Role
 """
-function _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
+function patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_patchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
     Swagger.set_param(_ctx.path, "name", name)  # type String
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
     Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -824,16 +847,6 @@ function _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api::RbacAutho
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
     return _ctx
-end
-
-function patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function patchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_patchRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -848,19 +861,6 @@ Param: fieldManager::String
 Param: force::Bool
 Return: IoK8sApiRbacV1RoleBinding
 """
-function _swaggerinternal_patchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PATCH", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_param(_ctx.query, "force", force)  # type Bool
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json-patch+json", "application/merge-patch+json", "application/strategic-merge-patch+json", "application/apply-patch+yaml"] : [_mediaType])
-    return _ctx
-end
-
 function patchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, force=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_patchRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, force=force, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -871,13 +871,6 @@ function patchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified ClusterRole
-Param: name::String (required)
-Param: pretty::String
-Return: IoK8sApiRbacV1ClusterRole
-"""
 function _swaggerinternal_readRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -887,6 +880,13 @@ function _swaggerinternal_readRbacAuthorizationV1ClusterRole(_api::RbacAuthoriza
     return _ctx
 end
 
+"""
+
+read the specified ClusterRole
+Param: name::String (required)
+Param: pretty::String
+Return: IoK8sApiRbacV1ClusterRole
+"""
 function readRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readRbacAuthorizationV1ClusterRole(_api, name; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -897,13 +897,6 @@ function readRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, respon
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified ClusterRoleBinding
-Param: name::String (required)
-Param: pretty::String
-Return: IoK8sApiRbacV1ClusterRoleBinding
-"""
 function _swaggerinternal_readRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -913,6 +906,13 @@ function _swaggerinternal_readRbacAuthorizationV1ClusterRoleBinding(_api::RbacAu
     return _ctx
 end
 
+"""
+
+read the specified ClusterRoleBinding
+Param: name::String (required)
+Param: pretty::String
+Return: IoK8sApiRbacV1ClusterRoleBinding
+"""
 function readRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readRbacAuthorizationV1ClusterRoleBinding(_api, name; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -923,14 +923,6 @@ function readRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api,
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified Role
-Param: name::String (required)
-Param: namespace::String (required)
-Param: pretty::String
-Return: IoK8sApiRbacV1Role
-"""
 function _swaggerinternal_readRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -941,6 +933,14 @@ function _swaggerinternal_readRbacAuthorizationV1NamespacedRole(_api::RbacAuthor
     return _ctx
 end
 
+"""
+
+read the specified Role
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: IoK8sApiRbacV1Role
+"""
 function readRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readRbacAuthorizationV1NamespacedRole(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -951,14 +951,6 @@ function readRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, res
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-read the specified RoleBinding
-Param: name::String (required)
-Param: namespace::String (required)
-Param: pretty::String
-Return: IoK8sApiRbacV1RoleBinding
-"""
 function _swaggerinternal_readRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -969,6 +961,14 @@ function _swaggerinternal_readRbacAuthorizationV1NamespacedRoleBinding(_api::Rba
     return _ctx
 end
 
+"""
+
+read the specified RoleBinding
+Param: name::String (required)
+Param: namespace::String (required)
+Param: pretty::String
+Return: IoK8sApiRbacV1RoleBinding
+"""
 function readRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -977,6 +977,17 @@ end
 function readRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_readRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; pretty=pretty, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -989,17 +1000,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1ClusterRole
 """
-function _swaggerinternal_replaceRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1ClusterRole, "/apis/rbac.authorization.k8s.io/v1/clusterroles/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1ClusterRole(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -1008,6 +1008,17 @@ end
 function replaceRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1ClusterRole(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -1020,17 +1031,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1ClusterRoleBinding
 """
-function _swaggerinternal_replaceRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1ClusterRoleBinding, "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1ClusterRoleBinding(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -1039,6 +1039,18 @@ end
 function replaceRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1ClusterRoleBinding(_api, name, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -1052,18 +1064,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1Role
 """
-function _swaggerinternal_replaceRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1Role, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/roles/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -1072,6 +1072,18 @@ end
 function replaceRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1NamespacedRole(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx, response_stream)
+end
+
+function _swaggerinternal_replaceRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
+    Swagger.set_param(_ctx.path, "name", name)  # type String
+    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
+    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
+    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
+    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
+    return _ctx
 end
 
 """
@@ -1085,18 +1097,6 @@ Param: dryRun::String
 Param: fieldManager::String
 Return: IoK8sApiRbacV1RoleBinding
 """
-function _swaggerinternal_replaceRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "PUT", IoK8sApiRbacV1RoleBinding, "/apis/rbac.authorization.k8s.io/v1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"], body)
-    Swagger.set_param(_ctx.path, "name", name)  # type String
-    Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
-    Swagger.set_param(_ctx.query, "pretty", pretty)  # type String
-    Swagger.set_param(_ctx.query, "dryRun", dryRun)  # type String
-    Swagger.set_param(_ctx.query, "fieldManager", fieldManager)  # type String
-    Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
-    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["*/*"] : [_mediaType])
-    return _ctx
-end
-
 function replaceRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String, body; pretty=nothing, dryRun=nothing, fieldManager=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_replaceRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace, body; pretty=pretty, dryRun=dryRun, fieldManager=fieldManager, _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -1107,21 +1107,6 @@ function replaceRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorization
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
-Param: name::String (required)
-Param: allowWatchBookmarks::Bool
-Param: __continue__::String
-Param: fieldSelector::String
-Param: labelSelector::String
-Param: limit::Int32
-Param: pretty::String
-Param: resourceVersion::String
-Param: timeoutSeconds::Int32
-Param: watch::Bool
-Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
-"""
 function _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -1139,19 +1124,9 @@ function _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api::RbacAuthoriz
     return _ctx
 end
 
-function watchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
@@ -1164,6 +1139,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1ClusterRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRole(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -1181,19 +1166,10 @@ function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacA
     return _ctx
 end
 
-function watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
+watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -1205,6 +1181,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1ClusterRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBinding(_api, name; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -1221,19 +1207,9 @@ function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api::R
     return _ctx
 end
 
-function watchRbacAuthorizationV1ClusterRoleBindingList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1ClusterRoleBindingList(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list operation instead.
+watch individual changes to a list of ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -1245,6 +1221,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1ClusterRoleBindingList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1ClusterRoleBindingList(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleBindingList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -1261,21 +1247,9 @@ function _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuth
     return _ctx
 end
 
-function watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
-Param: name::String (required)
-Param: namespace::String (required)
+watch individual changes to a list of ClusterRole. deprecated: use the 'watch' parameter with a list operation instead.
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -1287,6 +1261,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1ClusterRoleList(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1ClusterRoleList(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -1305,19 +1289,9 @@ function _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api::RbacAutho
     return _ctx
 end
 
-function watchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
 Param: name::String (required)
 Param: namespace::String (required)
 Param: allowWatchBookmarks::Bool
@@ -1331,6 +1305,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1NamespacedRole(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRole(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings/{name}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "name", name)  # type String
@@ -1349,19 +1333,10 @@ function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api::Rb
     return _ctx
 end
 
-function watchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
+watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.
+Param: name::String (required)
 Param: namespace::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
@@ -1374,6 +1349,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1NamespacedRoleBinding(_api::RbacAuthorizationV1Api, response_stream::Channel, name::String, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBinding(_api, name, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/rolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1391,19 +1376,9 @@ function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api
     return _ctx
 end
 
-function watchRbacAuthorizationV1NamespacedRoleBindingList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1NamespacedRoleBindingList(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.
+watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
 Param: namespace::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
@@ -1416,6 +1391,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1NamespacedRoleBindingList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1NamespacedRoleBindingList(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleBindingList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/namespaces/{namespace}/roles", ["BearerToken"])
     Swagger.set_param(_ctx.path, "namespace", namespace)  # type String
@@ -1433,19 +1418,10 @@ function _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api::RbacA
     return _ctx
 end
 
-function watchRbacAuthorizationV1NamespacedRoleList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1NamespacedRoleList(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
+watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.
+Param: namespace::String (required)
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -1457,6 +1433,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1NamespacedRoleList(_api::RbacAuthorizationV1Api, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1NamespacedRoleList(_api::RbacAuthorizationV1Api, response_stream::Channel, namespace::String; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1NamespacedRoleList(_api, namespace; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -1473,19 +1459,9 @@ function _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespace
     return _ctx
 end
 
-function watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx)
-end
-
-function watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
-    Swagger.exec(_ctx, response_stream)
-end
-
 """
 
-watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.
+watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead.
 Param: allowWatchBookmarks::Bool
 Param: __continue__::String
 Param: fieldSelector::String
@@ -1497,6 +1473,16 @@ Param: timeoutSeconds::Int32
 Param: watch::Bool
 Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
 """
+function watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx)
+end
+
+function watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api::RbacAuthorizationV1Api, response_stream::Channel; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_watchRbacAuthorizationV1RoleBindingListForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
+end
+
 function _swaggerinternal_watchRbacAuthorizationV1RoleListForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1WatchEvent, "/apis/rbac.authorization.k8s.io/v1/watch/roles", ["BearerToken"])
     Swagger.set_param(_ctx.query, "allowWatchBookmarks", allowWatchBookmarks)  # type Bool
@@ -1513,6 +1499,20 @@ function _swaggerinternal_watchRbacAuthorizationV1RoleListForAllNamespaces(_api:
     return _ctx
 end
 
+"""
+
+watch individual changes to a list of Role. deprecated: use the 'watch' parameter with a list operation instead.
+Param: allowWatchBookmarks::Bool
+Param: __continue__::String
+Param: fieldSelector::String
+Param: labelSelector::String
+Param: limit::Int32
+Param: pretty::String
+Param: resourceVersion::String
+Param: timeoutSeconds::Int32
+Param: watch::Bool
+Return: IoK8sApimachineryPkgApisMetaV1WatchEvent
+"""
 function watchRbacAuthorizationV1RoleListForAllNamespaces(_api::RbacAuthorizationV1Api; allowWatchBookmarks=nothing, __continue__=nothing, fieldSelector=nothing, labelSelector=nothing, limit=nothing, pretty=nothing, resourceVersion=nothing, timeoutSeconds=nothing, watch=nothing, _mediaType=nothing)
     _ctx = _swaggerinternal_watchRbacAuthorizationV1RoleListForAllNamespaces(_api; allowWatchBookmarks=allowWatchBookmarks, __continue__=__continue__, fieldSelector=fieldSelector, labelSelector=labelSelector, limit=limit, pretty=pretty, resourceVersion=resourceVersion, timeoutSeconds=timeoutSeconds, watch=watch, _mediaType=_mediaType)
     Swagger.exec(_ctx)

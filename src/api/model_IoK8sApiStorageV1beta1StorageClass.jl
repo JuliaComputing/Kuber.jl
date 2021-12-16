@@ -2,6 +2,32 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""StorageClass describes the parameters for a class of storage for which PersistentVolumes can be dynamically provisioned.  StorageClasses are non-namespaced; the name of the storage class according to etcd is in ObjectMeta.Name.
+
+    IoK8sApiStorageV1beta1StorageClass(;
+        allowVolumeExpansion=nothing,
+        allowedTopologies=nothing,
+        apiVersion=nothing,
+        kind=nothing,
+        metadata=nothing,
+        mountOptions=nothing,
+        parameters=nothing,
+        provisioner=nothing,
+        reclaimPolicy=nothing,
+        volumeBindingMode=nothing,
+    )
+
+    - allowVolumeExpansion::Bool : AllowVolumeExpansion shows whether the storage class allow volume expand
+    - allowedTopologies::Vector{IoK8sApiCoreV1TopologySelectorTerm} : Restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : Standard object&#39;s metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    - mountOptions::Vector{String} : Dynamically provisioned PersistentVolumes of this storage class are created with these mountOptions, e.g. [\&quot;ro\&quot;, \&quot;soft\&quot;]. Not validated - mount of the PVs will simply fail if one is invalid.
+    - parameters::Dict{String, String} : Parameters holds the parameters for the provisioner that should create volumes of this storage class.
+    - provisioner::String : Provisioner indicates the type of the provisioner.
+    - reclaimPolicy::String : Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
+    - volumeBindingMode::String : VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
+"""
 mutable struct IoK8sApiStorageV1beta1StorageClass <: SwaggerModel
     allowVolumeExpansion::Any # spec type: Union{ Nothing, Bool } # spec name: allowVolumeExpansion
     allowedTopologies::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1TopologySelectorTerm} } # spec name: allowedTopologies

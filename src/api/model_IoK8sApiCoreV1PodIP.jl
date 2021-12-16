@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""IP address information for entries in the (plural) PodIPs field. Each entry includes:    IP: An IP address allocated to the pod. Routable at least within the cluster.
+
+    IoK8sApiCoreV1PodIP(;
+        ip=nothing,
+    )
+
+    - ip::String : ip is an IP address (IPv4 or IPv6) assigned to the pod
+"""
 mutable struct IoK8sApiCoreV1PodIP <: SwaggerModel
     ip::Any # spec type: Union{ Nothing, String } # spec name: ip
 

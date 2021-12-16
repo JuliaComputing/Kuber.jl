@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.
+
+    IoK8sApiAutoscalingV2beta1PodsMetricSource(;
+        metricName=nothing,
+        selector=nothing,
+        targetAverageValue=nothing,
+    )
+
+    - metricName::String : metricName is the name of the metric in question
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping When unset, just the metricName will be used to gather metrics.
+    - targetAverageValue::IoK8sApimachineryPkgApiResourceQuantity : targetAverageValue is the target value of the average of the metric across all relevant pods (as a quantity)
+"""
 mutable struct IoK8sApiAutoscalingV2beta1PodsMetricSource <: SwaggerModel
     metricName::Any # spec type: Union{ Nothing, String } # spec name: metricName
     selector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: selector

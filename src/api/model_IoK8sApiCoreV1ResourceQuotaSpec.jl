@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceQuotaSpec defines the desired hard limits to enforce for Quota.
+
+    IoK8sApiCoreV1ResourceQuotaSpec(;
+        hard=nothing,
+        scopeSelector=nothing,
+        scopes=nothing,
+    )
+
+    - hard::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : hard is the set of desired hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+    - scopeSelector::IoK8sApiCoreV1ScopeSelector : scopeSelector is also a collection of filters like scopes that must match each object tracked by a quota but expressed using ScopeSelectorOperator in combination with possible values. For a resource to match, both scopes AND scopeSelector (if specified in spec), must be matched.
+    - scopes::Vector{String} : A collection of filters that must match each object tracked by a quota. If not specified, the quota matches all objects.
+"""
 mutable struct IoK8sApiCoreV1ResourceQuotaSpec <: SwaggerModel
     hard::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: hard
     scopeSelector::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ScopeSelector } # spec name: scopeSelector

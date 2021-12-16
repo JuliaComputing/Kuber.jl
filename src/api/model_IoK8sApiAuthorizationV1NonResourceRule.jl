@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NonResourceRule holds information that describes a rule for the non-resource
+
+    IoK8sApiAuthorizationV1NonResourceRule(;
+        nonResourceURLs=nothing,
+        verbs=nothing,
+    )
+
+    - nonResourceURLs::Vector{String} : NonResourceURLs is a set of partial urls that a user should have access to.  *s are allowed, but only as the full, final step in the path.  \&quot;*\&quot; means all.
+    - verbs::Vector{String} : Verb is a list of kubernetes non-resource API verbs, like: get, post, put, delete, patch, head, options.  \&quot;*\&quot; means all.
+"""
 mutable struct IoK8sApiAuthorizationV1NonResourceRule <: SwaggerModel
     nonResourceURLs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nonResourceURLs
     verbs::Any # spec type: Union{ Nothing, Vector{String} } # spec name: verbs

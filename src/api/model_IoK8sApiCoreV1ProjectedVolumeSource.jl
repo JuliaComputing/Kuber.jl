@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a projected volume source
+
+    IoK8sApiCoreV1ProjectedVolumeSource(;
+        defaultMode=nothing,
+        sources=nothing,
+    )
+
+    - defaultMode::Int32 : Mode bits to use on created files by default. Must be a value between 0 and 0777. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
+    - sources::Vector{IoK8sApiCoreV1VolumeProjection} : list of volume projections
+"""
 mutable struct IoK8sApiCoreV1ProjectedVolumeSource <: SwaggerModel
     defaultMode::Any # spec type: Union{ Nothing, Int32 } # spec name: defaultMode
     sources::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1VolumeProjection} } # spec name: sources

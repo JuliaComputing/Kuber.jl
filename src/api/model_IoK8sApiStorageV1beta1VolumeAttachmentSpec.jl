@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""VolumeAttachmentSpec is the specification of a VolumeAttachment request.
+
+    IoK8sApiStorageV1beta1VolumeAttachmentSpec(;
+        attacher=nothing,
+        nodeName=nothing,
+        source=nothing,
+    )
+
+    - attacher::String : Attacher indicates the name of the volume driver that MUST handle this request. This is the name returned by GetPluginName().
+    - nodeName::String : The node that the volume should be attached to.
+    - source::IoK8sApiStorageV1beta1VolumeAttachmentSource : Source represents the volume that should be attached.
+"""
 mutable struct IoK8sApiStorageV1beta1VolumeAttachmentSpec <: SwaggerModel
     attacher::Any # spec type: Union{ Nothing, String } # spec name: attacher
     nodeName::Any # spec type: Union{ Nothing, String } # spec name: nodeName

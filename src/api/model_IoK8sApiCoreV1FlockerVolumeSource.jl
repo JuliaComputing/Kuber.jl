@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Flocker volume mounted by the Flocker agent. One and only one of datasetName and datasetUUID should be set. Flocker volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1FlockerVolumeSource(;
+        datasetName=nothing,
+        datasetUUID=nothing,
+    )
+
+    - datasetName::String : Name of the dataset stored as metadata -&gt; name on the dataset for Flocker should be considered as deprecated
+    - datasetUUID::String : UUID of the dataset. This is unique identifier of a Flocker dataset
+"""
 mutable struct IoK8sApiCoreV1FlockerVolumeSource <: SwaggerModel
     datasetName::Any # spec type: Union{ Nothing, String } # spec name: datasetName
     datasetUUID::Any # spec type: Union{ Nothing, String } # spec name: datasetUUID

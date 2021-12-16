@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlowSchemaSpec describes how the FlowSchema&#39;s specification looks like.
+
+    IoK8sApiFlowcontrolV1alpha1FlowSchemaSpec(;
+        distinguisherMethod=nothing,
+        matchingPrecedence=nothing,
+        priorityLevelConfiguration=nothing,
+        rules=nothing,
+    )
+
+    - distinguisherMethod::IoK8sApiFlowcontrolV1alpha1FlowDistinguisherMethod : &#x60;distinguisherMethod&#x60; defines how to compute the flow distinguisher for requests that match this schema. &#x60;nil&#x60; specifies that the distinguisher is disabled and thus will always be the empty string.
+    - matchingPrecedence::Int32 : &#x60;matchingPrecedence&#x60; is used to choose among the FlowSchemas that match a given request. The chosen FlowSchema is among those with the numerically lowest (which we take to be logically highest) MatchingPrecedence.  Each MatchingPrecedence value must be non-negative. Note that if the precedence is not specified or zero, it will be set to 1000 as default.
+    - priorityLevelConfiguration::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationReference : &#x60;priorityLevelConfiguration&#x60; should reference a PriorityLevelConfiguration in the cluster. If the reference cannot be resolved, the FlowSchema will be ignored and marked as invalid in its status. Required.
+    - rules::Vector{IoK8sApiFlowcontrolV1alpha1PolicyRulesWithSubjects} : &#x60;rules&#x60; describes which requests will match this flow schema. This FlowSchema matches a request if and only if at least one member of rules matches the request. if it is an empty slice, there will be no requests matching the FlowSchema.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1FlowSchemaSpec <: SwaggerModel
     distinguisherMethod::Any # spec type: Union{ Nothing, IoK8sApiFlowcontrolV1alpha1FlowDistinguisherMethod } # spec name: distinguisherMethod
     matchingPrecedence::Any # spec type: Union{ Nothing, Int32 } # spec name: matchingPrecedence

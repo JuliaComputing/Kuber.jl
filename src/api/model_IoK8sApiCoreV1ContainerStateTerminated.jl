@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerStateTerminated is a terminated state of a container.
+
+    IoK8sApiCoreV1ContainerStateTerminated(;
+        containerID=nothing,
+        exitCode=nothing,
+        finishedAt=nothing,
+        message=nothing,
+        reason=nothing,
+        signal=nothing,
+        startedAt=nothing,
+    )
+
+    - containerID::String : Container&#39;s ID in the format &#39;docker://&lt;container_id&gt;&#39;
+    - exitCode::Int32 : Exit status from the last termination of the container
+    - finishedAt::IoK8sApimachineryPkgApisMetaV1Time : Time at which the container last terminated
+    - message::String : Message regarding the last termination of the container
+    - reason::String : (brief) reason from the last termination of the container
+    - signal::Int32 : Signal from the last termination of the container
+    - startedAt::IoK8sApimachineryPkgApisMetaV1Time : Time at which previous execution of the container started
+"""
 mutable struct IoK8sApiCoreV1ContainerStateTerminated <: SwaggerModel
     containerID::Any # spec type: Union{ Nothing, String } # spec name: containerID
     exitCode::Any # spec type: Union{ Nothing, Int32 } # spec name: exitCode

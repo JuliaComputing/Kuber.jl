@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PortworxVolumeSource represents a Portworx volume resource.
+
+    IoK8sApiCoreV1PortworxVolumeSource(;
+        fsType=nothing,
+        readOnly=nothing,
+        volumeID=nothing,
+    )
+
+    - fsType::String : FSType represents the filesystem type to mount Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified.
+    - readOnly::Bool : Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+    - volumeID::String : VolumeID uniquely identifies a Portworx volume
+"""
 mutable struct IoK8sApiCoreV1PortworxVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly

@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LeaseSpec is a specification of a Lease.
+
+    IoK8sApiCoordinationV1LeaseSpec(;
+        acquireTime=nothing,
+        holderIdentity=nothing,
+        leaseDurationSeconds=nothing,
+        leaseTransitions=nothing,
+        renewTime=nothing,
+    )
+
+    - acquireTime::IoK8sApimachineryPkgApisMetaV1MicroTime : acquireTime is a time when the current lease was acquired.
+    - holderIdentity::String : holderIdentity contains the identity of the holder of a current lease.
+    - leaseDurationSeconds::Int32 : leaseDurationSeconds is a duration that candidates for a lease need to wait to force acquire it. This is measure against time of last observed RenewTime.
+    - leaseTransitions::Int32 : leaseTransitions is the number of transitions of a lease between holders.
+    - renewTime::IoK8sApimachineryPkgApisMetaV1MicroTime : renewTime is a time when the current holder of a lease has last updated the lease.
+"""
 mutable struct IoK8sApiCoordinationV1LeaseSpec <: SwaggerModel
     acquireTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1MicroTime } # spec name: acquireTime
     holderIdentity::Any # spec type: Union{ Nothing, String } # spec name: holderIdentity

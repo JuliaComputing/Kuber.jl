@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""a metric value for some object
+
+    IoK8sApiCustomMetricsV1beta1MetricValue(;
+        apiVersion=nothing,
+        kind=nothing,
+        describedObject=nothing,
+        metricName=nothing,
+        timestamp=nothing,
+        windowSeconds=nothing,
+        value=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - describedObject::IoK8sApiCoreV1ObjectReference : a reference to the described object
+    - metricName::String : the name of the metric
+    - timestamp::IoK8sApimachineryPkgApisMetaV1Time : indicates the time at which the metrics were produced
+    - windowSeconds::Int64 : indicates the window ([Timestamp-Window, Timestamp]) from which these metrics were calculated, when returning rate metrics calculated from cumulative metrics (or zero for non-calculated instantaneous metrics).
+    - value::IoK8sApimachineryPkgApiResourceQuantity : the value of the metric for this
+"""
 mutable struct IoK8sApiCustomMetricsV1beta1MetricValue <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

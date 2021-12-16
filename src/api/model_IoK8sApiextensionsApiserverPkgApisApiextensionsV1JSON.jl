@@ -2,6 +2,12 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON(;
+    )
+
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON <: SwaggerModel
 
     function IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSON(;)

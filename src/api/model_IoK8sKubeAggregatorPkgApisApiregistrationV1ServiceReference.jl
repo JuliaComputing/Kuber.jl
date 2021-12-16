@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ServiceReference holds a reference to Service.legacy.k8s.io
+
+    IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference(;
+        name=nothing,
+        namespace=nothing,
+        port=nothing,
+    )
+
+    - name::String : Name is the name of the service
+    - namespace::String : Namespace is the namespace of the service
+    - port::Int32 : If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. &#x60;port&#x60; should be a valid port number (1-65535, inclusive).
+"""
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1ServiceReference <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace

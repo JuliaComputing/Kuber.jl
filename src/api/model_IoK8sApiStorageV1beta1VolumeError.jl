@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""VolumeError captures an error encountered during a volume operation.
+
+    IoK8sApiStorageV1beta1VolumeError(;
+        message=nothing,
+        time=nothing,
+    )
+
+    - message::String : String detailing the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
+    - time::IoK8sApimachineryPkgApisMetaV1Time : Time the error was encountered.
+"""
 mutable struct IoK8sApiStorageV1beta1VolumeError <: SwaggerModel
     message::Any # spec type: Union{ Nothing, String } # spec name: message
     time::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: time

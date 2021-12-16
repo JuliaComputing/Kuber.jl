@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""The weights of all of the matched WeightedPodAffinityTerm fields are added per-node to find the most preferred node(s)
+
+    IoK8sApiCoreV1WeightedPodAffinityTerm(;
+        podAffinityTerm=nothing,
+        weight=nothing,
+    )
+
+    - podAffinityTerm::IoK8sApiCoreV1PodAffinityTerm : Required. A pod affinity term, associated with the corresponding weight.
+    - weight::Int32 : weight associated with matching the corresponding podAffinityTerm, in the range 1-100.
+"""
 mutable struct IoK8sApiCoreV1WeightedPodAffinityTerm <: SwaggerModel
     podAffinityTerm::Any # spec type: Union{ Nothing, IoK8sApiCoreV1PodAffinityTerm } # spec name: podAffinityTerm
     weight::Any # spec type: Union{ Nothing, Int32 } # spec name: weight

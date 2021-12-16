@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DeploymentStrategy describes how to replace existing pods with new ones.
+
+    IoK8sApiExtensionsV1beta1DeploymentStrategy(;
+        rollingUpdate=nothing,
+        type=nothing,
+    )
+
+    - rollingUpdate::IoK8sApiExtensionsV1beta1RollingUpdateDeployment : Rolling update config params. Present only if DeploymentStrategyType &#x3D; RollingUpdate.
+    - type::String : Type of deployment. Can be \&quot;Recreate\&quot; or \&quot;RollingUpdate\&quot;. Default is RollingUpdate.
+"""
 mutable struct IoK8sApiExtensionsV1beta1DeploymentStrategy <: SwaggerModel
     rollingUpdate::Any # spec type: Union{ Nothing, IoK8sApiExtensionsV1beta1RollingUpdateDeployment } # spec name: rollingUpdate
     type::Any # spec type: Union{ Nothing, String } # spec name: type

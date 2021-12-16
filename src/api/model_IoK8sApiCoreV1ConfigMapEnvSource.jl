@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ConfigMapEnvSource selects a ConfigMap to populate the environment variables with.  The contents of the target ConfigMap&#39;s Data field will represent the key-value pairs as environment variables.
+
+    IoK8sApiCoreV1ConfigMapEnvSource(;
+        name=nothing,
+        optional=nothing,
+    )
+
+    - name::String : Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    - optional::Bool : Specify whether the ConfigMap must be defined
+"""
 mutable struct IoK8sApiCoreV1ConfigMapEnvSource <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     optional::Any # spec type: Union{ Nothing, Bool } # spec name: optional

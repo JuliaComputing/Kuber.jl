@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AuditSink represents a cluster level audit sink
+
+    IoK8sApiAuditregistrationV1alpha1AuditSink(;
+        apiVersion=nothing,
+        kind=nothing,
+        metadata=nothing,
+        spec=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta
+    - spec::IoK8sApiAuditregistrationV1alpha1AuditSinkSpec : Spec defines the audit configuration spec
+"""
 mutable struct IoK8sApiAuditregistrationV1alpha1AuditSink <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

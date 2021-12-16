@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://&lt;host&gt;/&lt;path&gt;?&lt;searchpart&gt; -&gt; backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last &#39;/&#39; and before the first &#39;?&#39; or &#39;#&#39;.
+
+    IoK8sApiExtensionsV1beta1HTTPIngressRuleValue(;
+        paths=nothing,
+    )
+
+    - paths::Vector{IoK8sApiExtensionsV1beta1HTTPIngressPath} : A collection of paths that map requests to backends.
+"""
 mutable struct IoK8sApiExtensionsV1beta1HTTPIngressRuleValue <: SwaggerModel
     paths::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1HTTPIngressPath} } # spec name: paths
 

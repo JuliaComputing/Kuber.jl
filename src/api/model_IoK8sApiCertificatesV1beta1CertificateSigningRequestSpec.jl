@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""This information is immutable after the request is created. Only the Request and Usages fields can be set on creation, other fields are derived by Kubernetes and cannot be modified by users.
+
+    IoK8sApiCertificatesV1beta1CertificateSigningRequestSpec(;
+        extra=nothing,
+        groups=nothing,
+        request=nothing,
+        uid=nothing,
+        usages=nothing,
+        username=nothing,
+    )
+
+    - extra::Dict{String, Vector{String}} : Extra information about the requesting user. See user.Info interface for details.
+    - groups::Vector{String} : Group information about the requesting user. See user.Info interface for details.
+    - request::Vector{UInt8} : Base64-encoded PKCS#10 CSR data
+    - uid::String : UID information about the requesting user. See user.Info interface for details.
+    - usages::Vector{String} : allowedUsages specifies a set of usage contexts the key will be valid for. See: https://tools.ietf.org/html/rfc5280#section-4.2.1.3      https://tools.ietf.org/html/rfc5280#section-4.2.1.12
+    - username::String : Information about the requesting user. See user.Info interface for details.
+"""
 mutable struct IoK8sApiCertificatesV1beta1CertificateSigningRequestSpec <: SwaggerModel
     extra::Any # spec type: Union{ Nothing, Dict{String, Vector{String}} } # spec name: extra
     groups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: groups

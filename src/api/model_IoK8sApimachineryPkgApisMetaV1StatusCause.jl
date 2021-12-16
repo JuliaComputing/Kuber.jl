@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered.
+
+    IoK8sApimachineryPkgApisMetaV1StatusCause(;
+        field=nothing,
+        message=nothing,
+        reason=nothing,
+    )
+
+    - field::String : The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed.  Fields may appear more than once in an array of causes due to fields having multiple errors. Optional.  Examples:   \&quot;name\&quot; - the field \&quot;name\&quot; on the current resource   \&quot;items[0].name\&quot; - the field \&quot;name\&quot; on the first array entry in \&quot;items\&quot;
+    - message::String : A human-readable description of the cause of the error.  This field may be presented as-is to a reader.
+    - reason::String : A machine-readable description of the cause of the error. If this value is empty there is no information available.
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1StatusCause <: SwaggerModel
     field::Any # spec type: Union{ Nothing, String } # spec name: field
     message::Any # spec type: Union{ Nothing, String } # spec name: message

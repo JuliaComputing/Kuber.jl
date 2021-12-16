@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
+
+    IoK8sApiAutoscalingV2beta2ObjectMetricSource(;
+        describedObject=nothing,
+        metric=nothing,
+        target=nothing,
+    )
+
+    - describedObject::IoK8sApiAutoscalingV2beta2CrossVersionObjectReference
+    - metric::IoK8sApiAutoscalingV2beta2MetricIdentifier : metric identifies the target metric by name and selector
+    - target::IoK8sApiAutoscalingV2beta2MetricTarget : target specifies the target value for the given metric
+"""
 mutable struct IoK8sApiAutoscalingV2beta2ObjectMetricSource <: SwaggerModel
     describedObject::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2CrossVersionObjectReference } # spec name: describedObject
     metric::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricIdentifier } # spec name: metric

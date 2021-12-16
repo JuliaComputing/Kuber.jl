@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PersistentVolumeClaimSpec describes the common attributes of storage devices and allows a Source for provider-specific attributes
+
+    IoK8sApiCoreV1PersistentVolumeClaimSpec(;
+        accessModes=nothing,
+        dataSource=nothing,
+        resources=nothing,
+        selector=nothing,
+        storageClassName=nothing,
+        volumeMode=nothing,
+        volumeName=nothing,
+    )
+
+    - accessModes::Vector{String} : AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1
+    - dataSource::IoK8sApiCoreV1TypedLocalObjectReference : This field requires the VolumeSnapshotDataSource alpha feature gate to be enabled and currently VolumeSnapshot is the only supported data source. If the provisioner can support VolumeSnapshot data source, it will create a new volume and data will be restored to the volume at the same time. If the provisioner does not support VolumeSnapshot data source, volume will not be created and the failure will be reported as an event. In the future, we plan to support more data source types and the behavior of the provisioner may change.
+    - resources::IoK8sApiCoreV1ResourceRequirements : Resources represents the minimum resources the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : A label query over volumes to consider for binding.
+    - storageClassName::String : Name of the StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1
+    - volumeMode::String : volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is a beta feature.
+    - volumeName::String : VolumeName is the binding reference to the PersistentVolume backing this claim.
+"""
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimSpec <: SwaggerModel
     accessModes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: accessModes
     dataSource::Any # spec type: Union{ Nothing, IoK8sApiCoreV1TypedLocalObjectReference } # spec name: dataSource

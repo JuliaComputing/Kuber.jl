@@ -2,6 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""
+    IoK8sApiExtensionsV1beta1DaemonSetUpdateStrategy(;
+        rollingUpdate=nothing,
+        type=nothing,
+    )
+
+    - rollingUpdate::IoK8sApiExtensionsV1beta1RollingUpdateDaemonSet : Rolling update config params. Present only if type &#x3D; \&quot;RollingUpdate\&quot;.
+    - type::String : Type of daemon set update. Can be \&quot;RollingUpdate\&quot; or \&quot;OnDelete\&quot;. Default is OnDelete.
+"""
 mutable struct IoK8sApiExtensionsV1beta1DaemonSetUpdateStrategy <: SwaggerModel
     rollingUpdate::Any # spec type: Union{ Nothing, IoK8sApiExtensionsV1beta1RollingUpdateDaemonSet } # spec name: rollingUpdate
     type::Any # spec type: Union{ Nothing, String } # spec name: type

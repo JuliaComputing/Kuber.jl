@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""IngressStatus describe the current state of the Ingress.
+
+    IoK8sApiNetworkingV1beta1IngressStatus(;
+        loadBalancer=nothing,
+    )
+
+    - loadBalancer::IoK8sApiCoreV1LoadBalancerStatus : LoadBalancer contains the current status of the load-balancer.
+"""
 mutable struct IoK8sApiNetworkingV1beta1IngressStatus <: SwaggerModel
     loadBalancer::Any # spec type: Union{ Nothing, IoK8sApiCoreV1LoadBalancerStatus } # spec name: loadBalancer
 

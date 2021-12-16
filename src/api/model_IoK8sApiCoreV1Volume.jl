@@ -2,6 +2,70 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Volume represents a named volume in a pod that may be accessed by any container in the pod.
+
+    IoK8sApiCoreV1Volume(;
+        awsElasticBlockStore=nothing,
+        azureDisk=nothing,
+        azureFile=nothing,
+        cephfs=nothing,
+        cinder=nothing,
+        configMap=nothing,
+        csi=nothing,
+        downwardAPI=nothing,
+        emptyDir=nothing,
+        fc=nothing,
+        flexVolume=nothing,
+        flocker=nothing,
+        gcePersistentDisk=nothing,
+        gitRepo=nothing,
+        glusterfs=nothing,
+        hostPath=nothing,
+        iscsi=nothing,
+        name=nothing,
+        nfs=nothing,
+        persistentVolumeClaim=nothing,
+        photonPersistentDisk=nothing,
+        portworxVolume=nothing,
+        projected=nothing,
+        quobyte=nothing,
+        rbd=nothing,
+        scaleIO=nothing,
+        secret=nothing,
+        storageos=nothing,
+        vsphereVolume=nothing,
+    )
+
+    - awsElasticBlockStore::IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource : AWSElasticBlockStore represents an AWS Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore
+    - azureDisk::IoK8sApiCoreV1AzureDiskVolumeSource : AzureDisk represents an Azure Data Disk mount on the host and bind mount to the pod.
+    - azureFile::IoK8sApiCoreV1AzureFileVolumeSource : AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+    - cephfs::IoK8sApiCoreV1CephFSVolumeSource : CephFS represents a Ceph FS mount on the host that shares a pod&#39;s lifetime
+    - cinder::IoK8sApiCoreV1CinderVolumeSource : Cinder represents a cinder volume attached and mounted on kubelets host machine. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
+    - configMap::IoK8sApiCoreV1ConfigMapVolumeSource : ConfigMap represents a configMap that should populate this volume
+    - csi::IoK8sApiCoreV1CSIVolumeSource : CSI (Container Storage Interface) represents storage that is handled by an external CSI driver (Alpha feature).
+    - downwardAPI::IoK8sApiCoreV1DownwardAPIVolumeSource : DownwardAPI represents downward API about the pod that should populate this volume
+    - emptyDir::IoK8sApiCoreV1EmptyDirVolumeSource : EmptyDir represents a temporary directory that shares a pod&#39;s lifetime. More info: https://kubernetes.io/docs/concepts/storage/volumes#emptydir
+    - fc::IoK8sApiCoreV1FCVolumeSource : FC represents a Fibre Channel resource that is attached to a kubelet&#39;s host machine and then exposed to the pod.
+    - flexVolume::IoK8sApiCoreV1FlexVolumeSource : FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+    - flocker::IoK8sApiCoreV1FlockerVolumeSource : Flocker represents a Flocker volume attached to a kubelet&#39;s host machine. This depends on the Flocker control service being running
+    - gcePersistentDisk::IoK8sApiCoreV1GCEPersistentDiskVolumeSource : GCEPersistentDisk represents a GCE Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk
+    - gitRepo::IoK8sApiCoreV1GitRepoVolumeSource : GitRepo represents a git repository at a particular revision. DEPRECATED: GitRepo is deprecated. To provision a container with a git repo, mount an EmptyDir into an InitContainer that clones the repo using git, then mount the EmptyDir into the Pod&#39;s container.
+    - glusterfs::IoK8sApiCoreV1GlusterfsVolumeSource : Glusterfs represents a Glusterfs mount on the host that shares a pod&#39;s lifetime. More info: https://examples.k8s.io/volumes/glusterfs/README.md
+    - hostPath::IoK8sApiCoreV1HostPathVolumeSource : HostPath represents a pre-existing file or directory on the host machine that is directly exposed to the container. This is generally used for system agents or other privileged things that are allowed to see the host machine. Most containers will NOT need this. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath
+    - iscsi::IoK8sApiCoreV1ISCSIVolumeSource : ISCSI represents an ISCSI Disk resource that is attached to a kubelet&#39;s host machine and then exposed to the pod. More info: https://examples.k8s.io/volumes/iscsi/README.md
+    - name::String : Volume&#39;s name. Must be a DNS_LABEL and unique within the pod. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    - nfs::IoK8sApiCoreV1NFSVolumeSource : NFS represents an NFS mount on the host that shares a pod&#39;s lifetime More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs
+    - persistentVolumeClaim::IoK8sApiCoreV1PersistentVolumeClaimVolumeSource : PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims
+    - photonPersistentDisk::IoK8sApiCoreV1PhotonPersistentDiskVolumeSource : PhotonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine
+    - portworxVolume::IoK8sApiCoreV1PortworxVolumeSource : PortworxVolume represents a portworx volume attached and mounted on kubelets host machine
+    - projected::IoK8sApiCoreV1ProjectedVolumeSource : Items for all in one resources secrets, configmaps, and downward API
+    - quobyte::IoK8sApiCoreV1QuobyteVolumeSource : Quobyte represents a Quobyte mount on the host that shares a pod&#39;s lifetime
+    - rbd::IoK8sApiCoreV1RBDVolumeSource : RBD represents a Rados Block Device mount on the host that shares a pod&#39;s lifetime. More info: https://examples.k8s.io/volumes/rbd/README.md
+    - scaleIO::IoK8sApiCoreV1ScaleIOVolumeSource : ScaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes.
+    - secret::IoK8sApiCoreV1SecretVolumeSource : Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
+    - storageos::IoK8sApiCoreV1StorageOSVolumeSource : StorageOS represents a StorageOS volume attached and mounted on Kubernetes nodes.
+    - vsphereVolume::IoK8sApiCoreV1VsphereVirtualDiskVolumeSource : VsphereVolume represents a vSphere volume attached and mounted on kubelets host machine
+"""
 mutable struct IoK8sApiCoreV1Volume <: SwaggerModel
     awsElasticBlockStore::Any # spec type: Union{ Nothing, IoK8sApiCoreV1AWSElasticBlockStoreVolumeSource } # spec name: awsElasticBlockStore
     azureDisk::Any # spec type: Union{ Nothing, IoK8sApiCoreV1AzureDiskVolumeSource } # spec name: azureDisk

@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ReplicationControllerStatus represents the current status of a replication controller.
+
+    IoK8sApiCoreV1ReplicationControllerStatus(;
+        availableReplicas=nothing,
+        conditions=nothing,
+        fullyLabeledReplicas=nothing,
+        observedGeneration=nothing,
+        readyReplicas=nothing,
+        replicas=nothing,
+    )
+
+    - availableReplicas::Int32 : The number of available replicas (ready for at least minReadySeconds) for this replication controller.
+    - conditions::Vector{IoK8sApiCoreV1ReplicationControllerCondition} : Represents the latest available observations of a replication controller&#39;s current state.
+    - fullyLabeledReplicas::Int32 : The number of pods that have labels matching the labels of the pod template of the replication controller.
+    - observedGeneration::Int64 : ObservedGeneration reflects the generation of the most recently observed replication controller.
+    - readyReplicas::Int32 : The number of ready replicas for this replication controller.
+    - replicas::Int32 : Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller#what-is-a-replicationcontroller
+"""
 mutable struct IoK8sApiCoreV1ReplicationControllerStatus <: SwaggerModel
     availableReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: availableReplicas
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1ReplicationControllerCondition} } # spec name: conditions

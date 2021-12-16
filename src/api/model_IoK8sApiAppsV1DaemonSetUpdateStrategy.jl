@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DaemonSetUpdateStrategy is a struct used to control the update strategy for a DaemonSet.
+
+    IoK8sApiAppsV1DaemonSetUpdateStrategy(;
+        rollingUpdate=nothing,
+        type=nothing,
+    )
+
+    - rollingUpdate::IoK8sApiAppsV1RollingUpdateDaemonSet : Rolling update config params. Present only if type &#x3D; \&quot;RollingUpdate\&quot;.
+    - type::String : Type of daemon set update. Can be \&quot;RollingUpdate\&quot; or \&quot;OnDelete\&quot;. Default is RollingUpdate.
+"""
 mutable struct IoK8sApiAppsV1DaemonSetUpdateStrategy <: SwaggerModel
     rollingUpdate::Any # spec type: Union{ Nothing, IoK8sApiAppsV1RollingUpdateDaemonSet } # spec name: rollingUpdate
     type::Any # spec type: Union{ Nothing, String } # spec name: type
