@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RoleRef contains information that points to the role being used
+
+    IoK8sApiRbacV1beta1RoleRef(;
+        apiGroup=nothing,
+        kind=nothing,
+        name=nothing,
+    )
+
+    - apiGroup::String : APIGroup is the group for the resource being referenced
+    - kind::String : Kind is the type of resource being referenced
+    - name::String : Name is the name of resource being referenced
+"""
 mutable struct IoK8sApiRbacV1beta1RoleRef <: SwaggerModel
     apiGroup::Any # spec type: Union{ Nothing, String } # spec name: apiGroup
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JobCondition describes current state of a job.
+
+    IoK8sApiBatchV1JobCondition(;
+        lastProbeTime=nothing,
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastProbeTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition was checked.
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transit from one status to another.
+    - message::String : Human readable message indicating details about last transition.
+    - reason::String : (brief) reason for the condition&#39;s last transition.
+    - status::String : Status of the condition, one of True, False, Unknown.
+    - type::String : Type of job condition, Complete or Failed.
+"""
 mutable struct IoK8sApiBatchV1JobCondition <: SwaggerModel
     lastProbeTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastProbeTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime

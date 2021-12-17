@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.
+
+    IoK8sApiAutoscalingV2beta2ExternalMetricStatus(;
+        current=nothing,
+        metric=nothing,
+    )
+
+    - current::IoK8sApiAutoscalingV2beta2MetricValueStatus : current contains the current value for the given metric
+    - metric::IoK8sApiAutoscalingV2beta2MetricIdentifier : metric identifies the target metric by name and selector
+"""
 mutable struct IoK8sApiAutoscalingV2beta2ExternalMetricStatus <: SwaggerModel
     current::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricValueStatus } # spec name: current
     metric::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricIdentifier } # spec name: metric

@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EnvFromSource represents the source of a set of ConfigMaps
+
+    IoK8sApiCoreV1EnvFromSource(;
+        configMapRef=nothing,
+        prefix=nothing,
+        secretRef=nothing,
+    )
+
+    - configMapRef::IoK8sApiCoreV1ConfigMapEnvSource : The ConfigMap to select from
+    - prefix::String : An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+    - secretRef::IoK8sApiCoreV1SecretEnvSource : The Secret to select from
+"""
 mutable struct IoK8sApiCoreV1EnvFromSource <: SwaggerModel
     configMapRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapEnvSource } # spec name: configMapRef
     prefix::Any # spec type: Union{ Nothing, String } # spec name: prefix

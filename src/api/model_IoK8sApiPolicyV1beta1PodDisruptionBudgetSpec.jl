@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodDisruptionBudgetSpec is a description of a PodDisruptionBudget.
+
+    IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec(;
+        maxUnavailable=nothing,
+        minAvailable=nothing,
+        selector=nothing,
+    )
+
+    - maxUnavailable::IoK8sApimachineryPkgUtilIntstrIntOrString : An eviction is allowed if at most \&quot;maxUnavailable\&quot; pods selected by \&quot;selector\&quot; are unavailable after the eviction, i.e. even in absence of the evicted pod. For example, one can prevent all voluntary evictions by specifying 0. This is a mutually exclusive setting with \&quot;minAvailable\&quot;.
+    - minAvailable::IoK8sApimachineryPkgUtilIntstrIntOrString : An eviction is allowed if at least \&quot;minAvailable\&quot; pods selected by \&quot;selector\&quot; will still be available after the eviction, i.e. even in the absence of the evicted pod.  So for example you can prevent all voluntary evictions by specifying \&quot;100%\&quot;.
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : Label query over pods whose evictions are managed by the disruption budget.
+"""
 mutable struct IoK8sApiPolicyV1beta1PodDisruptionBudgetSpec <: SwaggerModel
     maxUnavailable::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: maxUnavailable
     minAvailable::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: minAvailable

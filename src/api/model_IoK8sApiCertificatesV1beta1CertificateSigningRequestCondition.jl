@@ -2,6 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""
+    IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition(;
+        lastUpdateTime=nothing,
+        message=nothing,
+        reason=nothing,
+        type=nothing,
+    )
+
+    - lastUpdateTime::IoK8sApimachineryPkgApisMetaV1Time : timestamp for the last update to this condition
+    - message::String : human readable message with details about the request state
+    - reason::String : brief reason for the request state
+    - type::String : request approval state, currently Approved or Denied.
+"""
 mutable struct IoK8sApiCertificatesV1beta1CertificateSigningRequestCondition <: SwaggerModel
     lastUpdateTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastUpdateTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

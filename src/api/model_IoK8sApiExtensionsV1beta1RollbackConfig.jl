@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DEPRECATED.
+
+    IoK8sApiExtensionsV1beta1RollbackConfig(;
+        revision=nothing,
+    )
+
+    - revision::Int64 : The revision to rollback to. If set to 0, rollback to the last revision.
+"""
 mutable struct IoK8sApiExtensionsV1beta1RollbackConfig <: SwaggerModel
     revision::Any # spec type: Union{ Nothing, Int64 } # spec name: revision
 

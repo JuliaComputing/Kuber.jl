@@ -2,6 +2,26 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeSpec describes the attributes that a node is created with.
+
+    IoK8sApiCoreV1NodeSpec(;
+        configSource=nothing,
+        externalID=nothing,
+        podCIDR=nothing,
+        podCIDRs=nothing,
+        providerID=nothing,
+        taints=nothing,
+        unschedulable=nothing,
+    )
+
+    - configSource::IoK8sApiCoreV1NodeConfigSource : If specified, the source to get node configuration from The DynamicKubeletConfig feature gate must be enabled for the Kubelet to use this field
+    - externalID::String : Deprecated. Not all kubelets will set this field. Remove field after 1.13. see: https://issues.k8s.io/61966
+    - podCIDR::String : PodCIDR represents the pod IP range assigned to the node.
+    - podCIDRs::Vector{String} : podCIDRs represents the IP ranges assigned to the node for usage by Pods on that node. If this field is specified, the 0th entry must match the podCIDR field. It may contain at most 1 value for each of IPv4 and IPv6.
+    - providerID::String : ID of the node assigned by the cloud provider in the format: &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
+    - taints::Vector{IoK8sApiCoreV1Taint} : If specified, the node&#39;s taints.
+    - unschedulable::Bool : Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
+"""
 mutable struct IoK8sApiCoreV1NodeSpec <: SwaggerModel
     configSource::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeConfigSource } # spec name: configSource
     externalID::Any # spec type: Union{ Nothing, String } # spec name: externalID

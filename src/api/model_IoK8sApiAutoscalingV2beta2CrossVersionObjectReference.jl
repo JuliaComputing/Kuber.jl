@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CrossVersionObjectReference contains enough information to let you identify the referred resource.
+
+    IoK8sApiAutoscalingV2beta2CrossVersionObjectReference(;
+        apiVersion=nothing,
+        kind=nothing,
+        name=nothing,
+    )
+
+    - apiVersion::String : API version of the referent
+    - kind::String : Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds\&quot;
+    - name::String : Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names
+"""
 mutable struct IoK8sApiAutoscalingV2beta2CrossVersionObjectReference <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

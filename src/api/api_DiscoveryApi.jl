@@ -5,11 +5,6 @@ struct DiscoveryApi <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-get information of a group
-Return: IoK8sApimachineryPkgApisMetaV1APIGroup
-"""
 function _swaggerinternal_getDiscoveryAPIGroup(_api::DiscoveryApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIGroup, "/apis/discovery.k8s.io/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -17,6 +12,11 @@ function _swaggerinternal_getDiscoveryAPIGroup(_api::DiscoveryApi; _mediaType=no
     return _ctx
 end
 
+"""
+
+get information of a group
+Return: IoK8sApimachineryPkgApisMetaV1APIGroup
+"""
 function getDiscoveryAPIGroup(_api::DiscoveryApi; _mediaType=nothing)
     _ctx = _swaggerinternal_getDiscoveryAPIGroup(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)

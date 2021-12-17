@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HTTPIngressPath associates a path regex with a backend. Incoming urls matching the path are forwarded to the backend.
+
+    IoK8sApiExtensionsV1beta1HTTPIngressPath(;
+        backend=nothing,
+        path=nothing,
+    )
+
+    - backend::IoK8sApiExtensionsV1beta1IngressBackend : Backend defines the referenced service endpoint to which the traffic will be forwarded to.
+    - path::String : Path is an extended POSIX regex as defined by IEEE Std 1003.1, (i.e this follows the egrep/unix syntax, not the perl syntax) matched against the path of an incoming request. Currently it can contain characters disallowed from the conventional \&quot;path\&quot; part of a URL as defined by RFC 3986. Paths must begin with a &#39;/&#39;. If unspecified, the path defaults to a catch all sending traffic to the backend.
+"""
 mutable struct IoK8sApiExtensionsV1beta1HTTPIngressPath <: SwaggerModel
     backend::Any # spec type: Union{ Nothing, IoK8sApiExtensionsV1beta1IngressBackend } # spec name: backend
     path::Any # spec type: Union{ Nothing, String } # spec name: path

@@ -2,6 +2,12 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JSONSchemaPropsOrArray represents a value that can either be a JSONSchemaProps or an array of JSONSchemaProps. Mainly here for serialization purposes.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray(;
+    )
+
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray <: SwaggerModel
 
     function IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsOrArray(;)

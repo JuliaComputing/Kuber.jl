@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceQuotaStatus defines the enforced hard limits and observed use.
+
+    IoK8sApiCoreV1ResourceQuotaStatus(;
+        hard=nothing,
+        used=nothing,
+    )
+
+    - hard::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Hard is the set of enforced hard limits for each named resource. More info: https://kubernetes.io/docs/concepts/policy/resource-quotas/
+    - used::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : Used is the current observed total usage of the resource in the namespace.
+"""
 mutable struct IoK8sApiCoreV1ResourceQuotaStatus <: SwaggerModel
     hard::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: hard
     used::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: used

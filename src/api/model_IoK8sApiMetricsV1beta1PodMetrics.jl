@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodMetrics sets resource usage metrics of a pod.
+
+    IoK8sApiMetricsV1beta1PodMetrics(;
+        metadata=nothing,
+        timestamp=nothing,
+        window=nothing,
+        containers=nothing,
+    )
+
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
+    - timestamp::IoK8sApimachineryPkgApisMetaV1Time : define time interval from which metrics were collected from the interval [Timestamp-Window, Timestamp]
+    - window::IoK8sApimachineryPkgApisMetaV1Duration : define time interval from which metrics were collected from the interval [Timestamp-Window, Timestamp]
+    - containers::Vector{IoK8sApiMetricsV1beta1ContainerMetrics} : Metrics for all containers are collected within the same time window.
+"""
 mutable struct IoK8sApiMetricsV1beta1PodMetrics <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
     timestamp::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: timestamp

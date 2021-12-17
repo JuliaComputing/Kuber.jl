@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""StatefulSetUpdateStrategy indicates the strategy that the StatefulSet controller will use to perform updates. It includes any additional parameters necessary to perform the update for the indicated strategy.
+
+    IoK8sApiAppsV1StatefulSetUpdateStrategy(;
+        rollingUpdate=nothing,
+        type=nothing,
+    )
+
+    - rollingUpdate::IoK8sApiAppsV1RollingUpdateStatefulSetStrategy : RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
+    - type::String : Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
+"""
 mutable struct IoK8sApiAppsV1StatefulSetUpdateStrategy <: SwaggerModel
     rollingUpdate::Any # spec type: Union{ Nothing, IoK8sApiAppsV1RollingUpdateStatefulSetStrategy } # spec name: rollingUpdate
     type::Any # spec type: Union{ Nothing, String } # spec name: type

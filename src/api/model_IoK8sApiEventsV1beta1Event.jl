@@ -2,6 +2,46 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Event is a report of an event somewhere in the cluster. It generally denotes some state change in the system.
+
+    IoK8sApiEventsV1beta1Event(;
+        action=nothing,
+        apiVersion=nothing,
+        deprecatedCount=nothing,
+        deprecatedFirstTimestamp=nothing,
+        deprecatedLastTimestamp=nothing,
+        deprecatedSource=nothing,
+        eventTime=nothing,
+        kind=nothing,
+        metadata=nothing,
+        note=nothing,
+        reason=nothing,
+        regarding=nothing,
+        related=nothing,
+        reportingController=nothing,
+        reportingInstance=nothing,
+        series=nothing,
+        type=nothing,
+    )
+
+    - action::String : What action was taken/failed regarding to the regarding object.
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - deprecatedCount::Int32 : Deprecated field assuring backward compatibility with core.v1 Event type
+    - deprecatedFirstTimestamp::IoK8sApimachineryPkgApisMetaV1Time : Deprecated field assuring backward compatibility with core.v1 Event type
+    - deprecatedLastTimestamp::IoK8sApimachineryPkgApisMetaV1Time : Deprecated field assuring backward compatibility with core.v1 Event type
+    - deprecatedSource::IoK8sApiCoreV1EventSource : Deprecated field assuring backward compatibility with core.v1 Event type
+    - eventTime::IoK8sApimachineryPkgApisMetaV1MicroTime : Required. Time when this Event was first observed.
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta
+    - note::String : Optional. A human-readable description of the status of this operation. Maximal length of the note is 1kB, but libraries should be prepared to handle values up to 64kB.
+    - reason::String : Why the action was taken.
+    - regarding::IoK8sApiCoreV1ObjectReference : The object this Event is about. In most cases it&#39;s an Object reporting controller implements. E.g. ReplicaSetController implements ReplicaSets and this event is emitted because it acts on some changes in a ReplicaSet object.
+    - related::IoK8sApiCoreV1ObjectReference : Optional secondary object for more complex actions. E.g. when regarding object triggers a creation or deletion of related object.
+    - reportingController::String : Name of the controller that emitted this Event, e.g. &#x60;kubernetes.io/kubelet&#x60;.
+    - reportingInstance::String : ID of the controller instance, e.g. &#x60;kubelet-xyzf&#x60;.
+    - series::IoK8sApiEventsV1beta1EventSeries : Data about the Event series this event represents or nil if it&#39;s a singleton Event.
+    - type::String : Type of this event (Normal, Warning), new types could be added in the future.
+"""
 mutable struct IoK8sApiEventsV1beta1Event <: SwaggerModel
     action::Any # spec type: Union{ Nothing, String } # spec name: action
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion

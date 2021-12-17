@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Glusterfs mount that lasts the lifetime of a pod. Glusterfs volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1GlusterfsVolumeSource(;
+        endpoints=nothing,
+        path=nothing,
+        readOnly=nothing,
+    )
+
+    - endpoints::String : EndpointsName is the endpoint name that details Glusterfs topology. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+    - path::String : Path is the Glusterfs volume path. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+    - readOnly::Bool : ReadOnly here will force the Glusterfs volume to be mounted with read-only permissions. Defaults to false. More info: https://examples.k8s.io/volumes/glusterfs/README.md#create-a-pod
+"""
 mutable struct IoK8sApiCoreV1GlusterfsVolumeSource <: SwaggerModel
     endpoints::Any # spec type: Union{ Nothing, String } # spec name: endpoints
     path::Any # spec type: Union{ Nothing, String } # spec name: path

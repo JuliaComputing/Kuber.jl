@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+
+    IoK8sApiCoreV1LocalObjectReference(;
+        name=nothing,
+    )
+
+    - name::String : Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+"""
 mutable struct IoK8sApiCoreV1LocalObjectReference <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
 

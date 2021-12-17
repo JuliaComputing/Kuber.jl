@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Overhead structure represents the resource overhead associated with running a pod.
+
+    IoK8sApiNodeV1alpha1Overhead(;
+        podFixed=nothing,
+    )
+
+    - podFixed::Dict{String, IoK8sApimachineryPkgApiResourceQuantity} : PodFixed represents the fixed resource overhead associated with running a pod.
+"""
 mutable struct IoK8sApiNodeV1alpha1Overhead <: SwaggerModel
     podFixed::Any # spec type: Union{ Nothing, Dict{String, IoK8sApimachineryPkgApiResourceQuantity} } # spec name: podFixed
 

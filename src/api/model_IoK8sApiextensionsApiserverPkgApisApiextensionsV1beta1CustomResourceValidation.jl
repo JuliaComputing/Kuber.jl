@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CustomResourceValidation is a list of validation methods for CustomResources.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation(;
+        openAPIV3Schema=nothing,
+    )
+
+    - openAPIV3Schema::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps : openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceValidation <: SwaggerModel
     openAPIV3Schema::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaProps } # spec name: openAPIV3Schema
 

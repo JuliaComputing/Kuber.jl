@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EndpointPort is a tuple that describes a single port.
+
+    IoK8sApiCoreV1EndpointPort(;
+        name=nothing,
+        port=nothing,
+        protocol=nothing,
+    )
+
+    - name::String : The name of this port.  This must match the &#39;name&#39; field in the corresponding ServicePort. Must be a DNS_LABEL. Optional only if one port is defined.
+    - port::Int32 : The port number of the endpoint.
+    - protocol::String : The IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
+"""
 mutable struct IoK8sApiCoreV1EndpointPort <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     port::Any # spec type: Union{ Nothing, Int32 } # spec name: port

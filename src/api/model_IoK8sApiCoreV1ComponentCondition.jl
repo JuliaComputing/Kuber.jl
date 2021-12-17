@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Information about the condition of a component.
+
+    IoK8sApiCoreV1ComponentCondition(;
+        error=nothing,
+        message=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - error::String : Condition error code for a component. For example, a health check error code.
+    - message::String : Message about the condition for a component. For example, information about a health check.
+    - status::String : Status of the condition for a component. Valid values for \&quot;Healthy\&quot;: \&quot;True\&quot;, \&quot;False\&quot;, or \&quot;Unknown\&quot;.
+    - type::String : Type of condition for a component. Valid value: \&quot;Healthy\&quot;
+"""
 mutable struct IoK8sApiCoreV1ComponentCondition <: SwaggerModel
     error::Any # spec type: Union{ Nothing, String } # spec name: error
     message::Any # spec type: Union{ Nothing, String } # spec name: message

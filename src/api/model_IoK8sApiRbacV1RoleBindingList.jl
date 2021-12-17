@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RoleBindingList is a collection of RoleBindings
+
+    IoK8sApiRbacV1RoleBindingList(;
+        apiVersion=nothing,
+        items=nothing,
+        kind=nothing,
+        metadata=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - items::Vector{IoK8sApiRbacV1RoleBinding} : Items is a list of RoleBindings
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ListMeta : Standard object&#39;s metadata.
+"""
 mutable struct IoK8sApiRbacV1RoleBindingList <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiRbacV1RoleBinding} } # spec name: items

@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Projection that may be projected along with other supported volume types
+
+    IoK8sApiCoreV1VolumeProjection(;
+        configMap=nothing,
+        downwardAPI=nothing,
+        secret=nothing,
+        serviceAccountToken=nothing,
+    )
+
+    - configMap::IoK8sApiCoreV1ConfigMapProjection : information about the configMap data to project
+    - downwardAPI::IoK8sApiCoreV1DownwardAPIProjection : information about the downwardAPI data to project
+    - secret::IoK8sApiCoreV1SecretProjection : information about the secret data to project
+    - serviceAccountToken::IoK8sApiCoreV1ServiceAccountTokenProjection : information about the serviceAccountToken data to project
+"""
 mutable struct IoK8sApiCoreV1VolumeProjection <: SwaggerModel
     configMap::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapProjection } # spec name: configMap
     downwardAPI::Any # spec type: Union{ Nothing, IoK8sApiCoreV1DownwardAPIProjection } # spec name: downwardAPI

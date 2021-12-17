@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerPort represents a network port in a single container.
+
+    IoK8sApiCoreV1ContainerPort(;
+        containerPort=nothing,
+        hostIP=nothing,
+        hostPort=nothing,
+        name=nothing,
+        protocol=nothing,
+    )
+
+    - containerPort::Int32 : Number of port to expose on the pod&#39;s IP address. This must be a valid port number, 0 &lt; x &lt; 65536.
+    - hostIP::String : What host IP to bind the external port to.
+    - hostPort::Int32 : Number of port to expose on the host. If specified, this must be a valid port number, 0 &lt; x &lt; 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.
+    - name::String : If specified, this must be an IANA_SVC_NAME and unique within the pod. Each named port in a pod must have a unique name. Name for the port that can be referred to by services.
+    - protocol::String : Protocol for port. Must be UDP, TCP, or SCTP. Defaults to \&quot;TCP\&quot;.
+"""
 mutable struct IoK8sApiCoreV1ContainerPort <: SwaggerModel
     containerPort::Any # spec type: Union{ Nothing, Int32 } # spec name: containerPort
     hostIP::Any # spec type: Union{ Nothing, String } # spec name: hostIP

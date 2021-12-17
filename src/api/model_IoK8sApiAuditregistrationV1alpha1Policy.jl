@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Policy defines the configuration of how audit events are logged
+
+    IoK8sApiAuditregistrationV1alpha1Policy(;
+        level=nothing,
+        stages=nothing,
+    )
+
+    - level::String : The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
+    - stages::Vector{String} : Stages is a list of stages for which events are created.
+"""
 mutable struct IoK8sApiAuditregistrationV1alpha1Policy <: SwaggerModel
     level::Any # spec type: Union{ Nothing, String } # spec name: level
     stages::Any # spec type: Union{ Nothing, Vector{String} } # spec name: stages

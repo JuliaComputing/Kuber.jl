@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EventSource contains information for an event.
+
+    IoK8sApiCoreV1EventSource(;
+        component=nothing,
+        host=nothing,
+    )
+
+    - component::String : Component from which the event is generated.
+    - host::String : Node name on which the event is generated.
+"""
 mutable struct IoK8sApiCoreV1EventSource <: SwaggerModel
     component::Any # spec type: Union{ Nothing, String } # spec name: component
     host::Any # spec type: Union{ Nothing, String } # spec name: host

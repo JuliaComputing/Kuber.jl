@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Webhook holds the configuration of the webhook
+
+    IoK8sApiAuditregistrationV1alpha1Webhook(;
+        clientConfig=nothing,
+        throttle=nothing,
+    )
+
+    - clientConfig::IoK8sApiAuditregistrationV1alpha1WebhookClientConfig : ClientConfig holds the connection parameters for the webhook required
+    - throttle::IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig : Throttle holds the options for throttling the webhook
+"""
 mutable struct IoK8sApiAuditregistrationV1alpha1Webhook <: SwaggerModel
     clientConfig::Any # spec type: Union{ Nothing, IoK8sApiAuditregistrationV1alpha1WebhookClientConfig } # spec name: clientConfig
     throttle::Any # spec type: Union{ Nothing, IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig } # spec name: throttle

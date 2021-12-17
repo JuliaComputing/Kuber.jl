@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HTTPHeader describes a custom header to be used in HTTP probes
+
+    IoK8sApiCoreV1HTTPHeader(;
+        name=nothing,
+        value=nothing,
+    )
+
+    - name::String : The header field name
+    - value::String : The header field value
+"""
 mutable struct IoK8sApiCoreV1HTTPHeader <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value

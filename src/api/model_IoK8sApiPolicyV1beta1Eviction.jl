@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Eviction evicts a pod from its node subject to certain policies and safety constraints. This is a subresource of Pod.  A request to cause such an eviction is created by POSTing to .../pods/&lt;pod name&gt;/evictions.
+
+    IoK8sApiPolicyV1beta1Eviction(;
+        apiVersion=nothing,
+        deleteOptions=nothing,
+        kind=nothing,
+        metadata=nothing,
+    )
+
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - deleteOptions::IoK8sApimachineryPkgApisMetaV1DeleteOptions : DeleteOptions may be provided
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : ObjectMeta describes the pod that is being evicted.
+"""
 mutable struct IoK8sApiPolicyV1beta1Eviction <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     deleteOptions::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1DeleteOptions } # spec name: deleteOptions

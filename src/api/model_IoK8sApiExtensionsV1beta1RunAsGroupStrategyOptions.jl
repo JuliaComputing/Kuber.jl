@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RunAsGroupStrategyOptions defines the strategy type and any options used to create the strategy. Deprecated: use RunAsGroupStrategyOptions from policy API Group instead.
+
+    IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions(;
+        ranges=nothing,
+        rule=nothing,
+    )
+
+    - ranges::Vector{IoK8sApiExtensionsV1beta1IDRange} : ranges are the allowed ranges of gids that may be used. If you would like to force a single gid then supply a single range with the same start and end. Required for MustRunAs.
+    - rule::String : rule is the strategy that will dictate the allowable RunAsGroup values that may be set.
+"""
 mutable struct IoK8sApiExtensionsV1beta1RunAsGroupStrategyOptions <: SwaggerModel
     ranges::Any # spec type: Union{ Nothing, Vector{IoK8sApiExtensionsV1beta1IDRange} } # spec name: ranges
     rule::Any # spec type: Union{ Nothing, String } # spec name: rule

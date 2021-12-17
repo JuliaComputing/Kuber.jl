@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeMetricsList is a list of NodeMetrics.
+
+    IoK8sApiMetricsV1beta1NodeMetricsList(;
+        metadata=nothing,
+        items=nothing,
+    )
+
+    - metadata::IoK8sApimachineryPkgApisMetaV1ListMeta : Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - items::Vector{IoK8sApiMetricsV1beta1NodeMetrics} : List of node metrics.
+"""
 mutable struct IoK8sApiMetricsV1beta1NodeMetricsList <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ListMeta } # spec name: metadata
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiMetricsV1beta1NodeMetrics} } # spec name: items

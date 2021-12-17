@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.
+
+    IoK8sApimachineryPkgApisMetaV1LabelSelector(;
+        matchExpressions=nothing,
+        matchLabels=nothing,
+    )
+
+    - matchExpressions::Vector{IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement} : matchExpressions is a list of label selector requirements. The requirements are ANDed.
+    - matchLabels::Dict{String, String} : matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is \&quot;key\&quot;, the operator is \&quot;In\&quot;, and the values array contains only \&quot;value\&quot;. The requirements are ANDed.
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1LabelSelector <: SwaggerModel
     matchExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement} } # spec name: matchExpressions
     matchLabels::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: matchLabels

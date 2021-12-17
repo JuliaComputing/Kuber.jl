@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodTemplateSpec describes the data a pod should have when created from a template
+
+    IoK8sApiCoreV1PodTemplateSpec(;
+        metadata=nothing,
+        spec=nothing,
+    )
+
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : Standard object&#39;s metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    - spec::IoK8sApiCoreV1PodSpec : Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
+"""
 mutable struct IoK8sApiCoreV1PodTemplateSpec <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ObjectMeta } # spec name: metadata
     spec::Any # spec type: Union{ Nothing, IoK8sApiCoreV1PodSpec } # spec name: spec

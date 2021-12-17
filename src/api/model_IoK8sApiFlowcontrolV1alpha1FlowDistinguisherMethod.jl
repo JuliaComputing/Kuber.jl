@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlowDistinguisherMethod specifies the method of a flow distinguisher.
+
+    IoK8sApiFlowcontrolV1alpha1FlowDistinguisherMethod(;
+        type=nothing,
+    )
+
+    - type::String : &#x60;type&#x60; is the type of flow distinguisher method The supported types are \&quot;ByUser\&quot; and \&quot;ByNamespace\&quot;. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1FlowDistinguisherMethod <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
 

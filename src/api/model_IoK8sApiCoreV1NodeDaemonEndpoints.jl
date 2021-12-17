@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NodeDaemonEndpoints lists ports opened by daemons running on the Node.
+
+    IoK8sApiCoreV1NodeDaemonEndpoints(;
+        kubeletEndpoint=nothing,
+    )
+
+    - kubeletEndpoint::IoK8sApiCoreV1DaemonEndpoint : Endpoint on which Kubelet is listening.
+"""
 mutable struct IoK8sApiCoreV1NodeDaemonEndpoints <: SwaggerModel
     kubeletEndpoint::Any # spec type: Union{ Nothing, IoK8sApiCoreV1DaemonEndpoint } # spec name: kubeletEndpoint
 

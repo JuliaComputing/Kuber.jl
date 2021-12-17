@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""specification of a horizontal pod autoscaler.
+
+    IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec(;
+        maxReplicas=nothing,
+        minReplicas=nothing,
+        scaleTargetRef=nothing,
+        targetCPUUtilizationPercentage=nothing,
+    )
+
+    - maxReplicas::Int32 : upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas.
+    - minReplicas::Int32 : minReplicas is the lower limit for the number of replicas to which the autoscaler can scale down.  It defaults to 1 pod.  minReplicas is allowed to be 0 if the alpha feature gate HPAScaleToZero is enabled and at least one Object or External metric is configured.  Scaling is active as long as at least one metric value is available.
+    - scaleTargetRef::IoK8sApiAutoscalingV1CrossVersionObjectReference : reference to scaled resource; horizontal pod autoscaler will learn the current resource consumption and will set the desired number of pods by using its Scale subresource.
+    - targetCPUUtilizationPercentage::Int32 : target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used.
+"""
 mutable struct IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec <: SwaggerModel
     maxReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: maxReplicas
     minReplicas::Any # spec type: Union{ Nothing, Int32 } # spec name: minReplicas

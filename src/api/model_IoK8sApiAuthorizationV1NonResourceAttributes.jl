@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NonResourceAttributes includes the authorization attributes available for non-resource requests to the Authorizer interface
+
+    IoK8sApiAuthorizationV1NonResourceAttributes(;
+        path=nothing,
+        verb=nothing,
+    )
+
+    - path::String : Path is the URL path of the request
+    - verb::String : Verb is the standard HTTP verb
+"""
 mutable struct IoK8sApiAuthorizationV1NonResourceAttributes <: SwaggerModel
     path::Any # spec type: Union{ Nothing, String } # spec name: path
     verb::Any # spec type: Union{ Nothing, String } # spec name: verb

@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AzureFile represents an Azure File Service mount on the host and bind mount to the pod.
+
+    IoK8sApiCoreV1AzureFilePersistentVolumeSource(;
+        readOnly=nothing,
+        secretName=nothing,
+        secretNamespace=nothing,
+        shareName=nothing,
+    )
+
+    - readOnly::Bool : Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+    - secretName::String : the name of secret that contains Azure Storage Account Name and Key
+    - secretNamespace::String : the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod
+    - shareName::String : Share Name
+"""
 mutable struct IoK8sApiCoreV1AzureFilePersistentVolumeSource <: SwaggerModel
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly
     secretName::Any # spec type: Union{ Nothing, String } # spec name: secretName

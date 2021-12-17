@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Quobyte mount that lasts the lifetime of a pod. Quobyte volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1QuobyteVolumeSource(;
+        group=nothing,
+        readOnly=nothing,
+        registry=nothing,
+        tenant=nothing,
+        user=nothing,
+        volume=nothing,
+    )
+
+    - group::String : Group to map volume access to Default is no group
+    - readOnly::Bool : ReadOnly here will force the Quobyte volume to be mounted with read-only permissions. Defaults to false.
+    - registry::String : Registry represents a single or multiple Quobyte Registry services specified as a string as host:port pair (multiple entries are separated with commas) which acts as the central registry for volumes
+    - tenant::String : Tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin
+    - user::String : User to map volume access to Defaults to serivceaccount user
+    - volume::String : Volume is a string that references an already created Quobyte volume by name.
+"""
 mutable struct IoK8sApiCoreV1QuobyteVolumeSource <: SwaggerModel
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     readOnly::Any # spec type: Union{ Nothing, Bool } # spec name: readOnly

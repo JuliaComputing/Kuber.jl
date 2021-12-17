@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""VolumeNodeResources is a set of resource limits for scheduling of volumes.
+
+    IoK8sApiStorageV1VolumeNodeResources(;
+        count=nothing,
+    )
+
+    - count::Int32 : Maximum number of unique volumes managed by the CSI driver that can be used on a node. A volume that is both attached and mounted on a node is considered to be used once, not twice. The same rule applies for a unique volume that is shared among multiple pods on the same node. If this field is not specified, then the supported number of volumes on this node is unbounded.
+"""
 mutable struct IoK8sApiStorageV1VolumeNodeResources <: SwaggerModel
     count::Any # spec type: Union{ Nothing, Int32 } # spec name: count
 

@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""A topology selector requirement is a selector that matches given label. This is an alpha feature and may change in the future.
+
+    IoK8sApiCoreV1TopologySelectorLabelRequirement(;
+        key=nothing,
+        values=nothing,
+    )
+
+    - key::String : The label key that the selector applies to.
+    - values::Vector{String} : An array of string values. One value must match the label to be selected. Each entry in Values is ORed.
+"""
 mutable struct IoK8sApiCoreV1TopologySelectorLabelRequirement <: SwaggerModel
     key::Any # spec type: Union{ Nothing, String } # spec name: key
     values::Any # spec type: Union{ Nothing, Vector{String} } # spec name: values

@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlowSchemaCondition describes conditions for a FlowSchema.
+
+    IoK8sApiFlowcontrolV1alpha1FlowSchemaCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : &#x60;lastTransitionTime&#x60; is the last time the condition transitioned from one status to another.
+    - message::String : &#x60;message&#x60; is a human-readable message indicating details about last transition.
+    - reason::String : &#x60;reason&#x60; is a unique, one-word, CamelCase reason for the condition&#39;s last transition.
+    - status::String : &#x60;status&#x60; is the status of the condition. Can be True, False, Unknown. Required.
+    - type::String : &#x60;type&#x60; is the type of the condition. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1FlowSchemaCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

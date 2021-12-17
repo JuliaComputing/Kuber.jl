@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AllowedFlexVolume represents a single Flexvolume that is allowed to be used. Deprecated: use AllowedFlexVolume from policy API Group instead.
+
+    IoK8sApiExtensionsV1beta1AllowedFlexVolume(;
+        driver=nothing,
+    )
+
+    - driver::String : driver is the name of the Flexvolume driver.
+"""
 mutable struct IoK8sApiExtensionsV1beta1AllowedFlexVolume <: SwaggerModel
     driver::Any # spec type: Union{ Nothing, String } # spec name: driver
 

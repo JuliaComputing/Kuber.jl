@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EnvVarSource represents a source for the value of an EnvVar.
+
+    IoK8sApiCoreV1EnvVarSource(;
+        configMapKeyRef=nothing,
+        fieldRef=nothing,
+        resourceFieldRef=nothing,
+        secretKeyRef=nothing,
+    )
+
+    - configMapKeyRef::IoK8sApiCoreV1ConfigMapKeySelector : Selects a key of a ConfigMap.
+    - fieldRef::IoK8sApiCoreV1ObjectFieldSelector : Selects a field of the pod: supports metadata.name, metadata.namespace, metadata.labels, metadata.annotations, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.
+    - resourceFieldRef::IoK8sApiCoreV1ResourceFieldSelector : Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
+    - secretKeyRef::IoK8sApiCoreV1SecretKeySelector : Selects a key of a secret in the pod&#39;s namespace
+"""
 mutable struct IoK8sApiCoreV1EnvVarSource <: SwaggerModel
     configMapKeyRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ConfigMapKeySelector } # spec name: configMapKeyRef
     fieldRef::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ObjectFieldSelector } # spec name: fieldRef

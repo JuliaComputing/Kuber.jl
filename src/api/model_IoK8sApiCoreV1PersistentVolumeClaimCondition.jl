@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PersistentVolumeClaimCondition contails details about state of pvc
+
+    IoK8sApiCoreV1PersistentVolumeClaimCondition(;
+        lastProbeTime=nothing,
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastProbeTime::IoK8sApimachineryPkgApisMetaV1Time : Last time we probed the condition.
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transitioned from one status to another.
+    - message::String : Human-readable message indicating details about last transition.
+    - reason::String : Unique, this should be a short, machine understandable string that gives the reason for condition&#39;s last transition. If it reports \&quot;ResizeStarted\&quot; that means the underlying persistent volume is being resized.
+    - status::String
+    - type::String
+"""
 mutable struct IoK8sApiCoreV1PersistentVolumeClaimCondition <: SwaggerModel
     lastProbeTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastProbeTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime

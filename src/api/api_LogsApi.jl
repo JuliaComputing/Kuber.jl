@@ -5,12 +5,6 @@ struct LogsApi <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-
-Param: logpath::String (required)
-Return: Nothing
-"""
 function _swaggerinternal_logFileHandler(_api::LogsApi, logpath::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Nothing, "/logs/{logpath}", ["BearerToken"])
     Swagger.set_param(_ctx.path, "logpath", logpath)  # type String
@@ -19,6 +13,12 @@ function _swaggerinternal_logFileHandler(_api::LogsApi, logpath::String; _mediaT
     return _ctx
 end
 
+"""
+
+
+Param: logpath::String (required)
+Return: Nothing
+"""
 function logFileHandler(_api::LogsApi, logpath::String; _mediaType=nothing)
     _ctx = _swaggerinternal_logFileHandler(_api, logpath; _mediaType=_mediaType)
     Swagger.exec(_ctx)
@@ -29,11 +29,6 @@ function logFileHandler(_api::LogsApi, response_stream::Channel, logpath::String
     Swagger.exec(_ctx, response_stream)
 end
 
-"""
-
-
-Return: Nothing
-"""
 function _swaggerinternal_logFileListHandler(_api::LogsApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Nothing, "/logs/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, [])
@@ -41,6 +36,11 @@ function _swaggerinternal_logFileListHandler(_api::LogsApi; _mediaType=nothing)
     return _ctx
 end
 
+"""
+
+
+Return: Nothing
+"""
 function logFileListHandler(_api::LogsApi; _mediaType=nothing)
     _ctx = _swaggerinternal_logFileListHandler(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)

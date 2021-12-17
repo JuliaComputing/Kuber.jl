@@ -5,11 +5,6 @@ struct ApisApi <: SwaggerApi
     client::Swagger.Client
 end
 
-"""
-
-get available API versions
-Return: IoK8sApimachineryPkgApisMetaV1APIGroupList
-"""
 function _swaggerinternal_getAPIVersions(_api::ApisApi; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IoK8sApimachineryPkgApisMetaV1APIGroupList, "/apis/", ["BearerToken"])
     Swagger.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf"])
@@ -17,6 +12,11 @@ function _swaggerinternal_getAPIVersions(_api::ApisApi; _mediaType=nothing)
     return _ctx
 end
 
+"""
+
+get available API versions
+Return: IoK8sApimachineryPkgApisMetaV1APIGroupList
+"""
 function getAPIVersions(_api::ApisApi; _mediaType=nothing)
     _ctx = _swaggerinternal_getAPIVersions(_api; _mediaType=_mediaType)
     Swagger.exec(_ctx)

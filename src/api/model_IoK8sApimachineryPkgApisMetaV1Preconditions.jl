@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out.
+
+    IoK8sApimachineryPkgApisMetaV1Preconditions(;
+        resourceVersion=nothing,
+        uid=nothing,
+    )
+
+    - resourceVersion::String : Specifies the target ResourceVersion
+    - uid::String : Specifies the target UID.
+"""
 mutable struct IoK8sApimachineryPkgApisMetaV1Preconditions <: SwaggerModel
     resourceVersion::Any # spec type: Union{ Nothing, String } # spec name: resourceVersion
     uid::Any # spec type: Union{ Nothing, String } # spec name: uid

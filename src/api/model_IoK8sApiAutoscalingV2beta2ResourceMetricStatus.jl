@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \&quot;pods\&quot; source.
+
+    IoK8sApiAutoscalingV2beta2ResourceMetricStatus(;
+        current=nothing,
+        name=nothing,
+    )
+
+    - current::IoK8sApiAutoscalingV2beta2MetricValueStatus : current contains the current value for the given metric
+    - name::String : Name is the name of the resource in question.
+"""
 mutable struct IoK8sApiAutoscalingV2beta2ResourceMetricStatus <: SwaggerModel
     current::Any # spec type: Union{ Nothing, IoK8sApiAutoscalingV2beta2MetricValueStatus } # spec name: current
     name::Any # spec type: Union{ Nothing, String } # spec name: name

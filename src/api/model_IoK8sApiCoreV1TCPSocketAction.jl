@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TCPSocketAction describes an action based on opening a socket
+
+    IoK8sApiCoreV1TCPSocketAction(;
+        host=nothing,
+        port=nothing,
+    )
+
+    - host::String : Optional: Host name to connect to, defaults to the pod IP.
+    - port::IoK8sApimachineryPkgUtilIntstrIntOrString : Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
+"""
 mutable struct IoK8sApiCoreV1TCPSocketAction <: SwaggerModel
     host::Any # spec type: Union{ Nothing, String } # spec name: host
     port::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: port

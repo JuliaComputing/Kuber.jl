@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PriorityLevelConfigurationReference contains information that points to the \&quot;request-priority\&quot; being used.
+
+    IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationReference(;
+        name=nothing,
+    )
+
+    - name::String : &#x60;name&#x60; is the name of the priority level configuration being referenced Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationReference <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
 

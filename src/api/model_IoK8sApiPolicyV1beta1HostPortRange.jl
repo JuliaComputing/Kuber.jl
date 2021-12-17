@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HostPortRange defines a range of host ports that will be enabled by a policy for pods to use.  It requires both the start and end to be defined.
+
+    IoK8sApiPolicyV1beta1HostPortRange(;
+        max=nothing,
+        min=nothing,
+    )
+
+    - max::Int32 : max is the end of the range, inclusive.
+    - min::Int32 : min is the start of the range, inclusive.
+"""
 mutable struct IoK8sApiPolicyV1beta1HostPortRange <: SwaggerModel
     max::Any # spec type: Union{ Nothing, Int32 } # spec name: max
     min::Any # spec type: Union{ Nothing, Int32 } # spec name: min

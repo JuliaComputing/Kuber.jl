@@ -2,6 +2,46 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Event is a report of an event somewhere in the cluster.
+
+    IoK8sApiCoreV1Event(;
+        action=nothing,
+        apiVersion=nothing,
+        count=nothing,
+        eventTime=nothing,
+        firstTimestamp=nothing,
+        involvedObject=nothing,
+        kind=nothing,
+        lastTimestamp=nothing,
+        message=nothing,
+        metadata=nothing,
+        reason=nothing,
+        related=nothing,
+        reportingComponent=nothing,
+        reportingInstance=nothing,
+        series=nothing,
+        source=nothing,
+        type=nothing,
+    )
+
+    - action::String : What action was taken/failed regarding to the Regarding object.
+    - apiVersion::String : APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+    - count::Int32 : The number of times this event has occurred.
+    - eventTime::IoK8sApimachineryPkgApisMetaV1MicroTime : Time when this Event was first observed.
+    - firstTimestamp::IoK8sApimachineryPkgApisMetaV1Time : The time at which the event was first recorded. (Time of server receipt is in TypeMeta.)
+    - involvedObject::IoK8sApiCoreV1ObjectReference : The object that this event is about.
+    - kind::String : Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - lastTimestamp::IoK8sApimachineryPkgApisMetaV1Time : The time at which the most recent occurrence of this event was recorded.
+    - message::String : A human-readable description of the status of this operation.
+    - metadata::IoK8sApimachineryPkgApisMetaV1ObjectMeta : Standard object&#39;s metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
+    - reason::String : This should be a short, machine understandable string that gives the reason for the transition into the object&#39;s current status.
+    - related::IoK8sApiCoreV1ObjectReference : Optional secondary object for more complex actions.
+    - reportingComponent::String : Name of the controller that emitted this Event, e.g. &#x60;kubernetes.io/kubelet&#x60;.
+    - reportingInstance::String : ID of the controller instance, e.g. &#x60;kubelet-xyzf&#x60;.
+    - series::IoK8sApiCoreV1EventSeries : Data about the Event series this event represents or nil if it&#39;s a singleton Event.
+    - source::IoK8sApiCoreV1EventSource : The component reporting this event. Should be a short machine understandable string.
+    - type::String : Type of this event (Normal, Warning), new types could be added in the future
+"""
 mutable struct IoK8sApiCoreV1Event <: SwaggerModel
     action::Any # spec type: Union{ Nothing, String } # spec name: action
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion

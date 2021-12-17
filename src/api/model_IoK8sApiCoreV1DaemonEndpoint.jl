@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DaemonEndpoint contains information about a single Daemon endpoint.
+
+    IoK8sApiCoreV1DaemonEndpoint(;
+        Port=nothing,
+    )
+
+    - Port::Int32 : Port number of the given endpoint.
+"""
 mutable struct IoK8sApiCoreV1DaemonEndpoint <: SwaggerModel
     Port::Any # spec type: Union{ Nothing, Int32 } # spec name: Port
 

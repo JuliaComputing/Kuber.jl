@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Selects a key from a ConfigMap.
+
+    IoK8sApiCoreV1ConfigMapKeySelector(;
+        key=nothing,
+        name=nothing,
+        optional=nothing,
+    )
+
+    - key::String : The key to select.
+    - name::String : Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    - optional::Bool : Specify whether the ConfigMap or its key must be defined
+"""
 mutable struct IoK8sApiCoreV1ConfigMapKeySelector <: SwaggerModel
     key::Any # spec type: Union{ Nothing, String } # spec name: key
     name::Any # spec type: Union{ Nothing, String } # spec name: name

@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlowSchemaStatus represents the current state of a FlowSchema.
+
+    IoK8sApiFlowcontrolV1alpha1FlowSchemaStatus(;
+        conditions=nothing,
+    )
+
+    - conditions::Vector{IoK8sApiFlowcontrolV1alpha1FlowSchemaCondition} : &#x60;conditions&#x60; is a list of the current states of FlowSchema.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1FlowSchemaStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiFlowcontrolV1alpha1FlowSchemaCondition} } # spec name: conditions
 

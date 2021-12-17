@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ServiceAccountSubject holds detailed information for service-account-kind subject.
+
+    IoK8sApiFlowcontrolV1alpha1ServiceAccountSubject(;
+        name=nothing,
+        namespace=nothing,
+    )
+
+    - name::String : &#x60;name&#x60; is the name of matching ServiceAccount objects, or \&quot;*\&quot; to match regardless of name. Required.
+    - namespace::String : &#x60;namespace&#x60; is the namespace of matching ServiceAccount objects. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1ServiceAccountSubject <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace

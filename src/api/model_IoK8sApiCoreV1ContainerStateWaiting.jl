@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerStateWaiting is a waiting state of a container.
+
+    IoK8sApiCoreV1ContainerStateWaiting(;
+        message=nothing,
+        reason=nothing,
+    )
+
+    - message::String : Message regarding why the container is not yet running.
+    - reason::String : (brief) reason the container is not yet running.
+"""
 mutable struct IoK8sApiCoreV1ContainerStateWaiting <: SwaggerModel
     message::Any # spec type: Union{ Nothing, String } # spec name: message
     reason::Any # spec type: Union{ Nothing, String } # spec name: reason

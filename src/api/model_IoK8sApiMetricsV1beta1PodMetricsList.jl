@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodMetricsList is a list of PodMetrics.
+
+    IoK8sApiMetricsV1beta1PodMetricsList(;
+        metadata=nothing,
+        items=nothing,
+    )
+
+    - metadata::IoK8sApimachineryPkgApisMetaV1ListMeta : Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+    - items::Vector{IoK8sApiMetricsV1beta1PodMetrics} : List of pod metrics.
+"""
 mutable struct IoK8sApiMetricsV1beta1PodMetricsList <: SwaggerModel
     metadata::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1ListMeta } # spec name: metadata
     items::Any # spec type: Union{ Nothing, Vector{IoK8sApiMetricsV1beta1PodMetrics} } # spec name: items

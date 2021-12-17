@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NetworkPolicyPort describes a port to allow traffic on
+
+    IoK8sApiNetworkingV1NetworkPolicyPort(;
+        port=nothing,
+        protocol=nothing,
+    )
+
+    - port::IoK8sApimachineryPkgUtilIntstrIntOrString : The port on the given protocol. This can either be a numerical or named port on a pod. If this field is not provided, this matches all port names and numbers.
+    - protocol::String : The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
+"""
 mutable struct IoK8sApiNetworkingV1NetworkPolicyPort <: SwaggerModel
     port::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgUtilIntstrIntOrString } # spec name: port
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol

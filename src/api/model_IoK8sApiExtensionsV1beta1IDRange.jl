@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""IDRange provides a min/max of an allowed range of IDs. Deprecated: use IDRange from policy API Group instead.
+
+    IoK8sApiExtensionsV1beta1IDRange(;
+        max=nothing,
+        min=nothing,
+    )
+
+    - max::Int64 : max is the end of the range, inclusive.
+    - min::Int64 : min is the start of the range, inclusive.
+"""
 mutable struct IoK8sApiExtensionsV1beta1IDRange <: SwaggerModel
     max::Any # spec type: Union{ Nothing, Int64 } # spec name: max
     min::Any # spec type: Union{ Nothing, Int64 } # spec name: min

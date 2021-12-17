@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EventSeries contain information on series of events, i.e. thing that was/is happening continuously for some time.
+
+    IoK8sApiEventsV1beta1EventSeries(;
+        count=nothing,
+        lastObservedTime=nothing,
+        state=nothing,
+    )
+
+    - count::Int32 : Number of occurrences in this series up to the last heartbeat time
+    - lastObservedTime::IoK8sApimachineryPkgApisMetaV1MicroTime : Time when last Event from the series was seen before last heartbeat.
+    - state::String : Information whether this series is ongoing or finished. Deprecated. Planned removal for 1.18
+"""
 mutable struct IoK8sApiEventsV1beta1EventSeries <: SwaggerModel
     count::Any # spec type: Union{ Nothing, Int32 } # spec name: count
     lastObservedTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1MicroTime } # spec name: lastObservedTime

@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""LimitRangeSpec defines a min/max usage limit for resources that match on kind.
+
+    IoK8sApiCoreV1LimitRangeSpec(;
+        limits=nothing,
+    )
+
+    - limits::Vector{IoK8sApiCoreV1LimitRangeItem} : Limits is the list of LimitRangeItem objects that are enforced.
+"""
 mutable struct IoK8sApiCoreV1LimitRangeSpec <: SwaggerModel
     limits::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1LimitRangeItem} } # spec name: limits
 

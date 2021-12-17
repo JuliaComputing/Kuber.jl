@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.
+
+    IoK8sApiCoreV1PodDNSConfig(;
+        nameservers=nothing,
+        options=nothing,
+        searches=nothing,
+    )
+
+    - nameservers::Vector{String} : A list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy. Duplicated nameservers will be removed.
+    - options::Vector{IoK8sApiCoreV1PodDNSConfigOption} : A list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Duplicated entries will be removed. Resolution options given in Options will override those that appear in the base DNSPolicy.
+    - searches::Vector{String} : A list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy. Duplicated search paths will be removed.
+"""
 mutable struct IoK8sApiCoreV1PodDNSConfig <: SwaggerModel
     nameservers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nameservers
     options::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1PodDNSConfigOption} } # spec name: options

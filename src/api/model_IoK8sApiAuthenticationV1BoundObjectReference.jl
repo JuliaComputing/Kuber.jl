@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""BoundObjectReference is a reference to an object that a token is bound to.
+
+    IoK8sApiAuthenticationV1BoundObjectReference(;
+        apiVersion=nothing,
+        kind=nothing,
+        name=nothing,
+        uid=nothing,
+    )
+
+    - apiVersion::String : API version of the referent.
+    - kind::String : Kind of the referent. Valid kinds are &#39;Pod&#39; and &#39;Secret&#39;.
+    - name::String : Name of the referent.
+    - uid::String : UID of the referent.
+"""
 mutable struct IoK8sApiAuthenticationV1BoundObjectReference <: SwaggerModel
     apiVersion::Any # spec type: Union{ Nothing, String } # spec name: apiVersion
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

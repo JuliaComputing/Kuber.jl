@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ResourceRule is the list of actions the subject is allowed to perform on resources. The list ordering isn&#39;t significant, may contain duplicates, and possibly be incomplete.
+
+    IoK8sApiAuthorizationV1beta1ResourceRule(;
+        apiGroups=nothing,
+        resourceNames=nothing,
+        resources=nothing,
+        verbs=nothing,
+    )
+
+    - apiGroups::Vector{String} : APIGroups is the name of the APIGroup that contains the resources.  If multiple API groups are specified, any action requested against one of the enumerated resources in any API group will be allowed.  \&quot;*\&quot; means all.
+    - resourceNames::Vector{String} : ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.  \&quot;*\&quot; means all.
+    - resources::Vector{String} : Resources is a list of resources this rule applies to.  \&quot;*\&quot; means all in the specified apiGroups.  \&quot;*/foo\&quot; represents the subresource &#39;foo&#39; for all resources in the specified apiGroups.
+    - verbs::Vector{String} : Verb is a list of kubernetes resource API verbs, like: get, list, watch, create, update, delete, proxy.  \&quot;*\&quot; means all.
+"""
 mutable struct IoK8sApiAuthorizationV1beta1ResourceRule <: SwaggerModel
     apiGroups::Any # spec type: Union{ Nothing, Vector{String} } # spec name: apiGroups
     resourceNames::Any # spec type: Union{ Nothing, Vector{String} } # spec name: resourceNames

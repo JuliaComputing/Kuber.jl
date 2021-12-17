@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""GroupSubject holds detailed information for group-kind subject.
+
+    IoK8sApiFlowcontrolV1alpha1GroupSubject(;
+        name=nothing,
+    )
+
+    - name::String : name is the user group that matches, or \&quot;*\&quot; to match all user groups. See https://github.com/kubernetes/apiserver/blob/master/pkg/authentication/user/user.go for some well-known group names. Required.
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1GroupSubject <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
 

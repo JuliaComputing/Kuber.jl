@@ -2,6 +2,28 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""DeploymentSpec is the specification of the desired behavior of the Deployment.
+
+    IoK8sApiAppsV1beta2DeploymentSpec(;
+        minReadySeconds=nothing,
+        paused=nothing,
+        progressDeadlineSeconds=nothing,
+        replicas=nothing,
+        revisionHistoryLimit=nothing,
+        selector=nothing,
+        strategy=nothing,
+        template=nothing,
+    )
+
+    - minReadySeconds::Int32 : Minimum number of seconds for which a newly created pod should be ready without any of its container crashing, for it to be considered available. Defaults to 0 (pod will be considered available as soon as it is ready)
+    - paused::Bool : Indicates that the deployment is paused.
+    - progressDeadlineSeconds::Int32 : The maximum time in seconds for a deployment to make progress before it is considered to be failed. The deployment controller will continue to process failed deployments and a condition with a ProgressDeadlineExceeded reason will be surfaced in the deployment status. Note that progress will not be estimated during the time a deployment is paused. Defaults to 600s.
+    - replicas::Int32 : Number of desired pods. This is a pointer to distinguish between explicit zero and not specified. Defaults to 1.
+    - revisionHistoryLimit::Int32 : The number of old ReplicaSets to retain to allow rollback. This is a pointer to distinguish between explicit zero and not specified. Defaults to 10.
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : Label selector for pods. Existing ReplicaSets whose pods are selected by this will be the ones affected by this deployment. It must match the pod template&#39;s labels.
+    - strategy::IoK8sApiAppsV1beta2DeploymentStrategy : The deployment strategy to use to replace existing pods with new ones.
+    - template::IoK8sApiCoreV1PodTemplateSpec : Template describes the pods that will be created.
+"""
 mutable struct IoK8sApiAppsV1beta2DeploymentSpec <: SwaggerModel
     minReadySeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: minReadySeconds
     paused::Any # spec type: Union{ Nothing, Bool } # spec name: paused

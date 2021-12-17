@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerState holds a possible state of container. Only one of its members may be specified. If none of them is specified, the default one is ContainerStateWaiting.
+
+    IoK8sApiCoreV1ContainerState(;
+        running=nothing,
+        terminated=nothing,
+        waiting=nothing,
+    )
+
+    - running::IoK8sApiCoreV1ContainerStateRunning : Details about a running container
+    - terminated::IoK8sApiCoreV1ContainerStateTerminated : Details about a terminated container
+    - waiting::IoK8sApiCoreV1ContainerStateWaiting : Details about a waiting container
+"""
 mutable struct IoK8sApiCoreV1ContainerState <: SwaggerModel
     running::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ContainerStateRunning } # spec name: running
     terminated::Any # spec type: Union{ Nothing, IoK8sApiCoreV1ContainerStateTerminated } # spec name: terminated

@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Subject matches the originator of a request, as identified by the request authentication system. There are three ways of matching an originator; by user, group, or service account.
+
+    IoK8sApiFlowcontrolV1alpha1Subject(;
+        group=nothing,
+        kind=nothing,
+        serviceAccount=nothing,
+        user=nothing,
+    )
+
+    - group::IoK8sApiFlowcontrolV1alpha1GroupSubject
+    - kind::String : Required
+    - serviceAccount::IoK8sApiFlowcontrolV1alpha1ServiceAccountSubject
+    - user::IoK8sApiFlowcontrolV1alpha1UserSubject
+"""
 mutable struct IoK8sApiFlowcontrolV1alpha1Subject <: SwaggerModel
     group::Any # spec type: Union{ Nothing, IoK8sApiFlowcontrolV1alpha1GroupSubject } # spec name: group
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind

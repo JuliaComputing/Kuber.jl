@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SecretReference represents a Secret Reference. It has enough information to retrieve secret in any namespace
+
+    IoK8sApiCoreV1SecretReference(;
+        name=nothing,
+        namespace=nothing,
+    )
+
+    - name::String : Name is unique within a namespace to reference a secret resource.
+    - namespace::String : Namespace defines the space within which the secret name must be unique.
+"""
 mutable struct IoK8sApiCoreV1SecretReference <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace

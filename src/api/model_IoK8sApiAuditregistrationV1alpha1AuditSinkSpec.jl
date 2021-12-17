@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AuditSinkSpec holds the spec for the audit sink
+
+    IoK8sApiAuditregistrationV1alpha1AuditSinkSpec(;
+        policy=nothing,
+        webhook=nothing,
+    )
+
+    - policy::IoK8sApiAuditregistrationV1alpha1Policy : Policy defines the policy for selecting which events should be sent to the webhook required
+    - webhook::IoK8sApiAuditregistrationV1alpha1Webhook : Webhook to send events required
+"""
 mutable struct IoK8sApiAuditregistrationV1alpha1AuditSinkSpec <: SwaggerModel
     policy::Any # spec type: Union{ Nothing, IoK8sApiAuditregistrationV1alpha1Policy } # spec name: policy
     webhook::Any # spec type: Union{ Nothing, IoK8sApiAuditregistrationV1alpha1Webhook } # spec name: webhook

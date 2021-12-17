@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""volumeDevice describes a mapping of a raw block device within a container.
+
+    IoK8sApiCoreV1VolumeDevice(;
+        devicePath=nothing,
+        name=nothing,
+    )
+
+    - devicePath::String : devicePath is the path inside of the container that the device will be mapped to.
+    - name::String : name must match the name of a persistentVolumeClaim in the pod
+"""
 mutable struct IoK8sApiCoreV1VolumeDevice <: SwaggerModel
     devicePath::Any # spec type: Union{ Nothing, String } # spec name: devicePath
     name::Any # spec type: Union{ Nothing, String } # spec name: name

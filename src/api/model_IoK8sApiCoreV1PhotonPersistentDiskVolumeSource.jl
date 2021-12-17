@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Photon Controller persistent disk resource.
+
+    IoK8sApiCoreV1PhotonPersistentDiskVolumeSource(;
+        fsType=nothing,
+        pdID=nothing,
+    )
+
+    - fsType::String : Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified.
+    - pdID::String : ID that identifies Photon Controller persistent disk
+"""
 mutable struct IoK8sApiCoreV1PhotonPersistentDiskVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     pdID::Any # spec type: Union{ Nothing, String } # spec name: pdID

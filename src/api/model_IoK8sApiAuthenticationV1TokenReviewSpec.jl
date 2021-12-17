@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TokenReviewSpec is a description of the token authentication request.
+
+    IoK8sApiAuthenticationV1TokenReviewSpec(;
+        audiences=nothing,
+        token=nothing,
+    )
+
+    - audiences::Vector{String} : Audiences is a list of the identifiers that the resource server presented with the token identifies as. Audience-aware token authenticators will verify that the token was intended for at least one of the audiences in this list. If no audiences are provided, the audience will default to the audience of the Kubernetes apiserver.
+    - token::String : Token is the opaque bearer token.
+"""
 mutable struct IoK8sApiAuthenticationV1TokenReviewSpec <: SwaggerModel
     audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     token::Any # spec type: Union{ Nothing, String } # spec name: token

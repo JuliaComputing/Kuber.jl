@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ClientIPConfig represents the configurations of Client IP based session affinity.
+
+    IoK8sApiCoreV1ClientIPConfig(;
+        timeoutSeconds=nothing,
+    )
+
+    - timeoutSeconds::Int32 : timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be &gt;0 &amp;&amp; &lt;&#x3D;86400(for 1 day) if ServiceAffinity &#x3D;&#x3D; \&quot;ClientIP\&quot;. Default value is 10800(for 3 hours).
+"""
 mutable struct IoK8sApiCoreV1ClientIPConfig <: SwaggerModel
     timeoutSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: timeoutSeconds
 

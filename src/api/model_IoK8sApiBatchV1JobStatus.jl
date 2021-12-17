@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JobStatus represents the current state of a Job.
+
+    IoK8sApiBatchV1JobStatus(;
+        active=nothing,
+        completionTime=nothing,
+        conditions=nothing,
+        failed=nothing,
+        startTime=nothing,
+        succeeded=nothing,
+    )
+
+    - active::Int32 : The number of actively running pods.
+    - completionTime::IoK8sApimachineryPkgApisMetaV1Time : Represents time when the job was completed. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.
+    - conditions::Vector{IoK8sApiBatchV1JobCondition} : The latest available observations of an object&#39;s current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+    - failed::Int32 : The number of pods which reached phase Failed.
+    - startTime::IoK8sApimachineryPkgApisMetaV1Time : Represents time when the job was acknowledged by the job controller. It is not guaranteed to be set in happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.
+    - succeeded::Int32 : The number of pods which reached phase Succeeded.
+"""
 mutable struct IoK8sApiBatchV1JobStatus <: SwaggerModel
     active::Any # spec type: Union{ Nothing, Int32 } # spec name: active
     completionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: completionTime

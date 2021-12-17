@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler.
+
+    IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus(;
+        conditions=nothing,
+        currentMetrics=nothing,
+        currentReplicas=nothing,
+        desiredReplicas=nothing,
+        lastScaleTime=nothing,
+        observedGeneration=nothing,
+    )
+
+    - conditions::Vector{IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerCondition} : conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.
+    - currentMetrics::Vector{IoK8sApiAutoscalingV2beta1MetricStatus} : currentMetrics is the last read state of the metrics used by this autoscaler.
+    - currentReplicas::Int32 : currentReplicas is current number of replicas of pods managed by this autoscaler, as last seen by the autoscaler.
+    - desiredReplicas::Int32 : desiredReplicas is the desired number of replicas of pods managed by this autoscaler, as last calculated by the autoscaler.
+    - lastScaleTime::IoK8sApimachineryPkgApisMetaV1Time : lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed.
+    - observedGeneration::Int64 : observedGeneration is the most recent generation observed by this autoscaler.
+"""
 mutable struct IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerCondition} } # spec name: conditions
     currentMetrics::Any # spec type: Union{ Nothing, Vector{IoK8sApiAutoscalingV2beta1MetricStatus} } # spec name: currentMetrics

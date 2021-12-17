@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CSINodeSpec holds information about the specification of all CSI drivers installed on a node
+
+    IoK8sApiStorageV1beta1CSINodeSpec(;
+        drivers=nothing,
+    )
+
+    - drivers::Vector{IoK8sApiStorageV1beta1CSINodeDriver} : drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.
+"""
 mutable struct IoK8sApiStorageV1beta1CSINodeSpec <: SwaggerModel
     drivers::Any # spec type: Union{ Nothing, Vector{IoK8sApiStorageV1beta1CSINodeDriver} } # spec name: drivers
 

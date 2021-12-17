@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster). Exactly one \&quot;target\&quot; type should be set.
+
+    IoK8sApiAutoscalingV2beta1ExternalMetricSource(;
+        metricName=nothing,
+        metricSelector=nothing,
+        targetAverageValue=nothing,
+        targetValue=nothing,
+    )
+
+    - metricName::String : metricName is the name of the metric in question.
+    - metricSelector::IoK8sApimachineryPkgApisMetaV1LabelSelector : metricSelector is used to identify a specific time series within a given metric.
+    - targetAverageValue::IoK8sApimachineryPkgApiResourceQuantity : targetAverageValue is the target per-pod value of global metric (as a quantity). Mutually exclusive with TargetValue.
+    - targetValue::IoK8sApimachineryPkgApiResourceQuantity : targetValue is the target value of the metric (as a quantity). Mutually exclusive with TargetAverageValue.
+"""
 mutable struct IoK8sApiAutoscalingV2beta1ExternalMetricSource <: SwaggerModel
     metricName::Any # spec type: Union{ Nothing, String } # spec name: metricName
     metricSelector::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1LabelSelector } # spec name: metricSelector

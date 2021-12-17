@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CustomResourceSubresources defines the status and scale subresources for CustomResources.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources(;
+        scale=nothing,
+        status=nothing,
+    )
+
+    - scale::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale : scale indicates the custom resource should serve a &#x60;/scale&#x60; subresource that returns an &#x60;autoscaling/v1&#x60; Scale object.
+    - status::IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceStatus : status indicates the custom resource should serve a &#x60;/status&#x60; subresource. When enabled: 1. requests to the custom resource primary endpoint ignore changes to the &#x60;status&#x60; stanza of the object. 2. requests to the custom resource &#x60;/status&#x60; subresource ignore changes to anything other than the &#x60;status&#x60; stanza of the object.
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresources <: SwaggerModel
     scale::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceScale } # spec name: scale
     status::Any # spec type: Union{ Nothing, IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1CustomResourceSubresourceStatus } # spec name: status

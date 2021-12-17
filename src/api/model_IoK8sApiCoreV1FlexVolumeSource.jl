@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""FlexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin.
+
+    IoK8sApiCoreV1FlexVolumeSource(;
+        driver=nothing,
+        fsType=nothing,
+        options=nothing,
+        readOnly=nothing,
+        secretRef=nothing,
+    )
+
+    - driver::String : Driver is the name of the driver to use for this volume.
+    - fsType::String : Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. The default filesystem depends on FlexVolume script.
+    - options::Dict{String, String} : Optional: Extra command options if any.
+    - readOnly::Bool : Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
+    - secretRef::IoK8sApiCoreV1LocalObjectReference : Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts.
+"""
 mutable struct IoK8sApiCoreV1FlexVolumeSource <: SwaggerModel
     driver::Any # spec type: Union{ Nothing, String } # spec name: driver
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType

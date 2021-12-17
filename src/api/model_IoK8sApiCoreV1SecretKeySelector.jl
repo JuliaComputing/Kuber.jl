@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SecretKeySelector selects a key of a Secret.
+
+    IoK8sApiCoreV1SecretKeySelector(;
+        key=nothing,
+        name=nothing,
+        optional=nothing,
+    )
+
+    - key::String : The key of the secret to select from.  Must be a valid secret key.
+    - name::String : Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+    - optional::Bool : Specify whether the Secret or its key must be defined
+"""
 mutable struct IoK8sApiCoreV1SecretKeySelector <: SwaggerModel
     key::Any # spec type: Union{ Nothing, String } # spec name: key
     name::Any # spec type: Union{ Nothing, String } # spec name: name

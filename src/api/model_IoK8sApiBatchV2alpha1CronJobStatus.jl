@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""CronJobStatus represents the current state of a cron job.
+
+    IoK8sApiBatchV2alpha1CronJobStatus(;
+        active=nothing,
+        lastScheduleTime=nothing,
+    )
+
+    - active::Vector{IoK8sApiCoreV1ObjectReference} : A list of pointers to currently running jobs.
+    - lastScheduleTime::IoK8sApimachineryPkgApisMetaV1Time : Information when was the last time the job was successfully scheduled.
+"""
 mutable struct IoK8sApiBatchV2alpha1CronJobStatus <: SwaggerModel
     active::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1ObjectReference} } # spec name: active
     lastScheduleTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastScheduleTime

@@ -2,6 +2,12 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""JSONSchemaPropsOrBool represents JSONSchemaProps or a boolean value. Defaults to true for the boolean property.
+
+    IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool(;
+    )
+
+"""
 mutable struct IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool <: SwaggerModel
 
     function IoK8sApiextensionsApiserverPkgApisApiextensionsV1beta1JSONSchemaPropsOrBool(;)

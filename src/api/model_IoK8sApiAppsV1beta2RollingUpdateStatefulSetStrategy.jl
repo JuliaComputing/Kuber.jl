@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""RollingUpdateStatefulSetStrategy is used to communicate parameter for RollingUpdateStatefulSetStrategyType.
+
+    IoK8sApiAppsV1beta2RollingUpdateStatefulSetStrategy(;
+        partition=nothing,
+    )
+
+    - partition::Int32 : Partition indicates the ordinal at which the StatefulSet should be partitioned. Default value is 0.
+"""
 mutable struct IoK8sApiAppsV1beta2RollingUpdateStatefulSetStrategy <: SwaggerModel
     partition::Any # spec type: Union{ Nothing, Int32 } # spec name: partition
 

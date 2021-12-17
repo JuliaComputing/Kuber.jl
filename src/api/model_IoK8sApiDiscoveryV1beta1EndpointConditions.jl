@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""EndpointConditions represents the current condition of an endpoint.
+
+    IoK8sApiDiscoveryV1beta1EndpointConditions(;
+        ready=nothing,
+    )
+
+    - ready::Bool : ready indicates that this endpoint is prepared to receive traffic, according to whatever system is managing the endpoint. A nil value indicates an unknown state. In most cases consumers should interpret this unknown state as ready.
+"""
 mutable struct IoK8sApiDiscoveryV1beta1EndpointConditions <: SwaggerModel
     ready::Any # spec type: Union{ Nothing, Bool } # spec name: ready
 

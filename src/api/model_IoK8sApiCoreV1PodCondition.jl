@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PodCondition contains details for the current condition of this pod.
+
+    IoK8sApiCoreV1PodCondition(;
+        lastProbeTime=nothing,
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastProbeTime::IoK8sApimachineryPkgApisMetaV1Time : Last time we probed the condition.
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : Last time the condition transitioned from one status to another.
+    - message::String : Human-readable message indicating details about last transition.
+    - reason::String : Unique, one-word, CamelCase reason for the condition&#39;s last transition.
+    - status::String : Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+    - type::String : Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
+"""
 mutable struct IoK8sApiCoreV1PodCondition <: SwaggerModel
     lastProbeTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastProbeTime
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime

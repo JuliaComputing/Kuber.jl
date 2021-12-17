@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""APIServiceStatus contains derived information about an API server
+
+    IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceStatus(;
+        conditions=nothing,
+    )
+
+    - conditions::Vector{IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition} : Current service state of apiService.
+"""
 mutable struct IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceCondition} } # spec name: conditions
 

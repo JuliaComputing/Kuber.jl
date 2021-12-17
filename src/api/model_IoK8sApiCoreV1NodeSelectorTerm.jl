@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""A null or empty node selector term matches no objects. The requirements of them are ANDed. The TopologySelectorTerm type implements a subset of the NodeSelectorTerm.
+
+    IoK8sApiCoreV1NodeSelectorTerm(;
+        matchExpressions=nothing,
+        matchFields=nothing,
+    )
+
+    - matchExpressions::Vector{IoK8sApiCoreV1NodeSelectorRequirement} : A list of node selector requirements by node&#39;s labels.
+    - matchFields::Vector{IoK8sApiCoreV1NodeSelectorRequirement} : A list of node selector requirements by node&#39;s fields.
+"""
 mutable struct IoK8sApiCoreV1NodeSelectorTerm <: SwaggerModel
     matchExpressions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # spec name: matchExpressions
     matchFields::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NodeSelectorRequirement} } # spec name: matchFields

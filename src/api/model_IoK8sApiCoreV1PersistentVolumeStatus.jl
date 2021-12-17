@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""PersistentVolumeStatus is the current status of a persistent volume.
+
+    IoK8sApiCoreV1PersistentVolumeStatus(;
+        message=nothing,
+        phase=nothing,
+        reason=nothing,
+    )
+
+    - message::String : A human-readable message indicating details about why the volume is in this state.
+    - phase::String : Phase indicates if a volume is available, bound to a claim, or released by a claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#phase
+    - reason::String : Reason is a brief CamelCase string that describes any failure and is meant for machine parsing and tidy display in the CLI.
+"""
 mutable struct IoK8sApiCoreV1PersistentVolumeStatus <: SwaggerModel
     message::Any # spec type: Union{ Nothing, String } # spec name: message
     phase::Any # spec type: Union{ Nothing, String } # spec name: phase

@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""WebhookThrottleConfig holds the configuration for throttling events
+
+    IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig(;
+        burst=nothing,
+        qps=nothing,
+    )
+
+    - burst::Int64 : ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
+    - qps::Int64 : ThrottleQPS maximum number of batches per second default 10 QPS
+"""
 mutable struct IoK8sApiAuditregistrationV1alpha1WebhookThrottleConfig <: SwaggerModel
     burst::Any # spec type: Union{ Nothing, Int64 } # spec name: burst
     qps::Any # spec type: Union{ Nothing, Int64 } # spec name: qps

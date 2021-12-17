@@ -2,6 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a Ceph Filesystem mount that lasts the lifetime of a pod Cephfs volumes do not support ownership management or SELinux relabeling.
+
+    IoK8sApiCoreV1CephFSPersistentVolumeSource(;
+        monitors=nothing,
+        path=nothing,
+        readOnly=nothing,
+        secretFile=nothing,
+        secretRef=nothing,
+        user=nothing,
+    )
+
+    - monitors::Vector{String} : Required: Monitors is a collection of Ceph monitors More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+    - path::String : Optional: Used as the mounted root, rather than the full Ceph tree, default is /
+    - readOnly::Bool : Optional: Defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+    - secretFile::String : Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+    - secretRef::IoK8sApiCoreV1SecretReference : Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+    - user::String : Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
+"""
 mutable struct IoK8sApiCoreV1CephFSPersistentVolumeSource <: SwaggerModel
     monitors::Any # spec type: Union{ Nothing, Vector{String} } # spec name: monitors
     path::Any # spec type: Union{ Nothing, String } # spec name: path

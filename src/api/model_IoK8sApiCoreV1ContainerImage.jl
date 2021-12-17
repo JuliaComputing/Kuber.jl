@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Describe a container image
+
+    IoK8sApiCoreV1ContainerImage(;
+        names=nothing,
+        sizeBytes=nothing,
+    )
+
+    - names::Vector{String} : Names by which this image is known. e.g. [\&quot;k8s.gcr.io/hyperkube:v1.0.7\&quot;, \&quot;dockerhub.io/google_containers/hyperkube:v1.0.7\&quot;]
+    - sizeBytes::Int64 : The size of the image in bytes.
+"""
 mutable struct IoK8sApiCoreV1ContainerImage <: SwaggerModel
     names::Any # spec type: Union{ Nothing, Vector{String} } # spec name: names
     sizeBytes::Any # spec type: Union{ Nothing, Int64 } # spec name: sizeBytes

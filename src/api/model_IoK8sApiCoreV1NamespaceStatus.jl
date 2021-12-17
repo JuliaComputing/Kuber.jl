@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""NamespaceStatus is information about the current status of a Namespace.
+
+    IoK8sApiCoreV1NamespaceStatus(;
+        conditions=nothing,
+        phase=nothing,
+    )
+
+    - conditions::Vector{IoK8sApiCoreV1NamespaceCondition} : Represents the latest available observations of a namespace&#39;s current state.
+    - phase::String : Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+"""
 mutable struct IoK8sApiCoreV1NamespaceStatus <: SwaggerModel
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1NamespaceCondition} } # spec name: conditions
     phase::Any # spec type: Union{ Nothing, String } # spec name: phase

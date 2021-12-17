@@ -2,6 +2,30 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerStatus contains details for the current status of this container.
+
+    IoK8sApiCoreV1ContainerStatus(;
+        containerID=nothing,
+        image=nothing,
+        imageID=nothing,
+        lastState=nothing,
+        name=nothing,
+        ready=nothing,
+        restartCount=nothing,
+        started=nothing,
+        state=nothing,
+    )
+
+    - containerID::String : Container&#39;s ID in the format &#39;docker://&lt;container_id&gt;&#39;.
+    - image::String : The image the container is running. More info: https://kubernetes.io/docs/concepts/containers/images
+    - imageID::String : ImageID of the container&#39;s image.
+    - lastState::IoK8sApiCoreV1ContainerState : Details about the container&#39;s last termination condition.
+    - name::String : This must be a DNS_LABEL. Each container in a pod must have a unique name. Cannot be updated.
+    - ready::Bool : Specifies whether the container has passed its readiness probe.
+    - restartCount::Int32 : The number of times the container has been restarted, currently based on the number of dead containers that have not yet been removed. Note that this is calculated from dead containers. But those containers are subject to garbage collection. This value will get capped at 5 by GC.
+    - started::Bool : Specifies whether the container has passed its startup probe. Initialized as false, becomes true after startupProbe is considered successful. Resets to false when the container is restarted, or if kubelet loses state temporarily. Is always true when no startupProbe is defined.
+    - state::IoK8sApiCoreV1ContainerState : Details about the container&#39;s current condition.
+"""
 mutable struct IoK8sApiCoreV1ContainerStatus <: SwaggerModel
     containerID::Any # spec type: Union{ Nothing, String } # spec name: containerID
     image::Any # spec type: Union{ Nothing, String } # spec name: image

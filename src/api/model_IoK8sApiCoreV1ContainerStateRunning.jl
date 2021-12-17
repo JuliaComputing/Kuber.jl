@@ -2,6 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ContainerStateRunning is a running state of a container.
+
+    IoK8sApiCoreV1ContainerStateRunning(;
+        startedAt=nothing,
+    )
+
+    - startedAt::IoK8sApimachineryPkgApisMetaV1Time : Time at which the container was last (re-)started
+"""
 mutable struct IoK8sApiCoreV1ContainerStateRunning <: SwaggerModel
     startedAt::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: startedAt
 

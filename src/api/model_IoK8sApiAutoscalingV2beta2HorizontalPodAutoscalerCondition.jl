@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.
+
+    IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerCondition(;
+        lastTransitionTime=nothing,
+        message=nothing,
+        reason=nothing,
+        status=nothing,
+        type=nothing,
+    )
+
+    - lastTransitionTime::IoK8sApimachineryPkgApisMetaV1Time : lastTransitionTime is the last time the condition transitioned from one status to another
+    - message::String : message is a human-readable explanation containing details about the transition
+    - reason::String : reason is the reason for the condition&#39;s last transition.
+    - status::String : status is the status of the condition (True, False, Unknown)
+    - type::String : type describes the current condition
+"""
 mutable struct IoK8sApiAutoscalingV2beta2HorizontalPodAutoscalerCondition <: SwaggerModel
     lastTransitionTime::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApisMetaV1Time } # spec name: lastTransitionTime
     message::Any # spec type: Union{ Nothing, String } # spec name: message

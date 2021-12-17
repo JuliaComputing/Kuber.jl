@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Represents a vSphere volume resource.
+
+    IoK8sApiCoreV1VsphereVirtualDiskVolumeSource(;
+        fsType=nothing,
+        storagePolicyID=nothing,
+        storagePolicyName=nothing,
+        volumePath=nothing,
+    )
+
+    - fsType::String : Filesystem type to mount. Must be a filesystem type supported by the host operating system. Ex. \&quot;ext4\&quot;, \&quot;xfs\&quot;, \&quot;ntfs\&quot;. Implicitly inferred to be \&quot;ext4\&quot; if unspecified.
+    - storagePolicyID::String : Storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.
+    - storagePolicyName::String : Storage Policy Based Management (SPBM) profile name.
+    - volumePath::String : Path that identifies vSphere volume vmdk
+"""
 mutable struct IoK8sApiCoreV1VsphereVirtualDiskVolumeSource <: SwaggerModel
     fsType::Any # spec type: Union{ Nothing, String } # spec name: fsType
     storagePolicyID::Any # spec type: Union{ Nothing, String } # spec name: storagePolicyID

@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SELinuxOptions are the labels to be applied to the container
+
+    IoK8sApiCoreV1SELinuxOptions(;
+        level=nothing,
+        role=nothing,
+        type=nothing,
+        user=nothing,
+    )
+
+    - level::String : Level is SELinux level label that applies to the container.
+    - role::String : Role is a SELinux role label that applies to the container.
+    - type::String : Type is a SELinux type label that applies to the container.
+    - user::String : User is a SELinux user label that applies to the container.
+"""
 mutable struct IoK8sApiCoreV1SELinuxOptions <: SwaggerModel
     level::Any # spec type: Union{ Nothing, String } # spec name: level
     role::Any # spec type: Union{ Nothing, String } # spec name: role

@@ -47,8 +47,14 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
     api_decoration = ""
 
     while !ps.done
+        structsig = nothing
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
+        elseif x.typ == CSTParser.MacroCall && CSTParser.str_value(x[1]) == "@doc"
+            structsig = CSTParser.get_sig(x[3])
+        end
+
+        if structsig !== nothing
             if structsig.typ === CSTParser.BinaryOpCall
                 op = structsig.args[2]
                 if CSTParser.is_issubt(op)
@@ -105,8 +111,14 @@ function kubermodeltypes(file::String, sorted_apis::Vector{String}, aliases_set:
     x, ps = CSTParser.parse(ParseState(String(readchomp(file))))
     
     while !ps.done
+        structsig = nothing
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
+        elseif x.typ == CSTParser.MacroCall && CSTParser.str_value(x[1]) == "@doc"
+            structsig = CSTParser.get_sig(x[3])
+        end
+
+        if structsig !== nothing
             model_name = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
             if !startswith(model_name, "IoK8sKubernetes") && !(model_name == "IoK8sApimachineryPkgRuntimeRawExtension")
                 api_idx = find_matching_api(sorted_apis, model_name)

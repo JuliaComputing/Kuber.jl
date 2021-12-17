@@ -2,6 +2,16 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""AttachedVolume describes a volume attached to a node
+
+    IoK8sApiCoreV1AttachedVolume(;
+        devicePath=nothing,
+        name=nothing,
+    )
+
+    - devicePath::String : DevicePath represents the device path where the volume should be available
+    - name::String : Name of the attached volume
+"""
 mutable struct IoK8sApiCoreV1AttachedVolume <: SwaggerModel
     devicePath::Any # spec type: Union{ Nothing, String } # spec name: devicePath
     name::Any # spec type: Union{ Nothing, String } # spec name: name

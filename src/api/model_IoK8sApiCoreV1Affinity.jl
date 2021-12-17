@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""Affinity is a group of affinity scheduling rules.
+
+    IoK8sApiCoreV1Affinity(;
+        nodeAffinity=nothing,
+        podAffinity=nothing,
+        podAntiAffinity=nothing,
+    )
+
+    - nodeAffinity::IoK8sApiCoreV1NodeAffinity : Describes node affinity scheduling rules for the pod.
+    - podAffinity::IoK8sApiCoreV1PodAffinity : Describes pod affinity scheduling rules (e.g. co-locate this pod in the same node, zone, etc. as some other pod(s)).
+    - podAntiAffinity::IoK8sApiCoreV1PodAntiAffinity : Describes pod anti-affinity scheduling rules (e.g. avoid putting this pod in the same node, zone, etc. as some other pod(s)).
+"""
 mutable struct IoK8sApiCoreV1Affinity <: SwaggerModel
     nodeAffinity::Any # spec type: Union{ Nothing, IoK8sApiCoreV1NodeAffinity } # spec name: nodeAffinity
     podAffinity::Any # spec type: Union{ Nothing, IoK8sApiCoreV1PodAffinity } # spec name: podAffinity

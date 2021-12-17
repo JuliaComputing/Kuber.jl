@@ -2,6 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""SubjectAccessReviewStatus
+
+    IoK8sApiAuthorizationV1SubjectAccessReviewStatus(;
+        allowed=nothing,
+        denied=nothing,
+        evaluationError=nothing,
+        reason=nothing,
+    )
+
+    - allowed::Bool : Allowed is required. True if the action would be allowed, false otherwise.
+    - denied::Bool : Denied is optional. True if the action would be denied, otherwise false. If both allowed is false and denied is false, then the authorizer has no opinion on whether to authorize the action. Denied may not be true if Allowed is true.
+    - evaluationError::String : EvaluationError is an indication that some error occurred during the authorization check. It is entirely possible to get an error and be able to continue determine authorization status in spite of it. For instance, RBAC can be missing a role, but enough roles are still present and bound to reason about the request.
+    - reason::String : Reason is optional.  It indicates why a request was allowed or denied.
+"""
 mutable struct IoK8sApiAuthorizationV1SubjectAccessReviewStatus <: SwaggerModel
     allowed::Any # spec type: Union{ Nothing, Bool } # spec name: allowed
     denied::Any # spec type: Union{ Nothing, Bool } # spec name: denied

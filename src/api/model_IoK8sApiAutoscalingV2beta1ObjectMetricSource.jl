@@ -2,6 +2,22 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).
+
+    IoK8sApiAutoscalingV2beta1ObjectMetricSource(;
+        averageValue=nothing,
+        metricName=nothing,
+        selector=nothing,
+        target=nothing,
+        targetValue=nothing,
+    )
+
+    - averageValue::IoK8sApimachineryPkgApiResourceQuantity : averageValue is the target value of the average of the metric across all relevant pods (as a quantity)
+    - metricName::String : metricName is the name of the metric in question.
+    - selector::IoK8sApimachineryPkgApisMetaV1LabelSelector : selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping When unset, just the metricName will be used to gather metrics.
+    - target::IoK8sApiAutoscalingV2beta1CrossVersionObjectReference : target is the described Kubernetes object.
+    - targetValue::IoK8sApimachineryPkgApiResourceQuantity : targetValue is the target value of the metric (as a quantity).
+"""
 mutable struct IoK8sApiAutoscalingV2beta1ObjectMetricSource <: SwaggerModel
     averageValue::Any # spec type: Union{ Nothing, IoK8sApimachineryPkgApiResourceQuantity } # spec name: averageValue
     metricName::Any # spec type: Union{ Nothing, String } # spec name: metricName

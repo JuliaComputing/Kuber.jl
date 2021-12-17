@@ -2,6 +2,30 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""StatefulSetStatus represents the current state of a StatefulSet.
+
+    IoK8sApiAppsV1StatefulSetStatus(;
+        collisionCount=nothing,
+        conditions=nothing,
+        currentReplicas=nothing,
+        currentRevision=nothing,
+        observedGeneration=nothing,
+        readyReplicas=nothing,
+        replicas=nothing,
+        updateRevision=nothing,
+        updatedReplicas=nothing,
+    )
+
+    - collisionCount::Int32 : collisionCount is the count of hash collisions for the StatefulSet. The StatefulSet controller uses this field as a collision avoidance mechanism when it needs to create the name for the newest ControllerRevision.
+    - conditions::Vector{IoK8sApiAppsV1StatefulSetCondition} : Represents the latest available observations of a statefulset&#39;s current state.
+    - currentReplicas::Int32 : currentReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by currentRevision.
+    - currentRevision::String : currentRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [0,currentReplicas).
+    - observedGeneration::Int64 : observedGeneration is the most recent generation observed for this StatefulSet. It corresponds to the StatefulSet&#39;s generation, which is updated on mutation by the API Server.
+    - readyReplicas::Int32 : readyReplicas is the number of Pods created by the StatefulSet controller that have a Ready Condition.
+    - replicas::Int32 : replicas is the number of Pods created by the StatefulSet controller.
+    - updateRevision::String : updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
+    - updatedReplicas::Int32 : updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
+"""
 mutable struct IoK8sApiAppsV1StatefulSetStatus <: SwaggerModel
     collisionCount::Any # spec type: Union{ Nothing, Int32 } # spec name: collisionCount
     conditions::Any # spec type: Union{ Nothing, Vector{IoK8sApiAppsV1StatefulSetCondition} } # spec name: conditions

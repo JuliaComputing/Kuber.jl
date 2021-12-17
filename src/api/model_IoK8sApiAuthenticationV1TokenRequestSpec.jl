@@ -2,6 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
+@doc raw"""TokenRequestSpec contains client provided parameters of a token request.
+
+    IoK8sApiAuthenticationV1TokenRequestSpec(;
+        audiences=nothing,
+        boundObjectRef=nothing,
+        expirationSeconds=nothing,
+    )
+
+    - audiences::Vector{String} : Audiences are the intendend audiences of the token. A recipient of a token must identitfy themself with an identifier in the list of audiences of the token, and otherwise should reject the token. A token issued for multiple audiences may be used to authenticate against any of the audiences listed but implies a high degree of trust between the target audiences.
+    - boundObjectRef::IoK8sApiAuthenticationV1BoundObjectReference : BoundObjectRef is a reference to an object that the token will be bound to. The token will only be valid for as long as the bound object exists. NOTE: The API server&#39;s TokenReview endpoint will validate the BoundObjectRef, but other audiences may not. Keep ExpirationSeconds small if you want prompt revocation.
+    - expirationSeconds::Int64 : ExpirationSeconds is the requested duration of validity of the request. The token issuer may return a token with a different validity duration so a client needs to check the &#39;expiration&#39; field in a response.
+"""
 mutable struct IoK8sApiAuthenticationV1TokenRequestSpec <: SwaggerModel
     audiences::Any # spec type: Union{ Nothing, Vector{String} } # spec name: audiences
     boundObjectRef::Any # spec type: Union{ Nothing, IoK8sApiAuthenticationV1BoundObjectReference } # spec name: boundObjectRef
