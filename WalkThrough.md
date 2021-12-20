@@ -227,6 +227,7 @@ There! Now let's get back to the default namespace and start something of our ow
 ```julia
 julia> nginx_pod = kuber_obj(ctx, """{
            "kind": "Pod",
+           "apiVersion": "v1",
            "metadata":{
                "name": "nginx-pod",
                "namespace": "default",
@@ -248,6 +249,7 @@ Kuber.Kubernetes.IoK8sApiCoreV1Pod
 
 julia> nginx_service = kuber_obj(ctx, """{
            "kind": "Service",
+           "apiVersion": "v1",
            "metadata": {
                "name": "nginx-service",
                "namespace": "default",
