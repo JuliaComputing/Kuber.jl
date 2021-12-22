@@ -127,7 +127,7 @@ end
 
 function main()
     DIR = dirname(@__FILE__)
-    gen_aliases(joinpath(DIR, "../src/api"), joinpath(DIR, "../src/apialiases.jl"))
+    gen_aliases(joinpath(DIR, "../src/ApiImpl/api"), joinpath(DIR, "../src/ApiImpl/apialiases.jl"))
 end
 
 main()

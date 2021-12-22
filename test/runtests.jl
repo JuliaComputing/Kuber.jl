@@ -1,6 +1,9 @@
 using Kuber
 using Test
 
+const Typedefs = Kuber.ApiImpl.Typedefs
+const Kubernetes = Kuber.ApiImpl.Kubernetes
+
 #On GCE:
 #- Bring up a Kubernetes cluster: https://cloud.google.com/container-engine/docs/clusters/operations
 #    - `gcloud container clusters create cluster1 --num-nodes=2 --zone=us-central1-a --machine-type=n1-standard-1 --image-type=container_vm`
@@ -96,7 +99,7 @@ function create_versioned_models(ctx)
             }
         }
     }""")
-    @test isa(cron_batchv1beta1, Kuber.Kubernetes.IoK8sApiBatchV1beta1CronJob)
+    @test isa(cron_batchv1beta1, Kubernetes.IoK8sApiBatchV1beta1CronJob)
 
     cron_batchv2alpha1 = kuber_obj(ctx, """{
         "kind": "CronJob",
@@ -122,7 +125,7 @@ function create_versioned_models(ctx)
             }
         }
     }""")
-    @test isa(cron_batchv2alpha1, Kuber.Kubernetes.IoK8sApiBatchV2alpha1CronJob)
+    @test isa(cron_batchv2alpha1, Kubernetes.IoK8sApiBatchV2alpha1CronJob)
 end
 
 function create_delete_job(ctx, testid)
@@ -277,13 +280,13 @@ function test_versioned(ctx, testid)
     @testset "Watch Events" begin
         timedwait(10.0; pollint=1.0) do
             lock(lck) do
-                any(isa(event, Kuber.Typedefs.MetaV1.WatchEvent) && (event.type == "DELETED") for event in events)
+                any(isa(event, Typedefs.MetaV1.WatchEvent) && (event.type == "DELETED") for event in events)
             end
         end
         lock(lck) do
             @test !isempty(events)
             for event in events
-                @test isa(event, Union{Kuber.Typedefs.MetaV1.WatchEvent,Kuber.Typedefs.CoreV1.PodList})
+                @test isa(event, Union{Typedefs.MetaV1.WatchEvent,Typedefs.CoreV1.PodList})
             end
         end
     end
@@ -297,12 +300,12 @@ function test_all()
         end
 
         @testset "Overridden API Versions" begin
-            @test ctx.apis[:Apiregistration][1].api == Kuber.Kubernetes.ApiregistrationV1Api
-            @test ctx.apis[:Apps][1].api == Kuber.Kubernetes.AppsV1Api
+            @test ctx.apis[:Apiregistration][1].api == Kubernetes.ApiregistrationV1Api
+            @test ctx.apis[:Apps][1].api == Kubernetes.AppsV1Api
 
             ctx2 = init_context(("apiregistration.k8s.io"=>"v1beta1", "apps"=>"v1beta2"), false)
-            @test ctx2.apis[:Apiregistration][1].api == Kuber.Kubernetes.ApiregistrationV1beta1Api
-            @test ctx2.apis[:Apps][1].api == Kuber.Kubernetes.AppsV1beta2Api
+            @test ctx2.apis[:Apiregistration][1].api == Kubernetes.ApiregistrationV1beta1Api
+            @test ctx2.apis[:Apps][1].api == Kubernetes.AppsV1beta2Api
 
             test_versioned(ctx2, "2")
         end

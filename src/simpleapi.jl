@@ -17,7 +17,7 @@ function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiv
     kubectx.initialized || set_api_versions!(kubectx; max_tries=max_tries)
 
     if apiversion !== nothing
-        k = Kuber.api_group_type(apiversion)
+        k = Kuber.api_group_type(ctx, apiversion)
         apictx = k(kubectx.client)
     else
         kapi = kubectx.modelapi[O]
@@ -26,8 +26,8 @@ function _get_apictx(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, apiv
     apictx
 end
 
-_api_function(name::Symbol) = isdefined(@__MODULE__, name) ? eval(name) : nothing
-_api_function(name) = _api_function(Symbol(name))
+_api_function(ctx::Union{KuberContext,KuberWatchContext}, name::Symbol) = isdefined(apimodule(ctx), name) ? apimodule(ctx).eval(name) : nothing
+_api_function(ctx::Union{KuberContext,KuberWatchContext}, name) = _api_function(ctx, Symbol(name))
 
 function watch(fn::Function, ctx::KuberContext; buffersize::Int=1024, stream::KuberEventStream=KuberEventStream(buffersize))
     watchctx = KuberWatchContext(ctx, stream)
@@ -62,12 +62,12 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     result = nothing
     args = Any[name]
     if allnamespaces
-        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("list$(O)ForAllNamespaces"))
     elseif namespaced
-        apicall = eval(Symbol("listNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("listNamespaced$O"))
         push!(args, namespace)
     else
-        apicall = eval(Symbol("list$O"))
+        apicall = apimodule(ctx).eval(Symbol("list$O"))
     end
 
     if !watch || resourceVersion === nothing
@@ -106,12 +106,12 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     result = nothing
     args = Any[]
     if allnamespaces
-        apicall = eval(Symbol("list$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("list$(O)ForAllNamespaces"))
     elseif namespaced
-        apicall = eval(Symbol("listNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("listNamespaced$O"))
         push!(args, namespace)
     else
-        apicall = eval(Symbol("list$O"))
+        apicall = apimodule(ctx).eval(Symbol("list$O"))
     end
 
     if !watch || resourceVersion === nothing
@@ -145,9 +145,9 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[name]
-    if (apicall = _api_function("read$O")) !== nothing
+    if (apicall = _api_function(ctx, "read$O")) !== nothing
         # nothing
-    elseif (apicall = _api_function("readNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "readNamespaced$O")) !== nothing
         push!(args, _kubectx(ctx).namespace)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
@@ -188,9 +188,9 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     args = Any[]
     apiname = "list$O"
     namespace === nothing && (apiname *= "ForAllNamespaces")
-    if (apicall = _api_function(apiname)) !== nothing
+    if (apicall = _api_function(ctx, apiname)) !== nothing
         # nothing
-    elseif (apicall = _api_function("listNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "listNamespaced$O")) !== nothing
         push!(args, namespace)
     else
         throw(ArgumentError("No API functions could be located using :$O"))
@@ -226,17 +226,17 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
     allnamespaces = namespaced && (namespace == "*")
 
     if allnamespaces
-        apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("watch$(O)ForAllNamespaces"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream, name; kwargs...)
         end
     elseif namespaced
-        apicall = eval(Symbol("watchNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("watchNamespaced$O"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream, name, namespace; kwargs...)
         end
     else
-        apicall = eval(Symbol("watch$O"))
+        apicall = apimodule(ctx).eval(Symbol("watch$O"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream, name; kwargs...)
         end
@@ -253,17 +253,17 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
     allnamespaces = namespaced && (namespace == "*")
 
     if allnamespaces
-        apicall = eval(Symbol("watch$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("watch$(O)ForAllNamespaces"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream; kwargs...)
         end
     elseif namespaced
-        apicall = eval(Symbol("watchNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("watchNamespaced$O"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream, namespace; kwargs...)
         end
     else
-        apicall = eval(Symbol("watch$O"))
+        apicall = apimodule(ctx).eval(Symbol("watch$O"))
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, outstream; kwargs...)
         end
@@ -277,11 +277,11 @@ end
 
 function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any}; max_tries::Int=retries(ctx, true))
     apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
-    if (apicall = _api_function("create$O")) !== nothing
+    if (apicall = _api_function(ctx, "create$O")) !== nothing
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, d)
         end
-    elseif (apicall = _api_function("createNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "createNamespaced$O")) !== nothing
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, ctx.namespace, d)
         end
@@ -302,11 +302,11 @@ function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{S
 
     params = [apictx, name]
 
-    if (apicall = _api_function("delete$O")) !== nothing
+    if (apicall = _api_function(ctx, "delete$O")) !== nothing
         return k8s_retry(; max_tries=max_tries) do
             apicall(params...; kwargs...)
         end
-    elseif (apicall = _api_function("deleteNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "deleteNamespaced$O")) !== nothing
         push!(params, ctx.namespace)
         return k8s_retry(; max_tries=max_tries) do
             apicall(params...; kwargs...)
@@ -326,11 +326,11 @@ end
 function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing, max_tries::Int=retries(ctx, true))
     apictx = _get_apictx(ctx, O, apiversion)
 
-    if (apicall = _api_function("patch$O")) !== nothing
+    if (apicall = _api_function(ctx, "patch$O")) !== nothing
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, name, patch; _mediaType=patch_type)
         end
-    elseif (apicall = _api_function("patchNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "patchNamespaced$O")) !== nothing
         return k8s_retry(; max_tries=max_tries) do
             apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
         end

@@ -4,15 +4,11 @@ using JSON
 using Swagger
 using Downloads
 
-include("api/Kubernetes.jl")
-using .Kubernetes
-import .Kubernetes: getAPIVersions
+include("ApiImpl/ApiImpl.jl")
 
 import Base: convert, get, put!, delete!, show
 import Swagger: SwaggerModel
 
-include("typealiases.jl")
-include("apialiases.jl")
 include("helpers.jl")
 include("simpleapi.jl")
 
