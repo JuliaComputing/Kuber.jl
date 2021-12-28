@@ -202,7 +202,7 @@ end
 
 function main()
     DIR = dirname(@__FILE__)
-    gen_aliases(joinpath(DIR, "../src/api"), joinpath(DIR, "../src/typealiases.jl"))
+    gen_aliases(joinpath(DIR, "../src/ApiImpl/api"), joinpath(DIR, "../src/ApiImpl/typealiases.jl"))
 end
 
 main()
