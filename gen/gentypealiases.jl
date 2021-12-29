@@ -10,16 +10,16 @@ const BaseTypes = ("String", "Float64", "Float32", "Int", "Int64", "Int32", "Int
 const ModelPrefixes = ("IoK8sApimachineryPkgApis", "IoK8sApimachineryPkg", "IoK8sApi", "IoK8sKubeAggregatorPkgApis", "IoK8sApiextensionsApiserverPkgApis")
 
 function get_swagger_ctx_call_return_type(fn_body)
-    all_calls = findall(x->(x.typ === CSTParser.BinaryOpCall), fn_body.args)
+    all_calls = findall(x->CSTParser.isbinarysyntax(x), fn_body.args)
     for nidx in all_calls
         ncall = fn_body.args[nidx]
-        fc = ncall.args[3]
+        fc = ncall.args[2]
         if CSTParser.is_func_call(fc)
             binop = fc.args[1]
-            if binop.typ === CSTParser.BinaryOpCall
-                if (CSTParser.str_value(binop.args[1]) == "Swagger") && CSTParser.is_dot(binop.args[2]) && (binop.args[3].typ === CSTParser.Quotenode) && (CSTParser.str_value(binop.args[3].args[1]) == "Ctx")
-                    if (length(fc.args) > 6) && CSTParser.isidentifier(fc.args[7])
-                        return CSTParser.str_value(fc.args[7])
+            if CSTParser.isbinarysyntax(binop)
+                if (CSTParser.str_value(binop.args[1]) == "Swagger") && CSTParser.is_dot(binop.head) && (binop.args[2].head === :quotenode) && (CSTParser.str_value(binop.args[2].args[1]) == "Ctx")
+                    if (length(fc.args) > 3) && CSTParser.isidentifier(fc.args[4])
+                        return CSTParser.str_value(fc.args[4])
                     end
                 end
             end
@@ -32,7 +32,7 @@ end
 Adds Swagger API call return types to be aliased to undecorated names.
 """
 function emit_alias(fn_expr::CSTParser.EXPR, api_decoration::String, aliases::KuberTypeAliasesSet)
-    fn_body = CSTParser.get_body(fn_expr)
+    fn_body = fn_expr.args[end]
     return_type = get_swagger_ctx_call_return_type(fn_body)
     ((nothing === return_type) || (return_type in BaseTypes)) && return
     push!(get!(()->Set{String}(), aliases, api_decoration), return_type)
@@ -46,19 +46,19 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
     x, ps = CSTParser.parse(ParseState(String(readchomp(file))))
     api_decoration = ""
 
-    while !ps.done
+    while !ps.done && (CSTParser.kindof(ps.nt) !== CSTParser.Tokens.ENDMARKER)
         structsig = nothing
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
-        elseif x.typ == CSTParser.MacroCall && CSTParser.str_value(x[1]) == "@doc"
+        elseif CSTParser.ismacrocall(x) && CSTParser.str_value(x[1]) == "@doc"
             structsig = CSTParser.get_sig(x[3])
         end
 
         if structsig !== nothing
-            if structsig.typ === CSTParser.BinaryOpCall
-                op = structsig.args[2]
+            if CSTParser.isbinarysyntax(structsig)
+                op = structsig.head
                 if CSTParser.is_issubt(op)
-                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[3]))
+                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[2]))
                     if subtyp == "SwaggerApi"
                         typename = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
                         if endswith(typename, "Api")
@@ -71,7 +71,7 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
             # Note: We are guaranteed to receive the struct definition before methods
             #       because of the sequence in which Swagger code is generated and also
             #       because of the Julia restriction of type being defined before use
-            fn_expr = ((x.typ === CSTParser.MacroCall) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
+            fn_expr = (CSTParser.ismacrocall(x) && CSTParser.defines_function(x.args[4])) ? x.args[4] : CSTParser.defines_function(x) ? x : nothing
             if fn_expr !== nothing
                 emit_alias(fn_expr, api_decoration, aliases_set)
             end
@@ -110,16 +110,21 @@ end
 function kubermodeltypes(file::String, sorted_apis::Vector{String}, aliases_set::KuberTypeAliasesSet, unmapped::Set{String})
     x, ps = CSTParser.parse(ParseState(String(readchomp(file))))
     
-    while !ps.done
+    while !ps.done && (CSTParser.kindof(ps.nt) !== CSTParser.Tokens.ENDMARKER)
         structsig = nothing
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
-        elseif x.typ == CSTParser.MacroCall && CSTParser.str_value(x[1]) == "@doc"
-            structsig = CSTParser.get_sig(x[3])
+        elseif CSTParser.ismacrocall(x) && CSTParser.str_value(x[1]) == "@doc"
+            for elem in x
+                if CSTParser.defines_struct(elem)
+                    structsig = elem
+                    break
+                end
+            end
         end
 
         if structsig !== nothing
-            model_name = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
+            model_name = CSTParser.str_value(CSTParser.get_name(structsig))
             if !startswith(model_name, "IoK8sKubernetes") && !(model_name == "IoK8sApimachineryPkgRuntimeRawExtension")
                 api_idx = find_matching_api(sorted_apis, model_name)
                 if api_idx !== nothing
@@ -201,8 +206,12 @@ function gen_aliases(folder::String, output::String)
 end
 
 function main()
-    DIR = dirname(@__FILE__)
-    gen_aliases(joinpath(DIR, "../src/ApiImpl/api"), joinpath(DIR, "../src/ApiImpl/typealiases.jl"))
+    if length(ARGS) > 0
+        output_path = ARGS[1]
+    else
+        output_path = joinpath(dirname(dirname(__FILE__)), "src", "ApiImpl")
+    end
+    gen_aliases(joinpath(output_path, "api"), joinpath(output_path, "typealiases.jl"))
 end
 
 main()

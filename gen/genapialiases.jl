@@ -29,12 +29,12 @@ function emit_alias(fn_expr::CSTParser.EXPR, api_decoration::String)
 
     (fn_name == undec_fn_name) && (return nothing)
     fn_sig = CSTParser.get_sig(fn_expr)
-    fn_args = filter(x->((x.typ === CSTParser.BinaryOpCall) || (x.typ === CSTParser.IDENTIFIER)), fn_sig.args[3:end])
-    fn_kwargs_container = filter(x->(x.typ === CSTParser.Parameters), fn_sig.args[3:end])
-    fn_kwargs = isempty(fn_kwargs_container) ? [] : filter(x->(x.typ === CSTParser.Kw), fn_kwargs_container[1].args)
+    fn_args = filter(x->(CSTParser.isbinarysyntax(x) || CSTParser.isidentifier(x)), fn_sig.args[2:end])
+    fn_kwargs_container = filter(x->CSTParser.isparameters(x), fn_sig.args[2:end])
+    fn_kwargs = isempty(fn_kwargs_container) ? [] : filter(x->CSTParser.iskwarg(x), fn_kwargs_container[1].args)
 
-    arg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x))=>((x.typ === CSTParser.IDENTIFIER) ? "" : CSTParser.str_value(x.args[3])), fn_args)
-    kwarg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x.args[1]))=>CSTParser.str_value(x.args[3]), fn_kwargs)
+    arg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x))=>(CSTParser.isidentifier(x) ? "" : CSTParser.str_value(x.args[2])), fn_args)
+    kwarg_pairs = map(x->CSTParser.str_value(CSTParser.get_name(x.args[1]))=>CSTParser.str_value(x.args[2]), fn_kwargs)
 
     KuberAPIAlias(undec_fn_name, fn_name, arg_pairs, kwarg_pairs)
 end
@@ -48,13 +48,13 @@ function kuberapi(file::String)
 
     x, ps = CSTParser.parse(ParseState(String(readchomp(file))))
 
-    while !ps.done
+    while !ps.done && (CSTParser.kindof(ps.nt) !== CSTParser.Tokens.ENDMARKER)
         if CSTParser.defines_struct(x)
             structsig = CSTParser.get_sig(x)
-            if structsig.typ === CSTParser.BinaryOpCall
-                op = structsig.args[2]
+            if CSTParser.isbinarysyntax(structsig)
+                op = structsig.head
                 if CSTParser.is_issubt(op)
-                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[3]))
+                    subtyp = CSTParser.str_value(CSTParser.get_name(structsig.args[2]))
                     if subtyp == "SwaggerApi"
                         typename = CSTParser.str_value(CSTParser.get_name(structsig.args[1]))
                         if endswith(typename, "Api")
@@ -67,7 +67,7 @@ function kuberapi(file::String)
             # Note: We are guaranteed to receive the struct definition before methods
             #       because of the sequence in which Swagger code is generated and also
             #       because of the Julia restriction of type being defined before use
-            fn_expr = ((x.typ === CSTParser.MacroCall) && CSTParser.defines_function(x.args[3])) ? x.args[3] : CSTParser.defines_function(x) ? x : nothing
+            fn_expr = (CSTParser.ismacrocall(x) && CSTParser.defines_function(x.args[4])) ? x.args[4] : CSTParser.defines_function(x) ? x : nothing
             if fn_expr !== nothing
                 fn_name = CSTParser.str_value(CSTParser.get_name(fn_expr))
                 if !startswith(fn_name, "_swaggerinternal_")
@@ -126,8 +126,12 @@ function gen_aliases(folder::String, output::String)
 end
 
 function main()
-    DIR = dirname(@__FILE__)
-    gen_aliases(joinpath(DIR, "../src/ApiImpl/api"), joinpath(DIR, "../src/ApiImpl/apialiases.jl"))
+    if length(ARGS) > 0
+        output_path = ARGS[1]
+    else
+        output_path = joinpath(dirname(dirname(__FILE__)), "src", "ApiImpl")
+    end
+    gen_aliases(joinpath(output_path, "api"), joinpath(output_path, "apialiases.jl"))
 end
 
 main()
