@@ -4,7 +4,7 @@ authors = ["Tanmay Mohapatra <tanmaykm@gmail.com>"]
 keywords = ["kubernetes", "client"]
 license = "MIT"
 desc = "Julia Kubernetes Client"
-version = "0.5.2"
+version = "0.6.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
