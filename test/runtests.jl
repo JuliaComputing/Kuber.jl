@@ -1,4 +1,5 @@
 using Kuber
+using Swagger
 using Test
 
 const Typedefs = Kuber.ApiImpl.Typedefs
@@ -21,6 +22,23 @@ function init_context(override=nothing, verbose=true)
     set_retries(ctx; count=3, all_apis=false)
     Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
     ctx
+end
+
+function test_set_timeout(ctx)
+    @test Kuber.get_timeout(ctx) == Swagger.DEFAULT_TIMEOUT_SECS
+
+    Kuber.with_timeout(ctx, 10) do ctx
+        @test Kuber.get_timeout(ctx) == 10
+    end
+
+    wctx = Kuber.KuberWatchContext(ctx, Channel{Any}())
+    @test Kuber.get_timeout(wctx) == Swagger.DEFAULT_TIMEOUT_SECS
+    Kuber.with_timeout(wctx, 10) do wctx
+        @test Kuber.get_timeout(wctx) == 10
+    end
+    @test Kuber.get_timeout(wctx) == Swagger.DEFAULT_TIMEOUT_SECS
+
+    @test Kuber.get_timeout(ctx) == Swagger.DEFAULT_TIMEOUT_SECS
 end
 
 function list_cluster_components(ctx)
@@ -297,6 +315,10 @@ function test_all()
     @testset "Kuber Tests" begin
         @testset "Server Preferred API Versions" begin
             test_versioned(ctx, "1")
+        end
+
+        @testset "Set Timeouts" begin
+            test_set_timeout(ctx)            
         end
 
         @testset "Overridden API Versions" begin

@@ -145,10 +145,10 @@ Now that we have set up our connection properly, let's explore what we have in o
 julia> result = get(ctx, :ComponentStatus);
 
 julia> typeof(result)
-Kuber.Kubernetes.IoK8sApiCoreV1ComponentStatusList
+Kuber.ApiImpl.Kubernetes.IoK8sApiCoreV1ComponentStatusList
 ```
 
-Note that we got back a Julia type `Kuber.Kubernetes.IoK8sApiCoreV1ComponentStatusList`. It represents a list of `ComponentStatus` entities that we asked for. It has been resolved to match the specific to the version of API we used - `CoreV1` in this case. We can display the entity in JSON form in the REPL, by simply `show`ing it.
+Note that we got back a Julia type `Kuber.ApiImpl.Kubernetes.IoK8sApiCoreV1ComponentStatusList`. It represents a list of `ComponentStatus` entities that we asked for. It has been resolved to match the specific to the version of API we used - `CoreV1` in this case. We can display the entity in JSON form in the REPL, by simply `show`ing it.
 
 ```julia
 julia> result
@@ -245,7 +245,7 @@ julia> nginx_pod = kuber_obj(ctx, """{
        }""");
 
 julia> typeof(nginx_pod)
-Kuber.Kubernetes.IoK8sApiCoreV1Pod
+Kuber.ApiImpl.Kubernetes.IoK8sApiCoreV1Pod
 
 julia> nginx_service = kuber_obj(ctx, """{
            "kind": "Service",
@@ -263,7 +263,7 @@ julia> nginx_service = kuber_obj(ctx, """{
        }""")
 
 julia> typeof(nginx_service)
-Kuber.Kubernetes.IoK8sApiCoreV1Service
+Kuber.ApiImpl.Kubernetes.IoK8sApiCoreV1Service
 ```
 
 To create the pod in the cluster, use the `put!` API. And we should see it when we list the pods.

@@ -41,11 +41,11 @@ mutable struct KuberContext
     retry_all_apis::Bool
     initialized::Bool
 
-    function KuberContext(apimodule::Module=ApiImpl)
+    function KuberContext(apimodule::Module=ApiImpl; kwargs...)
         kctx = new(apimodule)
 
         rtfn = (default,data)->kuber_type(kctx, default, data)
-        swaggerclient = Swagger.Client(DEFAULT_URI; get_return_type=rtfn)
+        swaggerclient = Swagger.Client(DEFAULT_URI; get_return_type=rtfn, kwargs...)
         swaggerclient.headers["Connection"] = "close"
 
         kctx.client = swaggerclient
@@ -84,6 +84,26 @@ function set_retries(ctx::KuberContext; count::Int=ctx.default_retries, all_apis
 end
 retries(ctx::KuberContext, mutating::Bool=true) = (mutating && !ctx.retry_all_apis) ? 1 : ctx.default_retries
 retries(watch::KuberWatchContext, mutating::Bool=true) = retries(watch.ctx, mutating)
+
+get_client(ctx::KuberContext) = ctx.client
+get_client(ctx::KuberWatchContext) = ctx.ctx.client
+
+get_timeout(ctx::Union{KuberContext,KuberWatchContext}) = get_client(ctx).timeout[]
+
+function set_timeout(ctx::Union{KuberContext,KuberWatchContext}, timeout::Integer)
+    Swagger.set_timeout(get_client(ctx), timeout)
+    ctx
+end
+
+function with_timeout(fn, ctx::Union{KuberContext,KuberWatchContext}, timeout::Integer)
+    old_timeout = get_timeout(ctx)
+    set_timeout(ctx, timeout)
+    try
+        fn(ctx)
+    finally
+        set_timeout(ctx, old_timeout)
+    end
+end
 
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
 convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
