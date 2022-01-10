@@ -4,7 +4,7 @@
 
 A Julia Kubernetes Client.
 
-An easy to use API to access Kubernetes clusters from Julia. The `Kuber.Kubernetes` submodule has the complete set of low level APIs and entities.
+An easy to use API to access Kubernetes clusters from Julia. The `Kuber.ApiImpl.Kubernetes` submodule has the complete set of low level APIs and entities.
 
 Most of the low level APIs fit into a common usage pattern. Kuber.jl makes it possible to use all of them with only a few intuitive verb based APIs. Verbs act on entities. Entities can be identified by names or selector patterns, or otherwise can apply to all entities of that class. Verbs can take additional parameters, e.g. when creating or updating entities.
 
