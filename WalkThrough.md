@@ -180,7 +180,7 @@ julia> result
 Or we can access it like a regular Julia type and look at individual fields:
 ```julia
 julia> for item in result.items
-           println(item.metadata.name, " ", item.conditions[1]._type, " => ", item.conditions[1].status)
+           println(item.metadata.name, " ", item.conditions[1].type, " => ", item.conditions[1].status)
        end
 controller-manager Healthy => False
 scheduler Healthy => False
@@ -191,7 +191,7 @@ Notice that APIs that fetch a list, have the entities in a field named `item`, a
 
 ```julia
 julia> collect(item.metadata.name for item in (get(ctx, :Namespace)).items)
-3-element Array{String,1}:
+3-element Vector{String}:
  "default"    
  "kube-public"
  "kube-system"
@@ -201,16 +201,16 @@ And similarly a list of pods:
 
 ```julia
 julia> collect(item.metadata.name for item in (get(ctx, :Pod)).items)
-0-element Array{Any,1}
+Any[]
 ```
 
 We do not have any pods in the default namespace yet, because we have not started any! But we must have some system pods running in the "kube-system" namespace. We can switch namespaces and look into the "kube-system" namespace:
 
 ```julia
-julia> set_ns(ctx, "kube-system")
+julia> set_ns(ctx, "kube-system");
 
 julia> collect(item.metadata.name for item in (get(ctx, :Pod)).items)
-9-element Array{String,1}:
+9-element Vector{String}:
  "heapster-779db6bd48-pbclv"            
  "kube-dns-v20-b8ff799f7-fjtw9"         
  "kube-dns-v20-b8ff799f7-mhdkp"         
@@ -225,6 +225,8 @@ julia> collect(item.metadata.name for item in (get(ctx, :Pod)).items)
 There! Now let's get back to the default namespace and start something of our own. How about a nginx webserver that we can access over the internet? Kubernetes entities can be created from their JSON specification with the `kuber_obj` utility API provided with Kuber.jl.
 
 ```julia
+julia> set_ns(ctx, "default");
+
 julia> nginx_pod = kuber_obj(ctx, """{
            "kind": "Pod",
            "apiVersion": "v1",
@@ -260,7 +262,7 @@ julia> nginx_service = kuber_obj(ctx, """{
                "ports": [{"port": 80}],
                "selector": {"name": "nginx-pod"}
            }
-       }""")
+       }""");
 
 julia> typeof(nginx_service)
 Kuber.ApiImpl.Kubernetes.IoK8sApiCoreV1Service
@@ -272,7 +274,7 @@ To create the pod in the cluster, use the `put!` API. And we should see it when 
 julia> result = put!(ctx, nginx_pod);
 
 julia> collect(item.metadata.name for item in get(ctx, :Pod).items)
-1-element Array{String,1}:
+1-element Vector{String}:
  "nginx-pod"
 ```
 
