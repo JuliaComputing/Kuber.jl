@@ -151,7 +151,7 @@ end
 kuber_obj(ctx::KuberContext, data::String) = kuber_obj(ctx, JSON.parse(data))
 kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
 
-show(io::IO, ctx::KuberContext) = print("Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
+show(io::IO, ctx::KuberContext) = print(io, "Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
 
 get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace

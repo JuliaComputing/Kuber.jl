@@ -331,6 +331,13 @@ function test_all()
 
             test_versioned(ctx2, "2")
         end
+
+        @testset "Misc" begin
+            iob = IOBuffer()
+            show(iob, ctx)
+            str = String(take!(iob))
+            @test str == "Kubernetes namespace default at http://localhost:8001"
+        end
     end
 end
 
