@@ -4,4 +4,6 @@ else
     @warn("Skipping redefinition of IoK8sApimachineryPkgUtilIntstrIntOrString to String")
 end
 
-convert(::Type{IoK8sApimachineryPkgUtilIntstrIntOrString}, v::T) where {T<:Integer} = string(v)
+if !hasmethod(convert, (Type{IoK8sApimachineryPkgUtilIntstrIntOrString}, T where {T<:Integer}))
+    convert(::Type{IoK8sApimachineryPkgUtilIntstrIntOrString}, v::T) where {T<:Integer} = string(v)
+end
