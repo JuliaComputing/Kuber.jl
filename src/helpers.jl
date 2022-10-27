@@ -168,13 +168,25 @@ Args:
 
 Keyword Args:
 - max_tries: retries allowed while probing API versions from server
+- verbose: Log API versions
 - kwargs: other keyword args to pass on while constructing the client for API server (see Swagger.jl - https://github.com/JuliaComputing/Swagger.jl#readme)
 """
-function set_server(ctx::KuberContext, uri::String=DEFAULT_URI, reset_api_versions::Bool=false; max_tries=retries(ctx, false), kwargs...)
+function set_server(
+    ctx::KuberContext,
+    uri::String=DEFAULT_URI,
+    reset_api_versions::Bool=false;
+    max_tries=retries(ctx, false),
+    verbose::Bool=false,
+    kwargs...
+)
     rtfn = (default,data)->kuber_type(ctx, default, data)
     ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
-    reset_api_versions && set_api_versions!(ctx; max_tries=max_tries)
+    reset_api_versions && set_api_versions!(
+        ctx;
+        max_tries=max_tries,
+        verbose=verbose
+    )
     ctx.client
 end
 
