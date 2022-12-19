@@ -82,6 +82,12 @@ function kuberapitypes(file::String, aliases_set::KuberTypeAliasesSet)
 end
 
 function find_matching_api(sorted_apis::Vector{String}, model_name::String)
+    if startswith(model_name, "ShKarpenter")
+        karpenter_apis = map(x->startswith(x, "KarpenterSh") ? replace(x, "KarpenterSh"=>"ShKarpenter") : x, sorted_apis)
+        api_idx = findfirst(x->startswith(model_name, x), karpenter_apis)
+        (api_idx !== nothing) && (return api_idx)
+    end
+
     rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
     flowcontrol_apis = map(x->startswith(x, "FlowcontrolApiserver") ? replace(x, "Apiserver"=>"") : x, sorted_apis)
 
@@ -95,6 +101,12 @@ function find_matching_api(sorted_apis::Vector{String}, model_name::String)
 end
 
 function get_common_name(sorted_apis::Vector{String}, model_name::String)
+    if startswith(model_name, "ShKarpenter")
+        karpenter_apis = map(x->startswith(x, "KarpenterSh") ? replace(x, "KarpenterSh"=>"ShKarpenter") : x, sorted_apis)
+        api_idx = findfirst(x->startswith(model_name, x), karpenter_apis)
+        (api_idx !== nothing) && (return replace(model_name, (karpenter_apis[api_idx])=>""))
+    end
+
     rbac_apis = map(x->startswith(x, "RbacAuthorization") ? replace(x, "Authorization"=>"") : x, sorted_apis)
     flowcontrol_apis = map(x->startswith(x, "FlowcontrolApiserver") ? replace(x, "Apiserver"=>"") : x, sorted_apis)
 
