@@ -51,6 +51,7 @@ rm -rf ${APIIMPLDIR}/api_bak
 mv ${APIIMPLDIR}/api ${APIIMPLDIR}/api_bak
 mkdir ${APIIMPLDIR}/api
 mv ${TEMPGENDIR}/src/* ${APIIMPLDIR}/api/
+mv ${TEMPGENDIR}/*.jl ${APIIMPLDIR}/api/
 rm ${TEMPGENDIR}/LICENSE
 rm -r ${TEMPGENDIR}
 
