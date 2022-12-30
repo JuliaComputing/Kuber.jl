@@ -1,13 +1,12 @@
 module Kuber
 
 using JSON
-using Swagger
+using OpenAPI
 using Downloads
 
 include("ApiImpl/ApiImpl.jl")
 
 import Base: convert, get, put!, delete!, show
-import Swagger: SwaggerModel
 
 include("helpers.jl")
 include("simpleapi.jl")

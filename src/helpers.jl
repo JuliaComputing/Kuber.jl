@@ -1,18 +1,32 @@
 const DEFAULT_NAMESPACE = "default"
 const DEFAULT_URI = "http://localhost:8001"
 
+to_snake_case(o) = to_snake_case(string(o))
+function to_snake_case(camel_case_str::String)
+    iob = IOBuffer()
+    for c in camel_case_str
+        if isuppercase(c)
+            (iob.size > 0) && write(iob, '_')
+            write(iob, lowercase(c))
+        else
+            write(iob, c)
+        end
+    end
+    String(take!(iob))
+end
+
 """delay customized by TPS requirement"""
 k8s_delay(tps, max_tries=1) = ExponentialBackOff(n=max_tries, first_delay=(1/tps), factor=1.75, jitter=0.1)
 
 """
-Swagger status codes that can be retried.
+OpenAPI status codes that can be retried.
 0: network error (HTTP was not even attempted)
 500-504: unexpected server error
 """
 const k8s_retryable_codes = [0, 500, 501, 502, 503, 504]
 
 function k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes)
-    if (e isa Swagger.ApiException) && (e.status in retryable_codes)
+    if (e isa OpenAPI.Clients.ApiException) && (e.status in retryable_codes)
         return (s, true)
     end
     (s, false)
@@ -33,7 +47,7 @@ end
 
 mutable struct KuberContext
     apimodule::Module
-    client::Swagger.Client
+    client::OpenAPI.Clients.Client
     apis::Dict{Symbol,Vector{KApi}}
     modelapi::Dict{Symbol,KApi}
     namespace::String
@@ -44,11 +58,11 @@ mutable struct KuberContext
     function KuberContext(apimodule::Module=ApiImpl; kwargs...)
         kctx = new(apimodule)
 
-        rtfn = (default,data)->kuber_type(kctx, default, data)
-        swaggerclient = Swagger.Client(DEFAULT_URI; get_return_type=rtfn, kwargs...)
-        swaggerclient.headers["Connection"] = "close"
+        rtfn = (return_types,response_code,response_data)->kuber_type(kctx, return_types, response_code, response_data)
+        openapiclient = OpenAPI.Clients.Client(DEFAULT_URI; get_return_type=rtfn, kwargs...)
+        openapiclient.headers["Connection"] = "close"
 
-        kctx.client = swaggerclient
+        kctx.client = openapiclient
         kctx.apis = Dict{Symbol,Vector}()
         kctx.modelapi = Dict{Symbol,KApi}()
         kctx.namespace = DEFAULT_NAMESPACE
@@ -91,7 +105,7 @@ get_client(ctx::KuberWatchContext) = ctx.ctx.client
 get_timeout(ctx::Union{KuberContext,KuberWatchContext}) = get_client(ctx).timeout[]
 
 function set_timeout(ctx::Union{KuberContext,KuberWatchContext}, timeout::Integer)
-    Swagger.set_timeout(get_client(ctx), timeout)
+    OpenAPI.Clients.set_timeout(get_client(ctx), timeout)
     ctx
 end
 
@@ -106,8 +120,8 @@ function with_timeout(fn, ctx::Union{KuberContext,KuberWatchContext}, timeout::I
 end
 
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
-convert(::Type{T}, json::String) where {T<:SwaggerModel} = convert(T, JSON.parse(json))
-convert(::Type{Dict{String,Any}}, model::T) where {T<:SwaggerModel} = JSON.parse(JSON.json(model))
+convert(::Type{T}, json::String) where {T<:OpenAPI.APIModel} = convert(T, JSON.parse(json))
+convert(::Type{Dict{String,Any}}, model::T) where {T<:OpenAPI.APIModel} = JSON.parse(JSON.json(model))
 
 is_json_mime(mime::T) where {T <: AbstractString} = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime) || occursin(r"(?i)application/(.*)-patch\+json(;.*)?", mime)
 
@@ -119,6 +133,15 @@ end
 
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
 kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, JSON.parse(data))
+function kuber_type(ctx::KuberContext, return_types::Dict{Regex,Type}, response_code::Union{Nothing,Integer}, response_data::String)
+    default_type = OpenAPI.Clients.get_api_return_type(return_types, response_code, response_data)
+    try
+        json_resp = JSON.parse(response_data)
+        return kuber_type(ctx, default_type, json_resp)
+    catch
+        return default_type
+    end
+end
 
 function header(resp::Downloads.Response, name::AbstractString, defaultval::AbstractString)
     for (n,v) in resp.headers
@@ -169,7 +192,7 @@ Args:
 Keyword Args:
 - max_tries: retries allowed while probing API versions from server
 - verbose: Log API versions
-- kwargs: other keyword args to pass on while constructing the client for API server (see Swagger.jl - https://github.com/JuliaComputing/Swagger.jl#readme)
+- kwargs: other keyword args to pass on while constructing the client for API server (see OpenAPI.jl - https://github.com/JuliaComputing/OpenAPI.jl#readme)
 """
 function set_server(
     ctx::KuberContext,
@@ -179,8 +202,8 @@ function set_server(
     verbose::Bool=false,
     kwargs...
 )
-    rtfn = (default,data)->kuber_type(ctx, default, data)
-    ctx.client = Swagger.Client(uri; get_return_type=rtfn, kwargs...)
+    rtfn = (return_types,response_code,response_data)->kuber_type(ctx, return_types, response_code, response_data)
+    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, kwargs...)
     ctx.client.headers["Connection"] = "close"
     reset_api_versions && set_api_versions!(
         ctx;
@@ -203,6 +226,14 @@ set_ns(ctx::KuberContext, namespace::String) = (ctx.namespace = namespace)
 
 camel(a) = string(uppercase(a[1])) * (a[2:end])
 
+"""
+    api_group(group)
+
+Get the API group name as a string, given the full group specifier.
+E.g.:
+    "apiregistration.k8s.io" => "ApiRegistration"
+    "karpenter.sh" => "KarpenterSh"
+"""
 api_group(group) = api_group(String(group))
 function api_group(group::String)
     endswith(group, ".k8s.io") && (group = group[1:end-7])
@@ -210,29 +241,45 @@ function api_group(group::String)
     join([camel(String(x)) for x in group_parts])
 end
 
+"""
+    api_group_type(ctx, group_ver)
+
+Get the API implementation type (generated struct implemting the OpenAPI endpoint)
+given the full group version specifier.
+E.g.:
+    "apiregistration.k8s.io/v1" => ApiRegistrationV1Api
+    "karpenter.sh/v1alpha5" => KarpenterShV1alpha5Api
+"""
 api_group_type(ctx::Union{KuberContext,KuberWatchContext}, group_ver) = api_group_type(ctx, String(group_ver))
 function api_group_type(ctx::Union{KuberContext,KuberWatchContext}, group_ver::String)
-    group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
-    group = api_group(group)
-    ver = camel(ver)
-    getfield(apimodule(ctx), Symbol(group * ver * "Api"))
+    # group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
+    # group = api_group(group)
+    # ver = camel(ver)
+    # getfield(apimodule(ctx), Symbol(group * ver * "Api"))
+    impl = apimodule(ctx)
+    Tstr = impl.APIVersionMap[group_ver]
+    getfield(impl, Symbol(Tstr))
 end
 
+"""
+    api_typedefs(ctx, group_ver)
+
+Get the API typedefs module (generated module mapping OpenAPI model types for the versioned endpoint)
+given the full group version specifier.
+E.g.:
+    "apiregistration.k8s.io/v1" => Typedefs.ApiRegistrationV1
+    "karpenter.sh/v1alpha5" => Typedefs.KarpenterShV1alpha5
+"""
 api_typedefs(ctx::Union{KuberContext,KuberWatchContext}, group_ver) = api_typedefs(ctx, String(group_ver))
 function api_typedefs(ctx::Union{KuberContext,KuberWatchContext}, group_ver::String)
-    group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
-    group = api_group(group)
-    ver = camel(ver)
-    getfield(getfield(apimodule(ctx), :Typedefs), Symbol(group * ver))
+    impl = apimodule(ctx)
+    Tstr = replace(impl.APIVersionMap[group_ver], r"Api$" => "")
+    # group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
+    # group = api_group(group)
+    # ver = camel(ver)
+    # getfield(getfield(apimodule(ctx), :Typedefs), Symbol(group * ver))
+    getfield(getfield(impl, :Typedefs), Symbol(Tstr))
 end
-
-# api_method(ctx::Union{KuberContext,KuberWatchContext}, group::Symbol, verb::String, object::String) = getfield(apimodule(ctx), Symbol(verb * String(group)[1:end-3] * object))
-# function api_method(ctx::Union{KuberContext,KuberWatchContext}, group_ver::String, verb::String, object::String)
-#     group, ver = occursin('/', group_ver) ? split(group_ver, "/") : ("Core", group_ver)
-#     group = api_group(group)
-#     ver = camel(ver)
-#     getfield(apimodule(ctx), Symbol(verb * group * ver * object))
-# end
 
 function override_pref(name, server_pref, override)
     if override !== nothing
@@ -243,23 +290,25 @@ function override_pref(name, server_pref, override)
     server_pref
 end
 
-function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
+function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
     apis = ctx.apis
-    vers = k8s_retry(; max_tries=max_tries) do
-        apimodule(ctx).Kubernetes.getAPIVersions(apimodule(ctx).ApisApi(ctx.client))
+    vers, http_resp = k8s_retry(; max_tries=max_tries) do
+        apimodule(ctx).get_a_p_i_versions(apimodule(ctx).ApisApi(ctx.client))
     end
+    @assert http_resp.status == 200
     api_groups = vers.groups
     for apigrp in api_groups
         name = apigrp.name
         pref_vers_type = apigrp.preferredVersion
         pref_vers_version = override_pref(name, pref_vers_type.version, override)
         pref_vers = name * "/" * pref_vers_version
-        verbose && @info("$name ($(api_group(name))) versions", supported=join(map(x->x.version, apigrp.versions), ", "), preferred=pref_vers_version)
+        supported = String[]
 
         try
             apis[Symbol(api_group(name))] = [KApi(api_group_type(ctx, pref_vers), api_typedefs(ctx, pref_vers))]
+            push!(supported, pref_vers_version)
         catch ex
-            if isa(ex, UndefVarError)
+            if isa(ex, KeyError)
                 @info("unsupported $pref_vers")
                 continue
             else
@@ -273,43 +322,64 @@ function fetch_misc_apis_versions(ctx::KuberContext; override=nothing, verbose::
                 td = api_typedefs(ctx, api_vers.groupVersion)
                 ka = KApi(gt, td)
                 kalist = apis[Symbol(api_group(name))]
-                (ka == kalist[1]) || push!(kalist, ka)
+                if (ka != kalist[1])
+                    push!(kalist, ka)
+                    push!(supported, api_vers.version)
+                end
             catch
                 @info("unsupported $(api_vers.groupVersion)")
             end
         end
+
+        if verbose
+            @info("$name ($(api_group(name))) versions",
+                on_apiserver = join(map(x->x.version, apigrp.versions), ", "),
+                preferred = pref_vers_version,
+                supported = join(supported, ", "),
+            )
+        end
+
     end
     apis
 end
 
 function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=false, max_tries=retries(ctx, false))
     apis = ctx.apis
-    api_vers = k8s_retry(; max_tries=max_tries) do
-        apimodule(ctx).getCoreAPIVersions(apimodule(ctx).CoreApi(ctx.client))
+    api_vers, http_resp = k8s_retry(; max_tries=max_tries) do
+        apimodule(ctx).get_core_a_p_i_versions(apimodule(ctx).CoreApi(ctx.client))
     end
+    @assert http_resp.status == 200
     name = "Core"
+    supported = String[]
     pref_vers = override_pref(name, api_vers.versions[1], override)
-    verbose && @info("Core versions", supported=join(api_vers.versions, ", "), preferred=pref_vers)
+
     apis[:Core] = [KApi(getfield(apimodule(ctx), Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(apimodule(ctx), :Typedefs), Symbol("Core" * camel(pref_vers))))]
+    push!(supported, pref_vers)
+
     for api_vers in api_vers.versions
         try
             gt = getfield(apimodule(ctx), Symbol("Core" * camel(api_vers) * "Api"))
             td = getfield(getfield(apimodule(ctx), :Typedefs), Symbol("Core" * camel(api_vers)))
             ka = KApi(gt, td)
             kalist = apis[:Core]
-            (ka == kalist[1]) || push!(kalist, ka)
+            if (ka != kalist[1])
+                push!(kalist, ka)
+                push!(supported, api_vers)
+            end
         catch
             @info("unsupported Core $api_vers")
         end
     end
-    apis
-end
 
-function fetch_api_machinery(ctx::KuberContext)
-    apis = ctx.apis
-    apis[:Apis] = [KApi(apimodule(ctx).Kubernetes.ApisApi, apimodule(ctx).Typedefs.Apis)]
-    apis[:MetaV1] = [KApi(apimodule(ctx).Kubernetes.ApisApi, apimodule(ctx).Typedefs.MetaV1)]
-    apis
+    if verbose
+        @info("Core versions",
+            on_apiserver = join(api_vers.versions, ", "),
+            preferred = pref_vers,
+            supported = join(supported, ", "),
+        )
+    end
+
+    return apis
 end
 
 function build_model_api_map(ctx::KuberContext)
@@ -335,13 +405,9 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     empty!(ctx.apis)
     empty!(ctx.modelapi)
 
-    # bootstrap: the api machinery types
-    fetch_api_machinery(ctx)
-    build_model_api_map(ctx)
-
     # fetch apis and map the types
     fetch_core_version(ctx; override=override, verbose=verbose, max_tries=max_tries)
-    fetch_misc_apis_versions(ctx; override=override, verbose=verbose, max_tries=max_tries)
+    fetch_all_apis_versions(ctx; override=override, verbose=verbose, max_tries=max_tries)
     build_model_api_map(ctx)
 
     # add custom models

@@ -64,7 +64,7 @@ end
 E.g.:
 
 ```julia
-watch(ctx, list, :Pod; resourceVersion=19451) do stream
+watch(ctx, list, :Pod; resource_version=19451) do stream
     for event in stream
         @info("got event", event)
     end
