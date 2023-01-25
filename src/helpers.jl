@@ -81,6 +81,41 @@ end
 apimodule(ctx::KuberContext) = ctx.apimodule
 apimodule(ctx::KuberWatchContext) = apimodule(ctx.ctx)
 
+struct KuberException <: Exception
+    code::Int
+    message::String
+    status::Union{Nothing,OpenAPI.APIModel}
+    response::Union{Nothing,OpenAPI.Clients.ApiResponse}
+end
+
+function KuberException(response::OpenAPI.Clients.ApiResponse, status::Union{Nothing,OpenAPI.APIModel})
+    http_response = response.raw
+    if !(200 <= http_response.status <= 299)
+        message = http_response.message
+        code = http_response.status
+    end
+
+    # if status is available, use it to override the message and code
+    if !isnothing(status)
+        if hasproperty(status, :message) && !isnothing(status.message) && !isempty(status.message)
+            message = status.message
+        end
+        if hasproperty(status, :code) && !isnothing(status.code) && (status.code != 0)
+            code = status.code
+        end
+    end
+
+    return KuberException(code, message, status, response)
+end
+
+function check_api_response(result, response::OpenAPI.Clients.ApiResponse)
+    if !(200 <= response.status <= 299)
+        status = isa(result, OpenAPI.APIModel) ? result : nothing
+        throw(KuberException(response, status))
+    end
+    return result
+end
+
 """
     set_retries(ctx; count=5, all_apis=false)
 
@@ -415,3 +450,7 @@ function set_api_versions!(ctx::KuberContext; override=nothing, verbose::Bool=fa
     ctx.initialized = true
     nothing
 end
+
+# Add validations for the k8s spec specific int-or-string format
+OpenAPI.val_format(val::Union{AbstractString,Integer}, ::Val{Symbol("int-or-string")}) = true
+OpenAPI.val_format(val, ::Val{Symbol("int-or-string")}) = false

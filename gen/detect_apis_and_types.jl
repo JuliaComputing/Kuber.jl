@@ -11,6 +11,7 @@ const rx_model_api_bodytype = r"^function _oacinternal_.*\(_api::.*, body::([A-Z
 const rx_model_spec_name_from_docstring = r"^@doc raw\"\"\"([a-zA-Z\.0-9-_]+)$"
 const rx_model_name_from_filename = r"model_([a-zA-Z0-9]+).jl"
 const rx_model_name_from_modelfile = r"^.* # spec type: Union{ Nothing, ([A-Za-z0-9]+) }$"
+const rx_model_name_from_modelfile_vector = r"^.* # spec type: Union{ Nothing, Vector{([A-Za-z0-9]+)} }$"
 
 # function to_snake_case(camel_case_str::String)
 #     s = replace(camel_case_str, r"([A-Z]+)([A-Z][a-z])" => s"\1_\2")
@@ -82,8 +83,11 @@ function detect_model_map(model_file::String)
         line = strip(line)
         match_modelname = match(rx_model_spec_name_from_docstring, line)
         match_dependent_modelname = match(rx_model_name_from_modelfile, line)
+        match_dependent_modelname_from_vector = match(rx_model_name_from_modelfile_vector, line)
         if !isnothing(match_modelname)
             model_spec_name = match_modelname.captures[1]
+        elseif !isnothing(match_dependent_modelname_from_vector)
+            push!(dependent_models, match_dependent_modelname_from_vector.captures[1])
         elseif !isnothing(match_dependent_modelname)
             push!(dependent_models, match_dependent_modelname.captures[1])
         end

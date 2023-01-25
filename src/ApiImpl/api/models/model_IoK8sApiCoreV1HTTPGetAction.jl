@@ -16,14 +16,14 @@ HTTPGetAction describes an action based on HTTP Get requests.
     - host::String : Host name to connect to, defaults to the pod IP. You probably want to set \&quot;Host\&quot; in httpHeaders instead.
     - httpHeaders::Vector{IoK8sApiCoreV1HTTPHeader} : Custom headers to set in the request. HTTP allows repeated headers.
     - path::String : Path to access on the HTTP server.
-    - port::String : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
+    - port::Any : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
     - scheme::String : Scheme to use for connecting to the host. Defaults to HTTP.
 """
 Base.@kwdef mutable struct IoK8sApiCoreV1HTTPGetAction <: OpenAPI.APIModel
     host::Union{Nothing, String} = nothing
     httpHeaders::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IoK8sApiCoreV1HTTPHeader} }
     path::Union{Nothing, String} = nothing
-    port::Union{Nothing, String} = nothing
+    port::Union{Nothing, Any} = nothing
     scheme::Union{Nothing, String} = nothing
 
     function IoK8sApiCoreV1HTTPGetAction(host, httpHeaders, path, port, scheme, )
@@ -36,7 +36,7 @@ Base.@kwdef mutable struct IoK8sApiCoreV1HTTPGetAction <: OpenAPI.APIModel
     end
 end # type IoK8sApiCoreV1HTTPGetAction
 
-const _property_types_IoK8sApiCoreV1HTTPGetAction = Dict{Symbol,String}(Symbol("host")=>"String", Symbol("httpHeaders")=>"Vector{IoK8sApiCoreV1HTTPHeader}", Symbol("path")=>"String", Symbol("port")=>"String", Symbol("scheme")=>"String", )
+const _property_types_IoK8sApiCoreV1HTTPGetAction = Dict{Symbol,String}(Symbol("host")=>"String", Symbol("httpHeaders")=>"Vector{IoK8sApiCoreV1HTTPHeader}", Symbol("path")=>"String", Symbol("port")=>"Any", Symbol("scheme")=>"String", )
 OpenAPI.property_type(::Type{ IoK8sApiCoreV1HTTPGetAction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1HTTPGetAction[name]))}
 
 function check_required(o::IoK8sApiCoreV1HTTPGetAction)

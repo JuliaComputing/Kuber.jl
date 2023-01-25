@@ -4,6 +4,8 @@ using JSON
 using OpenAPI
 using Downloads
 
+import OpenAPI: val_format
+
 include("ApiImpl/ApiImpl.jl")
 
 import Base: convert, get, put!, delete!, show

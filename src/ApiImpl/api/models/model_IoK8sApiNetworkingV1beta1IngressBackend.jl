@@ -11,11 +11,11 @@ IngressBackend describes all endpoints for a given service and port.
     )
 
     - serviceName::String : Specifies the name of the referenced service.
-    - servicePort::String : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
+    - servicePort::Any : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
 """
 Base.@kwdef mutable struct IoK8sApiNetworkingV1beta1IngressBackend <: OpenAPI.APIModel
     serviceName::Union{Nothing, String} = nothing
-    servicePort::Union{Nothing, String} = nothing
+    servicePort::Union{Nothing, Any} = nothing
 
     function IoK8sApiNetworkingV1beta1IngressBackend(serviceName, servicePort, )
         OpenAPI.validate_property(IoK8sApiNetworkingV1beta1IngressBackend, Symbol("serviceName"), serviceName)
@@ -24,7 +24,7 @@ Base.@kwdef mutable struct IoK8sApiNetworkingV1beta1IngressBackend <: OpenAPI.AP
     end
 end # type IoK8sApiNetworkingV1beta1IngressBackend
 
-const _property_types_IoK8sApiNetworkingV1beta1IngressBackend = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("servicePort")=>"String", )
+const _property_types_IoK8sApiNetworkingV1beta1IngressBackend = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("servicePort")=>"Any", )
 OpenAPI.property_type(::Type{ IoK8sApiNetworkingV1beta1IngressBackend }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1beta1IngressBackend[name]))}
 
 function check_required(o::IoK8sApiNetworkingV1beta1IngressBackend)

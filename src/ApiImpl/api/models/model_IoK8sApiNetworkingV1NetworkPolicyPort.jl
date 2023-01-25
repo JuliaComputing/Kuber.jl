@@ -10,11 +10,11 @@ NetworkPolicyPort describes a port to allow traffic on
         protocol=nothing,
     )
 
-    - port::String : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
+    - port::Any : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
     - protocol::String : The protocol (TCP, UDP, or SCTP) which traffic must match. If not specified, this field defaults to TCP.
 """
 Base.@kwdef mutable struct IoK8sApiNetworkingV1NetworkPolicyPort <: OpenAPI.APIModel
-    port::Union{Nothing, String} = nothing
+    port::Union{Nothing, Any} = nothing
     protocol::Union{Nothing, String} = nothing
 
     function IoK8sApiNetworkingV1NetworkPolicyPort(port, protocol, )
@@ -24,7 +24,7 @@ Base.@kwdef mutable struct IoK8sApiNetworkingV1NetworkPolicyPort <: OpenAPI.APIM
     end
 end # type IoK8sApiNetworkingV1NetworkPolicyPort
 
-const _property_types_IoK8sApiNetworkingV1NetworkPolicyPort = Dict{Symbol,String}(Symbol("port")=>"String", Symbol("protocol")=>"String", )
+const _property_types_IoK8sApiNetworkingV1NetworkPolicyPort = Dict{Symbol,String}(Symbol("port")=>"Any", Symbol("protocol")=>"String", )
 OpenAPI.property_type(::Type{ IoK8sApiNetworkingV1NetworkPolicyPort }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiNetworkingV1NetworkPolicyPort[name]))}
 
 function check_required(o::IoK8sApiNetworkingV1NetworkPolicyPort)

@@ -17,14 +17,14 @@ ServicePort contains information on service&#39;s port.
     - nodePort::Int64 : The port on each node on which this service is exposed when type&#x3D;NodePort or LoadBalancer. Usually assigned by the system. If specified, it will be allocated to the service if unused or else creation of the service will fail. Default is to auto-allocate a port if the ServiceType of this Service requires one. More info: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
     - port::Int64 : The port that will be exposed by this service.
     - protocol::String : The IP protocol for this port. Supports \&quot;TCP\&quot;, \&quot;UDP\&quot;, and \&quot;SCTP\&quot;. Default is TCP.
-    - targetPort::String : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
+    - targetPort::Any : IntOrString is a type that can hold an int32 or a string.  When used in JSON or YAML marshalling and unmarshalling, it produces or consumes the inner type.  This allows you to have, for example, a JSON field that can accept a name or number.
 """
 Base.@kwdef mutable struct IoK8sApiCoreV1ServicePort <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
     nodePort::Union{Nothing, Int64} = nothing
     port::Union{Nothing, Int64} = nothing
     protocol::Union{Nothing, String} = nothing
-    targetPort::Union{Nothing, String} = nothing
+    targetPort::Union{Nothing, Any} = nothing
 
     function IoK8sApiCoreV1ServicePort(name, nodePort, port, protocol, targetPort, )
         OpenAPI.validate_property(IoK8sApiCoreV1ServicePort, Symbol("name"), name)
@@ -36,7 +36,7 @@ Base.@kwdef mutable struct IoK8sApiCoreV1ServicePort <: OpenAPI.APIModel
     end
 end # type IoK8sApiCoreV1ServicePort
 
-const _property_types_IoK8sApiCoreV1ServicePort = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("nodePort")=>"Int64", Symbol("port")=>"Int64", Symbol("protocol")=>"String", Symbol("targetPort")=>"String", )
+const _property_types_IoK8sApiCoreV1ServicePort = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("nodePort")=>"Int64", Symbol("port")=>"Int64", Symbol("protocol")=>"String", Symbol("targetPort")=>"Any", )
 OpenAPI.property_type(::Type{ IoK8sApiCoreV1ServicePort }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IoK8sApiCoreV1ServicePort[name]))}
 
 function check_required(o::IoK8sApiCoreV1ServicePort)
