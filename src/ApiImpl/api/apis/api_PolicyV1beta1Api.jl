@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ PolicyV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_create_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
@@ -19,7 +19,7 @@ const _returntypes_create_policy_v1beta1_namespaced_pod_disruption_budget = Dict
 )
 
 function _oacinternal_create_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, namespace::String, body::IoK8sApiPolicyV1beta1PodDisruptionBudget; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,7 +50,7 @@ function create_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1be
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_create_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
@@ -58,7 +58,7 @@ const _returntypes_create_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, body::IoK8sApiPolicyV1beta1PodSecurityPolicy; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -87,13 +87,13 @@ function create_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_policy_v1beta1_collection_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_delete_policy_v1beta1_collection_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_policy_v1beta1_collection_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_collection_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_collection_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -144,13 +144,13 @@ function delete_policy_v1beta1_collection_namespaced_pod_disruption_budget(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_policy_v1beta1_collection_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_delete_policy_v1beta1_collection_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_policy_v1beta1_collection_pod_security_policy(_api::PolicyV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_collection_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_collection_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -199,14 +199,14 @@ function delete_policy_v1beta1_collection_pod_security_policy(_api::PolicyV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_delete_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -243,14 +243,14 @@ function delete_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1be
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_delete_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -285,13 +285,13 @@ function delete_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_policy_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_policy_v1beta1_a_p_i_resources_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_policy_v1beta1_a_p_i_resources(_api::PolicyV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_policy_v1beta1_a_p_i_resources, "/apis/policy/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_policy_v1beta1_a_p_i_resources_PolicyV1beta1Api, "/apis/policy/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -313,13 +313,13 @@ function get_policy_v1beta1_a_p_i_resources(_api::PolicyV1beta1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_list_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudgetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -361,13 +361,13 @@ function list_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_policy_v1beta1_pod_disruption_budget_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_policy_v1beta1_pod_disruption_budget_for_all_namespaces_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudgetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_policy_v1beta1_pod_disruption_budget_for_all_namespaces(_api::PolicyV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_pod_disruption_budget_for_all_namespaces, "/apis/policy/v1beta1/poddisruptionbudgets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_pod_disruption_budget_for_all_namespaces_PolicyV1beta1Api, "/apis/policy/v1beta1/poddisruptionbudgets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -407,13 +407,13 @@ function list_policy_v1beta1_pod_disruption_budget_for_all_namespaces(_api::Poli
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_list_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicyList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -453,13 +453,13 @@ function list_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -494,13 +494,13 @@ function patch_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_status = Dict{Regex,Type}(
+const _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::PolicyV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_status, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -535,13 +535,13 @@ function patch_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::Poli
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_patch_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -574,13 +574,13 @@ function patch_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -612,13 +612,13 @@ function read_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_status = Dict{Regex,Type}(
+const _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::PolicyV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_status, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -646,13 +646,13 @@ function read_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::Polic
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_read_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -682,14 +682,14 @@ function read_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, name::String, namespace::String, body::IoK8sApiPolicyV1beta1PodDisruptionBudget; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -722,14 +722,14 @@ function replace_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1b
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_status = Dict{Regex,Type}(
+const _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodDisruptionBudget,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::PolicyV1beta1Api, name::String, namespace::String, body::IoK8sApiPolicyV1beta1PodDisruptionBudget; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_status, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_namespaced_pod_disruption_budget_status_PolicyV1beta1Api, "/apis/policy/v1beta1/namespaces/{namespace}/poddisruptionbudgets/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -762,14 +762,14 @@ function replace_policy_v1beta1_namespaced_pod_disruption_budget_status(_api::Po
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_replace_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1PodSecurityPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, name::String, body::IoK8sApiPolicyV1beta1PodSecurityPolicy; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/podsecuritypolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -800,13 +800,13 @@ function replace_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget = Dict{Regex,Type}(
+const _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget, "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_PolicyV1beta1Api, "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -850,13 +850,13 @@ function watch_policy_v1beta1_namespaced_pod_disruption_budget(_api::PolicyV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_list = Dict{Regex,Type}(
+const _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_list_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_policy_v1beta1_namespaced_pod_disruption_budget_list(_api::PolicyV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_list, "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_namespaced_pod_disruption_budget_list_PolicyV1beta1Api, "/apis/policy/v1beta1/watch/namespaces/{namespace}/poddisruptionbudgets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -898,13 +898,13 @@ function watch_policy_v1beta1_namespaced_pod_disruption_budget_list(_api::Policy
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces(_api::PolicyV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces, "/apis/policy/v1beta1/watch/poddisruptionbudgets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces_PolicyV1beta1Api, "/apis/policy/v1beta1/watch/poddisruptionbudgets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -944,13 +944,13 @@ function watch_policy_v1beta1_pod_disruption_budget_list_for_all_namespaces(_api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_policy_v1beta1_pod_security_policy = Dict{Regex,Type}(
+const _returntypes_watch_policy_v1beta1_pod_security_policy_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_security_policy, "/apis/policy/v1beta1/watch/podsecuritypolicies/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_security_policy_PolicyV1beta1Api, "/apis/policy/v1beta1/watch/podsecuritypolicies/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -992,13 +992,13 @@ function watch_policy_v1beta1_pod_security_policy(_api::PolicyV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_policy_v1beta1_pod_security_policy_list = Dict{Regex,Type}(
+const _returntypes_watch_policy_v1beta1_pod_security_policy_list_PolicyV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_policy_v1beta1_pod_security_policy_list(_api::PolicyV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_security_policy_list, "/apis/policy/v1beta1/watch/podsecuritypolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_policy_v1beta1_pod_security_policy_list_PolicyV1beta1Api, "/apis/policy/v1beta1/watch/podsecuritypolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

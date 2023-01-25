@@ -1,5 +1,5 @@
 const rx_apiname = r"^struct ([a-zA-Z0-9_]*) <: OpenAPI.APIClientImpl$"
-const rx_apipath = r"^_ctx = OpenAPI\.Clients\.Ctx\(_api\.client, \"[A-Z]+\", [_a-z0-9]+, .*\"([0-9a-z\/\._{}]+)\", .*\)$"
+const rx_apipath = r"^_ctx = OpenAPI\.Clients\.Ctx\(_api\.client, \"[A-Z]+\", [_a-zA-Z0-9]+, .*\"([0-9a-z\/\._{}]+)\", .*\)$"
 const rx_validapipath = r"^\/apis\/.+\/.+\/.*$"
 const rx_coreapipath = r"^\/api\/(v[1-9])\/.*$"
 const rx_apisapipath = r"^\/(apis)\/$"

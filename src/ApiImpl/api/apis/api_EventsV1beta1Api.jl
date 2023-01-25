@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ EventsV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_create_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
@@ -19,7 +19,7 @@ const _returntypes_create_events_v1beta1_namespaced_event = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, namespace::String, body::IoK8sApiEventsV1beta1Event; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_events_v1beta1_collection_namespaced_event = Dict{Regex,Type}(
+const _returntypes_delete_events_v1beta1_collection_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_events_v1beta1_collection_namespaced_event(_api::EventsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_events_v1beta1_collection_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_events_v1beta1_collection_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_events_v1beta1_collection_namespaced_event(_api::EventsV1beta1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_delete_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_events_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_events_v1beta1_a_p_i_resources_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_events_v1beta1_a_p_i_resources(_api::EventsV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_events_v1beta1_a_p_i_resources, "/apis/events.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_events_v1beta1_a_p_i_resources_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_events_v1beta1_a_p_i_resources(_api::EventsV1beta1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_events_v1beta1_event_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_events_v1beta1_event_for_all_namespaces_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1EventList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_events_v1beta1_event_for_all_namespaces(_api::EventsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_events_v1beta1_event_for_all_namespaces, "/apis/events.k8s.io/v1beta1/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_events_v1beta1_event_for_all_namespaces_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -225,13 +225,13 @@ function list_events_v1beta1_event_for_all_namespaces(_api::EventsV1beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_list_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1EventList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -273,13 +273,13 @@ function list_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_patch_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_read_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -352,14 +352,14 @@ function read_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_replace_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiEventsV1beta1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, name::String, namespace::String, body::IoK8sApiEventsV1beta1Event; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -392,13 +392,13 @@ function replace_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_events_v1beta1_event_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_events_v1beta1_event_list_for_all_namespaces_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_events_v1beta1_event_list_for_all_namespaces(_api::EventsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_event_list_for_all_namespaces, "/apis/events.k8s.io/v1beta1/watch/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_event_list_for_all_namespaces_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/watch/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -438,13 +438,13 @@ function watch_events_v1beta1_event_list_for_all_namespaces(_api::EventsV1beta1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_events_v1beta1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_watch_events_v1beta1_namespaced_event_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_namespaced_event, "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_namespaced_event_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -488,13 +488,13 @@ function watch_events_v1beta1_namespaced_event(_api::EventsV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_events_v1beta1_namespaced_event_list = Dict{Regex,Type}(
+const _returntypes_watch_events_v1beta1_namespaced_event_list_EventsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_events_v1beta1_namespaced_event_list(_api::EventsV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_namespaced_event_list, "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_events_v1beta1_namespaced_event_list_EventsV1beta1Api, "/apis/events.k8s.io/v1beta1/watch/namespaces/{namespace}/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String

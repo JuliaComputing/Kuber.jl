@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ AdmissionregistrationV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_create_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
@@ -19,7 +19,7 @@ const _returntypes_create_admissionregistration_v1beta1_mutating_webhook_configu
 )
 
 function _oacinternal_create_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, body::IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,7 +48,7 @@ function create_admissionregistration_v1beta1_mutating_webhook_configuration(_ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_create_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
@@ -56,7 +56,7 @@ const _returntypes_create_admissionregistration_v1beta1_validating_webhook_confi
 )
 
 function _oacinternal_create_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, body::IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -85,13 +85,13 @@ function create_admissionregistration_v1beta1_validating_webhook_configuration(_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_admissionregistration_v1beta1_collection_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_delete_admissionregistration_v1beta1_collection_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_admissionregistration_v1beta1_collection_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_collection_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_collection_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -140,13 +140,13 @@ function delete_admissionregistration_v1beta1_collection_mutating_webhook_config
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_admissionregistration_v1beta1_collection_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_delete_admissionregistration_v1beta1_collection_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_admissionregistration_v1beta1_collection_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_collection_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_collection_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -195,14 +195,14 @@ function delete_admissionregistration_v1beta1_collection_validating_webhook_conf
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_delete_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -237,14 +237,14 @@ function delete_admissionregistration_v1beta1_mutating_webhook_configuration(_ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_delete_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -279,13 +279,13 @@ function delete_admissionregistration_v1beta1_validating_webhook_configuration(_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_admissionregistration_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_admissionregistration_v1beta1_a_p_i_resources_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_admissionregistration_v1beta1_a_p_i_resources(_api::AdmissionregistrationV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_admissionregistration_v1beta1_a_p_i_resources, "/apis/admissionregistration.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_admissionregistration_v1beta1_a_p_i_resources_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -307,13 +307,13 @@ function get_admissionregistration_v1beta1_a_p_i_resources(_api::Admissionregist
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_list_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfigurationList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -353,13 +353,13 @@ function list_admissionregistration_v1beta1_mutating_webhook_configuration(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_list_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfigurationList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -399,13 +399,13 @@ function list_admissionregistration_v1beta1_validating_webhook_configuration(_ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_patch_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -438,13 +438,13 @@ function patch_admissionregistration_v1beta1_mutating_webhook_configuration(_api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_patch_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -477,13 +477,13 @@ function patch_admissionregistration_v1beta1_validating_webhook_configuration(_a
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_read_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -513,13 +513,13 @@ function read_admissionregistration_v1beta1_mutating_webhook_configuration(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_read_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -549,14 +549,14 @@ function read_admissionregistration_v1beta1_validating_webhook_configuration(_ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_replace_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String, body::IoK8sApiAdmissionregistrationV1beta1MutatingWebhookConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/mutatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -587,14 +587,14 @@ function replace_admissionregistration_v1beta1_mutating_webhook_configuration(_a
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_replace_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String, body::IoK8sApiAdmissionregistrationV1beta1ValidatingWebhookConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/validatingwebhookconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -625,13 +625,13 @@ function replace_admissionregistration_v1beta1_validating_webhook_configuration(
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_admissionregistration_v1beta1_mutating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -673,13 +673,13 @@ function watch_admissionregistration_v1beta1_mutating_webhook_configuration(_api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_list = Dict{Regex,Type}(
+const _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_list_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_admissionregistration_v1beta1_mutating_webhook_configuration_list(_api::AdmissionregistrationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_list, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_mutating_webhook_configuration_list_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/watch/mutatingwebhookconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -719,13 +719,13 @@ function watch_admissionregistration_v1beta1_mutating_webhook_configuration_list
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration = Dict{Regex,Type}(
+const _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_admissionregistration_v1beta1_validating_webhook_configuration(_api::AdmissionregistrationV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -767,13 +767,13 @@ function watch_admissionregistration_v1beta1_validating_webhook_configuration(_a
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_list = Dict{Regex,Type}(
+const _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_list_AdmissionregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_admissionregistration_v1beta1_validating_webhook_configuration_list(_api::AdmissionregistrationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_list, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_admissionregistration_v1beta1_validating_webhook_configuration_list_AdmissionregistrationV1beta1Api, "/apis/admissionregistration.k8s.io/v1beta1/watch/validatingwebhookconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

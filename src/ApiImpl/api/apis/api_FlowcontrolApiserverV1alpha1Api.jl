@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ FlowcontrolApiserverV1alpha1Api }) = "http://localhost"
 
-const _returntypes_create_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_create_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
@@ -19,7 +19,7 @@ const _returntypes_create_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Rege
 )
 
 function _oacinternal_create_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, body::IoK8sApiFlowcontrolV1alpha1FlowSchema; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,7 +48,7 @@ function create_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApis
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_create_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
@@ -56,7 +56,7 @@ const _returntypes_create_flowcontrol_apiserver_v1alpha1_priority_level_configur
 )
 
 function _oacinternal_create_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, body::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -85,13 +85,13 @@ function create_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema = Dict{Regex,Type}(
+const _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -140,13 +140,13 @@ function delete_flowcontrol_apiserver_v1alpha1_collection_flow_schema(_api::Flow
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -195,14 +195,14 @@ function delete_flowcontrol_apiserver_v1alpha1_collection_priority_level_configu
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_delete_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -237,14 +237,14 @@ function delete_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApis
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -279,13 +279,13 @@ function delete_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_flowcontrol_apiserver_v1alpha1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_flowcontrol_apiserver_v1alpha1_a_p_i_resources_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_flowcontrol_apiserver_v1alpha1_a_p_i_resources(_api::FlowcontrolApiserverV1alpha1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_flowcontrol_apiserver_v1alpha1_a_p_i_resources, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_flowcontrol_apiserver_v1alpha1_a_p_i_resources_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -307,13 +307,13 @@ function get_flowcontrol_apiserver_v1alpha1_a_p_i_resources(_api::FlowcontrolApi
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_list_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchemaList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -353,13 +353,13 @@ function list_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiser
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_list_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfigurationList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -399,13 +399,13 @@ function list_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -438,13 +438,13 @@ function patch_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApise
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_status = Dict{Regex,Type}(
+const _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -477,13 +477,13 @@ function patch_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::Flowcontr
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -516,13 +516,13 @@ function patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status = Dict{Regex,Type}(
+const _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -555,13 +555,13 @@ function patch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_statu
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -591,13 +591,13 @@ function read_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiser
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_status = Dict{Regex,Type}(
+const _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -623,13 +623,13 @@ function read_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::Flowcontro
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -659,13 +659,13 @@ function read_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status = Dict{Regex,Type}(
+const _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status(_api::FlowcontrolApiserverV1alpha1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -691,14 +691,14 @@ function read_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::IoK8sApiFlowcontrolV1alpha1FlowSchema; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -729,14 +729,14 @@ function replace_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApi
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_status = Dict{Regex,Type}(
+const _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1FlowSchema,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::IoK8sApiFlowcontrolV1alpha1FlowSchema; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_flow_schema_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/flowschemas/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -767,14 +767,14 @@ function replace_flowcontrol_apiserver_v1alpha1_flow_schema_status(_api::Flowcon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -805,14 +805,14 @@ function replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status = Dict{Regex,Type}(
+const _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status(_api::FlowcontrolApiserverV1alpha1Api, name::String, body::IoK8sApiFlowcontrolV1alpha1PriorityLevelConfiguration; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_status_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/prioritylevelconfigurations/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -843,13 +843,13 @@ function replace_flowcontrol_apiserver_v1alpha1_priority_level_configuration_sta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema = Dict{Regex,Type}(
+const _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApiserverV1alpha1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -891,13 +891,13 @@ function watch_flowcontrol_apiserver_v1alpha1_flow_schema(_api::FlowcontrolApise
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_list = Dict{Regex,Type}(
+const _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_list_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_flowcontrol_apiserver_v1alpha1_flow_schema_list(_api::FlowcontrolApiserverV1alpha1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_list, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_flow_schema_list_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/flowschemas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -937,13 +937,13 @@ function watch_flowcontrol_apiserver_v1alpha1_flow_schema_list(_api::Flowcontrol
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration = Dict{Regex,Type}(
+const _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api::FlowcontrolApiserverV1alpha1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -985,13 +985,13 @@ function watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_list = Dict{Regex,Type}(
+const _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_list_FlowcontrolApiserverV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_list(_api::FlowcontrolApiserverV1alpha1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_list, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_flowcontrol_apiserver_v1alpha1_priority_level_configuration_list_FlowcontrolApiserverV1alpha1Api, "/apis/flowcontrol.apiserver.k8s.io/v1alpha1/watch/prioritylevelconfigurations", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

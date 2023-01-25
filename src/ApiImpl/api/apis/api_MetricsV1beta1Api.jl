@@ -11,13 +11,13 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ MetricsV1beta1Api }) = "http://localhost"
 
-const _returntypes_list_metrics_v1beta1_node_metrics = Dict{Regex,Type}(
+const _returntypes_list_metrics_v1beta1_node_metrics_MetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiMetricsV1beta1NodeMetricsList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_metrics_v1beta1_node_metrics(_api::MetricsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_metrics_v1beta1_node_metrics, "/apis/metrics.k8s.io/v1beta1/nodes", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_metrics_v1beta1_node_metrics_MetricsV1beta1Api, "/apis/metrics.k8s.io/v1beta1/nodes", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -55,13 +55,13 @@ function list_metrics_v1beta1_node_metrics(_api::MetricsV1beta1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_metrics_v1beta1_pod_metrics = Dict{Regex,Type}(
+const _returntypes_list_metrics_v1beta1_pod_metrics_MetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiMetricsV1beta1PodMetricsList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_metrics_v1beta1_pod_metrics(_api::MetricsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_metrics_v1beta1_pod_metrics, "/apis/metrics.k8s.io/v1beta1/pods", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_metrics_v1beta1_pod_metrics_MetricsV1beta1Api, "/apis/metrics.k8s.io/v1beta1/pods", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -99,13 +99,13 @@ function list_metrics_v1beta1_pod_metrics(_api::MetricsV1beta1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_metrics_v1beta1_namespaced_pod_metrics = Dict{Regex,Type}(
+const _returntypes_read_metrics_v1beta1_namespaced_pod_metrics_MetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiMetricsV1beta1PodMetrics,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_metrics_v1beta1_namespaced_pod_metrics(_api::MetricsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_metrics_v1beta1_namespaced_pod_metrics, "/apis/metrics.k8s.io/v1beta1/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_metrics_v1beta1_namespaced_pod_metrics_MetricsV1beta1Api, "/apis/metrics.k8s.io/v1beta1/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -137,13 +137,13 @@ function read_metrics_v1beta1_namespaced_pod_metrics(_api::MetricsV1beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_metrics_v1beta1_node_metrics = Dict{Regex,Type}(
+const _returntypes_read_metrics_v1beta1_node_metrics_MetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiMetricsV1beta1NodeMetrics,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_metrics_v1beta1_node_metrics(_api::MetricsV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_metrics_v1beta1_node_metrics, "/apis/metrics.k8s.io/v1beta1/nodes/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_metrics_v1beta1_node_metrics_MetricsV1beta1Api, "/apis/metrics.k8s.io/v1beta1/nodes/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool

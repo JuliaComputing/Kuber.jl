@@ -11,13 +11,13 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ ExtensionsApi }) = "http://localhost"
 
-const _returntypes_get_extensions_a_p_i_group = Dict{Regex,Type}(
+const _returntypes_get_extensions_a_p_i_group_ExtensionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIGroup,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_extensions_a_p_i_group(_api::ExtensionsApi; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_extensions_a_p_i_group, "/apis/extensions/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_extensions_a_p_i_group_ExtensionsApi, "/apis/extensions/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

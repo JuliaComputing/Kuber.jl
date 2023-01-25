@@ -11,13 +11,13 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ VersionApi }) = "http://localhost"
 
-const _returntypes_get_code_version = Dict{Regex,Type}(
+const _returntypes_get_code_version_VersionApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgVersionInfo,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_code_version(_api::VersionApi; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_code_version, "/version/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_code_version_VersionApi, "/version/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

@@ -11,12 +11,12 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ LogsApi }) = "http://localhost"
 
-const _returntypes_log_file_handler = Dict{Regex,Type}(
+const _returntypes_log_file_handler_LogsApi = Dict{Regex,Type}(
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_log_file_handler(_api::LogsApi, logpath::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_log_file_handler, "/logs/{logpath}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_log_file_handler_LogsApi, "/logs/{logpath}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "logpath", logpath)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
@@ -38,12 +38,12 @@ function log_file_handler(_api::LogsApi, response_stream::Channel, logpath::Stri
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_log_file_list_handler = Dict{Regex,Type}(
+const _returntypes_log_file_list_handler_LogsApi = Dict{Regex,Type}(
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_log_file_list_handler(_api::LogsApi; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_log_file_list_handler, "/logs/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_log_file_list_handler_LogsApi, "/logs/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

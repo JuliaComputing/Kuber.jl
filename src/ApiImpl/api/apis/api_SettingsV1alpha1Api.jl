@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ SettingsV1alpha1Api }) = "http://localhost"
 
-const _returntypes_create_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_create_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
@@ -19,7 +19,7 @@ const _returntypes_create_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,T
 )
 
 function _oacinternal_create_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, namespace::String, body::IoK8sApiSettingsV1alpha1PodPreset; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_settings_v1alpha1_collection_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_delete_settings_v1alpha1_collection_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_settings_v1alpha1_collection_namespaced_pod_preset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_settings_v1alpha1_collection_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_settings_v1alpha1_collection_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_settings_v1alpha1_collection_namespaced_pod_preset(_api::Setting
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_delete_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_settings_v1alpha1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_settings_v1alpha1_a_p_i_resources_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_settings_v1alpha1_a_p_i_resources(_api::SettingsV1alpha1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_settings_v1alpha1_a_p_i_resources, "/apis/settings.k8s.io/v1alpha1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_settings_v1alpha1_a_p_i_resources_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_settings_v1alpha1_a_p_i_resources(_api::SettingsV1alpha1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_list_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPresetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -227,13 +227,13 @@ function list_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_settings_v1alpha1_pod_preset_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_settings_v1alpha1_pod_preset_for_all_namespaces_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPresetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_settings_v1alpha1_pod_preset_for_all_namespaces(_api::SettingsV1alpha1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_settings_v1alpha1_pod_preset_for_all_namespaces, "/apis/settings.k8s.io/v1alpha1/podpresets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_settings_v1alpha1_pod_preset_for_all_namespaces_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/podpresets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -273,13 +273,13 @@ function list_settings_v1alpha1_pod_preset_for_all_namespaces(_api::SettingsV1al
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_patch_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_read_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -352,14 +352,14 @@ function read_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_replace_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiSettingsV1alpha1PodPreset,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, name::String, namespace::String, body::IoK8sApiSettingsV1alpha1PodPreset; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -392,13 +392,13 @@ function replace_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_settings_v1alpha1_namespaced_pod_preset = Dict{Regex,Type}(
+const _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_namespaced_pod_preset, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -442,13 +442,13 @@ function watch_settings_v1alpha1_namespaced_pod_preset(_api::SettingsV1alpha1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_list = Dict{Regex,Type}(
+const _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_list_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_settings_v1alpha1_namespaced_pod_preset_list(_api::SettingsV1alpha1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_list, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_namespaced_pod_preset_list_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/watch/namespaces/{namespace}/podpresets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -490,13 +490,13 @@ function watch_settings_v1alpha1_namespaced_pod_preset_list(_api::SettingsV1alph
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_settings_v1alpha1_pod_preset_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_settings_v1alpha1_pod_preset_list_for_all_namespaces_SettingsV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_settings_v1alpha1_pod_preset_list_for_all_namespaces(_api::SettingsV1alpha1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_pod_preset_list_for_all_namespaces, "/apis/settings.k8s.io/v1alpha1/watch/podpresets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_settings_v1alpha1_pod_preset_list_for_all_namespaces_SettingsV1alpha1Api, "/apis/settings.k8s.io/v1alpha1/watch/podpresets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

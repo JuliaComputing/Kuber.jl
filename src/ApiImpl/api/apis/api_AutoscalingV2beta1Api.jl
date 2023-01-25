@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ AutoscalingV2beta1Api }) = "http://localhost"
 
-const _returntypes_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
@@ -19,7 +19,7 @@ const _returntypes_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscal
 )
 
 function _oacinternal_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, namespace::String, body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_autoscaling_v2beta1_collection_namespaced_horizontal_pod_autosca
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_autoscaling_v2beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_autoscaling_v2beta1_a_p_i_resources_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_autoscaling_v2beta1_a_p_i_resources(_api::AutoscalingV2beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_autoscaling_v2beta1_a_p_i_resources, "/apis/autoscaling/v2beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_autoscaling_v2beta1_a_p_i_resources_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_autoscaling_v2beta1_a_p_i_resources(_api::AutoscalingV2beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces(_api::AutoscalingV2beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces, "/apis/autoscaling/v2beta1/horizontalpodautoscalers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/horizontalpodautoscalers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -225,13 +225,13 @@ function list_autoscaling_v2beta1_horizontal_pod_autoscaler_for_all_namespaces(_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscalerList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -273,13 +273,13 @@ function list_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::Aut
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::Au
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status = Dict{Regex,Type}(
+const _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status(_api::AutoscalingV2beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -355,13 +355,13 @@ function patch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status(_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -393,13 +393,13 @@ function read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::Aut
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status = Dict{Regex,Type}(
+const _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status(_api::AutoscalingV2beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -427,14 +427,14 @@ function read_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status(_a
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String, body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -467,14 +467,14 @@ function replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status = Dict{Regex,Type}(
+const _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status(_api::AutoscalingV2beta1Api, name::String, namespace::String, body::IoK8sApiAutoscalingV2beta1HorizontalPodAutoscaler; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/namespaces/{namespace}/horizontalpodautoscalers/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -507,13 +507,13 @@ function replace_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_status
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namespaces_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namespaces(_api::AutoscalingV2beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namespaces, "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namespaces_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -553,13 +553,13 @@ function watch_autoscaling_v2beta1_horizontal_pod_autoscaler_list_for_all_namesp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler = Dict{Regex,Type}(
+const _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::AutoscalingV2beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler, "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -603,13 +603,13 @@ function watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler(_api::Au
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_list = Dict{Regex,Type}(
+const _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_list_AutoscalingV2beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_list(_api::AutoscalingV2beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_list, "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_autoscaling_v2beta1_namespaced_horizontal_pod_autoscaler_list_AutoscalingV2beta1Api, "/apis/autoscaling/v2beta1/watch/namespaces/{namespace}/horizontalpodautoscalers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String

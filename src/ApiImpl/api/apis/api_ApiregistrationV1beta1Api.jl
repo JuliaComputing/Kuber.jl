@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ ApiregistrationV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_create_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
@@ -19,7 +19,7 @@ const _returntypes_create_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Typ
 )
 
 function _oacinternal_create_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, body::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,14 +48,14 @@ function create_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_delete_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -90,13 +90,13 @@ function delete_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apiregistration_v1beta1_collection_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_delete_apiregistration_v1beta1_collection_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apiregistration_v1beta1_collection_a_p_i_service(_api::ApiregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apiregistration_v1beta1_collection_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apiregistration_v1beta1_collection_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -145,13 +145,13 @@ function delete_apiregistration_v1beta1_collection_a_p_i_service(_api::Apiregist
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_apiregistration_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_apiregistration_v1beta1_a_p_i_resources_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_apiregistration_v1beta1_a_p_i_resources(_api::ApiregistrationV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_apiregistration_v1beta1_a_p_i_resources, "/apis/apiregistration.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_apiregistration_v1beta1_a_p_i_resources_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -173,13 +173,13 @@ function get_apiregistration_v1beta1_a_p_i_resources(_api::ApiregistrationV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_list_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIServiceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -219,13 +219,13 @@ function list_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_patch_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -258,13 +258,13 @@ function patch_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apiregistration_v1beta1_a_p_i_service_status = Dict{Regex,Type}(
+const _returntypes_patch_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apiregistration_v1beta1_a_p_i_service_status(_api::ApiregistrationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apiregistration_v1beta1_a_p_i_service_status, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -297,13 +297,13 @@ function patch_apiregistration_v1beta1_a_p_i_service_status(_api::Apiregistratio
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_read_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -333,13 +333,13 @@ function read_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apiregistration_v1beta1_a_p_i_service_status = Dict{Regex,Type}(
+const _returntypes_read_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apiregistration_v1beta1_a_p_i_service_status(_api::ApiregistrationV1beta1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apiregistration_v1beta1_a_p_i_service_status, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -365,14 +365,14 @@ function read_apiregistration_v1beta1_a_p_i_service_status(_api::Apiregistration
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_replace_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, name::String, body::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -403,14 +403,14 @@ function replace_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1be
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apiregistration_v1beta1_a_p_i_service_status = Dict{Regex,Type}(
+const _returntypes_replace_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apiregistration_v1beta1_a_p_i_service_status(_api::ApiregistrationV1beta1Api, name::String, body::IoK8sKubeAggregatorPkgApisApiregistrationV1beta1APIService; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apiregistration_v1beta1_a_p_i_service_status, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apiregistration_v1beta1_a_p_i_service_status_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/apiservices/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -441,13 +441,13 @@ function replace_apiregistration_v1beta1_a_p_i_service_status(_api::Apiregistrat
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apiregistration_v1beta1_a_p_i_service = Dict{Regex,Type}(
+const _returntypes_watch_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apiregistration_v1beta1_a_p_i_service, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apiregistration_v1beta1_a_p_i_service_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -489,13 +489,13 @@ function watch_apiregistration_v1beta1_a_p_i_service(_api::ApiregistrationV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apiregistration_v1beta1_a_p_i_service_list = Dict{Regex,Type}(
+const _returntypes_watch_apiregistration_v1beta1_a_p_i_service_list_ApiregistrationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apiregistration_v1beta1_a_p_i_service_list(_api::ApiregistrationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apiregistration_v1beta1_a_p_i_service_list, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apiregistration_v1beta1_a_p_i_service_list_ApiregistrationV1beta1Api, "/apis/apiregistration.k8s.io/v1beta1/watch/apiservices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

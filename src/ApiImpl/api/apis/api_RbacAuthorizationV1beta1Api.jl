@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ RbacAuthorizationV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_create_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
@@ -19,7 +19,7 @@ const _returntypes_create_rbac_authorization_v1beta1_cluster_role = Dict{Regex,T
 )
 
 function _oacinternal_create_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, body::IoK8sApiRbacV1beta1ClusterRole; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,7 +48,7 @@ function create_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_create_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
@@ -56,7 +56,7 @@ const _returntypes_create_rbac_authorization_v1beta1_cluster_role_binding = Dict
 )
 
 function _oacinternal_create_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, body::IoK8sApiRbacV1beta1ClusterRoleBinding; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -85,7 +85,7 @@ function create_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthor
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_create_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
@@ -93,7 +93,7 @@ const _returntypes_create_rbac_authorization_v1beta1_namespaced_role = Dict{Rege
 )
 
 function _oacinternal_create_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, namespace::String, body::IoK8sApiRbacV1beta1Role; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -124,7 +124,7 @@ function create_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizati
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_create_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
@@ -132,7 +132,7 @@ const _returntypes_create_rbac_authorization_v1beta1_namespaced_role_binding = D
 )
 
 function _oacinternal_create_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, namespace::String, body::IoK8sApiRbacV1beta1RoleBinding; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -163,14 +163,14 @@ function create_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAut
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -205,14 +205,14 @@ function delete_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -247,13 +247,13 @@ function delete_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthor
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_collection_cluster_role(_api::RbacAuthorizationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -302,13 +302,13 @@ function delete_rbac_authorization_v1beta1_collection_cluster_role(_api::RbacAut
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_collection_cluster_role_binding(_api::RbacAuthorizationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -357,13 +357,13 @@ function delete_rbac_authorization_v1beta1_collection_cluster_role_binding(_api:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_collection_namespaced_role(_api::RbacAuthorizationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -414,13 +414,13 @@ function delete_rbac_authorization_v1beta1_collection_namespaced_role(_api::Rbac
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_collection_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_collection_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -471,14 +471,14 @@ function delete_rbac_authorization_v1beta1_collection_namespaced_role_binding(_a
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -515,14 +515,14 @@ function delete_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizati
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -559,13 +559,13 @@ function delete_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAut
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_rbac_authorization_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_rbac_authorization_v1beta1_a_p_i_resources_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_rbac_authorization_v1beta1_a_p_i_resources(_api::RbacAuthorizationV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_rbac_authorization_v1beta1_a_p_i_resources, "/apis/rbac.authorization.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_rbac_authorization_v1beta1_a_p_i_resources_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -587,13 +587,13 @@ function get_rbac_authorization_v1beta1_a_p_i_resources(_api::RbacAuthorizationV
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -633,13 +633,13 @@ function list_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1b
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBindingList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -679,13 +679,13 @@ function list_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthoriz
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -727,13 +727,13 @@ function list_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorization
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBindingList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -775,13 +775,13 @@ function list_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAutho
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_role_binding_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_role_binding_for_all_namespaces_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBindingList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_role_binding_for_all_namespaces(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_role_binding_for_all_namespaces, "/apis/rbac.authorization.k8s.io/v1beta1/rolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_role_binding_for_all_namespaces_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/rolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -821,13 +821,13 @@ function list_rbac_authorization_v1beta1_role_binding_for_all_namespaces(_api::R
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_rbac_authorization_v1beta1_role_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_rbac_authorization_v1beta1_role_for_all_namespaces_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_rbac_authorization_v1beta1_role_for_all_namespaces(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_role_for_all_namespaces, "/apis/rbac.authorization.k8s.io/v1beta1/roles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_rbac_authorization_v1beta1_role_for_all_namespaces_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/roles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -867,13 +867,13 @@ function list_rbac_authorization_v1beta1_role_for_all_namespaces(_api::RbacAutho
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_patch_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -906,13 +906,13 @@ function patch_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_patch_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -945,13 +945,13 @@ function patch_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthori
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -986,13 +986,13 @@ function patch_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizatio
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1027,13 +1027,13 @@ function patch_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuth
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_read_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -1059,13 +1059,13 @@ function read_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1b
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_read_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -1091,13 +1091,13 @@ function read_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthoriz
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_read_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1125,13 +1125,13 @@ function read_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorization
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_read_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1159,14 +1159,14 @@ function read_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAutho
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_replace_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRole,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, name::String, body::IoK8sApiRbacV1beta1ClusterRole; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterroles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1197,14 +1197,14 @@ function replace_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorization
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_replace_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1ClusterRoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, body::IoK8sApiRbacV1beta1ClusterRoleBinding; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/clusterrolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1235,14 +1235,14 @@ function replace_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAutho
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1Role,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String, body::IoK8sApiRbacV1beta1Role; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/roles/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1275,14 +1275,14 @@ function replace_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizat
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiRbacV1beta1RoleBinding,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String, body::IoK8sApiRbacV1beta1RoleBinding; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1315,13 +1315,13 @@ function replace_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAu
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_cluster_role = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1363,13 +1363,13 @@ function watch_rbac_authorization_v1beta1_cluster_role(_api::RbacAuthorizationV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthorizationV1beta1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1411,13 +1411,13 @@ function watch_rbac_authorization_v1beta1_cluster_role_binding(_api::RbacAuthori
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_list = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_list_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_cluster_role_binding_list(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_list, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_binding_list_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterrolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -1457,13 +1457,13 @@ function watch_rbac_authorization_v1beta1_cluster_role_binding_list(_api::RbacAu
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_list = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_cluster_role_list_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_cluster_role_list(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_list, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_cluster_role_list_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/clusterroles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -1503,13 +1503,13 @@ function watch_rbac_authorization_v1beta1_cluster_role_list(_api::RbacAuthorizat
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -1553,13 +1553,13 @@ function watch_rbac_authorization_v1beta1_namespaced_role(_api::RbacAuthorizatio
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuthorizationV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -1603,13 +1603,13 @@ function watch_rbac_authorization_v1beta1_namespaced_role_binding(_api::RbacAuth
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_list = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_list_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_namespaced_role_binding_list(_api::RbacAuthorizationV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_list, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_binding_list_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/rolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1651,13 +1651,13 @@ function watch_rbac_authorization_v1beta1_namespaced_role_binding_list(_api::Rba
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_list = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_list_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_namespaced_role_list(_api::RbacAuthorizationV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_list, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_namespaced_role_list_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/namespaces/{namespace}/roles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1699,13 +1699,13 @@ function watch_rbac_authorization_v1beta1_namespaced_role_list(_api::RbacAuthori
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces, "/apis/rbac.authorization.k8s.io/v1beta1/watch/rolebindings", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/rolebindings", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -1745,13 +1745,13 @@ function watch_rbac_authorization_v1beta1_role_binding_list_for_all_namespaces(_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_rbac_authorization_v1beta1_role_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_rbac_authorization_v1beta1_role_list_for_all_namespaces_RbacAuthorizationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_rbac_authorization_v1beta1_role_list_for_all_namespaces(_api::RbacAuthorizationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_role_list_for_all_namespaces, "/apis/rbac.authorization.k8s.io/v1beta1/watch/roles", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_rbac_authorization_v1beta1_role_list_for_all_namespaces_RbacAuthorizationV1beta1Api, "/apis/rbac.authorization.k8s.io/v1beta1/watch/roles", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

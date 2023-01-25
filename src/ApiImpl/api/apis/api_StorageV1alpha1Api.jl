@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ StorageV1alpha1Api }) = "http://localhost"
 
-const _returntypes_create_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_create_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
@@ -19,7 +19,7 @@ const _returntypes_create_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, body::IoK8sApiStorageV1alpha1VolumeAttachment; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,13 +48,13 @@ function create_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_storage_v1alpha1_collection_volume_attachment = Dict{Regex,Type}(
+const _returntypes_delete_storage_v1alpha1_collection_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_storage_v1alpha1_collection_volume_attachment(_api::StorageV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_storage_v1alpha1_collection_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_storage_v1alpha1_collection_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -103,14 +103,14 @@ function delete_storage_v1alpha1_collection_volume_attachment(_api::StorageV1alp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_delete_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -145,13 +145,13 @@ function delete_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_storage_v1alpha1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_storage_v1alpha1_a_p_i_resources_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_storage_v1alpha1_a_p_i_resources(_api::StorageV1alpha1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_storage_v1alpha1_a_p_i_resources, "/apis/storage.k8s.io/v1alpha1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_storage_v1alpha1_a_p_i_resources_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -173,13 +173,13 @@ function get_storage_v1alpha1_a_p_i_resources(_api::StorageV1alpha1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_list_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachmentList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -219,13 +219,13 @@ function list_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_patch_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -258,13 +258,13 @@ function patch_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_read_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -294,14 +294,14 @@ function read_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_replace_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiStorageV1alpha1VolumeAttachment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, name::String, body::IoK8sApiStorageV1alpha1VolumeAttachment; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/volumeattachments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -332,13 +332,13 @@ function replace_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_storage_v1alpha1_volume_attachment = Dict{Regex,Type}(
+const _returntypes_watch_storage_v1alpha1_volume_attachment_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_storage_v1alpha1_volume_attachment, "/apis/storage.k8s.io/v1alpha1/watch/volumeattachments/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_storage_v1alpha1_volume_attachment_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/watch/volumeattachments/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -380,13 +380,13 @@ function watch_storage_v1alpha1_volume_attachment(_api::StorageV1alpha1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_storage_v1alpha1_volume_attachment_list = Dict{Regex,Type}(
+const _returntypes_watch_storage_v1alpha1_volume_attachment_list_StorageV1alpha1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_storage_v1alpha1_volume_attachment_list(_api::StorageV1alpha1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_storage_v1alpha1_volume_attachment_list, "/apis/storage.k8s.io/v1alpha1/watch/volumeattachments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_storage_v1alpha1_volume_attachment_list_StorageV1alpha1Api, "/apis/storage.k8s.io/v1alpha1/watch/volumeattachments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

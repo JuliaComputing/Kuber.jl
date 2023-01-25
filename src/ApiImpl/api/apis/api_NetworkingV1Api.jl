@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ NetworkingV1Api }) = "http://localhost"
 
-const _returntypes_create_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_create_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
@@ -19,7 +19,7 @@ const _returntypes_create_networking_v1_namespaced_network_policy = Dict{Regex,T
 )
 
 function _oacinternal_create_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, namespace::String, body::IoK8sApiNetworkingV1NetworkPolicy; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_networking_v1_collection_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_delete_networking_v1_collection_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_networking_v1_collection_namespaced_network_policy(_api::NetworkingV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_networking_v1_collection_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_networking_v1_collection_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_networking_v1_collection_namespaced_network_policy(_api::Network
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_delete_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_networking_v1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_networking_v1_a_p_i_resources_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_networking_v1_a_p_i_resources(_api::NetworkingV1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_networking_v1_a_p_i_resources, "/apis/networking.k8s.io/v1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_networking_v1_a_p_i_resources_NetworkingV1Api, "/apis/networking.k8s.io/v1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_networking_v1_a_p_i_resources(_api::NetworkingV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_list_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicyList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -227,13 +227,13 @@ function list_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_networking_v1_network_policy_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_networking_v1_network_policy_for_all_namespaces_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicyList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_networking_v1_network_policy_for_all_namespaces(_api::NetworkingV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_networking_v1_network_policy_for_all_namespaces, "/apis/networking.k8s.io/v1/networkpolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_networking_v1_network_policy_for_all_namespaces_NetworkingV1Api, "/apis/networking.k8s.io/v1/networkpolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -273,13 +273,13 @@ function list_networking_v1_network_policy_for_all_namespaces(_api::NetworkingV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_patch_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_read_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -352,14 +352,14 @@ function read_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_replace_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiNetworkingV1NetworkPolicy,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, name::String, namespace::String, body::IoK8sApiNetworkingV1NetworkPolicy; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -392,13 +392,13 @@ function replace_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_networking_v1_namespaced_network_policy = Dict{Regex,Type}(
+const _returntypes_watch_networking_v1_namespaced_network_policy_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_namespaced_network_policy, "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_namespaced_network_policy_NetworkingV1Api, "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -442,13 +442,13 @@ function watch_networking_v1_namespaced_network_policy(_api::NetworkingV1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_networking_v1_namespaced_network_policy_list = Dict{Regex,Type}(
+const _returntypes_watch_networking_v1_namespaced_network_policy_list_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_networking_v1_namespaced_network_policy_list(_api::NetworkingV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_namespaced_network_policy_list, "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_namespaced_network_policy_list_NetworkingV1Api, "/apis/networking.k8s.io/v1/watch/namespaces/{namespace}/networkpolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -490,13 +490,13 @@ function watch_networking_v1_namespaced_network_policy_list(_api::NetworkingV1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_networking_v1_network_policy_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_networking_v1_network_policy_list_for_all_namespaces_NetworkingV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_networking_v1_network_policy_list_for_all_namespaces(_api::NetworkingV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_network_policy_list_for_all_namespaces, "/apis/networking.k8s.io/v1/watch/networkpolicies", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_networking_v1_network_policy_list_for_all_namespaces_NetworkingV1Api, "/apis/networking.k8s.io/v1/watch/networkpolicies", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

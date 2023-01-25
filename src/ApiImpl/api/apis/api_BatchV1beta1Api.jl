@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ BatchV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_create_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
@@ -19,7 +19,7 @@ const _returntypes_create_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, namespace::String, body::IoK8sApiBatchV1beta1CronJob; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_batch_v1beta1_collection_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_delete_batch_v1beta1_collection_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_batch_v1beta1_collection_namespaced_cron_job(_api::BatchV1beta1Api, namespace::String; pretty=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_batch_v1beta1_collection_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_batch_v1beta1_collection_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -105,14 +105,14 @@ function delete_batch_v1beta1_collection_namespaced_cron_job(_api::BatchV1beta1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_delete_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -149,13 +149,13 @@ function delete_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_batch_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_batch_v1beta1_a_p_i_resources_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_batch_v1beta1_a_p_i_resources(_api::BatchV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_batch_v1beta1_a_p_i_resources, "/apis/batch/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_batch_v1beta1_a_p_i_resources_BatchV1beta1Api, "/apis/batch/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -177,13 +177,13 @@ function get_batch_v1beta1_a_p_i_resources(_api::BatchV1beta1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_batch_v1beta1_cron_job_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_batch_v1beta1_cron_job_for_all_namespaces_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJobList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_batch_v1beta1_cron_job_for_all_namespaces(_api::BatchV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_batch_v1beta1_cron_job_for_all_namespaces, "/apis/batch/v1beta1/cronjobs", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_batch_v1beta1_cron_job_for_all_namespaces_BatchV1beta1Api, "/apis/batch/v1beta1/cronjobs", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -225,13 +225,13 @@ function list_batch_v1beta1_cron_job_for_all_namespaces(_api::BatchV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_list_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJobList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -275,14 +275,14 @@ function list_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_patch_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -317,14 +317,14 @@ function patch_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_batch_v1beta1_namespaced_cron_job_status = Dict{Regex,Type}(
+const _returntypes_patch_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_batch_v1beta1_namespaced_cron_job_status, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -359,13 +359,13 @@ function patch_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_read_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -397,13 +397,13 @@ function read_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_batch_v1beta1_namespaced_cron_job_status = Dict{Regex,Type}(
+const _returntypes_read_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_batch_v1beta1_namespaced_cron_job_status, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -431,14 +431,14 @@ function read_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_replace_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, name::String, namespace::String, body::IoK8sApiBatchV1beta1CronJob; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -471,14 +471,14 @@ function replace_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_batch_v1beta1_namespaced_cron_job_status = Dict{Regex,Type}(
+const _returntypes_replace_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiBatchV1beta1CronJob,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api, name::String, namespace::String, body::IoK8sApiBatchV1beta1CronJob; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_batch_v1beta1_namespaced_cron_job_status, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_batch_v1beta1_namespaced_cron_job_status_BatchV1beta1Api, "/apis/batch/v1beta1/namespaces/{namespace}/cronjobs/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -511,13 +511,13 @@ function replace_batch_v1beta1_namespaced_cron_job_status(_api::BatchV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_batch_v1beta1_cron_job_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_batch_v1beta1_cron_job_list_for_all_namespaces_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_batch_v1beta1_cron_job_list_for_all_namespaces(_api::BatchV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_cron_job_list_for_all_namespaces, "/apis/batch/v1beta1/watch/cronjobs", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_cron_job_list_for_all_namespaces_BatchV1beta1Api, "/apis/batch/v1beta1/watch/cronjobs", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -559,13 +559,13 @@ function watch_batch_v1beta1_cron_job_list_for_all_namespaces(_api::BatchV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_batch_v1beta1_namespaced_cron_job = Dict{Regex,Type}(
+const _returntypes_watch_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_namespaced_cron_job, "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_namespaced_cron_job_BatchV1beta1Api, "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -611,13 +611,13 @@ function watch_batch_v1beta1_namespaced_cron_job(_api::BatchV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_batch_v1beta1_namespaced_cron_job_list = Dict{Regex,Type}(
+const _returntypes_watch_batch_v1beta1_namespaced_cron_job_list_BatchV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_batch_v1beta1_namespaced_cron_job_list(_api::BatchV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_namespaced_cron_job_list, "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_batch_v1beta1_namespaced_cron_job_list_BatchV1beta1Api, "/apis/batch/v1beta1/watch/namespaces/{namespace}/cronjobs", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String

@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ CoordinationV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_create_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
@@ -19,7 +19,7 @@ const _returntypes_create_coordination_v1beta1_namespaced_lease = Dict{Regex,Typ
 )
 
 function _oacinternal_create_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, namespace::String, body::IoK8sApiCoordinationV1beta1Lease; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_coordination_v1beta1_collection_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_delete_coordination_v1beta1_collection_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_coordination_v1beta1_collection_namespaced_lease(_api::CoordinationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_coordination_v1beta1_collection_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_coordination_v1beta1_collection_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_coordination_v1beta1_collection_namespaced_lease(_api::Coordinat
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_delete_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_coordination_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_coordination_v1beta1_a_p_i_resources_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_coordination_v1beta1_a_p_i_resources(_api::CoordinationV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_coordination_v1beta1_a_p_i_resources, "/apis/coordination.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_coordination_v1beta1_a_p_i_resources_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_coordination_v1beta1_a_p_i_resources(_api::CoordinationV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_coordination_v1beta1_lease_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_coordination_v1beta1_lease_for_all_namespaces_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1LeaseList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_coordination_v1beta1_lease_for_all_namespaces(_api::CoordinationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_coordination_v1beta1_lease_for_all_namespaces, "/apis/coordination.k8s.io/v1beta1/leases", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_coordination_v1beta1_lease_for_all_namespaces_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/leases", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -225,13 +225,13 @@ function list_coordination_v1beta1_lease_for_all_namespaces(_api::CoordinationV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_list_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1LeaseList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -273,13 +273,13 @@ function list_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_patch_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_read_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -352,14 +352,14 @@ function read_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_replace_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoordinationV1beta1Lease,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, name::String, namespace::String, body::IoK8sApiCoordinationV1beta1Lease; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/namespaces/{namespace}/leases/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -392,13 +392,13 @@ function replace_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_coordination_v1beta1_lease_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_coordination_v1beta1_lease_list_for_all_namespaces_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_coordination_v1beta1_lease_list_for_all_namespaces(_api::CoordinationV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_lease_list_for_all_namespaces, "/apis/coordination.k8s.io/v1beta1/watch/leases", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_lease_list_for_all_namespaces_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/watch/leases", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -438,13 +438,13 @@ function watch_coordination_v1beta1_lease_list_for_all_namespaces(_api::Coordina
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_coordination_v1beta1_namespaced_lease = Dict{Regex,Type}(
+const _returntypes_watch_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_namespaced_lease, "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leases/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_namespaced_lease_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leases/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -488,13 +488,13 @@ function watch_coordination_v1beta1_namespaced_lease(_api::CoordinationV1beta1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_coordination_v1beta1_namespaced_lease_list = Dict{Regex,Type}(
+const _returntypes_watch_coordination_v1beta1_namespaced_lease_list_CoordinationV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_coordination_v1beta1_namespaced_lease_list(_api::CoordinationV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_namespaced_lease_list, "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leases", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_coordination_v1beta1_namespaced_lease_list_CoordinationV1beta1Api, "/apis/coordination.k8s.io/v1beta1/watch/namespaces/{namespace}/leases", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String

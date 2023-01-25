@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ DiscoveryV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_create_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
@@ -19,7 +19,7 @@ const _returntypes_create_discovery_v1beta1_namespaced_endpoint_slice = Dict{Reg
 )
 
 function _oacinternal_create_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, namespace::String, body::IoK8sApiDiscoveryV1beta1EndpointSlice; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,13 +50,13 @@ function create_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_discovery_v1beta1_collection_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_delete_discovery_v1beta1_collection_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_discovery_v1beta1_collection_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_discovery_v1beta1_collection_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_discovery_v1beta1_collection_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -107,14 +107,14 @@ function delete_discovery_v1beta1_collection_namespaced_endpoint_slice(_api::Dis
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_delete_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -151,13 +151,13 @@ function delete_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1bet
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_discovery_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_discovery_v1beta1_a_p_i_resources_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_discovery_v1beta1_a_p_i_resources(_api::DiscoveryV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_discovery_v1beta1_a_p_i_resources, "/apis/discovery.k8s.io/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_discovery_v1beta1_a_p_i_resources_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -179,13 +179,13 @@ function get_discovery_v1beta1_a_p_i_resources(_api::DiscoveryV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_discovery_v1beta1_endpoint_slice_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_discovery_v1beta1_endpoint_slice_for_all_namespaces_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSliceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_discovery_v1beta1_endpoint_slice_for_all_namespaces(_api::DiscoveryV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_discovery_v1beta1_endpoint_slice_for_all_namespaces, "/apis/discovery.k8s.io/v1beta1/endpointslices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_discovery_v1beta1_endpoint_slice_for_all_namespaces_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/endpointslices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -225,13 +225,13 @@ function list_discovery_v1beta1_endpoint_slice_for_all_namespaces(_api::Discover
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_list_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSliceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -273,13 +273,13 @@ function list_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_patch_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -314,13 +314,13 @@ function patch_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_read_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -352,14 +352,14 @@ function read_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_replace_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiDiscoveryV1beta1EndpointSlice,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, name::String, namespace::String, body::IoK8sApiDiscoveryV1beta1EndpointSlice; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -392,13 +392,13 @@ function replace_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1be
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces(_api::DiscoveryV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces, "/apis/discovery.k8s.io/v1beta1/watch/endpointslices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/watch/endpointslices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -438,13 +438,13 @@ function watch_discovery_v1beta1_endpoint_slice_list_for_all_namespaces(_api::Di
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice = Dict{Regex,Type}(
+const _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice, "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -488,13 +488,13 @@ function watch_discovery_v1beta1_namespaced_endpoint_slice(_api::DiscoveryV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_list = Dict{Regex,Type}(
+const _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_list_DiscoveryV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_discovery_v1beta1_namespaced_endpoint_slice_list(_api::DiscoveryV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_list, "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_discovery_v1beta1_namespaced_endpoint_slice_list_DiscoveryV1beta1Api, "/apis/discovery.k8s.io/v1beta1/watch/namespaces/{namespace}/endpointslices", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String

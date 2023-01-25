@@ -11,13 +11,13 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ CustomMetricsV1beta1Api }) = "http://localhost"
 
-const _returntypes_list_custom_metrics_v1beta1_metric_value = Dict{Regex,Type}(
+const _returntypes_list_custom_metrics_v1beta1_metric_value_CustomMetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCustomMetricsV1beta1MetricValueList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_custom_metrics_v1beta1_metric_value(_api::CustomMetricsV1beta1Api, compositemetricname::String; pretty=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_custom_metrics_v1beta1_metric_value, "/apis/custom.metrics.k8s.io/v1beta1/{compositemetricname}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_custom_metrics_v1beta1_metric_value_CustomMetricsV1beta1Api, "/apis/custom.metrics.k8s.io/v1beta1/{compositemetricname}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "compositemetricname", compositemetricname)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -49,13 +49,13 @@ function list_custom_metrics_v1beta1_metric_value(_api::CustomMetricsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_custom_metrics_v1beta1_namespaced_metric_value = Dict{Regex,Type}(
+const _returntypes_list_custom_metrics_v1beta1_namespaced_metric_value_CustomMetricsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCustomMetricsV1beta1MetricValueList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_custom_metrics_v1beta1_namespaced_metric_value(_api::CustomMetricsV1beta1Api, compositemetricname::String, namespace::String; pretty=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_custom_metrics_v1beta1_namespaced_metric_value, "/apis/custom.metrics.k8s.io/v1beta1/namespaces/{namespace}/{compositemetricname}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_custom_metrics_v1beta1_namespaced_metric_value_CustomMetricsV1beta1Api, "/apis/custom.metrics.k8s.io/v1beta1/namespaces/{namespace}/{compositemetricname}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "compositemetricname", compositemetricname)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String

@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ AppsV1beta1Api }) = "http://localhost"
 
-const _returntypes_create_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_create_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
@@ -19,7 +19,7 @@ const _returntypes_create_apps_v1beta1_namespaced_controller_revision = Dict{Reg
 )
 
 function _oacinternal_create_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, namespace::String, body::IoK8sApiAppsV1beta1ControllerRevision; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -50,7 +50,7 @@ function create_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_create_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
@@ -58,7 +58,7 @@ const _returntypes_create_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, namespace::String, body::IoK8sApiAppsV1beta1Deployment; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -89,7 +89,7 @@ function create_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_apps_v1beta1_namespaced_deployment_rollback = Dict{Regex,Type}(
+const _returntypes_create_apps_v1beta1_namespaced_deployment_rollback_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
@@ -97,7 +97,7 @@ const _returntypes_create_apps_v1beta1_namespaced_deployment_rollback = Dict{Reg
 )
 
 function _oacinternal_create_apps_v1beta1_namespaced_deployment_rollback(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1DeploymentRollback; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_deployment_rollback, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/rollback", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_deployment_rollback_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/rollback", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -130,7 +130,7 @@ function create_apps_v1beta1_namespaced_deployment_rollback(_api::AppsV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_create_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
@@ -138,7 +138,7 @@ const _returntypes_create_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type
 )
 
 function _oacinternal_create_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, namespace::String, body::IoK8sApiAppsV1beta1StatefulSet; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -169,13 +169,13 @@ function create_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_collection_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_collection_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_collection_namespaced_controller_revision(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -226,13 +226,13 @@ function delete_apps_v1beta1_collection_namespaced_controller_revision(_api::App
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_collection_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_collection_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_collection_namespaced_deployment(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -283,13 +283,13 @@ function delete_apps_v1beta1_collection_namespaced_deployment(_api::AppsV1beta1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_collection_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_collection_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_collection_namespaced_stateful_set(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_collection_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -340,14 +340,14 @@ function delete_apps_v1beta1_collection_namespaced_stateful_set(_api::AppsV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -384,14 +384,14 @@ function delete_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -428,14 +428,14 @@ function delete_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_delete_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -472,13 +472,13 @@ function delete_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_apps_v1beta1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_apps_v1beta1_a_p_i_resources_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_apps_v1beta1_a_p_i_resources(_api::AppsV1beta1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_apps_v1beta1_a_p_i_resources, "/apis/apps/v1beta1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_apps_v1beta1_a_p_i_resources_AppsV1beta1Api, "/apis/apps/v1beta1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -500,13 +500,13 @@ function get_apps_v1beta1_a_p_i_resources(_api::AppsV1beta1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_controller_revision_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_controller_revision_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevisionList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_controller_revision_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_controller_revision_for_all_namespaces, "/apis/apps/v1beta1/controllerrevisions", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_controller_revision_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/controllerrevisions", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -546,13 +546,13 @@ function list_apps_v1beta1_controller_revision_for_all_namespaces(_api::AppsV1be
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_deployment_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_deployment_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1DeploymentList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_deployment_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_deployment_for_all_namespaces, "/apis/apps/v1beta1/deployments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_deployment_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/deployments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -592,13 +592,13 @@ function list_apps_v1beta1_deployment_for_all_namespaces(_api::AppsV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevisionList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -640,13 +640,13 @@ function list_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1DeploymentList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -688,13 +688,13 @@ function list_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -736,13 +736,13 @@ function list_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_apps_v1beta1_stateful_set_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_apps_v1beta1_stateful_set_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSetList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_apps_v1beta1_stateful_set_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_stateful_set_for_all_namespaces, "/apis/apps/v1beta1/statefulsets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_apps_v1beta1_stateful_set_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/statefulsets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -782,13 +782,13 @@ function list_apps_v1beta1_stateful_set_for_all_namespaces(_api::AppsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -823,13 +823,13 @@ function patch_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -864,13 +864,13 @@ function patch_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_deployment_scale = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment_scale, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -905,13 +905,13 @@ function patch_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_deployment_status = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment_status, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -946,13 +946,13 @@ function patch_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -987,13 +987,13 @@ function patch_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_stateful_set_scale = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set_scale, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1028,13 +1028,13 @@ function patch_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_apps_v1beta1_namespaced_stateful_set_status = Dict{Regex,Type}(
+const _returntypes_patch_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set_status, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1069,13 +1069,13 @@ function patch_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1107,13 +1107,13 @@ function read_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1145,13 +1145,13 @@ function read_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_deployment_scale = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment_scale, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1179,13 +1179,13 @@ function read_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_deployment_status = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment_status, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1213,13 +1213,13 @@ function read_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1251,13 +1251,13 @@ function read_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_stateful_set_scale = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set_scale, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1285,13 +1285,13 @@ function read_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_apps_v1beta1_namespaced_stateful_set_status = Dict{Regex,Type}(
+const _returntypes_read_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set_status, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1319,14 +1319,14 @@ function read_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1ControllerRevision,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1ControllerRevision; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1359,14 +1359,14 @@ function replace_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1Deployment; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1399,14 +1399,14 @@ function replace_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_deployment_scale = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1Scale; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment_scale, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1439,14 +1439,14 @@ function replace_apps_v1beta1_namespaced_deployment_scale(_api::AppsV1beta1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_deployment_status = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Deployment,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1Deployment; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment_status, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_deployment_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/deployments/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1479,14 +1479,14 @@ function replace_apps_v1beta1_namespaced_deployment_status(_api::AppsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1StatefulSet; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1519,14 +1519,14 @@ function replace_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_stateful_set_scale = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1Scale; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set_scale, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set_scale_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1559,14 +1559,14 @@ function replace_apps_v1beta1_namespaced_stateful_set_scale(_api::AppsV1beta1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_apps_v1beta1_namespaced_stateful_set_status = Dict{Regex,Type}(
+const _returntypes_replace_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAppsV1beta1StatefulSet,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Api, name::String, namespace::String, body::IoK8sApiAppsV1beta1StatefulSet; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set_status, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_apps_v1beta1_namespaced_stateful_set_status_AppsV1beta1Api, "/apis/apps/v1beta1/namespaces/{namespace}/statefulsets/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -1599,13 +1599,13 @@ function replace_apps_v1beta1_namespaced_stateful_set_status(_api::AppsV1beta1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_controller_revision_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_controller_revision_list_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_controller_revision_list_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_controller_revision_list_for_all_namespaces, "/apis/apps/v1beta1/watch/controllerrevisions", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_controller_revision_list_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/watch/controllerrevisions", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -1645,13 +1645,13 @@ function watch_apps_v1beta1_controller_revision_list_for_all_namespaces(_api::Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_deployment_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_deployment_list_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_deployment_list_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_deployment_list_for_all_namespaces, "/apis/apps/v1beta1/watch/deployments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_deployment_list_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/watch/deployments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -1691,13 +1691,13 @@ function watch_apps_v1beta1_deployment_list_for_all_namespaces(_api::AppsV1beta1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_controller_revision = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_controller_revision, "/apis/apps/v1beta1/watch/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_controller_revision_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/controllerrevisions/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -1741,13 +1741,13 @@ function watch_apps_v1beta1_namespaced_controller_revision(_api::AppsV1beta1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_controller_revision_list = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_controller_revision_list_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_controller_revision_list(_api::AppsV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_controller_revision_list, "/apis/apps/v1beta1/watch/namespaces/{namespace}/controllerrevisions", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_controller_revision_list_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/controllerrevisions", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1789,13 +1789,13 @@ function watch_apps_v1beta1_namespaced_controller_revision_list(_api::AppsV1beta
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_deployment = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_deployment_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_deployment, "/apis/apps/v1beta1/watch/namespaces/{namespace}/deployments/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_deployment_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/deployments/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -1839,13 +1839,13 @@ function watch_apps_v1beta1_namespaced_deployment(_api::AppsV1beta1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_deployment_list = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_deployment_list_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_deployment_list(_api::AppsV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_deployment_list, "/apis/apps/v1beta1/watch/namespaces/{namespace}/deployments", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_deployment_list_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/deployments", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1887,13 +1887,13 @@ function watch_apps_v1beta1_namespaced_deployment_list(_api::AppsV1beta1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_stateful_set = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_stateful_set, "/apis/apps/v1beta1/watch/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_stateful_set_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/statefulsets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -1937,13 +1937,13 @@ function watch_apps_v1beta1_namespaced_stateful_set(_api::AppsV1beta1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_namespaced_stateful_set_list = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_namespaced_stateful_set_list_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_namespaced_stateful_set_list(_api::AppsV1beta1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_stateful_set_list, "/apis/apps/v1beta1/watch/namespaces/{namespace}/statefulsets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_namespaced_stateful_set_list_AppsV1beta1Api, "/apis/apps/v1beta1/watch/namespaces/{namespace}/statefulsets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -1985,13 +1985,13 @@ function watch_apps_v1beta1_namespaced_stateful_set_list(_api::AppsV1beta1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_apps_v1beta1_stateful_set_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_apps_v1beta1_stateful_set_list_for_all_namespaces_AppsV1beta1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_apps_v1beta1_stateful_set_list_for_all_namespaces(_api::AppsV1beta1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_stateful_set_list_for_all_namespaces, "/apis/apps/v1beta1/watch/statefulsets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_apps_v1beta1_stateful_set_list_for_all_namespaces_AppsV1beta1Api, "/apis/apps/v1beta1/watch/statefulsets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String

@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ AuthorizationV1Api }) = "http://localhost"
 
-const _returntypes_create_authorization_v1_namespaced_local_subject_access_review = Dict{Regex,Type}(
+const _returntypes_create_authorization_v1_namespaced_local_subject_access_review_AuthorizationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthorizationV1LocalSubjectAccessReview,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthorizationV1LocalSubjectAccessReview,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthorizationV1LocalSubjectAccessReview,
@@ -19,7 +19,7 @@ const _returntypes_create_authorization_v1_namespaced_local_subject_access_revie
 )
 
 function _oacinternal_create_authorization_v1_namespaced_local_subject_access_review(_api::AuthorizationV1Api, namespace::String, body::IoK8sApiAuthorizationV1LocalSubjectAccessReview; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_namespaced_local_subject_access_review, "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_namespaced_local_subject_access_review_AuthorizationV1Api, "/apis/authorization.k8s.io/v1/namespaces/{namespace}/localsubjectaccessreviews", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -50,7 +50,7 @@ function create_authorization_v1_namespaced_local_subject_access_review(_api::Au
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_authorization_v1_self_subject_access_review = Dict{Regex,Type}(
+const _returntypes_create_authorization_v1_self_subject_access_review_AuthorizationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectAccessReview,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectAccessReview,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectAccessReview,
@@ -58,7 +58,7 @@ const _returntypes_create_authorization_v1_self_subject_access_review = Dict{Reg
 )
 
 function _oacinternal_create_authorization_v1_self_subject_access_review(_api::AuthorizationV1Api, body::IoK8sApiAuthorizationV1SelfSubjectAccessReview; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_self_subject_access_review, "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_self_subject_access_review_AuthorizationV1Api, "/apis/authorization.k8s.io/v1/selfsubjectaccessreviews", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -87,7 +87,7 @@ function create_authorization_v1_self_subject_access_review(_api::AuthorizationV
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_authorization_v1_self_subject_rules_review = Dict{Regex,Type}(
+const _returntypes_create_authorization_v1_self_subject_rules_review_AuthorizationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectRulesReview,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectRulesReview,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SelfSubjectRulesReview,
@@ -95,7 +95,7 @@ const _returntypes_create_authorization_v1_self_subject_rules_review = Dict{Rege
 )
 
 function _oacinternal_create_authorization_v1_self_subject_rules_review(_api::AuthorizationV1Api, body::IoK8sApiAuthorizationV1SelfSubjectRulesReview; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_self_subject_rules_review, "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_self_subject_rules_review_AuthorizationV1Api, "/apis/authorization.k8s.io/v1/selfsubjectrulesreviews", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -124,7 +124,7 @@ function create_authorization_v1_self_subject_rules_review(_api::AuthorizationV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_authorization_v1_subject_access_review = Dict{Regex,Type}(
+const _returntypes_create_authorization_v1_subject_access_review_AuthorizationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SubjectAccessReview,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SubjectAccessReview,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthorizationV1SubjectAccessReview,
@@ -132,7 +132,7 @@ const _returntypes_create_authorization_v1_subject_access_review = Dict{Regex,Ty
 )
 
 function _oacinternal_create_authorization_v1_subject_access_review(_api::AuthorizationV1Api, body::IoK8sApiAuthorizationV1SubjectAccessReview; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_subject_access_review, "/apis/authorization.k8s.io/v1/subjectaccessreviews", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authorization_v1_subject_access_review_AuthorizationV1Api, "/apis/authorization.k8s.io/v1/subjectaccessreviews", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -161,13 +161,13 @@ function create_authorization_v1_subject_access_review(_api::AuthorizationV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_authorization_v1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_authorization_v1_a_p_i_resources_AuthorizationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_authorization_v1_a_p_i_resources(_api::AuthorizationV1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_authorization_v1_a_p_i_resources, "/apis/authorization.k8s.io/v1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_authorization_v1_a_p_i_resources_AuthorizationV1Api, "/apis/authorization.k8s.io/v1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

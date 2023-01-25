@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ AuthenticationV1Api }) = "http://localhost"
 
-const _returntypes_create_authentication_v1_token_review = Dict{Regex,Type}(
+const _returntypes_create_authentication_v1_token_review_AuthenticationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenReview,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenReview,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenReview,
@@ -19,7 +19,7 @@ const _returntypes_create_authentication_v1_token_review = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_authentication_v1_token_review(_api::AuthenticationV1Api, body::IoK8sApiAuthenticationV1TokenReview; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authentication_v1_token_review, "/apis/authentication.k8s.io/v1/tokenreviews", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_authentication_v1_token_review_AuthenticationV1Api, "/apis/authentication.k8s.io/v1/tokenreviews", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -48,13 +48,13 @@ function create_authentication_v1_token_review(_api::AuthenticationV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_authentication_v1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_authentication_v1_a_p_i_resources_AuthenticationV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_authentication_v1_a_p_i_resources(_api::AuthenticationV1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_authentication_v1_a_p_i_resources, "/apis/authentication.k8s.io/v1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_authentication_v1_a_p_i_resources_AuthenticationV1Api, "/apis/authentication.k8s.io/v1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

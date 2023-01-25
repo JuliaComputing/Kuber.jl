@@ -11,7 +11,7 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ KarpenterShV1alpha5Api }) = "http://localhost"
 
-const _returntypes_create_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_create_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("201", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("202", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
@@ -19,7 +19,7 @@ const _returntypes_create_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, body::ShKarpenterV1alpha5Provisioner; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -48,13 +48,13 @@ function create_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_karpenter_sh_v1alpha5_collection_provisioner = Dict{Regex,Type}(
+const _returntypes_delete_karpenter_sh_v1alpha5_collection_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1StatusV2,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_karpenter_sh_v1alpha5_collection_provisioner(_api::KarpenterShV1alpha5Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_karpenter_sh_v1alpha5_collection_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_karpenter_sh_v1alpha5_collection_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -96,14 +96,14 @@ function delete_karpenter_sh_v1alpha5_collection_provisioner(_api::KarpenterShV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_delete_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1StatusV2,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1StatusV2,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -138,13 +138,13 @@ function delete_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_list_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5ProvisionerList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, resource_version_match=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -186,13 +186,13 @@ function list_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_patch_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -223,13 +223,13 @@ function patch_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_karpenter_sh_v1alpha5_provisioner_status = Dict{Regex,Type}(
+const _returntypes_patch_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_karpenter_sh_v1alpha5_provisioner_status(_api::KarpenterShV1alpha5Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_karpenter_sh_v1alpha5_provisioner_status, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -260,13 +260,13 @@ function patch_karpenter_sh_v1alpha5_provisioner_status(_api::KarpenterShV1alpha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_read_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, name::String; pretty=nothing, resource_version=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "resourceVersion", resource_version)  # type String
@@ -294,13 +294,13 @@ function read_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_karpenter_sh_v1alpha5_provisioner_status = Dict{Regex,Type}(
+const _returntypes_read_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_karpenter_sh_v1alpha5_provisioner_status(_api::KarpenterShV1alpha5Api, name::String; pretty=nothing, resource_version=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_karpenter_sh_v1alpha5_provisioner_status, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "resourceVersion", resource_version)  # type String
@@ -328,14 +328,14 @@ function read_karpenter_sh_v1alpha5_provisioner_status(_api::KarpenterShV1alpha5
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_karpenter_sh_v1alpha5_provisioner = Dict{Regex,Type}(
+const _returntypes_replace_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("201", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api, name::String, body::ShKarpenterV1alpha5Provisioner; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_karpenter_sh_v1alpha5_provisioner, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_karpenter_sh_v1alpha5_provisioner_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -366,14 +366,14 @@ function replace_karpenter_sh_v1alpha5_provisioner(_api::KarpenterShV1alpha5Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_karpenter_sh_v1alpha5_provisioner_status = Dict{Regex,Type}(
+const _returntypes_replace_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("201", "x"=>".") * "\$") => ShKarpenterV1alpha5Provisioner,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_karpenter_sh_v1alpha5_provisioner_status(_api::KarpenterShV1alpha5Api, name::String, body::ShKarpenterV1alpha5Provisioner; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_karpenter_sh_v1alpha5_provisioner_status, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_karpenter_sh_v1alpha5_provisioner_status_KarpenterShV1alpha5Api, "/apis/karpenter.sh/v1alpha5/provisioners/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String

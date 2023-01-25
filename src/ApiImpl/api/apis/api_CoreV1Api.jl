@@ -11,13 +11,13 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ CoreV1Api }) = "http://localhost"
 
-const _returntypes_connect_core_v1_delete_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -45,13 +45,13 @@ function connect_core_v1_delete_namespaced_pod_proxy(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_delete_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -81,13 +81,13 @@ function connect_core_v1_delete_namespaced_pod_proxy_with_path(_api::CoreV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_delete_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -115,13 +115,13 @@ function connect_core_v1_delete_namespaced_service_proxy(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_delete_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -151,13 +151,13 @@ function connect_core_v1_delete_namespaced_service_proxy_with_path(_api::CoreV1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_delete_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -183,13 +183,13 @@ function connect_core_v1_delete_node_proxy(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_delete_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_delete_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_delete_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_connect_core_v1_delete_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -217,13 +217,13 @@ function connect_core_v1_delete_node_proxy_with_path(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_pod_attach = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_pod_attach_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_pod_attach(_api::CoreV1Api, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_attach, "/api/v1/namespaces/{namespace}/pods/{name}/attach", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_attach_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/attach", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "container", container)  # type String
@@ -259,13 +259,13 @@ function connect_core_v1_get_namespaced_pod_attach(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_pod_exec = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_pod_exec_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_pod_exec(_api::CoreV1Api, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_exec, "/api/v1/namespaces/{namespace}/pods/{name}/exec", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_exec_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/exec", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "command", command)  # type String
@@ -303,13 +303,13 @@ function connect_core_v1_get_namespaced_pod_exec(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_pod_portforward = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_pod_portforward_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_pod_portforward(_api::CoreV1Api, name::String, namespace::String; ports=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_portforward, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_portforward_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "ports", ports)  # type Int64
@@ -337,13 +337,13 @@ function connect_core_v1_get_namespaced_pod_portforward(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -371,13 +371,13 @@ function connect_core_v1_get_namespaced_pod_proxy(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -407,13 +407,13 @@ function connect_core_v1_get_namespaced_pod_proxy_with_path(_api::CoreV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -441,13 +441,13 @@ function connect_core_v1_get_namespaced_service_proxy(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -477,13 +477,13 @@ function connect_core_v1_get_namespaced_service_proxy_with_path(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -509,13 +509,13 @@ function connect_core_v1_get_node_proxy(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_get_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_get_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_get_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_connect_core_v1_get_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -543,13 +543,13 @@ function connect_core_v1_get_node_proxy_with_path(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -577,13 +577,13 @@ function connect_core_v1_head_namespaced_pod_proxy(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -613,13 +613,13 @@ function connect_core_v1_head_namespaced_pod_proxy_with_path(_api::CoreV1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -647,13 +647,13 @@ function connect_core_v1_head_namespaced_service_proxy(_api::CoreV1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -683,13 +683,13 @@ function connect_core_v1_head_namespaced_service_proxy_with_path(_api::CoreV1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -715,13 +715,13 @@ function connect_core_v1_head_node_proxy(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_head_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_head_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_head_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_connect_core_v1_head_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -749,13 +749,13 @@ function connect_core_v1_head_node_proxy_with_path(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -783,13 +783,13 @@ function connect_core_v1_options_namespaced_pod_proxy(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -819,13 +819,13 @@ function connect_core_v1_options_namespaced_pod_proxy_with_path(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -853,13 +853,13 @@ function connect_core_v1_options_namespaced_service_proxy(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -889,13 +889,13 @@ function connect_core_v1_options_namespaced_service_proxy_with_path(_api::CoreV1
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -921,13 +921,13 @@ function connect_core_v1_options_node_proxy(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_options_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_options_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_options_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "OPTIONS", _returntypes_connect_core_v1_options_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -955,13 +955,13 @@ function connect_core_v1_options_node_proxy_with_path(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -989,13 +989,13 @@ function connect_core_v1_patch_namespaced_pod_proxy(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1025,13 +1025,13 @@ function connect_core_v1_patch_namespaced_pod_proxy_with_path(_api::CoreV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -1059,13 +1059,13 @@ function connect_core_v1_patch_namespaced_service_proxy(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1095,13 +1095,13 @@ function connect_core_v1_patch_namespaced_service_proxy_with_path(_api::CoreV1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -1127,13 +1127,13 @@ function connect_core_v1_patch_node_proxy(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_patch_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_patch_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_patch_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_connect_core_v1_patch_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -1161,13 +1161,13 @@ function connect_core_v1_patch_node_proxy_with_path(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_pod_attach = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_pod_attach_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_pod_attach(_api::CoreV1Api, name::String, namespace::String; container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_attach, "/api/v1/namespaces/{namespace}/pods/{name}/attach", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_attach_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/attach", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "container", container)  # type String
@@ -1203,13 +1203,13 @@ function connect_core_v1_post_namespaced_pod_attach(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_pod_exec = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_pod_exec_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_pod_exec(_api::CoreV1Api, name::String, namespace::String; command=nothing, container=nothing, stderr=nothing, stdin=nothing, stdout=nothing, tty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_exec, "/api/v1/namespaces/{namespace}/pods/{name}/exec", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_exec_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/exec", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "command", command)  # type String
@@ -1247,13 +1247,13 @@ function connect_core_v1_post_namespaced_pod_exec(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_pod_portforward = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_pod_portforward_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_pod_portforward(_api::CoreV1Api, name::String, namespace::String; ports=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_portforward, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_portforward_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/portforward", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "ports", ports)  # type Int64
@@ -1281,13 +1281,13 @@ function connect_core_v1_post_namespaced_pod_portforward(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -1315,13 +1315,13 @@ function connect_core_v1_post_namespaced_pod_proxy(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1351,13 +1351,13 @@ function connect_core_v1_post_namespaced_pod_proxy_with_path(_api::CoreV1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -1385,13 +1385,13 @@ function connect_core_v1_post_namespaced_service_proxy(_api::CoreV1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1421,13 +1421,13 @@ function connect_core_v1_post_namespaced_service_proxy_with_path(_api::CoreV1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -1453,13 +1453,13 @@ function connect_core_v1_post_node_proxy(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_post_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_post_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_post_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connect_core_v1_post_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -1487,13 +1487,13 @@ function connect_core_v1_post_node_proxy_with_path(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_namespaced_pod_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_namespaced_pod_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_namespaced_pod_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_pod_proxy, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_pod_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -1521,13 +1521,13 @@ function connect_core_v1_put_namespaced_pod_proxy(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_namespaced_pod_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_namespaced_pod_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_namespaced_pod_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_pod_proxy_with_path, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_pod_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1557,13 +1557,13 @@ function connect_core_v1_put_namespaced_pod_proxy_with_path(_api::CoreV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_namespaced_service_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_namespaced_service_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_namespaced_service_proxy(_api::CoreV1Api, name::String, namespace::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_service_proxy, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_service_proxy_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
@@ -1591,13 +1591,13 @@ function connect_core_v1_put_namespaced_service_proxy(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_namespaced_service_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_namespaced_service_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_namespaced_service_proxy_with_path(_api::CoreV1Api, name::String, namespace::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_service_proxy_with_path, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_namespaced_service_proxy_with_path_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
@@ -1627,13 +1627,13 @@ function connect_core_v1_put_namespaced_service_proxy_with_path(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_node_proxy = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_node_proxy_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_node_proxy(_api::CoreV1Api, name::String; path=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_node_proxy, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_node_proxy_CoreV1Api, "/api/v1/nodes/{name}/proxy", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["*/*", ])
@@ -1659,13 +1659,13 @@ function connect_core_v1_put_node_proxy(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connect_core_v1_put_node_proxy_with_path = Dict{Regex,Type}(
+const _returntypes_connect_core_v1_put_node_proxy_with_path_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_connect_core_v1_put_node_proxy_with_path(_api::CoreV1Api, name::String, path::String; path2=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_node_proxy_with_path, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connect_core_v1_put_node_proxy_with_path_CoreV1Api, "/api/v1/nodes/{name}/proxy/{path}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "path", path)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "path", path2)  # type String
@@ -1693,7 +1693,7 @@ function connect_core_v1_put_node_proxy_with_path(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
@@ -1701,7 +1701,7 @@ const _returntypes_create_core_v1_namespace = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespace(_api::CoreV1Api, body::IoK8sApiCoreV1Namespace; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespace, "/api/v1/namespaces", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespace_CoreV1Api, "/api/v1/namespaces", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -1730,7 +1730,7 @@ function create_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, bod
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_binding = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_binding_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
@@ -1738,7 +1738,7 @@ const _returntypes_create_core_v1_namespaced_binding = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_binding(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Binding; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_binding, "/api/v1/namespaces/{namespace}/bindings", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_binding_CoreV1Api, "/api/v1/namespaces/{namespace}/bindings", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -1769,7 +1769,7 @@ function create_core_v1_namespaced_binding(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
@@ -1777,7 +1777,7 @@ const _returntypes_create_core_v1_namespaced_config_map = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_config_map(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1ConfigMap; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1808,7 +1808,7 @@ function create_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
@@ -1816,7 +1816,7 @@ const _returntypes_create_core_v1_namespaced_endpoints = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_endpoints(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Endpoints; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1847,7 +1847,7 @@ function create_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
@@ -1855,7 +1855,7 @@ const _returntypes_create_core_v1_namespaced_event = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_event(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Event; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1886,7 +1886,7 @@ function create_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
@@ -1894,7 +1894,7 @@ const _returntypes_create_core_v1_namespaced_limit_range = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_limit_range(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1LimitRange; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1925,7 +1925,7 @@ function create_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
@@ -1933,7 +1933,7 @@ const _returntypes_create_core_v1_namespaced_persistent_volume_claim = Dict{Rege
 )
 
 function _oacinternal_create_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1PersistentVolumeClaim; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -1964,7 +1964,7 @@ function create_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
@@ -1972,7 +1972,7 @@ const _returntypes_create_core_v1_namespaced_pod = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_pod(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Pod; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2003,7 +2003,7 @@ function create_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_pod_binding = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_pod_binding_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Binding,
@@ -2011,7 +2011,7 @@ const _returntypes_create_core_v1_namespaced_pod_binding = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_pod_binding(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Binding; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_binding, "/api/v1/namespaces/{namespace}/pods/{name}/binding", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_binding_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/binding", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2044,7 +2044,7 @@ function create_core_v1_namespaced_pod_binding(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_pod_eviction = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_pod_eviction_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1Eviction,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1Eviction,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiPolicyV1beta1Eviction,
@@ -2052,7 +2052,7 @@ const _returntypes_create_core_v1_namespaced_pod_eviction = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_pod_eviction(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiPolicyV1beta1Eviction; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_eviction, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_eviction_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/eviction", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2085,7 +2085,7 @@ function create_core_v1_namespaced_pod_eviction(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
@@ -2093,7 +2093,7 @@ const _returntypes_create_core_v1_namespaced_pod_template = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_pod_template(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1PodTemplate; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2124,7 +2124,7 @@ function create_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
@@ -2132,7 +2132,7 @@ const _returntypes_create_core_v1_namespaced_replication_controller = Dict{Regex
 )
 
 function _oacinternal_create_core_v1_namespaced_replication_controller(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1ReplicationController; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2163,7 +2163,7 @@ function create_core_v1_namespaced_replication_controller(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
@@ -2171,7 +2171,7 @@ const _returntypes_create_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_resource_quota(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1ResourceQuota; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2202,7 +2202,7 @@ function create_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
@@ -2210,7 +2210,7 @@ const _returntypes_create_core_v1_namespaced_secret = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_secret(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Secret; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2241,7 +2241,7 @@ function create_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
@@ -2249,7 +2249,7 @@ const _returntypes_create_core_v1_namespaced_service = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_service(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1Service; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2280,7 +2280,7 @@ function create_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
@@ -2288,7 +2288,7 @@ const _returntypes_create_core_v1_namespaced_service_account = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_namespaced_service_account(_api::CoreV1Api, namespace::String, body::IoK8sApiCoreV1ServiceAccount; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2319,7 +2319,7 @@ function create_core_v1_namespaced_service_account(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_namespaced_service_account_token = Dict{Regex,Type}(
+const _returntypes_create_core_v1_namespaced_service_account_token_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenRequest,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenRequest,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiAuthenticationV1TokenRequest,
@@ -2327,7 +2327,7 @@ const _returntypes_create_core_v1_namespaced_service_account_token = Dict{Regex,
 )
 
 function _oacinternal_create_core_v1_namespaced_service_account_token(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiAuthenticationV1TokenRequest; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service_account_token, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}/token", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_namespaced_service_account_token_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}/token", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -2360,7 +2360,7 @@ function create_core_v1_namespaced_service_account_token(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_node = Dict{Regex,Type}(
+const _returntypes_create_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
@@ -2368,7 +2368,7 @@ const _returntypes_create_core_v1_node = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_node(_api::CoreV1Api, body::IoK8sApiCoreV1Node; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_node, "/api/v1/nodes", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_node_CoreV1Api, "/api/v1/nodes", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -2397,7 +2397,7 @@ function create_core_v1_node(_api::CoreV1Api, response_stream::Channel, body::Io
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_create_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_create_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
@@ -2405,7 +2405,7 @@ const _returntypes_create_core_v1_persistent_volume = Dict{Regex,Type}(
 )
 
 function _oacinternal_create_core_v1_persistent_volume(_api::CoreV1Api, body::IoK8sApiCoreV1PersistentVolume; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_persistent_volume, "/api/v1/persistentvolumes", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_create_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -2434,13 +2434,13 @@ function create_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_config_map(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2491,13 +2491,13 @@ function delete_core_v1_collection_namespaced_config_map(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_endpoints(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2548,13 +2548,13 @@ function delete_core_v1_collection_namespaced_endpoints(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_event = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_event(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_event, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2605,13 +2605,13 @@ function delete_core_v1_collection_namespaced_event(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_limit_range(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2662,13 +2662,13 @@ function delete_core_v1_collection_namespaced_limit_range(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_persistent_volume_claim(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2719,13 +2719,13 @@ function delete_core_v1_collection_namespaced_persistent_volume_claim(_api::Core
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_pod(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_pod, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2776,13 +2776,13 @@ function delete_core_v1_collection_namespaced_pod(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_pod_template(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2833,13 +2833,13 @@ function delete_core_v1_collection_namespaced_pod_template(_api::CoreV1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_replication_controller(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2890,13 +2890,13 @@ function delete_core_v1_collection_namespaced_replication_controller(_api::CoreV
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_resource_quota(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -2947,13 +2947,13 @@ function delete_core_v1_collection_namespaced_resource_quota(_api::CoreV1Api, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_secret(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -3004,13 +3004,13 @@ function delete_core_v1_collection_namespaced_secret(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_namespaced_service_account(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -3061,13 +3061,13 @@ function delete_core_v1_collection_namespaced_service_account(_api::CoreV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_node = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_node(_api::CoreV1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_node, "/api/v1/nodes", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_node_CoreV1Api, "/api/v1/nodes", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -3116,13 +3116,13 @@ function delete_core_v1_collection_node(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_collection_persistent_volume = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_collection_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_collection_persistent_volume(_api::CoreV1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, dry_run=nothing, field_selector=nothing, grace_period_seconds=nothing, label_selector=nothing, limit=nothing, orphan_dependents=nothing, propagation_policy=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_persistent_volume, "/api/v1/persistentvolumes", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_collection_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -3171,14 +3171,14 @@ function delete_core_v1_collection_persistent_volume(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespace(_api::CoreV1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespace, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespace_CoreV1Api, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -3213,14 +3213,14 @@ function delete_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, nam
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_config_map(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3257,14 +3257,14 @@ function delete_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_endpoints(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3301,14 +3301,14 @@ function delete_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_event(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3345,14 +3345,14 @@ function delete_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_limit_range(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3389,14 +3389,14 @@ function delete_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3433,14 +3433,14 @@ function delete_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_pod(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3477,14 +3477,14 @@ function delete_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_pod_template(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3521,14 +3521,14 @@ function delete_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_replication_controller(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3565,14 +3565,14 @@ function delete_core_v1_namespaced_replication_controller(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_resource_quota(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3609,14 +3609,14 @@ function delete_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_secret(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3653,14 +3653,14 @@ function delete_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_service(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3697,14 +3697,14 @@ function delete_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_namespaced_service_account(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -3741,14 +3741,14 @@ function delete_core_v1_namespaced_service_account(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_node = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_node(_api::CoreV1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_node, "/api/v1/nodes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_node_CoreV1Api, "/api/v1/nodes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -3783,14 +3783,14 @@ function delete_core_v1_node(_api::CoreV1Api, response_stream::Channel, name::St
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_delete_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_delete_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("202", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1Status,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_delete_core_v1_persistent_volume(_api::CoreV1Api, name::String; pretty=nothing, dry_run=nothing, grace_period_seconds=nothing, orphan_dependents=nothing, propagation_policy=nothing, body=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_persistent_volume, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_delete_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -3825,13 +3825,13 @@ function delete_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_get_core_v1_a_p_i_resources = Dict{Regex,Type}(
+const _returntypes_get_core_v1_a_p_i_resources_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1APIResourceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_get_core_v1_a_p_i_resources(_api::CoreV1Api; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_core_v1_a_p_i_resources, "/api/v1/", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_get_core_v1_a_p_i_resources_CoreV1Api, "/api/v1/", ["BearerToken", ])
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -3853,13 +3853,13 @@ function get_core_v1_a_p_i_resources(_api::CoreV1Api, response_stream::Channel; 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_component_status = Dict{Regex,Type}(
+const _returntypes_list_core_v1_component_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ComponentStatusList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_component_status(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_component_status, "/api/v1/componentstatuses", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_component_status_CoreV1Api, "/api/v1/componentstatuses", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -3899,13 +3899,13 @@ function list_core_v1_component_status(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_config_map_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_config_map_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMapList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_config_map_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_config_map_for_all_namespaces, "/api/v1/configmaps", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_config_map_for_all_namespaces_CoreV1Api, "/api/v1/configmaps", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -3945,13 +3945,13 @@ function list_core_v1_config_map_for_all_namespaces(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_endpoints_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_endpoints_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1EndpointsList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_endpoints_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_endpoints_for_all_namespaces, "/api/v1/endpoints", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_endpoints_for_all_namespaces_CoreV1Api, "/api/v1/endpoints", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -3991,13 +3991,13 @@ function list_core_v1_endpoints_for_all_namespaces(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_event_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_event_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1EventList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_event_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_event_for_all_namespaces, "/api/v1/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_event_for_all_namespaces_CoreV1Api, "/api/v1/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4037,13 +4037,13 @@ function list_core_v1_event_for_all_namespaces(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_limit_range_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_limit_range_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRangeList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_limit_range_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_limit_range_for_all_namespaces, "/api/v1/limitranges", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_limit_range_for_all_namespaces_CoreV1Api, "/api/v1/limitranges", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4083,13 +4083,13 @@ function list_core_v1_limit_range_for_all_namespaces(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1NamespaceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespace(_api::CoreV1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespace, "/api/v1/namespaces", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespace_CoreV1Api, "/api/v1/namespaces", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -4129,13 +4129,13 @@ function list_core_v1_namespace(_api::CoreV1Api, response_stream::Channel; prett
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMapList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_config_map(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4177,13 +4177,13 @@ function list_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1EndpointsList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_endpoints(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4225,13 +4225,13 @@ function list_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1EventList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_event(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4273,13 +4273,13 @@ function list_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRangeList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_limit_range(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4321,13 +4321,13 @@ function list_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaimList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4369,13 +4369,13 @@ function list_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_pod(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4417,13 +4417,13 @@ function list_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplateList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_pod_template(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4465,13 +4465,13 @@ function list_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationControllerList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_replication_controller(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4513,13 +4513,13 @@ function list_core_v1_namespaced_replication_controller(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuotaList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_resource_quota(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4561,13 +4561,13 @@ function list_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1SecretList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_secret(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4609,13 +4609,13 @@ function list_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_service(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4657,13 +4657,13 @@ function list_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_list_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccountList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_namespaced_service_account(_api::CoreV1Api, namespace::String; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -4705,13 +4705,13 @@ function list_core_v1_namespaced_service_account(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_node = Dict{Regex,Type}(
+const _returntypes_list_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1NodeList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_node(_api::CoreV1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_node, "/api/v1/nodes", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_node_CoreV1Api, "/api/v1/nodes", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -4751,13 +4751,13 @@ function list_core_v1_node(_api::CoreV1Api, response_stream::Channel; pretty=not
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_list_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_persistent_volume(_api::CoreV1Api; pretty=nothing, allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_persistent_volume, "/api/v1/persistentvolumes", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -4797,13 +4797,13 @@ function list_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_persistent_volume_claim_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_persistent_volume_claim_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaimList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_persistent_volume_claim_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_persistent_volume_claim_for_all_namespaces, "/api/v1/persistentvolumeclaims", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_persistent_volume_claim_for_all_namespaces_CoreV1Api, "/api/v1/persistentvolumeclaims", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4843,13 +4843,13 @@ function list_core_v1_persistent_volume_claim_for_all_namespaces(_api::CoreV1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_pod_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_pod_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_pod_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_pod_for_all_namespaces, "/api/v1/pods", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_pod_for_all_namespaces_CoreV1Api, "/api/v1/pods", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4889,13 +4889,13 @@ function list_core_v1_pod_for_all_namespaces(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_pod_template_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_pod_template_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplateList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_pod_template_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_pod_template_for_all_namespaces, "/api/v1/podtemplates", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_pod_template_for_all_namespaces_CoreV1Api, "/api/v1/podtemplates", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4935,13 +4935,13 @@ function list_core_v1_pod_template_for_all_namespaces(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_replication_controller_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_replication_controller_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationControllerList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_replication_controller_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_replication_controller_for_all_namespaces, "/api/v1/replicationcontrollers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_replication_controller_for_all_namespaces_CoreV1Api, "/api/v1/replicationcontrollers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -4981,13 +4981,13 @@ function list_core_v1_replication_controller_for_all_namespaces(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_resource_quota_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_resource_quota_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuotaList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_resource_quota_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_resource_quota_for_all_namespaces, "/api/v1/resourcequotas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_resource_quota_for_all_namespaces_CoreV1Api, "/api/v1/resourcequotas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -5027,13 +5027,13 @@ function list_core_v1_resource_quota_for_all_namespaces(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_secret_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_secret_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1SecretList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_secret_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_secret_for_all_namespaces, "/api/v1/secrets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_secret_for_all_namespaces_CoreV1Api, "/api/v1/secrets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -5073,13 +5073,13 @@ function list_core_v1_secret_for_all_namespaces(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_service_account_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_service_account_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccountList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_service_account_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_service_account_for_all_namespaces, "/api/v1/serviceaccounts", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_service_account_for_all_namespaces_CoreV1Api, "/api/v1/serviceaccounts", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -5119,13 +5119,13 @@ function list_core_v1_service_account_for_all_namespaces(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_list_core_v1_service_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_list_core_v1_service_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceList,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_list_core_v1_service_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_service_for_all_namespaces, "/api/v1/services", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_list_core_v1_service_for_all_namespaces_CoreV1Api, "/api/v1/services", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -5165,13 +5165,13 @@ function list_core_v1_service_for_all_namespaces(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespace(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespace, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespace_CoreV1Api, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -5204,13 +5204,13 @@ function patch_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, name
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespace_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespace_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespace_status(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespace_status, "/api/v1/namespaces/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespace_status_CoreV1Api, "/api/v1/namespaces/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -5243,13 +5243,13 @@ function patch_core_v1_namespace_status(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_config_map(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5284,13 +5284,13 @@ function patch_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_endpoints(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5325,13 +5325,13 @@ function patch_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_event(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5366,13 +5366,13 @@ function patch_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_limit_range(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5407,13 +5407,13 @@ function patch_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5448,13 +5448,13 @@ function patch_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_persistent_volume_claim_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_persistent_volume_claim_status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5489,13 +5489,13 @@ function patch_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_pod(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5530,13 +5530,13 @@ function patch_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_pod_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_pod_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_pod_status(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod_status, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod_status_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5571,13 +5571,13 @@ function patch_core_v1_namespaced_pod_status(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_pod_template(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5612,13 +5612,13 @@ function patch_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_replication_controller(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5653,13 +5653,13 @@ function patch_core_v1_namespaced_replication_controller(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_replication_controller_scale = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_replication_controller_scale_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller_scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller_scale_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5694,13 +5694,13 @@ function patch_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_replication_controller_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_replication_controller_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_replication_controller_status(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller_status, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_replication_controller_status_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5735,13 +5735,13 @@ function patch_core_v1_namespaced_replication_controller_status(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_resource_quota(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5776,13 +5776,13 @@ function patch_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_resource_quota_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_resource_quota_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_resource_quota_status, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_resource_quota_status_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5817,13 +5817,13 @@ function patch_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_secret(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5858,13 +5858,13 @@ function patch_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_service(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5899,13 +5899,13 @@ function patch_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_service_account(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5940,13 +5940,13 @@ function patch_core_v1_namespaced_service_account(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_namespaced_service_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_namespaced_service_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_namespaced_service_status(_api::CoreV1Api, name::String, namespace::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service_status, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_namespaced_service_status_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -5981,13 +5981,13 @@ function patch_core_v1_namespaced_service_status(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_node = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_node(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_node, "/api/v1/nodes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_node_CoreV1Api, "/api/v1/nodes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -6020,13 +6020,13 @@ function patch_core_v1_node(_api::CoreV1Api, response_stream::Channel, name::Str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_node_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_node_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_node_status(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_node_status, "/api/v1/nodes/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_node_status_CoreV1Api, "/api/v1/nodes/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -6059,13 +6059,13 @@ function patch_core_v1_node_status(_api::CoreV1Api, response_stream::Channel, na
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_persistent_volume(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_persistent_volume, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -6098,13 +6098,13 @@ function patch_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_patch_core_v1_persistent_volume_status = Dict{Regex,Type}(
+const _returntypes_patch_core_v1_persistent_volume_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_patch_core_v1_persistent_volume_status(_api::CoreV1Api, name::String, body::Any; pretty=nothing, dry_run=nothing, field_manager=nothing, force=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_persistent_volume_status, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_patch_core_v1_persistent_volume_status_CoreV1Api, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -6137,13 +6137,13 @@ function patch_core_v1_persistent_volume_status(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_component_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_component_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ComponentStatus,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_component_status(_api::CoreV1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_component_status, "/api/v1/componentstatuses/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_component_status_CoreV1Api, "/api/v1/componentstatuses/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -6169,13 +6169,13 @@ function read_core_v1_component_status(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespace(_api::CoreV1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespace, "/api/v1/namespaces/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespace_CoreV1Api, "/api/v1/namespaces/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -6205,13 +6205,13 @@ function read_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, name:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespace_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespace_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespace_status(_api::CoreV1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespace_status, "/api/v1/namespaces/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespace_status_CoreV1Api, "/api/v1/namespaces/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -6237,13 +6237,13 @@ function read_core_v1_namespace_status(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_config_map(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6275,13 +6275,13 @@ function read_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_endpoints(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6313,13 +6313,13 @@ function read_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_event(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6351,13 +6351,13 @@ function read_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_limit_range(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6389,13 +6389,13 @@ function read_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6427,13 +6427,13 @@ function read_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_persistent_volume_claim_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_persistent_volume_claim_status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6461,13 +6461,13 @@ function read_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1Api,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_pod(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6499,13 +6499,13 @@ function read_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_pod_log = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_pod_log_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_pod_log(_api::CoreV1Api, name::String, namespace::String; container=nothing, follow=nothing, insecure_skip_t_l_s_verify_backend=nothing, limit_bytes=nothing, pretty=nothing, previous=nothing, since_seconds=nothing, tail_lines=nothing, timestamps=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_log, "/api/v1/namespaces/{namespace}/pods/{name}/log", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_log_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/log", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "container", container)  # type String
@@ -6549,13 +6549,13 @@ function read_core_v1_namespaced_pod_log(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_pod_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_pod_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_pod_status(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_status, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_status_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6583,13 +6583,13 @@ function read_core_v1_namespaced_pod_status(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_pod_template(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6621,13 +6621,13 @@ function read_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_replication_controller(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6659,13 +6659,13 @@ function read_core_v1_namespaced_replication_controller(_api::CoreV1Api, respons
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_replication_controller_scale = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_replication_controller_scale_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller_scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller_scale_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6693,13 +6693,13 @@ function read_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_replication_controller_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_replication_controller_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_replication_controller_status(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller_status, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_replication_controller_status_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6727,13 +6727,13 @@ function read_core_v1_namespaced_replication_controller_status(_api::CoreV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_resource_quota(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6765,13 +6765,13 @@ function read_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_resource_quota_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_resource_quota_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_resource_quota_status, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_resource_quota_status_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6799,13 +6799,13 @@ function read_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_secret(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6837,13 +6837,13 @@ function read_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_service(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6875,13 +6875,13 @@ function read_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_service_account(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6913,13 +6913,13 @@ function read_core_v1_namespaced_service_account(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_namespaced_service_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_namespaced_service_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_namespaced_service_status(_api::CoreV1Api, name::String, namespace::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service_status, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_namespaced_service_status_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -6947,13 +6947,13 @@ function read_core_v1_namespaced_service_status(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_node = Dict{Regex,Type}(
+const _returntypes_read_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_node(_api::CoreV1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_node, "/api/v1/nodes/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_node_CoreV1Api, "/api/v1/nodes/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -6983,13 +6983,13 @@ function read_core_v1_node(_api::CoreV1Api, response_stream::Channel, name::Stri
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_node_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_node_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_node_status(_api::CoreV1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_node_status, "/api/v1/nodes/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_node_status_CoreV1Api, "/api/v1/nodes/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -7015,13 +7015,13 @@ function read_core_v1_node_status(_api::CoreV1Api, response_stream::Channel, nam
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_read_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_persistent_volume(_api::CoreV1Api, name::String; pretty=nothing, exact=nothing, __export__=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_persistent_volume, "/api/v1/persistentvolumes/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "exact", exact)  # type Bool
@@ -7051,13 +7051,13 @@ function read_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_read_core_v1_persistent_volume_status = Dict{Regex,Type}(
+const _returntypes_read_core_v1_persistent_volume_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_read_core_v1_persistent_volume_status(_api::CoreV1Api, name::String; pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_persistent_volume_status, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_read_core_v1_persistent_volume_status_CoreV1Api, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "application/yaml", "application/vnd.kubernetes.protobuf", ])
@@ -7083,14 +7083,14 @@ function read_core_v1_persistent_volume_status(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespace(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1Namespace; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace_CoreV1Api, "/api/v1/namespaces/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -7121,14 +7121,14 @@ function replace_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, na
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespace_finalize = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespace_finalize_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespace_finalize(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1Namespace; dry_run=nothing, field_manager=nothing, pretty=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace_finalize, "/api/v1/namespaces/{name}/finalize", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace_finalize_CoreV1Api, "/api/v1/namespaces/{name}/finalize", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldManager", field_manager)  # type String
@@ -7159,14 +7159,14 @@ function replace_core_v1_namespace_finalize(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespace_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespace_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Namespace,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespace_status(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1Namespace; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace_status, "/api/v1/namespaces/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespace_status_CoreV1Api, "/api/v1/namespaces/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -7197,14 +7197,14 @@ function replace_core_v1_namespace_status(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ConfigMap,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_config_map(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ConfigMap; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_config_map, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7237,14 +7237,14 @@ function replace_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Endpoints,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_endpoints(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Endpoints; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_endpoints, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7277,14 +7277,14 @@ function replace_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Event,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_event(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Event; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_event, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_event_CoreV1Api, "/api/v1/namespaces/{namespace}/events/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7317,14 +7317,14 @@ function replace_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1LimitRange,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_limit_range(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1LimitRange; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_limit_range, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7357,14 +7357,14 @@ function replace_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1PersistentVolumeClaim; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_persistent_volume_claim, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7397,14 +7397,14 @@ function replace_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_persistent_volume_claim_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolumeClaim,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1PersistentVolumeClaim; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_persistent_volume_claim_status, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_persistent_volume_claim_status_CoreV1Api, "/api/v1/namespaces/{namespace}/persistentvolumeclaims/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7437,14 +7437,14 @@ function replace_core_v1_namespaced_persistent_volume_claim_status(_api::CoreV1A
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_pod(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Pod; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7477,14 +7477,14 @@ function replace_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_pod_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_pod_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Pod,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_pod_status(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Pod; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod_status, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod_status_CoreV1Api, "/api/v1/namespaces/{namespace}/pods/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7517,14 +7517,14 @@ function replace_core_v1_namespaced_pod_status(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PodTemplate,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_pod_template(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1PodTemplate; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod_template, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7557,14 +7557,14 @@ function replace_core_v1_namespaced_pod_template(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_replication_controller(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ReplicationController; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7597,14 +7597,14 @@ function replace_core_v1_namespaced_replication_controller(_api::CoreV1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_replication_controller_scale = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_replication_controller_scale_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiAutoscalingV1Scale,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiAutoscalingV1Scale,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiAutoscalingV1Scale; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller_scale, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller_scale_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/scale", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7637,14 +7637,14 @@ function replace_core_v1_namespaced_replication_controller_scale(_api::CoreV1Api
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_replication_controller_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_replication_controller_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ReplicationController,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_replication_controller_status(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ReplicationController; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller_status, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_replication_controller_status_CoreV1Api, "/api/v1/namespaces/{namespace}/replicationcontrollers/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7677,14 +7677,14 @@ function replace_core_v1_namespaced_replication_controller_status(_api::CoreV1Ap
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_resource_quota(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ResourceQuota; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_resource_quota, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7717,14 +7717,14 @@ function replace_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_resource_quota_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_resource_quota_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ResourceQuota,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ResourceQuota; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_resource_quota_status, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_resource_quota_status_CoreV1Api, "/api/v1/namespaces/{namespace}/resourcequotas/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7757,14 +7757,14 @@ function replace_core_v1_namespaced_resource_quota_status(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Secret,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_secret(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Secret; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_secret, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_secret_CoreV1Api, "/api/v1/namespaces/{namespace}/secrets/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7797,14 +7797,14 @@ function replace_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_service(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Service; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7837,14 +7837,14 @@ function replace_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1ServiceAccount,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_service_account(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1ServiceAccount; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service_account, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7877,14 +7877,14 @@ function replace_core_v1_namespaced_service_account(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_namespaced_service_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_namespaced_service_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Service,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_namespaced_service_status(_api::CoreV1Api, name::String, namespace::String, body::IoK8sApiCoreV1Service; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service_status, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_namespaced_service_status_CoreV1Api, "/api/v1/namespaces/{namespace}/services/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
@@ -7917,14 +7917,14 @@ function replace_core_v1_namespaced_service_status(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_node = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_node(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1Node; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_node, "/api/v1/nodes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_node_CoreV1Api, "/api/v1/nodes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -7955,14 +7955,14 @@ function replace_core_v1_node(_api::CoreV1Api, response_stream::Channel, name::S
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_node_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_node_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1Node,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_node_status(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1Node; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_node_status, "/api/v1/nodes/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_node_status_CoreV1Api, "/api/v1/nodes/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -7993,14 +7993,14 @@ function replace_core_v1_node_status(_api::CoreV1Api, response_stream::Channel, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_persistent_volume(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1PersistentVolume; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_persistent_volume, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_persistent_volume_CoreV1Api, "/api/v1/persistentvolumes/{name}", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -8031,14 +8031,14 @@ function replace_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_replace_core_v1_persistent_volume_status = Dict{Regex,Type}(
+const _returntypes_replace_core_v1_persistent_volume_status_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("201", "x"=>".") * "\$") => IoK8sApiCoreV1PersistentVolume,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_replace_core_v1_persistent_volume_status(_api::CoreV1Api, name::String, body::IoK8sApiCoreV1PersistentVolume; pretty=nothing, dry_run=nothing, field_manager=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_persistent_volume_status, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ], body)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_replace_core_v1_persistent_volume_status_CoreV1Api, "/api/v1/persistentvolumes/{name}/status", ["BearerToken", ], body)
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "pretty", pretty)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "dryRun", dry_run)  # type String
@@ -8069,13 +8069,13 @@ function replace_core_v1_persistent_volume_status(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_config_map_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_config_map_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_config_map_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_config_map_list_for_all_namespaces, "/api/v1/watch/configmaps", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_config_map_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/configmaps", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -8115,13 +8115,13 @@ function watch_core_v1_config_map_list_for_all_namespaces(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_endpoints_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_endpoints_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_endpoints_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_endpoints_list_for_all_namespaces, "/api/v1/watch/endpoints", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_endpoints_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/endpoints", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -8161,13 +8161,13 @@ function watch_core_v1_endpoints_list_for_all_namespaces(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_event_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_event_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_event_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_event_list_for_all_namespaces, "/api/v1/watch/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_event_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -8207,13 +8207,13 @@ function watch_core_v1_event_list_for_all_namespaces(_api::CoreV1Api, response_s
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_limit_range_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_limit_range_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_limit_range_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_limit_range_list_for_all_namespaces, "/api/v1/watch/limitranges", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_limit_range_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/limitranges", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -8253,13 +8253,13 @@ function watch_core_v1_limit_range_list_for_all_namespaces(_api::CoreV1Api, resp
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespace = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespace_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespace(_api::CoreV1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespace, "/api/v1/watch/namespaces/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespace_CoreV1Api, "/api/v1/watch/namespaces/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8301,13 +8301,13 @@ function watch_core_v1_namespace(_api::CoreV1Api, response_stream::Channel, name
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespace_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespace_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespace_list(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespace_list, "/api/v1/watch/namespaces", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespace_list_CoreV1Api, "/api/v1/watch/namespaces", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -8347,13 +8347,13 @@ function watch_core_v1_namespace_list(_api::CoreV1Api, response_stream::Channel;
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_config_map = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_config_map_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_config_map(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_config_map, "/api/v1/watch/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_config_map_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/configmaps/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8397,13 +8397,13 @@ function watch_core_v1_namespaced_config_map(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_config_map_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_config_map_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_config_map_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_config_map_list, "/api/v1/watch/namespaces/{namespace}/configmaps", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_config_map_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/configmaps", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8445,13 +8445,13 @@ function watch_core_v1_namespaced_config_map_list(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_endpoints = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_endpoints_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_endpoints(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_endpoints, "/api/v1/watch/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_endpoints_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/endpoints/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8495,13 +8495,13 @@ function watch_core_v1_namespaced_endpoints(_api::CoreV1Api, response_stream::Ch
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_endpoints_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_endpoints_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_endpoints_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_endpoints_list, "/api/v1/watch/namespaces/{namespace}/endpoints", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_endpoints_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/endpoints", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8543,13 +8543,13 @@ function watch_core_v1_namespaced_endpoints_list(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_event = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_event_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_event(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_event, "/api/v1/watch/namespaces/{namespace}/events/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_event_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/events/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8593,13 +8593,13 @@ function watch_core_v1_namespaced_event(_api::CoreV1Api, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_event_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_event_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_event_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_event_list, "/api/v1/watch/namespaces/{namespace}/events", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_event_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/events", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8641,13 +8641,13 @@ function watch_core_v1_namespaced_event_list(_api::CoreV1Api, response_stream::C
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_limit_range = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_limit_range_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_limit_range(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_limit_range, "/api/v1/watch/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_limit_range_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/limitranges/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8691,13 +8691,13 @@ function watch_core_v1_namespaced_limit_range(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_limit_range_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_limit_range_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_limit_range_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_limit_range_list, "/api/v1/watch/namespaces/{namespace}/limitranges", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_limit_range_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/limitranges", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8739,13 +8739,13 @@ function watch_core_v1_namespaced_limit_range_list(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_persistent_volume_claim = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_persistent_volume_claim_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_persistent_volume_claim, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_persistent_volume_claim_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8789,13 +8789,13 @@ function watch_core_v1_namespaced_persistent_volume_claim(_api::CoreV1Api, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_persistent_volume_claim_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_persistent_volume_claim_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_persistent_volume_claim_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_persistent_volume_claim_list, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_persistent_volume_claim_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/persistentvolumeclaims", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8837,13 +8837,13 @@ function watch_core_v1_namespaced_persistent_volume_claim_list(_api::CoreV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_pod = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_pod_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_pod(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod, "/api/v1/watch/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/pods/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8887,13 +8887,13 @@ function watch_core_v1_namespaced_pod(_api::CoreV1Api, response_stream::Channel,
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_pod_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_pod_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_pod_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_list, "/api/v1/watch/namespaces/{namespace}/pods", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/pods", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -8935,13 +8935,13 @@ function watch_core_v1_namespaced_pod_list(_api::CoreV1Api, response_stream::Cha
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_pod_template = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_pod_template_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_pod_template(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_template, "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_template_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/podtemplates/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -8985,13 +8985,13 @@ function watch_core_v1_namespaced_pod_template(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_pod_template_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_pod_template_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_pod_template_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_template_list, "/api/v1/watch/namespaces/{namespace}/podtemplates", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_pod_template_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/podtemplates", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9033,13 +9033,13 @@ function watch_core_v1_namespaced_pod_template_list(_api::CoreV1Api, response_st
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_replication_controller = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_replication_controller_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_replication_controller(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_replication_controller, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_replication_controller_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -9083,13 +9083,13 @@ function watch_core_v1_namespaced_replication_controller(_api::CoreV1Api, respon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_replication_controller_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_replication_controller_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_replication_controller_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_replication_controller_list, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_replication_controller_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/replicationcontrollers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9131,13 +9131,13 @@ function watch_core_v1_namespaced_replication_controller_list(_api::CoreV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_resource_quota = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_resource_quota_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_resource_quota(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_resource_quota, "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_resource_quota_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/resourcequotas/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -9181,13 +9181,13 @@ function watch_core_v1_namespaced_resource_quota(_api::CoreV1Api, response_strea
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_resource_quota_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_resource_quota_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_resource_quota_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_resource_quota_list, "/api/v1/watch/namespaces/{namespace}/resourcequotas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_resource_quota_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/resourcequotas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9229,13 +9229,13 @@ function watch_core_v1_namespaced_resource_quota_list(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_secret = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_secret_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_secret(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_secret, "/api/v1/watch/namespaces/{namespace}/secrets/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_secret_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/secrets/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -9279,13 +9279,13 @@ function watch_core_v1_namespaced_secret(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_secret_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_secret_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_secret_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_secret_list, "/api/v1/watch/namespaces/{namespace}/secrets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_secret_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/secrets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9327,13 +9327,13 @@ function watch_core_v1_namespaced_secret_list(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_service = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_service_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_service(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service, "/api/v1/watch/namespaces/{namespace}/services/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/services/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -9377,13 +9377,13 @@ function watch_core_v1_namespaced_service(_api::CoreV1Api, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_service_account = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_service_account_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_service_account(_api::CoreV1Api, name::String, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_account, "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_account_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/serviceaccounts/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
@@ -9427,13 +9427,13 @@ function watch_core_v1_namespaced_service_account(_api::CoreV1Api, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_service_account_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_service_account_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_service_account_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_account_list, "/api/v1/watch/namespaces/{namespace}/serviceaccounts", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_account_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/serviceaccounts", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9475,13 +9475,13 @@ function watch_core_v1_namespaced_service_account_list(_api::CoreV1Api, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_namespaced_service_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_namespaced_service_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_namespaced_service_list(_api::CoreV1Api, namespace::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_list, "/api/v1/watch/namespaces/{namespace}/services", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_namespaced_service_list_CoreV1Api, "/api/v1/watch/namespaces/{namespace}/services", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "namespace", namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9523,13 +9523,13 @@ function watch_core_v1_namespaced_service_list(_api::CoreV1Api, response_stream:
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_node = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_node_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_node(_api::CoreV1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_node, "/api/v1/watch/nodes/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_node_CoreV1Api, "/api/v1/watch/nodes/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9571,13 +9571,13 @@ function watch_core_v1_node(_api::CoreV1Api, response_stream::Channel, name::Str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_node_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_node_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_node_list(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_node_list, "/api/v1/watch/nodes", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_node_list_CoreV1Api, "/api/v1/watch/nodes", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9617,13 +9617,13 @@ function watch_core_v1_node_list(_api::CoreV1Api, response_stream::Channel; allo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_persistent_volume = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_persistent_volume_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_persistent_volume(_api::CoreV1Api, name::String; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume, "/api/v1/watch/persistentvolumes/{name}", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume_CoreV1Api, "/api/v1/watch/persistentvolumes/{name}", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.path, "name", name)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
@@ -9665,13 +9665,13 @@ function watch_core_v1_persistent_volume(_api::CoreV1Api, response_stream::Chann
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_persistent_volume_claim_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_persistent_volume_claim_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_persistent_volume_claim_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume_claim_list_for_all_namespaces, "/api/v1/watch/persistentvolumeclaims", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume_claim_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/persistentvolumeclaims", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9711,13 +9711,13 @@ function watch_core_v1_persistent_volume_claim_list_for_all_namespaces(_api::Cor
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_persistent_volume_list = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_persistent_volume_list_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_persistent_volume_list(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume_list, "/api/v1/watch/persistentvolumes", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_persistent_volume_list_CoreV1Api, "/api/v1/watch/persistentvolumes", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9757,13 +9757,13 @@ function watch_core_v1_persistent_volume_list(_api::CoreV1Api, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_pod_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_pod_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_pod_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_pod_list_for_all_namespaces, "/api/v1/watch/pods", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_pod_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/pods", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9803,13 +9803,13 @@ function watch_core_v1_pod_list_for_all_namespaces(_api::CoreV1Api, response_str
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_pod_template_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_pod_template_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_pod_template_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_pod_template_list_for_all_namespaces, "/api/v1/watch/podtemplates", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_pod_template_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/podtemplates", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9849,13 +9849,13 @@ function watch_core_v1_pod_template_list_for_all_namespaces(_api::CoreV1Api, res
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_replication_controller_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_replication_controller_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_replication_controller_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_replication_controller_list_for_all_namespaces, "/api/v1/watch/replicationcontrollers", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_replication_controller_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/replicationcontrollers", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9895,13 +9895,13 @@ function watch_core_v1_replication_controller_list_for_all_namespaces(_api::Core
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_resource_quota_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_resource_quota_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_resource_quota_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_resource_quota_list_for_all_namespaces, "/api/v1/watch/resourcequotas", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_resource_quota_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/resourcequotas", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9941,13 +9941,13 @@ function watch_core_v1_resource_quota_list_for_all_namespaces(_api::CoreV1Api, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_secret_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_secret_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_secret_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_secret_list_for_all_namespaces, "/api/v1/watch/secrets", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_secret_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/secrets", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -9987,13 +9987,13 @@ function watch_core_v1_secret_list_for_all_namespaces(_api::CoreV1Api, response_
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_service_account_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_service_account_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_service_account_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_service_account_list_for_all_namespaces, "/api/v1/watch/serviceaccounts", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_service_account_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/serviceaccounts", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
@@ -10033,13 +10033,13 @@ function watch_core_v1_service_account_list_for_all_namespaces(_api::CoreV1Api, 
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_watch_core_v1_service_list_for_all_namespaces = Dict{Regex,Type}(
+const _returntypes_watch_core_v1_service_list_for_all_namespaces_CoreV1Api = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => IoK8sApimachineryPkgApisMetaV1WatchEvent,
     Regex("^" * replace("401", "x"=>".") * "\$") => Nothing,
 )
 
 function _oacinternal_watch_core_v1_service_list_for_all_namespaces(_api::CoreV1Api; allow_watch_bookmarks=nothing, __continue__=nothing, field_selector=nothing, label_selector=nothing, limit=nothing, pretty=nothing, resource_version=nothing, timeout_seconds=nothing, watch=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_service_list_for_all_namespaces, "/api/v1/watch/services", ["BearerToken", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_watch_core_v1_service_list_for_all_namespaces_CoreV1Api, "/api/v1/watch/services", ["BearerToken", ])
     OpenAPI.Clients.set_param(_ctx.query, "allowWatchBookmarks", allow_watch_bookmarks)  # type Bool
     OpenAPI.Clients.set_param(_ctx.query, "continue", __continue__)  # type String
     OpenAPI.Clients.set_param(_ctx.query, "fieldSelector", field_selector)  # type String
