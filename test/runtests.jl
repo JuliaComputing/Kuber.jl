@@ -1,5 +1,5 @@
 using Kuber
-using Swagger
+using OpenAPI
 using Test
 
 const Typedefs = Kuber.ApiImpl.Typedefs
@@ -25,20 +25,20 @@ function init_context(override=nothing, verbose=true)
 end
 
 function test_set_timeout(ctx)
-    @test Kuber.get_timeout(ctx) == Swagger.DEFAULT_TIMEOUT_SECS
+    @test Kuber.get_timeout(ctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
 
     Kuber.with_timeout(ctx, 10) do ctx
         @test Kuber.get_timeout(ctx) == 10
     end
 
     wctx = Kuber.KuberWatchContext(ctx, Channel{Any}())
-    @test Kuber.get_timeout(wctx) == Swagger.DEFAULT_TIMEOUT_SECS
+    @test Kuber.get_timeout(wctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
     Kuber.with_timeout(wctx, 10) do wctx
         @test Kuber.get_timeout(wctx) == 10
     end
-    @test Kuber.get_timeout(wctx) == Swagger.DEFAULT_TIMEOUT_SECS
+    @test Kuber.get_timeout(wctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
 
-    @test Kuber.get_timeout(ctx) == Swagger.DEFAULT_TIMEOUT_SECS
+    @test Kuber.get_timeout(ctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
 end
 
 function list_cluster_components(ctx)
@@ -257,12 +257,16 @@ function create_delete_job(ctx, testid)
 
     @testset "Delete nginx service" begin
         res = delete!(ctx, :Service, "nginx-service$testid")
-        @test isa(res, Kuber.kind_to_type(ctx, :Status))
+        # delete! operations can return either the deleted object or a status object
+        # ref: https://github.com/kubernetes-client/csharp/issues/44
+        @test isa(res, Kuber.kind_to_type(ctx, :Status)) || isa(res, Kuber.kind_to_type(ctx, :Service))
     end
 
     @testset "Delete nginx pod" begin
         res = delete!(ctx, :Pod, "nginx-pod$testid")
-        @test isa(res, Kuber.kind_to_type(ctx, :Pod))
+        # delete! operations can return either the deleted object or a status object
+        # ref: https://github.com/kubernetes-client/csharp/issues/44
+        @test isa(res, Kuber.kind_to_type(ctx, :Pod)) || isa(res, Kuber.kind_to_type(ctx, :Status))
     end
 
     nothing
@@ -298,13 +302,13 @@ function test_versioned(ctx, testid)
     @testset "Watch Events" begin
         timedwait(10.0; pollint=1.0) do
             lock(lck) do
-                any(isa(event, Typedefs.MetaV1.WatchEvent) && (event.type == "DELETED") for event in events)
+                any(isa(event, Typedefs.CoreV1.WatchEvent) && (event.type == "DELETED") for event in events)
             end
         end
         lock(lck) do
             @test !isempty(events)
             for event in events
-                @test isa(event, Union{Typedefs.MetaV1.WatchEvent,Typedefs.CoreV1.PodList})
+                @test isa(event, Union{Typedefs.CoreV1.WatchEvent,Typedefs.CoreV1.PodList})
             end
         end
     end
@@ -318,7 +322,7 @@ function test_all()
         end
 
         @testset "Set Timeouts" begin
-            test_set_timeout(ctx)            
+            test_set_timeout(ctx)
         end
 
         @testset "Overridden API Versions" begin

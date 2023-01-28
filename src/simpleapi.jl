@@ -1,4 +1,4 @@
-# simple Julia APIs over Kubernetes Swagger interface
+# simple Julia APIs over Kubernetes OpenAPI interface
 
 function sel(label::String, op::Symbol)
     @assert op === :exists
@@ -6,8 +6,6 @@ function sel(label::String, op::Symbol)
 end
 sel(label::String, op::Symbol, items::String...) = label * " " * string(op) * " (" * join(items, ",") * ")"
 sel(cnd::String...) = join(cnd, ", ")
-
-_delopts(; kwargs...) = Typedefs.MetaV1.DeleteOptions(; preconditions=Typedefs.MetaV1.Preconditions(; kwargs...), kwargs...)
 
 _kubectx(ctx::KuberContext) = ctx
 _kubectx(ctx::KuberWatchContext) = ctx.ctx
@@ -52,7 +50,7 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
         max_tries::Int=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
-        resourceVersion=nothing,
+        resource_version=nothing,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -61,33 +59,36 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[name]
+    _O_ = to_snake_case(string(O))
     if allnamespaces
-        apicall = apimodule(ctx).eval(Symbol("list$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("list_$(_O_)_for_all_namespaces"))
     elseif namespaced
-        apicall = apimodule(ctx).eval(Symbol("listNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("list_namespaced_$(_O_)"))
         push!(args, namespace)
     else
-        apicall = apimodule(ctx).eval(Symbol("list$O"))
+        apicall = apimodule(ctx).eval(Symbol("list_$(_O_)"))
     end
 
-    if !watch || resourceVersion === nothing
+    if !watch || resource_version === nothing
         result = k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, args...; kwargs...)
+            check_api_response(apicall(apictx, args...; kwargs...)...)
         end
     end
 
     # if not watching, return the first result
     watch || (return result)
     if result !== nothing
-        resourceVersion = result.metadata.resourceVersion
+        resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
         put!(eventstream, result)
     end
 
     # start watch and return the HTTP response object on completion
-    return k8s_retry(; max_tries=max_tries) do
-        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    result = k8s_retry(; max_tries=max_tries) do
+        check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
+
+    return result
 end
 
 function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
@@ -95,7 +96,7 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
         max_tries::Int=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
-        resourceVersion=nothing,
+        resource_version=nothing,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
@@ -105,72 +106,78 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
 
     result = nothing
     args = Any[]
+    _O_ = to_snake_case(string(O))
     if allnamespaces
-        apicall = apimodule(ctx).eval(Symbol("list$(O)ForAllNamespaces"))
+        apicall = apimodule(ctx).eval(Symbol("list_$(_O_)_for_all_namespaces"))
     elseif namespaced
-        apicall = apimodule(ctx).eval(Symbol("listNamespaced$O"))
+        apicall = apimodule(ctx).eval(Symbol("list_namespaced_$(_O_)"))
         push!(args, namespace)
     else
-        apicall = apimodule(ctx).eval(Symbol("list$O"))
+        apicall = apimodule(ctx).eval(Symbol("list_$(_O_)"))
     end
 
-    if !watch || resourceVersion === nothing
+    if !watch || resource_version === nothing
         result = k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, args...; kwargs...)
+            check_api_response(apicall(apictx, args...; kwargs...)...)
         end
     end
 
     # if not watching, retuen the first result
     watch || (return result)
     if result !== nothing
-        resourceVersion = result.metadata.resourceVersion
+        resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
         put!(eventstream, result)
     end
 
     # start watch and return the HTTP response object on completion
-    return k8s_retry(; max_tries=max_tries) do
-        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    result = k8s_retry(; max_tries=max_tries) do
+        check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
+
+    return result
 end
 
 function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
         apiversion::Union{String,Nothing}=nothing,
         max_tries::Integer=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
-        resourceVersion=nothing,
+        resource_version=nothing,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
 
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[name]
-    if (apicall = _api_function(ctx, "read$O")) !== nothing
+    _O_ = to_snake_case(string(O))
+    if (apicall = _api_function(ctx, "read_$(_O_)")) !== nothing
         # nothing
-    elseif (apicall = _api_function(ctx, "readNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "read_namespaced_$(_O_)")) !== nothing
         push!(args, _kubectx(ctx).namespace)
     else
-        throw(ArgumentError("No API functions could be located using :$O"))
+        throw(ArgumentError("No API functions could be located using $O"))
     end
 
-    if !watch || resourceVersion === nothing
+    if !watch || resource_version === nothing
         result = k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, args...; kwargs...)
+            check_api_response(apicall(apictx, args...; kwargs...)...)
         end
     end
 
     # if not watching, retuen the first result
     watch || (return result)
     if result !== nothing
-        resourceVersion = result.metadata.resourceVersion
+        resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
         put!(eventstream, result)
     end
 
     # start watch and return the HTTP response object on completion
-    return k8s_retry(; max_tries=max_tries) do
-        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, kwargs...)
+    result = k8s_retry(; max_tries=max_tries) do
+        check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
+
+    return result
 end
 
 function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
@@ -179,41 +186,44 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
         max_tries::Integer=retries(ctx, false),
         watch=isa(ctx, KuberWatchContext),
-        resourceVersion=nothing,
+        resource_version=nothing,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
 
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[]
-    apiname = "list$O"
-    namespace === nothing && (apiname *= "ForAllNamespaces")
+    _O_ = to_snake_case(string(O))
+    apiname = "list_$(_O_)"
+    namespace === nothing && (apiname *= "_for_all_namespaces")
     if (apicall = _api_function(ctx, apiname)) !== nothing
         # nothing
-    elseif (apicall = _api_function(ctx, "listNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "list_namespaced_$(_O_)")) !== nothing
         push!(args, namespace)
     else
-        throw(ArgumentError("No API functions could be located using :$O"))
+        throw(ArgumentError("No API functions could be located using $O"))
     end
 
-    if !watch || resourceVersion === nothing
+    if !watch || resource_version === nothing
         result = k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, args...; labelSelector=label_selector, kwargs...)
+            check_api_response(apicall(apictx, args...; label_selector, kwargs...)...)
         end
     end
 
     # if not watching, retuen the first result
     watch || (return result)
     if result !== nothing
-        resourceVersion = result.metadata.resourceVersion
+        resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
         put!(eventstream, result)
     end
 
     # start watch and return the HTTP response object on completion
-    return k8s_retry(; max_tries=max_tries) do
-        apicall(apictx, eventstream, args...; watch=watch, resourceVersion=resourceVersion, labelSelector=label_selector, kwargs...)
+    result = k8s_retry(; max_tries=max_tries) do
+        check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, label_selector, kwargs...)...)
     end
+
+    return result
 end
 
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
@@ -224,23 +234,27 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
     allnamespaces = namespaced && (namespace == "*")
+    _O_ = to_snake_case(string(O))
+    result = nothing
 
     if allnamespaces
-        apicall = apimodule(ctx).eval(Symbol("watch$(O)ForAllNamespaces"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream, name; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)_for_all_namespaces"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream, name; kwargs...)...)
         end
     elseif namespaced
-        apicall = apimodule(ctx).eval(Symbol("watchNamespaced$O"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream, name, namespace; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_namespaced_$(_O_)"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream, name, namespace; kwargs...)...)
         end
     else
-        apicall = apimodule(ctx).eval(Symbol("watch$O"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream, name; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream, name; kwargs...)...)
         end
     end
+
+    return result
 end
 
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
@@ -251,46 +265,64 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
     namespaced = (namespace !== nothing) && !isempty(namespace)
     allnamespaces = namespaced && (namespace == "*")
+    _O_ = to_snake_case(string(O))
+    result = nothing
 
     if allnamespaces
-        apicall = apimodule(ctx).eval(Symbol("watch$(O)ForAllNamespaces"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)_for_all_namespaces"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream; kwargs...)...)
         end
     elseif namespaced
-        apicall = apimodule(ctx).eval(Symbol("watchNamespaced$O"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream, namespace; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_namespaced_$(_O_)"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream, namespace; kwargs...)...)
         end
     else
-        apicall = apimodule(ctx).eval(Symbol("watch$O"))
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, outstream; kwargs...)
+        apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)"))
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, outstream; kwargs...)...)
         end
     end
+
+    return result
 end
 
-function put!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true)) where {T<:SwaggerModel}
-    vjson = convert(Dict{String,Any}, v)
-    put!(ctx, Symbol(vjson["kind"]), vjson; max_tries=max_tries)
+function put!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true)) where {T<:OpenAPI.APIModel}
+    if isnothing(v.kind)
+        throw(ArgumentError("kind must be specified for $T"))
+    end
+    put!(ctx, Symbol(v.kind), v; max_tries=max_tries)
 end
 
-function put!(ctx::KuberContext, O::Symbol, d::Dict{String,Any}; max_tries::Int=retries(ctx, true))
-    apictx = _get_apictx(ctx, O, get(d, "apiVersion", nothing))
-    if (apicall = _api_function(ctx, "create$O")) !== nothing
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, d)
+function put!(ctx::KuberContext, O::Symbol, v::Dict{String,Any}; max_tries::Int=retries(ctx, true))
+    if isnothing(v["kind"])
+        v["kind"] = string(O)
+    end
+    put!(ctx, O, kuber_obj(ctx, v); max_tries=max_tries)
+end
+
+function put!(ctx::KuberContext, O::Symbol, v::T; max_tries::Int=retries(ctx, true)) where {T<:OpenAPI.APIModel}
+    apictx = _get_apictx(ctx, O, v.apiVersion)
+    _O_ = to_snake_case(string(O))
+    result = nothing
+    if (apicall = _api_function(ctx, "create_$(_O_)")) !== nothing
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, v)...)
         end
-    elseif (apicall = _api_function(ctx, "createNamespaced$O")) !== nothing
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, ctx.namespace, d)
+    elseif (apicall = _api_function(ctx, "create_namespaced_$(_O_)")) !== nothing
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, ctx.namespace, v)...)
         end
     else
-        throw(ArgumentError("No API functions could be located using :$O"))
+        throw(ArgumentError("No API functions could be located using $O"))
     end
+    return result
 end
 
-function delete!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true), kwargs...) where {T<:SwaggerModel}
+# Note: delete! operations can return either the deleted object or a status object
+# ref: https://github.com/kubernetes-client/csharp/issues/44
+function delete!(ctx::KuberContext, v::T; max_tries::Int=retries(ctx, true), kwargs...) where {T<:OpenAPI.APIModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
@@ -299,24 +331,27 @@ end
 
 function delete!(ctx::KuberContext, O::Symbol, name::String; apiversion::Union{String,Nothing}=nothing, max_tries::Int=retries(ctx, true), kwargs...)
     apictx = _get_apictx(ctx, O, apiversion)
-
+    _O_ = to_snake_case(string(O))
     params = [apictx, name]
+    result = nothing
 
-    if (apicall = _api_function(ctx, "delete$O")) !== nothing
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(params...; kwargs...)
+    if (apicall = _api_function(ctx, "delete_$(_O_)")) !== nothing
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(params...; kwargs...)...)
         end
-    elseif (apicall = _api_function(ctx, "deleteNamespaced$O")) !== nothing
+    elseif (apicall = _api_function(ctx, "delete_namespaced_$(_O_)")) !== nothing
         push!(params, ctx.namespace)
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(params...; kwargs...)
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(params...; kwargs...)...)
         end
     else
-        throw(ArgumentError("No API functions could be located using :$O"))
+        throw(ArgumentError("No API functions could be located using $O"))
     end
+
+    return result
 end
 
-function update!(ctx::KuberContext, v::T, patch, patch_type; max_tries::Int=retries(ctx, true)) where {T<:SwaggerModel}
+function update!(ctx::KuberContext, v::T, patch, patch_type; max_tries::Int=retries(ctx, true)) where {T<:OpenAPI.APIModel}
     vjson = convert(Dict{String,Any}, v)
     kind = vjson["kind"]
     name = vjson["metadata"]["name"]
@@ -325,18 +360,21 @@ end
 
 function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type; apiversion::Union{String,Nothing}=nothing, max_tries::Int=retries(ctx, true))
     apictx = _get_apictx(ctx, O, apiversion)
+    _O_ = to_snake_case(string(O))
+    result = nothing
 
-    if (apicall = _api_function(ctx, "patch$O")) !== nothing
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, name, patch; _mediaType=patch_type)
+    if (apicall = _api_function(ctx, "patch_$(_O_)")) !== nothing
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, name, patch; _mediaType=patch_type)...)
         end
-    elseif (apicall = _api_function(ctx, "patchNamespaced$O")) !== nothing
-        return k8s_retry(; max_tries=max_tries) do
-            apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)
+    elseif (apicall = _api_function(ctx, "patch_namespaced_$(_O_)")) !== nothing
+        result = k8s_retry(; max_tries=max_tries) do
+            check_api_response(apicall(apictx, name, ctx.namespace, patch; _mediaType=patch_type)...)
         end
     else
-        throw(ArgumentError("No API functions could be located using :$O"))
+        throw(ArgumentError("No API functions could be located using $O"))
     end
+    return result
 end
 
 """

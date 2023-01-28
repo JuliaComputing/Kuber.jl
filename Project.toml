@@ -4,19 +4,21 @@ authors = ["Tanmay Mohapatra <tanmaykm@gmail.com>"]
 keywords = ["kubernetes", "client"]
 license = "MIT"
 desc = "Julia Kubernetes Client"
-version = "0.6.2"
+version = "0.7.0"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
-Swagger = "2d69052b-6a58-5cd9-a030-a48559c324ac"
+OpenAPI = "d5e62ea6-ddf3-4d43-8e4c-ad5e6c8bfd7d"
+TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
 
 [compat]
 Downloads = "1"
-Swagger = "0.3"
+OpenAPI = "0.1"
 JSON = "0.21"
+TimeZones = "1"
 julia = "1"
 
 [extras]
