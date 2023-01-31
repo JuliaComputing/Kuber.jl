@@ -235,10 +235,11 @@ function set_server(
     reset_api_versions::Bool=false;
     max_tries=retries(ctx, false),
     verbose::Bool=false,
+    debug::Bool=false,
     kwargs...
 )
     rtfn = (return_types,response_code,response_data)->kuber_type(ctx, return_types, response_code, response_data)
-    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, kwargs...)
+    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, verbose=debug, kwargs...)
     ctx.client.headers["Connection"] = "close"
     reset_api_versions && set_api_versions!(
         ctx;
