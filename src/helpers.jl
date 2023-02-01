@@ -206,8 +206,11 @@ function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
     T
 end
 
-kuber_obj(ctx::KuberContext, data::String) = kuber_obj(ctx, JSON.parse(data))
-kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
+# OpenAPI conversions insist that JSONs objects are always `Dict{String,Any}`.
+# To ensure that for a user supplied Dict, we serialize that to string and parse it back as json.
+kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = kuber_obj(ctx, JSON.json(j))
+kuber_obj(ctx::KuberContext, data::String) = _kuber_obj(ctx, JSON.parse(data))
+_kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
 
 show(io::IO, ctx::KuberContext) = print(io, "Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
 
