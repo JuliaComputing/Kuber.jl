@@ -206,8 +206,11 @@ function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
     T
 end
 
-kuber_obj(ctx::KuberContext, data::String) = kuber_obj(ctx, JSON.parse(data))
-kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
+# OpenAPI conversions insist that JSONs objects are always `Dict{String,Any}`.
+# To ensure that for a user supplied Dict, we serialize that to string and parse it back as json.
+kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = kuber_obj(ctx, JSON.json(j))
+kuber_obj(ctx::KuberContext, data::String) = _kuber_obj(ctx, JSON.parse(data))
+_kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
 
 show(io::IO, ctx::KuberContext) = print(io, "Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
 
@@ -235,10 +238,11 @@ function set_server(
     reset_api_versions::Bool=false;
     max_tries=retries(ctx, false),
     verbose::Bool=false,
+    debug::Bool=false,
     kwargs...
 )
     rtfn = (return_types,response_code,response_data)->kuber_type(ctx, return_types, response_code, response_data)
-    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, kwargs...)
+    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, verbose=debug, kwargs...)
     ctx.client.headers["Connection"] = "close"
     reset_api_versions && set_api_versions!(
         ctx;
