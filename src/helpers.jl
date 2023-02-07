@@ -334,7 +334,7 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
     vers, http_resp = k8s_retry(; max_tries=max_tries) do
         apimodule(ctx).get_a_p_i_versions(apimodule(ctx).ApisApi(ctx.client))
     end
-    @assert http_resp.status == 200
+    vers = check_api_response(vers, http_resp)
     api_groups = vers.groups
     for apigrp in api_groups
         name = apigrp.name
@@ -387,7 +387,7 @@ function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=f
     api_vers, http_resp = k8s_retry(; max_tries=max_tries) do
         apimodule(ctx).get_core_a_p_i_versions(apimodule(ctx).CoreApi(ctx.client))
     end
-    @assert http_resp.status == 200
+    api_vers = check_api_response(api_vers, http_resp)
     name = "Core"
     supported = String[]
     pref_vers = override_pref(name, api_vers.versions[1], override)
