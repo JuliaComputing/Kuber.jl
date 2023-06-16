@@ -143,17 +143,21 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
         max_tries::Integer=retries(ctx),
         watch=isa(ctx, KuberWatchContext),
         resource_version=nothing,
+        namespace::Union{String,Nothing}=_kubectx(ctx).namespace,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
 
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[name]
     _O_ = to_snake_case(string(O))
-    if (apicall = _api_function(ctx, "read_$(_O_)")) !== nothing
+    if namespaced && !allnamespaces
+        apicall = _api_function(ctx, "read_namespaced_$(_O_)")
+        push!(args, namespace)
+    elseif (apicall = _api_function(ctx, "read_$(_O_)")) !== nothing
         # nothing
-    elseif (apicall = _api_function(ctx, "read_namespaced_$(_O_)")) !== nothing
-        push!(args, _kubectx(ctx).namespace)
     else
         throw(ArgumentError("No API functions could be located using $O"))
     end
@@ -189,17 +193,21 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         resource_version=nothing,
         kwargs...)
     apictx = _get_apictx(ctx, O, apiversion; max_tries=max_tries)
+    namespaced = (namespace !== nothing) && !isempty(namespace)
+    allnamespaces = namespaced && (namespace == "*")
 
     eventstream = isa(ctx, KuberWatchContext) ? ctx.stream : nothing
     result = nothing
     args = Any[]
     _O_ = to_snake_case(string(O))
     apiname = "list_$(_O_)"
-    namespace === nothing && (apiname *= "_for_all_namespaces")
-    if (apicall = _api_function(ctx, apiname)) !== nothing
-        # nothing
-    elseif (apicall = _api_function(ctx, "list_namespaced_$(_O_)")) !== nothing
+    if allnamespaces
+        apicall = _api_function(ctx, apiname * "_for_all_namespaces")
+    elseif namespaced
+        apicall = _api_function(ctx, "list_namespaced_$(_O_)")
         push!(args, namespace)
+    elseif (apicall = _api_function(ctx, apiname)) !== nothing
+        #nothing
     else
         throw(ArgumentError("No API functions could be located using $O"))
     end
