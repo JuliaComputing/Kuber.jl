@@ -208,6 +208,8 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         push!(args, namespace)
     elseif (apicall = _api_function(ctx, apiname)) !== nothing
         #nothing
+    elseif (apicall = _api_function(ctx, apiname * "_for_all_namespaces")) !== nothing
+        #nothing
     else
         throw(ArgumentError("No API functions could be located using $O"))
     end
