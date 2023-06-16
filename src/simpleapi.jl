@@ -153,8 +153,7 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     result = nothing
     args = Any[name]
     _O_ = to_snake_case(string(O))
-    if namespaced && !allnamespaces
-        apicall = _api_function(ctx, "read_namespaced_$(_O_)")
+    if namespaced && !allnamespaces && (apicall = _api_function(ctx, "read_namespaced_$(_O_)")) !== nothing
         push!(args, namespace)
     elseif (apicall = _api_function(ctx, "read_$(_O_)")) !== nothing
         # nothing
@@ -201,10 +200,9 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     args = Any[]
     _O_ = to_snake_case(string(O))
     apiname = "list_$(_O_)"
-    if allnamespaces
-        apicall = _api_function(ctx, apiname * "_for_all_namespaces")
-    elseif namespaced
-        apicall = _api_function(ctx, "list_namespaced_$(_O_)")
+    if allnamespaces && (apicall = _api_function(ctx, apiname * "_for_all_namespaces")) !== nothing
+        #nothing
+    elseif namespaced && (apicall = _api_function(ctx, "list_namespaced_$(_O_)")) !== nothing
         push!(args, namespace)
     elseif (apicall = _api_function(ctx, apiname)) !== nothing
         #nothing
