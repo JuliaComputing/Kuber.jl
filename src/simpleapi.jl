@@ -80,7 +80,11 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     if result !== nothing
         resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
-        put!(eventstream, result)
+        if isnothing(eventstream)
+            throw(ArgumentError("Event stream not provided in watch mode"))
+        else    
+            put!(eventstream, result)
+        end
     end
 
     # start watch and return the HTTP response object on completion
@@ -127,7 +131,11 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     if result !== nothing
         resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
-        put!(eventstream, result)
+        if isnothing(eventstream)
+            throw(ArgumentError("Event stream not provided in watch mode"))
+        else
+            put!(eventstream, result)
+        end
     end
 
     # start watch and return the HTTP response object on completion
@@ -172,7 +180,11 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     if result !== nothing
         resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
-        put!(eventstream, result)
+        if isnothing(eventstream)
+            throw(ArgumentError("Event stream not provided in watch mode"))
+        else
+            put!(eventstream, result)
+        end
     end
 
     # start watch and return the HTTP response object on completion
@@ -223,7 +235,11 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     if result !== nothing
         resource_version = result.metadata.resourceVersion
         # push the first Event consisting of existing data
-        put!(eventstream, result)
+        if isnothing(eventstream)
+            throw(ArgumentError("Event stream not provided in watch mode"))
+        else
+            put!(eventstream, result)
+        end
     end
 
     # start watch and return the HTTP response object on completion

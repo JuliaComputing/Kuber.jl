@@ -126,7 +126,7 @@ Keyword Args:
 - count: how many times to retry (default 5)
 - all_apis: whether to retry even mutating APIs e.g. `put!` (default false)
 """
-function set_retries(ctx::KuberContext; count::Int=ctx.default_retries, all_apis::Bool=ctx.all_apis)
+function set_retries(ctx::KuberContext; count::Int=ctx.default_retries, all_apis::Bool=ctx.retry_all_apis)
     ctx.default_retries = count
     ctx.retry_all_apis = all_apis
     ctx
@@ -183,12 +183,6 @@ function header(resp::Downloads.Response, name::AbstractString, defaultval::Abst
         (n == name) && (return v)
     end
     return defaultval
-end
-
-function kuber_type(ctx::KuberContext, T, resp::Downloads.Response)
-    ctype = header(resp, "Content-Type", "application/json")
-    !is_json_mime(ctype) && return T
-    kuber_type(ctx, T, String(copy(resp.body)))
 end
 
 function kuber_type(ctx::KuberContext, T, j::Dict{String,Any})
@@ -340,7 +334,7 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
         name = apigrp.name
         pref_vers_type = apigrp.preferredVersion
         pref_vers_version = override_pref(name, pref_vers_type.version, override)
-        pref_vers = name * "/" * pref_vers_version
+        pref_vers = string(name, "/", pref_vers_version)
         supported = String[]
 
         try
@@ -356,9 +350,14 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
         end
 
         for api_vers in apigrp.versions
+            group_version = api_vers.groupVersion
             try
-                gt = api_group_type(ctx, api_vers.groupVersion)
-                td = api_typedefs(ctx, api_vers.groupVersion)
+                if !isa(group_version, AbstractString)
+                    @error("unexpected missing group version, ignoring")
+                    continue
+                end
+                gt = api_group_type(ctx, group_version)
+                td = api_typedefs(ctx, group_version)
                 ka = KApi(gt, td)
                 kalist = apis[Symbol(api_group(name))]
                 if (ka != kalist[1])
@@ -366,7 +365,7 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
                     push!(supported, api_vers.version)
                 end
             catch
-                @info("unsupported $(api_vers.groupVersion)")
+                @info("unsupported $(group_version)")
             end
         end
 
@@ -392,13 +391,13 @@ function fetch_core_version(ctx::KuberContext; override=nothing, verbose::Bool=f
     supported = String[]
     pref_vers = override_pref(name, api_vers.versions[1], override)
 
-    apis[:Core] = [KApi(getfield(apimodule(ctx), Symbol("Core" * camel(pref_vers) * "Api")), getfield(getfield(apimodule(ctx), :Typedefs), Symbol("Core" * camel(pref_vers))))]
+    apis[:Core] = [KApi(getfield(apimodule(ctx), Symbol(string("Core", camel(pref_vers), "Api"))), getfield(getfield(apimodule(ctx), :Typedefs), Symbol(string("Core", camel(pref_vers)))))]
     push!(supported, pref_vers)
 
     for api_vers in api_vers.versions
         try
-            gt = getfield(apimodule(ctx), Symbol("Core" * camel(api_vers) * "Api"))
-            td = getfield(getfield(apimodule(ctx), :Typedefs), Symbol("Core" * camel(api_vers)))
+            gt = getfield(apimodule(ctx), Symbol(string("Core", camel(api_vers), "Api")))
+            td = getfield(getfield(apimodule(ctx), :Typedefs), Symbol(string("Core", camel(api_vers))))
             ka = KApi(gt, td)
             kalist = apis[:Core]
             if (ka != kalist[1])
