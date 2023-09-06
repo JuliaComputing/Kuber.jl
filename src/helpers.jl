@@ -431,7 +431,8 @@ function build_model_api_map(ctx::KuberContext)
         for name in names(types; all=true)
             (name in [:eval, Symbol("#eval"), :include, Symbol("#include"), Symbol(split(string(types), '.')[end])]) && continue
             # de-prioritize extensions for the default simpleapi mapping (so if a model already has a dedicated api version, do not use extensions)
-            haskey(modelapi, name) && (types === apimodule(ctx).Typedefs.ExtensionsV1beta1) && continue
+            # extensions are deprecated and not supported in k8s versions after v1.16
+            # haskey(modelapi, name) && (types === apimodule(ctx).Typedefs.ExtensionsV1beta1) && continue
             modelapi[name] = apiver
         end
     end
