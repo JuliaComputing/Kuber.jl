@@ -4,7 +4,7 @@ authors = ["JuliaHub Inc."]
 keywords = ["kubernetes", "client"]
 license = "MIT"
 desc = "Julia Kubernetes Client"
-version = "0.7.4"
+version = "0.7.5"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
