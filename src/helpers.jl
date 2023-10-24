@@ -342,7 +342,7 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
             push!(supported, pref_vers_version)
         catch ex
             if isa(ex, KeyError)
-                @info("unsupported $pref_vers")
+                verbose && @info("unsupported $pref_vers")
                 continue
             else
                 rethrow()
@@ -365,7 +365,7 @@ function fetch_all_apis_versions(ctx::KuberContext; override=nothing, verbose::B
                     push!(supported, api_vers.version)
                 end
             catch
-                @info("unsupported $(group_version)")
+                verbose && @info("unsupported $(group_version)")
             end
         end
 
