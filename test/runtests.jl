@@ -346,3 +346,12 @@ function test_all()
 end
 
 test_all()
+
+# Shutdown the kubectl proxy if we are running on github CI.
+# This is to close network connections that libcurl would otherwise keep open and
+# that leads to segfault in some versions of julia when the process exits. This is
+# a workaround for what seems like a bug in Downloads.jl/LibCURL.
+if haskey(ENV, "CI")
+    run(`killall kubectl`)
+    sleep(5)
+end
