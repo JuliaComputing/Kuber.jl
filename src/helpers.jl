@@ -38,6 +38,39 @@ Backoff to use when retrying k8s APIs. The default minimum is 2 TPS.
 """
 k8s_retry(f; max_tries=1, tps=2) = retry(f, delays=k8s_delay(tps,max_tries), check=k8s_retry_cond)()
 
+"""
+Build keyword arguments for OpenAPI.Clients.Client constructor.
+Detects if HTTP.jl backend is available (OpenAPI >= 0.2.1) and uses it by default.
+
+Args:
+- httplib: Optional HTTP library to use (:http or :downloads). Defaults to HTTP.jl if available.
+"""
+function _openapi_client_kwargs(httplib::Union{Nothing,Symbol}=nothing)
+    kwargs = Dict{Symbol,Any}()
+    if isdefined(OpenAPI.Clients, :HTTPLib)
+        if httplib === nothing
+            kwargs[:httplib] = OpenAPI.Clients.HTTPLib.HTTP  # Default to HTTP.jl
+        else
+            kwargs[:httplib] = httplib
+        end
+    end
+    return kwargs
+end
+
+"""
+Return appropriate Connection header value based on HTTP backend.
+
+Args:
+- httplib: Optional HTTP library being used (:http or :downloads). Defaults to HTTP.jl logic.
+"""
+function _connection_header_value(httplib::Union{Nothing,Symbol}=nothing)
+    if !isdefined(OpenAPI.Clients, :HTTPLib)
+        return "close"
+    end
+    effective_lib = httplib === nothing ? OpenAPI.Clients.HTTPLib.HTTP : httplib
+    return effective_lib === OpenAPI.Clients.HTTPLib.HTTP ? "Keep-Alive" : "close"
+end
+
 const KuberEventStream = Channel{Any}
 
 struct KApi
@@ -54,13 +87,15 @@ mutable struct KuberContext
     default_retries::Int
     retry_all_apis::Bool
     initialized::Bool
+    httplib::Union{Nothing,Symbol}
 
-    function KuberContext(apimodule::Module=ApiImpl; kwargs...)
+    function KuberContext(apimodule::Module=ApiImpl; httplib::Union{Nothing,Symbol}=nothing, kwargs...)
         kctx = new(apimodule)
 
         rtfn = (return_types,response_code,response_data)->kuber_type(kctx, return_types, response_code, response_data)
-        openapiclient = OpenAPI.Clients.Client(DEFAULT_URI; get_return_type=rtfn, kwargs...)
-        openapiclient.headers["Connection"] = "close"
+        client_kwargs = _openapi_client_kwargs(httplib)
+        openapiclient = OpenAPI.Clients.Client(DEFAULT_URI; get_return_type=rtfn, client_kwargs..., kwargs...)
+        openapiclient.headers["Connection"] = _connection_header_value(httplib)
 
         kctx.client = openapiclient
         kctx.apis = Dict{Symbol,Vector}()
@@ -69,6 +104,7 @@ mutable struct KuberContext
         kctx.default_retries = 5
         kctx.retry_all_apis = false
         kctx.initialized = false
+        kctx.httplib = httplib
         return kctx
     end
 end
@@ -90,10 +126,10 @@ end
 
 function KuberException(response::OpenAPI.Clients.ApiResponse, status::Union{Nothing,OpenAPI.APIModel})
     http_response = response.raw
-    if !(200 <= http_response.status <= 299)
-        message = http_response.message
-        code = http_response.status
-    end
+    code = http_response.status
+
+    # HTTP.Response doesn't have .message field like Downloads.Response
+    message = hasproperty(http_response, :message) ? http_response.message : "HTTP $code"
 
     # if status is available, use it to override the message and code
     if !isnothing(status)
@@ -212,7 +248,7 @@ get_server(ctx::KuberContext) = ctx.client.root
 get_ns(ctx::KuberContext) = ctx.namespace
 
 """
-    set_server(ctx, uri, reset_api_versions=false; max_tries=5, kwargs...)
+    set_server(ctx, uri, reset_api_versions=false; max_tries=5, httplib=nothing, kwargs...)
 
 Set the Kubernetes API server endpoint for a context.
 
@@ -224,6 +260,7 @@ Args:
 Keyword Args:
 - max_tries: retries allowed while probing API versions from server
 - verbose: Log API versions
+- httplib: HTTP library to use (:http or :downloads). If not specified, uses the context's stored httplib setting.
 - kwargs: other keyword args to pass on while constructing the client for API server (see OpenAPI.jl - https://github.com/JuliaComputing/OpenAPI.jl#readme)
 """
 function set_server(
@@ -233,11 +270,22 @@ function set_server(
     max_tries=retries(ctx, false),
     verbose::Bool=false,
     debug::Bool=false,
+    httplib::Union{Nothing,Symbol}=nothing,
     kwargs...
 )
+    # Use provided httplib, or fall back to context's stored value
+    effective_httplib = httplib === nothing ? ctx.httplib : httplib
+
     rtfn = (return_types,response_code,response_data)->kuber_type(ctx, return_types, response_code, response_data)
-    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, verbose=debug, kwargs...)
-    ctx.client.headers["Connection"] = "close"
+    client_kwargs = _openapi_client_kwargs(effective_httplib)
+    ctx.client = OpenAPI.Clients.Client(uri; get_return_type=rtfn, verbose=debug, client_kwargs..., kwargs...)
+    ctx.client.headers["Connection"] = _connection_header_value(effective_httplib)
+
+    # Update stored httplib if explicitly provided
+    if httplib !== nothing
+        ctx.httplib = httplib
+    end
+
     reset_api_versions && set_api_versions!(
         ctx;
         max_tries=max_tries,
