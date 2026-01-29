@@ -21,6 +21,11 @@ function init_context(override=nothing, verbose=true)
     set_ns(ctx, "default")
     set_retries(ctx; count=3, all_apis=false)
     Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
+    httplib_name = ctx.httplib === nothing ? "http (default)" : string(ctx.httplib)
+    @info("KuberContext preferred HTTP library: $httplib_name")
+    if hasproperty(ctx.client, :httplib)
+        @info("OpenAPI client using HTTP library: $(ctx.client.httplib)")
+    end
     ctx
 end
 
