@@ -190,9 +190,14 @@ function with_timeout(fn, ctx::Union{KuberContext,KuberWatchContext}, timeout::I
     end
 end
 
+# JSON 1.x parses objects to JSON.Object; both OpenAPI's from_json and Kuber's own
+# helpers dispatch on the concrete Dict{String,Any}. dicttype forces that on 1.x and
+# is a no-op on 0.21 (already the default), so one path serves both.
+_parse_json(x) = JSON.parse(x; dicttype=Dict{String,Any})
+
 convert(::Type{Vector{UInt8}}, s::T) where {T<:AbstractString} = collect(codeunits(s))
-convert(::Type{T}, json::String) where {T<:OpenAPI.APIModel} = convert(T, JSON.parse(json))
-convert(::Type{Dict{String,Any}}, model::T) where {T<:OpenAPI.APIModel} = JSON.parse(JSON.json(model))
+convert(::Type{T}, json::String) where {T<:OpenAPI.APIModel} = convert(T, _parse_json(json))
+convert(::Type{Dict{String,Any}}, model::T) where {T<:OpenAPI.APIModel} = _parse_json(JSON.json(model))
 
 is_json_mime(mime::T) where {T <: AbstractString} = ("*/*" == mime) || occursin(r"(?i)application/json(;.*)?", mime) || occursin(r"(?i)application/(.*)-patch\+json(;.*)?", mime)
 
@@ -203,11 +208,11 @@ function kind_to_type(ctx::KuberContext, kind::Symbol, version::Union{String,Not
 end
 
 kuber_type(ctx::KuberContext, d) = kuber_type(ctx, Any, d)
-kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, JSON.parse(data))
+kuber_type(ctx::KuberContext, T, data::String) = kuber_type(ctx, T, _parse_json(data))
 function kuber_type(ctx::KuberContext, return_types::Dict{Regex,Type}, response_code::Union{Nothing,Integer}, response_data::String)
     default_type = OpenAPI.Clients.get_api_return_type(return_types, response_code, response_data)
     try
-        json_resp = JSON.parse(response_data)
+        json_resp = _parse_json(response_data)
         return kuber_type(ctx, default_type, json_resp)
     catch
         return default_type
@@ -239,7 +244,7 @@ end
 # OpenAPI conversions insist that JSONs objects are always `Dict{String,Any}`.
 # To ensure that for a user supplied Dict, we serialize that to string and parse it back as json.
 kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = kuber_obj(ctx, JSON.json(j))
-kuber_obj(ctx::KuberContext, data::String) = _kuber_obj(ctx, JSON.parse(data))
+kuber_obj(ctx::KuberContext, data::String) = _kuber_obj(ctx, _parse_json(data))
 _kuber_obj(ctx::KuberContext, j::Dict{String,Any}) = convert(kind_to_type(ctx, j["kind"], get(j, "apiVersion", nothing)), j)
 
 show(io::IO, ctx::KuberContext) = print(io, "Kubernetes namespace ", ctx.namespace, " at ", ctx.client.root)
