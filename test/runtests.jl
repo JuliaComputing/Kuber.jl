@@ -314,6 +314,15 @@ function test_versioned(ctx, testid)
             @test !isempty(events)
             for event in events
                 @test isa(event, Union{Typedefs.CoreV1.WatchEvent,Typedefs.CoreV1.PodList})
+                # Watch event objects parse to `JSON.Object` under JSON.jl 1.x —
+                # an AbstractDict, not a Dict{String,Any}. `kuber_obj` must accept
+                # them: a MethodError here used to kill the stream processor and
+                # leave the watch silently deaf (see the watch-processor-failure
+                # test below for the propagation side).
+                if isa(event, Typedefs.CoreV1.WatchEvent)
+                    obj = Kuber.kuber_obj(ctx, event.object)
+                    @test isa(obj, OpenAPI.APIModel)
+                end
             end
         end
     end
@@ -348,6 +357,36 @@ function test_all()
             @test str == "Kubernetes namespace default at http://localhost:8001"
         end
     end
+end
+
+function test_watch_processor_failure()
+    # A `streamprocessor` that throws must abort the watch promptly and
+    # propagate the error. Before the fix, the processor task died silently
+    # while `@sync` kept waiting on the (long-running) `watched` task — a
+    # deaf watch: events kept buffering with no error surfaced until the
+    # server dropped the connection.
+    ctx = KuberContext() # only passed through to KuberWatchContext; no server needed
+    producer = (watchctx) -> begin
+        # mimic the HTTP watch task: keep streaming events; ends only when the
+        # stream is closed under it (put! on a closed channel throws)
+        i = 0
+        while true
+            put!(watchctx.stream, (i += 1))
+            sleep(0.05)
+        end
+    end
+    t0 = time()
+    @test_throws Exception watch(ctx, producer) do stream
+        take!(stream)
+        error("processor failure")
+    end
+    # must fail fast — processor death closes the stream, which kills the
+    # producer's next put! — not linger until the producer would have ended
+    @test (time() - t0) < 10.0
+end
+
+@testset "Watch processor failure aborts watch" begin
+    test_watch_processor_failure()
 end
 
 test_all()
