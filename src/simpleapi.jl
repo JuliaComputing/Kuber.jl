@@ -40,7 +40,16 @@ function watch(streamprocessor::Function, ctx::KuberContext, watched::Function, 
             finally
                 close(stream)
             end
-            @async streamprocessor(stream)
+            @async try
+                streamprocessor(stream)
+            finally
+                # Symmetric to the watcher task above: if the stream processor
+                # dies (e.g. an exception while converting an event), close the
+                # stream so the HTTP watch task aborts too. Otherwise `@sync`
+                # silently waits for the connection to end while events pile up
+                # unconsumed — a deaf watch with no error surfaced.
+                close(stream)
+            end
         end
     end
 end
