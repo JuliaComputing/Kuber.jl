@@ -25,8 +25,19 @@ OpenAPI status codes that can be retried.
 """
 const k8s_retryable_codes = [0, 500, 501, 502, 503, 504]
 
-function k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes)
+"""
+`stream`, if given, is the event channel a watch call streams into. Closing it is
+the documented way for a consumer to stop an in-progress watch (see `watch` in
+simpleapi.jl), and doing so also surfaces as `is_request_interrupted`. Only treat
+`is_request_interrupted` as retryable while that channel is still open, so an
+intentional stop isn't mistaken for a transient interruption and retried instead
+of being allowed to terminate.
+"""
+function k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes; stream::Union{Channel,Nothing}=nothing)
     if (e isa OpenAPI.Clients.ApiException) && (e.status in retryable_codes)
+        return (s, true)
+    end
+    if OpenAPI.Clients.is_request_interrupted(e) && (stream === nothing || isopen(stream))
         return (s, true)
     end
     (s, false)
@@ -35,8 +46,12 @@ end
 """
 Retry api call automatically (if `max_tries > 1`) on certain retryable failures.
 Backoff to use when retrying k8s APIs. The default minimum is 2 TPS.
+
+`stream`, if given, is passed to `k8s_retry_cond` to distinguish an intentional
+watch-stop (channel closed by the consumer) from a transient interruption.
 """
-k8s_retry(f; max_tries=1, tps=2) = retry(f, delays=k8s_delay(tps,max_tries), check=k8s_retry_cond)()
+k8s_retry(f; max_tries=1, tps=2, stream::Union{Channel,Nothing}=nothing) =
+    retry(f, delays=k8s_delay(tps,max_tries), check=(s,e)->k8s_retry_cond(s,e; stream=stream))()
 
 """
 Build keyword arguments for OpenAPI.Clients.Client constructor.

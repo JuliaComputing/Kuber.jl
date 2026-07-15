@@ -97,7 +97,7 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::Strin
     end
 
     # start watch and return the HTTP response object on completion
-    result = k8s_retry(; max_tries=max_tries) do
+    result = k8s_retry(; max_tries=max_tries, stream=eventstream) do
         check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
 
@@ -148,7 +148,7 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     # start watch and return the HTTP response object on completion
-    result = k8s_retry(; max_tries=max_tries) do
+    result = k8s_retry(; max_tries=max_tries, stream=eventstream) do
         check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
 
@@ -197,7 +197,7 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     end
 
     # start watch and return the HTTP response object on completion
-    result = k8s_retry(; max_tries=max_tries) do
+    result = k8s_retry(; max_tries=max_tries, stream=eventstream) do
         check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, kwargs...)...)
     end
 
@@ -252,7 +252,7 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     end
 
     # start watch and return the HTTP response object on completion
-    result = k8s_retry(; max_tries=max_tries) do
+    result = k8s_retry(; max_tries=max_tries, stream=eventstream) do
         check_api_response(apicall(apictx, eventstream, args...; watch=watch, resource_version=resource_version, label_selector, kwargs...)...)
     end
 
@@ -272,17 +272,17 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel, name::String;
 
     if allnamespaces
         apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)_for_all_namespaces"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream, name; kwargs...)...)
         end
     elseif namespaced
         apicall = apimodule(ctx).eval(Symbol("watch_namespaced_$(_O_)"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream, name, namespace; kwargs...)...)
         end
     else
         apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream, name; kwargs...)...)
         end
     end
@@ -303,17 +303,17 @@ function watch(ctx::KuberContext, O::Symbol, outstream::Channel;
 
     if allnamespaces
         apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)_for_all_namespaces"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream; kwargs...)...)
         end
     elseif namespaced
         apicall = apimodule(ctx).eval(Symbol("watch_namespaced_$(_O_)"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream, namespace; kwargs...)...)
         end
     else
         apicall = apimodule(ctx).eval(Symbol("watch_$(_O_)"))
-        result = k8s_retry(; max_tries=max_tries) do
+        result = k8s_retry(; max_tries=max_tries, stream=outstream) do
             check_api_response(apicall(apictx, outstream; kwargs...)...)
         end
     end
