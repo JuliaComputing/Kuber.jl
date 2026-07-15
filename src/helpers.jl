@@ -29,6 +29,9 @@ function k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes)
     if (e isa OpenAPI.Clients.ApiException) && (e.status in retryable_codes)
         return (s, true)
     end
+    if OpenAPI.Clients.is_request_interrupted(e)
+        return (s, true)
+    end
     (s, false)
 end
 
