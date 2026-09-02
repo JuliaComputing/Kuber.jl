@@ -100,20 +100,10 @@
         "description": "Represents storage that is managed by an external CSI volume driver",
         "properties": {
           "controllerExpandSecretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "controllerExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerExpandVolume call. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "controllerPublishSecretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "controllerPublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI ControllerPublishVolume and ControllerUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "driver": {
             "default": "",
@@ -125,28 +115,13 @@
             "type": "string"
           },
           "nodeExpandSecretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "nodeExpandSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeExpandVolume call. This field is optional, may be omitted if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "nodePublishSecretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "nodePublishSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodePublishVolume and NodeUnpublishVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "nodeStageSecretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "nodeStageSecretRef is a reference to the secret object containing sensitive information to pass to the CSI driver to complete the CSI NodeStageVolume and NodeStageVolume and NodeUnstageVolume calls. This field is optional, and may be empty if no secret is required. If the secret object contains more than one secret, all secrets are passed."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "readOnly": {
             "description": "readOnly value to pass to ControllerPublishVolumeRequest. Defaults to false (read/write).",
@@ -198,12 +173,7 @@
             "type": "string"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "user": {
             "description": "user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it",
@@ -227,12 +197,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef is Optional: points to a secret object containing parameters used to connect to OpenStack."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "volumeID": {
             "default": "",
@@ -309,12 +274,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef is Optional: SecretRef is reference to the secret object containing sensitive information to pass to the plugin scripts. This may be empty if no secret object is specified. If the secret object contains more than one secret, all secrets are passed to the plugin scripts."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           }
         },
         "required": [
@@ -459,12 +419,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef is the CHAP Secret for iSCSI target and initiator authentication"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "targetPortal": {
             "default": "",
@@ -527,12 +482,7 @@
           "nodeSelectorTerms": {
             "description": "Required. A list of node selector terms. The terms are ORed.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorTerm"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorTerm"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -581,12 +531,7 @@
           "matchExpressions": {
             "description": "A list of node selector requirements by node's labels.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorRequirement"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorRequirement"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -595,12 +540,7 @@
           "matchFields": {
             "description": "A list of node selector requirements by node's fields.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorRequirement"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelectorRequirement"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -659,28 +599,13 @@
             "nullable": true
           },
           "awsElasticBlockStore": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource"
-              }
-            ],
-            "description": "awsElasticBlockStore represents an AWS Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Deprecated: AWSElasticBlockStore is deprecated. All operations for the in-tree awsElasticBlockStore type are redirected to the ebs.csi.aws.com CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#awselasticblockstore"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.AWSElasticBlockStoreVolumeSource"
           },
           "azureDisk": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.AzureDiskVolumeSource"
-              }
-            ],
-            "description": "azureDisk represents an Azure Data Disk mount on the host and bind mount to the pod. Deprecated: AzureDisk is deprecated. All operations for the in-tree azureDisk type are redirected to the disk.csi.azure.com CSI driver."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.AzureDiskVolumeSource"
           },
           "azureFile": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.AzureFilePersistentVolumeSource"
-              }
-            ],
-            "description": "azureFile represents an Azure File Service mount on the host and bind mount to the pod. Deprecated: AzureFile is deprecated. All operations for the in-tree azureFile type are redirected to the file.csi.azure.com CSI driver."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.AzureFilePersistentVolumeSource"
           },
           "capacity": {
             "additionalProperties": {
@@ -690,101 +615,40 @@
             "type": "object"
           },
           "cephfs": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.CephFSPersistentVolumeSource"
-              }
-            ],
-            "description": "cephFS represents a Ceph FS mount on the host that shares a pod's lifetime. Deprecated: CephFS is deprecated and the in-tree cephfs type is no longer supported."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.CephFSPersistentVolumeSource"
           },
           "cinder": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.CinderPersistentVolumeSource"
-              }
-            ],
-            "description": "cinder represents a cinder volume attached and mounted on kubelets host machine. Deprecated: Cinder is deprecated. All operations for the in-tree cinder type are redirected to the cinder.csi.openstack.org CSI driver. More info: https://examples.k8s.io/mysql-cinder-pd/README.md"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.CinderPersistentVolumeSource"
           },
           "claimRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.ObjectReference"
-              }
-            ],
-            "description": "claimRef is part of a bi-directional binding between PersistentVolume and PersistentVolumeClaim. Expected to be non-nil when bound. claim.VolumeName is the authoritative bind between PV and PVC. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#binding",
-            "x-kubernetes-map-type": "granular"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.ObjectReference"
           },
           "csi": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.CSIPersistentVolumeSource"
-              }
-            ],
-            "description": "csi represents storage that is handled by an external CSI driver."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.CSIPersistentVolumeSource"
           },
           "fc": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.FCVolumeSource"
-              }
-            ],
-            "description": "fc represents a Fibre Channel resource that is attached to a kubelet's host machine and then exposed to the pod."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.FCVolumeSource"
           },
           "flexVolume": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource"
-              }
-            ],
-            "description": "flexVolume represents a generic volume resource that is provisioned/attached using an exec based plugin. Deprecated: FlexVolume is deprecated. Consider using a CSIDriver instead."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.FlexPersistentVolumeSource"
           },
           "flocker": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.FlockerVolumeSource"
-              }
-            ],
-            "description": "flocker represents a Flocker volume attached to a kubelet's host machine and exposed to the pod for its usage. This depends on the Flocker control service being running. Deprecated: Flocker is deprecated and the in-tree flocker type is no longer supported."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.FlockerVolumeSource"
           },
           "gcePersistentDisk": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource"
-              }
-            ],
-            "description": "gcePersistentDisk represents a GCE Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin. Deprecated: GCEPersistentDisk is deprecated. All operations for the in-tree gcePersistentDisk type are redirected to the pd.csi.storage.gke.io CSI driver. More info: https://kubernetes.io/docs/concepts/storage/volumes#gcepersistentdisk"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.GCEPersistentDiskVolumeSource"
           },
           "glusterfs": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.GlusterfsPersistentVolumeSource"
-              }
-            ],
-            "description": "glusterfs represents a Glusterfs volume that is attached to a host and exposed to the pod. Provisioned by an admin. Deprecated: Glusterfs is deprecated and the in-tree glusterfs type is no longer supported. More info: https://examples.k8s.io/volumes/glusterfs/README.md"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.GlusterfsPersistentVolumeSource"
           },
           "hostPath": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.HostPathVolumeSource"
-              }
-            ],
-            "description": "hostPath represents a directory on the host. Provisioned by a developer or tester. This is useful for single-node development and testing only! On-host storage is not supported in any way and WILL NOT WORK in a multi-node cluster. More info: https://kubernetes.io/docs/concepts/storage/volumes#hostpath"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.HostPathVolumeSource"
           },
           "iscsi": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.ISCSIPersistentVolumeSource"
-              }
-            ],
-            "description": "iscsi represents an ISCSI Disk resource that is attached to a kubelet's host machine and then exposed to the pod. Provisioned by an admin."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.ISCSIPersistentVolumeSource"
           },
           "local": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.LocalVolumeSource"
-              }
-            ],
-            "description": "local represents directly-attached storage with node affinity"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.LocalVolumeSource"
           },
           "mountOptions": {
             "description": "mountOptions is the list of mount options, e.g. [\"ro\", \"soft\"]. Not validated - mount will simply fail if one is invalid. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#mount-options",
@@ -797,76 +661,36 @@
             "nullable": true
           },
           "nfs": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.NFSVolumeSource"
-              }
-            ],
-            "description": "nfs represents an NFS mount on the host. Provisioned by an admin. More info: https://kubernetes.io/docs/concepts/storage/volumes#nfs"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.NFSVolumeSource"
           },
           "nodeAffinity": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.VolumeNodeAffinity"
-              }
-            ],
-            "description": "nodeAffinity defines constraints that limit what nodes this volume can be accessed from. This field influences the scheduling of pods that use this volume. This field is mutable if MutablePVNodeAffinity feature gate is enabled."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.VolumeNodeAffinity"
           },
           "persistentVolumeReclaimPolicy": {
             "description": "persistentVolumeReclaimPolicy defines what happens to a persistent volume when released from its claim. Valid options are Retain (default for manually created PersistentVolumes), Delete (default for dynamically provisioned PersistentVolumes), and Recycle (deprecated). Recycle must be supported by the volume plugin underlying this PersistentVolume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#reclaiming",
             "type": "string"
           },
           "photonPersistentDisk": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource"
-              }
-            ],
-            "description": "photonPersistentDisk represents a PhotonController persistent disk attached and mounted on kubelets host machine. Deprecated: PhotonPersistentDisk is deprecated and the in-tree photonPersistentDisk type is no longer supported."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.PhotonPersistentDiskVolumeSource"
           },
           "portworxVolume": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.PortworxVolumeSource"
-              }
-            ],
-            "description": "portworxVolume represents a portworx volume attached and mounted on kubelets host machine. Deprecated: PortworxVolume is deprecated. All operations for the in-tree portworxVolume type are redirected to the pxd.portworx.com CSI driver when the CSIMigrationPortworx feature-gate is on."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.PortworxVolumeSource"
           },
           "quobyte": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.QuobyteVolumeSource"
-              }
-            ],
-            "description": "quobyte represents a Quobyte mount on the host that shares a pod's lifetime. Deprecated: Quobyte is deprecated and the in-tree quobyte type is no longer supported."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.QuobyteVolumeSource"
           },
           "rbd": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.RBDPersistentVolumeSource"
-              }
-            ],
-            "description": "rbd represents a Rados Block Device mount on the host that shares a pod's lifetime. Deprecated: RBD is deprecated and the in-tree rbd type is no longer supported. More info: https://examples.k8s.io/volumes/rbd/README.md"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.RBDPersistentVolumeSource"
           },
           "scaleIO": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource"
-              }
-            ],
-            "description": "scaleIO represents a ScaleIO persistent volume attached and mounted on Kubernetes nodes. Deprecated: ScaleIO is deprecated and the in-tree scaleIO type is no longer supported."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.ScaleIOPersistentVolumeSource"
           },
           "storageClassName": {
             "description": "storageClassName is the name of StorageClass to which this persistent volume belongs. Empty value means that this volume does not belong to any StorageClass.",
             "type": "string"
           },
           "storageos": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.StorageOSPersistentVolumeSource"
-              }
-            ],
-            "description": "storageOS represents a StorageOS volume that is attached to the kubelet's host machine and mounted into the pod. Deprecated: StorageOS is deprecated and the in-tree storageos type is no longer supported. More info: https://examples.k8s.io/volumes/storageos/README.md"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.StorageOSPersistentVolumeSource"
           },
           "volumeAttributesClassName": {
             "description": "Name of VolumeAttributesClass to which this persistent volume belongs. Empty value is not allowed. When this field is not set, it indicates that this volume does not belong to any VolumeAttributesClass. This field is mutable and can be changed by the CSI driver after a volume has been updated successfully to a new class. For an unbound PersistentVolume, the volumeAttributesClassName will be matched with unbound PersistentVolumeClaims during the binding process.",
@@ -877,12 +701,7 @@
             "type": "string"
           },
           "vsphereVolume": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource"
-              }
-            ],
-            "description": "vsphereVolume represents a vSphere volume attached and mounted on kubelets host machine. Deprecated: VsphereVolume is deprecated. All operations for the in-tree vsphereVolume type are redirected to the csi.vsphere.vmware.com CSI driver."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.VsphereVirtualDiskVolumeSource"
           }
         },
         "type": "object"
@@ -1000,12 +819,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it"
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "user": {
             "default": "admin",
@@ -1041,12 +855,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
-              }
-            ],
-            "description": "secretRef references to the secret for ScaleIO user and other sensitive information. If this is not provided, Login operation will fail."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.SecretReference"
           },
           "sslEnabled": {
             "description": "sslEnabled is the flag to enable/disable SSL communication with Gateway, default false",
@@ -1105,12 +914,7 @@
             "type": "boolean"
           },
           "secretRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.ObjectReference"
-              }
-            ],
-            "description": "secretRef specifies the secret to use for obtaining the StorageOS API credentials.  If not specified, default values will be attempted."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.ObjectReference"
           },
           "volumeName": {
             "description": "volumeName is the human-readable name of the StorageOS volume.  Volume names are only unique within a namespace.",
@@ -1154,12 +958,7 @@
           "matchLabelExpressions": {
             "description": "A list of topology selector requirements by labels.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.core.v1.TopologySelectorLabelRequirement"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1173,12 +972,7 @@
         "description": "VolumeNodeAffinity defines constraints that limit what nodes this volume can be accessed from.",
         "properties": {
           "required": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelector"
-              }
-            ],
-            "description": "required specifies hard node constraints that must be met."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.NodeSelector"
           }
         },
         "type": "object"
@@ -1221,22 +1015,10 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object metadata. metadata.Name indicates the name of the CSI driver that this object refers to; it MUST be the same name returned by the CSI GetPluginName() call for that driver. The driver name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), dots (.), and alphanumerics between. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "spec": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIDriverSpec"
-              }
-            ],
-            "default": {},
-            "description": "spec represents the specification of the CSI Driver."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIDriverSpec"
           }
         },
         "required": [
@@ -1261,12 +1043,7 @@
           "items": {
             "description": "items is the list of CSIDriver",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIDriver"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIDriver"
             },
             "type": "array",
             "nullable": true
@@ -1276,13 +1053,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -1336,12 +1107,7 @@
           "tokenRequests": {
             "description": "tokenRequests indicates the CSI driver needs pods' service account tokens it is mounting volume for to do necessary authentication. Kubelet will pass the tokens in VolumeContext in the CSI NodePublishVolume calls. The CSI driver should parse and validate the following VolumeContext: \"csi.storage.k8s.io/serviceAccount.tokens\": {\n  \"<audience>\": {\n    \"token\": <token>,\n    \"expirationTimestamp\": <expiration timestamp in RFC3339>,\n  },\n  ...\n}\n\nNote: Audience in each TokenRequest should be different and at most one token is empty string. To receive a new token after expiry, RequiresRepublish can be used to trigger NodePublishVolume periodically.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.TokenRequest"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.TokenRequest"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1372,22 +1138,10 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object's metadata. metadata.name must be the Kubernetes node name."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "spec": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINodeSpec"
-              }
-            ],
-            "default": {},
-            "description": "spec is the specification of CSINode"
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINodeSpec"
           }
         },
         "required": [
@@ -1406,12 +1160,7 @@
         "description": "CSINodeDriver holds information about the specification of one CSI driver installed on a node",
         "properties": {
           "allocatable": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources"
-              }
-            ],
-            "description": "allocatable represents the volume resources of a node that are available for scheduling. This field is beta."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeNodeResources"
           },
           "name": {
             "default": "",
@@ -1450,12 +1199,7 @@
           "items": {
             "description": "items is the list of CSINode",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINode"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINode"
             },
             "type": "array",
             "nullable": true
@@ -1465,13 +1209,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -1492,12 +1230,7 @@
           "drivers": {
             "description": "drivers is a list of information of all CSI Drivers existing on a node. If all drivers in the list are uninstalled, this can become empty.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINodeDriver"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSINodeDriver"
             },
             "type": "array",
             "x-kubernetes-list-map-keys": [
@@ -1522,41 +1255,20 @@
             "type": "string"
           },
           "capacity": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "capacity is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.\n\nThe semantic is currently (CSI spec 1.2) defined as: The available capacity, in bytes, of the storage that can be used to provision volumes. If not set, that information is currently unavailable."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           },
           "kind": {
             "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
             "type": "string"
           },
           "maximumVolumeSize": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "maximumVolumeSize is the value reported by the CSI driver in its GetCapacityResponse for a GetCapacityRequest with topology and parameters that match the previous fields.\n\nThis is defined since CSI spec 1.4.0 as the largest size that may be used in a CreateVolumeRequest.capacity_range.required_bytes field to create a volume with the same parameters as those in GetCapacityRequest. The corresponding value in the Kubernetes API is ResourceRequirements.Requests in a volume claim."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object's metadata. The name has no particular meaning. It must be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-<uuid>, a generated name, or a reverse-domain name which ends with the unique CSI driver name.\n\nObjects are namespaced.\n\nMore info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "nodeTopology": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
-              }
-            ],
-            "description": "nodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
           },
           "storageClassName": {
             "default": "",
@@ -1586,12 +1298,7 @@
           "items": {
             "description": "items is the list of CSIStorageCapacity objects.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIStorageCapacity"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.CSIStorageCapacity"
             },
             "type": "array",
             "nullable": true
@@ -1601,13 +1308,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -1632,12 +1333,7 @@
           "allowedTopologies": {
             "description": "allowedTopologies restrict the node topologies where volumes can be dynamically provisioned. Each volume plugin defines its own supported topology specifications. An empty TopologySelectorTerm list means there is no topology restriction. This field is only honored by servers that enable the VolumeScheduling feature.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.core.v1.TopologySelectorTerm"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.core.v1.TopologySelectorTerm"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1652,13 +1348,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "mountOptions": {
             "description": "mountOptions controls the mountOptions for dynamically provisioned PersistentVolumes of this storage class. e.g. [\"ro\", \"soft\"]. Not validated - mount of the PVs will simply fail if one is invalid.",
@@ -1714,12 +1404,7 @@
           "items": {
             "description": "items is the list of StorageClasses",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.StorageClass"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.StorageClass"
             },
             "type": "array",
             "nullable": true
@@ -1729,13 +1414,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -1781,31 +1460,13 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "spec": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSpec"
-              }
-            ],
-            "default": {},
-            "description": "spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSpec"
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus"
-              }
-            ],
-            "default": {},
-            "description": "status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentStatus"
           }
         },
         "required": [
@@ -1830,12 +1491,7 @@
           "items": {
             "description": "items is the list of VolumeAttachments",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachment"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachment"
             },
             "type": "array",
             "nullable": true
@@ -1845,13 +1501,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -1870,12 +1520,7 @@
         "description": "VolumeAttachmentSource represents a volume that should be attached. Right now only PersistentVolumes can be attached via external attacher, in the future we may allow also inline volumes in pods. Exactly one member can be set.",
         "properties": {
           "inlineVolumeSpec": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.core.v1.PersistentVolumeSpec"
-              }
-            ],
-            "description": "inlineVolumeSpec contains all the information necessary to attach a persistent volume defined by a pod's inline VolumeSource. This field is populated only for the CSIMigration feature. It contains translated fields from a pod's inline VolumeSource to a PersistentVolumeSpec. This field is beta-level and is only honored by servers that enabled the CSIMigration feature."
+            "$ref": "#/components/schemas/io.k8s.api.core.v1.PersistentVolumeSpec"
           },
           "persistentVolumeName": {
             "description": "persistentVolumeName represents the name of the persistent volume to attach.",
@@ -1898,13 +1543,7 @@
             "type": "string"
           },
           "source": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSource"
-              }
-            ],
-            "default": {},
-            "description": "source represents the volume that should be attached."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttachmentSource"
           }
         },
         "required": [
@@ -1918,12 +1557,7 @@
         "description": "VolumeAttachmentStatus is the status of a VolumeAttachment request.",
         "properties": {
           "attachError": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeError"
-              }
-            ],
-            "description": "attachError represents the last error encountered during attach operation, if any. This field must only be set by the entity completing the attach operation, i.e. the external-attacher."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeError"
           },
           "attached": {
             "default": false,
@@ -1939,12 +1573,7 @@
             "type": "object"
           },
           "detachError": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeError"
-              }
-            ],
-            "description": "detachError represents the last error encountered during detach operation, if any. This field must only be set by the entity completing the detach operation, i.e. the external-attacher."
+            "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeError"
           }
         },
         "required": [
@@ -1969,13 +1598,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "parameters": {
             "additionalProperties": {
@@ -2008,12 +1631,7 @@
           "items": {
             "description": "items is the list of VolumeAttributesClass objects.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttributesClass"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.storage.v1.VolumeAttributesClass"
             },
             "type": "array",
             "nullable": true
@@ -2023,13 +1641,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -2057,12 +1669,7 @@
             "type": "string"
           },
           "time": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "time represents the time the error was encountered."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           }
         },
         "type": "object"
@@ -2182,12 +1789,7 @@
           "resources": {
             "description": "resources contains the name of the resources and if they are namespaced.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -2242,12 +1844,7 @@
             "type": "boolean"
           },
           "preconditions": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
-              }
-            ],
-            "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
           },
           "propagationPolicy": {
             "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
@@ -2578,12 +2175,7 @@
           "matchExpressions": {
             "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -2666,12 +2258,7 @@
             "type": "string"
           },
           "fieldsV1": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
-              }
-            ],
-            "description": "FieldsV1 holds the first JSON version format as described in the \"FieldsV1\" type."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
           },
           "manager": {
             "description": "Manager is an identifier of the workflow managing these fields.",
@@ -2686,12 +2273,7 @@
             "type": "string"
           },
           "time": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           }
         },
         "type": "object"
@@ -2708,12 +2290,7 @@
             "type": "object"
           },
           "creationTimestamp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "deletionGracePeriodSeconds": {
             "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -2721,12 +2298,7 @@
             "type": "integer"
           },
           "deletionTimestamp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "finalizers": {
             "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -2759,12 +2331,7 @@
           "managedFields": {
             "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -2781,12 +2348,7 @@
           "ownerReferences": {
             "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
             },
             "type": "array",
             "x-kubernetes-list-map-keys": [
@@ -2884,12 +2446,7 @@
             "type": "integer"
           },
           "details": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
-              }
-            ],
-            "description": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
           },
           "kind": {
             "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
@@ -2900,13 +2457,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           },
           "reason": {
             "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.",
@@ -2950,12 +2501,7 @@
           "causes": {
             "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -2995,12 +2541,7 @@
         "description": "Event represents a single event to a watched resource.",
         "properties": {
           "object": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension"
-              }
-            ],
-            "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension"
           },
           "type": {
             "default": "",
@@ -3999,7 +3540,18 @@
           "group": "storage.k8s.io",
           "kind": "CSIDriver",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -4874,7 +4426,18 @@
           "group": "storage.k8s.io",
           "kind": "CSINode",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -5920,7 +5483,18 @@
           "group": "storage.k8s.io",
           "kind": "CSIStorageCapacity",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -6805,7 +6379,18 @@
           "group": "storage.k8s.io",
           "kind": "StorageClass",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -7680,7 +7265,18 @@
           "group": "storage.k8s.io",
           "kind": "VolumeAttachment",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -8864,7 +8460,18 @@
           "group": "storage.k8s.io",
           "kind": "VolumeAttributesClass",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -9349,7 +8956,18 @@
           "group": "storage.k8s.io",
           "kind": "CSIDriver",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -9681,7 +9299,18 @@
           "group": "storage.k8s.io",
           "kind": "CSINode",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -10184,7 +9813,18 @@
           "group": "storage.k8s.io",
           "kind": "CSIStorageCapacity",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -10526,7 +10166,18 @@
           "group": "storage.k8s.io",
           "kind": "StorageClass",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -10858,7 +10509,18 @@
           "group": "storage.k8s.io",
           "kind": "VolumeAttachment",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -11190,7 +10852,18 @@
           "group": "storage.k8s.io",
           "kind": "VolumeAttributesClass",
           "version": "v1"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {

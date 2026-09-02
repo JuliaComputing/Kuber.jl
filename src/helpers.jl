@@ -71,6 +71,109 @@ function kuber_props(x, default = Dict{String,String}())
     return _field(x.additional_properties, default)
 end
 
+"""
+    _lookup(obj, name) -> value or nothing
+
+One step of a path walk: a field of a model, a key of a dictionary, an index
+into a vector, or an entry of an open struct's `additional_properties`.
+Everything absent — a missing field, an out-of-range index, `ABSENT`, `null` —
+comes back as `nothing`, which is what makes the walk uniform.
+"""
+function _lookup(obj, name)
+    if name isa Integer
+        obj isa AbstractVector || return nothing
+        checkbounds(Bool, obj, name) || return nothing
+        return _field(obj[name])
+    end
+    if obj isa AbstractDict
+        return _field(get(obj, name isa Symbol ? String(name) : name, nothing))
+    end
+    sym = Symbol(name)
+    hasproperty(obj, sym) && return _field(getproperty(obj, sym))
+    # a k8s string map (labels, annotations, resource limits) is an open struct,
+    # so its entries are not fields — reach them by their own name
+    props = kuber_props(obj, nothing)
+    props === nothing && return nothing
+    return _field(get(props, name isa Symbol ? String(name) : name, nothing))
+end
+
+"""
+    getpropertyat(obj, path...)
+
+Walk a path of field names, vector indices and open-struct keys, returning
+`nothing` the moment any step is absent.
+
+The replacement for `OpenAPI.Clients.getpropertyat`, which OpenAPI.jl 1.0 does
+not have (`OpenAPIv1ConsumerGaps.md` C2). Deliberately **not exported**: it is a
+compatibility shim for consumers porting off 0.2.x, not a shape this API wants
+to encourage.
+
+Two differences from the 0.x version, both forced by the runtime:
+
+- **`ABSENT` counts as absent.** On 0.x an unset field was `nothing` and 0.x
+  overrode `Base.hasproperty` to say so. On 1.0 every field exists and an unset
+  one is `ABSENT`, so a plain `hasproperty` walk answers `true` for everything —
+  the trap that makes `container_resource` in JuliaRun's `clustermgmt.jl` return
+  `ABSENT` instead of falling through.
+- **A path element may name an open-struct entry**, so
+  `getpropertyat(node, :metadata, :labels, "role")` reads a label without a
+  separate `kuber_props` call.
+
+Field names are the *generated* ones, which lowercase the JSON name — `:nodename`,
+not `:nodeName` (C4). This helper does not fold case: a wrong name reads as
+absent, exactly as a wrong name should.
+
+A vector met by a non-integer path element is mapped over, as on 0.x:
+`getpropertyat(podlist, :items, :metadata, :name)` returns a vector of names.
+
+```julia
+Kuber.getpropertyat(pod, :spec, :containers, 1, :image)
+Kuber.getpropertyat(pod, :metadata, :labels, "app")
+```
+"""
+function getpropertyat(obj, path...)
+    val = _field(obj)
+    (val === nothing || isempty(path)) && return val
+
+    val = _lookup(val, path[1])
+    rest = Base.tail(path)
+    (isempty(rest) || val === nothing) && return val
+
+    if val isa AbstractVector && !(rest[1] isa Integer)
+        return [getpropertyat(item, rest...) for item in val]
+    end
+    return getpropertyat(val, rest...)
+end
+
+"""
+    haspropertyat(obj, path...)
+
+Whether every step of a path is present — the question
+`getpropertyat(obj, path...) !== nothing` answers, without fetching the value.
+
+The replacement for `OpenAPI.Clients.haspropertyat`; see
+[`getpropertyat`](@ref) for why `ABSENT` is the interesting case and why neither
+is exported.
+
+Mapped over a vector met by a non-integer path element, as on 0.x, so the result
+is a `Vector{Bool}` there rather than a `Bool`.
+"""
+function haspropertyat(obj, path...)
+    val = _field(obj)
+    val === nothing && return false
+    isempty(path) && return true
+
+    val = _lookup(val, path[1])
+    val === nothing && return false
+    rest = Base.tail(path)
+    isempty(rest) && return true
+
+    if val isa AbstractVector && !(rest[1] isa Integer)
+        return [haspropertyat(item, rest...) for item in val]
+    end
+    return haspropertyat(val, rest...)
+end
+
 mutable struct KuberContext
     server::String
     clients::Dict{Module,Runtime.Client}
@@ -197,15 +300,56 @@ end
 
 # ── retries ────────────────────────────────────────────────────────────────
 
-"""delay customized by TPS requirement"""
-k8s_delay(tps, max_tries = 1) = ExponentialBackOff(n = max_tries, first_delay = (1 / tps), factor = 1.75, jitter = 0.1)
+"""
+Delays between attempts, customized by TPS requirement. The default minimum is
+2 TPS.
+
+`max_tries` is the number of **attempts**, so there are `max_tries - 1` delays
+between them. It used to be passed straight through as `ExponentialBackOff`'s
+`n`, which is a count of *retries* — so `max_tries=1` made two requests, and a
+mutating call, which takes `retries(ctx, true) == 1`, was retried once despite
+`set_retries`' `all_apis=false` meaning it should not be (G20).
+"""
+k8s_delay(tps, max_tries = 1) =
+    ExponentialBackOff(n = max(0, max_tries - 1), first_delay = (1 / tps), factor = 1.75, jitter = 0.1)
 
 """
 Response codes that can be retried: 500-504 are unexpected server errors, and 0
 is kept for callers that construct a `KuberException` for a failure where no
 HTTP status was obtained.
 """
-const k8s_retryable_codes = [0, 500, 501, 502, 503, 504]
+const k8s_retryable_codes = [0, 429, 500, 501, 502, 503, 504]
+
+"""How long a 429's `Retry-After` may hold a call, however large the header says."""
+const RETRY_AFTER_CAP = 30.0
+
+"""
+    _retry_after(e) -> Float64
+
+The `Retry-After` a 429 asked for, in seconds, or `0.0`.
+
+Scoped to 429 on purpose. A 5xx may carry the header too, but honouring an
+arbitrary server-supplied delay on every transient failure changes the timing of
+every retry in the client; 429 is the case where the server is deliberately
+pacing us and the number means what it says.
+
+Only the delta-seconds form is read. `Retry-After` may also be an HTTP date,
+which Kubernetes does not send — `tryparse` returns `nothing` for one and the
+backoff is used instead, which is the safe direction.
+"""
+function _retry_after(e)
+    code = e isa KuberException ? e.code : (e isa Runtime.ApiError ? e.status : 0)
+    code == 429 || return 0.0
+    err = e isa KuberException ? e.response : e
+    err isa Runtime.ApiError || return 0.0
+    for (name, value) in err.headers
+        lowercase(name) == "retry-after" || continue
+        secs = tryparse(Float64, strip(value))
+        secs === nothing && continue
+        return clamp(secs, 0.0, RETRY_AFTER_CAP)
+    end
+    return 0.0
+end
 
 """
     k8s_retry_cond(s, e, retryable_codes=k8s_retryable_codes)
@@ -300,11 +444,30 @@ Exceptions raised inside a task are unwrapped first, so this works on what
 is_retryable(e) = k8s_retry_cond(nothing, _root_cause(e))[2]
 
 """
-Retry api call automatically (if `max_tries > 1`) on certain retryable failures.
-Backoff to use when retrying k8s APIs. The default minimum is 2 TPS.
+    k8s_retry(f; max_tries=1, tps=2)
+
+Call `f`, retrying transient failures up to `max_tries` **attempts** in total
+(so `max_tries=1` calls it once and never retries). The last failure is
+rethrown; a failure [`k8s_retry_cond`](@ref) calls decisive is rethrown at once.
+
+Written as an explicit loop rather than `Base.retry` so a 429's `Retry-After`
+can be honoured: `Base.retry` takes its delays from an iterator that never sees
+the exception, so the server's own pacing is unreachable from it. The backoff is
+still the floor — `Retry-After` only ever lengthens a wait (G19).
 """
-k8s_retry(f; max_tries = 1, tps = 2) =
-    retry(f, delays = k8s_delay(tps, max_tries), check = k8s_retry_cond)()
+function k8s_retry(f; max_tries::Integer = 1, tps = 2)
+    delays = collect(k8s_delay(tps, max_tries))
+    attempt = 1
+    while true
+        try
+            return f()
+        catch e
+            (attempt <= length(delays) && k8s_retry_cond(nothing, e)[2]) || rethrow()
+            sleep(max(delays[attempt], _retry_after(e)))
+            attempt += 1
+        end
+    end
+end
 
 """
     set_retries(ctx; count=5, all_apis=false)
@@ -313,8 +476,13 @@ Args:
 - ctx: the context to set the options for
 
 Keyword Args:
-- count: how many times to retry (default 5)
+- count: how many **attempts** a retryable call gets in total (default 5, so up
+  to four retries). This counted retries rather than attempts until G20, which
+  is why a mutating call — pinned to a count of 1 — used to be retried once
 - all_apis: whether to retry even mutating APIs e.g. `put!` (default false)
+
+The count is a budget of requests, not of Kuber-level attempts: HTTP.jl's own
+retry layer is off by default on a `KuberContext` so that it means what it says.
 """
 function set_retries(ctx::KuberContext; count::Int = ctx.default_retries, all_apis::Bool = ctx.retry_all_apis)
     ctx.default_retries = count
@@ -338,6 +506,12 @@ get_request_options(ctx::Union{KuberContext,KuberWatchContext}) = _kubectx(ctx).
 
 Merge HTTP.jl request options (`connect_timeout`, `request_timeout`,
 `read_idle_timeout`, `sslconfig`, …) into the context's per-call defaults.
+
+`retry` is set to `false` when the context is built, so that `set_retries` and
+`max_tries` are the only thing deciding how many requests a call makes. Pass
+`retry=true` here to put HTTP.jl's retry layer back underneath Kuber's — the two
+compose multiplicatively, and HTTP.jl's has no notion of which calls are
+mutating.
 """
 function set_request_options(ctx::Union{KuberContext,KuberWatchContext}; kwargs...)
     kubectx = _kubectx(ctx)
@@ -390,7 +564,14 @@ The request options for one call. A watch drops `request_timeout` (see
 connection.
 """
 function _call_options(ctx::Union{KuberContext,KuberWatchContext}; watch::Bool = false)
-    opts = get_request_options(ctx)
+    # HTTP.jl 2.x retries idempotent requests on a retryable status by default,
+    # underneath `k8s_retry` — so every Kuber attempt cost several requests,
+    # `max_tries` bounded none of them, and a mutating call could be retried by
+    # a layer that has no idea it is mutating. Kuber owns retrying (G20).
+    # Merged this way round so `set_request_options(ctx; retry=true)` wins, and
+    # applied here rather than on the context so the client constructor — which
+    # takes no `retry` — never sees it.
+    opts = merge((; retry = false), get_request_options(ctx))
     (watch && haskey(opts, :request_timeout)) || return opts
     return Base.structdiff(opts, NamedTuple{(:request_timeout,)})
 end

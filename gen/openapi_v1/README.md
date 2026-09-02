@@ -52,8 +52,9 @@ tree — and nothing is generated at install time.
 
 Append it to `K8S_GROUPS` in `fetch_specs.sh`, then rerun the chain. The group
 set is currently the minimum the test suite needs; generating a subset keeps
-the checked-in module size down (~23 MiB for 18 groups, core v1 alone is
-6.5 MiB).
+the checked-in module size down (~18 MiB for 18 groups). That figure was
+~24 MiB before patch rule §7 collapsed the `allOf` wrappers, which halved the
+generated type count (2252 → 1098).
 
 Two things upstream release tags do not carry, because they are not part of
 Kubernetes: aggregated APIs (`metrics.k8s.io` is served by metrics-server,

@@ -89,6 +89,62 @@ const POD_JSON = """{
         @test kuber_props(Dict("k" => "v")) == Dict("k" => "v")
     end
 
+    @testset "getpropertyat / haspropertyat" begin
+        # The C2 replacements for the accessors OpenAPI.jl 1.0 dropped. Not
+        # exported: a shim for consumers porting off 0.2.x, where JuliaRun alone
+        # has 49 call sites.
+        pod = kuber_obj("""{"kind": "Pod", "apiVersion": "v1",
+            "metadata": {"name": "p", "namespace": "ns", "labels": {"app": "web"}},
+            "spec": {"nodeName": "node-1",
+                     "containers": [{"name": "c", "image": "busybox"},
+                                    {"name": "d", "image": "alpine"}]}}""")
+
+        @test Kuber.getpropertyat(pod, :metadata, :name) == "p"
+        @test Kuber.getpropertyat(pod, :spec, :containers, 1, :image) == "busybox"
+        @test Kuber.haspropertyat(pod, :metadata, :namespace)
+
+        # the generated field name is the lowercased JSON one (C4): nodename,
+        # not nodeName. A wrong name reads as absent rather than being folded,
+        # so a typo stays a bug.
+        @test Kuber.getpropertyat(pod, :spec, :nodename) == "node-1"
+        @test Kuber.getpropertyat(pod, :spec, :nodeName) === nothing
+        @test !Kuber.haspropertyat(pod, :spec, :nodeName)
+
+        # ABSENT is absent. This is the whole point: on 1.0 every field exists,
+        # so a plain `hasproperty` walk answers true for everything — the trap
+        # that makes JuliaRun's container_resource return ABSENT instead of
+        # falling through to limits.
+        @test pod.status isa Runtime.Absent
+        @test hasproperty(pod, :status)                 # …which is why this is useless
+        @test !Kuber.haspropertyat(pod, :status)
+        @test !Kuber.haspropertyat(pod, :status, :phase)
+        @test Kuber.getpropertyat(pod, :status, :phase) === nothing
+
+        # an open-struct entry is reachable as a path element, so a label does
+        # not need a separate kuber_props call
+        @test Kuber.getpropertyat(pod, :metadata, :labels, "app") == "web"
+        @test Kuber.haspropertyat(pod, :metadata, :labels, "app")
+        @test !Kuber.haspropertyat(pod, :metadata, :labels, "missing")
+
+        # a vector met by a non-integer element is mapped over, as on 0.x
+        @test Kuber.getpropertyat(pod, :spec, :containers, :name) == ["c", "d"]
+        @test Kuber.haspropertyat(pod, :spec, :containers, :name) == [true, true]
+        # …and an out-of-range index is absent, not an error
+        @test Kuber.getpropertyat(pod, :spec, :containers, 9, :name) === nothing
+        @test !Kuber.haspropertyat(pod, :spec, :containers, 9)
+
+        # raw JSON works too, since put! accepts dicts and callers mix the two
+        raw = JSON.parse("""{"metadata": {"name": "d"}, "items": [{"a": 1}]}""")
+        @test Kuber.getpropertyat(raw, :metadata, :name) == "d"
+        @test Kuber.getpropertyat(raw, :items, 1, :a) == 1
+        @test !Kuber.haspropertyat(raw, :metadata, :missing)
+
+        # nothing in, nothing out — a walk never throws on a short path
+        @test Kuber.getpropertyat(nothing, :a, :b) === nothing
+        @test !Kuber.haspropertyat(nothing, :a)
+        @test Kuber.getpropertyat(pod) === pod
+    end
+
     @testset "KuberException from ApiError" begin
         status = JSON.json(Dict("kind" => "Status", "apiVersion" => "v1", "status" => "Failure",
                                 "message" => "pods \"nope\" not found", "reason" => "NotFound", "code" => 404))
@@ -142,8 +198,9 @@ const POD_JSON = """{
         # a truncated watch stream is handled by the watch loop, not here
         @test !retryable(Runtime.DecodeError("streaming response ended with a truncated item"))
 
-        # and it actually retries. `max_tries` counts retries, so the call is
-        # attempted max_tries+1 times — unchanged from the 0.2.x line.
+        # and it actually retries. `max_tries` counts *attempts*, so the call is
+        # made exactly that many times. It counted retries until G20, which is
+        # why a mutating call — pinned to a count of 1 — used to be retried.
         tries = 0
         try
             Kuber.k8s_retry(; max_tries = 3, tps = 100) do
@@ -152,7 +209,7 @@ const POD_JSON = """{
             end
         catch
         end
-        @test tries == 4
+        @test tries == 3
 
         tries = 0
         try
@@ -221,11 +278,17 @@ const POD_JSON = """{
 
         set_timeout(ctx, 30)
         @test get_timeout(ctx) == 30
-        @test Kuber._call_options(ctx) == (request_timeout = 30,)
+        # every call carries retry=false: HTTP.jl's own retry layer would
+        # otherwise sit underneath k8s_retry and multiply the request count (G20)
+        @test Kuber._call_options(ctx) == (retry = false, request_timeout = 30)
         # a watch has no overall deadline, but keeps the other options
-        @test Kuber._call_options(ctx; watch = true) == NamedTuple()
+        @test Kuber._call_options(ctx; watch = true) == (retry = false,)
         set_request_options(ctx; connect_timeout = 5)
-        @test Kuber._call_options(ctx; watch = true) == (connect_timeout = 5,)
+        @test Kuber._call_options(ctx; watch = true) == (retry = false, connect_timeout = 5)
+        # …and a caller who wants HTTP.jl's layer back can say so
+        set_request_options(ctx; retry = true)
+        @test Kuber._call_options(ctx).retry === true
+        set_request_options(ctx; retry = false)
         @test get_timeout(ctx) == 30
 
         with_timeout(ctx, 10) do c

@@ -17,6 +17,7 @@ An easy to use API to access Kubernetes clusters from Julia. Under the verb API 
 > - **Absent fields are `ABSENT`, not `nothing`.** This is the one semantic change to watch for. A field missing from the payload now reads as `OpenAPI.Runtime.ABSENT`, and `nothing` means an explicit JSON `null`. Code doing `x.field === nothing` to test "not set" must use `Kuber._field(x.field) === nothing` (or compare against `ABSENT`) instead.
 > - **Model field names are lowercase**, with a `_` suffix where a name collided: `metadata.resourceversion`, `obj.apiversion`. Type names are unchanged (`IoK8sApiCoreV1Pod`).
 > - **String maps are open objects, not `Dict`s.** `metadata.labels`, `metadata.annotations` and friends get a generated struct whose entries live in `additional_properties`. Use `kuber_props(pod.metadata.annotations)["key"]` rather than indexing the field.
+> - **`OpenAPI.Clients.getpropertyat`/`haspropertyat` have replacements**: `Kuber.getpropertyat(pod, :spec, :containers, 1, :image)` and `Kuber.haspropertyat`. Unexported, so qualify them. They treat `ABSENT` as absent — which a handwritten `hasproperty` walk cannot, since on 1.0 every field exists — and a path element may name an open-struct entry, so `Kuber.getpropertyat(node, :metadata, :labels, "role")` reads a label directly. Paths use the generated (lowercase) field names, and case is not folded.
 > - **Watch events are `KuberEvent`**, with `event.type` and an already-typed `event.object` — `kuber_obj(ctx, event.object)` is no longer needed (it still accepts a dict). The first item on the stream is still the initial typed list result.
 > - **Every group module has its own copy of the shared meta types**, so a `Status` from `apps/v1` is not the same Julia type as core's. Compare `kuber_kind(result) == "Status"` rather than the type — this matters for `delete!`, which returns either the deleted object or a `Status`.
 > - **Timeouts are HTTP.jl 2.x request options.** `set_timeout(ctx, secs)` now sets `request_timeout`; `set_request_options(ctx; ...)` passes anything else through (including TLS configuration). Watches never carry an overall deadline — bound them with `timeout_seconds` instead.
@@ -115,7 +116,7 @@ A Kubernetes context can be manipulated with:
 
 - `set_server`: Set the API server location ("http://localhost:8001" if not set)
 - `set_ns`: Set the namespace to deal with (`default` namespace is not set)
-- `set_retries`: Set the number of times an API call should be retried on a retriable error (5 if not set) and whether all APIs should be retried (only non mutating APIs are retried by default)
+- `set_retries`: Set how many **attempts** an API call gets on a retriable error (5 if not set, so up to four retries) and whether all APIs should be retried (only non mutating APIs are retried by default — with the count meaning attempts, that now genuinely means one request). The count is a budget of requests: HTTP.jl's own retry layer is off by default on a `KuberContext`, so nothing retries underneath it. A retriable error is a transport failure or a 429/5xx; a 429's `Retry-After` lengthens the wait
 - `set_timeout` / `get_timeout` / `with_timeout`: Set an overall per-request deadline in seconds
 - `set_request_options` / `get_request_options`: Pass any other HTTP.jl request option (connection timeouts, TLS configuration, …)
 
@@ -124,6 +125,7 @@ Other convenience methods:
 - `kuber_type`: identify the Julia type corresponding to a Kubernetes payload
 - `kuber_obj`: instantiate a Julia object from the supplied Kubernetes specification
 - `is_retryable`: whether a failure was transient — the classification Kuber's own retries use, for calls a consumer drives itself. Replaces `OpenAPI.Clients.is_request_interrupted`
+- `Kuber.getpropertyat` / `Kuber.haspropertyat`: walk a path of field names, vector indices and open-struct keys, treating `ABSENT` as absent. Unexported replacements for the `OpenAPI.Clients` accessors
 - `kuber_kind`: the Kubernetes kind of an object, read off the value rather than its type
 - `kind_to_type`: the Julia type for a kind, optionally in a specific API version
 - Helper methods for [accessing metrics](Metrics.md) (not available in this trial branch)

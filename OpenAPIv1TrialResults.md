@@ -25,7 +25,7 @@ future spec bump has to move that pin with it.
 
 Every one of these came out of implementation or measurement, not preference.
 
-### 1.1 Six patch rules, not three (plan §2.2)
+### 1.1 Eight patch rules, not three (plan §2.2)
 
 The plan's three nullable rules are all present. Two more were needed, both
 found by exercising verbs the evaluation never had — it only ever listed and
@@ -53,6 +53,40 @@ watched:
    (`OpenAPIv1ConsumerGaps.md` C8). Declared once as a component and referenced,
    rather than inlined per operation: inlining emits one item type per patch
    operation (132 in apps/v1 alone), the shared component emits one.
+
+7. **`allOf`-wrapped `$ref`s collapse to the `$ref`.** Added 2026-08-14. k8s
+   never writes a bare `$ref` for a property: it wraps it in a single-element
+   `allOf` so it can hang a `description` beside it, because a `$ref` with
+   siblings is undefined in OAS 3.0. Read literally that wrapper is a new
+   schema, so the generator minted a type per use site — `Pod.spec` was
+   `IoK8sApiCoreV1PodSpec2` (the real `PodSpec` component went unreferenced),
+   every kind had its own `…Metadata` rather than the shared `ObjectMeta`, and
+   `PodList.items` had its own element type, which made
+   `item isa kind_to_type(ctx, :Pod)` false — a regression from `master`, where
+   those were all one type (`OpenAPIv1ConsumerGaps.md` G18).
+
+   1290 sites, in two positions: property schemas and the `items` of array
+   properties. **Halved the layer: 2252 generated types → 1098, ~24 MiB → ~18
+   MiB.** Scoped to those two positions rather than walked recursively, because
+   `apiextensions`' `JSONSchemaProps` describes JSON Schema itself and so has
+   properties *named* `allOf`, `nullable` and `items` — a recursive walk
+   corrupts the CRD document. Guarded on shape (single-element `allOf`, bare
+   `$ref` element) so a future spec that differs is noticed rather than mangled.
+   `test/registry.jl` gates it on type identity, not on the type count.
+
+8. **`resourceVersion` is declared on single-object reads.** Added 2026-08-14.
+   k8s documents it on every *list* operation and on none of the reads, but the
+   apiserver honours it on both — verified live: an impossible version answers
+   504 "Too large resource version". A consumer asking for a read "not older
+   than" a version it already saw had no parameter to send
+   (`OpenAPIv1ConsumerGaps.md` G17). Added only to paths ending in `{name}`, not
+   to subresources like `pods/log` where a resource version is meaningless.
+
+   Sequenced deliberately after the retry work: rules 1–7 make the document
+   describe what the server already does with requests Kuber already sends, but
+   this one changes which requests Kuber can *construct*, and its natural
+   failure is a 504 that blocks for the apiserver's wait. That was not worth
+   adding while `max_tries=1` still meant ten requests (G20).
 
 Strict generation and strict response validation stayed on throughout. There is
 no `validate_responses=false` anywhere in `src/`.
@@ -161,26 +195,51 @@ Recovery rules in the loop, all measured rather than assumed:
 
 ## 2. Measurements (plan §6 acceptance)
 
-Julia 1.12.6, k3s v1.35.4 via `kubectl proxy`, 17 group modules (~24 MiB of
-generated Julia).
+Julia 1.12.6, k3s v1.35.4 via `kubectl proxy`, 18 group modules (~18 MiB of
+generated Julia, 1098 types).
 
-| | |
-| --- | --- |
-| Package precompilation | **~22 s** |
-| `using Kuber` (precompiled) | **0.36 s** |
-| Discovery (`/api` + `/apis`) | **0.22 s** |
-| **TTFX — first `list(ctx, :Pod)`** | **~15–16 s** |
-| Steady-state `list(ctx, :Pod)` | **11.5 ms** (min of 6; 2 pods) |
-| — of which response schema validation | **78 %** (strict 12.5 ms vs tolerant 2.8 ms) |
-| First call into a second group module | **1.2 s** |
-| Watch reaction time, after warmup | **5.6–11.2 ms** median, 0 missed |
-| Generation: patch → generate 17 docs | **~29 s** |
-| Registry emission | **~100 s** (plans the documents a second time) |
+**Re-measured 2026-08-14 after patch rules §7 and §8**, which halved the
+generated type count (2252 → 1098). The "before" column is the original
+measurement at 2252 types, kept because the delta is the point.
 
-TTFX is the one number that stands out. It is first-call compilation of the
-generated operation plus the validation engine, not I/O — precompilation absorbs
-load time but not inference. A `PrecompileTools` workload over one list/get/watch
-path would likely absorb most of it; that is a follow-up, not a trial fix.
+| | Before (2252 types) | After (1098 types) |
+| --- | --- | --- |
+| Package precompilation | ~22 s | **14.4 s** |
+| `using Kuber` (precompiled) | 0.36 s | **0.24 s** |
+| Discovery (`/api` + `/apis`) | 0.22 s | 0.22 s |
+| **TTFX — first `list(ctx, :Pod)`** | ~15–16 s | **12.4 s** (12.36, 12.58) |
+| Steady-state `list(ctx, :Pod)` | 11.5 ms | **8.6 ms** (min of 6; 2 pods) |
+| — of which response schema validation | 78 % | **72 %** (strict 8.4 ms vs tolerant 2.3 ms) |
+| First call into a second group module | 1.2 s | 1.0–1.3 s |
+| Watch reaction time, after warmup | 5.6–11.2 ms median | 5.5–10.4 ms median, 0 missed |
+| Generation: patch → generate 18 docs | ~29 s | 0.3 s patch + 29.2 s generate |
+| Registry emission | ~100 s | 95.4 s |
+
+Everything that is compilation got cheaper by roughly a third — precompilation,
+TTFX, and the per-call cost — which is what halving the type count buys. Nothing
+that is I/O moved: discovery is unchanged, as it should be.
+
+**Comparability matters more than it looks for the steady-state row.** The
+original was measured against a `default` namespace holding 2 pods. On a cluster
+where the live suite has run repeatedly that namespace fills up — it held 35 when
+this re-measurement started, and the same call took 116 ms. The number is
+dominated by per-item validation, so it is only meaningful alongside an item
+count. Measured here at 2 pods to match.
+
+The freshly built compile cache is 55 MB.
+
+Rerunning the whole generation chain reproduced `src/ApiImpl/generated/` and the
+patched specs **byte-identically** to what is committed, which is the
+reproducibility claim `gen/openapi_v1/README.md` makes, checked rather than
+asserted.
+
+TTFX is still the one number that stands out, at 12.4 s. It is first-call
+compilation of the generated operation plus the validation engine, not I/O —
+precompilation absorbs load time but not inference. Halving the type count took
+about 3 s off it, which suggests the remainder is the validation engine and the
+operation itself rather than the model types. A `PrecompileTools` workload over
+one list/get/watch path would likely absorb most of what is left; that is a
+follow-up, not a trial fix.
 
 ### Test suite
 
@@ -190,11 +249,11 @@ integration suite (skipped with a warning when no server is reachable;
 
 | Suite | Assertions | Needs a cluster |
 | --- | --- | --- |
-| `registry.jl` | 5664 | no |
+| `registry.jl` | 5694 | no |
 | `register.jl` | 58 | no |
-| `helpers.jl` | 105 | no |
+| `helpers.jl` | 130 | no |
 | `simpleapi.jl` | 90 | no |
-| `retries.jl` | 47 | no (fake apiserver) |
+| `retries.jl` | 56 | no (fake apiserver) |
 | `watch_recovery.jl` | 70 | no (fake apiserver) |
 | live integration | ~830 | yes |
 

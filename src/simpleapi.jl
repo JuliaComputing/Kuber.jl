@@ -441,7 +441,9 @@ Keyword Args:
 - apiversion: force a group version instead of the server's preferred one
 - namespace: the namespace to list in; `"*"` for all namespaces, `nothing` for
   cluster-scoped kinds
-- resource_version: watch from this resourceVersion instead of listing first
+- resource_version: in a watch, resume from this resourceVersion instead of
+  listing first. Outside one, the k8s "not older than" read — `"0"` means "any
+  version you have cached", which is the cheap read
 - max_tries: retries allowed for the call
 - any parameter the operation documents (`label_selector`, `field_selector`,
   `limit`, `timeout_seconds`, …), snake_case or lowercase
@@ -467,8 +469,15 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol,
     result = nothing
     if !watch || resource_version === nothing
         args = _positional(params, namespace, name, nothing)
+        # Outside a watch, `resource_version` is the k8s "not older than" read:
+        # the list operation takes it as a query parameter, so forward it. In a
+        # watch it means something else — where to resume from — and is consumed
+        # by the pump below rather than sent with this call. G17.
+        readkwargs = (!watch && resource_version !== nothing) ?
+                     merge(callkwargs, (; resourceversion = String(resource_version))) :
+                     callkwargs
         result = k8s_retry(; max_tries = max_tries) do
-            _call(op, args...; client, request_options = _call_options(ctx), callkwargs...)
+            _call(op, args...; client, request_options = _call_options(ctx), readkwargs...)
         end
     end
     watch || return result
@@ -488,6 +497,11 @@ end
 
 Read one object of kind `O` by name. Accepts the same keyword arguments as
 [`list`](@ref), and watches a single object in a watch context.
+
+`resource_version` works here as it does on `list` — outside a watch it is the
+"not older than" read. Kubernetes' OpenAPI document does not declare the
+parameter on read operations even though the apiserver honours it, so the
+generation pipeline adds it (`patch_k8s_spec.jq` §8).
 """
 function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String;
         apiversion::Union{String,Nothing} = nothing,
@@ -507,8 +521,15 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
     result = nothing
     if !watch || resource_version === nothing
         args = _positional(params, namespace, name, nothing)
+        # As in `list`: outside a watch this is the "not older than" read, which
+        # the operation takes as a query parameter. k8s does not document it on
+        # reads — patch rule §8 declares it, because the apiserver honours it.
+        # Inside a watch it means where to resume from, and is used below. G17.
+        readkwargs = (!watch && resource_version !== nothing) ?
+                     merge(callkwargs, (; resourceversion = String(resource_version))) :
+                     callkwargs
         result = k8s_retry(; max_tries = Int(max_tries)) do
-            _call(op, args...; client, request_options = _call_options(ctx), callkwargs...)
+            _call(op, args...; client, request_options = _call_options(ctx), readkwargs...)
         end
     end
     watch || return result

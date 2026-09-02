@@ -6,6 +6,17 @@
 # `k8s_retry_cond`. Rerun it whenever the OpenAPI pin moves: these are runtime
 # internals, not a stable contract.
 #
+# This file characterizes the *classification* — which exception means what. The
+# retry *loop* built on it is exercised by test/retries.jl, which is in
+# runtests.jl and drives a fake apiserver. Two things changed under that loop
+# after this file was written (OpenAPIv1ConsumerGaps.md G19/G20), and they do
+# not affect what is printed here but do affect how to read it:
+#
+#   - 429 is now retryable, and a 429's `Retry-After` lengthens the wait.
+#   - `k8s_retry` is an explicit loop rather than `Base.retry`, and `max_tries`
+#     counts attempts rather than retries. HTTP.jl's own retry layer is switched
+#     off per call, so Kuber's loop is the only one.
+#
 #     kubectl proxy --port=8801 &
 #     julia --project test/characterize_retries.jl
 #

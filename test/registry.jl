@@ -115,4 +115,40 @@ const R = Kuber.ApiImpl
         @test R.OPS[(R.GROUP_MODULES["autoscaling/v1"], :list, :HorizontalPodAutoscaler, :allns)] !==
               R.OPS[(R.GROUP_MODULES["autoscaling/v2"], :list, :HorizontalPodAutoscaler, :allns)]
     end
+
+    @testset "referenced schemas are one type, not a copy per use site" begin
+        # The gate on patch rule §7. k8s wraps every property `$ref` in a
+        # single-element `allOf` so it can hang a description beside it; read
+        # literally that is a new schema, and the generator mints a type per use
+        # site — `Pod.spec` became `…PodSpec2`, every kind got its own
+        # `…Metadata`, and `PodList.items` its own element type, which is what
+        # made `item isa kind_to_type(ctx, :Pod)` false (G18).
+        #
+        # Asserted as type *identity* rather than by counting types: a collapse
+        # that produced an alias per use site would shrink the diff and still be
+        # wrong.
+        modelfield(T, f) = only(filter(t -> t !== Nothing && !(t <: Kuber.Runtime.Absent),
+                                       Base.uniontypes(fieldtype(T, f))))
+
+        for (gv, kind, spectype) in (("v1", "Pod", :IoK8sApiCoreV1PodSpec),
+                                     ("v1", "Service", :IoK8sApiCoreV1ServiceSpec),
+                                     ("apps/v1", "Deployment", :IoK8sApiAppsV1DeploymentSpec),
+                                     ("batch/v1", "Job", :IoK8sApiBatchV1JobSpec))
+            T = R.KIND_TYPES[(gv, kind)]
+            mod = parentmodule(T)
+            # the kind's own spec is the group's spec type, not a positional copy
+            @test modelfield(T, :spec) === getfield(mod, spectype)
+            # …and its metadata is the shared ObjectMeta of that module
+            @test modelfield(T, :metadata) ===
+                  getfield(mod, :IoK8sApimachineryPkgApisMetaV1ObjectMeta)
+            # a list's items are the kind itself — the G18 assertion
+            LT = R.KIND_TYPES[(gv, kind * "List")]
+            @test eltype(modelfield(LT, :items)) === T
+        end
+
+        # nothing named after its position survives in any module
+        for mod in values(R.GROUP_MODULES)
+            @test isempty(filter(n -> occursin("ListItemsItem", String(n)), names(mod; all = true)))
+        end
+    end
 end

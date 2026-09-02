@@ -367,7 +367,14 @@ function create_delete_job(ctx, testid)
         res = delete!(ctx, patched)
         @test kuber_kind(res) in ("Deployment", "Status")
 
-        res = delete!(ctx, :Job, "hello-job$testid")
+        # `propagation_policy` matters here: without it the apiserver orphans
+        # the Job's pods, so every run of this suite leaves a Completed pod
+        # behind in `default`. CI never notices — a fresh kind cluster each
+        # time — but a local cluster accumulates them, and they are not inert:
+        # `list(ctx, :Pod)` is dominated by per-item response validation, so a
+        # namespace with 35 stale pods made that call 116 ms instead of 9 ms
+        # while re-measuring OpenAPIv1TrialResults.md §2.
+        res = delete!(ctx, :Job, "hello-job$testid"; propagation_policy = "Background")
         @test kuber_kind(res) in ("Job", "Status")
     end
 
@@ -419,7 +426,10 @@ function ensure_absent(ctx, kind::Symbol, name::String; namespace = nothing, tim
     nskwargs = namespace === nothing ? NamedTuple() : (; namespace = namespace)
     isgone(e) = e isa Kuber.KuberException && e.code == 404
     try
-        delete!(ctx, kind, name; nskwargs...)
+        # Background propagation for the same reason the Job delete below uses
+        # it: cleaning up a controller without taking its pods leaves debris
+        # that a later run then measures or trips over.
+        delete!(ctx, kind, name; propagation_policy = "Background", nskwargs...)
     catch e
         isgone(e) && return nothing
         rethrow()
@@ -461,6 +471,7 @@ function reset_test_objects(ctx, testid)
     ensure_absent(ctx, :PersistentVolumeClaim, "kuber-pvc$testid")
     ensure_absent(ctx, :PersistentVolume, "kuber-pv$testid")
     ensure_absent(ctx, :ConfigMap, "kuber-shapes$testid")
+    ensure_absent(ctx, :Pod, "kuber-res$testid")
     ensure_absent(ctx, :Secret, "kuber-secret$testid")
 end
 
@@ -685,22 +696,25 @@ function data_shapes(ctx, testid)
         @test !isempty(items)
         @test any(i -> Kuber._field(i.metadata.name) == name, items)
 
-        # A list item is NOT the standalone type on this branch, and this is a
-        # regression from master, where `PodList.items` was
-        # `Vector{IoK8sApiCoreV1Pod}`. The k8s document wraps the element `$ref`
-        # in an `allOf` with a sibling `default: {}`, so the generator mints a
-        # separate `…ListItemsItem` per list kind. Fields are identical and the
-        # nested types are shared, so every read works — what breaks is `isa`
-        # against the standalone type and any signature typed on it. G18.
-        itemtype = eltype(items)
+        # A list item IS the standalone type, as it was on master. It briefly
+        # was not: k8s wraps the element `$ref` in an `allOf` so it can hang a
+        # description beside it, and read literally that is a new schema, so the
+        # generator minted a `…ListItemsItem` per list kind. Patch rule §7
+        # collapses the wrapper. G18.
         standalone = Kuber.kind_to_type(ctx, :ConfigMap)
-        @test itemtype !== standalone
-        @test fieldnames(itemtype) == fieldnames(standalone)
-        @test all(i -> i isa itemtype, items)
-        # …and k8s does not populate `kind` on list items, so the object form of
-        # `delete!` cannot take one. That half is not a regression: master read
-        # the same absent field and failed too, just with a different error.
+        @test eltype(items) === standalone
+        @test all(i -> i isa standalone, items)
+        # …but k8s does not populate `kind` on list items, so the object form of
+        # `delete!` still cannot take one. That half was never a regression —
+        # master read the same absent field — and rule §7 does not change it.
         @test Kuber.kuber_kind(items[1]) == ""
+        err = try
+            delete!(ctx, items[1])
+            nothing
+        catch e
+            e
+        end
+        @test err isa ArgumentError
 
         # _resource_version is unit-tested on synthetic dicts and objects; this
         # is it against a real list, and against the field it reads
@@ -736,21 +750,108 @@ function data_shapes(ctx, testid)
             @test err isa KuberException
             @test err.code in (410, 504)
 
-            # The *documented* spelling, given the same impossible value,
-            # succeeds — because `list`/`get` consult `resource_version` only
-            # when watching (`if !watch || resource_version === nothing` in
-            # simpleapi.jl) and otherwise drop it. `master` does the same, so
-            # this is a shared limitation and not a regression; see G17.
-            ignored = list(ctx, :ConfigMap; resource_version = huge, max_tries = 1)
-            @test kuber_kind(ignored) == "ConfigMapList"
-            @test Kuber._resource_version(ignored) != huge
+            # The documented spelling now behaves identically — `list` forwards
+            # it to the operation on the non-watch path (G17). It used to be
+            # swallowed by the named parameter and consulted only when watching,
+            # so the same impossible version succeeded.
+            err = try
+                list(ctx, :ConfigMap; resource_version = huge, max_tries = 1)
+                nothing
+            catch e
+                e
+            end
+            @test err isa KuberException
+            @test err.code in (410, 504)
 
-            # the single-object read is worse: k8s does not declare
-            # resourceVersion on read operations at all, so there is no
-            # parameter to send even if the verb layer forwarded one
-            one = get(ctx, :ConfigMap, name; resource_version = huge, max_tries = 1)
+            # and the ordinary "not older than" read, which is what a consumer
+            # actually passes: a version the cluster has certainly reached
+            fresh = list(ctx, :ConfigMap; resource_version = rv, max_tries = 1)
+            @test kuber_kind(fresh) == "ConfigMapList"
+            @test Kuber._resource_version(fresh) !== nothing
+            # "0" is the cheap cached read
+            @test kuber_kind(list(ctx, :ConfigMap; resource_version = "0")) == "ConfigMapList"
+
+            # The single-object read behaves the same way now. k8s does not
+            # declare resourceVersion on read operations even though the
+            # apiserver honours it, so patch rule §8 declares it — this
+            # assertion is what proves the rule reached the wire.
+            err = try
+                get(ctx, :ConfigMap, name; resource_version = huge, max_tries = 1)
+                nothing
+            catch e
+                e
+            end
+            @test err isa KuberException
+            @test err.code in (410, 504)
+
+            # …and the reads a consumer actually makes
+            one = get(ctx, :ConfigMap, name; resource_version = "0", max_tries = 1)
             @test kuber_kind(one) == "ConfigMap"
+            @test Kuber._field(one.metadata.name) == name
+            # K8sReflector.jl:136-141's shape: re-read not older than a version
+            # it already saw
+            seen = Kuber._resource_version(one)
+            again = get(ctx, :ConfigMap, name; resource_version = seen, max_tries = 1)
+            @test Kuber._resource_version(again) == seen
         end
+    end
+
+    @testset "resource limits and requests are open structs (G12)" begin
+        # `resources.limits["cpu"]` is what every consumer wrote against 0.2.x
+        # and what `clustermgmt.jl:281-285` still writes. Both maps are open
+        # structs now, so both need kuber_props — and `requests` matters more
+        # than `limits`, because `container_resource` prefers it.
+        #
+        # A nodeSelector no node carries keeps the pod Pending, which is all
+        # this needs: the spec comes back on the create response.
+        podname = "kuber-res$testid"
+        pod = kuber_obj("""{
+            "kind": "Pod",
+            "apiVersion": "v1",
+            "metadata": {"name": "$podname", "namespace": "default"},
+            "spec": {
+                "nodeSelector": {"kuber-test/no-such-node": "true"},
+                "containers": [{
+                    "name": "busybox$testid",
+                    "image": "busybox",
+                    "args": ["sleep", "3600"],
+                    "resources": {
+                        "limits": {"cpu": "500m", "memory": "128Mi"},
+                        "requests": {"cpu": "250m", "memory": "64Mi"}
+                    }
+                }]
+            }
+        }""")
+        created = put!(ctx, pod)
+        resources = Kuber._field(created.spec.containers[1].resources)
+        @test resources !== nothing
+
+        limits = Kuber.kuber_props(resources.limits)
+        requests = Kuber.kuber_props(resources.requests)
+        @test limits["cpu"].value == "500m"
+        @test limits["memory"].value == "128Mi"
+        @test requests["cpu"].value == "250m"
+        @test requests["memory"].value == "64Mi"
+        # Quantity is still a struct with a single `value`, so JuliaRun's
+        # `string(cpu.value)` (api.jl:1841) survives structurally — only the
+        # type identity differs, which is C1's problem
+        @test fieldnames(typeof(limits["cpu"])) == (:value,)
+        @test limits["cpu"].value isa Union{Float64,String}
+
+        # …and the reason kuber_props is needed: neither map is a dictionary, so
+        # the 0.2.x `in keys(res)` / `res["cpu"]` pair is a MethodError, not a
+        # wrong answer. This is the shape of the clustermgmt.jl:281-285 break.
+        raw = Kuber._field(resources.requests)
+        @test !(raw isa AbstractDict)
+        @test_throws MethodError keys(raw)
+        @test_throws MethodError raw["cpu"]
+
+        # After patch rule §7 `resources` is the shared ResourceRequirements
+        # rather than a per-container positional copy, so its maps are one type
+        # across every kind that embeds a pod template.
+        @test typeof(resources) === REGISTRY.GROUP_MODULES["v1"].IoK8sApiCoreV1ResourceRequirements
+
+        @test kuber_kind(delete!(ctx, :Pod, podname)) in ("Pod", "Status")
     end
 
     @test kuber_kind(delete!(ctx, :ConfigMap, name)) in ("ConfigMap", "Status")

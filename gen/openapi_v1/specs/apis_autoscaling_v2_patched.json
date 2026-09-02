@@ -15,13 +15,7 @@
             "type": "string"
           },
           "target": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
-              }
-            ],
-            "default": {},
-            "description": "target specifies the target value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
           }
         },
         "required": [
@@ -40,13 +34,7 @@
             "type": "string"
           },
           "current": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
-              }
-            ],
-            "default": {},
-            "description": "current contains the current value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
           },
           "name": {
             "default": "",
@@ -89,22 +77,10 @@
         "description": "ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster).",
         "properties": {
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           },
           "target": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
-              }
-            ],
-            "default": {},
-            "description": "target specifies the target value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
           }
         },
         "required": [
@@ -117,22 +93,10 @@
         "description": "ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object.",
         "properties": {
           "current": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
-              }
-            ],
-            "default": {},
-            "description": "current contains the current value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
           },
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           }
         },
         "required": [
@@ -175,12 +139,7 @@
           "policies": {
             "description": "policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingPolicy"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingPolicy"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -196,12 +155,7 @@
             "type": "integer"
           },
           "tolerance": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "tolerance is the tolerance on the ratio between the current and desired metric value under which no updates are made to the desired number of replicas (e.g. 0.01 for 1%). Must be greater than or equal to zero. If not set, the default cluster-wide tolerance is applied (by default 10%).\n\nFor example, if autoscaling is configured with a memory consumption target of 100Mi, and scale-down and scale-up tolerances of 5% and 1% respectively, scaling will be triggered when the actual consumption falls below 95Mi or exceeds 101Mi.\n\nThis is an beta field and requires the HPAConfigurableTolerance feature gate to be enabled."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         },
         "type": "object"
@@ -218,31 +172,13 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-              }
-            ],
-            "default": {},
-            "description": "metadata is the standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
           },
           "spec": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerSpec"
-              }
-            ],
-            "default": {},
-            "description": "spec is the specification for the behaviour of the autoscaler. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerSpec"
           },
           "status": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerStatus"
-              }
-            ],
-            "default": {},
-            "description": "status is the current information about the autoscaler."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerStatus"
           }
         },
         "type": "object",
@@ -258,20 +194,10 @@
         "description": "HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively).",
         "properties": {
           "scaleDown": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingRules"
-              }
-            ],
-            "description": "scaleDown is scaling policy for scaling Down. If not set, the default value is to allow to scale down to minReplicas pods, with a 300 second stabilization window (i.e., the highest recommendation for the last 300sec is used)."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingRules"
           },
           "scaleUp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingRules"
-              }
-            ],
-            "description": "scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:\n  * increase no more than 4 pods per 60 seconds\n  * double the number of pods per 60 seconds\nNo stabilization is used."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HPAScalingRules"
           }
         },
         "type": "object"
@@ -280,12 +206,7 @@
         "description": "HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point.",
         "properties": {
           "lastTransitionTime": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "lastTransitionTime is the last time the condition transitioned from one status to another"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "message": {
             "description": "message is a human-readable explanation containing details about the transition",
@@ -322,12 +243,7 @@
           "items": {
             "description": "items is the list of horizontal pod autoscaler objects.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler"
             },
             "type": "array",
             "nullable": true
@@ -337,13 +253,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "metadata is the standard list metadata."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           }
         },
         "required": [
@@ -362,12 +272,7 @@
         "description": "HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler.",
         "properties": {
           "behavior": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior"
-              }
-            ],
-            "description": "behavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). If not set, the default HPAScalingRules for scale up and scale down are used."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior"
           },
           "maxReplicas": {
             "default": 0,
@@ -378,12 +283,7 @@
           "metrics": {
             "description": "metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used).  The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods.  Ergo, metrics used must decrease as the pod count is increased, and vice-versa.  See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricSpec"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricSpec"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -395,13 +295,7 @@
             "type": "integer"
           },
           "scaleTargetRef": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
-              }
-            ],
-            "default": {},
-            "description": "scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
           }
         },
         "required": [
@@ -416,12 +310,7 @@
           "conditions": {
             "description": "conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerCondition"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerCondition"
             },
             "type": "array",
             "x-kubernetes-list-map-keys": [
@@ -435,12 +324,7 @@
           "currentMetrics": {
             "description": "currentMetrics is the last read state of the metrics used by this autoscaler.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricStatus"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricStatus"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -458,12 +342,7 @@
             "type": "integer"
           },
           "lastScaleTime": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "lastScaleTime is the last time the HorizontalPodAutoscaler scaled the number of pods, used by the autoscaler to control how often the number of pods is changed."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "observedGeneration": {
             "description": "observedGeneration is the most recent generation observed by this autoscaler.",
@@ -485,12 +364,7 @@
             "type": "string"
           },
           "selector": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
-              }
-            ],
-            "description": "selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
           }
         },
         "required": [
@@ -502,44 +376,19 @@
         "description": "MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once).",
         "properties": {
           "containerResource": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ContainerResourceMetricSource"
-              }
-            ],
-            "description": "containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ContainerResourceMetricSource"
           },
           "external": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ExternalMetricSource"
-              }
-            ],
-            "description": "external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster)."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ExternalMetricSource"
           },
           "object": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ObjectMetricSource"
-              }
-            ],
-            "description": "object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object)."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ObjectMetricSource"
           },
           "pods": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.PodsMetricSource"
-              }
-            ],
-            "description": "pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.PodsMetricSource"
           },
           "resource": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ResourceMetricSource"
-              }
-            ],
-            "description": "resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ResourceMetricSource"
           },
           "type": {
             "default": "",
@@ -556,44 +405,19 @@
         "description": "MetricStatus describes the last-read state of a single metric.",
         "properties": {
           "containerResource": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ContainerResourceMetricStatus"
-              }
-            ],
-            "description": "container resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ContainerResourceMetricStatus"
           },
           "external": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ExternalMetricStatus"
-              }
-            ],
-            "description": "external refers to a global metric that is not associated with any Kubernetes object. It allows autoscaling based on information coming from components running outside of cluster (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster)."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ExternalMetricStatus"
           },
           "object": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ObjectMetricStatus"
-              }
-            ],
-            "description": "object refers to a metric describing a single kubernetes object (for example, hits-per-second on an Ingress object)."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ObjectMetricStatus"
           },
           "pods": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.PodsMetricStatus"
-              }
-            ],
-            "description": "pods refers to a metric describing each pod in the current scale target (for example, transactions-processed-per-second).  The values will be averaged together before being compared to the target value."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.PodsMetricStatus"
           },
           "resource": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ResourceMetricStatus"
-              }
-            ],
-            "description": "resource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source."
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.ResourceMetricStatus"
           },
           "type": {
             "default": "",
@@ -615,12 +439,7 @@
             "type": "integer"
           },
           "averageValue": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "averageValue is the target value of the average of the metric across all relevant pods (as a quantity)"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           },
           "type": {
             "default": "",
@@ -628,12 +447,7 @@
             "type": "string"
           },
           "value": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "value is the target value of the metric (as a quantity)."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         },
         "required": [
@@ -650,20 +464,10 @@
             "type": "integer"
           },
           "averageValue": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "averageValue is the current value of the average of the metric across all relevant pods (as a quantity)"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           },
           "value": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
-              }
-            ],
-            "description": "value is the current value of the metric (as a quantity)."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         },
         "type": "object"
@@ -672,31 +476,13 @@
         "description": "ObjectMetricSource indicates how to scale on a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
         "properties": {
           "describedObject": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
-              }
-            ],
-            "default": {},
-            "description": "describedObject specifies the descriptions of a object,such as kind,name apiVersion"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
           },
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           },
           "target": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
-              }
-            ],
-            "default": {},
-            "description": "target specifies the target value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
           }
         },
         "required": [
@@ -710,31 +496,13 @@
         "description": "ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object).",
         "properties": {
           "current": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
-              }
-            ],
-            "default": {},
-            "description": "current contains the current value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
           },
           "describedObject": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
-              }
-            ],
-            "default": {},
-            "description": "DescribedObject specifies the descriptions of a object,such as kind,name apiVersion"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.CrossVersionObjectReference"
           },
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           }
         },
         "required": [
@@ -748,22 +516,10 @@
         "description": "PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value.",
         "properties": {
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           },
           "target": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
-              }
-            ],
-            "default": {},
-            "description": "target specifies the target value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
           }
         },
         "required": [
@@ -776,22 +532,10 @@
         "description": "PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second).",
         "properties": {
           "current": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
-              }
-            ],
-            "default": {},
-            "description": "current contains the current value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
           },
           "metric": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
-              }
-            ],
-            "default": {},
-            "description": "metric identifies the target metric by name and selector"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricIdentifier"
           }
         },
         "required": [
@@ -809,13 +553,7 @@
             "type": "string"
           },
           "target": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
-              }
-            ],
-            "default": {},
-            "description": "target specifies the target value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricTarget"
           }
         },
         "required": [
@@ -828,13 +566,7 @@
         "description": "ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory).  Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the \"pods\" source.",
         "properties": {
           "current": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
-              }
-            ],
-            "default": {},
-            "description": "current contains the current value for the given metric"
+            "$ref": "#/components/schemas/io.k8s.api.autoscaling.v2.MetricValueStatus"
           },
           "name": {
             "default": "",
@@ -952,12 +684,7 @@
           "resources": {
             "description": "resources contains the name of the resources and if they are namespaced.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.APIResource"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1012,12 +739,7 @@
             "type": "boolean"
           },
           "preconditions": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
-              }
-            ],
-            "description": "Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Preconditions"
           },
           "propagationPolicy": {
             "description": "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.",
@@ -1348,12 +1070,7 @@
           "matchExpressions": {
             "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1436,12 +1153,7 @@
             "type": "string"
           },
           "fieldsV1": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
-              }
-            ],
-            "description": "FieldsV1 holds the first JSON version format as described in the \"FieldsV1\" type."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
           },
           "manager": {
             "description": "Manager is an identifier of the workflow managing these fields.",
@@ -1456,12 +1168,7 @@
             "type": "string"
           },
           "time": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           }
         },
         "type": "object"
@@ -1478,12 +1185,7 @@
             "type": "object"
           },
           "creationTimestamp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "deletionGracePeriodSeconds": {
             "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
@@ -1491,12 +1193,7 @@
             "type": "integer"
           },
           "deletionTimestamp": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-              }
-            ],
-            "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
           },
           "finalizers": {
             "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
@@ -1529,12 +1226,7 @@
           "managedFields": {
             "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1551,12 +1243,7 @@
           "ownerReferences": {
             "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
             },
             "type": "array",
             "x-kubernetes-list-map-keys": [
@@ -1654,12 +1341,7 @@
             "type": "integer"
           },
           "details": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
-              }
-            ],
-            "description": "Extended data associated with the reason.  Each reason may define its own extended details. This field is optional and the data returned is not guaranteed to conform to any schema except that defined by the reason type."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusDetails"
           },
           "kind": {
             "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
@@ -1670,13 +1352,7 @@
             "type": "string"
           },
           "metadata": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
-              }
-            ],
-            "default": {},
-            "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds"
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
           },
           "reason": {
             "description": "A machine-readable description of why this operation is in the \"Failure\" status. If this value is empty there is no information available. A Reason clarifies an HTTP status code but does not override it.",
@@ -1720,12 +1396,7 @@
           "causes": {
             "description": "The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes.",
             "items": {
-              "allOf": [
-                {
-                  "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
-                }
-              ],
-              "default": {}
+              "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.StatusCause"
             },
             "type": "array",
             "x-kubernetes-list-type": "atomic",
@@ -1765,12 +1436,7 @@
         "description": "Event represents a single event to a watched resource.",
         "properties": {
           "object": {
-            "allOf": [
-              {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension"
-              }
-            ],
-            "description": "Object is:\n * If Type is Added or Modified: the new state of the object.\n * If Type is Deleted: the state of the object immediately before deletion.\n * If Type is Error: *Status is recommended; other types may make sense\n   depending on context."
+            "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.runtime.RawExtension"
           },
           "type": {
             "default": "",
@@ -2940,7 +2606,18 @@
           "group": "autoscaling",
           "kind": "HorizontalPodAutoscaler",
           "version": "v2"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {
@@ -3925,7 +3602,18 @@
           "group": "autoscaling",
           "kind": "HorizontalPodAutoscaler",
           "version": "v2"
-        }
+        },
+        "parameters": [
+          {
+            "description": "resourceVersion sets a constraint on what resource versions a request may be served from. See https://kubernetes.io/docs/reference/using-api/api-concepts/#resource-versions for details.\n\nDefaults to unset",
+            "in": "query",
+            "name": "resourceVersion",
+            "schema": {
+              "type": "string",
+              "uniqueItems": true
+            }
+          }
+        ]
       },
       "parameters": [
         {

@@ -240,6 +240,7 @@ Load failures, not behaviour changes. What each one becomes:
 | `is_longpoll_timeout` | none, and none is needed: watches carry no overall deadline here, so a watch never ends on one. It ends when the consumer closes the stream, which is not an exception |
 | `OpenAPI.Clients.ApiException` | `Kuber.KuberException` — every generated call goes through `_call`, which rewraps `Runtime.ApiError`. `ex.resp.data` becomes `ex.message` (the body verbatim) or `ex.response` |
 | `httplib=` | nothing; there is one backend |
+| `getpropertyat` / `haspropertyat` | **`Kuber.getpropertyat` / `Kuber.haspropertyat`** — same walk, `ABSENT`-aware. Unexported, so qualify them. 49 call sites in JuliaRun become a changed import |
 
 The `is_request_interrupted(ex) && isopen(rf.stream_handle[])` idiom at
 `K8sReflector.jl:241-242` has no direct translation, and does not need one: a
@@ -250,6 +251,49 @@ One thing the port will surface, unrelated to Kuber: `api.jl:1053` and `1065`
 read `OpenAPI.Clients .. ApiException`, with spaces. That parses as a call to
 `..`, which nothing defines — so those two `catch` blocks would `MethodError`
 over the original error if they were ever reached.
+
+**`getpropertyat`/`haspropertyat` are the big one, and were missed until the G12
+audit.** `JuliaRun/src/kubernetes/kubernetes.jl:21` does
+`import OpenAPI.Clients: getpropertyat, haspropertyat`, and there are **49 uses**
+across `clustermgmt.jl`, `api.jl` and `kubernetes.jl`. Confirmed absent from the
+pinned 1.0 commit — they existed only in the 0.x client.
+
+They are not hard to replace, but the semantics must change with them, which is
+the part that makes this more than a rename. On 0.x an unset field was `nothing`,
+so `haspropertyat(pod, :status, :phase)` answered a real question. On 1.0 every
+field exists and an unset one is `ABSENT`, so a naive `hasproperty` walk answers
+`true` unconditionally — the same trap [G12](#g12-resource-limits-are-an-open-struct)
+found in `container_resource`. A faithful replacement has to treat both `ABSENT`
+and `nothing` as absent, which is exactly what `Kuber._field(x) === nothing`
+does.
+
+**Added 2026-08-15 as `Kuber.getpropertyat` / `Kuber.haspropertyat`**, kept
+**unexported** — they are a shim for consumers porting off 0.2.x, not a shape
+this API wants to encourage, so a call site has to say `Kuber.` and stays easy
+to grep for later. Covered by `test/helpers.jl`.
+
+For JuliaRun this turns 49 rewrites into a changed import:
+
+```julia
+import OpenAPI.Clients: getpropertyat, haspropertyat   # before
+import Kuber: getpropertyat, haspropertyat             # after
+```
+
+Two behaviours differ from 0.x, and both are deliberate:
+
+- **`ABSENT` counts as absent**, which is the entire reason these exist. A
+  handwritten `hasproperty` walk answers `true` for every field on 1.0.
+- **A path element may name an open-struct entry**, so
+  `getpropertyat(node, :metadata, :labels, "role")` reads a label directly.
+  That covers the `get(nodelabels, "role", "")` sites in `clustermgmt.jl:203-204`
+  as well, which would otherwise each need a `kuber_props` call.
+
+**They do not fold case, and that matters at these call sites.** The path is the
+*generated* field name, which lowercases the JSON one — `:nodename`, not
+`:nodeName`. JuliaRun's existing calls include `:loadBalancer`, `:nodeName` and
+`:backoffLimit`, so those are [C4](#c4-camelcase--lowercase-field-names) fixes
+that still have to be made by hand. Folding case would have hidden them, and
+would have made a typo succeed whenever it happened to lowercase-match.
 
 ### C3. `ctx.apimodule` reach-through
 
@@ -647,7 +691,7 @@ KeyError` for the removed `batch/v1beta1`.
 | ConfigMap | | 2 | yes — created and deleted by G13 |
 
 This matters more here than it would on `master`: strict response validation
-checks each kind's schemas independently, and **two of the six patch rules were
+checks each kind's schemas independently, and **two of the eight patch rules were
 found exactly this way** (`*/*` request bodies on `put!`, DELETE 2xx on
 `delete!`). Each untested kind is an unexercised set of schemas.
 
@@ -800,28 +844,107 @@ item, which is what `K8sReflector.jl:12` keys its store on.
 
 #### G12a. `Secret.data` decodes to bytes, not base64 text
 
-- [ ] Sweep consumer reads of `Secret`/`ConfigMap` binary data.
+- [x] Sweep consumer reads of `Secret`/`ConfigMap` binary data.
+      **Done 2026-08-14.** One real site, below.
+- [ ] Fix `JuliaRunPool.jl:135-136` in the monorepo — not a Kuber change.
 
 *Found 2026-08-14 while testing G16's typed-model patch.* `Secret.data` values are
 `format: byte` in the OpenAPI document, and the 1.0 runtime decodes those to
 `Vector{UInt8}` — already base64-decoded. A consumer that does
 `String(base64decode(secret.data["x"]))`, the natural 0.2.x idiom, now decodes
 twice and gets rubbish rather than an error. `String(copy(v))` is the new form.
-Whether any consumer reads secret data this way is not yet checked.
+
+**The sweep found one site, and it fails silently.**
+`packages/JuliaRunPool/src/JuliaRunPool.jl:135-136`:
+
+```julia
+existing_data = get(get(existing_secret, "data", Dict()), ".dockerconfigjson", "")
+if existing_data == dockerconfigjson
+```
+
+`existing_secret` comes from `JuliaRun.get(ctx, :Secret, secret_name)`, so it is
+a typed model — `Base.get(model, "data", …)` has no method, on this branch or on
+`master`. Past that, the comparison is against `dockerconfigjson`, the
+**base64-encoded** config from JuliaHub's config file. On 0.2.x `Secret.data`
+came back as base64 text and that comparison was right; here the value is a
+`Vector{UInt8}` of *plaintext*, so it can never equal a base64 `String`. The
+branch's purpose is to skip a redundant write, so the failure is not an error —
+the image-pull secret is rewritten on every namespace creation, forever. The file
+even carries a comment reasoning correctly about the *write* side while the read
+side compares the wrong things.
+
+The form that works:
+
+```julia
+existing = Kuber.kuber_props(existing_secret.data)
+existing_data = get(existing, ".dockerconfigjson", UInt8[])
+if String(copy(existing_data)) == dockerconfigjson_decoded
+```
+
+**Everything else is clear.** All five `base64decode` sites in `JuliaRun` are
+kubeconfig parsing (`utils.jl:71`, `utils.jl:104`), env packing (`api.jl:493`),
+or the *write* side (`api.jl:208`, `_as_binary_secret`, which G7 confirms still
+works). In the monorepo, `kill_k8s.jl:33` and `monitoring_loop.jl:442-445` read
+base64 blobs out of the **database** via `db_get_job_envsecrets`, not off a
+Kubernetes Secret, so Kuber's codec never touches them.
 
 #### G12. Resource limits are an open struct
 
-- [ ] Test `kuber_props` on `resources.limits` / `.requests`.
+- [x] Test `kuber_props` on `resources.limits` / `.requests`.
+      **Done 2026-08-14**: the G12 block of `data_shapes` in `test/runtests.jl`.
+- [ ] Fix `clustermgmt.jl:186-194` and `:281-285` in JuliaRun — not a Kuber
+      change. Two breaks, one of them silent.
 
-`IoK8sApiCoreV1ResourceRequirements.limits` is now
-`IoK8sApiCoreV1ContainerResourcesLimits`, whose only field is
+`ResourceRequirements.limits` is `IoK8sApiCoreV1ResourceRequirementsLimits`,
+whose only field is
 `additional_properties::Dict{String,IoK8sApimachineryPkgApiResourceQuantity}`, so
 `limits["cpu"]` must become `kuber_props(limits)["cpu"]`.
 
-Quantity itself is fine: still a struct with a single `value` field, so JuliaRun's
-`cpu.value` (`src/kubernetes/api.jl:1841`) and
-`conv_units(::Typedefs.CoreV1.Quantity)` (`src/kubernetes/clustermgmt.jl:20`)
-survive structurally. Only the type *identity* differs, which is C1's problem.
+*(An earlier revision of this item named the type
+`IoK8sApiCoreV1ContainerResourcesLimits`. That was accurate when written:
+`Container.resources` was a positional copy of `ResourceRequirements`, so its
+maps were named after the copy. Patch rule §7 collapsed those, so `resources` is
+now the shared type across every kind that embeds a pod template — one fewer
+thing for a consumer to get wrong.)*
+
+Quantity itself is fine: still a struct with a single `value` field
+(`Union{Float64,String}`), so JuliaRun's `string(cpu.value)`
+(`src/kubernetes/api.jl:1841`) and `conv_units(::Typedefs.CoreV1.Quantity)`
+(`src/kubernetes/clustermgmt.jl:20`) survive structurally. Only the type
+*identity* differs, which is C1's problem.
+
+**The audit found two breaks in `clustermgmt.jl`, and the quieter one is worse.**
+
+```julia
+# :186-194  — container_resource
+if hasproperty(cont, :resources)
+    resources = cont.resources
+    if hasproperty(resources, :requests)
+        return resources.requests
+    elseif hasproperty(resources, :limits)
+        return resources.limits
+    end
+end
+
+# :281-285  — the caller
+("cpu" in keys(res)) && (nodestate.cpu.free -= conv_units(res["cpu"]))
+```
+
+The loud one is `keys(res)` and `res["cpu"]`: `res` is an open struct, so both
+are `MethodError`s. Mechanical to fix with `kuber_props`.
+
+The quiet one is `hasproperty`. On 0.2.x an unset field was missing or `nothing`;
+on 1.0 **every field exists** and an unset one is `ABSENT`. So
+`hasproperty(resources, :requests)` is now *always* true, and
+`container_resource` returns `ABSENT` for a container that declares only
+`limits` — it never reaches the `elseif`. The caller's `res === nothing` guard
+does not catch `ABSENT`, so scheduling arithmetic would run against it. The test
+covers the Kuber-side shape; this one needs `Kuber._field`-style checks at the
+call site, and it is the pattern to grep for across both consumers rather than a
+single line to fix.
+
+That pattern is also why C2 is bigger than its table says — see the
+`getpropertyat`/`haspropertyat` row added there.
 
 #### G13. `put!(ctx, O::Symbol, dict)` — the dominant consumer form — is untested
 
@@ -895,8 +1018,8 @@ Two things fell out of writing it, both shared with `master`:
 
 #### G19. 429 is not retried
 
-- [ ] **Decision.** Add 429 to `k8s_retryable_codes`, ideally honouring
-      `Retry-After`.
+- [x] Add 429 to `k8s_retryable_codes`, ideally honouring `Retry-After`.
+      **Done 2026-08-14**: both, `src/helpers.jl`; covered by `test/retries.jl`.
 
 Kubernetes' priority-and-fairness layer sheds load with **429 plus a
 `Retry-After` header**, and client-go retries it. `k8s_retryable_codes` is
@@ -904,20 +1027,33 @@ Kubernetes' priority-and-fairness layer sheds load with **429 plus a
 throttled call fails immediately instead of backing off. A busy cluster
 therefore surfaces errors to consumers that client-go would have absorbed.
 
-Pinned by a test rather than fixed, because it is a behaviour change shared with
-master and not something the port broke. If that test starts failing because 429
-joined the list, that is the fix landing rather than a regression.
+**Fixed, together with G20, because the two only make sense together.** Before
+G20, HTTP.jl retried 429 underneath anyway, so the observable behaviour was
+"retried, but not by Kuber, not with `Retry-After` honoured, and not counted by
+`max_tries`" — worse than either answer taken alone. With HTTP.jl's layer off,
+Kuber's list is the whole story, so 429 had to join it.
 
-Note that HTTP.jl retries 429 underneath anyway (see G20), so the *observable*
-behaviour today is "retried, but not by Kuber and not with `Retry-After`
-honoured" — which is worse than either answer taken alone, since `max_tries` does
-not control it.
+`Retry-After` is honoured as a *floor* on the backoff: it only ever lengthens a
+wait. Three deliberate limits, all in `_retry_after`:
+
+- **429 only.** A 5xx may carry the header too, but honouring an arbitrary
+  server-supplied delay on every transient failure changes the timing of every
+  retry in the client. 429 is where the server is deliberately pacing us.
+- **Capped at 30 s** (`RETRY_AFTER_CAP`), so a large or hostile value cannot
+  park a call indefinitely.
+- **Delta-seconds only.** `Retry-After` may also be an HTTP date, which
+  Kubernetes does not send; `tryparse` returns `nothing` for one and the backoff
+  is used instead, which is the safe direction.
+
+Honouring the header is why `k8s_retry` is now an explicit loop rather than
+`Base.retry`: `Base.retry` takes its delays from an iterator that never sees the
+exception, so the server's own pacing is unreachable from it.
 
 #### G20. HTTP.jl retries underneath Kuber, so `max_tries` does not bound requests
 
-- [ ] **Decision.** Either set `retry=false` in `ctx.request_options` and own
-      retrying entirely, or document the multiplier and stop pretending
-      `max_tries` is a request budget.
+- [x] Either set `retry=false` and own retrying entirely, or document the
+      multiplier. **Done 2026-08-14**: Kuber owns it. `_call_options` sets
+      `retry=false` on every call, and `max_tries` now counts attempts.
 
 Kuber's `k8s_retry` is not the only retry loop in the stack: HTTP.jl 2.x retries
 idempotent requests on a retryable status by default. Measured at this pin,
@@ -929,19 +1065,35 @@ against a server that always answers 503:
 | 2 | 15 | 3 |
 | 3 | 20 | 4 |
 
-So each Kuber attempt costs five HTTP requests, and `set_retries(ctx; count=5)`
-against a struggling apiserver is thirty requests, not six. The two backoffs
-compose as well, so the wall-clock cost is worse than either suggests.
+Each Kuber attempt cost five HTTP requests, so `set_retries(ctx; count=5)`
+against a struggling apiserver was thirty requests, not six, with both backoffs
+composing.
 
-**`max_tries` is also off by one.** `k8s_delay` builds
+**`max_tries` was also off by one.** `k8s_delay` built
 `ExponentialBackOff(n=max_tries)` and `Base.retry` performs `n` retries *on top
-of* the first attempt, so `max_tries=1` is two requests. `set_retries(ctx;
-count=0)` is the only way to get a single attempt, and `k8s_retry`'s docstring —
-"Retry api call automatically (if `max_tries > 1`)" — reads as though 1 already
-meant that. Mutating calls take `retries(ctx, true) == 1`, so **a `put!` whose
-first attempt fails with a 5xx is retried once**, which is not what "only
-non-mutating calls retry by default" implies. `master` computes the delays
-identically, so none of this is new — but none of it is written down either.
+of* the first attempt, so `max_tries=1` was two requests. Mutating calls take
+`retries(ctx, true) == 1`, so **a `put!` whose first attempt failed with a 5xx
+was retried once** — not what "only non-mutating calls retry by default"
+implies, and the direction that risks a duplicate create. `master` computes the
+delays identically, so none of this was new; none of it was written down either.
+
+**Resolved by having Kuber own retrying.** `_call_options` merges
+`retry = false` into every call's options, so HTTP.jl's layer is off unless a
+caller puts it back with `set_request_options(ctx; retry=true)`. Kuber already
+has a curated policy — a status list, a mutating-vs-not rule, `is_retryable` as
+its public face — and HTTP.jl's layer silently contradicted all three. Now
+`max_tries` is a budget of *requests*, which is what it reads as.
+
+`k8s_delay` clamps to `max(0, max_tries - 1)` delays, so `max_tries` counts
+attempts. Two consequences worth stating, because both are visible:
+
+- `default_retries = 5` is now **5 attempts, not 6**. A small reduction.
+- a mutating call is now **1 attempt, not 2**, which is the contract
+  `set_retries(all_apis=false)` always claimed.
+
+The option is set in `_call_options` rather than on the context because the
+context's `client_kwargs` are passed to the generated `Client` constructor,
+which takes no `retry` — putting it there is a `MethodError` on the first call.
 
 #### G15. Exception classification for consumers
 
@@ -1002,15 +1154,15 @@ covers, and `OP_BODIES` says a patch body has to be built as the generated
 `Patch` type, so whether a bare vector survives that path is exactly the thing
 to test first here.
 
-#### G17. `resource_version=` is accepted and ignored on non-watch reads
+#### G17. `resource_version=` was accepted and ignored on non-watch reads
 <!-- Behaviour change, deliberately split out of G10's test. -->
 
-- [ ] **Decision needed.** Half of this is a one-line fix; the other half needs a
-      seventh patch rule and a regeneration.
-- [ ] `list` — forward `resource_version` to the operation's `resourceversion`
-      parameter on the non-watch path.
-- [ ] `get` — decide between a patch rule, routing single reads through the list
-      operation, and raising instead of ignoring.
+- [x] `list` — forward `resource_version` to the operation's `resourceversion`
+      parameter on the non-watch path. **Done 2026-08-14**, `src/simpleapi.jl`;
+      the G10 testset now asserts the forwarding instead of the trap.
+- [x] `get` — a patch rule declaring the parameter k8s omits.
+      **Done 2026-08-14**: `patch_k8s_spec.jq` §8 plus the same forwarding in
+      `get`. Held back until G19/G20 were settled; see below for why.
 
 *Found 2026-08-14 while writing [G10](#g10-resource_version-on-a-list-or-get).*
 `list` and `get` both take a `resource_version` keyword, and on the non-watch
@@ -1025,29 +1177,50 @@ it ticks G10 rather than failing.
 
 Two halves, with quite different costs:
 
-- **`list` is a one-line fix.** The generated list operations do declare
-  `resourceversion` (and `resourceversionmatch`), so the parameter exists and
-  works — `list(ctx, :Pod; resourceversion="0")` reaches the server *today*.
-  Only the documented spelling is dropped. The trap is that the two spellings
-  differ by one underscore and one of them silently does nothing.
-- **`get` cannot be fixed by forwarding.** k8s's OpenAPI document declares only
-  `pretty` on read operations — no `resourceVersion`, even though the apiserver
-  honours it. Sending it needs a **seventh patch rule** and therefore a full
-  regeneration. The alternative is routing a versioned single read through the
-  list operation with a `metadata.name` field selector, which `get`'s watch path
-  already does for its own reasons.
+- **`list` was a one-line fix, and is done.** The generated list operations
+  declare `resourceversion` (and `resourceversionmatch`), so the parameter
+  existed and worked — `list(ctx, :Pod; resourceversion="0")` reached the server
+  already. Only the documented spelling was dropped, and the trap was that the
+  two spellings differ by one underscore with one of them silently doing
+  nothing. `list` now forwards it on the non-watch path; inside a watch
+  `resource_version` still means "resume from here" and is consumed by the pump,
+  which is a different thing and stays that way.
+- **`get` could not be fixed by forwarding — it needed a patch rule, and now has
+  one.** k8s's document declared only `pretty` on read operations, no
+  `resourceVersion`, even though the apiserver honours it. *Verified against a
+  live cluster:* `GET …/configmaps/x?resourceVersion=0` answers 200, and an
+  impossible version answers **504 "Too large resource version"**. So the
+  omission was a documentation bug in the same class as the other rules.
 
-This matters to `K8sReflector`, which passes `resource_version` to `Kuber.get`
-(`K8sReflector.jl:136-141`) to re-read at a known version. That call has never
-done what it reads as — on either branch.
+  **It was held back until G19/G20 were settled**, and that sequencing was the
+  point. Rules 1–7 make the document describe what the server already does with
+  requests Kuber already sends; this one changes which requests Kuber can
+  *construct*, and its natural failure is a 504 that blocks for the apiserver's
+  wait. While `max_tries=1` still meant ten requests, adding it would have
+  stacked two unknowns. With the retry budget real, it is one.
+
+  §8 adds the parameter only to paths ending in `{name}` — the object read
+  itself, not subresources like `pods/log`, where a resource version is
+  meaningless. The live test asserts an impossible version now answers 504
+  through `get`, which is what proves the rule reached the wire rather than just
+  the document.
+
+  The alternative considered and not taken: routing a versioned single read
+  through the list operation with a `metadata.name` field selector, which
+  `get`'s watch path already does for its own reasons. That works without a
+  patch rule but makes a read cost a list, and leaves the document still lying.
+
+This mattered to `K8sReflector`, which passes `resource_version` to `Kuber.get`
+(`K8sReflector.jl:136-141`) to re-read at a known version. That call had never
+done what it reads as — on either branch — and now does. The live suite asserts
+that exact shape: read, keep the version, read again not older than it.
 
 #### G18. List items are a different type from the standalone object
 <!-- A regression from master. Needs a decision: patch rule + regeneration. -->
 
-- [ ] **Decision needed.** Add a seventh patch rule collapsing
-      `{"allOf": [{"$ref": X}], "default": {}}` to `{"$ref": X}` for array
-      items, and regenerate — or accept the split and tell consumers to stop
-      comparing types.
+- [x] Add a seventh patch rule collapsing the `allOf` wrapper, and regenerate.
+      **Done 2026-08-14**: `patch_k8s_spec.jq` §7. It reached much further than
+      list items — see below.
 
 *Found 2026-08-14 while writing [G11](#g11-items-and-metadataresourceversion-off-a-real-list),
 by an assertion that looked too obvious to fail.*
@@ -1078,9 +1251,9 @@ reference, which puts this in exactly the same class as the six existing patch
 rules: the document says something it does not mean.
 
 **What still works, and what does not.** Field names are identical and the
-nested types are shared (`item.spec` is `IoK8sApiCoreV1PodSpec2`, the same type
-the standalone Pod's `spec` has), so every *read* through a list item behaves
-correctly — which is why G6, G13 and G4 all passed without noticing. What breaks
+nested types were shared (`item.spec` was `IoK8sApiCoreV1PodSpec2`, the same
+type the standalone Pod's `spec` had), so every *read* through a list item
+behaved correctly — which is why G6, G13 and G4 all passed without noticing. What breaks
 is type identity:
 
 - `isa(x, kind_to_type(ctx, :Pod))` — `JuliaRun/src/kubernetes/api.jl:1418`
@@ -1093,10 +1266,45 @@ is type identity:
   same absent field — but it is worth knowing, because "list it, then delete it"
   is an obvious thing to write.
 
-**Fixing it is a regeneration**, so it is the same class of decision as
-[G17](#g17-resource_version-is-accepted-and-ignored-on-non-watch-reads) and
-should be taken together with it. The upside beyond correctness: one fewer
-generated type per list kind.
+**The fix reached much further than list items.** k8s never writes a bare
+`$ref` for *any* property — the `allOf` wrapper is how it hangs a `description`
+beside one, because a `$ref` with siblings is undefined in OAS 3.0. So the
+generator was minting a type per use site everywhere, not just under `items`:
+
+- `Pod.spec` was `IoK8sApiCoreV1PodSpec2` — the `2` disambiguating it from the
+  real `PodSpec` component, **which nothing referenced**.
+- every kind had its own `…Metadata` instead of the shared `ObjectMeta`.
+- every `…List.items` had its own element type, which is the symptom G11 hit.
+
+1290 sites across the 18 documents, in exactly two positions: property schemas
+and the `items` of array properties. The result:
+
+| | Before | After |
+|---|---|---|
+| generated types | 2252 | **1098** |
+| `src/ApiImpl/generated/` | 24 MB | **18 MB** |
+
+Two things about the rule worth keeping:
+
+- **It is scoped to those two positions, not walked recursively.**
+  `apiextensions`' `JSONSchemaProps` describes JSON Schema itself, so it has
+  *properties named* `allOf`, `nullable` and `items`. A recursive walk rewrites
+  that map and silently corrupts the CRD document.
+- **It is guarded on shape** — a single-element `allOf` whose element is a bare
+  `$ref` — rather than on the survey that said every `allOf` looks like that. A
+  future spec bump that introduces a two-element `allOf`, or a `$ref` carrying
+  siblings, is left alone to be noticed.
+
+`test/registry.jl` gates it on type *identity* across four kinds in three group
+modules (`fieldtype(Pod, :spec) === PodSpec`, `eltype(PodList.items) === Pod`),
+plus no name ending in `ListItemsItem` surviving anywhere. A collapse that
+produced an alias per use site would shrink the diff by as much and still be
+wrong.
+
+The `kuber_kind(item) == ""` half is unchanged and unfixable here: k8s does not
+populate `kind` on list items, so the object forms of `delete!`/`update!` still
+reject one. The live suite now asserts that too, so "list it, then delete it"
+fails loudly rather than surprisingly.
 
 ---
 
@@ -1123,15 +1331,25 @@ generated type per list kind.
    **The watch-contract cluster — the one flagged highest-risk — is now closed**
    (G1–G4 all ticked), except for the reflector port under G2 and the
    deliberately-deferred G5. What is left in Part 2 is the cheap remainder:
-   ~~G7~~, ~~G8~~ and ~~G14~~ done; G5, G12/G12a.
+   ~~G7~~, ~~G8~~, ~~G14~~ and ~~G12/G12a~~ done; only G5 remains, and it is
+   deferred. Both G12 items produced consumer fixes rather than Kuber ones, and
+   G12's audit is what surfaced the `getpropertyat`/`haspropertyat` gap in
+   [C2](#c2-openapiclients-does-not-exist-in-openapijl-10).
 6. **C1d** deferred until a CRD actually needs addressing.
 
-7. **G17**, **G18**, **G19** and **G20** all need a decision before they can be
-   scheduled. G17/G18 are cheapest taken together — G18 needs a patch rule and a
-   regeneration, G17's `get` half may need one too, and a regeneration is the
-   expensive part either way. G19/G20 are both retry-policy changes in
-   `src/helpers.jl` and are also cheapest together, since G20's `retry=false`
-   decision changes what G19's fix would even mean.
+7. ~~**G18**~~ and ~~**G17**~~ done. One regeneration carried G18 and G17's
+   `list` half; G17's `get` half followed after G19/G20, as patch rule §8. The
+   sequencing was the point: §8's natural failure is a slow 504, which was worth
+   nothing while `max_tries=1` still meant ten requests.
+8. ~~**G19** and **G20**~~ done together, which was the only way they made
+   sense: with HTTP.jl's layer off, Kuber's status list became the whole story,
+   so 429 had to join it. Settling them is what unblocked G17's `get` half.
+
+**Everything in Part 2 is now closed except G5** (long-lived watches, deferred
+as probably untestable in CI) **and G12/G12a**, which are consumer-side audits
+rather than Kuber changes. What remains is Part 1: the C-items, all of which are
+work in the consumer repos except C1b/C5's one capture, which needs a cluster
+running a metrics adapter.
 
 Four of the five widening items produced a finding rather than just coverage
 (C8, G12a, G17, G18), which is the argument for continuing to spend on the live

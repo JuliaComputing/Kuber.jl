@@ -41,9 +41,10 @@ end
 """
     retryctx(url; httpretry=false) -> KuberContext
 
-Discovery pre-seeded, and HTTP.jl's own retry layer off by default so the
-request count measures *Kuber's* retry loop alone. See the last testset for what
-happens when it is left on.
+Discovery pre-seeded. `_call_options` sets `retry=false` on every call by
+default (G20), so the request count measures Kuber's retry loop alone unless a
+test asks otherwise — see the last testset for what HTTP.jl's layer does when it
+is put back.
 """
 function retryctx(url; httpretry::Bool = false)
     ctx = KuberContext()
@@ -52,7 +53,7 @@ function retryctx(url; httpretry::Bool = false)
     ctx.apis[:Core] = [RETRY_CORE]
     ctx.modelapi[:Pod] = RETRY_CORE
     ctx.initialized = true
-    httpretry || Kuber.set_request_options(ctx; retry = false)
+    httpretry && Kuber.set_request_options(ctx; retry = true)
     return ctx
 end
 
@@ -78,21 +79,21 @@ end
             @test err isa KuberException
             @test err.code == status
             @test Kuber.is_retryable(err) == retried
-            # `max_tries` is the number of *retries*, so a retried call makes
-            # max_tries+1 requests — see the off-by-one testset below
-            @test count[] == (retried ? 4 : 1)
+            # `max_tries` is a count of attempts, so a retried call makes
+            # exactly that many requests
+            @test count[] == (retried ? 3 : 1)
             stop()
         end
     end
 
-    @testset "max_tries counts retries, not tries" begin
-        # k8s_delay builds ExponentialBackOff(n=max_tries) and Base.retry does n
-        # retries on top of the first attempt, so max_tries=1 is two requests,
-        # not one. `master` computes the delays identically, so this is shared
-        # rather than introduced here — but it means `set_retries(ctx; count=0)`
-        # is the only way to get a single attempt, and the docstring's "if
-        # max_tries > 1" reads as though 1 already meant that.
-        for (tries, requests) in ((0, 1), (1, 2), (3, 4))
+    @testset "max_tries counts attempts" begin
+        # It counted *retries* until G20: k8s_delay passed max_tries straight
+        # through as ExponentialBackOff's `n`, and Base.retry does n retries on
+        # top of the first attempt, so max_tries=1 was two requests. That also
+        # meant a mutating call — pinned to retries(ctx, true) == 1 — was
+        # retried once, despite set_retries(all_apis=false) meaning it must not
+        # be. master computes the delays the same way and has the same bug.
+        for (tries, requests) in ((0, 1), (1, 1), (2, 2), (3, 3), (5, 5))
             url, count, stop = failing_api(503)
             failed_list(retryctx(url); max_tries = tries)
             @test count[] == requests
@@ -100,20 +101,46 @@ end
         end
     end
 
-    @testset "429 is not retried" begin
-        # Kubernetes sheds load with 429 and a Retry-After header, and client-go
-        # retries it. k8s_retryable_codes is [0, 500, 501, 502, 503, 504] here —
-        # identically on master — so a throttled call fails at once instead of
-        # backing off. Pinned rather than fixed: changing it is a behaviour
-        # change shared with master, recorded as G19. If this starts failing
-        # because 429 joined the list, that is the fix landing.
-        url, count, stop = failing_api(429)
-        err = failed_list(retryctx(url); max_tries = 5)
-        @test err isa KuberException
-        @test err.code == 429
-        @test !Kuber.is_retryable(err)
+    @testset "a mutating call is not retried" begin
+        # The contract set_retries documents: all_apis=false means put! and
+        # friends get one attempt. Before G20 they got two, because max_tries=1
+        # meant "one retry". Asserted through `retries` rather than through a
+        # live put! so it pins the budget rather than one verb's behaviour.
+        ctx = retryctx("http://127.0.0.1:1")
+        @test Kuber.retries(ctx, true) == 1
+        @test Kuber.retries(ctx, false) == 5
+        url, count, stop = failing_api(503)
+        failed_list(retryctx(url); max_tries = Kuber.retries(ctx, true))
         @test count[] == 1
         stop()
+    end
+
+    @testset "429 is retried, and Retry-After is honoured" begin
+        # G19. Kubernetes' priority-and-fairness layer sheds load with 429 plus
+        # Retry-After, and client-go retries it; k8s_retryable_codes omitted it
+        # until now — on master it still does — so a throttled call failed at
+        # once where client-go would have absorbed it.
+        url, count, stop = failing_api(429)
+        err = failed_list(retryctx(url); max_tries = 3)
+        @test err isa KuberException
+        @test err.code == 429
+        @test Kuber.is_retryable(err)
+        @test count[] == 3
+        stop()
+
+        # The fixture sends `Retry-After: 1`, which is longer than the backoff
+        # would wait on its own (first delay is 1/tps = 0.5 s), so honouring it
+        # is observable as elapsed time. Two retries at >= 1 s each.
+        url, count, stop = failing_api(429)
+        elapsed = @elapsed failed_list(retryctx(url); max_tries = 3)
+        @test count[] == 3
+        @test elapsed >= 2.0
+        stop()
+
+        # …and it only applies to 429: a 503 carrying the same header would be
+        # paced by the backoff instead, which is why _retry_after checks the code
+        @test Kuber._retry_after(KuberException(503, "x", nothing, nothing)) == 0.0
+        @test Kuber._retry_after(KuberException(429, "x", nothing, nothing)) == 0.0
     end
 
     @testset "a watch establish failure is retried" begin
@@ -129,26 +156,30 @@ end
         watcher = @async list(wctx, :Pod; watch = true, push_initial = false,
                               resource_version = "1", max_tries = 3)
         @test timedwait(() -> istaskdone(watcher), 90.0) == :ok
-        @test count[] == 4
+        @test count[] == 3
         @test istaskfailed(watcher)
         @test Kuber.is_retryable(watcher.result)
         close(stream)
         stop()
     end
 
-    @testset "HTTP.jl retries underneath, and multiplies the request count" begin
-        # G20. Kuber's loop is not the only one: HTTP.jl 2.x retries idempotent
-        # requests on a retryable status by default, so each Kuber attempt costs
-        # several requests. Measured at this pin: five, making a `max_tries=1`
-        # list ten requests against a struggling apiserver rather than two.
-        #
-        # Asserted as a multiplier rather than an exact count, since the factor
-        # is HTTP.jl's default and not Kuber's contract — the point is that
-        # `max_tries` does not bound the number of requests.
+    @testset "HTTP.jl's retry layer is off, and multiplies the count when on" begin
+        # G20. Kuber's loop was not the only one: HTTP.jl 2.x retries idempotent
+        # requests on a retryable status by default, so each Kuber attempt cost
+        # several requests, `max_tries` bounded none of them, and a mutating call
+        # could be retried by a layer with no notion of mutating. A KuberContext
+        # now sets retry=false, so Kuber owns it.
+        url, count, stop = failing_api(503)
+        failed_list(retryctx(url); max_tries = 1)
+        @test count[] == 1                      # the default: Kuber alone
+        stop()
+
+        # …and handing it back still works, for anyone who wants it. Asserted as
+        # a multiplier rather than an exact count: the factor is HTTP.jl's
+        # default, not Kuber's contract.
         url, count, stop = failing_api(503)
         failed_list(retryctx(url; httpretry = true); max_tries = 1)
-        @test count[] > 2                       # 2 is what Kuber alone would do
-        @test count[] % 2 == 0                  # a whole number of Kuber attempts
+        @test count[] > 1
         stop()
     end
 
