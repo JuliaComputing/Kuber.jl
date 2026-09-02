@@ -1,3 +1,11 @@
+> **Not available on the `openapi-v1-trial` branch.** `metrics.k8s.io` is
+> served by metrics-server and `custom.metrics.k8s.io` by an adapter, so neither
+> appears in the upstream Kubernetes OpenAPI documents this branch generates
+> from; both would have to be captured from a cluster that serves them. The
+> `:NodeMetrics`/`:PodMetrics`/`:MetricValue` kinds are therefore unknown here,
+> and `list_custom_metrics`/`list_namespaced_custom_metrics` throw a clear
+> error. See OpenAPIv1TrialBranchPlan.md §0.
+
 Kubernetes Metrics and Custom Metrics APIs generalize consumption of metrics published by the cluster and applications running within it.
 
 ## Node and Pod Metrics

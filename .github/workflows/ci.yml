@@ -1,7 +1,7 @@
 name: CI
 on:
   push:
-    branches: [master]
+    branches: [master, openapi-v1-trial]
     tags: ["*"]
   pull_request:
 jobs:
@@ -12,7 +12,9 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - '1.6'
+          # 1.11 is the floor: OpenAPI.jl 1.0 requires it (and `[sources]` in
+          # Project.toml needs a Pkg that understands it).
+          - '1.11'
           - '1' # automatically expands to the latest stable 1.x release of Julia
           - nightly
         os:

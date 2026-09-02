@@ -1,77 +1,52 @@
 ## Supported API Versions
 
-The default API client included in this version of Kuber.jl supports the following API versions:
+The generated client included in this version of Kuber.jl covers the following
+Kubernetes API group versions, one module each:
 
-- `admissionregistration`
-- `admissionregistration_v1`
-- `admissionregistration_v1beta1`
-- `apiextensions`
-- `apiextensions_v1`
-- `apiextensions_v1beta1`
-- `apiregistration`
-- `apiregistration_v1`
-- `apiregistration_v1beta1`
-- `apis`
-- `apps`
-- `apps_v1`
-- `apps_v1beta1`
-- `apps_v1beta2`
-- `auditregistration`
-- `auditregistration_v1alpha1`
-- `authentication`
-- `authentication_v1`
-- `authentication_v1beta1`
-- `authorization`
-- `authorization_v1`
-- `authorization_v1beta1`
-- `autoscaling`
-- `autoscaling_v1`
-- `autoscaling_v2beta1`
-- `autoscaling_v2beta2`
-- `batch`
-- `batch_v1`
-- `batch_v1beta1`
-- `batch_v2alpha1`
-- `certificates`
-- `certificates_v1beta1`
-- `coordination`
-- `coordination_v1`
-- `coordination_v1beta1`
-- `core`
-- `core_v1`
-- `custom_metrics_v1beta1`
-- `discovery`
-- `discovery_v1beta1`
-- `events`
-- `events_v1beta1`
-- `extensions`
-- `extensions_v1beta1`
-- `flowcontrolApiserver`
-- `flowcontrolApiserver_v1alpha1`
-- `karpenterSh_v1alpha5`
-- `logs`
-- `metrics_v1beta1`
-- `networking`
-- `networking_v1`
-- `networking_v1beta1`
-- `node`
-- `node_v1alpha1`
-- `node_v1beta1`
-- `policy`
-- `policy_v1beta1`
-- `rbacAuthorization`
-- `rbacAuthorization_v1`
-- `rbacAuthorization_v1alpha1`
-- `rbacAuthorization_v1beta1`
-- `scheduling`
-- `scheduling_v1`
-- `scheduling_v1alpha1`
-- `scheduling_v1beta1`
-- `settings`
-- `settings_v1alpha1`
-- `storage`
-- `storage_v1`
-- `storage_v1alpha1`
-- `storage_v1beta1`
-- `version`
+| Group version | Module |
+| --- | --- |
+| `v1` (core) | `K8sV1` |
+| `apiextensions.k8s.io/v1` | `K8sApiextensionsK8sIoV1` |
+| `apiregistration.k8s.io/v1` | `K8sApiregistrationK8sIoV1` |
+| `apps/v1` | `K8sAppsV1` |
+| `autoscaling/v1` | `K8sAutoscalingV1` |
+| `autoscaling/v2` | `K8sAutoscalingV2` |
+| `batch/v1` | `K8sBatchV1` |
+| `certificates.k8s.io/v1` | `K8sCertificatesK8sIoV1` |
+| `coordination.k8s.io/v1` | `K8sCoordinationK8sIoV1` |
+| `discovery.k8s.io/v1` | `K8sDiscoveryK8sIoV1` |
+| `events.k8s.io/v1` | `K8sEventsK8sIoV1` |
+| `networking.k8s.io/v1` | `K8sNetworkingK8sIoV1` |
+| `node.k8s.io/v1` | `K8sNodeK8sIoV1` |
+| `policy/v1` | `K8sPolicyV1` |
+| `rbac.authorization.k8s.io/v1` | `K8sRbacAuthorizationK8sIoV1` |
+| `scheduling.k8s.io/v1` | `K8sSchedulingK8sIoV1` |
+| `storage.k8s.io/v1` | `K8sStorageK8sIoV1` |
 
+Generated from the OpenAPI v3 documents of **Kubernetes v1.35.4** — see
+`gen/openapi_v1/specs/SPECS_ORIGIN` for the exact source and checksums.
+
+Kubernetes schemas do not close their objects, so a client generated for one
+minor tolerates fields *added* by a later server; only contract violations
+(nulls where the document promises a value, changed shapes) bite, and GA APIs
+rarely do that. Discovery skips any group version the server reports that is not
+in the table above, with an informational log line under `verbose=true`.
+
+`Kuber.ApiImpl.GROUP_MODULES` is this table at runtime.
+
+### Not included
+
+- **CRD-backed groups** and **aggregated APIs** (`metrics.k8s.io`,
+  `custom.metrics.k8s.io`). Neither appears in upstream release-tag specs; both
+  would have to be captured from a reference cluster's
+  `/openapi/v3/apis/<group>/<version>`. The custom-metrics helpers
+  (`list_custom_metrics`, `list_namespaced_custom_metrics`) throw a clear error
+  in this build.
+- Group versions no longer served by a modern API server (the `*beta*` and
+  `*alpha*` variants of apps, batch, extensions, settings, auditregistration and
+  so on, which the 0.2.x client shipped).
+
+### Adding a group
+
+Append it to `K8S_GROUPS` in `gen/openapi_v1/fetch_specs.sh` and rerun the
+generation chain (`gen/openapi_v1/README.md`). Keep this file in sync.

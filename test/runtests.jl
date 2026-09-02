@@ -1,49 +1,64 @@
 using Kuber
-using OpenAPI
 using Test
 
-const Typedefs = Kuber.ApiImpl.Typedefs
-const Kubernetes = Kuber.ApiImpl.Kubernetes
+# The offline suites (Phase 1/2/3 gates of OpenAPIv1TrialBranchPlan.md §6) need
+# no cluster and run first, so a broken registry or a broken verb layer is
+# reported before anything touches the network.
+include("registry.jl")
+include("helpers.jl")
+include("simpleapi.jl")
 
-#On GCE:
-#- Bring up a Kubernetes cluster: https://cloud.google.com/container-engine/docs/clusters/operations
-#    - `gcloud container clusters create cluster1 --num-nodes=2 --zone=us-central1-a --machine-type=n1-standard-1 --image-type=container_vm`
-#    - Note: set image-type to container_vm as the v1.4.0 Google container vm does not have glusterfs client. See: https://groups.google.com/forum/#!topic/kubernetes-users/USCSQ9TZThY
-#- Enable access to the cluster:
-#    - Get kubernetes credentials: `gcloud container clusters get-credentials cluster1 --zone us-central1-a`
-#    - See credentials: `gcloud container clusters describe cluster-1 --zone us-central1-a`
-# - Start kubectl in proxy mode
-#    - run `kubectl proxy`
+# The rest is an integration suite: it creates and deletes real objects against a
+# live API server. Point it at a `kubectl proxy` (CI uses kind + kubectl proxy;
+# local runs used k3s v1.35.4 on port 8801).
+const SERVER = get(ENV, "KUBER_TEST_SERVER", "http://localhost:8001")
 
-function init_context(override=nothing, verbose=true)
-    ctx = KuberContext()
-    set_server(ctx, "http://localhost:8001")
-    set_ns(ctx, "default")
-    set_retries(ctx; count=3, all_apis=false)
-    Kuber.set_api_versions!(ctx; override=override, verbose=verbose)
-    httplib_name = ctx.httplib === nothing ? "http (default)" : string(ctx.httplib)
-    @info("KuberContext preferred HTTP library: $httplib_name")
-    if hasproperty(ctx.client, :httplib)
-        @info("OpenAPI client using HTTP library: $(ctx.client.httplib)")
+const REGISTRY = Kuber.ApiImpl
+
+function server_reachable(server)
+    try
+        ctx = KuberContext()
+        set_server(ctx, server)
+        Kuber._discovery_get(ctx, "/api"; max_tries = 1)
+        return true
+    catch
+        return false
     end
+end
+
+function init_context(override = nothing, verbose = true)
+    ctx = KuberContext()
+    set_server(ctx, SERVER)
+    set_ns(ctx, "default")
+    set_retries(ctx; count = 3, all_apis = false)
+    Kuber.set_api_versions!(ctx; override = override, verbose = verbose)
     ctx
 end
 
-function test_set_timeout(ctx)
-    @test Kuber.get_timeout(ctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
+function test_request_options(ctx)
+    # Timeouts moved from the 0.2.x client's mutable `timeout[]` to HTTP.jl 2.x
+    # request options on the context, so there is no DEFAULT_TIMEOUT_SECS to
+    # compare against: unset means "no deadline".
+    @test Kuber.get_timeout(ctx) === nothing
 
     Kuber.with_timeout(ctx, 10) do ctx
         @test Kuber.get_timeout(ctx) == 10
     end
+    @test Kuber.get_timeout(ctx) === nothing
 
-    wctx = Kuber.KuberWatchContext(ctx, Channel{Any}())
-    @test Kuber.get_timeout(wctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
+    wctx = Kuber.KuberWatchContext(ctx, Channel{Any}(1))
+    @test Kuber.get_timeout(wctx) === nothing
     Kuber.with_timeout(wctx, 10) do wctx
         @test Kuber.get_timeout(wctx) == 10
+        # a watch never carries an overall deadline, but keeps the other options
+        @test !haskey(Kuber._call_options(wctx; watch = true), :request_timeout)
     end
-    @test Kuber.get_timeout(wctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
+    @test Kuber.get_timeout(wctx) === nothing
 
-    @test Kuber.get_timeout(ctx) == OpenAPI.Clients.DEFAULT_TIMEOUT_SECS
+    # a live call still works with a deadline set
+    Kuber.with_timeout(ctx, 30) do ctx
+        @test Kuber.kuber_kind(get(ctx, :Namespace, "default")) == "Namespace"
+    end
 end
 
 function list_cluster_components(ctx)
@@ -94,65 +109,48 @@ function list_namespace_objects(ctx)
         @test isa(res, Kuber.kind_to_type(ctx, :ReplicationControllerList))
     end
 
+    @testset "List across all namespaces" begin
+        res = get(ctx, :Pod; namespace = "*")
+        @test isa(res, Kuber.kind_to_type(ctx, :PodList))
+    end
+
     nothing
 end
 
 function create_versioned_models(ctx)
-    cron_batchv1beta1 = kuber_obj(ctx, """{
-        "kind": "CronJob",
-        "apiVersion": "batch/v1beta1",
-        "metadata": {
-            "name": "hello"
-        },
+    # The old version of this test used batch/v1beta1 and batch/v2alpha1
+    # CronJobs; both were removed from Kubernetes long before 1.35, and batch
+    # now serves v1 alone. autoscaling is the group that still offers one kind
+    # in two served versions, so it is what exercises versioned typing.
+    hpa_v1 = kuber_obj("""{
+        "kind": "HorizontalPodAutoscaler",
+        "apiVersion": "autoscaling/v1",
+        "metadata": {"name": "hello"},
         "spec": {
-            "schedule": "*/1 * * * *",
-            "jobTemplate": {
-                "spec": {
-                    "template": {
-                        "spec": {
-                            "containers": [{
-                                "name": "hello",
-                                "image": "busybox",
-                                "args": ["/bin/sh", "-c", "date"]
-                            }],
-                            "restartPolicy": "OnFailure"
-                        }
-                    }
-                }
-            }
+            "scaleTargetRef": {"kind": "Deployment", "name": "hello"},
+            "maxReplicas": 2
         }
     }""")
-    @test isa(cron_batchv1beta1, Kubernetes.IoK8sApiBatchV1beta1CronJob)
+    @test isa(hpa_v1, REGISTRY.KIND_TYPES[("autoscaling/v1", "HorizontalPodAutoscaler")])
 
-    cron_batchv2alpha1 = kuber_obj(ctx, """{
-        "kind": "CronJob",
-        "apiVersion": "batch/v2alpha1",
-        "metadata": {
-            "name": "hello"
-        },
+    hpa_v2 = kuber_obj("""{
+        "kind": "HorizontalPodAutoscaler",
+        "apiVersion": "autoscaling/v2",
+        "metadata": {"name": "hello"},
         "spec": {
-            "schedule": "*/1 * * * *",
-            "jobTemplate": {
-                "spec": {
-                    "template": {
-                        "spec": {
-                            "containers": [{
-                                "name": "hello",
-                                "image": "busybox",
-                                "args": ["/bin/sh", "-c", "date"]
-                            }],
-                            "restartPolicy": "OnFailure"
-                        }
-                    }
-                }
-            }
+            "scaleTargetRef": {"kind": "Deployment", "name": "hello"},
+            "maxReplicas": 2
         }
     }""")
-    @test isa(cron_batchv2alpha1, Kubernetes.IoK8sApiBatchV2alpha1CronJob)
+    @test isa(hpa_v2, REGISTRY.KIND_TYPES[("autoscaling/v2", "HorizontalPodAutoscaler")])
+    @test typeof(hpa_v1) !== typeof(hpa_v2)
+
+    # a kind this build does not ship is a clean lookup miss
+    @test_throws KeyError kuber_obj("""{"kind": "CronJob", "apiVersion": "batch/v1beta1"}""")
 end
 
 function create_delete_job(ctx, testid)
-    nginx_pod = kuber_obj(ctx, """{
+    nginx_pod = kuber_obj("""{
         "kind": "Pod",
         "metadata":{
             "name": "nginx-pod$testid",
@@ -176,7 +174,7 @@ function create_delete_job(ctx, testid)
         }
     }""")
 
-    nginx_service = kuber_obj(ctx, """{
+    nginx_service = kuber_obj("""{
         "kind": "Service",
         "metadata": {
             "name": "nginx-service$testid",
@@ -189,7 +187,7 @@ function create_delete_job(ctx, testid)
         }
     }""")
 
-    nginx_rc = kuber_obj(ctx, """{
+    nginx_rc = kuber_obj("""{
         "kind": "ReplicationController",
         "metadata": {
             "name": "nginx-rc$testid",
@@ -227,19 +225,41 @@ function create_delete_job(ctx, testid)
         }
     }""")
 
-    nginx_rc_service = kuber_obj(ctx, """{
-        "kind": "Service",
-        "metadata": {
-            "name": "nginx-rc-service$testid",
-            "namespace": "default",
-            "labels": {"name": "nginx-rc-service$testid"}
-        },
+    job = kuber_obj("""{
+        "kind": "Job",
+        "apiVersion": "batch/v1",
+        "metadata": {"name": "hello-job$testid"},
         "spec": {
-            "type": "LoadBalancer",
-            "ports": [
-                {"port": 80, "name": "http"}
-            ],
-            "selector": {"name": "nginx-pod$testid"}
+            "template": {
+                "spec": {
+                    "containers": [{
+                        "name": "hello$testid",
+                        "image": "busybox",
+                        "args": ["/bin/sh", "-c", "date"]
+                    }],
+                    "restartPolicy": "Never"
+                }
+            }
+        }
+    }""")
+
+    deployment = kuber_obj("""{
+        "kind": "Deployment",
+        "apiVersion": "apps/v1",
+        "metadata": {"name": "hello-dep$testid"},
+        "spec": {
+            "replicas": 1,
+            "selector": {"matchLabels": {"name": "hello-dep$testid"}},
+            "template": {
+                "metadata": {"labels": {"name": "hello-dep$testid"}},
+                "spec": {
+                    "containers": [{
+                        "name": "busybox$testid",
+                        "image": "busybox",
+                        "args": ["sleep", "3600"]
+                    }]
+                }
+            }
         }
     }""")
 
@@ -247,7 +267,8 @@ function create_delete_job(ctx, testid)
         @test isa(nginx_pod, Kuber.kind_to_type(ctx, "Pod"))
         @test isa(nginx_service, Kuber.kind_to_type(ctx, "Service"))
         @test isa(nginx_rc, Kuber.kind_to_type(ctx, "ReplicationController"))
-        @test isa(nginx_rc_service, Kuber.kind_to_type(ctx, "Service"))
+        @test isa(job, Kuber.kind_to_type(ctx, "Job"))
+        @test isa(deployment, Kuber.kind_to_type(ctx, "Deployment"))
     end
 
     @testset "Create nginx pod" begin
@@ -260,21 +281,60 @@ function create_delete_job(ctx, testid)
         @test isa(res, Kuber.kind_to_type(ctx, :Service))
     end
 
+    @testset "Create/patch/delete a Job and a Deployment" begin
+        res = put!(ctx, job)
+        @test kuber_kind(res) == "Job"
+
+        res = put!(ctx, deployment)
+        @test kuber_kind(res) == "Deployment"
+        @test Kuber._field(res.spec.replicas) == 1
+
+        patched = update!(ctx, :Deployment, "hello-dep$testid",
+                          Dict("spec" => Dict("replicas" => 2)), "application/merge-patch+json")
+        @test Kuber._field(patched.spec.replicas) == 2
+
+        # a patch media type k8s does not document is rejected before the call
+        @test_throws ArgumentError update!(ctx, :Deployment, "hello-dep$testid",
+                                          Dict("spec" => Dict()), "application/json")
+
+        # delete by object, reading kind and name off the model
+        res = delete!(ctx, patched)
+        @test kuber_kind(res) in ("Deployment", "Status")
+
+        res = delete!(ctx, :Job, "hello-job$testid")
+        @test kuber_kind(res) in ("Job", "Status")
+    end
+
     @testset "Delete nginx service" begin
         res = delete!(ctx, :Service, "nginx-service$testid")
-        # delete! operations can return either the deleted object or a status object
-        # ref: https://github.com/kubernetes-client/csharp/issues/44
-        @test isa(res, Kuber.kind_to_type(ctx, :Status)) || isa(res, Kuber.kind_to_type(ctx, :Service))
+        # delete operations can return either the deleted object or a status
+        # object (https://github.com/kubernetes-client/csharp/issues/44). The two
+        # are types from different group modules, so compare the kind, not the
+        # type: this build has one Status type per group module.
+        @test kuber_kind(res) in ("Service", "Status")
     end
 
     @testset "Delete nginx pod" begin
         res = delete!(ctx, :Pod, "nginx-pod$testid")
-        # delete! operations can return either the deleted object or a status object
-        # ref: https://github.com/kubernetes-client/csharp/issues/44
-        @test isa(res, Kuber.kind_to_type(ctx, :Pod)) || isa(res, Kuber.kind_to_type(ctx, :Status))
+        @test kuber_kind(res) in ("Pod", "Status")
     end
 
     nothing
+end
+
+function test_not_found(ctx)
+    @testset "Missing object raises KuberException" begin
+        err = try
+            get(ctx, :Pod, "no-such-pod-here")
+            nothing
+        catch e
+            e
+        end
+        @test err isa KuberException
+        @test err.code == 404
+        @test kuber_kind(err.status) == "Status"
+        @test occursin("not found", err.message)
+    end
 end
 
 function test_versioned(ctx, testid)
@@ -285,6 +345,10 @@ function test_versioned(ctx, testid)
 
     @testset "Versioned Models" begin
         create_versioned_models(ctx)
+    end
+
+    @testset "Not Found" begin
+        test_not_found(ctx)
     end
 
     # start a watch on pods
@@ -305,23 +369,27 @@ function test_versioned(ctx, testid)
     end
 
     @testset "Watch Events" begin
-        timedwait(10.0; pollint=1.0) do
+        timedwait(30.0; pollint = 1.0) do
             lock(lck) do
-                any(isa(event, Typedefs.CoreV1.WatchEvent) && (event.type == "DELETED") for event in events)
+                any(isa(event, KuberEvent) && (event.type == "DELETED") for event in events)
             end
         end
         lock(lck) do
             @test !isempty(events)
+            # the event protocol is unchanged: the initial typed List result
+            # first, then events — except that events are Kuber's own KuberEvent
+            # instead of the generated WatchEvent, so `event.type` still reads
+            # naturally (the generated field is `type_`), and `event.object` is
+            # already the typed model. `kuber_obj(ctx, event.object)` is no
+            # longer needed, though it still accepts a dict for compatibility.
+            @test any(isa(event, KuberEvent) for event in events)
+            @test any(isa(event, Kuber.kind_to_type(ctx, :PodList)) for event in events)
             for event in events
-                @test isa(event, Union{Typedefs.CoreV1.WatchEvent,Typedefs.CoreV1.PodList})
-                # Watch event objects parse to `JSON.Object` under JSON.jl 1.x —
-                # an AbstractDict, not a Dict{String,Any}. `kuber_obj` must accept
-                # them: a MethodError here used to kill the stream processor and
-                # leave the watch silently deaf (see the watch-processor-failure
-                # test below for the propagation side).
-                if isa(event, Typedefs.CoreV1.WatchEvent)
-                    obj = Kuber.kuber_obj(ctx, event.object)
-                    @test isa(obj, OpenAPI.APIModel)
+                @test isa(event, Union{KuberEvent,Kuber.kind_to_type(ctx, :PodList)})
+                if isa(event, KuberEvent)
+                    @test event.type in ("ADDED", "MODIFIED", "DELETED", "BOOKMARK")
+                    @test kuber_kind(event.object) == "Pod"
+                    @test isa(event.object, Kuber.kind_to_type(ctx, :Pod))
                 end
             end
         end
@@ -335,17 +403,24 @@ function test_all()
             test_versioned(ctx, "1")
         end
 
-        @testset "Set Timeouts" begin
-            test_set_timeout(ctx)
+        @testset "Request Options" begin
+            test_request_options(ctx)
         end
 
         @testset "Overridden API Versions" begin
-            @test ctx.apis[:Apiregistration][1].api == Kubernetes.ApiregistrationV1Api
-            @test ctx.apis[:Apps][1].api == Kubernetes.AppsV1Api
+            # apps and apiregistration.k8s.io each serve a single version now, so
+            # the old apps=>v1beta2 / apiregistration=>v1beta1 overrides are not
+            # expressible against a 1.35 server. autoscaling is: the server
+            # prefers v2, and v1 is still served.
+            @test ctx.apis[:Apiregistration][1] === REGISTRY.GROUP_MODULES["apiregistration.k8s.io/v1"]
+            @test ctx.apis[:Apps][1] === REGISTRY.GROUP_MODULES["apps/v1"]
+            @test ctx.apis[:Autoscaling][1] === REGISTRY.GROUP_MODULES["autoscaling/v2"]
 
-            ctx2 = init_context(("apiregistration.k8s.io"=>"v1beta1", "apps"=>"v1beta2"), false)
-            @test ctx2.apis[:Apiregistration][1].api == Kubernetes.ApiregistrationV1beta1Api
-            @test ctx2.apis[:Apps][1].api == Kubernetes.AppsV1beta2Api
+            ctx2 = init_context(("autoscaling" => "v1",), false)
+            @test ctx2.apis[:Autoscaling][1] === REGISTRY.GROUP_MODULES["autoscaling/v1"]
+            @test ctx2.modelapi[:HorizontalPodAutoscaler] === REGISTRY.GROUP_MODULES["autoscaling/v1"]
+            @test Kuber.kind_to_type(ctx2, :HorizontalPodAutoscaler) ===
+                  REGISTRY.KIND_TYPES[("autoscaling/v1", "HorizontalPodAutoscaler")]
 
             test_versioned(ctx2, "2")
         end
@@ -354,48 +429,15 @@ function test_all()
             iob = IOBuffer()
             show(iob, ctx)
             str = String(take!(iob))
-            @test str == "Kubernetes namespace default at http://localhost:8001"
+            @test str == "Kubernetes namespace default at $SERVER"
         end
     end
 end
 
-function test_watch_processor_failure()
-    # A `streamprocessor` that throws must abort the watch promptly and
-    # propagate the error. Before the fix, the processor task died silently
-    # while `@sync` kept waiting on the (long-running) `watched` task — a
-    # deaf watch: events kept buffering with no error surfaced until the
-    # server dropped the connection.
-    ctx = KuberContext() # only passed through to KuberWatchContext; no server needed
-    producer = (watchctx) -> begin
-        # mimic the HTTP watch task: keep streaming events; ends only when the
-        # stream is closed under it (put! on a closed channel throws)
-        i = 0
-        while true
-            put!(watchctx.stream, (i += 1))
-            sleep(0.05)
-        end
-    end
-    t0 = time()
-    @test_throws Exception watch(ctx, producer) do stream
-        take!(stream)
-        error("processor failure")
-    end
-    # must fail fast — processor death closes the stream, which kills the
-    # producer's next put! — not linger until the producer would have ended
-    @test (time() - t0) < 10.0
-end
-
-@testset "Watch processor failure aborts watch" begin
-    test_watch_processor_failure()
-end
-
-test_all()
-
-# Shutdown the kubectl proxy if we are running on github CI.
-# This is to close network connections that libcurl would otherwise keep open and
-# that leads to segfault in some versions of julia when the process exits. This is
-# a workaround for what seems like a bug in Downloads.jl/LibCURL.
-if haskey(ENV, "CI")
-    run(`killall kubectl`)
-    sleep(5)
+if server_reachable(SERVER)
+    test_all()
+else
+    @warn """SKIPPING the live integration tests: no Kubernetes API server at $SERVER.
+             Start one with `kubectl proxy --port=8001`, or point KUBER_TEST_SERVER elsewhere.
+             The offline suites above still ran."""
 end

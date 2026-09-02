@@ -1,0 +1,162 @@
+# Offline checks on src/simpleapi.jl: resolution, kwarg translation, event
+# decoding, and the watch-abort semantics of Kuber #67. No cluster needed.
+using Kuber, JSON, Test
+
+const R = Kuber.ApiImpl
+const Runtime = Kuber.Runtime
+
+@testset "simpleapi" begin
+    @testset "sel" begin
+        @test sel("name", :exists) == "name"
+        @test sel("name", :in, "a", "b") == "name in (a,b)"
+        @test sel("a in (x)", "b notin (y)") == "a in (x), b notin (y)"
+    end
+
+    @testset "kwarg translation" begin
+        # snake_case to the generated lowercase names
+        @test Kuber._op_kwargs((label_selector = "a=b",)) == (labelselector = "a=b",)
+        @test Kuber._op_kwargs((resource_version = "42",)) == (resourceversion = "42",)
+        @test Kuber._op_kwargs((tail_lines = 5,)) == (taillines = 5,)
+        # already-lowercase names pass through
+        @test Kuber._op_kwargs((labelselector = "a=b",)) == (labelselector = "a=b",)
+        # `nothing` is dropped, not forwarded: generated optionals are
+        # Union{Absent,T}, so an explicit nothing would fail request validation
+        @test Kuber._op_kwargs((label_selector = nothing, limit = 5)) == (limit = 5,)
+        @test Kuber._op_kwargs((;)) == NamedTuple()
+    end
+
+    @testset "scope resolution" begin
+        @test Kuber._scopes("default") == (:namespaced, :cluster, :allns)
+        @test Kuber._scopes("*") == (:allns, :cluster)
+        @test Kuber._scopes(nothing) == (:cluster, :allns)
+        @test Kuber._scopes("") == (:cluster, :allns)
+
+        core = R.GROUP_MODULES["v1"]
+        # namespaced kinds resolve namespaced
+        key, f, params, scope = Kuber._find_op(core, :list, :Pod, "default")
+        @test scope === :namespaced
+        @test f === core.listcorev1namespacedpod
+        @test params == [:namespace]
+        # and fall back to all-namespaces for "*"
+        @test Kuber._find_op(core, :list, :Pod, "*")[4] === :allns
+        # a cluster-scoped kind falls back even though ctx.namespace looks set:
+        # this is why `get(ctx, :Namespace, "default")` works without a kwarg
+        @test Kuber._find_op(core, :get, :Namespace, "default")[4] === :cluster
+        @test Kuber._find_op(core, :list, :Node, "default")[4] === :cluster
+        # a missing verb is a clean error, not a reflective guess
+        @test_throws ArgumentError Kuber._find_op(core, :create, :ComponentStatus, "default")
+        @test_throws ArgumentError Kuber._find_op(core, :list, :NoSuchKind, "default")
+    end
+
+    @testset "positional arguments follow the spec's path order" begin
+        # the namespace comes FIRST, the reverse of the old client
+        @test Kuber._positional([:namespace, :name], "ns", "nm", nothing) == ["ns", "nm"]
+        @test Kuber._positional([:name], nothing, "nm", nothing) == ["nm"]
+        @test Kuber._positional(Symbol[], nothing, nothing, nothing) == []
+        @test Kuber._positional([:namespace, :body], "ns", nothing, :payload) == ["ns", :payload]
+        @test_throws ArgumentError Kuber._positional([:namespace], nothing, nothing, nothing)
+        @test_throws ArgumentError Kuber._positional([:name], nothing, nothing, nothing)
+        @test_throws ArgumentError Kuber._positional([:body], nothing, nothing, nothing)
+    end
+
+    @testset "module resolution" begin
+        ctx = KuberContext()
+        ctx.initialized = true                      # pretend discovery ran
+        ctx.modelapi[:Pod] = R.GROUP_MODULES["v1"]
+        @test Kuber._resolve_module(ctx, :Pod, nothing) === R.GROUP_MODULES["v1"]
+        @test Kuber._resolve_module(ctx, :Pod, "apps/v1") === R.GROUP_MODULES["apps/v1"]
+        @test_throws ArgumentError Kuber._resolve_module(ctx, :Pod, "batch/v1beta1")
+        @test_throws ArgumentError Kuber._resolve_module(ctx, :Unknown, nothing)
+    end
+
+    @testset "watch frame decoding" begin
+        frame = JSON.parse("""{"type": "ADDED", "object": {"kind": "Pod", "apiVersion": "v1",
+            "metadata": {"name": "p1", "namespace": "default", "resourceVersion": "1234"},
+            "spec": {"containers": [{"name": "c", "image": "busybox"}]}}}""")
+        event = Kuber._to_event(frame)
+        @test event isa KuberEvent
+        @test event.type == "ADDED"
+        @test event.object isa R.KIND_TYPES[("v1", "Pod")]
+        @test event.object.metadata.name == "p1"
+        # the generated field is lowercase
+        @test Kuber._resource_version(event.object) == "1234"
+
+        # an unknown kind is handed back raw rather than throwing
+        unknown = Kuber._to_event(Dict("type" => "ADDED",
+            "object" => Dict("kind" => "Widget", "apiVersion" => "example.com/v1")))
+        @test unknown.type == "ADDED"
+        @test unknown.object isa AbstractDict
+
+        # an ERROR frame carrying an expired-resourceVersion Status: what k8s
+        # actually answers instead of an HTTP 410
+        expired = Kuber._to_event(JSON.parse("""{"type": "ERROR", "object": {"kind": "Status",
+            "apiVersion": "v1", "status": "Failure", "message": "too old resource version",
+            "reason": "Expired", "code": 410}}"""))
+        @test expired.type == "ERROR"
+        @test Kuber._status_code(expired.object) == 410
+        @test Kuber._status_code(Dict("code" => 410)) == 410
+        @test Kuber._status_code(Dict{String,Any}()) === nothing
+    end
+
+    @testset "resource version extraction" begin
+        @test Kuber._resource_version(Dict("metadata" => Dict("resourceVersion" => "7"))) == "7"
+        @test Kuber._resource_version(Dict("metadata" => Dict())) === nothing
+        @test Kuber._resource_version(Dict{String,Any}()) === nothing
+        list = kuber_obj("""{"kind": "PodList", "apiVersion": "v1",
+            "metadata": {"resourceVersion": "99"}, "items": []}""")
+        @test Kuber._resource_version(list) == "99"
+        # ABSENT metadata must not throw
+        @test Kuber._resource_version(kuber_obj("""{"kind":"Pod","apiVersion":"v1"}""")) === nothing
+    end
+
+    @testset "typed result from an untyped delete response" begin
+        raw = JSON.parse("""{"kind": "Status", "apiVersion": "v1", "status": "Success", "code": 200}""")
+        typed = Kuber._typed_result(raw)
+        @test typed isa R.KIND_TYPES[("v1", "Status")]
+        @test kuber_kind(typed) == "Status"
+        # unknown kinds and non-objects pass through untouched
+        @test Kuber._typed_result(Dict("kind" => "Widget", "apiVersion" => "x/v1")) isa AbstractDict
+        @test Kuber._typed_result("plain text") == "plain text"
+        @test Kuber._typed_result(nothing) === nothing
+    end
+
+    @testset "custom metrics are stubbed out of the trial" begin
+        ctx = KuberContext()
+        @test_throws ErrorException list_custom_metrics(ctx, "pods", "cpu")
+        @test_throws ErrorException list_namespaced_custom_metrics(ctx, "cpu")
+        for f in (list_custom_metrics, list_namespaced_custom_metrics)
+            msg = try
+                f(ctx, "pods", "cpu")
+            catch e
+                sprint(showerror, e)
+            end
+            @test occursin("custom metrics are not available", msg)
+        end
+    end
+
+    @testset "watch processor failure aborts the watch" begin
+        # A `streamprocessor` that throws must abort the watch promptly and
+        # propagate the error (Kuber #67). Before the fix the processor task died
+        # silently while `@sync` kept waiting on the long-running watched task —
+        # a deaf watch: events kept buffering with no error surfaced until the
+        # server dropped the connection.
+        ctx = KuberContext()      # only passed through to KuberWatchContext; no server needed
+        producer = (watchctx) -> begin
+            # mimic the watch pump: keep streaming until the stream is closed
+            # under it (put! on a closed channel throws)
+            i = 0
+            while true
+                put!(watchctx.stream, (i += 1))
+                sleep(0.05)
+            end
+        end
+        t0 = time()
+        @test_throws Exception watch(ctx, producer) do stream
+            take!(stream)
+            error("processor failure")
+        end
+        # must fail fast — processor death closes the stream, which kills the
+        # producer's next put! — not linger until the producer would have ended
+        @test (time() - t0) < 10.0
+    end
+end
