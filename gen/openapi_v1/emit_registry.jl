@@ -73,22 +73,23 @@ end
 operation_names(plan) = Dict(o.operation.id => o.name for o in plan.operations)
 
 """
-    request_bodies(plan) -> Dict{String,Tuple{String,Vector{String}}}
+    request_bodies(plan) -> Dict{String,Vector{Pair{String,String}}}
 
-`operationId` to `(generated body type, documented request media types)`, for
-operations with a required body.
+Per operation with a required body, the generated body type **for each media
+type**, in the planner's order.
 
-Both halves are needed by `update!`: a patch body has to be built as the
-generated `Patch` type (an open object) rather than passed as a bare `Dict`, and
-k8s documents *only* the five patch media types — there is no plain
-`application/json` — so a bad `content_type` has to be reported as such.
+One type per media type rather than one per operation: since the json-patch rule
+(patch_k8s_spec.jq §6) a PATCH takes `meta.v1.Patch` for four of its media types
+and the `meta.v1.JSONPatch` array for the fifth, so `body.type` alone is a
+`Union` that cannot tell a caller which shape their `content_type` needs.
 """
 function request_bodies(plan)
-    out = Dict{String,Tuple{String,Vector{String}}}()
+    out = Dict{String,Vector{Pair{String,String}}}()
     for o in plan.operations
         body = o.request_body
         (body === nothing || !body.required) && continue
-        out[o.operation.id] = (body.type, String[String(first(m)) for m in body.media_types])
+        out[o.operation.id] = Pair{String,String}[String(first(m)) => String(last(m))
+                                                  for m in body.media_types]
     end
     return out
 end
@@ -153,7 +154,7 @@ struct Doc
     json::Dict{String,Any}
     models::Dict{String,String}       # schema key -> generated model name
     operations::Dict{String,String}   # operationId -> generated function name
-    bodies::Dict{String,Tuple{String,Vector{String}}}   # operationId -> (body type, media types)
+    bodies::Dict{String,Vector{Pair{String,String}}}   # operationId -> [media type => body type]
 end
 
 function load_docs()
@@ -229,7 +230,7 @@ through the generic path rather than as a special case.
 function ops(docs::Vector{Doc})
     table = Dict{Tuple{String,Symbol,Symbol,Symbol},String}()
     params = Dict{Tuple{String,Symbol,Symbol,Symbol},Vector{Symbol}}()
-    bodies = Dict{Tuple{String,Symbol,Symbol,Symbol},Tuple{String,Vector{String}}}()
+    bodies = Dict{Tuple{String,Symbol,Symbol,Symbol},Vector{Pair{String,String}}}()
     for d in docs
         prefix = path_prefix(d.gv)
         # first pass: the kind behind each (namespaced, plural) resource
@@ -347,21 +348,23 @@ function emit(io::IO, docs::Vector{Doc})
 
     println(io, """
     \"\"\"
-    For each [`OPS`] entry with a required request body, the generated body type
-    and the media types the document accepts for it.
+    For each [`OPS`] entry with a required request body, the media types the
+    document accepts and the generated body type for each.
 
-    `update!` needs both: a patch body has to be built as the generated `Patch`
-    type (an open object) rather than handed over as a bare `Dict`, and k8s
-    documents only the five patch media types for a PATCH — there is no plain
-    `application/json` — so a wrong `content_type` can be reported as such
+    `update!` needs the mapping, not just a list: a PATCH takes the `Patch` model
+    (an open object) for merge, strategic-merge and apply patches, but the
+    `JSONPatch` array for `application/json-patch+json` — one schema per media
+    type since patch_k8s_spec.jq §6. It is also what lets a wrong `content_type`
+    be reported as such — k8s documents no plain `application/json` for a PATCH —
     instead of failing deep inside media selection.
     \"\"\"""")
-    println(io, "const OP_BODIES = Dict{Tuple{Module,Symbol,Symbol,Symbol},Tuple{Type,Vector{String}}}(")
+    println(io, "const OP_BODIES = Dict{Tuple{Module,Symbol,Symbol,Symbol},Dict{String,Type}}(")
     for key in sort!(collect(keys(opbodies)); by = sortkey)
         mod, verb, kind, scope = key
-        T, media = opbodies[key]
-        println(io, "    (", mod, ", ", repr(verb), ", ", repr(kind), ", ", repr(scope), ") => (",
-                mod, ".", T, ", ", repr(media), "),")
+        media = opbodies[key]
+        entries = join(("$(repr(m)) => $mod.$T" for (m, T) in media), ", ")
+        println(io, "    (", mod, ", ", repr(verb), ", ", repr(kind), ", ", repr(scope), ") => ",
+                "Dict{String,Type}(", entries, "),")
     end
     println(io, ")")
     return length(types), length(optable)

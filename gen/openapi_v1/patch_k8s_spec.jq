@@ -30,6 +30,18 @@
 #    shapes will arrive — and Kuber restores the type from the payload's
 #    kind/apiVersion through KIND_TYPES, the same second-stage decode watch
 #    frames use. Strict validation stays on everywhere.
+# 6. `application/json-patch+json` request bodies become an array. k8s documents
+#    ONE schema — meta.v1.Patch, `type: object` — for all five patch media types,
+#    but a JSON Patch body is an array of operations (RFC 6902), never an object.
+#    The generated Patch model can only hold an object, so every consumer that
+#    patches with `[Dict("op" => "replace", …)]` — which is every json-patch
+#    caller in JuliaRun and JobLoops — failed to encode. The array is declared
+#    once as a component (meta.v1.JSONPatch) and referenced, rather than inlined
+#    per operation: inlining makes the generator emit one item type per patch
+#    operation (132 of them in apps/v1 alone, +27 KiB), the shared component
+#    emits one (+3.4 KiB). Items stay `type: object` with no required keys —
+#    `move`/`copy` use `from`, `remove` has no `value`, so anything stricter
+#    would reject valid patches under strict request validation.
 #
 # Expect this list to grow: a strict-validation failure against a real cluster
 # is signal that the spec lies about another field, and the fix is a new rule
@@ -45,6 +57,15 @@
 | (.paths[]? | objects | .[]? | objects | select(has("requestBody")) | .requestBody
    | objects | select(.content | has("*/*")) | .content)
   |= with_entries(if .key == "*/*" then .key = "application/json" else . end)
+| (if ([.paths[]? | objects | .patch? | objects | .requestBody? | objects
+        | .content? | objects | has("application/json-patch+json")] | any)
+   then .components.schemas["io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"] =
+          {"description": "A JSON Patch document (RFC 6902): the sequence of operations to apply to the target object.",
+           "type": "array", "items": {"type": "object"}}
+   else . end)
+| (.paths[]? | objects | .patch? | objects | .requestBody? | objects
+   | .content? | objects | .["application/json-patch+json"]? | objects | .schema)
+  = {"$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"}
 | reduce (.paths | keys[]) as $p (.;
     if (.paths[$p] | has("delete"))
     then reduce (.paths[$p].delete.responses | to_entries[]

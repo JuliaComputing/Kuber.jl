@@ -36,6 +36,42 @@ const R = Kuber.ApiImpl
         end
     end
 
+    @testset "request bodies name a type per media type" begin
+        # Since patch_k8s_spec.jq §6 a PATCH does not have one body type: four of
+        # its media types take the `Patch` object model and json-patch takes the
+        # `JSONPatch` array. The rule has to hold for every patchable kind in
+        # every module, which is what this asserts — a document where it silently
+        # did not apply would leave json-patch callers broken again.
+        patchmedia = Set([
+            "application/apply-patch+cbor", "application/apply-patch+yaml",
+            "application/json-patch+json", "application/merge-patch+json",
+            "application/strategic-merge-patch+json",
+        ])
+        npatch = 0
+        for (key, media) in R.OP_BODIES
+            mod, verb, kind, scope = key
+            @test haskey(R.OPS, key)
+            @test !isempty(media)
+            for (m, T) in media
+                @test m isa String
+                @test T isa Type
+            end
+            if verb === :patch
+                npatch += 1
+                @test Set(keys(media)) == patchmedia
+                jsonpatch = media["application/json-patch+json"]
+                @test jsonpatch <: AbstractVector
+                @test parentmodule(eltype(jsonpatch)) === mod
+                # the other four stay the open-object Patch model
+                @test media["application/merge-patch+json"] === media["application/apply-patch+yaml"]
+                @test !(media["application/merge-patch+json"] <: AbstractVector)
+            else
+                @test collect(keys(media)) == ["application/json"]
+            end
+        end
+        @test npatch > 0
+    end
+
     @testset "no watch operations leak in" begin
         # Trap 8: the middle path does not patch the deprecated /watch/ paths,
         # so nothing may reference a watch* operationId. Watching is

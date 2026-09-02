@@ -174,6 +174,113 @@ end
         stop()
     end
 
+    @testset "a caller can end a watch and re-establish it itself" begin
+        # G2. `K8sReflector.jl:216-245` wraps `Kuber.watch` in its own
+        # `while true` and relies on `watch` *returning* so it can re-establish
+        # from a resourceVersion it tracked. Here a watch carries no deadline and
+        # the pump re-watches internally, so a clean server close — including one
+        # caused by `timeout_seconds` — never ends the watch. The only thing that
+        # does is the consumer closing the stream, which a stream processor does
+        # simply by leaving its event loop.
+        #
+        # So the reflector's loop cannot work as written, but the *pattern* is
+        # still expressible, and this is the shape of it.
+        url, requests, stop = fakeapi() do http, n, alive
+            frame(http, event("ADDED", "p$n", "10$n"))
+            hold(alive)
+        end
+        ctx = fakectx(url)
+
+        seen = KuberEvent[]
+        rv = nothing
+        driver = @async for _ in 1:2
+            # round 1 has nothing to resume from and lists; round 2 resumes
+            resume = rv === nothing ? NamedTuple() : (; resource_version = rv)
+            watch(ctx, list, :Pod; resume...) do stream
+                for item in stream
+                    item isa KuberEvent || continue   # the initial list frame
+                    push!(seen, item)
+                    rv = Kuber._resource_version(item.object)
+                    break        # leaving the loop closes the stream, which ends
+                end              # the watch — the reflector's re-establish point
+            end
+        end
+        @test timedwait(() -> istaskdone(driver), FIRST_EVENT_TIMEOUT) == :ok
+        istaskfailed(driver) && @error "the re-establishment loop failed" driver.result
+        @test !istaskfailed(driver)
+
+        # both rounds ran, and the second resumed where the first stopped
+        @test length(seen) == 2
+        @test Kuber._resource_version(seen[1].object) == "101"
+        @test Kuber._resource_version(seen[2].object) == "102"
+
+        queries = watchqueries(requests)
+        @test length(queries) == 2
+        @test occursin("resourceVersion=100", queries[1])   # from the initial list
+        @test occursin("resourceVersion=101", queries[2])   # from the caller
+
+        # …and the resumed round did not list. That is the useful half of the
+        # `if !watch || resource_version === nothing` guard: a caller that keeps
+        # its own store pays for the initial state exactly once. (The same guard
+        # is why `resource_version=` does nothing on a *non-watch* read — G17.)
+        @test length(listqueries(requests)) == 1
+
+        stop()
+    end
+
+    @testset "no event is dropped or duplicated across a re-watch" begin
+        # G3. The other re-watch tests assert that a resume *happens* with the
+        # right resourceVersion. This one asserts the property a cache-maintaining
+        # consumer actually depends on: the event sequence either side of the seam
+        # is exactly what the server sent, with nothing lost and nothing repeated.
+        #
+        # Two things make it a real test rather than a restatement. The first
+        # watch sends a *burst* and then closes cleanly, so events are in flight
+        # when the connection ends rather than neatly one per round trip; and the
+        # consumer does not read anything until the seam has demonstrably passed,
+        # so the events have to survive buffered across it.
+        url, requests, stop = fakeapi() do http, n, alive
+            if n == 1
+                for rv in ("101", "102", "103")
+                    frame(http, event("ADDED", "p$rv", rv))
+                end
+                sleep(0.5)          # then return: a clean close, mid-sequence
+            else
+                for rv in ("104", "105")
+                    frame(http, event("MODIFIED", "p$rv", rv))
+                end
+                hold(alive)
+            end
+        end
+        ctx = fakectx(url)
+        stream = Kuber.KuberEventStream(16)
+        watcher = startwatch(ctx, stream)
+
+        # wait for the seam itself, not for an event, so nothing is consumed
+        # until the re-watch has already been established
+        @test timedwait(() -> length(watchqueries(requests)) >= 2,
+                        FIRST_EVENT_TIMEOUT) == :ok
+
+        events = [take_event(stream, 30.0) for _ in 1:5]
+        versions = [Kuber._resource_version(e.object) for e in events]
+        @test versions == ["101", "102", "103", "104", "105"]
+        @test allunique(versions)
+        @test [e.type for e in events] ==
+              ["ADDED", "ADDED", "ADDED", "MODIFIED", "MODIFIED"]
+        # nothing extra is waiting either — a re-delivered frame would show up here
+        @test !isready(stream)
+
+        queries = watchqueries(requests)
+        @test length(queries) == 2
+        # the resume names the last version delivered, not the first of the burst
+        @test occursin("resourceVersion=103", queries[2])
+
+        close(stream)
+        @test timedwait(() -> istaskdone(watcher), 15.0) == :ok
+        @test !istaskfailed(watcher)
+        stop()
+    end
+
     @testset "truncated item re-watches" begin
         # The 1.0 runtime closes the channel with a DecodeError instead of ending
         # silently; that is a failure to recover from, not one to surface.

@@ -25,7 +25,7 @@ future spec bump has to move that pin with it.
 
 Every one of these came out of implementation or measurement, not preference.
 
-### 1.1 Five patch rules, not three (plan §2.2)
+### 1.1 Six patch rules, not three (plan §2.2)
 
 The plan's three nullable rules are all present. Two more were needed, both
 found by exercising verbs the evaluation never had — it only ever listed and
@@ -45,8 +45,20 @@ watched:
    from the payload's `kind`/`apiVersion` through `KIND_TYPES` — the same
    second-stage decode watch frames use.
 
+6. **`application/json-patch+json` bodies become an array.** Added 2026-08-14.
+   k8s documents one schema — `meta.v1.Patch`, `type: object` — for all five
+   patch media types, but a JSON Patch body is an array of RFC 6902 operations.
+   The generated `Patch` model can only hold an object, so every json-patch
+   caller failed to encode, which is most of the production patch traffic
+   (`OpenAPIv1ConsumerGaps.md` C8). Declared once as a component and referenced,
+   rather than inlined per operation: inlining emits one item type per patch
+   operation (132 in apps/v1 alone), the shared component emits one.
+
 Strict generation and strict response validation stayed on throughout. There is
 no `validate_responses=false` anywhere in `src/`.
+
+That rule also made `OP_BODIES` map media type → body type, since a PATCH now
+genuinely has two body types.
 
 ### 1.2 `OPS` is keyed by module, and two tables were added (plan §2.4)
 
@@ -178,15 +190,20 @@ integration suite (skipped with a warning when no server is reachable;
 
 | Suite | Assertions | Needs a cluster |
 | --- | --- | --- |
-| `registry.jl` | 3682 | no |
-| `register.jl` | 57 | no |
+| `registry.jl` | 5664 | no |
+| `register.jl` | 58 | no |
 | `helpers.jl` | 105 | no |
-| `simpleapi.jl` | 75 | no |
-| `watch_recovery.jl` | 47 | no (fake apiserver) |
-| live integration | ~310 | yes |
+| `simpleapi.jl` | 90 | no |
+| `retries.jl` | 47 | no (fake apiserver) |
+| `watch_recovery.jl` | 70 | no (fake apiserver) |
+| live integration | ~830 | yes |
 
-The live count varies a little with the cluster: the metrics testset only
-asserts on pod metrics when metrics-server has collected some, and skips
+**The live count is not a stable number, and should not be read as one.** The
+`Watch Events` testset asserts three times per event it observed, so the total
+moves with whatever else is happening on the cluster — runs minutes apart have
+differed by more than a hundred assertions with no code change between them.
+Compare suites, not totals. The metrics testset adds a smaller variation: it
+asserts on pod metrics only when metrics-server has collected some, and skips
 entirely when the cluster does not serve `metrics.k8s.io` — `kind` does not, so
 CI runs it as a no-op.
 

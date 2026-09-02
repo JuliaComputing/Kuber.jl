@@ -628,6 +628,24 @@ function _typed_result(result)
 end
 
 """
+    _patch_payload(patch) -> AbstractDict | AbstractVector
+
+Normalize whatever a caller passes as a patch into something the generated body
+type can be decoded from.
+
+Two shapes reach here besides a plain dictionary or vector. JSON **text** is
+parsed — that is what the 0.2.x client accepted. A **generated model** is
+encoded to its JSON object first: patching an object with a whole desired object
+is how JuliaRun updates Secrets (`api.jl:252`), and a model cannot be decoded
+into the open `Patch` struct directly, which wants an object rather than a
+struct.
+"""
+_patch_payload(patch) = Runtime._encode(patch)
+_patch_payload(patch::AbstractString) = JSON.parse(patch)
+_patch_payload(patch::AbstractDict) = patch
+_patch_payload(patch::AbstractVector) = patch
+
+"""
     update!(ctx, obj, patch, patch_type)
     update!(ctx, O, name, patch, patch_type)
 
@@ -636,6 +654,20 @@ documents for a PATCH — `"application/merge-patch+json"`,
 `"application/strategic-merge-patch+json"`, `"application/json-patch+json"`,
 `"application/apply-patch+yaml"` or `"application/apply-patch+cbor"`. There is
 no plain `application/json` variant.
+
+The shape of `patch` follows the media type, as the protocol requires:
+
+- a **merge, strategic-merge or apply patch** is an object — a `Dict`, a model,
+  or JSON text — merged into the target: `Dict("spec" => Dict("replicas" => 2))`
+- a **json-patch** is an array of RFC 6902 operations:
+  `[Dict("op" => "replace", "path" => "/spec/replicas", "value" => 2)]`
+
+An object patch may equally be a generated model or JSON text (see
+`_patch_payload`); a json-patch may be a vector or the JSON text of one.
+
+Kubernetes' OpenAPI document declares one object schema for all five, which is
+untrue of json-patch; `gen/openapi_v1/patch_k8s_spec.jq` §6 corrects it, and
+`OP_BODIES` carries the resulting type per media type.
 """
 function update!(ctx::KuberContext, v, patch, patch_type; max_tries::Int = retries(ctx, true), kwargs...)
     kind = kuber_kind(v)
@@ -656,12 +688,16 @@ function update!(ctx::KuberContext, O::Symbol, name::String, patch, patch_type;
     mod = _resolve_module(ctx, O, apiversion)
     key, op, params, scope = _find_op(mod, :patch, O, namespace)
     scope === :namespaced || (namespace = nothing)
-    bodytype, media = OP_BODIES[key]
-    patch_type in media || throw(ArgumentError(
-        "unsupported patch type $patch_type for $O; the API documents $(join(media, ", "))"))
-    # the body parameter is the generated `Patch` type — an open object — so a
-    # plain Dict has to be decoded into it rather than passed through
-    body = patch isa bodytype ? patch : Runtime._decode(bodytype, patch, false)
+    media = OP_BODIES[key]
+    bodytype = get(media, String(patch_type), nothing)
+    bodytype === nothing && throw(ArgumentError(
+        "unsupported patch type $patch_type for $O; the API documents $(join(sort!(collect(keys(media))), ", "))"))
+    # The body type depends on the media type: a merge, strategic-merge or apply
+    # patch is the generated `Patch` model (an open object), a json-patch is the
+    # `JSONPatch` array of operations. Either way a caller's plain Dict or Vector
+    # has to be decoded into it rather than passed through. A patch handed over
+    # as JSON text is parsed first — that is what the 0.2.x client accepted.
+    body = patch isa bodytype ? patch : Runtime._decode(bodytype, _patch_payload(patch), false)
     args = _positional(params, namespace, name, body)
     client = client_for(ctx, mod)
     callkwargs = _op_kwargs(kwargs)

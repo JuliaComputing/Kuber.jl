@@ -61,7 +61,7 @@ const OP_PARAMS = Dict{Tuple{Module,Symbol,Symbol,Symbol},Vector{Symbol}}(
     (MetricsFakeV1, :list, :NodeStat, :cluster) => Symbol[],
     (MetricsFakeV1, :get, :NodeStat, :cluster) => [:name],
 )
-const OP_BODIES = Dict{Tuple{Module,Symbol,Symbol,Symbol},Tuple{Type,Vector{String}}}()
+const OP_BODIES = Dict{Tuple{Module,Symbol,Symbol,Symbol},Dict{String,Type}}()
 
 """The six tables as keyword arguments, so a test can perturb one of them."""
 tables(; kwargs...) = merge((
@@ -252,8 +252,17 @@ end
                     (FAKE, :delete, :NodeStat, :cluster) => [:name, :body]))...),
             # a body for an operation that is not registered
             () -> Kuber.register!(; T.tables(
-                op_bodies = Dict{Tuple{Module,Symbol,Symbol,Symbol},Tuple{Type,Vector{String}}}(
-                    (FAKE, :create, :NodeStat, :cluster) => (FAKE.NodeStat, ["application/json"])))...),
+                op_bodies = Dict{Tuple{Module,Symbol,Symbol,Symbol},Dict{String,Type}}(
+                    (FAKE, :create, :NodeStat, :cluster) =>
+                        Dict{String,Type}("application/json" => FAKE.NodeStat)))...),
+            # …and a body entry naming no media type at all
+            () -> Kuber.register!(; T.tables(
+                ops = Dict{Tuple{Module,Symbol,Symbol,Symbol},Function}(
+                    (FAKE, :create, :NodeStat, :cluster) => FAKE.readfakev1nodestat),
+                op_params = Dict{Tuple{Module,Symbol,Symbol,Symbol},Vector{Symbol}}(
+                    (FAKE, :create, :NodeStat, :cluster) => [:body]),
+                op_bodies = Dict{Tuple{Module,Symbol,Symbol,Symbol},Dict{String,Type}}(
+                    (FAKE, :create, :NodeStat, :cluster) => Dict{String,Type}()))...),
         ]
         for f in bad
             @test_throws ArgumentError f()

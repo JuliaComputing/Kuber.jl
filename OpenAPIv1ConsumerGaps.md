@@ -271,6 +271,16 @@ against — `kuber_kind` is the intended test.
 
 These surface as `type has no field` at runtime, on the paths that matter most.
 
+The rule is **lowercase the JSON name**, not snake_case it: the field is
+`desirednumberscheduled`, never `desired_number_scheduled`. Worth stating because
+snake_case is what an OpenAPI-generated Julia model usually looks like, so the
+wrong guess is the natural one. Status fields are where this bites hardest —
+they are the longest names (`observedgeneration`,
+`persistentvolumereclaimpolicy`, `currentnumberscheduled`) and the ones a
+consumer reads in a poll loop, so a typo shows up as a runtime error the first
+time that loop runs rather than at load. Writing G6's testset needed the
+translation on nine such fields.
+
 ### C5. Custom metrics and `metrics.k8s.io` are stubs on this branch
 <!-- metrics.k8s.io no longer is; custom metrics await one capture. -->
 
@@ -332,6 +342,77 @@ Of that list, node and pod metrics (lines 87, 130 and the `:NodeMetrics` /
 Both call sites are the ones in C1. `set_timeout` now sets `request_timeout`;
 `set_request_options` passes the rest through. Watches deliberately take no
 overall deadline — bound them with `timeout_seconds`.
+
+### C8. JSON patches did not encode at all
+<!-- Found 2026-08-14 while working G16. Fixed the same day. -->
+
+- [x] Declare the json-patch body as an array, and carry a body type per media
+      type. **Done 2026-08-14**: `patch_k8s_spec.jq` §6, `OP_BODIES` reshaped,
+      `update!` selects on `content_type`.
+
+Kubernetes' OpenAPI document declares **one** request schema — `meta.v1.Patch`,
+`type: object` — for all five patch media types. That is untrue of
+`application/json-patch+json`, whose body is an array of RFC 6902 operations. The
+generated `Patch` model can only hold an object, so:
+
+```julia
+julia> Runtime._decode(Patch, [Dict("op" => "replace", "path" => "/spec/replicas", "value" => 2)], false)
+ERROR: DecodeError: expected an object while decoding …Patch, got Vector{Dict{String, Any}}
+```
+
+Every json-patch caller in the stack was therefore broken, which is **all** of
+them — `julia_parallel_scale` (every worker scale-up and scale-down),
+`taint_update_patch`, `julia_update_job`, and `hot_standby.jl`'s deployment
+scaling. Only `master`'s merge-patch callers (`set_node_cordon`,
+`set_node_label`, the Secret patch) would have worked.
+
+The fix is a patch rule, per the branch's standing rule that a document which
+lies gets one: the json-patch content schema becomes
+`{"type": "array", "items": {"type": "object"}}`, declared once as a component
+(`meta.v1.JSONPatch`) and referenced. Inlining it per operation makes the
+generator emit one item type per patch operation — 132 in `apps/v1` alone,
++27 KiB — where the shared component emits one, +3.4 KiB. Items stay untyped
+objects: `move`/`copy` carry `from`, `remove` carries no `value`, so anything
+stricter would reject valid patches under strict request validation.
+
+`OP_BODIES` consequently maps **media type → body type** instead of carrying one
+type and a list of media types, since a PATCH now genuinely has two body types.
+That is a change to the registration contract published in
+[C1a](#c1a-the-mechanism--cheap-because-the-architecture-is-already-plugin-shaped),
+so the docstring, the fixture in `test/register.jl` and the validation in
+`_check_registration` moved with it.
+
+`update!` also normalizes two other shapes the 0.2.x client accepted, through
+`_patch_payload`: a patch given as **JSON text**, and a patch given as a
+**generated model** — `JuliaRun/src/kubernetes/api.jl:252` patches a Secret with
+a whole desired `Secret`. A model cannot be decoded into the open `Patch` struct
+directly (it wants an object, not a struct), so it is encoded to its JSON object
+first. That one was found by the live test, not by reading: it is the shape a
+reviewer is least likely to think of. One consequence worth stating: a malformed json-patch — an *object*
+under `application/json-patch+json`, which is what
+`JobLoops/src/networkpolicy.jl:142` sends (see [C9](#c9-a-live-defect-in-jobloops-found-in-passing)) — now
+fails inside Kuber as a `DecodeError` rather than reaching the server for a 422.
+`is_retryable` says a `DecodeError` is not retryable, which is the right answer
+for a malformed body: `@retry_on_error` around that call will stop retrying it.
+
+### C9. A live defect in JobLoops, found in passing
+<!-- Not a port issue. Recorded because the port is what surfaced it. -->
+
+- [ ] Fix `networkpolicy.jl:142` in the monorepo — not a Kuber change.
+
+`services/JobLoops/src/networkpolicy.jl:141-143` updates a network policy with
+
+```julia
+update!(ctx.ctx, :NetworkPolicy, name, json(POLICIES[name]), "application/json-patch+json")
+```
+
+`POLICIES[name]` is a whole NetworkPolicy **object** (`networkpolicy.jl:96-98`),
+so this sends an object body under a media type whose body must be an array of
+operations. It cannot ever have worked as intended: a real apiserver answers 422.
+The likely intent is `application/merge-patch+json`, or
+`application/strategic-merge-patch+json` to match how the policies are created.
+Worth checking whether the update path is simply never taken — `needs_update`
+only fires when the `version` label differs.
 
 ### C7. `ABSENT` audit — smaller than expected, but not zero
 
@@ -420,7 +501,11 @@ reflector port: it no longer has to catch a 410 and drive `cleanup` +
 
 #### G2. Caller-driven re-establishment
 
-- [ ] Test a caller that re-establishes its own watch in a loop.
+- [x] Test a caller that re-establishes its own watch in a loop.
+      **Done 2026-08-14**: "a caller can end a watch and re-establish it itself"
+      in `test/watch_recovery.jl`.
+- [ ] Port `K8sReflector`'s loop to the shape below — **the test closing does not
+      mean the reflector works unchanged.**
 
 `packages/K8sReflector/src/K8sReflector.jl:216-245` wraps `Kuber.watch` in its own
 `while true` and relies on `watch` *returning* (on long-poll timeout) so it can
@@ -428,21 +513,99 @@ re-establish with its own tracked resourceVersion. On this branch watches have n
 deadline and the pump re-watches internally, so `watch` returns only when the
 consumer closes the stream. The reflector's inner loop becomes unreachable.
 
+**That part does not change, and it is worth being precise about what closing
+this box means.** A clean server close is re-watched internally by the pump —
+including one caused by `timeout_seconds`, so there is no server-side way to make
+`watch` hand control back either. The reflector's `while true` is dead code on
+this branch no matter what. What the test establishes is that the *pattern* is
+still expressible: a caller can drive re-establishment by ending the watch
+deliberately, and resume from a version it tracked itself.
+
+The shape is a stream processor that leaves its event loop, which closes the
+stream through the `finally` in `watch(streamprocessor, …)` and so ends the
+watch:
+
+```julia
+rv = nothing
+while true
+    resume = rv === nothing ? NamedTuple() : (; resource_version = rv)
+    watch(ctx, list, :Pod; resume...) do stream
+        for item in stream
+            item isa KuberEvent || continue   # the initial list frame
+            handle(item)
+            rv = Kuber._resource_version(item.object)
+            time_to_reestablish() && break    # ends the watch
+        end
+    end
+end
+```
+
+The assertion that makes this worth having is the last one: **the resumed round
+issues no list request.** A caller supplying `resource_version` skips the initial
+list, so a consumer keeping its own store pays for full state exactly once — the
+useful half of the same `if !watch || resource_version === nothing` guard that
+makes [G17](#g17-resource_version-is-accepted-and-ignored-on-non-watch-reads) a
+bug on non-watch reads.
+
 #### G3. Event continuity across a Kuber-internal re-watch
 
-- [ ] Assert no event is dropped or duplicated across the re-watch seam.
+- [x] Assert no event is dropped or duplicated across the re-watch seam.
+      **Done 2026-08-14**: "no event is dropped or duplicated across a re-watch"
+      in `test/watch_recovery.jl`.
 
-`watch_recovery.jl` asserts a resume happens with the right resourceVersion. It
-does not assert continuity — exactly what a reflector's store correctness depends
-on.
+`watch_recovery.jl` asserted that a resume happens with the right
+resourceVersion. It did not assert continuity — exactly what a reflector's store
+correctness depends on.
+
+Two things make the test more than a restatement of the resume assertion. The
+first watch sends a **burst** of three events and then closes cleanly, so events
+are in flight when the connection ends rather than arriving one per round trip;
+and the consumer reads nothing until the seam has demonstrably passed (it waits
+on the second watch request appearing, not on an event), so the burst has to
+survive *buffered* across the re-watch. The assertions are the exact sequence
+either side of the seam, `allunique`, an empty stream afterwards — a re-delivered
+frame would be sitting there — and that the resume names the **last** version of
+the burst rather than the first.
+
+**What it does not prove:** that no duplicate arrives, only that Kuber does not
+manufacture one. A server that replays an event Kuber already delivered would
+still reach the consumer, because Kuber does not deduplicate and cannot: watch
+events carry no identity beyond the object and its version. A consumer that
+needs exactly-once must key on `metadata.resourceversion` itself. That is the
+same contract client-go gives, and it is worth stating because "continuity is
+tested" invites the stronger reading.
 
 #### G4. Watch with a label selector across all namespaces
 
-- [ ] Test a selector-scoped all-namespaces watch end-to-end.
+- [x] Test a selector-scoped all-namespaces watch end-to-end. **Done
+      2026-08-14**: `watch_selector_all_namespaces` in `test/runtests.jl`, run in
+      both live passes.
 
 The reflector always passes `label_selector` and `namespace=nothing`
-(→ `_scopes(nothing)` = `(:cluster, :allns)`). The live suite watches `:Pod` in one
-namespace with no selector; offline tests cover scope *resolution* only.
+(→ `_scopes(nothing)` = `(:cluster, :allns)`). The live suite watched `:Pod` in one
+namespace with no selector; offline tests covered scope *resolution* only.
+
+The test mirrors `k8s_job_pod_monitoring.jl:66` rather than approximating it —
+`:Pod`, `namespace=nothing`, and a selector built by `sel(marker, :in, id)` — and
+covers both halves of the reflector's loop, the initial `get` that fills its store
+and the watch that maintains it. Two things make it meaningful rather than merely
+green: a selected pod is created in *two* namespaces, so a result carrying both
+proves the read is all-namespaces rather than luckily single-namespace; and the
+watch resumes from the list's `resourceVersion`, with an unselected pod created
+*before* the selected one, so seeing the selected event proves the other was
+filtered rather than merely late. A wait-and-hope negative would be flaky.
+
+Incidental coverage, not enough to close their boxes: `resource_version=` on a
+live read ([G10](#g10-resource_version-on-a-list-or-get)) and labels written then
+read back through `kuber_props` ([G9](#g9-open-struct-labels-and-annotations-on-write)).
+
+*Found while writing it:* **`put!` addresses the request with `ctx.namespace` and
+ignores `metadata.namespace` on the object.** Creating an object whose metadata
+names a different namespace is a 400 — "the namespace of the provided object does
+not match the namespace sent on the request". Not a regression: `master` does the
+same and does not even offer a `namespace` keyword on `put!`. Worth knowing when
+building objects with explicit namespaces, which is why the test passes
+`namespace=` explicitly.
 
 #### G5. Long-lived watch
 
@@ -456,72 +619,195 @@ connection.
 
 #### G6. Consumers write kinds the live suite never touches
 
-- [ ] Extend the live suite to the kinds marked **no** below.
+- [x] Extend the live suite to the kinds marked **no** below.
+      **Done 2026-08-14**: `create_delete_more_kinds` in `test/runtests.jl`,
+      run in both live passes.
 
-The live suite submits Pod, Service, Job and Deployment. ReplicationController is
-built but never submitted; HPA `v1`/`v2` objects are built client-side only (to
-exercise versioned typing); CronJob appears solely in a `@test_throws KeyError`
-for the removed `batch/v1beta1`.
+The live suite submitted Pod, Service, Job and Deployment. ReplicationController
+is built but never submitted; HPA `v1`/`v2` objects are built client-side only
+(to exercise versioned typing); CronJob appeared solely in a `@test_throws
+KeyError` for the removed `batch/v1beta1`.
 
 | Kind | JuliaRun | JuliaHub monorepo | In live suite? |
 |---|---|---|---|
 | Job | 26 | | yes |
 | Deployment | 23 | 20 | yes |
-| ReplicaSet | 12 | | **no** |
+| ReplicaSet | 12 | | yes — G6 |
 | Service | 11 | | yes |
-| Node | 10 | 1 | read-only only |
+| Node | 10 | 1 | yes — patched by G8 (no consumer creates one) |
 | Pod | 7 | 3 | yes |
-| Secret | 6 | 2 | **no** |
-| DaemonSet | 4 | | **no** |
-| CronJob | 4 | | **no** (only a removed-version lookup test) |
-| Namespace | 3 | 8 | read-only only |
-| RoleBinding | 2 | | **no** |
-| PersistentVolume | | 4 | **no** |
-| PersistentVolumeClaim | | 3 | **no** |
-| NetworkPolicy | | 3 | **no** |
-| ConfigMap | | 2 | **no** |
+| Secret | 6 | 2 | yes — created, patched and deleted by G16 |
+| DaemonSet | 4 | | yes — G6 |
+| CronJob | 4 | | yes — G6 |
+| Namespace | 3 | 8 | yes — created and deleted by G13 |
+| RoleBinding | 2 | | yes — G6 |
+| PersistentVolume | | 4 | yes — G6 |
+| PersistentVolumeClaim | | 3 | yes — G6 |
+| NetworkPolicy | | 3 | yes — G6 |
+| ConfigMap | | 2 | yes — created and deleted by G13 |
 
 This matters more here than it would on `master`: strict response validation
-checks each kind's schemas independently, and **two of the five patch rules were
+checks each kind's schemas independently, and **two of the six patch rules were
 found exactly this way** (`*/*` request bodies on `put!`, DELETE 2xx on
 `delete!`). Each untested kind is an unexercised set of schemas.
 
+Each kind is taken through the four paths that have distinct schemas — create,
+a `get` once the controller has written a status, a `list` with the object still
+in it, and delete — because a `get` issued straight after `put!` decodes an
+empty status block and checks almost none of the kind's schema. Nothing
+schedules a workload (`replicas: 0`, a `nodeSelector` no node carries,
+`suspend: true`), which also keeps the concurrent `:Pod` watch's assertions
+clean. Two group modules — `rbac.authorization.k8s.io/v1` and
+`networking.k8s.io/v1` — had never been reached live at all before this.
+
+The fixtures copy the real consumer templates, with two deliberate departures:
+the RoleBinding points at a Role that does not exist rather than reproducing
+JuliaRun's `ClusterRole/admin` grant (RBAC permits a dangling `roleRef`, so the
+schema is identical), and the NetworkPolicy selects a label no pod carries
+rather than using JobLoops' empty selector, which is deny-all-ingress for the
+namespace and would be a live hazard on a cluster whose CNI enforces.
+
+**Result: seven kinds, no new patch rule.** Given that two of the six existing
+rules were found by submitting a kind for the first time, the plausible outcome
+was a seventh — and that would have meant a full regeneration rather than a
+testset. Every one of these kinds round-tripped under strict response validation
+unchanged, across four group modules. That is evidence about the *patch set*,
+not just about these kinds: the rules generalise past the handful of kinds they
+were derived from.
+
+Two forms fell out of this that are verb-layer coverage rather than schema
+coverage: `get(ctx, :DaemonSet; label_selector=…)` with no name — the shape
+`JuliaRun/src/kubernetes/api.jl:993` and `provisioning.jl:110` use, which
+resolves to the *list* operation and answers with a `…List` — and the `:cluster`
+scope fallback for a cluster-scoped kind other than Namespace
+(PersistentVolume).
+
 #### G7. Secret round-trip
 
-- [ ] Test base64 `data` / `stringData` through the new codec.
+- [x] Test base64 `data` / `stringData` through the new codec.
+      **Done 2026-08-14**: `secret_round_trip` in `test/runtests.jl`.
 
-`JuliaRun/src/kubernetes/api.jl:220-248` builds Secrets with `data`.
+`JuliaRun/src/kubernetes/api.jl:220-248` builds Secrets with `data`, and the
+values it puts there are raw `Vector{UInt8}` — `_as_binary_secret`
+(`api.jl:203-214`) base64-*decodes* anything that looks base64 before handing it
+over, so what reaches Kuber is always bytes. The 0.2.x client base64-encoded
+them onto the wire because the field is `format: byte`; the 1.0 runtime does the
+same in both directions.
+
+**The values survive the port unchanged. The container does not.** `data` is an
+open struct now, so `Secret(; data=bindata)` has to become
+`Secret(; data=SecretData(additional_properties=bindata))` — the same
+[G12](#g12-resource-limits-are-an-open-struct)-class change, on the one field
+where the payload is binary.
+
+The test writes bytes that are deliberately not valid UTF-8
+(`0x00 0xff 0xfe 0x01 0x80`), so a round trip that "works" by treating the value
+as text cannot pass it. Two behaviours it pins that are easy to guess wrong:
+
+- **`stringData` is write-only.** The apiserver folds it into `data` and never
+  returns it, so a consumer that writes it must not expect to read it back.
+- **A merge patch merges the map, it does not replace it.** RFC 7386 merges key
+  by key; only an explicit `null` removes a key. Patching `data` with just
+  `token` leaves `binary` and `plain` intact. *This was asserted the wrong way
+  round first and the live run corrected it* — worth recording, because the
+  wrong guess is the dangerous direction only in reverse: believing it merges
+  when it replaced would silently drop every other secret in the object.
+  `update_secret` sends the whole desired map anyway, so it is unaffected either
+  way.
+
+See also [G12a](#g12a-secretdata-decodes-to-bytes-not-base64-text) for the read
+side: what comes back is already-decoded bytes, so the 0.2.x
+`String(base64decode(v))` idiom now decodes twice and yields rubbish rather than
+an error.
 
 #### G8. Node and Namespace as cluster-scoped writes
 
-- [ ] Cover a cluster-scoped create/delete.
+- [x] Cover a cluster-scoped create/delete. **Done 2026-08-14** across three
+      testsets: Namespace by `create_delete_from_dicts` (G13), PersistentVolume
+      by `create_delete_more_kinds` (G6), and Node by `cluster_scoped_writes`.
 
-Both appear in the live suite only as reads; JobLoops creates Namespaces
+Both appeared in the live suite only as reads; JobLoops creates Namespaces
 (`services/JobLoops/src/hot_standby.jl:526`).
+
+**Node is not a create/delete, and should not be tested as one.** No consumer
+creates a Node: the monorepo's `set_node_label`, `set_node_cordon` and
+`taint_update_patch` all patch an existing one. Creating a Node object through
+the API works, but it would be testing an operation nobody performs *and*
+leaving a kubelet-less `NotReady` node on the cluster for metrics-server and the
+scheduler to trip over. So the testset patches a real node and puts it back,
+in the two shapes consumers send:
+
+- a **merge patch** setting a label, then an explicit `null` removing it. That
+  pins the complement of what [G7](#g7-secret-round-trip) found: unmentioned
+  keys survive a merge patch, and `null` is the only way to delete one.
+- a **json-patch whose value is a nested array of dicts** — `taint_update_patch`'s
+  shape — appending via `/spec/taints/-` rather than replacing `/spec/taints`,
+  so the node's existing taints are untouched. A control-plane node carries one,
+  and dropping it would be a live change to the cluster rather than a test.
+
+The taint is `PreferNoSchedule` and nothing cordons, because the rest of the
+live suite schedules pods on that same node.
+
+Reading a Node by name also exercises the `:cluster` scope fallback for a kind
+that is neither Namespace nor PersistentVolume: `ctx.namespace` is `default`, and
+the request still goes to `/api/v1/nodes/<name>` because the `:namespaced`
+lookup falls through.
 
 ### Data-shape gaps
 
 #### G9. Open-struct labels and annotations on write
 
-- [ ] `put!` with labels, read them back off the server.
+- [x] `put!` with labels, read them back off the server.
+      **Done 2026-08-14**: the G9 block of `data_shapes` in `test/runtests.jl`.
 
-`test/helpers.jl:73-89` covers `kuber_props` on a hand-built object. Nothing covers
+`test/helpers.jl:73-89` covers `kuber_props` on a hand-built object. Nothing covered
 the round trip, nor the `services/JobLoops/src/networkpolicy.jl:114` pattern
 (`labels["version"]`, which now needs `kuber_props`).
 
+The round trip carries labels, annotations and `data` on one ConfigMap, and
+reads each back with `kuber_props`. The assertion that earns its place is the
+negative one: `Kuber._field(metadata.labels)` is **not** an `AbstractDict`, and
+indexing it the 0.2.x way is a `MethodError`. That is the shape of the
+`networkpolicy.jl:114` break — a hard failure at the read, not a wrong answer.
+
 #### G10. `resource_version=` on a list or get
 
-- [ ] Test the live "not older than" read.
+- [x] Test the live "not older than" read.
+      **Done 2026-08-14**, and it found that the keyword does nothing. The
+      *fix* is [G17](#g17-resource_version-is-accepted-and-ignored-on-non-watch-reads);
+      this box covers the test that pins the behaviour.
 
 `packages/K8sReflector/src/K8sReflector.jl:136-141` passes it to `Kuber.get`. The
-`_op_kwargs` translation is unit-tested; the live behaviour is not.
+`_op_kwargs` translation is unit-tested; the live behaviour was not — and the live
+behaviour turns out to be that the parameter never reaches the server on a
+non-watch read. The test asserts the trap rather than the intent: the same
+impossible resource version errors when passed as `resourceversion=` (the
+generated spelling, a real query parameter) and succeeds when passed as
+`resource_version=` (the documented spelling, which is dropped).
 
 #### G11. `.items` and `metadata.resourceversion` off a real list
 
-- [ ] Assert the consumer-facing shape of a live list result.
+- [x] Assert the consumer-facing shape of a live list result.
+      **Done 2026-08-14**: the G11 block of `data_shapes`.
 
-`_resource_version` is tested on synthetic dicts and objects; live list results are
-asserted only as `isa …List`.
+`_resource_version` was tested on synthetic dicts and objects; live list results
+were asserted only as `isa …List`. Now: `hasproperty(result, :items)` — the guard
+`provisioning.jl:111` actually uses — `items` a `Vector` of the item type and
+non-empty (the test creates into the collection first, so the assertion means
+something), `_resource_version(result)` a non-empty `String` equal to
+`result.metadata.resourceversion`, and a per-item resource version for every
+item, which is what `K8sReflector.jl:12` keys its store on.
+
+#### G12a. `Secret.data` decodes to bytes, not base64 text
+
+- [ ] Sweep consumer reads of `Secret`/`ConfigMap` binary data.
+
+*Found 2026-08-14 while testing G16's typed-model patch.* `Secret.data` values are
+`format: byte` in the OpenAPI document, and the 1.0 runtime decodes those to
+`Vector{UInt8}` — already base64-decoded. A consumer that does
+`String(base64decode(secret.data["x"]))`, the natural 0.2.x idiom, now decodes
+twice and gets rubbish rather than an error. `String(copy(v))` is the new form.
+Whether any consumer reads secret data this way is not yet checked.
 
 #### G12. Resource limits are an open struct
 
@@ -539,7 +825,34 @@ survive structurally. Only the type *identity* differs, which is C1's problem.
 
 #### G13. `put!(ctx, O::Symbol, dict)` — the dominant consumer form — is untested
 
-- [ ] One testset. Highest value per line of test code in this document.
+- [x] One testset. Highest value per line of test code in this document.
+      **Done 2026-08-14**: `create_delete_from_dicts` in `test/runtests.jl`, run
+      in both live passes.
+
+The testset is modelled on `hot_standby.jl` rather than written from scratch: the
+namespace dict is that file's literal shape, and the deployment comes from
+`JSON.parse`, which is what a rendered template actually produces. It covers the
+cluster-scoped and namespaced cases, that nested arrays and string maps survive
+the round trip, that the `apiVersion` comes off the dict rather than off
+discovery, and the kind-completion path (a dict with no `"kind"`, which Kuber
+fills in from the symbol without mutating the caller's dictionary).
+
+**Writing it turned up why the wider signature is load-bearing rather than
+incidental.** On JSON.jl 1.x `JSON.parse` returns a `JSON.Object`, which is an
+`AbstractDict` but not a `Dict`. `master`'s three methods are
+`v::T<:OpenAPI.APIModel`, `v::Dict{String,Any}` and `v::T<:OpenAPI.APIModel`
+again — all narrow — so a parsed template matches none of them and
+`put!(ctx, :Deployment, spec)` is a `MethodError`. `master` allows JSON 1 in
+`[compat]`, so that is a live hazard there, not a hypothetical. This branch takes
+`v::AbstractDict`, which covers both. The two cases in the testset are now
+deliberately different shapes: a plain `Dict` for the namespace, a `JSON.Object`
+for the deployment.
+
+Two smaller improvements over `master` in the same method, worth keeping: it
+reads `haskey(v, "kind")` rather than `v["kind"]`, which on `master` is a
+`KeyError` when the key is absent — the very case the code is trying to handle —
+and it merges into a fresh dictionary instead of writing `"kind"` into the
+caller's.
 
 Trial tests only ever call the 2-arg model form (`put!(ctx, nginx_pod)`).
 `services/JobLoops/src/hot_standby.jl:526,541,545` uses
@@ -553,10 +866,82 @@ through.
 
 #### G14. Live retryable statuses
 
-- [ ] Exercise a real 429/503/504, and retries interacting with a watch establish failure.
+- [x] Exercise a real 429/503/504, and retries interacting with a watch establish
+      failure. **Done 2026-08-14**: `test/retries.jl`, in `runtests.jl`.
 
-`k8s_retry_cond` is characterized offline only, by
-`test/characterize_retries.jl`, which is not in `runtests.jl`.
+`k8s_retry_cond` was characterized offline only, by
+`test/characterize_retries.jl`, which pins the *exception types* the runtime
+raises, is not in `runtests.jl`, and never drives the retry loop.
+
+**A live 429 or 503 is not the way to get one.** Provoking real load-shedding
+from an apiserver is neither reliable nor cheap, and the interesting variable is
+the status, not the cluster. `test/retries.jl` uses a server that always fails
+with a chosen status and counts requests, so "retried" is the difference between
+one request and several rather than something inferred from timing. Offline and
+deterministic.
+
+Measured, with HTTP.jl's own retry layer switched off so the count reflects
+Kuber's loop alone (`max_tries=3`):
+
+| Status | Requests | `is_retryable` |
+|---|---|---|
+| 500, 502, 503, 504 | 4 | yes |
+| 429 | 1 | no — see [G19](#g19-429-is-not-retried) |
+| 404, 409, 422 | 1 | no |
+
+Two things fell out of writing it, both shared with `master`:
+[G19](#g19-429-is-not-retried) and
+[G20](#g20-http-jl-retries-underneath-kuber-so-max_tries-does-not-bound-requests).
+
+#### G19. 429 is not retried
+
+- [ ] **Decision.** Add 429 to `k8s_retryable_codes`, ideally honouring
+      `Retry-After`.
+
+Kubernetes' priority-and-fairness layer sheds load with **429 plus a
+`Retry-After` header**, and client-go retries it. `k8s_retryable_codes` is
+`[0, 500, 501, 502, 503, 504]` — on this branch *and* on `master` — so a
+throttled call fails immediately instead of backing off. A busy cluster
+therefore surfaces errors to consumers that client-go would have absorbed.
+
+Pinned by a test rather than fixed, because it is a behaviour change shared with
+master and not something the port broke. If that test starts failing because 429
+joined the list, that is the fix landing rather than a regression.
+
+Note that HTTP.jl retries 429 underneath anyway (see G20), so the *observable*
+behaviour today is "retried, but not by Kuber and not with `Retry-After`
+honoured" — which is worse than either answer taken alone, since `max_tries` does
+not control it.
+
+#### G20. HTTP.jl retries underneath Kuber, so `max_tries` does not bound requests
+
+- [ ] **Decision.** Either set `retry=false` in `ctx.request_options` and own
+      retrying entirely, or document the multiplier and stop pretending
+      `max_tries` is a request budget.
+
+Kuber's `k8s_retry` is not the only retry loop in the stack: HTTP.jl 2.x retries
+idempotent requests on a retryable status by default. Measured at this pin,
+against a server that always answers 503:
+
+| `max_tries` | Requests, HTTP.jl retry on | Requests, `retry=false` |
+|---|---|---|
+| 1 | 10 | 2 |
+| 2 | 15 | 3 |
+| 3 | 20 | 4 |
+
+So each Kuber attempt costs five HTTP requests, and `set_retries(ctx; count=5)`
+against a struggling apiserver is thirty requests, not six. The two backoffs
+compose as well, so the wall-clock cost is worse than either suggests.
+
+**`max_tries` is also off by one.** `k8s_delay` builds
+`ExponentialBackOff(n=max_tries)` and `Base.retry` performs `n` retries *on top
+of* the first attempt, so `max_tries=1` is two requests. `set_retries(ctx;
+count=0)` is the only way to get a single attempt, and `k8s_retry`'s docstring —
+"Retry api call automatically (if `max_tries > 1`)" — reads as though 1 already
+meant that. Mutating calls take `retries(ctx, true) == 1`, so **a `put!` whose
+first attempt fails with a 5xx is retried once**, which is not what "only
+non-mutating calls retry by default" implies. `master` computes the delays
+identically, so none of this is new — but none of it is written down either.
 
 #### G15. Exception classification for consumers
 
@@ -585,10 +970,133 @@ Two boundaries the test pins, because both are easy to get wrong later:
 
 #### G16. `update!` patch coverage
 
-- [ ] Enumerate the patch types and kinds JobLoops actually patches, then test them.
+- [x] Enumerate the patch types and kinds JobLoops actually patches, then test
+      them. **Done 2026-08-14** — and the enumeration found a break, now
+      [C8](#c8-json-patches-did-not-encode-at-all).
 
-JobLoops has 14 `update!` call sites; the live suite patches one Deployment with
-`application/merge-patch+json`.
+The enumeration, across both consumers:
+
+| Caller | Media type | Patch shape | Kind |
+|---|---|---|---|
+| `julia_parallel_scale` | json-patch | `Vector{Dict{String,Any}}`, 1–2 ops | Job, Deployment |
+| `taint_update_patch` | json-patch | vector whose `value` is a nested vector of dicts | Node |
+| `julia_update_job` | json-patch | vector whose `value` is a pod template | Deployment |
+| `hot_standby.jl:428` | json-patch | `Vector{Dict{String,Any}}` | Deployment |
+| `set_node_cordon` / `set_node_label` | merge-patch | parsed JSON object | Node |
+| `api.jl:252` | merge-patch | a **typed model** (`Secret`) | Secret |
+| `networkpolicy.jl:142` | json-patch | JSON **text** of an object — see [C9](#c9-a-live-defect-in-jobloops-found-in-passing) | NetworkPolicy |
+
+So json-patch is the *majority* shape in production, and it was exactly the one
+that could not encode. The live suite now patches a Deployment with a
+single-operation and a two-operation json-patch, with JSON text, with a strategic
+merge patch, and a Secret with a typed model; `test/simpleapi.jl` covers the
+per-media body types offline, including the nested-vector taint shape and that
+the object model still refuses an array.
+
+*Noted 2026-08-14 while writing [G13](#g13-putctx-osymbol-dict--the-dominant-consumer-form--is-untested):*
+`hot_standby.jl:419-434` scales a deployment with
+`application/json-patch+json` and a **`Vector` of operation dictionaries**
+(`[Dict("op" => "replace", "path" => "/spec/replicas", "value" => n)]`), not a
+dictionary. That is a different body shape from the merge patch the suite
+covers, and `OP_BODIES` says a patch body has to be built as the generated
+`Patch` type, so whether a bare vector survives that path is exactly the thing
+to test first here.
+
+#### G17. `resource_version=` is accepted and ignored on non-watch reads
+<!-- Behaviour change, deliberately split out of G10's test. -->
+
+- [ ] **Decision needed.** Half of this is a one-line fix; the other half needs a
+      seventh patch rule and a regeneration.
+- [ ] `list` — forward `resource_version` to the operation's `resourceversion`
+      parameter on the non-watch path.
+- [ ] `get` — decide between a patch rule, routing single reads through the list
+      operation, and raising instead of ignoring.
+
+*Found 2026-08-14 while writing [G10](#g10-resource_version-on-a-list-or-get).*
+`list` and `get` both take a `resource_version` keyword, and on the non-watch
+path neither sends it: `if !watch || resource_version === nothing` computes the
+result without ever putting it on the wire. It is consulted only to seed a
+watch.
+
+**`master` does exactly the same** (`git show master:src/simpleapi.jl`, the same
+guard in all four verbs), so this is a shared limitation rather than something
+the port broke — which is why it is not a blocker, and why the test that found
+it ticks G10 rather than failing.
+
+Two halves, with quite different costs:
+
+- **`list` is a one-line fix.** The generated list operations do declare
+  `resourceversion` (and `resourceversionmatch`), so the parameter exists and
+  works — `list(ctx, :Pod; resourceversion="0")` reaches the server *today*.
+  Only the documented spelling is dropped. The trap is that the two spellings
+  differ by one underscore and one of them silently does nothing.
+- **`get` cannot be fixed by forwarding.** k8s's OpenAPI document declares only
+  `pretty` on read operations — no `resourceVersion`, even though the apiserver
+  honours it. Sending it needs a **seventh patch rule** and therefore a full
+  regeneration. The alternative is routing a versioned single read through the
+  list operation with a `metadata.name` field selector, which `get`'s watch path
+  already does for its own reasons.
+
+This matters to `K8sReflector`, which passes `resource_version` to `Kuber.get`
+(`K8sReflector.jl:136-141`) to re-read at a known version. That call has never
+done what it reads as — on either branch.
+
+#### G18. List items are a different type from the standalone object
+<!-- A regression from master. Needs a decision: patch rule + regeneration. -->
+
+- [ ] **Decision needed.** Add a seventh patch rule collapsing
+      `{"allOf": [{"$ref": X}], "default": {}}` to `{"$ref": X}` for array
+      items, and regenerate — or accept the split and tell consumers to stop
+      comparing types.
+
+*Found 2026-08-14 while writing [G11](#g11-items-and-metadataresourceversion-off-a-real-list),
+by an assertion that looked too obvious to fail.*
+
+```julia
+item = list(ctx, :Pod; namespace="kube-system").items[1]
+typeof(item)                            # IoK8sApiCoreV1PodListItemsItem
+item isa Kuber.kind_to_type(ctx, :Pod)  # false
+```
+
+**On `master`, `PodList.items` is `Vector{IoK8sApiCoreV1Pod}`** — the same type
+as a standalone Pod — so this is a regression, not an inherited quirk. It
+applies to **every list kind in every group module**, checked on `PodList`,
+`ServiceList`, `NamespaceList`, `SecretList`, `ConfigMapList` and
+`DeploymentList`.
+
+**Cause.** The k8s document writes the element schema as an `allOf` wrapper with
+a sibling keyword rather than a bare reference:
+
+```json
+"items": {"allOf": [{"$ref": "#/components/schemas/io.k8s.api.core.v1.Pod"}],
+          "default": {}}
+```
+
+A `$ref` with siblings is a *new* schema, so the generator mints one and names
+it after its position. The `"default": {}` is meaningless on an object
+reference, which puts this in exactly the same class as the six existing patch
+rules: the document says something it does not mean.
+
+**What still works, and what does not.** Field names are identical and the
+nested types are shared (`item.spec` is `IoK8sApiCoreV1PodSpec2`, the same type
+the standalone Pod's `spec` has), so every *read* through a list item behaves
+correctly — which is why G6, G13 and G4 all passed without noticing. What breaks
+is type identity:
+
+- `isa(x, kind_to_type(ctx, :Pod))` — `JuliaRun/src/kubernetes/api.jl:1418`
+  compares `Tw === Kuber.kind_to_type(cm.ctx, "ReplicaSet")` on an object that
+  came out of a list.
+- any consumer signature typed on a generated model that is fed from a list.
+- `kuber_kind(item)` is `""`, so the object forms of `delete!`/`update!` reject a
+  list item (`ArgumentError: kind must be specified`). This half is **not** a
+  regression — k8s never populates `kind` on list items, and master read the
+  same absent field — but it is worth knowing, because "list it, then delete it"
+  is an obvious thing to write.
+
+**Fixing it is a regeneration**, so it is the same class of decision as
+[G17](#g17-resource_version-is-accepted-and-ignored-on-non-watch-reads) and
+should be taken together with it. The upside beyond correctness: one fewer
+generated type per list kind.
 
 ---
 
@@ -606,9 +1114,31 @@ JobLoops has 14 `update!` call sites; the live suite patches one Deployment with
    custom-metrics helpers are reimplemented. What remains is one capture of
    `custom.metrics.k8s.io/v1beta1` on a cluster running an adapter, and
    regenerating `JuliaHubK8sApi` around it.
-5. Widen the live suite, cheapest first: **G13**, then G6 kinds, G9/G10/G11 data
-   shapes, G4 selector-scoped all-namespaces watch, G2 caller-driven re-watch.
+5. Widen the live suite, cheapest first: ~~**G13**~~, ~~**G4**~~, ~~**G6**~~,
+   ~~**G9/G10/G11**~~, ~~**G2**~~ and ~~**G3**~~ all done. **G16** is done too,
+   and turned into [C8](#c8-json-patches-did-not-encode-at-all); **G10** turned
+   into [G17](#g17-resource_version-is-accepted-and-ignored-on-non-watch-reads),
+   which needs a decision before it can be scheduled.
+
+   **The watch-contract cluster — the one flagged highest-risk — is now closed**
+   (G1–G4 all ticked), except for the reflector port under G2 and the
+   deliberately-deferred G5. What is left in Part 2 is the cheap remainder:
+   ~~G7~~, ~~G8~~ and ~~G14~~ done; G5, G12/G12a.
 6. **C1d** deferred until a CRD actually needs addressing.
+
+7. **G17**, **G18**, **G19** and **G20** all need a decision before they can be
+   scheduled. G17/G18 are cheapest taken together — G18 needs a patch rule and a
+   regeneration, G17's `get` half may need one too, and a regeneration is the
+   expensive part either way. G19/G20 are both retry-policy changes in
+   `src/helpers.jl` and are also cheapest together, since G20's `retry=false`
+   decision changes what G19's fix would even mean.
+
+Four of the five widening items produced a finding rather than just coverage
+(C8, G12a, G17, G18), which is the argument for continuing to spend on the live
+suite: what it buys is not the assertions, it is what writing them turns up.
+G6 is the counter-example and a useful one — seven new kinds, no new patch rule.
+G18 is the sharpest case: it was found by an assertion too obvious to be worth
+writing, in a testset whose stated purpose was to check something else.
 
 ---
 

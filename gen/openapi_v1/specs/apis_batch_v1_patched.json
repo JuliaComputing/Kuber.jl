@@ -6112,6 +6112,13 @@
             "type": "string"
           }
         ]
+      },
+      "io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch": {
+        "description": "A JSON Patch document (RFC 6902): the sequence of operations to apply to the target object.",
+        "type": "array",
+        "items": {
+          "type": "object"
+        }
       }
     },
     "securitySchemes": {
@@ -7196,7 +7203,7 @@
             },
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"
               }
             },
             "application/merge-patch+json": {
@@ -7515,7 +7522,7 @@
             },
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"
               }
             },
             "application/merge-patch+json": {
@@ -8410,7 +8417,7 @@
             },
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"
               }
             },
             "application/merge-patch+json": {
@@ -8729,7 +8736,7 @@
             },
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.Patch"
+                "$ref": "#/components/schemas/io.k8s.apimachinery.pkg.apis.meta.v1.JSONPatch"
               }
             },
             "application/merge-patch+json": {

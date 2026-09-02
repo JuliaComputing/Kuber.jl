@@ -108,6 +108,52 @@ const Runtime = Kuber.Runtime
         @test_throws ArgumentError list(ctx, :Pod, "somepod")
     end
 
+    @testset "patch bodies are typed per media type" begin
+        # k8s documents one object schema for all five patch media types, which
+        # is untrue of json-patch — its body is an array of RFC 6902 operations.
+        # patch_k8s_spec.jq §6 corrects the document, and this is what the
+        # correction has to look like by the time `update!` reads it.
+        apps = R.GROUP_MODULES["apps/v1"]
+        media = R.OP_BODIES[(apps, :patch, :Deployment, :namespaced)]
+        @test length(media) == 5
+        jsonpatch = media["application/json-patch+json"]
+        merge = media["application/merge-patch+json"]
+        @test jsonpatch <: AbstractVector
+        @test !(merge <: AbstractVector)
+        @test merge === media["application/strategic-merge-patch+json"]
+        @test merge === media["application/apply-patch+yaml"]
+        @test merge === media["application/apply-patch+cbor"]
+
+        # a json-patch array decodes into the array body type…
+        ops = [Dict{String,Any}("op" => "replace", "path" => "/spec/replicas", "value" => 2)]
+        decoded = Runtime._decode(jsonpatch, ops, false)
+        @test decoded isa jsonpatch
+        @test length(decoded) == 1
+        @test decoded[1].additional_properties["path"] == "/spec/replicas"
+        # …a nested value survives (JuliaRun's taint patch shape)
+        taint = [Dict{String,Any}("op" => "replace", "path" => "/spec/taints",
+                                  "value" => [Dict("key" => "k", "effect" => "NoSchedule")])]
+        @test Runtime._decode(jsonpatch, taint, false)[1].additional_properties["value"][1]["key"] == "k"
+        # …and the object model still refuses one, which is the break this fixes
+        @test_throws Runtime.DecodeError Runtime._decode(merge, ops, false)
+
+        # a merge patch stays an object
+        @test Runtime._decode(merge, Dict("spec" => Dict("replicas" => 2)), false) isa merge
+
+        ctx = KuberContext()
+        ctx.initialized = true
+        ctx.modelapi[:Deployment] = apps
+        e = try
+            update!(ctx, :Deployment, "d", Dict("spec" => Dict()), "application/json")
+        catch ex
+            ex
+        end
+        @test e isa ArgumentError
+        @test occursin("unsupported patch type", e.msg)
+        # the message lists what the API does document, in a stable order
+        @test occursin("application/apply-patch+cbor, application/apply-patch+yaml", e.msg)
+    end
+
     @testset "module resolution" begin
         ctx = KuberContext()
         ctx.initialized = true                      # pretend discovery ran

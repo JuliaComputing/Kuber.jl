@@ -23,7 +23,7 @@ operations no longer reachable.
 """
 const BUILTIN_MODULES = Set{Module}(keys(MODULE_GVS))
 
-_empty_bodies() = Dict{Tuple{Module,Symbol,Symbol,Symbol},Tuple{Type,Vector{String}}}()
+_empty_bodies() = Dict{Tuple{Module,Symbol,Symbol,Symbol},Dict{String,Type}}()
 
 """
     Kuber.register!(source::Module) -> Vector{Module}
@@ -44,7 +44,7 @@ which is what [`unregister!`](@ref) undoes.
 | `KIND_TYPES` | `Dict{Tuple{String,String},Type}` | (apiVersion, kind) → model type |
 | `OPS` | `Dict{Tuple{Module,Symbol,Symbol,Symbol},Function}` | (module, verb, kind, scope) → operation |
 | `OP_PARAMS` | `Dict{…,Vector{Symbol}}` | positional argument names, path order, `:body` last |
-| `OP_BODIES` | `Dict{…,Tuple{Type,Vector{String}}}` | request body type and its media types |
+| `OP_BODIES` | `Dict{…,Dict{String,Type}}` | request media type → body type, for operations with a required body |
 
 `verb` is one of `$(join(_VERBS, ", "))` and `scope` one of `$(join(_SCOPES, ", "))`.
 
@@ -186,8 +186,13 @@ function _check_registration(group_modules, module_gvs, kind_types, ops, op_para
                 "OP_PARAMS[$key] takes a :body, which :$verb does not send"))
         end
     end
-    for key in keys(op_bodies)
+    for (key, media) in op_bodies
         haskey(ops, key) || throw(ArgumentError("OP_BODIES has an entry for $key with no matching OPS entry"))
+        media isa AbstractDict && !isempty(media) || throw(ArgumentError(
+            "OP_BODIES[$key] must map at least one media type to a body type, got $(typeof(media))"))
+        for (m, T) in media
+            T isa Type || throw(ArgumentError("OP_BODIES[$key][$m] is a $(typeof(T)), not a Type"))
+        end
     end
 
     # ── does not contradict what is already registered ─────────────────────
