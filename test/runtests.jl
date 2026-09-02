@@ -8,6 +8,17 @@ include("registry.jl")
 include("helpers.jl")
 include("simpleapi.jl")
 
+# Watch recovery runs against a fake apiserver, so it is offline too. It waits on
+# real timing (a first event that has to compile the whole decode path, then
+# several re-establishments), which costs about half a minute, and it covers the
+# watch acceptance criteria nothing else does — stop, re-watch, truncation,
+# expiry, backoff. On by default; set KUBER_SKIP_WATCH_RECOVERY=1 to skip it.
+if get(ENV, "KUBER_SKIP_WATCH_RECOVERY", "0") == "1"
+    @warn "skipping test/watch_recovery.jl (KUBER_SKIP_WATCH_RECOVERY=1)"
+else
+    include("watch_recovery.jl")
+end
+
 # The rest is an integration suite: it creates and deletes real objects against a
 # live API server. Point it at a `kubectl proxy` (CI uses kind + kubectl proxy;
 # local runs used k3s v1.35.4 on port 8801).

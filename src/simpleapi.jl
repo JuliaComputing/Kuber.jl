@@ -248,7 +248,8 @@ The retry semantics here are dictated by what the runtime actually does (see
   which is what Kuber #68 asks for
 - the consumer closing the public stream is therefore the *only* stop signal
   (Kuber #67/#68): it makes `put!` throw and `isopen` false
-- a truncated item closes the raw channel with a `DecodeError`; re-establish
+- a truncated item closes the raw channel with a `DecodeError`, and a connection
+  aborted mid-chunk with an HTTP.jl error; re-establish for both
 - `410 Gone` is not an `ApiError`: k8s answers an expired `resourceVersion` with
   an in-stream `ERROR` event, and the protocol's answer is to start over
   without one
@@ -261,6 +262,7 @@ function _pump_watch(ctx::KuberWatchContext, mod::Module, op::Function, params::
     options = _call_options(ctx; watch = true)
     args = _positional(params, namespace, name, nothing)
 
+    idle_restarts = 0
     while isopen(eventstream)
         raw = KuberEventStream(buffersize)
         rvkwargs = rv === nothing ? NamedTuple() : (; resourceversion = rv)
@@ -274,7 +276,21 @@ function _pump_watch(ctx::KuberWatchContext, mod::Module, op::Function, params::
             rethrow()
         end
 
+        # Abort the transfer promptly when the consumer stops the watch. The pump
+        # below blocks waiting for the next frame, which on a quiet resource can
+        # be a long time — long enough that noticing the stop only on the next
+        # frame would leave `watch()` hanging, and would keep the `@sync` in
+        # `watch(streamprocessor, ...)` alive after the processor died, which is
+        # the deaf watch Kuber #67 fixed.
+        stopwatcher = @async begin
+            while isopen(eventstream) && isopen(raw)
+                sleep(0.25)
+            end
+            isopen(raw) && close(raw)
+        end
+
         expired = false
+        delivered = 0
         try
             for item in raw
                 event = _to_event(item)
@@ -283,17 +299,52 @@ function _pump_watch(ctx::KuberWatchContext, mod::Module, op::Function, params::
                     break
                 end
                 put!(eventstream, event)
+                delivered += 1
                 seen = _resource_version(event.object)
                 seen === nothing || (rv = seen)
             end
         catch e
             # the consumer closing the public stream is a stop, not a failure
             (isopen(eventstream) && !(e isa InvalidStateException)) || return nothing
-            e isa Runtime.DecodeError || rethrow()
+            # Otherwise the stream died under us. A truncated item surfaces as a
+            # DecodeError; a connection aborted mid-chunk surfaces as an HTTP.jl
+            # error (`HTTP.ParseError: unexpected EOF while reading HTTP/1 data`),
+            # which is the same failure `k8s_retry_cond` would retry on a
+            # buffered call — so recover from both rather than killing the watch.
+            (e isa Runtime.DecodeError || k8s_retry_cond(nothing, e)[2]) || rethrow()
         finally
-            isopen(raw) && close(raw)
+            isopen(raw) && close(raw)    # also releases the stop watcher
+            try
+                wait(stopwatcher)        # never at the expense of the real error
+            catch
+            end
         end
         expired && (rv = nothing)      # start over: our resourceVersion is too old
+
+        # A watch that established and then ended without delivering anything is
+        # not a failure, so `k8s_retry` above never sees it and nothing throttles
+        # the next attempt. Back off, or a server that keeps closing empty
+        # streams — an unservable resourceVersion, a proxy dropping long
+        # connections — turns this loop into a hot one against the apiserver.
+        if delivered == 0
+            idle_restarts += 1
+            _backoff(eventstream, min(0.25 * 2.0^min(idle_restarts - 1, 5), 8.0))
+        else
+            idle_restarts = 0
+        end
+    end
+    return nothing
+end
+
+"""
+    _backoff(eventstream, seconds)
+
+Wait, but give up as soon as the consumer stops the watch.
+"""
+function _backoff(eventstream, seconds)
+    deadline = time() + seconds
+    while isopen(eventstream) && time() < deadline
+        sleep(min(0.1, deadline - time()))
     end
     return nothing
 end
@@ -385,10 +436,14 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
         resource_version = _resource_version(result)
         push_initial && put!(ctx.stream, result)
     end
-    # a read op has no watch mode; watch the collection and let the caller filter
+    # A read op has no watch mode — only collections do — so watch the collection
+    # narrowed to this one object, preserving any field selector the caller gave
+    # (k8s ANDs comma-separated selectors).
     _, listop, listparams, listscope = _find_op(mod, :list, O, namespace)
+    selector = haskey(callkwargs, :fieldselector) ?
+               "$(callkwargs.fieldselector),metadata.name=$name" : "metadata.name=$name"
     return _pump_watch(ctx, mod, listop, listparams, listscope === :namespaced ? namespace : nothing,
-                       nothing, merge(callkwargs, (; fieldselector = "metadata.name=$name")),
+                       nothing, merge(callkwargs, (; fieldselector = selector)),
                        resource_version; max_tries = Int(max_tries), buffersize = buffersize)
 end
 

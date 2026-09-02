@@ -1,5 +1,16 @@
 # Kuber.jl on OpenAPI.jl 1.0 — trial branch plan and instructions
 
+> **This plan has been implemented. Read
+> [`OpenAPIv1TrialResults.md`](OpenAPIv1TrialResults.md) alongside it — that
+> file records what the branch actually does and is current where the two
+> disagree.** Implementation and measurement contradicted the plan in five
+> places, all documented there: the patch list grew from three rules to five,
+> `OPS` is keyed by module (§2.4's 3-tuple cannot express two shipped versions of
+> one kind), the `isopen(stream)` retry guard of §4.3 left the retry path
+> entirely (the watch call returns at the response head, so it is never the
+> in-flight call), and 410 Gone is an in-stream `ERROR` event rather than an
+> `ApiError` (§4.3, §5.3).
+
 **Status: implementation plan, written 2026-08-13.** Companion to
 [`OpenAPIv1RewriteNotes.md`](OpenAPIv1RewriteNotes.md) (the evaluation findings)
 and [`gen/openapi_v1_prototype/`](gen/openapi_v1_prototype/) (runnable

@@ -165,6 +165,23 @@ const POD_JSON = """{
         @test tries == 1
     end
 
+    @testset "watch-stream failures are recoverable" begin
+        # The watch pump re-establishes when the raw channel dies with either a
+        # DecodeError (a truncated item) or anything k8s_retry_cond accepts. The
+        # case that matters is a connection aborted mid-chunk — an apiserver
+        # restart or network drop — which HTTP.jl reports as a ParseError. Before
+        # this was classified as recoverable the pump rethrew it and the watch
+        # died, which is precisely what Kuber #68 is about.
+        recoverable(e) = e isa Runtime.DecodeError || Kuber.k8s_retry_cond(nothing, e)[2]
+
+        @test recoverable(HTTP.ParseError("unexpected EOF while reading HTTP/1 data"))
+        @test recoverable(Runtime.DecodeError("streaming response ended with a truncated item"))
+        @test recoverable(HTTP.ConnectError("127.0.0.1:8801", ErrorException("refused")))
+        @test recoverable(EOFError())
+        # but a deliberate cancellation is not a failure to recover from
+        @test !recoverable(HTTP.CanceledError("cancelled"))
+    end
+
     @testset "request options and timeouts" begin
         ctx = KuberContext()
         @test get_request_options(ctx) == NamedTuple()
