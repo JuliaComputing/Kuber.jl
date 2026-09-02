@@ -16,6 +16,8 @@ only.
 ```sh
 # 1. fetch pristine group documents from a kubernetes/kubernetes release tag
 ./gen/openapi_v1/fetch_specs.sh v1.35.4
+#    …and capture what a release tag cannot carry, from a cluster that serves it
+./gen/openapi_v1/fetch_specs.sh --from-cluster metrics.k8s.io/v1beta1
 
 # 2. patch them (nullable Time/MicroTime/arrays — see patch_k8s_spec.jq)
 for f in gen/openapi_v1/specs/*.json; do
@@ -33,7 +35,7 @@ julia --project gen/openapi_v1/emit_registry.jl
 julia --project test/registry.jl
 ```
 
-Steps 3 and 4 each run the planner over all 17 documents, which is why step 4
+Steps 3 and 4 each run the planner over all 18 documents, which is why step 4
 costs about as much as step 3 twice over. That is deliberate: the registry
 reads generated identifiers off the planner instead of reimplementing its
 naming rules, and the two passes are deterministic for a pinned commit. A
@@ -41,8 +43,8 @@ drift between them shows up immediately in step 5 as an `UndefVarError`.
 
 ## What is checked in, and why
 
-The pristine specs, the patched specs, `SPECS_ORIGIN`, and the generated
-modules are all committed. Together they make the generated layer reproducible
+The pristine specs, the patched specs, `SPECS_ORIGIN`/`SPECS_CAPTURED`, and the
+generated modules are all committed. Together they make the generated layer reproducible
 and auditable — a reviewer can rerun fetch → patch → generate and get the same
 tree — and nothing is generated at install time.
 
@@ -50,13 +52,30 @@ tree — and nothing is generated at install time.
 
 Append it to `K8S_GROUPS` in `fetch_specs.sh`, then rerun the chain. The group
 set is currently the minimum the test suite needs; generating a subset keeps
-the checked-in module size down (~23 MiB for 17 groups, core v1 alone is
+the checked-in module size down (~23 MiB for 18 groups, core v1 alone is
 6.5 MiB).
 
-Two things upstream release tags deliberately do not carry, both out of trial
-scope: CRD-backed groups and aggregated APIs like `metrics.k8s.io` (served by
-metrics-server, not the apiserver). Both would be captured from a reference
-cluster's `/openapi/v3/apis/<group>/<version>` instead.
+Two things upstream release tags do not carry, because they are not part of
+Kubernetes: aggregated APIs (`metrics.k8s.io` is served by metrics-server,
+`custom.metrics.k8s.io` by an adapter) and CRD-backed groups. A live apiserver
+serves a real OpenAPI 3.0.0 document for each of them at
+`/openapi/v3/apis/<group>/<version>`, so `fetch_specs.sh --from-cluster` is the
+second source mode. Its provenance lands in `SPECS_CAPTURED` rather than
+`SPECS_ORIGIN` — separate files, so neither mode clobbers the other's record,
+and because a captured document is only as reproducible as the cluster it came
+from, which is worth stating plainly.
+
+`metrics.k8s.io/v1beta1` is shipped this way. The existing patch rules covered
+it unchanged and strict generation passed first time; the only wrinkle was
+cosmetic, since the apiserver serves compact JSON and the capture normalizes it
+through `jq .` so the two sources diff alike.
+
+**What to capture is a judgement, not a default.** A group belongs in Kuber when
+any user of the API could plausibly have it: metrics-server is near-universal,
+and the 0.2.x line shipped `metrics.k8s.io` too. A group that exists only in one
+deployment — operator CRDs, an adapter's `custom.metrics.k8s.io` — belongs in
+that deployment's own package instead, registered through `Kuber.register!`
+(see the top-level README). Kuber ships to people who do not have those.
 
 ## Strict mode stays on
 

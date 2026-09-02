@@ -165,6 +165,38 @@ const POD_JSON = """{
         @test tries == 1
     end
 
+    @testset "is_retryable is the public face of that classification" begin
+        # Consumers used OpenAPI.Clients.is_request_interrupted, which OpenAPI.jl
+        # 1.0 does not have. This is the supported replacement, so it is pinned
+        # as public behaviour rather than left as an internal detail.
+        @test is_retryable(KuberException(503, "boom", nothing, nothing))
+        @test is_retryable(HTTP.ConnectError("127.0.0.1:1", ErrorException("refused")))
+        @test !is_retryable(KuberException(404, "gone", nothing, nothing))
+        @test !is_retryable(HTTP.CanceledError("cancelled"))
+        @test !is_retryable(ErrorException("something else"))
+        @test !is_retryable(Runtime.DecodeError("truncated"))
+
+        # It has to work on what `watch` actually throws: @sync wraps a failed
+        # task's exception in a TaskFailedException, inside a CompositeException.
+        function failed_task(e)
+            t = @task throw(e)
+            schedule(t)
+            try
+                wait(t)
+            catch ex
+                return ex          # a TaskFailedException
+            end
+        end
+        wrapped = failed_task(KuberException(503, "boom", nothing, nothing))
+        @test wrapped isa TaskFailedException
+        @test is_retryable(wrapped)
+        @test is_retryable(CompositeException([wrapped]))
+        @test !is_retryable(failed_task(KuberException(404, "gone", nothing, nothing)))
+
+        # two independent failures have no single cause to classify
+        @test !is_retryable(CompositeException([wrapped, wrapped]))
+    end
+
     @testset "watch-stream failures are recoverable" begin
         # The watch pump re-establishes when the raw channel dies with either a
         # DecodeError (a truncated item) or anything k8s_retry_cond accepts. The

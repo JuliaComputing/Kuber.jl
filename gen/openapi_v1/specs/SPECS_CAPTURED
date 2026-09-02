@@ -1,0 +1,7 @@
+source: live cluster (aggregated APIs and CRD groups are not in release-tag specs)
+path:   /openapi/v3/apis/<group>/<version>
+server: v1.35.4+k3s1
+context: default
+captured: 2026-08-14T06:56:13Z
+files:
+db2e242348df6877618a2c03f1b3e6f0489dcdcafb523f07ceb9e0452920cbc6  apis_metrics.k8s.io_v1beta1.json

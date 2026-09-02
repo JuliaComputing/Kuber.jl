@@ -1,10 +1,25 @@
-> **Not available on the `openapi-v1-trial` branch.** `metrics.k8s.io` is
-> served by metrics-server and `custom.metrics.k8s.io` by an adapter, so neither
-> appears in the upstream Kubernetes OpenAPI documents this branch generates
-> from; both would have to be captured from a cluster that serves them. The
-> `:NodeMetrics`/`:PodMetrics`/`:MetricValue` kinds are therefore unknown here,
-> and `list_custom_metrics`/`list_namespaced_custom_metrics` throw a clear
-> error. See OpenAPIv1TrialBranchPlan.md §0.
+> **Status on the `openapi-v1-trial` branch.** Neither API appears in the
+> upstream Kubernetes OpenAPI documents this branch generates from — they are
+> served by metrics-server and by a metrics adapter, not by the apiserver — so
+> both have to be captured from a cluster that serves them
+> (`gen/openapi_v1/fetch_specs.sh --from-cluster <group>/<version>`).
+>
+> - **Node and pod metrics work.** `metrics.k8s.io/v1beta1` was captured from a
+>   k3s v1.35.4 cluster and is shipped, so `:NodeMetrics` and `:PodMetrics`
+>   behave as below on any cluster running metrics-server.
+> - **Custom metrics need the group plugged in.** `custom.metrics.k8s.io` has no
+>   fixed home — it exists only where an adapter (prometheus-adapter and the
+>   like) is installed — so nothing is shipped for it. Capture it from a cluster
+>   that serves it and register the generated module with
+>   [`Kuber.register!`](README.md#adding-api-groups-kuber-does-not-ship); the
+>   `list_custom_metrics`/`list_namespaced_custom_metrics` helpers then work as
+>   documented below.
+>
+> Two reading differences from the output shown here, which predates the
+> rewrite: values come back as typed models rather than JSON, and `usage` is a
+> k8s string map, so it is read with `kuber_props` and each entry is a
+> `Quantity` whose string is in `.value` —
+> `kuber_props(node.usage)["cpu"].value`.
 
 Kubernetes Metrics and Custom Metrics APIs generalize consumption of metrics published by the cluster and applications running within it.
 

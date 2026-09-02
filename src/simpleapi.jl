@@ -24,7 +24,8 @@ function _resolve_module(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol,
     kubectx.initialized || set_api_versions!(kubectx; max_tries = max_tries)
     if apiversion !== nothing
         mod = get(GROUP_MODULES, apiversion, nothing)
-        mod === nothing && throw(ArgumentError("this build of Kuber does not include $apiversion"))
+        mod === nothing && throw(ArgumentError(
+            "no API module is registered for $apiversion (out-of-tree groups plug in through Kuber.register!)"))
         return mod
     end
     mod = get(kubectx.modelapi, O, nothing)
@@ -69,22 +70,35 @@ spec (`OP_PARAMS`): path parameters in path order, so the namespace comes
 """
 function _positional(params::Vector{Symbol}, namespace, name, body)
     args = Any[]
+    named = count(p -> p !== :namespace && p !== :body, params)
+    named <= 1 || throw(ArgumentError(
+        "operations with more than one non-namespace path parameter are not addressable " *
+        "through the verb API: $params"))
     for p in params
         if p === :namespace
             namespace === nothing && throw(ArgumentError("a namespace is required for this operation"))
             push!(args, String(namespace))
-        elseif p === :name
-            name === nothing && throw(ArgumentError("a name is required for this operation"))
-            push!(args, String(name))
         elseif p === :body
             body === nothing && throw(ArgumentError("a request body is required for this operation"))
             push!(args, body)
         else
-            throw(ArgumentError("unsupported path parameter $p"))
+            # `:name` for everything the apiserver serves, but a group Kuber does
+            # not ship can name it something else — custom.metrics.k8s.io calls
+            # it `compositemetricname`. There is only ever one, so the name
+            # argument fills whichever it is.
+            name === nothing && throw(ArgumentError("a $p is required for this operation"))
+            push!(args, String(name))
         end
     end
     return args
 end
+
+"""
+    _takes_name(params) -> Bool
+
+Whether an operation has a path parameter the `name` argument can fill.
+"""
+_takes_name(params::Vector{Symbol}) = any(p -> p !== :namespace && p !== :body, params)
 
 """
     _op_kwargs(kwargs) -> NamedTuple
@@ -173,6 +187,11 @@ end
 
 Stream watch events for kind `O` onto `outstream`. Unlike the `watch(fn, ...)`
 form this emits only events, with no initial list result.
+
+That also means no resync frame after an expired `resourceVersion` (see
+[`list`](@ref)): the watch recovers, but the consumer is not told what it missed
+while it was gone. A consumer maintaining a cache wants the list frames — use
+`watch(fn, ctx)` and drive `list` yourself.
 """
 function watch(ctx::KuberContext, O::Symbol, outstream::Channel; kwargs...)
     list(KuberWatchContext(ctx, outstream), O; watch = true, push_initial = false, kwargs...)
@@ -232,6 +251,47 @@ function _to_event(item)
 end
 
 """
+    _resync(ctx, client, op, args, callkwargs; max_tries, push_initial) -> (rv, stopped)
+
+Recover from an expired `resourceVersion` by listing again, and deliver that
+list to the consumer as a resync frame.
+
+Watching from no `resourceVersion` at all would be simpler, and is what this did
+first, but it is wrong for anything maintaining a cache: k8s replays current
+state as synthetic `ADDED` events, so a consumer hears about everything that
+still exists and never hears about what was **deleted while the watch was gone**.
+Those entries would survive in its store for the lifetime of the process.
+
+Listing instead gets complete state in one object plus a `resourceVersion` to
+resume from, with no replay — the same answer client-go's reflector gives. The
+list is pushed onto the stream exactly as the initial one was, which is what
+makes the contract a single rule: *a list object means complete current state,
+so discard anything cached that is not in it.*
+
+`push_initial=false` says the consumer wants events only, and is honoured here
+too: it still gets the recovery, but not the state, and has to track expiry
+itself.
+
+Returns the fresh `resourceVersion` and whether the consumer stopped the watch
+while this was happening.
+"""
+function _resync(ctx::KuberWatchContext, client, op::Function, args::Vector,
+                 callkwargs::NamedTuple; max_tries::Int, push_initial::Bool)
+    result = k8s_retry(; max_tries = max_tries) do
+        _call(op, args...; client, request_options = _call_options(ctx), callkwargs...)
+    end
+    if push_initial
+        try
+            put!(ctx.stream, result)
+        catch e
+            e isa InvalidStateException || rethrow()
+            return (nothing, true)          # the consumer closed the stream
+        end
+    end
+    return (_resource_version(result), false)
+end
+
+"""
     _pump_watch(ctx, mod, op, params, namespace, name, callkwargs, rv; max_tries, buffersize)
 
 Stream watch events onto `ctx.stream` until the consumer stops the watch,
@@ -251,12 +311,14 @@ The retry semantics here are dictated by what the runtime actually does (see
 - a truncated item closes the raw channel with a `DecodeError`, and a connection
   aborted mid-chunk with an HTTP.jl error; re-establish for both
 - `410 Gone` is not an `ApiError`: k8s answers an expired `resourceVersion` with
-  an in-stream `ERROR` event, and the protocol's answer is to start over
-  without one
+  an in-stream `ERROR` event. The answer is to **list again** and watch from the
+  fresh `resourceVersion`, delivering that list as a resync frame — see
+  `_resync`, and the "watching" section of the README for what a consumer owes
+  it
 """
 function _pump_watch(ctx::KuberWatchContext, mod::Module, op::Function, params::Vector{Symbol},
                      namespace, name, callkwargs::NamedTuple, rv::Union{String,Nothing};
-                     max_tries::Int, buffersize::Int)
+                     max_tries::Int, buffersize::Int, push_initial::Bool = true)
     eventstream = ctx.stream
     client = client_for(ctx, mod)
     options = _call_options(ctx; watch = true)
@@ -319,7 +381,11 @@ function _pump_watch(ctx::KuberWatchContext, mod::Module, op::Function, params::
             catch
             end
         end
-        expired && (rv = nothing)      # start over: our resourceVersion is too old
+        if expired
+            rv, stopped = _resync(ctx, client, op, args, callkwargs; max_tries = max_tries,
+                                  push_initial = push_initial)
+            stopped && return nothing
+        end
 
         # A watch that established and then ended without delivering anything is
         # not a failure, so `k8s_retry` above never sees it and nothing throttles
@@ -353,10 +419,23 @@ end
 
 """
     list(ctx, O; kwargs...)
+    list(ctx, O, name; kwargs...)
 
 List objects of kind `O`. In a watch context (or with `watch=true`) this streams
 the initial list result followed by `KuberEvent`s, and returns only when the
 watch ends.
+
+**A list object on the stream means complete current state.** It is the first
+frame, and it appears again whenever the watch has to resync — when the
+`resourceVersion` expires, Kuber lists again rather than replaying, because a
+replay would never mention what was deleted in the gap. A consumer keeping its
+own cache should discard anything not in that list. `push_initial=false` opts out
+of both frames.
+
+`name` is for the few list operations that take a path parameter of their own —
+`custom.metrics.k8s.io` addresses a metric as
+`list(ctx, :MetricValue, "pods/*/http_requests")`. It is an error to pass one to
+an operation with no such parameter.
 
 Keyword Args:
 - apiversion: force a group version instead of the server's preferred one
@@ -367,7 +446,8 @@ Keyword Args:
 - any parameter the operation documents (`label_selector`, `field_selector`,
   `limit`, `timeout_seconds`, …), snake_case or lowercase
 """
-function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
+function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol,
+        name::Union{String,Nothing} = nothing;
         apiversion::Union{String,Nothing} = nothing,
         namespace::Union{String,Nothing} = _kubectx(ctx).namespace,
         max_tries::Int = retries(ctx, false),
@@ -379,12 +459,14 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
     mod = _resolve_module(ctx, O, apiversion; max_tries = max_tries)
     _, op, params, scope = _find_op(mod, :list, O, namespace)
     scope === :namespaced || (namespace = nothing)
+    (name === nothing || _takes_name(params)) ||
+        throw(ArgumentError("the list operation for $O takes no name"))
     client = client_for(ctx, mod)
     callkwargs = _op_kwargs(kwargs)
 
     result = nothing
     if !watch || resource_version === nothing
-        args = _positional(params, namespace, nothing, nothing)
+        args = _positional(params, namespace, name, nothing)
         result = k8s_retry(; max_tries = max_tries) do
             _call(op, args...; client, request_options = _call_options(ctx), callkwargs...)
         end
@@ -397,8 +479,8 @@ function list(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol;
         # the event protocol's first item is the initial typed List result
         push_initial && put!(ctx.stream, result)
     end
-    return _pump_watch(ctx, mod, op, params, namespace, nothing, callkwargs, resource_version;
-                       max_tries = max_tries, buffersize = buffersize)
+    return _pump_watch(ctx, mod, op, params, namespace, name, callkwargs, resource_version;
+                       max_tries = max_tries, buffersize = buffersize, push_initial = push_initial)
 end
 
 """
@@ -444,7 +526,8 @@ function get(ctx::Union{KuberContext,KuberWatchContext}, O::Symbol, name::String
                "$(callkwargs.fieldselector),metadata.name=$name" : "metadata.name=$name"
     return _pump_watch(ctx, mod, listop, listparams, listscope === :namespaced ? namespace : nothing,
                        nothing, merge(callkwargs, (; fieldselector = selector)),
-                       resource_version; max_tries = Int(max_tries), buffersize = buffersize)
+                       resource_version; max_tries = Int(max_tries), buffersize = buffersize,
+                       push_initial = push_initial)
 end
 
 """
@@ -608,13 +691,53 @@ Returns: String of all log entries, one per line
 """
 get_logs(ctx::KuberContext, pod_name::String; kwargs...) = get(ctx, :PodLog, pod_name; kwargs...)
 
-const _CUSTOM_METRICS_MESSAGE = """
-custom metrics are not available in the OpenAPI 1.0 trial build of Kuber.
-
-The models used to be hand-spliced into the legacy Swagger document; the new \
-pipeline needs an OpenAPI v3 document for custom.metrics.k8s.io/v1beta1, \
-captured from a cluster that serves it (see OpenAPIv1TrialBranchPlan.md §0).\
 """
+    _composite_metric_name(metricname) -> String
+    _composite_metric_name(objecttype, metricname) -> String
+    _composite_metric_name(objecttype, objectname, metricname) -> String
 
-list_namespaced_custom_metrics(args...; kwargs...) = error(_CUSTOM_METRICS_MESSAGE)
-list_custom_metrics(args...; kwargs...) = error(_CUSTOM_METRICS_MESSAGE)
+The path segment `custom.metrics.k8s.io` addresses a metric by:
+`metrics/<metricname>` for every object in the namespace,
+`<objecttype>/*/<metricname>` for every object of a type, and
+`<objecttype>/<objectname>/<metricname>` for one object.
+"""
+_composite_metric_name(metricname::String) = "metrics/" * metricname
+_composite_metric_name(objecttype::String, metricname::String) = objecttype * "/*/" * metricname
+_composite_metric_name(objecttype::String, objectname::String, metricname::String) =
+    objecttype * "/" * objectname * "/" * metricname
+
+"""
+    list_namespaced_custom_metrics(ctx, metricname; kwargs...)
+    list_namespaced_custom_metrics(ctx, objecttype, metricname; kwargs...)
+    list_namespaced_custom_metrics(ctx, objecttype, objectname, metricname; kwargs...)
+
+Read a custom metric for objects in `ctx`'s namespace.
+
+`custom.metrics.k8s.io` addresses a metric by a *composite name* rather than by
+a resource name: `metrics/<metricname>` for every object in the namespace,
+`<objecttype>/*/<metricname>` for every object of a type, and
+`<objecttype>/<objectname>/<metricname>` for one object. These build that name.
+
+The group is served by a metrics adapter (prometheus-adapter and the like), not
+by the apiserver, so it is not in Kubernetes' own OpenAPI documents and Kuber
+does not ship it. Capture it from a cluster that serves it and register it:
+
+```sh
+gen/openapi_v1/fetch_specs.sh --from-cluster custom.metrics.k8s.io/v1beta1
+```
+
+See `Metrics.md`, and [`Kuber.register!`](@ref) for plugging the generated
+module in.
+"""
+list_namespaced_custom_metrics(ctx::KuberContext, args::String...; kwargs...) =
+    list(ctx, :MetricValue, _composite_metric_name(args...); kwargs...)
+
+"""
+    list_custom_metrics(ctx, objecttype, metricname; kwargs...)
+    list_custom_metrics(ctx, objecttype, objectname, metricname; kwargs...)
+
+Read a custom metric for cluster-scoped objects — the same composite naming as
+[`list_namespaced_custom_metrics`](@ref), without a namespace.
+"""
+list_custom_metrics(ctx::KuberContext, objecttype::String, rest::String...; kwargs...) =
+    list(ctx, :MetricValue, _composite_metric_name(objecttype, rest...); namespace = nothing, kwargs...)

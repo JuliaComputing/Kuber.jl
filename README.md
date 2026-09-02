@@ -93,9 +93,21 @@ end
 ```
 
 The watch keeps itself alive: if the connection ends or is dropped, it is
-re-established from the last `resourceVersion` seen, and an expired
-`resourceVersion` starts over from a fresh list. Closing the stream is how a
+re-established from the last `resourceVersion` seen. Closing the stream is how a
 consumer stops a watch.
+
+**A list object on the stream means complete current state.** It is the first
+frame, and it appears again whenever the watch has to resync. That happens when
+the `resourceVersion` expires — the apiserver answers a watch resumed from too
+old a version with an in-stream `ERROR`, and Kuber lists again rather than
+watching from scratch. Watching from scratch would replay everything that
+currently exists as `ADDED` and never mention what was *deleted* while the watch
+was gone, so a consumer's cache would keep phantom entries for the life of the
+process. So: on a list frame, discard anything you cached that is not in it.
+
+`watch(ctx, :Pod, stream)` — the events-only form — opts out of list frames, and
+therefore out of resync state too. It still recovers, but a consumer maintaining
+a cache on that form has to track expiry itself.
 
 ### Helper methods:
 
@@ -111,9 +123,37 @@ Other convenience methods:
 
 - `kuber_type`: identify the Julia type corresponding to a Kubernetes payload
 - `kuber_obj`: instantiate a Julia object from the supplied Kubernetes specification
+- `is_retryable`: whether a failure was transient — the classification Kuber's own retries use, for calls a consumer drives itself. Replaces `OpenAPI.Clients.is_request_interrupted`
 - `kuber_kind`: the Kubernetes kind of an object, read off the value rather than its type
 - `kind_to_type`: the Julia type for a kind, optionally in a specific API version
 - Helper methods for [accessing metrics](Metrics.md) (not available in this trial branch)
+
+### Adding API groups Kuber does not ship:
+
+Kuber ships generated clients for the API groups in a Kubernetes release's own
+OpenAPI documents. Aggregated APIs (`metrics.k8s.io`), CRD-backed groups and
+anything else specific to a cluster are not in there, and are plugged in at load
+time instead:
+
+```julia
+module MyK8sGroups
+using Kuber
+
+include("K8sMetricsK8sIoV1beta1.jl")   # the generated group modules
+include("registry.jl")                 # generated: the six tables, which refer
+                                       # to those modules by name
+
+__init__() = Kuber.register!(@__MODULE__)
+end
+```
+
+`Kuber.register!` merges a generated layer's tables into Kuber's registry, after
+which its kinds work with the ordinary verbs. It has to be called from
+`__init__` — mutations made during precompilation do not persist — and it
+validates the whole registration before merging any of it, so a rejected one
+changes nothing. `Kuber.unregister!` undoes it. See the `Kuber.register!`
+docstring for the table shapes and for how a kind name served by two groups
+resolves.
 
 ### References:
 - API conventions: https://github.com/kubernetes/community/blob/master/contributors/devel/api-conventions.md

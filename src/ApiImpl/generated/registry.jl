@@ -2,7 +2,7 @@
 # gen/openapi_v1/specs. Do not edit — rerun the pipeline instead
 # (fetch_specs.sh -> patch_k8s_spec.jq -> generate.jl -> emit_registry.jl).
 #
-# Kubernetes v1.35.4, 17 group modules.
+# Kubernetes v1.35.4, 18 group modules.
 
 """
 Group-version string (a k8s `apiVersion`) to the generated module serving it.
@@ -18,6 +18,7 @@ const GROUP_MODULES = Dict{String,Module}(
     "coordination.k8s.io/v1" => K8sCoordinationK8sIoV1,
     "discovery.k8s.io/v1" => K8sDiscoveryK8sIoV1,
     "events.k8s.io/v1" => K8sEventsK8sIoV1,
+    "metrics.k8s.io/v1beta1" => K8sMetricsK8sIoV1beta1,
     "networking.k8s.io/v1" => K8sNetworkingK8sIoV1,
     "node.k8s.io/v1" => K8sNodeK8sIoV1,
     "policy/v1" => K8sPolicyV1,
@@ -41,6 +42,7 @@ const MODULE_GVS = Dict{Module,String}(
     K8sCoordinationK8sIoV1 => "coordination.k8s.io/v1",
     K8sDiscoveryK8sIoV1 => "discovery.k8s.io/v1",
     K8sEventsK8sIoV1 => "events.k8s.io/v1",
+    K8sMetricsK8sIoV1beta1 => "metrics.k8s.io/v1beta1",
     K8sNetworkingK8sIoV1 => "networking.k8s.io/v1",
     K8sNodeK8sIoV1 => "node.k8s.io/v1",
     K8sPolicyV1 => "policy/v1",
@@ -108,6 +110,10 @@ const KIND_TYPES = Dict{Tuple{String,String},Type}(
     ("events.k8s.io/v1", "Event") => K8sEventsK8sIoV1.IoK8sApiEventsV1Event,
     ("events.k8s.io/v1", "EventList") => K8sEventsK8sIoV1.IoK8sApiEventsV1EventList,
     ("events.k8s.io/v1", "WatchEvent") => K8sEventsK8sIoV1.IoK8sApimachineryPkgApisMetaV1WatchEvent,
+    ("metrics.k8s.io/v1beta1", "NodeMetrics") => K8sMetricsK8sIoV1beta1.IoK8sMetricsPkgApisMetricsV1beta1NodeMetrics,
+    ("metrics.k8s.io/v1beta1", "NodeMetricsList") => K8sMetricsK8sIoV1beta1.IoK8sMetricsPkgApisMetricsV1beta1NodeMetricsList,
+    ("metrics.k8s.io/v1beta1", "PodMetrics") => K8sMetricsK8sIoV1beta1.IoK8sMetricsPkgApisMetricsV1beta1PodMetrics,
+    ("metrics.k8s.io/v1beta1", "PodMetricsList") => K8sMetricsK8sIoV1beta1.IoK8sMetricsPkgApisMetricsV1beta1PodMetricsList,
     ("networking.k8s.io/v1", "DeleteOptions") => K8sNetworkingK8sIoV1.IoK8sApimachineryPkgApisMetaV1DeleteOptions,
     ("networking.k8s.io/v1", "IPAddress") => K8sNetworkingK8sIoV1.IoK8sApiNetworkingV1IPAddress,
     ("networking.k8s.io/v1", "IPAddressList") => K8sNetworkingK8sIoV1.IoK8sApiNetworkingV1IPAddressList,
@@ -365,6 +371,11 @@ const OPS = Dict{Tuple{Module,Symbol,Symbol,Symbol},Function}(
     (K8sEventsK8sIoV1, :list, :Event, :namespaced) => K8sEventsK8sIoV1.listeventsv1namespacedevent,
     (K8sEventsK8sIoV1, :patch, :Event, :namespaced) => K8sEventsK8sIoV1.patcheventsv1namespacedevent,
     (K8sEventsK8sIoV1, :replace, :Event, :namespaced) => K8sEventsK8sIoV1.replaceeventsv1namespacedevent,
+    (K8sMetricsK8sIoV1beta1, :get, :NodeMetrics, :cluster) => K8sMetricsK8sIoV1beta1.readmetricsv1beta1nodemetrics,
+    (K8sMetricsK8sIoV1beta1, :get, :PodMetrics, :namespaced) => K8sMetricsK8sIoV1beta1.readmetricsv1beta1namespacedpodmetrics,
+    (K8sMetricsK8sIoV1beta1, :list, :NodeMetrics, :cluster) => K8sMetricsK8sIoV1beta1.listmetricsv1beta1nodemetrics,
+    (K8sMetricsK8sIoV1beta1, :list, :PodMetrics, :allns) => K8sMetricsK8sIoV1beta1.listmetricsv1beta1podmetricsforallnamespaces,
+    (K8sMetricsK8sIoV1beta1, :list, :PodMetrics, :namespaced) => K8sMetricsK8sIoV1beta1.listmetricsv1beta1namespacedpodmetrics,
     (K8sNetworkingK8sIoV1, :create, :IPAddress, :cluster) => K8sNetworkingK8sIoV1.createnetworkingv1ipaddress,
     (K8sNetworkingK8sIoV1, :create, :Ingress, :namespaced) => K8sNetworkingK8sIoV1.createnetworkingv1namespacedingress,
     (K8sNetworkingK8sIoV1, :create, :IngressClass, :cluster) => K8sNetworkingK8sIoV1.createnetworkingv1ingressclass,
@@ -835,6 +846,11 @@ const OP_PARAMS = Dict{Tuple{Module,Symbol,Symbol,Symbol},Vector{Symbol}}(
     (K8sEventsK8sIoV1, :list, :Event, :namespaced) => [:namespace],
     (K8sEventsK8sIoV1, :patch, :Event, :namespaced) => [:namespace, :name, :body],
     (K8sEventsK8sIoV1, :replace, :Event, :namespaced) => [:namespace, :name, :body],
+    (K8sMetricsK8sIoV1beta1, :get, :NodeMetrics, :cluster) => [:name],
+    (K8sMetricsK8sIoV1beta1, :get, :PodMetrics, :namespaced) => [:namespace, :name],
+    (K8sMetricsK8sIoV1beta1, :list, :NodeMetrics, :cluster) => Symbol[],
+    (K8sMetricsK8sIoV1beta1, :list, :PodMetrics, :allns) => Symbol[],
+    (K8sMetricsK8sIoV1beta1, :list, :PodMetrics, :namespaced) => [:namespace],
     (K8sNetworkingK8sIoV1, :create, :IPAddress, :cluster) => [:body],
     (K8sNetworkingK8sIoV1, :create, :Ingress, :namespaced) => [:namespace, :body],
     (K8sNetworkingK8sIoV1, :create, :IngressClass, :cluster) => [:body],

@@ -244,6 +244,62 @@ function k8s_retry_cond(s, e, retryable_codes = k8s_retryable_codes)
 end
 
 """
+    _root_cause(e) -> Exception
+
+Dig a real failure out of the wrappers concurrency adds around it.
+`watch(processor, ctx, …)` runs the watched call and the processor under
+`@sync`, so a failure in either reaches the caller as a `CompositeException` of
+`TaskFailedException`s rather than as itself.
+
+A composite carrying more than one exception is left alone: there is no single
+cause to report.
+"""
+_root_cause(e) = e
+_root_cause(e::TaskFailedException) = _root_cause(e.task.result)
+function _root_cause(e::CompositeException)
+    length(e.exceptions) == 1 || return e
+    return _root_cause(e.exceptions[1])
+end
+
+"""
+    is_retryable(e) -> Bool
+
+Whether a failure is transient — an accident worth retrying rather than an
+answer. This is the classification Kuber's own retries use, exposed because
+consumers need to make the same judgement about calls they drive themselves.
+
+It replaces `OpenAPI.Clients.is_request_interrupted`, which does not exist in
+OpenAPI.jl 1.0. Transport failures are HTTP.jl exceptions now, so the rule is
+stated as an exclusion list (see [`k8s_retry_cond`](@ref)): every `HTTP.HTTPError`
+except the ones that are decisions, plus `ApiError`/`KuberException` carrying a
+5xx.
+
+```julia
+try
+    pods = list(ctx, :Pod)
+catch e
+    Kuber.is_retryable(e) || rethrow()
+    ...
+end
+```
+
+Two things it deliberately does not answer:
+
+- **`OpenAPI.Clients.is_longpoll_timeout` has no successor.** Watches on this
+  branch carry no overall deadline (`set_timeout` is not applied to them), so a
+  watch does not end on one — it ends when the consumer closes the stream, and
+  that is not an exception at all.
+- **A `DecodeError` is not retryable here.** A response that does not match the
+  schema is spec drift, not a hiccup. The watch pump separately recovers from a
+  truncated *stream item*, which arrives the same way but means the connection
+  died mid-frame.
+
+Exceptions raised inside a task are unwrapped first, so this works on what
+`watch` actually throws.
+"""
+is_retryable(e) = k8s_retry_cond(nothing, _root_cause(e))[2]
+
+"""
 Retry api call automatically (if `max_tries > 1`) on certain retryable failures.
 Backoff to use when retrying k8s APIs. The default minimum is 2 TPS.
 """

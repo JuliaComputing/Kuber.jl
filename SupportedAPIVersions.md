@@ -16,6 +16,7 @@ Kubernetes API group versions, one module each:
 | `coordination.k8s.io/v1` | `K8sCoordinationK8sIoV1` |
 | `discovery.k8s.io/v1` | `K8sDiscoveryK8sIoV1` |
 | `events.k8s.io/v1` | `K8sEventsK8sIoV1` |
+| `metrics.k8s.io/v1beta1` | `K8sMetricsK8sIoV1beta1` |
 | `networking.k8s.io/v1` | `K8sNetworkingK8sIoV1` |
 | `node.k8s.io/v1` | `K8sNodeK8sIoV1` |
 | `policy/v1` | `K8sPolicyV1` |
@@ -25,6 +26,15 @@ Kubernetes API group versions, one module each:
 
 Generated from the OpenAPI v3 documents of **Kubernetes v1.35.4** — see
 `gen/openapi_v1/specs/SPECS_ORIGIN` for the exact source and checksums.
+
+`metrics.k8s.io/v1beta1` is the exception: it is served by metrics-server rather
+than by the apiserver, so it is absent from the release-tag documents and was
+captured from a live cluster instead (`gen/openapi_v1/specs/SPECS_CAPTURED`).
+Its kinds are only addressable against a cluster that runs metrics-server.
+
+API groups that are not here — other aggregated APIs such as
+`custom.metrics.k8s.io`, and CRD-backed groups — can be captured the same way
+and plugged in with `Kuber.register!` without modifying Kuber; see the README.
 
 Kubernetes schemas do not close their objects, so a client generated for one
 minor tolerates fields *added* by a later server; only contract violations

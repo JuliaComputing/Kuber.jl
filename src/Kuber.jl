@@ -9,9 +9,11 @@ include("ApiImpl/ApiImpl.jl")
 import Base: get, put!, delete!, show, showerror
 
 include("helpers.jl")
+include("register.jl")
 include("simpleapi.jl")
 
 export KuberContext, KuberEvent, KuberException, set_server, set_ns, set_retries
+export is_retryable
 export get_server, get_ns, get_timeout, set_timeout, with_timeout
 export get_request_options, set_request_options
 export kind_to_type, kuber_type, kuber_obj, kuber_kind, kuber_props

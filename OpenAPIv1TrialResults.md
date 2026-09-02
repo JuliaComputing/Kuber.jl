@@ -94,7 +94,7 @@ contradict the plan:
 | --- | --- |
 | retry transport failures "when the watch stream is still open, exactly mirroring today's `isopen(stream)` guard" | the guard left the retry path entirely. The watch call returns at the *response head*, so it can never be the in-flight call being retried; stop-vs-re-watch moved into the watch loop |
 | 410 Gone is an `ApiError` | it is an **in-stream `ERROR` event** carrying `Status(reason=Expired, code=410)`; the HTTP status is 200 |
-| a 410 becomes "a fresh list+watch" | the loop re-watches with **no** `resourceVersion`, which k8s answers with synthetic `ADDED`s for current state. Defensible and simpler, but no second List lands on the stream |
+| a 410 becomes "a fresh list+watch" | true after all, but only since 2026-08-14. The loop first re-watched with **no** `resourceVersion` — simpler, and k8s answers it with synthetic `ADDED`s for current state — until [G1](OpenAPIv1ConsumerGaps.md) showed that hides deletions that happened while the watch was gone. It now lists again and pushes that list as a resync frame |
 
 Because the call returns at the response head, `list`'s watch branch **pumps the
 stream inline** and returns only when the watch is over. Delegating and returning
@@ -109,6 +109,11 @@ Recovery rules in the loop, all measured rather than assumed:
   from a watch ending normally on `timeoutseconds`, so a clean close cannot mean
   "stop".
 - a clean end **re-watches** from the last `resourceVersion` seen.
+- an **expired `resourceVersion`** (the in-stream 410) **re-lists**, pushes that
+  list onto the stream, and watches from its `resourceVersion`. The contract is
+  that a list object on the stream means complete current state — the first frame
+  and every resync frame alike — so a consumer that replaces its cache on one is
+  correct without knowing expiry exists. `push_initial=false` opts out of both.
 - a **truncated item** closes the channel with `DecodeError`; re-watch.
 - a **connection aborted mid-chunk** — an apiserver restart or network drop, the
   one #68 shape a clean end does not stand in for — closes the channel with an
@@ -173,11 +178,17 @@ integration suite (skipped with a warning when no server is reachable;
 
 | Suite | Assertions | Needs a cluster |
 | --- | --- | --- |
-| `registry.jl` | 3639 | no |
-| `helpers.jl` | 96 | no |
-| `simpleapi.jl` | 59 | no |
-| `watch_recovery.jl` | 32 | no (fake apiserver) |
-| live integration | ~300 | yes |
+| `registry.jl` | 3682 | no |
+| `register.jl` | 57 | no |
+| `helpers.jl` | 105 | no |
+| `simpleapi.jl` | 75 | no |
+| `watch_recovery.jl` | 47 | no (fake apiserver) |
+| live integration | ~310 | yes |
+
+The live count varies a little with the cluster: the metrics testset only
+asserts on pod metrics when metrics-server has collected some, and skips
+entirely when the cluster does not serve `metrics.k8s.io` — `kind` does not, so
+CI runs it as a no-op.
 
 Manual probes, not part of `runtests.jl`: `characterize_retries.jl` (rerun
 whenever the OpenAPI pin moves) and `watch_latency.jl`.
@@ -205,13 +216,24 @@ suite cover the same ground.
 
 ## 3. Known limitations and follow-ups
 
-Out of trial scope by decision (plan §0), unchanged:
+Out of trial scope by decision (plan §0), and since revisited:
 
-- **Custom metrics** (`:MetricValue`, `list_custom_metrics`,
-  `list_namespaced_custom_metrics`) throw a clear error. `custom.metrics.k8s.io`
-  needs an OpenAPI v3 document captured from a cluster that serves it.
-- **Aggregated APIs** (`metrics.k8s.io`) and **CRD groups** likewise: neither
-  appears in upstream release-tag specs.
+- **Aggregated APIs and CRD groups** are absent from release-tag specs, because
+  they are not part of Kubernetes. Both halves of that gap are now closed as
+  mechanism: `fetch_specs.sh --from-cluster` captures a group version's real
+  OpenAPI document from a live apiserver (provenance in `SPECS_CAPTURED`), and
+  `Kuber.register!` (`src/register.jl`) merges an out-of-tree generated layer
+  into the registry — the replacement for `KuberContext(apimodule)`.
+- **`metrics.k8s.io/v1beta1` is shipped again** (captured 2026-08-14 from k3s
+  v1.35.4), as the 0.2.x line shipped it. No new patch rule was needed and it is
+  covered live by `test_metrics`, which skips on clusters without
+  metrics-server.
+- **Custom metrics**: `list_custom_metrics` / `list_namespaced_custom_metrics`
+  are implemented again — the same one-liners as `master`, over
+  `list(ctx, :MetricValue, "<objecttype>/<name>/<metric>")`. What is missing is
+  only the group document: `custom.metrics.k8s.io` exists solely where an adapter
+  is installed, so it has to be captured there and registered. See
+  `OpenAPIv1ConsumerGaps.md` C1b/C5.
 - **One k8s minor.** The multi-minor matrix and connect-time switching are a
   post-trial concern; the pipeline already supports adding groups and minors.
 
@@ -236,9 +258,12 @@ Found during the trial:
       compat to the tag, and **regenerate everything** — generated output is
       byte-stable only within a pinned commit.
 - [x] Verify on Julia 1.11 — done by CI, which also runs nightly green.
-- [ ] Grep JuliaHub consumers for `=== nothing` checks on Kuber model fields
-      (now `ABSENT`) and for `metadata.labels`/`annotations` indexing (now open
-      structs).
+- [ ] Close the consumer gaps in
+      [`OpenAPIv1ConsumerGaps.md`](OpenAPIv1ConsumerGaps.md). That survey
+      supersedes this line: the `ABSENT`/open-struct sweep it asked for turns out
+      to be a small part of it, and the blocking item is that JuliaRun plugs its
+      own generated layer in through `KuberContext(apimodule)`, which this branch
+      removed.
 - [ ] Verify against a token-auth cluster: the trial only exercised
       `kubectl proxy`, so the `headers`/`request_options` credential path is
       untested against real TLS and bearer tokens.

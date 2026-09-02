@@ -5,6 +5,7 @@ using Test
 # no cluster and run first, so a broken registry or a broken verb layer is
 # reported before anything touches the network.
 include("registry.jl")
+include("register.jl")
 include("helpers.jl")
 include("simpleapi.jl")
 
@@ -407,6 +408,57 @@ function test_versioned(ctx, testid)
     end
 end
 
+"""
+    test_metrics(ctx)
+
+`metrics.k8s.io` is served by metrics-server, not the apiserver, so it is only
+present on clusters that run it — k3s does by default, `kind` does not. Skipped
+with a warning rather than failed when the group is absent: its presence says
+nothing about whether the client is correct.
+
+Everything here is a read, and each one is also a strict-validation check of a
+document captured from a cluster rather than fetched from a release tag.
+"""
+function test_metrics(ctx)
+    if !haskey(ctx.apis, :Metrics)
+        @warn "SKIPPING the metrics tests: $SERVER does not serve metrics.k8s.io (no metrics-server)"
+        return
+    end
+    @test ctx.apis[:Metrics][1] === REGISTRY.GROUP_MODULES["metrics.k8s.io/v1beta1"]
+    @test ctx.modelapi[:NodeMetrics] === REGISTRY.GROUP_MODULES["metrics.k8s.io/v1beta1"]
+
+    # NodeMetrics is cluster-scoped, so the default namespace has to fall back —
+    # `get(ctx, :NodeMetrics)` is the idiom Metrics.md documents.
+    nodes = get(ctx, :NodeMetrics)
+    @test kuber_kind(nodes) == "NodeMetricsList"
+    @test !isempty(nodes.items)
+    node = nodes.items[1]
+    name = Kuber._field(node.metadata.name)
+    @test !isempty(name)
+    # usage is a k8s string map of Quantity, so it is an open struct of wrappers
+    usage = Kuber.kuber_props(node.usage)
+    @test haskey(usage, "cpu") && haskey(usage, "memory")
+    @test usage["cpu"].value isa String
+    @test Kuber._field(node.window) !== nothing
+
+    one = get(ctx, :NodeMetrics, name)
+    @test kuber_kind(one) == "NodeMetrics"
+    @test Kuber._field(one.metadata.name) == name
+
+    # PodMetrics is namespaced, and also answers for all namespaces
+    pods = list(ctx, :PodMetrics; namespace = "kube-system")
+    @test kuber_kind(pods) == "PodMetricsList"
+    if !isempty(pods.items)
+        pod = pods.items[1]
+        containers = Kuber._field(pod.containers, [])
+        @test !isempty(containers)
+        @test Kuber.kuber_props(containers[1].usage)["cpu"].value isa String
+        podname = Kuber._field(pod.metadata.name)
+        @test kuber_kind(get(ctx, :PodMetrics, podname; namespace = "kube-system")) == "PodMetrics"
+    end
+    @test kuber_kind(list(ctx, :PodMetrics; namespace = "*")) == "PodMetricsList"
+end
+
 function test_all()
     ctx = init_context()
     @testset "Kuber Tests" begin
@@ -434,6 +486,10 @@ function test_all()
                   REGISTRY.KIND_TYPES[("autoscaling/v1", "HorizontalPodAutoscaler")]
 
             test_versioned(ctx2, "2")
+        end
+
+        @testset "Metrics" begin
+            test_metrics(ctx)
         end
 
         @testset "Misc" begin

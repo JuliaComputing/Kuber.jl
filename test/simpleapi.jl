@@ -57,6 +57,55 @@ const Runtime = Kuber.Runtime
         @test_throws ArgumentError Kuber._positional([:namespace], nothing, nothing, nothing)
         @test_throws ArgumentError Kuber._positional([:name], nothing, nothing, nothing)
         @test_throws ArgumentError Kuber._positional([:body], nothing, nothing, nothing)
+
+        # Everything the apiserver serves calls its object parameter `name`, but
+        # a group Kuber does not ship need not — custom.metrics.k8s.io's path is
+        # /namespaces/{namespace}/{compositemetricname}. The name argument fills
+        # whichever single non-namespace parameter there is.
+        @test Kuber._positional([:namespace, :compositemetricname], "ns", "pods/*/rps", nothing) ==
+              ["ns", "pods/*/rps"]
+        @test_throws ArgumentError Kuber._positional([:compositemetricname], nothing, nothing, nothing)
+        @test Kuber._takes_name([:namespace, :compositemetricname])
+        @test !Kuber._takes_name([:namespace])
+        @test !Kuber._takes_name([:namespace, :body])
+        # …but two of them cannot be addressed positionally at all
+        @test_throws ArgumentError Kuber._positional([:name, :other], nothing, "x", nothing)
+    end
+
+    @testset "custom metrics composite names" begin
+        # custom.metrics.k8s.io addresses a metric by a composite path segment
+        # rather than by a resource name. The helpers only build that segment;
+        # exercising the call end to end needs a cluster running an adapter, so
+        # what is pinned here is the naming, which is what master's helpers were.
+        @test Kuber._composite_metric_name("http_requests") == "metrics/http_requests"
+        @test Kuber._composite_metric_name("pods", "http_requests") == "pods/*/http_requests"
+        @test Kuber._composite_metric_name("pods", "web-1", "http_requests") ==
+              "pods/web-1/http_requests"
+
+        # They route through the verb layer now instead of erroring outright, so
+        # an unregistered group is reported as one.
+        ctx = KuberContext()
+        ctx.initialized = true
+        for call in (() -> list_namespaced_custom_metrics(ctx, "http_requests"),
+                     () -> list_namespaced_custom_metrics(ctx, "pods", "http_requests"),
+                     () -> list_namespaced_custom_metrics(ctx, "pods", "web-1", "http_requests"),
+                     () -> list_custom_metrics(ctx, "nodes", "cpu"),
+                     () -> list_custom_metrics(ctx, "nodes", "node-1", "cpu"))
+            e = try
+                call()
+            catch ex
+                ex
+            end
+            @test e isa ArgumentError
+            @test occursin("MetricValue", e.msg)
+        end
+    end
+
+    @testset "a name is refused where the operation takes none" begin
+        ctx = KuberContext()
+        ctx.initialized = true
+        ctx.modelapi[:Pod] = R.GROUP_MODULES["v1"]
+        @test_throws ArgumentError list(ctx, :Pod, "somepod")
     end
 
     @testset "module resolution" begin
@@ -118,20 +167,6 @@ const Runtime = Kuber.Runtime
         @test Kuber._typed_result(Dict("kind" => "Widget", "apiVersion" => "x/v1")) isa AbstractDict
         @test Kuber._typed_result("plain text") == "plain text"
         @test Kuber._typed_result(nothing) === nothing
-    end
-
-    @testset "custom metrics are stubbed out of the trial" begin
-        ctx = KuberContext()
-        @test_throws ErrorException list_custom_metrics(ctx, "pods", "cpu")
-        @test_throws ErrorException list_namespaced_custom_metrics(ctx, "cpu")
-        for f in (list_custom_metrics, list_namespaced_custom_metrics)
-            msg = try
-                f(ctx, "pods", "cpu")
-            catch e
-                sprint(showerror, e)
-            end
-            @test occursin("custom metrics are not available", msg)
-        end
     end
 
     @testset "watch processor failure aborts the watch" begin

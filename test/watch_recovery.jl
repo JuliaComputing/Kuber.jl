@@ -20,8 +20,11 @@ const R = Kuber.ApiImpl
 const CORE = R.GROUP_MODULES["v1"]
 
 """A pod list the strict client will accept."""
-podlist(rv) = JSON.json(Dict("kind" => "PodList", "apiVersion" => "v1",
-                             "metadata" => Dict("resourceVersion" => rv), "items" => []))
+podlist(rv, names = String[]) = JSON.json(Dict("kind" => "PodList", "apiVersion" => "v1",
+    "metadata" => Dict("resourceVersion" => rv),
+    "items" => [Dict("kind" => "Pod", "apiVersion" => "v1",
+                     "metadata" => Dict("name" => n, "namespace" => "default",
+                                        "resourceVersion" => rv)) for n in names]))
 
 event(type, name, rv) = JSON.json(Dict("type" => type,
     "object" => Dict("kind" => "Pod", "apiVersion" => "v1",
@@ -52,16 +55,18 @@ end
 """
     fakeapi(watchhandler) -> (url, requests, stop)
 
-A fake apiserver. Buffered list requests are answered with an empty `PodList` at
-resourceVersion 100; watch requests (`watch=true` in the query) are handed to
-`watchhandler(http, request_number, alive)`, which writes frames and may
-truncate the stream or return early to end it. `requests` accumulates every
-request target seen.
+A fake apiserver. Buffered list requests are answered by `listbody(n)`, an empty
+`PodList` at resourceVersion 100 unless overridden — `n` is the list request's
+number, so a test can make the second list differ from the first. Watch requests
+(`watch=true` in the query) are handed to `watchhandler(http, request_number,
+alive)`, which writes frames and may truncate the stream or return early to end
+it. `requests` accumulates every request target seen.
 """
-function fakeapi(watchhandler)
+function fakeapi(watchhandler; listbody = n -> podlist("100"))
     requests = String[]
     lck = ReentrantLock()
     watches = Ref(0)
+    lists = Ref(0)
     alive = Ref(true)
     server = HTTP.listen!("127.0.0.1", 0; listenany = true) do http
         target = String(http.message.target)
@@ -74,7 +79,7 @@ function fakeapi(watchhandler)
             HTTP.startwrite(http)
             watchhandler(http, n, alive)
         else
-            body = podlist("100")
+            body = listbody(lock(() -> (lists[] += 1), lck))
             HTTP.setheader(http, "Content-Length" => string(sizeof(body)))
             HTTP.startwrite(http)
             write(http, body)
@@ -96,9 +101,10 @@ function fakectx(url)
 end
 
 watchqueries(requests) = filter(t -> occursin("watch=true", t), requests)
+listqueries(requests) = filter(t -> !occursin("watch=true", t), requests)
 
-startwatch(ctx, stream) =
-    @async list(Kuber.KuberWatchContext(ctx, stream), :Pod; watch = true, push_initial = false)
+startwatch(ctx, stream; push_initial = false) =
+    @async list(Kuber.KuberWatchContext(ctx, stream), :Pod; watch = true, push_initial = push_initial)
 
 # The first event on a cold process waits for the whole watch and decode path to
 # compile; steady state is single-digit ms (test/watch_latency.jl).
@@ -196,38 +202,80 @@ end
         stop()
     end
 
-    @testset "expired resourceVersion starts over without one" begin
-        # k8s answers an expired resourceVersion with an in-stream ERROR event
-        # carrying a Status(reason=Expired, code=410), not an HTTP error. The
-        # protocol's answer is to list again and watch from scratch.
-        url, requests, stop = fakeapi() do http, n, alive
-            if n == 1
-                frame(http, event("ADDED", "p1", "101"))
-                sleep(0.5)
-                frame(http, JSON.json(Dict("type" => "ERROR",
-                    "object" => Dict("kind" => "Status", "apiVersion" => "v1",
-                                     "status" => "Failure", "reason" => "Expired",
-                                     "message" => "too old resource version", "code" => 410))))
-                sleep(0.5)
-            else
-                frame(http, event("ADDED", "p2", "200"))
-                hold(alive)
-            end
+    # An expired resourceVersion is answered in-stream, with an ERROR event
+    # carrying a Status(reason=Expired, code=410) under HTTP 200 — not an HTTP
+    # error. Watching again *without* a resourceVersion would recover the
+    # connection but not the truth: k8s replays current state as synthetic ADDED
+    # events, so a consumer hears about everything that still exists and never
+    # about what was deleted while the watch was gone. Kuber lists again instead,
+    # and delivers that list as a resync frame (G1 in OpenAPIv1ConsumerGaps.md).
+    expiredapi(listbody) = fakeapi(; listbody = listbody) do http, n, alive
+        if n == 1
+            frame(http, event("ADDED", "p1", "101"))
+            sleep(0.5)
+            frame(http, JSON.json(Dict("type" => "ERROR",
+                "object" => Dict("kind" => "Status", "apiVersion" => "v1",
+                                 "status" => "Failure", "reason" => "Expired",
+                                 "message" => "too old resource version", "code" => 410))))
+            sleep(0.5)
+        else
+            frame(http, event("MODIFIED", "p2", "301"))
+            hold(alive)
         end
+    end
+
+    # p1 exists at the first list and is gone by the second: exactly the object a
+    # replay would never mention.
+    expiredlists(n) = n == 1 ? podlist("100", ["p1"]) : podlist("300", ["p2"])
+
+    @testset "an expired resourceVersion resyncs from a fresh list" begin
+        url, requests, stop = expiredapi(expiredlists)
+        ctx = fakectx(url)
+        stream = Kuber.KuberEventStream(16)
+        watcher = startwatch(ctx, stream; push_initial = true)
+
+        initial = take_event(stream)
+        @test kuber_kind(initial) == "PodList"
+        @test Kuber._field(initial.metadata.resourceversion) == "100"
+
+        @test take_event(stream, 30.0).object.metadata.name == "p1"
+
+        # the ERROR frame is not delivered; a fresh list is
+        resync = take_event(stream, 30.0)
+        @test kuber_kind(resync) == "PodList"
+        @test Kuber._field(resync.metadata.resourceversion) == "300"
+        @test [Kuber._field(p.metadata.name) for p in resync.items] == ["p2"]
+
+        @test take_event(stream, 30.0).type == "MODIFIED"
+
+        @test length(listqueries(requests)) == 2             # it really re-listed
+        queries = watchqueries(requests)
+        @test length(queries) >= 2
+        @test occursin("resourceVersion=100", queries[1])     # from the initial list
+        @test occursin("resourceVersion=300", queries[2])     # from the resync list
+
+        close(stream)
+        @test timedwait(() -> istaskdone(watcher), 15.0) == :ok
+        stop()
+    end
+
+    @testset "push_initial=false recovers, but is told nothing about the gap" begin
+        # The events-only form (`watch(ctx, O, stream)`) opts out of list frames,
+        # so it opts out of the resync too. It still re-lists — that is where the
+        # resourceVersion to resume from comes from — but a consumer maintaining
+        # a cache on this form has to track expiry itself.
+        url, requests, stop = expiredapi(expiredlists)
         ctx = fakectx(url)
         stream = Kuber.KuberEventStream(16)
         watcher = startwatch(ctx, stream)
 
         @test take_event(stream).object.metadata.name == "p1"
-        # the ERROR frame itself is not delivered as an event
         next = take_event(stream, 30.0)
-        @test next.type == "ADDED"
-        @test next.object.metadata.name == "p2"
+        @test next isa KuberEvent                             # no list frame
+        @test next.type == "MODIFIED"
 
-        queries = watchqueries(requests)
-        @test length(queries) >= 2
-        @test occursin("resourceVersion=100", queries[1])   # from the initial list
-        @test !occursin("resourceVersion", queries[2])      # started over
+        @test length(listqueries(requests)) == 2
+        @test occursin("resourceVersion=300", watchqueries(requests)[2])
 
         close(stream)
         @test timedwait(() -> istaskdone(watcher), 15.0) == :ok
