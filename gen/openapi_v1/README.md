@@ -64,7 +64,11 @@ serves a real OpenAPI 3.0.0 document for each of them at
 second source mode. Its provenance lands in `SPECS_CAPTURED` rather than
 `SPECS_ORIGIN` — separate files, so neither mode clobbers the other's record,
 and because a captured document is only as reproducible as the cluster it came
-from, which is worth stating plainly.
+from, which is worth stating plainly. `SPECS_CAPTURED` holds **one record per
+file**, carrying the group version path, the cluster and its version, the date
+and the checksum; a capture replaces the records for the files it writes and
+leaves the rest alone, so groups captured months apart from different clusters
+each keep their own provenance.
 
 `metrics.k8s.io/v1beta1` is shipped this way. The existing patch rules covered
 it unchanged and strict generation passed first time; the only wrinkle was
@@ -72,11 +76,23 @@ cosmetic, since the apiserver serves compact JSON and the capture normalizes it
 through `jq .` so the two sources diff alike.
 
 **What to capture is a judgement, not a default.** A group belongs in Kuber when
-any user of the API could plausibly have it: metrics-server is near-universal,
-and the 0.2.x line shipped `metrics.k8s.io` too. A group that exists only in one
-deployment — operator CRDs, an adapter's `custom.metrics.k8s.io` — belongs in
-that deployment's own package instead, registered through `Kuber.register!`
-(see the top-level README). Kuber ships to people who do not have those.
+any user of the API could plausibly have it, and when its *schema* does not vary
+with the deployment. metrics-server is near-universal and the 0.2.x line shipped
+`metrics.k8s.io`, so it qualifies; a group whose schema *is* the deployment —
+operator CRDs — belongs in that deployment's own package instead, registered
+through `Kuber.register!` (see the top-level README). Kuber ships to people who
+do not have those.
+
+**Passing that test is necessary, not sufficient.** `custom.metrics.k8s.io`
+passes it — every conformant adapter serves the same schemas out of the shared
+`custom-metrics-apiserver` library, and what varies is the metric names, which
+are path *values* rather than types — and it is still not shipped, because its
+operations carry no `x-kubernetes-group-version-kind` (so `emit_registry.jl`
+emits no `OPS` entries for them) and address metrics through a three-variable
+path the verb API cannot fill. The document is kept under `reference-captures/`
+with the full reasoning in `OpenAPIv1ConsumerGaps.md` C5. The generalizable
+lesson: read a captured document's *operations*, not just its schemas, before
+adding it to the chain.
 
 ## Strict mode stays on
 

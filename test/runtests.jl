@@ -531,6 +531,10 @@ function test_versioned(ctx, testid)
         watch_selector_all_namespaces(ctx, testid)
     end
 
+    @testset "Long-lived watch, compressed (G5a)" begin
+        long_lived_watch(ctx, testid)
+    end
+
     @testset "Watch Events" begin
         timedwait(30.0; pollint = 1.0) do
             lock(lck) do
@@ -1419,6 +1423,139 @@ function watch_selector_all_namespaces(ctx, testid)
     end
 
     ensure_absent(ctx, :Pod, names[1]; namespace = "default")
+    ensure_absent(ctx, :Namespace, ns)          # takes the pods inside it
+end
+
+"""
+    long_lived_watch(ctx, testid)
+
+G5a: the compressible half of the long-lived watch, against a real apiserver.
+
+A watch is ended by the apiserver on its own timer — `--min-request-timeout`,
+1800 s by default and randomized into `[1800, 3600)` — which is what made this
+look like an hour-long test. It is not. `timeoutseconds` on the request produces
+exactly the same clean close on demand, so several server-initiated closes cost
+about ten seconds, and what they exercise is the same code path.
+
+Three things only a real apiserver can show. `test/watch_recovery.jl` covers all
+of them against a fake one, which is the point: this checks that a real server
+ends a watch the way the fake does.
+
+- **A watch the server ends is re-established, losing nothing.** Pods created
+  either side of a close each arrive exactly once — no drop across the gap, and
+  no replay of what was already delivered before it.
+- **`BOOKMARK` events arrive when asked for, and disturb nothing.** Nothing else
+  exercises them anywhere: Kuber never sets `allowwatchbookmarks`, so they reach
+  a consumer only on request. A bookmark is a shape strict decoding has never
+  otherwise seen — the watched kind, carrying a `resourceVersion` and nothing
+  else, with `spec.containers` an explicit `null`.
+- **An expired `resourceVersion` resyncs from a fresh list.** The apiserver
+  answers one with an in-stream `ERROR`/410 rather than an HTTP status, and
+  `resourceVersion=1` provokes it immediately — no waiting for etcd to compact.
+"""
+function long_lived_watch(ctx, testid)
+    ns = "kuber-g5a$testid"
+    ensure_absent(ctx, :Namespace, ns)
+    put!(ctx, kuber_obj("""{"kind": "Namespace", "apiVersion": "v1",
+                            "metadata": {"name": "$ns"}}"""))
+
+    # ── a server-ended watch loses nothing, and bookmarks ride along ────────
+    events = Any[]
+    lck = ReentrantLock()
+    stream = Kuber.KuberEventStream(64)
+    # Start from a `resourceVersion` of our own rather than letting the watch
+    # find one. The events-only form lists internally to learn where to resume
+    # and then discards that list, so anything created between this call and
+    # that internal list is in the list, is thrown away with it, and is never
+    # announced. Locally the first pod below wins that race; on a slower cluster
+    # it loses, which is how CI found this. Seeding the version closes the
+    # window — the same thing `watch_selector_all_namespaces` does, and what a
+    # consumer wanting no gap between state and events has to do.
+    seed = get(ctx, :Pod; namespace = ns)
+    rv = Kuber._resource_version(seed)
+    @test rv !== nothing
+    watcher = @async watch(ctx, :Pod, stream; namespace = ns, resource_version = rv,
+                           timeout_seconds = 3, allow_watch_bookmarks = true)
+    collector = @async for e in stream
+        lock(lck) do
+            push!(events, e)
+        end
+    end
+
+    names = ["g5a-first$testid", "g5a-second$testid", "g5a-third$testid"]
+    started = time()
+    for (i, name) in enumerate(names)
+        i == 1 || sleep(3.5)        # longer than timeout_seconds: cross a close
+        put!(ctx, labelled_pod(name, ns, Dict("kuber-test" => "g5a")); namespace = ns)
+    end
+    # The last two pods were created after the first generation had been closed
+    # by the server, so hearing about them at all means the pump re-established.
+    @test time() - started > 2 * 3.0
+
+    isadd(e, name) = e isa KuberEvent && e.type == "ADDED" &&
+                     Kuber._field(e.object.metadata.name) == name
+    sawall() = lock(lck) do
+        all(name -> any(e -> isadd(e, name), events), names)
+    end
+    @test timedwait(sawall, 60.0; pollint = 0.5) == :ok
+
+    lock(lck) do
+        @test all(e -> e isa KuberEvent, events)     # events-only form: no list frames
+        for name in names
+            # exactly once: nothing dropped across a close, nothing replayed after
+            @test count(e -> isadd(e, name), events) == 1
+        end
+
+        marks = filter(e -> e isa KuberEvent && e.type == "BOOKMARK", events)
+        @test !isempty(marks)
+        for m in marks
+            @test kuber_kind(m.object) == "Pod"
+            @test isa(m.object, Kuber.kind_to_type(ctx, :Pod))
+            @test Kuber._resource_version(m.object) isa String
+            @test Kuber._field(m.object.metadata.name) === nothing
+            # `spec.containers` is required and comes back an explicit null, so
+            # a bookmark only decodes at all because patch rule §2 makes array
+            # properties nullable — the Go-nil-slice rule, on a live payload
+            @test Kuber._field(m.object.spec.containers) === nothing
+        end
+    end
+
+    close(stream)
+    @test timedwait(() -> istaskdone(watcher) && istaskdone(collector), 20.0) == :ok
+
+    # ── an expired resourceVersion resyncs from a fresh list ────────────────
+    frames = Any[]
+    flck = ReentrantLock()
+    fstream = Kuber.KuberEventStream(64)
+    # Resuming from a given resourceVersion skips the initial list, so a list
+    # frame on this stream can only be the resync — there is no other source.
+    resyncer = @async list(Kuber.KuberWatchContext(ctx, fstream), :Pod;
+                           watch = true, namespace = ns, resource_version = "1",
+                           timeout_seconds = 3)
+    fcollector = @async for e in fstream
+        lock(flck) do
+            push!(frames, e)
+        end
+    end
+
+    podlist = Kuber.kind_to_type(ctx, :PodList)
+    sawlist() = lock(flck) do
+        any(f -> isa(f, podlist), frames)
+    end
+    @test timedwait(sawlist, 60.0; pollint = 0.5) == :ok
+    lock(flck) do
+        resync = first(filter(f -> isa(f, podlist), frames))
+        @test kuber_kind(resync) == "PodList"
+        # the resync frame is complete current state, which here is the three
+        # pods above — that is the contract a consumer rebuilds its cache on
+        got = Set(Kuber._field(p.metadata.name) for p in resync.items)
+        @test Set(names) ⊆ got
+        @test Kuber._resource_version(resync) isa String
+    end
+
+    close(fstream)
+    @test timedwait(() -> istaskdone(resyncer) && istaskdone(fcollector), 20.0) == :ok
+
     ensure_absent(ctx, :Namespace, ns)          # takes the pods inside it
 end
 

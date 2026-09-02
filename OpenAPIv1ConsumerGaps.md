@@ -163,9 +163,27 @@ is on nearly every cluster. Dropping it was a regression for every Kuber user,
 not just JuliaHub. The line to draw is *could any user of this API plausibly have
 this group*: metrics-server yes, an operator's CRDs no.
 
-So what is left for `JuliaHubK8sApi` is smaller again: `custom.metrics.k8s.io`
-(see [C5](#c5-custom-metrics-are-not-in-the-trial-build)) plus any CRD group that
-turns out to be needed — and the audit found none.
+**And the same argument reaches `custom.metrics.k8s.io`** — this document said
+otherwise until 2026-08-15, and the correction is [C5](#c5-custom-metrics-captured-evaluated-not-shipped).
+The helpers that call it (`list_custom_metrics`, `list_namespaced_custom_metrics`)
+are exported from Kuber and documented at length in `Metrics.md`; 0.2.x shipped
+the group in Kuber too (`SupportedAPIVersions.md` listed `custom_metrics_v1beta1`,
+`api_typemap.jl` had the `CustomMetricsV1beta1` aliases); and the *schema* is
+adapter-independent — it is boilerplate from upstream `custom-metrics-apiserver`,
+and what varies per adapter is the metric names, which are path parameters rather
+than types. Shipping the helpers here and the group they call in another package
+is the incoherence this section just corrected for `metrics.k8s.io`.
+
+**The 2026-08-15 capture confirmed that reasoning and still ended in "do not
+ship"** — on cost, not on where the group belongs. The schemas are the predicted
+boilerplate; the *operations* carry no GVK and address metrics through a
+three-variable path, which neither the registry emitter nor the verb layer can
+carry today, and nothing in either repo actually calls the API. C5 has the
+evidence. So the boundary rule stands as written; this group simply is not worth
+what it costs to cross it yet.
+
+So what is left for `JuliaHubK8sApi` is smaller again — nothing but any CRD group
+that turns out to be needed, and the audit found none.
 
 Two things C1a left for this step to prove, one now settled:
 
@@ -325,8 +343,10 @@ consumer reads in a poll loop, so a typo shows up as a runtime error the first
 time that loop runs rather than at load. Writing G6's testset needed the
 translation on nine such fields.
 
-### C5. Custom metrics and `metrics.k8s.io` are stubs on this branch
-<!-- metrics.k8s.io no longer is; custom metrics await one capture. -->
+### C5. Custom metrics: captured, evaluated, not shipped
+<!-- Was "Custom metrics and metrics.k8s.io are stubs on this branch", then
+     "…wait on one capture". metrics.k8s.io stopped being a stub on 2026-08-14;
+     the custom-metrics capture happened on 2026-08-15 and settled the rest. -->
 
 
 - [x] Generate `metrics.k8s.io/v1beta1`. **Done 2026-08-14** — captured and
@@ -337,47 +357,129 @@ translation on nine such fields.
       `list(ctx, :MetricValue, "<objecttype>/<name>/<metric>")`. **Done**: they
       are those one-liners again, and `list(ctx, O, name)` exists again to carry
       them.
-- [ ] Capture `custom.metrics.k8s.io/v1beta1` from a cluster running an adapter,
-      generate it into `JuliaHubK8sApi`, and register it.
-- [ ] Check on that same cluster whether `custom.metrics.k8s.io/v1beta2` is also
-      needed: nothing names it, but the helpers resolve `:MetricValue` through
-      server preference rather than a pinned version, so a grep cannot answer this.
+- [x] Capture `custom.metrics.k8s.io/v1beta1` from a cluster running an adapter.
+      **Done 2026-08-15** — `prometheus-adapter` v0.12.0 on the local k3s, no
+      Prometheus behind it. The document is kept as evidence in
+      `gen/openapi_v1/reference-captures/`, deliberately *not* in `specs/`.
+- [x] Check whether `custom.metrics.k8s.io/v1beta2` is also needed. **Answered:
+      no** — see "the gate command's trap" below.
+- [ ] ~~Ship the group.~~ **Decided against on 2026-08-15**, on the evidence
+      below. Not a deferral for want of infrastructure: the capture exists and
+      the answer it gave was no.
 
-**What is left is one capture, and it needs a cluster this repo cannot reach.**
-`custom.metrics.k8s.io` exists only where a metrics adapter is installed; no
-public document defines it (master's came from definitions hand-spliced into the
-legacy Swagger file), and no cluster available here serves it. Hand-authoring an
-OpenAPI 3 document from master's fragment was considered and rejected: strict
-response validation would enforce a spec nobody could check, and the honest
-version of that work is one command on a cluster that has the adapter —
+#### Nothing calls this API
+
+The audit that opened this section counted *references*, which is not the same
+thing. Counting callers instead:
+
+- `JuliaRun/src/metrics/kubernetesmetrics.jl` is the only code in either repo
+  that touches `custom.metrics.k8s.io` **or** `metrics.k8s.io`. Nothing in
+  JuliaRun constructs a `KubernetesMetricsCtx`; the one construction is
+  `JuliaRun/test/test_metrics.jl:106`, and `test/runtests.jl` never includes that
+  file — it is a standalone probe with a top-level call at its line 176.
+- Org-wide code search puts `KubernetesMetricsCtx` in JuliaRun and nowhere else.
+  The monorepo has no `NodeMetrics`, `MetricValue`, `list_custom_metrics`,
+  `MetricsV1beta1` or `metrics.k8s.io` in any Julia file.
+
+`metrics.k8s.io` stays regardless — it is already shipped and live-tested,
+metrics-server is near-universal, and 0.2.x had it, so dropping it would be a
+regression for Kuber users generally. Custom metrics is the one where the cost
+had to be justified by a caller, and there is none.
+
+#### The capture confirmed the schemas and refuted the operations
+
+The prediction was that the document is adapter-independent boilerplate. **On the
+schemas that is exactly right** — `components.schemas` holds `MetricValue`,
+`MetricValueList`, and shared meta/core types (`ObjectReference`, `Quantity`,
+`LabelSelector`, `ListMeta`, `Time`, `APIResource(List)`). No metric name appears
+anywhere in the schema; metric names are discovered dynamically, which is why the
+resource list came back empty with no Prometheus behind the adapter while the
+document was complete. The `allOf`-wrapped `$ref`s that patch rule §7 collapses
+are there too, so the existing rules would have applied unchanged.
+
+**The operations are another matter, and they are what decides the cost:**
+
+- **No operation carries `x-kubernetes-group-version-kind`, or
+  `x-kubernetes-action`.** Both are what `emit_registry.jl`'s `ops()` runs on: its
+  first pass needs the GVK *and* a known action to learn the kind behind a
+  resource (`emit_registry.jl:245-248`), and its second pass drops every
+  operation whose resource it did not learn (`:256`) and every operation without
+  an action verb (`:261-262`). With neither annotation present, `OPS` gets
+  *nothing* for this group while `KIND_TYPES` populates normally — the schemas do
+  carry GVK. That end state is worse than not shipping:
+  `kind_to_type(ctx, :MetricValue)` would work while `list(ctx, :MetricValue, …)`
+  could not resolve. Compare the `metrics.k8s.io` capture, where every operation
+  carries both. (Read off the captured document and the emitter's source; the
+  chain was not run on it, since there is nothing to generate.)
+- **Metrics are addressed through a three-variable path.** The real paths are
+  `/{resource}/{name}/{subresource}` and its namespaced twin, plus
+  `/namespaces/{namespace}/metrics/{name}`. So the operations take `resource`,
+  `name` and `subresource` as *separate* path parameters — `_positional` accepts
+  one, and `emit_registry.jl`'s plural→kind pass keys on a literal
+  `…/{plural}/{name}` segment, which a variable resource segment cannot supply.
+
+Shipping therefore needs a new patch rule to inject operation GVKs, emitter
+support for a variable resource segment, and verb-layer work to split one
+composite name back across three path parameters — none of it coverable in CI,
+since the group is absent from any cluster without an adapter. Against zero
+callers, that is the wrong trade.
+
+#### Correction: `compositemetricname` was never real
+
+This document and `src/simpleapi.jl` both said the path parameter is called
+`compositemetricname`, and that there is only ever one of them. That came from
+`master`'s hand-spliced Swagger fragment, which collapsed
+`{resource}/{name}/{subresource}` into a single parameter — a fiction that
+produced the right URL, since joining the three with `/` is exactly the composite
+string `list(ctx, :MetricValue, "pods/*/http_requests")` passes. A served
+document does not do that. Both places are corrected; the `_positional`
+relaxation stays, because accepting a path parameter under some other name is
+still right for captured groups generally — it simply is not what this group
+needed.
+
+#### The gate command's trap
+
+Before capturing anything, one command says whether a cluster can produce a
+document at all — `fetch_specs.sh --from-cluster` does nothing but
+`kubectl get --raw /openapi/v3/apis/<group>/<version>`:
 
 ```sh
-gen/openapi_v1/fetch_specs.sh --from-cluster custom.metrics.k8s.io/v1beta1
+kubectl get --raw /openapi/v3 | jq -r '.paths | keys[]' | grep custom.metrics
 ```
 
-Everything on Kuber's side of it is done and tested. Two pieces were needed:
+On the adapter above this printed `v1beta1` **and** `v1beta2` — and `v1beta2` is
+not reachable: no `APIService` registers it, `/apis/custom.metrics.k8s.io/v1beta2`
+returns `NotFound`, and discovery advertises `v1beta1` alone as both available and
+preferred. **An entry in `/openapi/v3` means the aggregated server compiled that
+version in, not that the cluster serves it.** Check `kubectl get apiservices` and
+`/apis` before trusting a version, whichever group is being captured.
+
+That also answers the `v1beta2` checkbox: `:MetricValue` resolves through server
+preference, and the server prefers — and offers — only `v1beta1`. JuliaRun's own
+deploy manifests agree, registering `v1beta1` only.
+
+#### What is still available to anyone who needs it
+
+Everything on Kuber's side is done and stays:
 
 - **`list(ctx, O, name)` is back.** The trial's `list` took no name, so master's
   one-liners had nowhere to put the composite metric name.
-- **`_positional` no longer requires the path parameter to be called `name`.**
-  Every group the apiserver serves calls it that; `custom.metrics.k8s.io` calls
-  it `compositemetricname`, and `emit_registry.jl` takes path parameter names
-  verbatim, so the verb layer would have rejected the operation it generated.
-  There is only ever one such parameter, so the name argument fills whichever it
-  is — and more than one is now a clear error rather than a confusing one. This
-  would have bitten any captured group with a non-standard path, not just this
-  one.
+- **`list_custom_metrics` / `list_namespaced_custom_metrics` are implemented and
+  exported**, as the same one-liners `master` had.
+- **`Kuber.register!`** is the supported route for the group itself: capture it
+  from a cluster that serves it, generate, register. The reference capture's
+  README has the exact commands, and the two obstacles above are what such a
+  registration has to solve — they are not specific to shipping it in Kuber.
 
-`JuliaRun/src/metrics/kubernetesmetrics.jl` is built on them:
+`JuliaRun/src/metrics/kubernetesmetrics.jl` is the code this would serve:
 
 - lines 213-228 — `list_namespaced_custom_metrics` / `list_custom_metrics` (5 call sites)
 - lines 186-188 — `Typedefs.CustomMetricsV1beta1.MetricValueList` / `MetricValue`
 - lines 87, 130 — node and pod metrics via `metrics.k8s.io`
 - `:NodeMetrics`, `:PodMetrics` kind symbols (2 each)
 
-Of that list, node and pod metrics (lines 87, 130 and the `:NodeMetrics` /
-`:PodMetrics` symbols) now work; the `custom.metrics` call sites and
-`Typedefs.CustomMetricsV1beta1` still need the capture above.
+Node and pod metrics (lines 87, 130, and both kind symbols) work today. The
+`custom.metrics` call sites do not, and by the finding above nothing calls them.
 
 ### C6. `KuberContext` timeout kwargs
 
@@ -653,11 +755,119 @@ building objects with explicit namespaces, which is why the test passes
 
 #### G5. Long-lived watch
 
-- [ ] Decide whether this is testable in CI at all, or only as a manual probe.
+- [x] Decide whether this is testable in CI at all, or only as a manual probe.
+      **Decided 2026-08-15: both, once split.** The item bundled two claims with
+      very different costs, below as G5a and G5b.
 
 The reflector's watches live for the process lifetime. The longest test watch is
 seconds. Nothing covers hours, `BOOKMARK` events, or a proxy/LB dropping an idle
 connection.
+
+**What "long-lived" actually means is 30 to 60 minutes**, and it is a
+configuration default rather than a property of watching. The apiserver closes
+watches on its own timer: `--min-request-timeout` defaults to 1800 s and the
+watch handler picks a randomized value in `[1800, 3600)` to spread reconnect
+load, so an otherwise-unbounded watch is closed somewhere in that window.
+Guaranteeing one close means running over an hour, per matrix entry, across three
+Julia versions — which is what made this look untestable.
+
+But the *close* is what the code cares about, not the hour of waiting before it,
+and a close is producible in seconds two ways:
+
+- **`timeoutseconds` on the request.** `?watch=true&timeoutSeconds=5` ends with
+  exactly the clean close the 30-minute timer produces — verified against a live
+  cluster on 2026-08-15.
+- **`--min-request-timeout` on the apiserver**, as a kind `kubeadmConfigPatches`
+  → `apiServer.extraArgs` entry, which closes *every* watch on that cadence
+  without the caller asking for it.
+
+So the item splits along what compression can reach.
+
+##### G5a. Server-initiated close, against a real apiserver — CI-sized
+
+- [x] Cover the compressible half live: a watch the **server** ends is
+      re-established and loses nothing; `allowwatchbookmarks=true` produces
+      `BOOKMARK` events and they do not disturb the stream or the tracked
+      `resourceVersion`; a resync happens when the `resourceVersion` has expired.
+      **Done 2026-08-15**: `long_lived_watch` in `test/runtests.jl`, about twelve
+      seconds of wall time, live suite 816 → 898 assertions.
+
+Close-and-re-watch and resync are already covered against
+`test/watch_recovery.jl`'s fake apiserver, so for those two this is a widening
+rather than a gap: what is untested is that a *real* apiserver ends a watch the
+way the fake does.
+
+**`BOOKMARK` is the exception — nothing exercises it anywhere.** Kuber never sets
+`allowwatchbookmarks`, `watch_recovery.jl` never emits one, and
+`test/runtests.jl:553` only asserts that one would be *tolerated* if it arrived,
+which is not the same as producing one. A real bookmark carries an object holding
+nothing but a `resourceVersion` — a shape that has never been fed through
+`KuberEvent`, and one the pump must not mistake for a normal event when it
+updates the tracked version. That makes the bookmark leg the part of G5a most
+likely to find something.
+
+Cost is seconds of wall time, and no cluster configuration: `timeoutseconds`
+carried all three legs, so the kind `kubeadmConfigPatches` route was not needed.
+
+**What it found: a race in the events-only form, and one rule confirmed on a
+payload it was never tested against.**
+
+The race is in `watch(ctx, O, stream)`, which takes no `resource_version`: it
+lists internally to learn where to resume and then **discards that list**, so an
+object created between the caller's `watch` call and that internal list is inside
+the list, is thrown away with it, and is never announced. It is not a defect —
+the form is documented as events-only — but "no initial state" and "a silent hole
+at establish time" are different promises, and only the first was written down.
+The window is small enough that it does not show locally: the first run passed on
+k3s and failed in CI on kind, where the create won the race. A consumer that
+wants no gap has to seed the version itself, which is what `K8sReflector` and
+`watch_selector_all_namespaces` already do and what this test now does. Recorded
+in `README.md` alongside the events-only form. A bookmark's object is the watched kind
+carrying `metadata.resourceVersion` and, on a `Pod`, `spec.containers` as an
+explicit `null` — a *required* array property. It decodes under strict validation
+only because patch rule §2 makes array properties nullable, the Go-nil-slice
+rule, which until now was exercised against list and read payloads rather than a
+watch frame. The test asserts that null rather than skipping over it, so a
+regression in §2 fails here too. Resuming from `resourceVersion=1` also confirmed
+the apiserver answers an expired version with an in-stream `ERROR`/410 exactly as
+the fake does, with no wait for etcd to compact.
+
+##### G5b. Duration itself — manual probe
+
+- [x] Keep as a documented manual probe, not a CI job. **Done 2026-08-15**:
+      `test/watch_longevity.jl`, alongside `watch_latency.jl` and
+      `characterize_retries.jl`, listed with them in `CLAUDE.md`.
+
+What compression cannot reach: file-descriptor and memory growth across hours of
+re-watching, a load balancer or proxy dropping an idle connection, an apiserver
+restart or rollout mid-watch, HTTP/2 `GOAWAY`. These need real wall time or real
+infrastructure — and the LB idle timeout (60–350 s on the common cloud
+balancers) is the one JuliaRun most likely meets in production, while being the
+one a kind cluster cannot produce at all, since there is no intermediary.
+
+`test/watch_longevity.jl` carries it, in the shape `watch_latency.jl` set: a
+probe outside `runtests.jl`, run by hand against a real cluster.
+`julia --project test/watch_longevity.jl [hours]`, default two.
+
+Reconnects are deliberately *not* what it counts — Kuber re-establishes silently,
+which is the whole point of it — so every heartbeat it creates an object and
+times how long the watcher takes to see it. A missed heartbeat means the watch
+stopped delivering, whatever stopped it. Resyncs are visible as list frames and
+are counted; bookmarks, open descriptors, RSS and post-collection live bytes are
+sampled alongside.
+
+**Run it through whatever proxy or balancer the deployment has.** Against a local
+apiserver it cannot answer the idle-drop question at all, because there is no
+intermediary to drop anything — and that is the failure JuliaRun is most likely
+to meet.
+
+*Found while writing it, worth repeating anywhere growth gets measured:* the
+first run showed open descriptors climbing by exactly one per heartbeat, and the
+leak was in the probe. `rss_mb` read `/proc/self/status` with `eachline` and
+returned early on the `VmRSS:` line, which leaves the stream open — so the
+function reporting descriptor counts was the thing consuming them. Confirmed in
+isolation (20 calls, 20 descriptors) and fixed to `readlines`. Kuber itself holds
+one socket for requests and one for the watch, flat across 126 events.
 
 ### Kind coverage
 
@@ -1317,11 +1527,12 @@ fails loudly rather than surprisingly.
 3. ~~**G15 / C2** — export an exception-classification helper.~~ **Done** —
    `Kuber.is_retryable`; porting the consumer call sites is the remaining half
    of C2.
-4. ~~**C1b / C5**~~ — **mostly done**: `fetch_specs.sh --from-cluster` exists,
+4. ~~**C1b / C5**~~ — **done**: `fetch_specs.sh --from-cluster` exists,
    `metrics.k8s.io/v1beta1` is captured, shipped and live-tested, and the
-   custom-metrics helpers are reimplemented. What remains is one capture of
-   `custom.metrics.k8s.io/v1beta1` on a cluster running an adapter, and
-   regenerating `JuliaHubK8sApi` around it.
+   custom-metrics helpers are reimplemented. `custom.metrics.k8s.io/v1beta1` was
+   captured on 2026-08-15 and deliberately **not** shipped — no caller, no
+   operation GVKs, a three-variable metric path. C5 has the evidence and
+   `gen/openapi_v1/reference-captures/` has the document.
 5. Widen the live suite, cheapest first: ~~**G13**~~, ~~**G4**~~, ~~**G6**~~,
    ~~**G9/G10/G11**~~, ~~**G2**~~ and ~~**G3**~~ all done. **G16** is done too,
    and turned into [C8](#c8-json-patches-did-not-encode-at-all); **G10** turned
@@ -1329,10 +1540,13 @@ fails loudly rather than surprisingly.
    which needs a decision before it can be scheduled.
 
    **The watch-contract cluster — the one flagged highest-risk — is now closed**
-   (G1–G4 all ticked), except for the reflector port under G2 and the
-   deliberately-deferred G5. What is left in Part 2 is the cheap remainder:
-   ~~G7~~, ~~G8~~, ~~G14~~ and ~~G12/G12a~~ done; only G5 remains, and it is
-   deferred. Both G12 items produced consumer fixes rather than Kuber ones, and
+   (G1–G4 all ticked), except for the reflector port under G2 and G5. What is
+   left in Part 2 is the cheap remainder: ~~G7~~, ~~G8~~, ~~G14~~ and
+   ~~G12/G12a~~ done; G5 was split on 2026-08-15 into ~~**G5a**~~, now covered by
+   `long_lived_watch`, and **G5b**, a documented manual probe — the hour of
+   waiting was never the mechanism, and a server-initiated close is producible in
+   seconds.
+   Both G12 items produced consumer fixes rather than Kuber ones, and
    G12's audit is what surfaced the `getpropertyat`/`haspropertyat` gap in
    [C2](#c2-openapiclients-does-not-exist-in-openapijl-10).
 6. **C1d** deferred until a CRD actually needs addressing.
@@ -1345,11 +1559,13 @@ fails loudly rather than surprisingly.
    sense: with HTTP.jl's layer off, Kuber's status list became the whole story,
    so 429 had to join it. Settling them is what unblocked G17's `get` half.
 
-**Everything in Part 2 is now closed except G5** (long-lived watches, deferred
-as probably untestable in CI) **and G12/G12a**, which are consumer-side audits
-rather than Kuber changes. What remains is Part 1: the C-items, all of which are
-work in the consumer repos except C1b/C5's one capture, which needs a cluster
-running a metrics adapter.
+**Everything in Part 2 is now closed except G12/G12a**, which are consumer-side
+audits rather than Kuber changes. G5a landed on 2026-08-15 — the hour-long test
+turned out to be a twelve-second one — and G5b stays open by design, as a manual
+probe. What remains is Part 1: the C-items, **all of which are now work in the
+consumer repos** —
+C1b/C5 was the last one needing anything of Kuber, and its capture is done and
+its decision recorded.
 
 Four of the five widening items produced a finding rather than just coverage
 (C8, G12a, G17, G18), which is the argument for continuing to spend on the live

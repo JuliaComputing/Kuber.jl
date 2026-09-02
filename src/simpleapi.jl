@@ -82,10 +82,12 @@ function _positional(params::Vector{Symbol}, namespace, name, body)
             body === nothing && throw(ArgumentError("a request body is required for this operation"))
             push!(args, body)
         else
-            # `:name` for everything the apiserver serves, but a group Kuber does
-            # not ship can name it something else — custom.metrics.k8s.io calls
-            # it `compositemetricname`. There is only ever one, so the name
-            # argument fills whichever it is.
+            # `:name` for everything the apiserver serves, but a captured group
+            # can name it something else, so the name argument fills whichever
+            # single one it is. A group needing *more* than one is out of reach
+            # of this API and says so above — `custom.metrics.k8s.io` is the
+            # known case, addressing metrics through `{resource}/{name}/{subresource}`
+            # (see `OpenAPIv1ConsumerGaps.md` C5 and the reference capture).
             name === nothing && throw(ArgumentError("a $p is required for this operation"))
             push!(args, String(name))
         end

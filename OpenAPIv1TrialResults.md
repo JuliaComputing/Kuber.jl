@@ -306,10 +306,14 @@ Out of trial scope by decision (plan §0), and since revisited:
   metrics-server.
 - **Custom metrics**: `list_custom_metrics` / `list_namespaced_custom_metrics`
   are implemented again — the same one-liners as `master`, over
-  `list(ctx, :MetricValue, "<objecttype>/<name>/<metric>")`. What is missing is
-  only the group document: `custom.metrics.k8s.io` exists solely where an adapter
-  is installed, so it has to be captured there and registered. See
-  `OpenAPIv1ConsumerGaps.md` C1b/C5.
+  `list(ctx, :MetricValue, "<objecttype>/<name>/<metric>")`. The group itself is
+  **captured and deliberately not shipped**: a document from `prometheus-adapter`
+  v0.12.0 (2026-08-15, kept in `gen/openapi_v1/reference-captures/`) has the
+  predicted adapter-independent schemas but operations that carry no
+  `x-kubernetes-group-version-kind` and address metrics through a three-variable
+  path, so `emit_registry.jl` would emit no `OPS` for it and `_positional` could
+  not fill it — and no code in JuliaRun or the monorepo actually calls the API.
+  See `OpenAPIv1ConsumerGaps.md` C5.
 - **One k8s minor.** The multi-minor matrix and connect-time switching are a
   post-trial concern; the pipeline already supports adding groups and minors.
 

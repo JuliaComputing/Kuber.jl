@@ -32,9 +32,11 @@ than by the apiserver, so it is absent from the release-tag documents and was
 captured from a live cluster instead (`gen/openapi_v1/specs/SPECS_CAPTURED`).
 Its kinds are only addressable against a cluster that runs metrics-server.
 
-API groups that are not here — other aggregated APIs such as
-`custom.metrics.k8s.io`, and CRD-backed groups — can be captured the same way
-and plugged in with `Kuber.register!` without modifying Kuber; see the README.
+API groups that are not here can be captured the same way and plugged in with
+`Kuber.register!` without modifying Kuber; see the README. That includes
+`custom.metrics.k8s.io`, which was captured and evaluated on 2026-08-15 and
+deliberately left out — see `OpenAPIv1ConsumerGaps.md` C5 for what the document
+turned out to look like.
 
 Kubernetes schemas do not close their objects, so a client generated for one
 minor tolerates fields *added* by a later server; only contract violations
@@ -46,12 +48,18 @@ in the table above, with an informational log line under `verbose=true`.
 
 ### Not included
 
-- **CRD-backed groups** and **aggregated APIs** (`metrics.k8s.io`,
-  `custom.metrics.k8s.io`). Neither appears in upstream release-tag specs; both
-  would have to be captured from a reference cluster's
-  `/openapi/v3/apis/<group>/<version>`. The custom-metrics helpers
-  (`list_custom_metrics`, `list_namespaced_custom_metrics`) throw a clear error
-  in this build.
+- **CRD-backed groups**, which belong to the deployment that defines them and are
+  registered with `Kuber.register!` rather than shipped here.
+- **`custom.metrics.k8s.io`** — captured from a real adapter on 2026-08-15 and
+  left out on the evidence: its operations carry neither
+  `x-kubernetes-group-version-kind` nor `x-kubernetes-action`, and address
+  metrics through a three-variable path, so neither the registry emitter nor the
+  verb API can carry them without new work, and nothing in the consumer repos
+  calls the API. See
+  `OpenAPIv1ConsumerGaps.md` C5, and `gen/openapi_v1/reference-captures/` for the
+  document itself. The helpers `list_custom_metrics` /
+  `list_namespaced_custom_metrics` are implemented and exported, and resolve
+  `:MetricValue` against a group registered with `Kuber.register!`.
 - Group versions no longer served by a modern API server (the `*beta*` and
   `*alpha*` variants of apps, batch, extensions, settings, auditregistration and
   so on, which the 0.2.x client shipped).

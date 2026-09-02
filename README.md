@@ -22,7 +22,7 @@ An easy to use API to access Kubernetes clusters from Julia. Under the verb API 
 > - **Every group module has its own copy of the shared meta types**, so a `Status` from `apps/v1` is not the same Julia type as core's. Compare `kuber_kind(result) == "Status"` rather than the type — this matters for `delete!`, which returns either the deleted object or a `Status`.
 > - **Timeouts are HTTP.jl 2.x request options.** `set_timeout(ctx, secs)` now sets `request_timeout`; `set_request_options(ctx; ...)` passes anything else through (including TLS configuration). Watches never carry an overall deadline — bound them with `timeout_seconds` instead.
 > - **Errors** are always `KuberException`; there are no `(result, response)` tuples to check.
-> - Out of trial scope: the custom metrics helpers (they throw a clear error), CRD groups, and aggregated APIs like `metrics.k8s.io`. The generated layer covers the 17 group versions listed in `gen/openapi_v1/fetch_specs.sh`.
+> - **Aggregated APIs are captured from a cluster, not from release specs.** `metrics.k8s.io/v1beta1` is captured and shipped, so `:NodeMetrics`/`:PodMetrics` work against metrics-server. `custom.metrics.k8s.io` was captured from a real adapter and deliberately not shipped (`OpenAPIv1ConsumerGaps.md` C5), so the `list_custom_metrics`/`list_namespaced_custom_metrics` helpers, which are implemented, need the group registered first. CRD-backed groups stay out: they belong to the deployment that defines them. The generated layer covers the group versions listed in `gen/openapi_v1/fetch_specs.sh` plus the captures in `SPECS_CAPTURED`.
 >
 > The generated layer is checked in and reproducible; see [`gen/openapi_v1/README.md`](gen/openapi_v1/README.md) to regenerate it. Never hand-edit `src/ApiImpl/generated/`.
 
@@ -109,6 +109,13 @@ process. So: on a list frame, discard anything you cached that is not in it.
 `watch(ctx, :Pod, stream)` — the events-only form — opts out of list frames, and
 therefore out of resync state too. It still recovers, but a consumer maintaining
 a cache on that form has to track expiry itself.
+
+It also starts from a `resourceVersion` it finds by listing and then discarding
+the result, so an object created between the call and that internal list is
+never announced. Pass `resource_version=` — read off a `get`/`list` you make
+yourself — when there must be no gap between the state you have and the events
+you get. That is the list-then-watch shape, and it is what `watch(ctx, list, O)`
+does for you.
 
 ### Helper methods:
 

@@ -1,7 +1,14 @@
-source: live cluster (aggregated APIs and CRD groups are not in release-tag specs)
-path:   /openapi/v3/apis/<group>/<version>
-server: v1.35.4+k3s1
-context: default
+# Provenance for documents captured from a live cluster: aggregated APIs
+# (metrics.k8s.io and the like) and CRD-backed groups, which release-tag specs
+# do not carry. Kept apart from SPECS_ORIGIN because a captured document is only
+# as reproducible as the cluster it came from.
+#
+# One record per file. Re-capturing a file replaces its record and leaves the
+# others alone.
+
+file:     apis_metrics.k8s.io_v1beta1.json
+path:     /openapi/v3/apis/metrics.k8s.io/v1beta1
+server:   v1.35.4+k3s1
+context:  default
 captured: 2026-08-14T06:56:13Z
-files:
-db2e242348df6877618a2c03f1b3e6f0489dcdcafb523f07ceb9e0452920cbc6  apis_metrics.k8s.io_v1beta1.json
+sha256:   db2e242348df6877618a2c03f1b3e6f0489dcdcafb523f07ceb9e0452920cbc6

@@ -7,13 +7,16 @@
 > - **Node and pod metrics work.** `metrics.k8s.io/v1beta1` was captured from a
 >   k3s v1.35.4 cluster and is shipped, so `:NodeMetrics` and `:PodMetrics`
 >   behave as below on any cluster running metrics-server.
-> - **Custom metrics need the group plugged in.** `custom.metrics.k8s.io` has no
->   fixed home — it exists only where an adapter (prometheus-adapter and the
->   like) is installed — so nothing is shipped for it. Capture it from a cluster
->   that serves it and register the generated module with
->   [`Kuber.register!`](README.md#adding-api-groups-kuber-does-not-ship); the
->   `list_custom_metrics`/`list_namespaced_custom_metrics` helpers then work as
->   documented below.
+> - **Custom metrics are not shipped, by decision.** `custom.metrics.k8s.io` was
+>   captured from a real adapter on 2026-08-15 and left out: its operations carry
+>   no group-version-kind and address metrics through a three-variable path, so
+>   the verb API cannot address them without new work, and nothing in the
+>   consumer repos calls the API (`OpenAPIv1ConsumerGaps.md` C5 has the
+>   evidence). The `list_custom_metrics`/`list_namespaced_custom_metrics` helpers
+>   are implemented and exported, and work as documented below against a group
+>   generated and registered with
+>   [`Kuber.register!`](README.md#adding-api-groups-kuber-does-not-ship) — which
+>   has to solve those two obstacles too.
 >
 > Two reading differences from the output shown here, which predates the
 > rewrite: values come back as typed models rather than JSON, and `usage` is a
