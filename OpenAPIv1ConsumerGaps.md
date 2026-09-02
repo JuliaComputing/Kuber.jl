@@ -10,6 +10,11 @@ branch does; this one records what consumers need from it.
 references — cite them in review, and tick the boxes as items close. Add new
 findings with the next free number rather than renumbering.
 
+Two views of the same work. Parts 1 and 2 are organised by *finding*, and hold
+the reasoning. The [consumer checklist](#consumer-checklist) is organised by
+*repository*, and is the one to work through when doing the port: its boxes are
+per call site, and a finding's own box closes when all of its sites are ticked.
+
 ## Scope of the survey
 
 | Consumer | Kuber pin surveyed |
@@ -33,8 +38,14 @@ them. Part 1 is that list; Part 2 is the genuine coverage gaps.
 *Update, 2026-08-14:* the plug point is back, in a different shape —
 [C1a](#c1a-the-mechanism--cheap-because-the-architecture-is-already-plugin-shaped)
 is done. `Kuber.register!` merges an out-of-tree generated layer into the
-registry from the registering package's `__init__`. What remains of C1 is
-content: regenerating `JuliaHubK8sApi` against the new pipeline.
+registry from the registering package's `__init__`.
+
+*Update, 2026-08-15:* and the content half of C1 has gone away rather than been
+done. Kuber's shipped layer turned out to be a superset of what the consumers
+reach, so `JuliaHubK8sApi` is **dropped, not regenerated** — see C1b. That leaves
+`Kuber.register!` with no in-house consumer at all, which is the right mechanism
+to have and now an untested-in-anger one: the first real registration will be
+whatever CRD or aggregated group someone needs next.
 
 One thing that raises the stakes: **JuliaHub's own tests mock Kuber out** —
 `services/JobLoops/src/hot_standby.jl` has 15 `@mock Kuber.…` call sites. The
@@ -51,8 +62,11 @@ Porting work, not test gaps. No test can cover an API that no longer exists.
 
 - [x] Add `Kuber.register!` (registry merge) — the mechanism. **Done**:
       `src/register.jl`, covered by `test/register.jl` (57 assertions, offline).
-- [ ] Regenerate `JuliaHubK8sApi` through `gen/openapi_v1/` with the two or three
-      group versions that are actually used — the content.
+- [ ] ~~Regenerate `JuliaHubK8sApi` through `gen/openapi_v1/` with the two or
+      three group versions that are actually used — the content.~~ **Superseded
+      2026-08-15: drop the package instead and use Kuber directly.** Once
+      `metrics.k8s.io` shipped in Kuber, the only group version it still added
+      was `custom.metrics.k8s.io`, which nothing calls. See C1b.
 
 `JuliaHubK8sApi` is not an extension of Kuber's generated code; it is a **drop-in
 replacement** for it. Its `src/` contains exactly the three things this branch
@@ -134,11 +148,22 @@ each resolve their own subset. The tables are global; resolution is not.
 
 #### C1b. The content — small, once scoped to what is actually used
 
+> **Decision, 2026-08-15: do not regenerate it — remove it.** This section
+> narrowed the job from 26 group versions to three, and everything that happened
+> after took it to zero. `metrics.k8s.io/v1beta1` now ships in Kuber; the audit
+> found no CRD group used at all; and `custom.metrics.k8s.io` has no live caller,
+> so C5 declined to ship it. Kuber's shipped layer is therefore a **superset of
+> what the consumers actually reach**, and the package has nothing left to
+> contribute. The reasoning below still stands as the argument for *why* it
+> shrank to nothing; the work is in
+> [the consumer checklist](#5-remove-the-juliahubk8sapi-dependency--last-everywhere-at-once).
+
 `JuliaHubK8sApi` ships 43 group versions and this branch's 17 are a strict subset,
 so it adds 26. Per the [usage audit](#appendix--juliahubk8sapi-group-version-usage-audit),
 **two are actually reachable through Kuber, possibly three, and no CRD group is
-used at all.** So this is "regenerate two or three well-behaved aggregated APIs",
-not "regenerate 26 including operator CRDs".
+used at all.** So this was "regenerate two or three well-behaved aggregated APIs",
+not "regenerate 26 including operator CRDs" — and then even those three went
+away.
 
 **Capture-from-cluster is the mechanism, it works, and it is now built.**
 `fetch_specs.sh --from-cluster <group>/<version>` reads
@@ -182,8 +207,10 @@ carry today, and nothing in either repo actually calls the API. C5 has the
 evidence. So the boundary rule stands as written; this group simply is not worth
 what it costs to cross it yet.
 
-So what is left for `JuliaHubK8sApi` is smaller again — nothing but any CRD group
-that turns out to be needed, and the audit found none.
+So what is left for `JuliaHubK8sApi` is **nothing**: no CRD group is used through
+Kuber, the audit found none needed, and the last aggregated group it still
+provided has no caller. A package that contributes no group version is a
+dependency, not a layer — hence the decision above to remove it.
 
 Two things C1a left for this step to prove, one now settled:
 
@@ -202,11 +229,12 @@ Two things C1a left for this step to prove, one now settled:
 
 #### C1c. What the port costs JuliaRun
 
-Smaller than it looks, because **`Typedefs` is a generated tree of plain aliases**
-(`JuliaHubK8sApi/src/api_typemap.jl:1252-1260` is `const Secret =
-Kubernetes.IoK8sApiCoreV1Secret` and so on). Re-emitting it over the new type
-names is mechanical, so **JuliaRun's ~28 `K8sApi.Typedefs.*` references survive
-verbatim.** The exceptions:
+Written when the plan was to regenerate the package, and kept because the
+measurement is what argued the package away. **`Typedefs` is a generated tree of
+plain aliases** (`JuliaHubK8sApi/src/api_typemap.jl:1252-1260` is `const Secret =
+Kubernetes.IoK8sApiCoreV1Secret` and so on), so re-emitting it over the new type
+names would have been mechanical and JuliaRun's ~28 `K8sApi.Typedefs.*`
+references would have survived verbatim. The exceptions:
 
 - `Typedefs.CoreV1.WatchEvent`, `Typedefs.MetaV1.WatchEvent` and
   `Typedefs.EventsV1.Status` cannot work. The aliases can exist, but Kuber now
@@ -215,6 +243,39 @@ verbatim.** The exceptions:
   `src/kubernetes/api.jl:1689`.
 - `KuberContext(K8sApi; …)` → `KuberContext()` (see C1a) plus C6's kwargs.
 - C4 and C7 are untouched by any of this.
+
+**Dropping the package instead does not cost much more, and a hand-written alias
+block to avoid the difference was considered and rejected.** The 28 references
+are not 28 independent sites: they cluster into four `isa` chains over a watch
+stream, like `clustermgmt.jl:511-516`, where
+
+```julia
+if     isa(event, Typedefs.CoreV1.NodeList)        # would survive an alias
+elseif isa(event, Typedefs.CoreV1.WatchEvent)      # cannot: events are KuberEvent
+       node = kuber_obj(cm.ctx, event.object)      # no longer needed either
+       nodes = isa(node, Typedefs.CoreV1.Node) ? [node] : []
+elseif isa(event, Typedefs.EventsV1.Status)        # cannot: Status is per-module
+```
+
+Three of those four chains contain a branch that has to be rewritten whatever
+happens, so "the call sites stay as they are" was never true for the code that
+matters — an alias would have preserved two branches in five and left each block
+half-migrated. And for `isa` an alias is the wrong construct anyway: a
+`const Pod = K8sV1.IoK8sApiCoreV1Pod` pins the group version at the call site,
+reintroducing by hand the coupling the registry exists to remove.
+`kind_to_type(ctx, :Pod)` resolves through the server's preferred version.
+
+So the references split by what they *do*, not by where the type came from:
+
+| Use | Sites | Becomes |
+|---|---|---|
+| `isa` over a watch stream | `clustermgmt.jl:511-516`, `api.jl:1570-1576`, `api.jl:1687-1692` | `KuberEvent`, `kuber_kind(x) == "Status"`, `kind_to_type(ctx, :Node)`; the `kuber_obj(ctx, event.object)` line goes, `event.object` is already typed |
+| construction | `api.jl:220-248` (Secret, ObjectMeta), `api.jl:264` (Status) | a concrete type — `kind_to_type` needs a context, so name the type directly |
+| `isa` on a plain model | `api.jl:1841-1843`, `clustermgmt.jl:20` (`Quantity`) | either form; a direct reference is one indirection fewer |
+
+That leaves roughly eight sites wanting a concrete type rather than 28 — too few
+to justify a `Typedefs`-shaped namespace that mimics a generated package which no
+longer exists.
 
 #### C1d. The dynamic alternative, for later
 
@@ -576,6 +637,58 @@ exposure is concentrated on the *read* side, where model fields are accessed
 directly.
 
 ---
+
+### C10. `OpenAPI` itself, not just `OpenAPI.Clients`
+
+*Found 2026-08-15, while checking whether JuliaRun could be ported from the
+documents alone. It could not: C2 surveyed `OpenAPI.Clients` and missed two uses
+of the `OpenAPI` module proper.*
+
+- [ ] Replace `OpenAPI.APIModel` at its 8 dispatch sites in JuliaRun.
+- [ ] Replace `OpenAPI.to_json` at `JuliaRun/src/kubernetes/provisioning.jl:68`.
+- [ ] Decide whether Kuber should export a supported way to do the second one.
+
+**`OpenAPI.APIModel` is gone, and nothing replaces it.** Generated models on 1.0
+have no shared abstract supertype at all — `supertype(IoK8sApiCoreV1Pod)` is
+`Any`. JuliaRun uses it as a dispatch constraint at eight sites:
+
+- `src/kubernetes/kubernetes.jl:20` — `import OpenAPI: APIModel`
+- `src/kubernetes/types.jl:33` — `spec::Union{Nothing, OpenAPI.APIModel}`
+- `src/kubernetes/clustermgmt.jl:124` — `KuberNodeState(status::T, nodespec) where {T <: OpenAPI.APIModel}`
+- `src/kubernetes/api.jl:9, 16, 33, 151, 1767` — `put!`/`update!`/`namespace!`/`_get_parallel_status`
+
+Every one of them is separating "a model" from "a `Symbol` or a `Dict`", which is
+what the verb API dispatches on anyway. So the fix is usually to drop the
+constraint and let the existing `Symbol`/`AbstractDict` methods take precedence,
+rather than to look for a new supertype. `types.jl:33`'s field type is the
+exception — a struct field needs a concrete-enough type, and `Any` is the honest
+one there.
+
+**`OpenAPI.to_json` is gone, and the obvious replacement is silently wrong.**
+
+```julia
+push!(objects, :Secret => _parse_json(OpenAPI.to_json(secret)))   # provisioning.jl:68
+```
+
+`JSON.json(model)` looks like the successor and is not: it serialises the Julia
+struct, so field names come out **lowercase** (`"apiversion"`) and absent fields
+come out as the literal string `"ABSENT"`. A cluster rejects that, and nothing
+about it looks wrong until it is on the wire.
+
+```
+JSON.json(pod)        -> {"apiversion":"v1","kind":"Pod","metadata":{"annotations":"ABSENT",…
+Runtime._encode(pod)  -> {"apiVersion":"v1","kind":"Pod","metadata":{"labels":…
+```
+
+`Kuber.Runtime._encode(model)` is what produces the wire shape — correct
+camelCase, absent fields omitted — and it returns a `JSON.Object`, so the
+`_parse_json(...)` round-trip at that call site collapses into it.
+
+**But `_encode` is private**, and a consumer serialising a model to JSON is an
+ordinary thing to want. That is the third box: either bless a `Kuber.kuber_json`
+(or similar) wrapper, or accept that consumers reach for an underscore. Reaching
+for the underscore is at least *correct*, which `JSON.json` is not — but it is a
+poor thing to have to discover, and this document only discovered it by looking.
 
 ## Part 2 — Test gaps
 
@@ -1518,6 +1631,178 @@ fails loudly rather than surprisingly.
 
 ---
 
+## Consumer checklist
+
+The same work as Part 1 and Part 2, arranged by the repository that has to do it
+rather than by the gap it came from — a port is worked through a file at a time,
+not a gap at a time. **The `C…`/`G…` sections remain the argument; this is an
+index into them.** Its boxes are per call site, so a gap's own box closes when
+every site listed under it here is ticked.
+
+Snapshot of two trees at the pins in [Scope of the survey](#scope-of-the-survey);
+`JuliaHubK8sApi` is a shared package and may have consumers outside them. Re-run
+the audit before starting.
+
+**Ordered by risk and by what has to come last, not by a build dependency —
+there is no longer one.** While the plan was to regenerate `JuliaHubK8sApi`, it
+came first because everything linked against it. Removing it instead inverts
+that: a `Project.toml` line cannot come out until the references above it are
+gone, so it is the *tail* of every repo's work rather than the head, and it is
+collected in one section at the end. What is left to order is risk.
+
+- **(1) first** because it is the one a green Kuber suite does not clear, and the
+  one whose answer could change the others: if the reflector's loop cannot be
+  made to work against this branch's watch contract, that is worth knowing before
+  anything else is rewritten.
+- **(2)–(4)** are largely independent of each other; take them in whatever order
+  suits, and note that JobLoops sits downstream of JuliaRun and K8sReflector, so
+  it is the natural last of the three.
+- Everything but (2) is in the JuliaHub monorepo; `JuliaRun.jl` is its own
+  repository.
+- **(5) last**, once nothing references the package — except its one question,
+  the `api_module` config key, which is worth *asking* early: it is deployment
+  config in a third repo and the answer may need someone else.
+
+**Three of these are silent and do not wait their turn.** They are defects, not
+port steps, and one of them is broken today; see
+[the last section](#what-will-and-will-not-announce-itself).
+
+### 1. `packages/K8sReflector` — highest risk, do it first
+
+Kuber's own green suite does **not** clear this one: G2's tests cover the
+contract the reflector needs, not the reflector. Its loop is also the only place
+in the stack that depends on watch semantics this branch changed outright, so an
+answer here is worth having before the mechanical work starts.
+
+- [ ] `:216-245` — the loop wraps `Kuber.watch` in its own `while true` and
+      relies on `watch` *returning* on a long-poll timeout so it can re-establish
+      from its own tracked `resourceVersion`. Watches carry no overall deadline
+      here and do not return that way ([G2](#g2-caller-driven-re-establishment))
+- [ ] `:52-53` — reads `IoK8sApimachineryPkgApisMetaV1WatchEvent` and
+      `…MetaV1Status` off `c.apimodule`, which no longer exists ([C3](#c3-ctxapimodule-reach-through))
+- [ ] `:4` — `using OpenAPI.Clients: is_longpoll_timeout, is_request_interrupted`
+      → `Kuber.is_retryable`. `is_longpoll_timeout` has no successor and needs
+      none ([C2](#c2-openapiclients-does-not-exist-in-openapijl-10))
+- [ ] `:12` — `i.metadata.resourceVersion` → `resourceversion` ([C4](#c4-camelcase--lowercase-field-names))
+- [ ] Consider passing `resource_version=` when re-establishing: the events-only
+      form lists internally and discards the result, so anything created in that
+      window is never announced (`README.md`, and G5a's note)
+
+### 2. `JuliaRun.jl` — the bulk of it
+
+- [ ] `src/kubernetes/types.jl:8-12` and `src/metrics/kubernetesmetrics.jl:58-62`
+      — `KuberContext(K8sApi; long_polling_timeout=…, timeout=…)` →
+      `KuberContext()` plus `set_timeout` / `set_request_options`
+      ([C1a](#c1a-the-mechanism--cheap-because-the-architecture-is-already-plugin-shaped), [C6](#c6-kubercontext-timeout-kwargs))
+- [ ] `src/kubernetes/kubernetes.jl:52`, `src/metrics/kubernetesmetrics.jl:13` —
+      delete `const K8sApi = JuliaHubK8sApi`, and with it every `K8sApi.` prefix.
+      No `Kuber.register!` call is needed: there is no out-of-tree layer left to
+      register ([C1a](#c1a-the-mechanism--cheap-because-the-architecture-is-already-plugin-shaped))
+- [ ] `src/kubernetes/clustermgmt.jl:511-516`, `src/kubernetes/api.jl:1570-1576`
+      and `:1687-1692` — the three `isa` chains over a watch stream.
+      `Typedefs.*.WatchEvent` → `KuberEvent`; `Typedefs.EventsV1.Status` →
+      `kuber_kind(event) == "Status"`; `Typedefs.CoreV1.{Node,Pod,Service,…}` →
+      `kind_to_type(ctx, :Node)`, which resolves through the server's preferred
+      version instead of pinning it. The `kuber_obj(cm.ctx, event.object)` line
+      goes with them — `event.object` is already typed ([C1c](#c1c-what-the-port-costs-juliarun), [C3](#c3-ctxapimodule-reach-through))
+- [ ] `src/kubernetes/api.jl:220-248` (`Secret`, `ObjectMeta`) and `:264`
+      (`Status`) — construction, so name the type directly:
+      `kind_to_type` needs a context and these have none to hand ([C1c](#c1c-what-the-port-costs-juliarun))
+- [ ] `src/kubernetes/api.jl:1841-1843`, `src/kubernetes/clustermgmt.jl:20`,
+      `api.jl:1168` — `isa` on a plain model (`Quantity`, `Node`); either form
+      works, a direct type reference is one indirection fewer ([C1c](#c1c-what-the-port-costs-juliarun))
+- [ ] `src/kubernetes/api.jl:1040, 1053, 1065, 1529` and
+      `src/kubernetes/clustermgmt.jl:114-115` — `OpenAPI.Clients.ApiException` →
+      `Kuber.KuberException`; `ex.resp.data` → `ex.message` or `ex.response` ([C2](#c2-openapiclients-does-not-exist-in-openapijl-10))
+- [ ] 49 sites — `import OpenAPI.Clients: getpropertyat, haspropertyat` →
+      `import Kuber: …`. Same walk, `ABSENT`-aware ([C2](#c2-openapiclients-does-not-exist-in-openapijl-10))
+- [ ] The same 49 sites — camelCase path elements (`:loadBalancer`, `:nodeName`,
+      `:backoffLimit`) must be lowercased. Case is deliberately not folded, so
+      these fail rather than resolving quietly ([C4](#c4-camelcase--lowercase-field-names))
+- [ ] `src/kubernetes/clustermgmt.jl:186-194` — **silent.** `hasproperty` is true
+      for every field on 1.0, so `container_resource` returns `ABSENT` instead of
+      falling through to its default ([G12](#g12-resource-limits-are-an-open-struct))
+- [ ] `src/kubernetes/clustermgmt.jl:281-285` — `keys(res)` / `res["cpu"]` on
+      `ResourceRequirements.limits`, which is an open struct now: `kuber_props` ([G12](#g12-resource-limits-are-an-open-struct))
+- [ ] `src/kubernetes/kubernetes.jl:20`, `types.jl:33`, `clustermgmt.jl:124`,
+      `api.jl:9, 16, 33, 151, 1767` — `OpenAPI.APIModel` has no successor;
+      1.0 models share no supertype. Usually drop the constraint, since it only
+      separates a model from a `Symbol`/`Dict` ([C10](#c10-openapi-itself-not-just-openapiclients))
+- [ ] `src/kubernetes/provisioning.jl:68` — `OpenAPI.to_json(secret)` →
+      `Kuber.Runtime._encode(secret)`, which also removes the `_parse_json`
+      round-trip. **Not `JSON.json`**: that emits lowercase names and `"ABSENT"`
+      strings ([C10](#c10-openapi-itself-not-just-openapiclients))
+- [ ] `Project.toml` — Kuber to the branch (its `[sources]` OpenAPI pin has to be
+      repeated here, since Julia only honours `[sources]` in the top-level
+      project), `OpenAPI` compat off `0.2.5`, and the `JuliaHubK8sApi` dep and
+      `[sources]` entry out
+- [ ] `src/kubernetes/{clustermgmt,api}.jl` — the `ABSENT` read-side audit ([C7](#c7-absent-audit--smaller-than-expected-but-not-zero))
+- [ ] Decide what happens to `src/metrics/kubernetesmetrics.jl`'s custom-metrics
+      half. Kuber does not ship `custom.metrics.k8s.io` ([C5](#c5-custom-metrics-captured-evaluated-not-shipped)),
+      and nothing calls these functions — `test/test_metrics.jl:104-176` is the
+      only caller and `runtests.jl` does not include it
+
+### 3. `services/JobLoops`
+
+- [ ] `.containerStatuses` (5 sites), `.restartCount`, `.nodeName` → lowercase ([C4](#c4-camelcase--lowercase-field-names))
+- [ ] `src/networkpolicy.jl:141-143` — **broken today, independently of this
+      port.** An object body under `application/json-patch+json`, which must be
+      an array of RFC 6902 operations; a real apiserver answers 422. Likely
+      intent is merge-patch ([C9](#c9-a-live-defect-in-jobloops-found-in-passing))
+
+### 4. `JuliaRunPool`, `AccessControl`, `BillingService`
+
+- [ ] `packages/JuliaRunPool/…:135-136` — **silent.** `format: byte` decodes to
+      `Vector{UInt8}` already, so `String(base64decode(secret.data["x"]))`
+      decodes twice; the secret is then rewritten on every pass ([G12a](#g12a-secretdata-decodes-to-bytes-not-base64-text))
+- [ ] `packages/AccessControl/src/AccessControl.jl:77` — drop
+      `kwargs[:httplib] = OpenAPI.Clients.HTTPLib.HTTP` ([C2](#c2-openapiclients-does-not-exist-in-openapijl-10))
+- [ ] `services/BillingService/src/billing/main.jl:62` — drop
+      `httplib=OpenAPI.Clients.HTTPLib.HTTP` ([C2](#c2-openapiclients-does-not-exist-in-openapijl-10))
+
+### 5. Remove the `JuliaHubK8sApi` dependency — last, everywhere at once
+
+**Decided 2026-08-15: the package is not regenerated, it goes.** Kuber's shipped
+layer is a superset of what the consumers reach — `metrics.k8s.io/v1beta1` ships
+in Kuber, no CRD group is used through Kuber at all, and `custom.metrics.k8s.io`
+has no live caller ([C1b](#c1b-the-content--small-once-scoped-to-what-is-actually-used),
+[C5](#c5-custom-metrics-captured-evaluated-not-shipped), and the
+[usage audit](#appendix--juliahubk8sapi-group-version-usage-audit)). So this
+section replaces "regenerate 11 MB" with "delete a dependency".
+
+- [ ] Drop the dep: `services/JobLoops/Project.toml`,
+      `packages/JuliaRunPool/Project.toml`, `services/common_dependencies.jl`,
+      `packages/sources.toml`, `services/JobLoops/spec.toml`, and JuliaRun's own
+      `Project.toml`
+- [ ] `services/JobLoops/src/kuberutils.jl` —
+      `using JuliaHubK8sApi.Kubernetes: IoK8sApiCoreV1PodCondition` →
+      `Kuber.ApiImpl.K8sV1.IoK8sApiCoreV1PodCondition`. A direct generated-type
+      import, and the only one found outside JuliaRun
+- [ ] `services/JobLoops/src/k8s_job_pod_monitoring.jl` — `using JuliaHubK8sApi`
+- [ ] **Check `"api_module": "JuliaHubRun.JuliaHubK8sApi"`** in
+      `common/config/config_juliarun.json` and in `JuliaHubInfra.jl`'s
+      `src/ansible/roles/juliateam/templates/juliarun.json.j2`. The key is dead
+      once `KuberContext(apimodule)` is gone, but an org-wide code search found
+      no reader — so establish whether something resolves it by name and would
+      fail, or whether it is already vestigial. **Deployment config, in a third
+      repo, and outside the two trees this document surveyed**
+- [ ] `packages/ImageAPICommon/src/sha.jl` — a stale type name in a comment only
+- [ ] Archive or deprecate the repository once nothing depends on it
+
+### What will and will not announce itself
+
+Most of the above is loud: a missing symbol, a `MethodError`, a `type has no
+field`, all at load time or on the first call. **Three are silent**, and they are
+the ones worth reviewing rather than waiting for:
+
+| Site | What happens | |
+|---|---|---|
+| `JuliaRunPool …:135-136` | secret compared against a double-decoded value, so it never matches and is rewritten forever | [G12a](#g12a-secretdata-decodes-to-bytes-not-base64-text) |
+| `clustermgmt.jl:186-194` | `container_resource` returns `ABSENT` rather than its default | [G12](#g12-resource-limits-are-an-open-struct) |
+| `networkpolicy.jl:141-143` | 422 on a path that may simply never be taken — `needs_update` only fires when the `version` label differs | [C9](#c9-a-live-defect-in-jobloops-found-in-passing) |
+
+---
+
 ## Suggested order
 
 1. ~~**C1a** — the registration mechanism.~~ **Done** — `src/register.jl`,
@@ -1532,7 +1817,9 @@ fails loudly rather than surprisingly.
    custom-metrics helpers are reimplemented. `custom.metrics.k8s.io/v1beta1` was
    captured on 2026-08-15 and deliberately **not** shipped — no caller, no
    operation GVKs, a three-variable metric path. C5 has the evidence and
-   `gen/openapi_v1/reference-captures/` has the document.
+   `gen/openapi_v1/reference-captures/` has the document. Between them those two
+   decisions emptied `JuliaHubK8sApi` of anything it still contributed, so on
+   2026-08-15 C1b turned from "regenerate it" into "remove it".
 5. Widen the live suite, cheapest first: ~~**G13**~~, ~~**G4**~~, ~~**G6**~~,
    ~~**G9/G10/G11**~~, ~~**G2**~~ and ~~**G3**~~ all done. **G16** is done too,
    and turned into [C8](#c8-json-patches-did-not-encode-at-all); **G10** turned
