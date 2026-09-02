@@ -10,7 +10,7 @@ The media type that scopes the watch codec.
 
 Registering a decoder for it does nothing on its own: codecs match on the
 *received* Content-Type and a real apiserver always replies with a bare
-`application/json`, even for a watch. Since OpenAPI `1ff9ba8` a streaming call
+`application/json`, even for a watch. An OpenAPI 1.0 streaming call
 falls back to the media type the call asked for, so passing
 `accept = WATCH_MEDIA` is what makes the codec fire — and it fires for exactly
 those calls, leaving buffered calls on the same client decoding typed models.

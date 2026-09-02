@@ -80,6 +80,9 @@ JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 OpenAPI = "d5e62ea6-ddf3-4d43-8e4c-ad5e6c8bfd7d"
 
 [sources]
+# Superseded 2026-08-31: PR #103 merged, so the pin is now
+# {url = "https://github.com/JuliaComputing/OpenAPI.jl", rev = "cdcf203…"},
+# and comes out entirely once 1.0.0 is tagged. Project.toml is authoritative.
 OpenAPI = {url = "https://github.com/quinnj/OpenAPI.jl", rev = "1ff9ba8dacf5857f0e712d26cc16e6a67bbdc46a"}
 
 [compat]

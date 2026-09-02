@@ -7,8 +7,8 @@ measured numbers §6 asks for, and what is left. Read this alongside the plan:
 the plan is the design, this is the outcome. Where they disagree, this file is
 current.
 
-Built against OpenAPI.jl `1ff9ba8` (`quinnj/OpenAPI.jl`, branch
-`codex/production-rewrite`), Kubernetes v1.35.4 specs, verified live against a
+Built against OpenAPI.jl **1.0.0** (released 2026-09-02, tagged at `cdcf203`),
+Kubernetes v1.35.4 specs, verified live against a
 k3s v1.35.4 cluster through `kubectl proxy`. Local runs were all on **Julia
 1.12.6**; the 1.11 floor in `[compat]` was exercised by CI (run 31701082665) and
 holds, as does nightly.
@@ -334,9 +334,11 @@ Found during the trial:
 
 ## 4. Before this graduates
 
-- [ ] PR JuliaComputing/OpenAPI.jl#103 merged and tagged; drop `[sources]`, set
+- [x] PR JuliaComputing/OpenAPI.jl#103 merged and tagged; drop `[sources]`, set
       compat to the tag, and **regenerate everything** — generated output is
-      byte-stable only within a pinned commit.
+      byte-stable only within a pinned commit. **Done 2026-09-02**: OpenAPI
+      1.0.0 is tagged at `cdcf203`, the commit `a022f05` regenerated against,
+      so the chain rerun against the registry version is byte-identical.
 - [x] Verify on Julia 1.11 — done by CI, which also runs nightly green.
 - [ ] Close the consumer gaps in
       [`OpenAPIv1ConsumerGaps.md`](OpenAPIv1ConsumerGaps.md). That survey

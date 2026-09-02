@@ -1,9 +1,12 @@
 # Generation pipeline (OpenAPI.jl 1.0 trial)
 
 Everything in `src/ApiImpl/generated/` is produced here. Never hand-edit that
-tree: regenerate instead. Generated output is byte-stable only for the pinned
-OpenAPI.jl commit (`[sources]` in `Project.toml`), so **a pin move means
-rerunning the whole chain**.
+tree: regenerate instead. Generated output is byte-stable only for one
+OpenAPI.jl version, so **an OpenAPI bump means rerunning the whole chain**.
+When that version comes from a `[sources]` rev rather than the registry, delete
+`Manifest.toml` first and check the resolved `git-tree-sha1` against
+`git rev-parse <rev>^{tree}`: Pkg will otherwise keep the old tree under the new
+rev's name, and everything downstream lies (C14 in `OpenAPIv1ConsumerGaps.md`).
 
 This replaces the old Java `openapi-generator` flow (`gen/generate.sh`,
 `gen/detect_apis_and_types.jl`, `gen/spec/`), which produced the 0.2.x-era

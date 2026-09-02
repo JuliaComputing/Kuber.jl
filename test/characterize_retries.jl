@@ -32,7 +32,8 @@
 #      closes the channel with a DecodeError instead of ending silently
 #
 # Findings at OpenAPI 1ff9ba8 / HTTP 2.6.4 / k8s v1.35.4 (2026-08-13), which is
-# what src/helpers.jl encodes:
+# what src/helpers.jl encodes. Re-run unchanged at OpenAPI `cdcf203`
+# (JuliaComputing main) on 2026-08-31 — all six classifications identical:
 #
 #   503 status         -> OpenAPI.Runtime.ApiError, .status == 503. `.decoded`
 #                         is raw Vector{UInt8} for statuses the document does

@@ -10,7 +10,7 @@ An easy to use API to access Kubernetes clusters from Julia. Under the verb API 
 
 > ### ⚠ This is the `openapi-v1-trial` branch
 >
-> A trial rebuild of Kuber on [OpenAPI.jl 1.0](https://github.com/JuliaComputing/OpenAPI.jl/pull/103), pinned to an unmerged commit. See [the trial plan](OpenAPIv1TrialBranchPlan.md) and [the evaluation notes](OpenAPIv1RewriteNotes.md). Requires **Julia 1.11+**, HTTP.jl 2.x and JSON.jl 1.7+.
+> A rebuild of Kuber on [OpenAPI.jl 1.0](https://github.com/JuliaComputing/OpenAPI.jl), released 2026-09-02 and resolved from the General registry — no `[sources]` pin. See [the trial plan](OpenAPIv1TrialBranchPlan.md) and [the evaluation notes](OpenAPIv1RewriteNotes.md). Requires **Julia 1.11+**, HTTP.jl 2.x and JSON.jl 1.7+.
 >
 > What changes for callers of the verb API:
 >
