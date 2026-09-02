@@ -1,3 +1,29 @@
+> **Status on the `openapi-v1-trial` branch.** Neither API appears in the
+> upstream Kubernetes OpenAPI documents this branch generates from — they are
+> served by metrics-server and by a metrics adapter, not by the apiserver — so
+> both have to be captured from a cluster that serves them
+> (`gen/openapi_v1/fetch_specs.sh --from-cluster <group>/<version>`).
+>
+> - **Node and pod metrics work.** `metrics.k8s.io/v1beta1` was captured from a
+>   k3s v1.35.4 cluster and is shipped, so `:NodeMetrics` and `:PodMetrics`
+>   behave as below on any cluster running metrics-server.
+> - **Custom metrics are not shipped, by decision.** `custom.metrics.k8s.io` was
+>   captured from a real adapter on 2026-08-15 and left out: its operations carry
+>   no group-version-kind and address metrics through a three-variable path, so
+>   the verb API cannot address them without new work, and nothing in the
+>   consumer repos calls the API (`OpenAPIv1ConsumerGaps.md` C5 has the
+>   evidence). The `list_custom_metrics`/`list_namespaced_custom_metrics` helpers
+>   are implemented and exported, and work as documented below against a group
+>   generated and registered with
+>   [`Kuber.register!`](README.md#adding-api-groups-kuber-does-not-ship) — which
+>   has to solve those two obstacles too.
+>
+> Two reading differences from the output shown here, which predates the
+> rewrite: values come back as typed models rather than JSON, and `usage` is a
+> k8s string map, so it is read with `kuber_props` and each entry is a
+> `Quantity` whose string is in `.value` —
+> `kuber_props(node.usage)["cpu"].value`.
+
 Kubernetes Metrics and Custom Metrics APIs generalize consumption of metrics published by the cluster and applications running within it.
 
 ## Node and Pod Metrics

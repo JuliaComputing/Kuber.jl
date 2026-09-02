@@ -1,3 +1,10 @@
+> **Note for the `openapi-v1-trial` branch:** this tutorial still reads as
+> written, but three details of the model layer changed — generated field names
+> are lowercase (`status.loadbalancer`, not `status.loadBalancer`), a field
+> missing from a payload reads as `ABSENT` rather than `nothing` (use
+> `Kuber._field`), and string maps like `metadata.labels` need `kuber_props`.
+> See the README for the full list.
+
 Kubernetes is an open-source container-orchestration system for deployment, scaling and management of containerized applications. Widespread adoption of Kubernetes allows freedom of deploying applications on-premises, on public cloud, or on a hybrid infrastructure.
 
 The Julia package Kuber.jl makes Kubernetes clusters easy to use and plug in to from Julia code.
@@ -326,8 +333,10 @@ julia> while true
            println("waiting for loadbalancer to be configured...")
            sleep(30)
            status = get(ctx, :Service, "nginx-service").status
-           if nothing !== status.loadBalancer.ingress && !isempty(status.loadBalancer.ingress)
-               println(status.loadBalancer.ingress[1].ip)
+           # lowercase field names, and `_field` because an unset field is ABSENT
+           ingress = Kuber._field(Kuber._field(status.loadbalancer).ingress)
+           if ingress !== nothing && !isempty(ingress)
+               println(ingress[1].ip)
                return
            end
        end

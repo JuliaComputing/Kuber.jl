@@ -4,22 +4,24 @@ authors = ["JuliaHub Inc."]
 keywords = ["kubernetes", "client"]
 license = "MIT"
 desc = "Julia Kubernetes Client"
-version = "0.7.11"
+version = "0.8.0"
 
 [deps]
+Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
-Downloads = "f43a241f-c20a-4ad4-852c-f6b1247861c6"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 OpenAPI = "d5e62ea6-ddf3-4d43-8e4c-ad5e6c8bfd7d"
-TimeZones = "f269a46b-ccf7-5d73-abea-4c690281aa53"
+UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
 
 [compat]
-Downloads = "1"
-OpenAPI = "0.1,0.2"
-JSON = "0.21, 1"
-TimeZones = "1"
-julia = "1"
+Base64 = "1.11"
+Dates = "1.11"
+HTTP = "2"
+JSON = "1.7"
+OpenAPI = "1"
+UUIDs = "1.11"
+julia = "1.11"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
